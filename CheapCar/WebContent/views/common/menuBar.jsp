@@ -57,8 +57,8 @@
 
             <form action="" method="post">
                     <div>
-                        <a href="#">아이디</a>
-                        <a href="#">비밀번호</a>
+                        <a href="#">ID</a>
+                        <a href="#">PASSWORD</a>
                     </div>
             </form>
 
