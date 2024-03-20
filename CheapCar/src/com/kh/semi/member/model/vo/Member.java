@@ -1,5 +1,7 @@
 package com.kh.semi.member.model.vo;
+
 import java.sql.Date;
+
 public class Member {
 	
 	private int memberNo;
@@ -11,9 +13,13 @@ public class Member {
 	private String email;
 	private Date enrollDate;
 	private String memberStatus;
+	
+	
 	public Member() {
 		super();
 	}
+	
+	
 	public Member(int memberNo, String memberId, String memberName, String memberPwd, String birthday, String phone,
 			String email, Date enrollDate, String memberStatus) {
 		super();
@@ -27,6 +33,8 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.memberStatus = memberStatus;
 	}
+	
+	
 	public int getMemberNo() {
 		return memberNo;
 	}
