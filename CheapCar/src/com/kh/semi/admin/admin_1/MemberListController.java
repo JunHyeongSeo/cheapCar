@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberListController
@@ -24,51 +25,33 @@ public class MemberListController extends HttpServlet {
      */
     public MemberListController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
+		int listCount = new MemberService().selectListCount();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int pageLimit = 10;
+		int boardLimit = 5;
+		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit - 1;
 		
-				int listCount; 
-				int currentPage;
-				int pageLimit;
-				int boardLimit;
-				
-				int maxPage;
-				int startPage;
-				int endPage;
-				
-				listCount = new MemberService().selectListCount();
-				
-				currentPage = Integer.parseInt(request.getParameter("currentPage"));
-				
-				pageLimit = 10;
-				
-				boardLimit = 5;
-				
-				maxPage = (int)Math.ceil((double)listCount / boardLimit);
-				
-				startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
-				
-				endPage = startPage + pageLimit - 1;
-				
-				if(endPage > maxPage) {
-					endPage = maxPage;
-				}
-				
-				// 여기까지 총 7개의 변수를 만들었음!!
-				// 3) VO로 가공
-				PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-				
-				// System.out.println(pi);
-				
-				// 4) Service 호출
-				ArrayList<Board> boardList = new BoardService().selectList(pi);
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		ArrayList<Member> boardList = new MemberService().selectList(pi);
 		
+		request.setAttribute("boardList", boardList);
+		request.setAttribute("pageInfo", pi);
+		
+		request.getRequestDispatcher("views/admin/admin_user/memberState.jsp").forward(request, response);
 		
 	}
 

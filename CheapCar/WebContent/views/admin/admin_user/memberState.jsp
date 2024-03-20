@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo"%>
+<%
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("boardList");
+	PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+	
+	// 페이징바 만들 때 필요한 변수 미리 세팅
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +33,8 @@
                 </div>
             </form>
         </div>
-
-        <div class="container">
+		
+		<div class="container">
             <h2>회원현황</h2>   
             <table class="table">
               <thead>
@@ -38,101 +49,51 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>user01</td>
-                    <td>유저1이름</td>
-                    <td>user01@naver.com</td>
-                    <td>2024-01-01</td>
-                    <td>500</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                
-                
-                <tr>
-                    <td>2</td>
-                    <td>user01</td>
-                    <td>유저2이름</td>
-                    <td>user02@naver.com</td>
-                    <td>2024-01-02</td>
-                    <td>501</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user01</td>
-                    <td>유저2이름</td>
-                    <td>user02@naver.com</td>
-                    <td>2024-01-02</td>
-                    <td>501</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user01</td>
-                    <td>유저2이름</td>
-                    <td>user02@naver.com</td>
-                    <td>2024-01-02</td>
-                    <td>501</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user01</td>
-                    <td>유저2이름</td>
-                    <td>user02@naver.com</td>
-                    <td>2024-01-02</td>
-                    <td>501</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
+              
+                <% if(list.isEmpty()) { %>
+                 	<tr>
+                 		<td colspan="7">등록되어있는 회원이 존재하지 않습니다.</td>
+                 	</tr>
+                <% } else { %>
+                   	<% for(Member m : list) { %>
+	                    <tr style="color: orangered;" class="board" id="<%= m.getMemberNo() %>">
+	                    	<td><%= m.getMemberNo() %></td>
+	                        <td><%= m.getMemberId() %></td>
+	                        <td><%= m.getMemberName() %></td>
+	                        <td><%= m.getEmail() %></td>
+	                        <td><%= m.getEnrollDate() %></td>
+	                        <td><%= m.getMileage() %></td>
+	                        <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+	                    </tr>
+                   	<% } %>
+                <% } %>
               </tbody>
             </table>
-          </div>
-            
-        <div id="abcd" align="center" style="width:100%;">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#"><</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">></a></li>
-            </ul>
-        </div>
-
-
-        <!--
-            <div class="outer">
-		<div class="container">       
-			<table class="table table-bordered">
-			
-			<tbody>
-				<tr>
-					<th>이름</th>
-					<td>서준형</td>
-				</tr>
-				<tr>
-					<th>아이디</th>
-					<td>user01</td>
-				</tr>
-				<tr>
-					<th>생년월일</th>
-					<td>1996-03-01</td>
-				</tr>
-				<tr>
-					<th>연락처</th>
-					<td>010-1234-5678</td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>123@naver.com</td>
-				</tr>
-			</tbody>
-			</table>
 		</div>
+            
+        <div class="paging-area" align="center" style="margin-top:12px">
+        
+        	<% if(currentPage > 1) { %>
+        
+	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage - 1 %>'">이전</button>
+	        <% } %>
+	        	<% for(int i = startPage; i <= endPage; i++) { %>
+	            
+	            	<% if(currentPage != i) {  %>
+			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%=i%>'"><%= i %></button>
+	            	<% } else { %>
+	            		<button disabled class="btn btn-danger"><%= i %></button>
+	            	<% } %>
+	            <% } %>
+	        <% if(currentPage != maxPage) {%>    
+			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage + 1 %>'">다음</button>
+			<% } %>
+        </div>
+        
 	</div>
 
 
-        -->
+        
         <div class="container">       
 			<table class="table table-bordered">
 			

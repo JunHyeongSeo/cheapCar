@@ -7,9 +7,17 @@
 	</comment>
 	
 	<entry key="selectListCount">
-		
+		SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_MEMBER 
+		 WHERE 
+		 	  MEMBER_STATUS IN ('A','B','C','D')
 	</entry>
 	
+	<entry key="selectList">
+		SELECT * FROM TB_MEMBER ORDER BY MEMBER_NO DESC
+	</entry>
 	
 	
 	

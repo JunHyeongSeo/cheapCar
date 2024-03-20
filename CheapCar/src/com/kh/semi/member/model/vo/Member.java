@@ -13,11 +13,21 @@ public class Member {
 	private String email;
 	private Date enrollDate;
 	private String memberStatus;
+	private int mileage = 10;
 	
 	
+	public int getMileage() {
+		return mileage;
+	}
+
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
+
 	public Member() {
 		super();
-		System.out.println("나는 멤버다~");
 	}
 	
 	

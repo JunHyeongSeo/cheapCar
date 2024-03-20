@@ -23,11 +23,6 @@ public class PageInfo {
 		this.pageLimit = pageLimit;
 		this.boardLimit = boardLimit;
 		this.maxPage = maxPage;
-		try {
-			pi = (PageInfo)this.clone();
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
 		this.startPage = startPage;
 		this.endPage = endPage;
 	}
