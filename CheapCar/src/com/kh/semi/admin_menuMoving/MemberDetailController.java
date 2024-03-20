@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminMainController
+ * Servlet implementation class memberStateController
  */
-@WebServlet("/adminMain")
-public class AdminMainController extends HttpServlet {
+@WebServlet("/memberDetail")
+public class MemberDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMainController() {
+    public MemberDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class AdminMainController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin_user/memberState.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/memberDetail.jsp").forward(request, response);
 	}
 
 	/**

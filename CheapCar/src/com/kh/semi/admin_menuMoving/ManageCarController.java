@@ -27,7 +27,7 @@ public class ManageCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin_car/manageCar.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
 	}
 
 	/**

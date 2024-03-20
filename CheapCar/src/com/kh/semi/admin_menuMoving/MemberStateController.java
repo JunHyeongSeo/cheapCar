@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class memberStateController
+ * Servlet implementation class adminMainController
  */
 @WebServlet("/memberState")
 public class MemberStateController extends HttpServlet {
@@ -27,7 +27,7 @@ public class MemberStateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin_user/memberDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/memberState.jsp").forward(request, response);
 	}
 
 	/**
