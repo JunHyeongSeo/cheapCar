@@ -51,7 +51,7 @@
 	
     <div id="wrap">
         
-        <h1 align="center" style="color: blue;">저렴하니Car</h1>
+        <h1 align="center" style="color: skyblue;">저렴하니Car</h1>
 
         <div class="login-area">
 
