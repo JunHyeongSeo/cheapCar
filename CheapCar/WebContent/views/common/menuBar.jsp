@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.car.model.vo.Car"%> 
+
+<%
+	String contextPath = request.getContextPath();
+	String alertMsg = (String)session.getAttribute("alertMsg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +84,7 @@
         <br clear="both">
         
         <div class="nav-area" align="center">
-            <div class="menu"><a href="#">차량렌트</a></div>
+            <div class="menu"><a href="<%= contextPath %>/list.car">차량렌트</a></div>
             <div class="menu"><a href="#">이벤트</a></div>
             <div class="menu"><a href="#">공지사항</a></div>
             <div class="menu"><a href="#">후기</a></div>
