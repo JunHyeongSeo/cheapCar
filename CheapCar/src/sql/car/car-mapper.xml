@@ -7,6 +7,7 @@
 	</comment>
 	
 	<entry key="selectCarList">
+	
 		SELECT
 		        C.MANAGEMENT_NO,
 		        STATUS,
@@ -47,6 +48,24 @@
 		 ORDER
 		    BY
 		        C.MANAGEMENT_NO DESC
+
 	</entry>
 	
+	<entry key="selectOptionList">
+	
+		SELECT
+		        MANAGEMENT_NO,
+		        O.OPTION_NO,
+		        OPTION_NAME,
+		        OPTION_PRICE
+		  FROM
+		        TB_OPTION O
+		  JOIN
+		        TB_OPTION_BRIDGE OB
+		    ON (O.OPTION_NO = OB.OPTION_NO)
+		 ORDER
+		    BY
+		        MANAGEMENT_NO
+
+	</entry>
 </properties>

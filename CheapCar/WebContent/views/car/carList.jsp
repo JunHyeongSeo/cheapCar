@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.*" %>
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
+	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
 %>
 <!DOCTYPE html>
 <html>
@@ -242,11 +243,14 @@
 	                        <span><%= c.getFuelName() %></span>
 	                        <span><%= c.getYear() %></span> <br><br>
 	                        
-	                        <table>
-                                <tr>
-                                    <td>옵션</td>
-                                </tr>
-                            </table>
+
+	                                <% for(int i = 1; i <= carList.size(); i++) { %>
+	                                    	<% for(Option o : optionList) { %>
+	                                    		<% if(c.getManagementNo() == i) { %>
+	                                    			<span><%= o.getOptionName() %></span>
+	                                    		<% } %>
+	                                    	<% } %>
+	                                <% } %>
 	                        
 	                        <label>총가격</label> : <span>10억</span> <br>
                             
@@ -254,7 +258,7 @@
 	                    </div>
                     </div>
 	                <% } %>
-                    <% } %>
+                <% } %>
                     
                     
                     <div align="center">

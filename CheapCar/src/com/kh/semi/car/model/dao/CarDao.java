@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
 
 public class CarDao {
@@ -28,7 +29,7 @@ public class CarDao {
 	
 	public ArrayList<Car> selectCarList(Connection conn) {
 		
-		ArrayList<Car> list = new ArrayList<Car>();
+		ArrayList<Car> carList = new ArrayList<Car>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -55,13 +56,44 @@ public class CarDao {
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
 				
-				list.add(car);
+				carList.add(car);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		return list;
+		return carList;
+	}
+	
+	public ArrayList<Option> selectOptionList(Connection conn){
+		
+		ArrayList<Option> optionList = new ArrayList<Option>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOptionList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Option option = new Option();
+				option.setOptionNo(rset.getInt("OPTION_NO"));
+				option.setOptionName(rset.getString("OPTION_NAME"));
+				option.setOptionPrice(rset.getInt("OPTION_PRICE"));
+				
+				optionList.add(option);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return optionList;
 	}
 }

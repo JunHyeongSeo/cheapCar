@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.car.model.vo.Option;
 
 /**
  * Servlet implementation class ListCarController
@@ -47,7 +48,10 @@ public class ListCarController extends HttpServlet {
 		
 		ArrayList<Car> carList =new CarService().selectCarList();
 		
+		ArrayList<Option> optionList = new CarService().selectOptionList();
+		
 		request.setAttribute("carList", carList);
+		request.setAttribute("optionList", optionList);
 		
 		request.getRequestDispatcher("views/car/carList.jsp").forward(request, response);		
 	}
