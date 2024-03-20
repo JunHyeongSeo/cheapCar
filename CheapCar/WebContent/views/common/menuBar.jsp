@@ -55,7 +55,7 @@
 
         <div class="login-area">
 
-            <form action="" method="post">
+            <form action="로그인매핑값" method="post">
                     <div>
                         <a href="#">ID</a>
                         <a href="#">PASSWORD</a>
