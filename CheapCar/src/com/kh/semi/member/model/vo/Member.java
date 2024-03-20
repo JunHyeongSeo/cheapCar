@@ -17,6 +17,7 @@ public class Member {
 	
 	public Member() {
 		super();
+		System.out.println("나는 멤버다~");
 	}
 	
 	
