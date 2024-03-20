@@ -156,5 +156,89 @@ public class Car {
 				+ gradePrice + ", modelPrice=" + modelPrice + ", yearPrice=" + yearPrice + "]";
 	}
 
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((brandName == null) ? 0 : brandName.hashCode());
+		result = prime * result + ((carNo == null) ? 0 : carNo.hashCode());
+		result = prime * result + ((fuelName == null) ? 0 : fuelName.hashCode());
+		result = prime * result + ((gradeName == null) ? 0 : gradeName.hashCode());
+		result = prime * result + gradePrice;
+		result = prime * result + ((locationName == null) ? 0 : locationName.hashCode());
+		result = prime * result + locationNo;
+		result = prime * result + managementNo;
+		result = prime * result + ((modelName == null) ? 0 : modelName.hashCode());
+		result = prime * result + modelPrice;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + year;
+		result = prime * result + yearPrice;
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (brandName == null) {
+			if (other.brandName != null)
+				return false;
+		} else if (!brandName.equals(other.brandName))
+			return false;
+		if (carNo == null) {
+			if (other.carNo != null)
+				return false;
+		} else if (!carNo.equals(other.carNo))
+			return false;
+		if (fuelName == null) {
+			if (other.fuelName != null)
+				return false;
+		} else if (!fuelName.equals(other.fuelName))
+			return false;
+		if (gradeName == null) {
+			if (other.gradeName != null)
+				return false;
+		} else if (!gradeName.equals(other.gradeName))
+			return false;
+		if (gradePrice != other.gradePrice)
+			return false;
+		if (locationName == null) {
+			if (other.locationName != null)
+				return false;
+		} else if (!locationName.equals(other.locationName))
+			return false;
+		if (locationNo != other.locationNo)
+			return false;
+		if (managementNo != other.managementNo)
+			return false;
+		if (modelName == null) {
+			if (other.modelName != null)
+				return false;
+		} else if (!modelName.equals(other.modelName))
+			return false;
+		if (modelPrice != other.modelPrice)
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (year != other.year)
+			return false;
+		if (yearPrice != other.yearPrice)
+			return false;
+		return true;
+	}
+
+	
 	
 }
