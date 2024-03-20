@@ -14,7 +14,7 @@ public class PageInfo {
 	public PageInfo() {
 		super();
 	}
-	
+	PageInfo pi;
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
 		super();
@@ -23,6 +23,11 @@ public class PageInfo {
 		this.pageLimit = pageLimit;
 		this.boardLimit = boardLimit;
 		this.maxPage = maxPage;
+		try {
+			pi = (PageInfo)this.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 		this.startPage = startPage;
 		this.endPage = endPage;
 	}
@@ -76,7 +81,7 @@ public class PageInfo {
 	public String toString() {
 		return "pageInfo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + "]";
+				+ endPage + "]" + pi;
 	} 
 	
 	

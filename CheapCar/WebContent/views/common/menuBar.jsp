@@ -51,14 +51,14 @@
 	
     <div id="wrap">
         
-        <h1 align="center" style="color: blue;">저렴하니Car</h1>
+        <h1 align="center" style="color: skyblue;">저렴하니Car</h1>
 
         <div class="login-area">
 
-            <form action="" method="post">
+            <form action="로그인매핑값" method="post">
                     <div>
-                        <a href="#">아이디</a>
-                        <a href="#">비밀번호</a>
+                        <a href="#">ID</a>
+                        <a href="#">PASSWORD</a>
                     </div>
             </form>
 
