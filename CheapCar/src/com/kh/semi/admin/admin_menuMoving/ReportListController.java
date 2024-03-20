@@ -1,4 +1,4 @@
-package com.kh.semi.admin_menuMoving;
+package com.kh.semi.admin.admin_menuMoving;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class memberStateController
+ * Servlet implementation class reportListController
  */
-@WebServlet("/memberDetail")
-public class MemberDetailController extends HttpServlet {
+@WebServlet("/reportList")
+public class ReportListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDetailController() {
+    public ReportListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class MemberDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/memberDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/reportList.jsp").forward(request, response);
 	}
 
 	/**

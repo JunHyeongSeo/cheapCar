@@ -1,4 +1,4 @@
-package com.kh.semi.admin_menuMoving;
+package com.kh.semi.admin.admin_menuMoving;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

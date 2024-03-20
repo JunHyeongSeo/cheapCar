@@ -1,4 +1,4 @@
-package com.kh.semi.admin_menuMoving;
+package com.kh.semi.admin.admin_menuMoving;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class blackListController
+ * Servlet implementation class salesController
  */
-@WebServlet("/blackList")
-public class BlackListController extends HttpServlet {
+@WebServlet("/sales")
+public class SalesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BlackListController() {
+    public SalesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,7 @@ public class BlackListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 	}
 
 	/**
