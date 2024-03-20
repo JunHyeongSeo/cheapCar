@@ -124,7 +124,7 @@
         }
 
         #main{
-            border: 1px solid red;
+            border: 1px solid white;
             width: 20%;
             height: 10%;
             margin-left: 30px;
@@ -161,7 +161,6 @@
         .pagination{
             width: 100%;
             margin: auto;
-
         }
 
         .mileage{
@@ -175,8 +174,9 @@
     <div id="wrap">
 
         <div id="main">
-            <img src="" alt="">
-    			홈으로가는 사진 첨부 나중에
+        	<a href="<%= request.getContextPath() %>" style="float:left; width:600px; height:500px; position:fixed; left : 600px; top: 300px">
+            <img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkWyr2bnqm5VSo7Kq4yE3pjaHtNSXksy0_3w&usqp=CAU" alt="">
+    		</a>
         </div>
         
         <h1>관리자 메인페이지</h1>
