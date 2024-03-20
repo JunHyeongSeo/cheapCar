@@ -3,6 +3,8 @@ package com.kh.semi.member.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 public class MemberDao {
@@ -22,6 +24,14 @@ public class MemberDao {
 	
 	public int selectListCount(Connection conn) {
 		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		
+		
+		
+		
 		
 		return result;
 	}
