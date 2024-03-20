@@ -11,9 +11,9 @@
 	
 	<% com.kh.semi.common.JDBCTemplate.getConnection(); %>
 
-	<%@ include file="views/common/menuBar.jsp" %>
+	<%@ include file="views/common/adminMain.jsp" %>
 
-
+	
 
 
 

@@ -16,7 +16,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class MemberListController
  */
-@WebServlet("/MemberListController")
+@WebServlet("/memberList")
 public class MemberListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,6 +31,7 @@ public class MemberListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 				
 		int listCount = new MemberService().selectListCount();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -43,12 +44,12 @@ public class MemberListController extends HttpServlet {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-
+		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		System.out.println(currentPage);
+		ArrayList<Member> list = new MemberService().selectList(pi);
 		
-		ArrayList<Member> boardList = new MemberService().selectList(pi);
-		
-		request.setAttribute("boardList", boardList);
+		request.setAttribute("memberList", list);
 		request.setAttribute("pageInfo", pi);
 		
 		request.getRequestDispatcher("views/admin/admin_user/memberState.jsp").forward(request, response);

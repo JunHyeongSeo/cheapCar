@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo"%>
 <%
-	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("boardList");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("memberList");
 	PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 	
 	// 페이징바 만들 때 필요한 변수 미리 세팅
@@ -9,8 +9,8 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
-	
 %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 	<%@ include file="../../common/adminMain.jsp" %>
 	
     <div class="outer">
-        <div id="top1" style = "border : 1px solid green";>
+        <div id="top1" style = "border : 1px solid green;">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
@@ -75,18 +75,18 @@
         
         	<% if(currentPage > 1) { %>
         
-	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage - 1 %>'">이전</button>
+	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%= currentPage - 1 %>'">이전</button>
 	        <% } %>
 	        	<% for(int i = startPage; i <= endPage; i++) { %>
 	            
 	            	<% if(currentPage != i) {  %>
-			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%=i%>'"><%= i %></button>
+			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%=i%>'"><%= i %></button>
 	            	<% } else { %>
 	            		<button disabled class="btn btn-danger"><%= i %></button>
 	            	<% } %>
 	            <% } %>
 	        <% if(currentPage != maxPage) {%>    
-			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage + 1 %>'">다음</button>
+			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
         
