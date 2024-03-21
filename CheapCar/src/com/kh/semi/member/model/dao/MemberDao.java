@@ -24,7 +24,6 @@ public class MemberDao {
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));
-			System.out.println("숨 쉴 때마다 커밋을 해야해~");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -80,9 +79,7 @@ public class MemberDao {
 				Member m = new Member();
 				m.setMemberNo(rset.getInt("MEMBER_NO"));
 				m.setMemberId(rset.getString("MMEMBER_ID"));
-				m.setMemberName(rset.getString("MEMBER_NAME"));
-				m.setBirthday(rset.getString("BIRTHDAY"));
-				m.setPhone(rset.getString("PHONE"));
+				m.setMemberName(rset.getString("MEMBER_NAME"));	
 				m.setEmail(rset.getString("EMAIL"));
 				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				
