@@ -33,6 +33,7 @@ public class AjaxIdCheckCotroller extends HttpServlet {
 		
 		int count = new MemberService().idCheck(checkId);
 		
+		response.setContentType("text/html; charset=UTF-8");
 		
 		String responseData = "";
 		

@@ -34,7 +34,7 @@
 
 							$.ajax({
 								url : 'idCheck.do',
-								data : {checkId : $userId.val()},
+								data : {checkId : $memberId.val()},
 								success : function(result){
 
 									if(result == "NNN"){
@@ -43,7 +43,17 @@
 										$memberId.val('').focus();
 									}
 									else{
-										$memberId.focus();
+										
+										if(confirm('사용 가능합니다 사용하시겠습니까?')){
+											
+											$memberId.attr('readonly', true);
+											
+											$('#enroll-form button[type=submit]').removeAttr('disabled');
+											
+										} else{
+											$memberId.focus();
+										}
+										
 									}
 
 								}
