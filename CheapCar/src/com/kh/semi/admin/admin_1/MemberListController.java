@@ -31,7 +31,6 @@ public class MemberListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 				
 		int listCount = new MemberService().selectListCount();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -52,7 +51,7 @@ public class MemberListController extends HttpServlet {
 		request.setAttribute("memberList", list);
 		request.setAttribute("pageInfo", pi);
 		
-		request.getRequestDispatcher("views/admin/admin_user/memberState.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
 		
 	}
 
