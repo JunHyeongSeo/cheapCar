@@ -12,7 +12,7 @@ import com.kh.semi.member.model.service.MemberService;
 /**
  * Servlet implementation class AjaxIdCheckCotroller
  */
-@WebServlet("/idCheck")
+@WebServlet("/idCheck.do")
 public class AjaxIdCheckCotroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,10 +32,6 @@ public class AjaxIdCheckCotroller extends HttpServlet {
 		String checkId = request.getParameter("checkId");
 		
 		int count = new MemberService().idCheck(checkId);
-		
-		System.out.println(count);
-		
-		System.out.println(checkId);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		

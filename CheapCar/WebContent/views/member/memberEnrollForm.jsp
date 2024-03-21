@@ -109,7 +109,7 @@
 
 			<div align="center">
 				<button type="reset">취소</button>
-				<button type="submit">회원가입</button>
+				<button type="submit" disabled>회원가입</button>
 			</div>
 			
 
