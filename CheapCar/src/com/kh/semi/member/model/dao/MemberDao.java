@@ -169,6 +169,28 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		return result;
 	}
 	
+	public int updatemember(Connection conn, Member member) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatemember");
+		
+		pstmt
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
