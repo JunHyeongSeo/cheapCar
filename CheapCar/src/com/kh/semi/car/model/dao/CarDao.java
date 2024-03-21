@@ -43,7 +43,6 @@ public class CarDao {
 			
 			listCount = rset.getInt("COUNT(*)");
 			
-			System.out.println(listCount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

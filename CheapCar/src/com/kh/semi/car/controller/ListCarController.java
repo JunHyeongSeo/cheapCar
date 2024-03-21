@@ -45,7 +45,9 @@ public class ListCarController extends HttpServlet {
 		
 		listCount = new CarService().selectListCount();
 		
-		//currentPage = 
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		
+		System.out.println(currentPage);
 		
 		ArrayList<Car> carList =new CarService().selectCarList();
 		
