@@ -94,7 +94,7 @@ public Member login(String memberId, String memberPwd) {
 		
 		
 		
-		close(conn)
+		close(conn);
 		
 		return result;
 	}
