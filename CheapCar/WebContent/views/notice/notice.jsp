@@ -95,16 +95,21 @@
 						 <th style="width: 8%; text-align:center">조회수</th>
 					  </tr>
 					  <% if(list.isEmpty()){ %>
-					  	 
+					  <tr>
+						<th colspan="5"> 공지사항이 존재하지 않습니다.</th>
+					  </tr>
 					  
 					  <% } else { %>
-					  <tr class="notice_list">
-						<th style="text-align:center"></th>
-						<th>제목 1</th>
-						<th style="text-align:center">관리자</th>
-						<th style="text-align:center">2024-03-19</th>
-						<th style="text-align:center">1</th>
-					 </tr>
+
+						<% for(Notice n: list) { %>
+							<tr class="notice_list">
+								<th style="text-align:center"></th>
+								<th>제목 1</th>
+								<th style="text-align:center">관리자</th>
+								<th style="text-align:center">2024-03-19</th>
+								<th style="text-align:center">1</th>
+							</tr>
+						<% } %>	
 					 <% } %>
 					  
 				   </table>               
