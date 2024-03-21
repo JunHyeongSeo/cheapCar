@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admin_menuMoving;
+package com.kh.semi.admin.admin_1;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -27,7 +27,14 @@ public class ReportListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/reportList.jsp").forward(request, response);
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**
