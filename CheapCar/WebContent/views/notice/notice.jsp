@@ -94,12 +94,12 @@
 						 <th style="width: 15%; text-align:center">작성일</th>
 						 <th style="width: 8%; text-align:center">조회수</th>
 					  </tr>
-					  <% if(){ %>
-					  
+					  <% if(list.isEmpty()){ %>
+					  	 
 					  
 					  <% } else { %>
 					  <tr class="notice_list">
-						<th style="text-align:center"><%= list.get %></th>
+						<th style="text-align:center"></th>
 						<th>제목 1</th>
 						<th style="text-align:center">관리자</th>
 						<th style="text-align:center">2024-03-19</th>
