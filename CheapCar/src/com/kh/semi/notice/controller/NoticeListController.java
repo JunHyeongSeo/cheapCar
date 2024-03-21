@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.notice.model.service.NoticeServiceImpl;
-import com.kh.semi.notice.model.vo.Notice;
+
+
 
 /**
  * Servlet implementation class NoticeListController
