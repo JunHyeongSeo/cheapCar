@@ -71,10 +71,12 @@
     }
     .content_body{
         height: 700px;
-        padding-left: 30px;
-        padding-top: 30px;
+        padding-left: 50px;
+        padding-top: 50px;
+        border-top: 2px solid #b1d6f3;
         border-bottom: 2px solid #b1d6f3;
     }
+
 
     .page-header{
 		padding-top: 20px;
@@ -138,7 +140,9 @@
                         <span class="content_sub1">조회수 : 5</span>
                     </div>
                     <div class="content_body">내용</div>
-                    <div class="content_btn">버튼자리</div>
+                    <div class="content_btn" align="center">
+                        <a href="<%=contextPath%>/list.notice">목록으로</a>
+                    </div>
                 </div>
 			 </div>
 		  </div>
