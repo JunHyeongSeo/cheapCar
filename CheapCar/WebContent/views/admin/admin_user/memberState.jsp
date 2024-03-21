@@ -13,6 +13,41 @@
 
 <!DOCTYPE html>
 <html>
+<style>
+	.container{
+	   margin-top: 20px;
+	}
+	
+	#middleTable{
+	    width : 80%;
+	    margin: auto;
+	}
+	
+	.table{
+	    margin-top: 20px;
+	    text-align: center;
+	}
+	
+	#top2{
+	    float: right;
+	}
+	
+	.form-inline{
+	    display: flex;
+	    align-items: center;
+	    padding: 15px;
+	}
+	
+	.pagination{
+	    width: 100%;
+	    margin: auto;
+	}
+	
+	.mileage{
+	    margin-top: 30px;
+	}
+       
+</style>
 <head>
 <meta charset="UTF-8">
 <title>회원현황</title>
@@ -22,7 +57,7 @@
 	<%@ include file="../../common/adminMain.jsp" %>
 	
     <div class="outer">
-        <div id="top1" style = "border : 1px solid green;">
+        <div id="top1">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
@@ -46,7 +81,6 @@
                     <th>가입날짜</th>
                     <th>마일리지</th>
                     <th>상세보기</th>
-                    <th>케케케</th>
                 </tr>
               </thead>
               <tbody>

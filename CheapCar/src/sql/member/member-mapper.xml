@@ -16,11 +16,12 @@
 	</entry>
 	
 	<entry key="selectList">
-		SELECT MEMBER_NO,
+		SELECT 
+			   MEMBER_NO,
 			   MEMBER_ID,
 			   MEMBER_NAME,
 			   EMAIL,
-			   ENROLL_DATE,
+			   ENROLL_DATE
 		  FROM 
 		  	   TB_MEMBER
 	  ORDER BY 

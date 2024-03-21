@@ -19,7 +19,6 @@ public class BlackListController extends HttpServlet {
      */
     public BlackListController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

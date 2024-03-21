@@ -18,13 +18,12 @@
     <style>
         /* adminMain 스타일 */
         .outer{
-                width: 1200px;
-                border: 1px solid red;
-                position: absolute;
-                top: 250px;
-                left: 350px;
-                z-index: -1;
-                height: 1000px;
+	       width: 1200px;
+	       position: absolute;
+	       top: 250px;
+	       left: 350px;
+	       z-index: -1;
+	       height: 1000px;
         }
         
         #wrap{
@@ -130,43 +129,7 @@
             margin-left: 30px;
         }
 
-        /* memberState 스타일 */
-
-        .container{
-           margin-top: 20px;
-        }
-
-        #middleTable{
-            border : 1px solid green;
-            width : 80%;
-            margin: auto;
-        }
-
-        .table{
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        #top2{
-            float: right;
-        }
-
-        .form-inline{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-        }
-
-        .pagination{
-            width: 100%;
-            margin: auto;
-        }
-
-        .mileage{
-            margin-top: 30px;
-        }
-       
+        
 	</style>
 </head>
 <body>
