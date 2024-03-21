@@ -151,13 +151,12 @@
         </div>
 
         <br clear="both">
-        
        
         <ul id="navi">
             <li><a href="#">회원관리</a>
                 <ul>
                     <li><a href="<%=contextPath%>/memberList?currentPage=1">회원현황</a></li>
-                    <li><a href="<%=contextPath%>/reportList">신고내역</a></li>
+                    <li><a href="<%=contextPath%>/reportList?currentPage=1">신고내역</a></li>
                     <li><a href="<%=contextPath%>/blackList">블랙리스트관리</a></li>
                 </ul>
             </li>
