@@ -37,7 +37,14 @@
 								data : {checkId : $userId.val()},
 								success : function(result){
 
-									if(result )
+									if(result == "NNN"){
+										alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
+										
+										$memberId.val('').focus();
+									}
+									else{
+										$memberId.focus();
+									}
 
 								}
 

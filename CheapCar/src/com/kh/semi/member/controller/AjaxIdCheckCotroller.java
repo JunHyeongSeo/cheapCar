@@ -34,6 +34,15 @@ public class AjaxIdCheckCotroller extends HttpServlet {
 		int count = new MemberService().idCheck(checkId);
 		
 		
+		String responseData = "";
+		
+		if(count > 0) {
+			responseData = "NNN";
+		} else {
+			responseData = "NNY";
+		}
+		
+		response.getWriter().print(count > 0 ? "NNN" : "NNY");
 		
 		
 	}
