@@ -174,7 +174,23 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updatemember");
 		
-		pstmt
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberName());
+			pstmt.setString(2, member.getBirthday());
+			pstmt.setString(3, member.getPhone());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
 		
 		
 		return result;

@@ -68,5 +68,34 @@
 	
 	</entry>
 	
+
+	<entry key="updatemember">
+		UPDATE
+				TB_MEMBER
+			SET
+				MEMBER_NAME = ?,
+				BIRTHDAY = ?,
+				PHONE = ?,
+				EMAIL ?
+			WHERE
+				MEMBER_ID = ?
+			AND
+				MEMBER_STATUS = 'A'
+	</entry>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 </properties>

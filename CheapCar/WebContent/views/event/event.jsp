@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이벤트 게시판</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -19,16 +19,15 @@
 	.outer{
 		width: 1200px;
 		height: auto;
-		border: 2px solid #188fbf;
 		margin: auto;
 		padding-bottom: 30px;
 	}
 	.page-header{
-		padding-top: 60px;
+		padding-top: 20px;
 		font-size: 40px;
 		font-weight: bold;
-
-	}
+		border-bottom: 6px solid #6caddf;
+	}	
 	#title{
 		background-color: aquamarine;
 		font-size: large;
@@ -39,15 +38,17 @@
 		padding-right: 0%;
 		margin-bottom: 2px;
 	}
-	.search-area{
-		text-align: center;
+	.search_write{
 		margin-top: 10px;
+		display: inline;
+		text-align: right;
+		margin-right: 0px;
 	}
-	.do-hyeon-regular {
+	.do-hyeon-regular {  /* 타이틀 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
-		font-weight: 500px;
+		font-weight: 300px;
 		font-style: normal;
-		font-size: 80px;
+		font-size: 60px;
 		color: #6caddf;
 	}
 	#searchWord{
@@ -57,6 +58,43 @@
 	.table{
 		font-size: 18px;
 	}
+	#event_list{
+		display:flex;
+		flex-direction: row;
+		gap: 2%;
+		flex-wrap: wrap;
+		margin-top: 30px;
+		overflow: hidden;
+		list-style-type: none;
+	}
+	#event_list > li{
+		width: 300px;
+		height: 400px;
+		
+		text-decoration: none;
+	}
+	.event_1:hover{
+		cursor: pointer;
+		opacity: 0.8;
+	}
+	.img-area{
+		width: 100%;
+		height: 55%;
+		border: 4px solid #6caddf;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.text-area{
+		width: 100%;
+		height: 35%;
+		border: 4px solid #6caddf;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+		color: whitesmoke;
+		background-color: #6caddf;
+		font-size: 20px;
+	}
+
 
 </style>
 </head>
@@ -70,40 +108,74 @@
 		  </div>
 			 <div class="col-lg-10">
 				<div class="panel-body">
-				<h2 class="page-header do-hyeon-regular" align="center">이&nbsp;벤&nbsp;트
+				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트
 				</h2>
 
-				<div id="write">
-					<a href="" class="btn btn-info">글쓰기</a>
+				<div class="search_write">
+					<form>
+						<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
+						<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
+						<a href="" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+					</form>
 				</div>  
+				<div class="event_content">
+					<ul id="event_list">
+						<li>
+							<a href="" alt="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									세일세일세일
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="" alt="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									이벤트 222222
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="" alt="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									이벤트 333333
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="" alt="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									이벤트 44
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="" alt="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									이벤트 555555
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="img-area event_1">1</div>
+								<div class="text-area event_1">
+									이벤트 6666666
+								</div>
+							</a>
+						</li>
+						
+					</ul>
+				</div>
+
+				
+				
 
 
-				   <table class="table table-bordered table-hover" style="margin:40px;">
-				   
-					  <tr style="background-color: #6caddf; margin-top: 0; height: 40px; color: white; opacity: 0.8">
-						 <th style="width: 8%; text-align:center">번호</th>
-						 <th style="width: 45%; text-align:center">제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
-						 <th style="width: 10%; text-align:center">작성자</th>
-						 <th style="width: 15%; text-align:center">작성일</th>
-						 <th style="width: 8%; text-align:center">조회수</th>
-					  </tr>
-					  <tr >
-						<th style="text-align:center">1</th>
-						<th>제목 1</th>
-						<th style="text-align:center">관리자</th>
-						<th style="text-align:center">2024-03-19</th>
-						<th style="text-align:center">1</th>
-					 </tr>
-					 <tr >
-						<th style="text-align:center">2</th>
-						<th>제목 2</th>
-						<th style="text-align:center">관리자</th>
-						<th style="text-align:center">2024-03-19</th>
-						<th style="text-align:center">5</th>
-					 </tr>
-					  
-					  
-				   </table>               
 				</div>            
 			 </div>
 		  </div>
@@ -112,24 +184,7 @@
 			<button class="btn btn-outline-info" style="color:#6caddf">이전</button>
 			<button class="btn btn-outline-info" style="color:#6caddf">1</button>
 			<button class="btn btn-outline-info" style="color:#6caddf">다음</button>
-		   
 	    </div>			  
-		
-		<div class="search-area">
-			<form>
-				<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-				<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-			</form>
-		</div>
-		
-
-		  
-		
-
-		  
-		
-	   
-	   
 	</div>
 	   
 	
