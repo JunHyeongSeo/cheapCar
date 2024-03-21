@@ -84,6 +84,11 @@
     .pagination{
     	margin-left : 33%;
     }
+    #option-input{
+    	margin-right : 5px;
+    	margin-top : 5px;
+    	float : left;
+    }
 </style>
 </head>
 <body>
@@ -105,121 +110,95 @@
                 <h2 align="center">옵션리스트</h2>
 
                 <form action="#" class="option-form">
-                    <table class="option-table" border="1">
+                    <table class="option-table">
                         <tr>
                             <td colspan="3"><input type="checkbox">전체</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox">경차</td>
+                            <td><input type="checkbox">준중형</td>
                             <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
                             <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">SUV</td>
                         </tr>
                     </table>
 
-                    <table class="option-table" border="1"> 
+                    <table class="option-table"> 
                         <tr>
                             <td colspan="3"><input type="checkbox">전체</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">현대</td>
+                            <td><input type="checkbox">기아</td>
+                            <td><input type="checkbox">제네시스</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">르노삼성</td>
+                            <td><input type="checkbox">포르쉐</td>
                         </tr>
                     </table>
 
-                    <table class="option-table" border="1"> 
+                    <table class="option-table"> 
                         <tr>
                             <td colspan="3"><input type="checkbox">전체</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">아반때</td>
+                            <td><input type="checkbox">소나타</td>
+                            <td><input type="checkbox">K3</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">GV80</td>
+                            <td><input type="checkbox">QM3</td>
+                            <td><input type="checkbox">카니발F</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox">아이오닉5</td>
+                            <td><input type="checkbox">모닝</td>
+                            <td><input type="checkbox">카이엔</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox">스포티지</td>
+                            <td><input type="checkbox">스타렉스</td>
                         </tr>
                     </table>
 
-                    <table class="option-table" border="1"> 
+                    <table class="option-table"> 
                         <tr>
                             <td colspan="3"><input type="checkbox">전체</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">2019</td>
+                            <td><input type="checkbox">2020</td>
+                            <td><input type="checkbox">2021</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">2022</td>
+                            <td><input type="checkbox">2023</td>
                         </tr>
                     </table>
 
-                    <table class="option-table" border="1"> 
+                    <table class="option-table"> 
                         <tr>
                             <td colspan="3"><input type="checkbox">전체</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">카시트</td>
+                            <td><input type="checkbox">선루프</td>
+                            <td><input type="checkbox">블랙박스</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
+                            <td><input type="checkbox">후방 카메라</td>
+                            <td><input type="checkbox">네비게이션</td>
+                            <td><input type="checkbox">주차 보조 시스템</td>
                         </tr>
                     </table>
 
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    
-                    <button type="submit">제출</button>
-                    <button type="reset">초기화</button>
+					<input id="option-input" type="text">
+                    <span><button type="submit" class="btn btn-sm btn-secondary">제출</button></span>
+                    <span><button type="reset" class="btn btn-sm btn-secondary">초기화</button></span>
                     
                 </form>
             </div>
