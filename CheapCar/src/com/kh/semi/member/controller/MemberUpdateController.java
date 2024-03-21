@@ -58,7 +58,7 @@ public class MemberUpdateController extends HttpServlet {
 			
 		} else {
 			request.setAttribute("errorMsg", "정보수정에 실패했습니다.");
-			request.getRequestDispatcher("views/common/errorPage").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
 		
