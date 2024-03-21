@@ -31,7 +31,6 @@ public class MemberListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 				
 		int listCount = new MemberService().selectListCount();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
+import com.kh.semi.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class ListCarController
@@ -53,9 +54,18 @@ public class ListCarController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
-		System.out.println(maxPage);
+		startPage = (currentPage - 1) / pageLimit / pageLimit * pageLimit + 1;
 		
-		startPage = 
+		endPage = startPage + pageLimit - 1;
+		
+		System.out.println(startPage);
+		System.out.println(pageLimit);
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		};
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<Car> carList = new CarService().selectCarList();
 		
