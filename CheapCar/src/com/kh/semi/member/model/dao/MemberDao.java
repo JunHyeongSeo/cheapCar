@@ -92,7 +92,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rset);
+			close(rset); 숨을 또쉼 ㅋ
 			close(pstmt);
 		}
 	
