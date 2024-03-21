@@ -12,7 +12,7 @@ import com.kh.semi.member.model.service.MemberService;
 /**
  * Servlet implementation class AjaxIdCheckCotroller
  */
-@WebServlet("/idCheck")
+@WebServlet("/idCheck.do")
 public class AjaxIdCheckCotroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
