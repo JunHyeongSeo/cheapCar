@@ -13,7 +13,7 @@
 		  FROM
 				TB_CAR
 		 WHERE
-				STATUS = 'Y';
+				STATUS = 'Y'
 				
 	</entry>
 	

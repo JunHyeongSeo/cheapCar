@@ -34,6 +34,22 @@ public class CarDao {
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectListCount");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)");
+			
+			System.out.println(listCount);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
 		return listCount;
 	}
 	
