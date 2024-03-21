@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.semi.car.model.vo.Car"%> 
+<%@ page import="com.kh.semi.car.model.vo.Car, com.kh.semi.member.model.vo.Member"%> 
 
 <%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+
 	String contextPath = request.getContextPath();
 	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
@@ -10,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>안녕 나는 헤더야</title>
+<title>저렴하니CAR</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -57,16 +59,23 @@
 	
     <div id="wrap">
         
-        <h1 align="center" style="color: skyblue;">저렴하니Car</h1>
+         <h1 align="center" style="color: skyblue;">  <a href="<%=contextPath%>">저렴하니Car</a></h1>
+      
+        
 
         <div class="login-area">
+        
+         <% if(loginUser == null) { %>
 
-            <form action="로그인매핑값" method="post">
+            <form action="" method="post">
                     <div>
-                        <a href="#">ID</a>
-                        <a href="#">PASSWORD</a>
+                        <a href="<%=contextPath%>/loginPage" >로그인</a>
+                        <a href="<%=contextPath%>/enrollPage">회원가입</a>
                     </div>
             </form>
+            
+            
+         <% } else { %>
 
            
             <!-- 사용자가 로그인 성공 후 보게될 화면 -->
