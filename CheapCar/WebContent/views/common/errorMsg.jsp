@@ -22,7 +22,7 @@
 </head>
 <body>
 	
-	<%@ include file="menubar.jsp" %>
+	<%@ include file="menuBar.jsp" %>
 	
 	<h1 id="errorMsg"><%= errorMsg %></h1>
 
