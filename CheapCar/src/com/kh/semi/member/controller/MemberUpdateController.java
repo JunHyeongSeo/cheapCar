@@ -49,6 +49,7 @@ public class MemberUpdateController extends HttpServlet {
 		
 		int result = new MemberService().updatemember(member);
 		
+		System.out.println(result);
 		
 		if(result > 0) {
 			
