@@ -2,6 +2,7 @@ package com.kh.semi.car.model.vo;
 
 public class Option {
 
+	private int managementNo;
 	private int optionNo;
 	private String optionName;
 	private int optionPrice;
@@ -10,11 +11,20 @@ public class Option {
 		super();
 	}
 
-	public Option(int optionNo, String optionName, int optionPrice) {
+	public Option(int managementNo, int optionNo, String optionName, int optionPrice) {
 		super();
+		this.managementNo = managementNo;
 		this.optionNo = optionNo;
 		this.optionName = optionName;
 		this.optionPrice = optionPrice;
+	}
+
+	public int getManagementNo() {
+		return managementNo;
+	}
+
+	public void setManagementNo(int managementNo) {
+		this.managementNo = managementNo;
 	}
 
 	public int getOptionNo() {
@@ -43,13 +53,15 @@ public class Option {
 
 	@Override
 	public String toString() {
-		return "Option [optionNo=" + optionNo + ", optionName=" + optionName + ", optionPrice=" + optionPrice + "]";
+		return "Option [managementNo=" + managementNo + ", optionNo=" + optionNo + ", optionName=" + optionName
+				+ ", optionPrice=" + optionPrice + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + managementNo;
 		result = prime * result + ((optionName == null) ? 0 : optionName.hashCode());
 		result = prime * result + optionNo;
 		result = prime * result + optionPrice;
@@ -65,6 +77,8 @@ public class Option {
 		if (getClass() != obj.getClass())
 			return false;
 		Option other = (Option) obj;
+		if (managementNo != other.managementNo)
+			return false;
 		if (optionName == null) {
 			if (other.optionName != null)
 				return false;
@@ -76,5 +90,6 @@ public class Option {
 			return false;
 		return true;
 	}
+
 	
 }
