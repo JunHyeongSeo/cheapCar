@@ -12,6 +12,9 @@ public class CarService {
 	
 	public void selectListCount() {
 		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int listCount = new CarDao().selectListCount(conn);
 		
 		
 	}
