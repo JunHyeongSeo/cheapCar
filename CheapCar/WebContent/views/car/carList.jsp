@@ -212,15 +212,29 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage - 1 %>'">Previous</a>
                                 </li>
                             <% } %>
 
+							<% for(int i = startPage; i <= endPage; i++) { %>
 							
+								<% if(currentPage != i) { %>
+									<button
+									class="page-link"
+									onclick="location.href='<%=contextPath%>/list.car?currentPage=<%=i%>'">
+									<%=i%>
+									</button>
+								<% } else { %>
+									<button
+									disabled class="page-link"><%=i%>
+									</button>
+								<% } %>
+							
+							<% } %>
                             
                              <% if(currentPage != maxPage) {%>
 							<li class="page-item">
-                                <a class="page-link" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage + 1%>'">Next</a>
+                                <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage + 1%>'">Next</a>
                             </li>
                             <% } %>
 						</ul>
