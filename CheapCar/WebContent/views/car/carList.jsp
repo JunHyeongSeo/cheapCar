@@ -88,6 +88,13 @@
 		width : 160px;
 		
     }
+    .option-check{
+    	width : 100%;
+    	margin-left : 3%;
+    }
+    .form-check-label{
+    	margin-left : 3%;
+    }
 </style>
 </head>
 <body>
@@ -110,7 +117,7 @@
 
                 <form action="#" class="option-form form-inline" >
                     
-                    <div class="form-check-inline">
+                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">Option 1
 						</label>
@@ -121,6 +128,28 @@
 						   <input type="checkbox" class="form-check-input" value="">Option 2
 						</label>
 					</div>
+					
+					<div class="form-check-inline option-check">
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 1
+						</label>
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
+					</div>
+					
+					<div class="form-check-inline option-check">
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 1
+						</label>
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
+					</div>
+					
 					<div>
 						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
 	    				<button class="btn btn-sm btn-success" type="submit">Search</button>
