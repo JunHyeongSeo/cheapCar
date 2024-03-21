@@ -16,7 +16,15 @@
 	</entry>
 	
 	<entry key="selectList">
-		SELECT * FROM TB_MEMBER ORDER BY MEMBER_NO DESC
+		SELECT MEMBER_NO,
+			   MEMBER_ID,
+				MEMBER_NAME,
+				BIRTHDAY,
+				PHONE,
+				EMAIL,
+				ENROLL_DATE,
+				FROM TB_MEMBER 
+				ORDER BY MEMBER_NO DESC
 	</entry>
 	
 	<entry key="login">

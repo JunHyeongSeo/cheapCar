@@ -46,6 +46,7 @@
                     <th>가입날짜</th>
                     <th>마일리지</th>
                     <th>상세보기</th>
+                    <th>케케케</th>
                 </tr>
               </thead>
               <tbody>
