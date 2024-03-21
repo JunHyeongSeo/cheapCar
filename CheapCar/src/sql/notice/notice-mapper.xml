@@ -7,6 +7,34 @@
 	</comment>
 	
 	
+	<entry key="selectNoticeList">
+		SELECT
+			   NOTICE_NO,
+			   NOTICE_TITLE,
+			   USER_NAME,
+			   CREATE_DATE,
+			   COUNT
+          FROM 
+               NOTICE
+          JOIN
+               MEMBER ON(NOTICE_WRITER = USER_NO)
+         WHERE
+               NOTICE.STATUS = 'Y'
+         ORDER
+            BY
+               NOTICE_NO DESC                           			   
+		
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 </properties>
