@@ -24,6 +24,7 @@ public class MemberDao {
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));
+			System.out.println("숨 쉴 때마다 커밋을 해야해~");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
