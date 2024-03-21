@@ -67,6 +67,34 @@ public Member login(String memberId, String memberPwd) {
 	}
 	
 	
+	public int updatemember(Member member) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().updatemember(conn, member);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			
+		}
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
