@@ -31,19 +31,20 @@ public class MemberUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String memberId = request.getParameter("memberId");
+		
 		String memberName = request.getParameter("memberName");
 		String birthday = request.getParameter("birthday");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
+		String memberId = request.getParameter("memberId");
 		
 		Member member = new Member();
 		
-		member.setMemberId(memberId);
 		member.setMemberName(memberName);
 		member.setBirthday(birthday);
 		member.setPhone(phone);
 		member.setEmail(email);
+		member.setMemberId(memberId);
 		
 		new MemberService().updatemember(member);
 		
