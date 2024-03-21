@@ -1,7 +1,6 @@
 package com.kh.semi.member.model.service;
 
-import static com.kh.semi.common.JDBCTemplate.close;
-import static com.kh.semi.common.JDBCTemplate.getConnection;
+import static com.kh.semi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -36,6 +35,36 @@ public class MemberService {
 	
 	
 	
+	
+public Member login(String memberId, String memberPwd) {
+		
+		Connection conn = getConnection();
+
+		
+		Member m = new MemberDao().login(conn, memberId, memberPwd);
+		
+		// 3) Connection 객체 반납
+		close(conn);
+		
+		// 4) Controller에게 결과 반환
+		return m;
+	}
+
+	public int insertMember(Member member) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().insertMember(conn, member);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
