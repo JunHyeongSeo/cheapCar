@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import=""%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,83 +15,79 @@
 	
 	<div class="outer">
 
-		<div id="top1" style = "border : 1px solid green";>
-				
+		<div id="top1">
 			<form class="form-inline" action="abc.do">
 				<div id="top11" style="display: flex;">
 					<label for="userId" style="margin: 0px 15px;">회원 아이디 : </label>
 					<input type="text" class="form-control" id="userId" placeholder="조회하실 회원 아이디를 입력해주세요." name="userId" style="width: 300px;">
-					
 					<button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
 				</div>
-				
 			</form>
-		
 		</div>
 
 		<div class="container">
 			<h2>신고내역</h2>   
 			<table class="table">
 				<thead>
-				<tr>
-					<th>번호</th>
-					<th>신고받은 아이디</th>
-					<th>신고한 아이디</th>
-					<th>신고내용</th>
-					<th>신고날짜</th>
-					<th>신고누적</th>
-					<th>상세보기</th>
-				</tr>
+					<tr>
+						<th>번호</th>
+						<th>신고받은 아이디</th>
+						<th>신고한 아이디</th>
+						<th>신고내용</th>
+						<th>신고날짜</th>
+						<th>신고누적</th>
+						<th>상세보기</th>
+					</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>user02</td>
-					<td>욕설이 너무 많아요</td>
-					<td>2024-01-01</td>
-					<td>3</td>
-					<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>user02</td>
-					<td>욕설이 너무 많아요</td>
-					<td>2024-01-01</td>
-					<td>3</td>
-					<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>user02</td>
-					<td>욕설이 너무 많아요</td>
-					<td>2024-01-01</td>
-					<td>3</td>
-					<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>user02</td>
-					<td>욕설이 너무 많아요</td>
-					<td>2024-01-01</td>
-					<td>3</td>
-					<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>user02</td>
-					<td>욕설이 너무 많아요</td>
-					<td>2024-01-01</td>
-					<td>3</td>
-					<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-				</tr>
+					<tr>
+						<td>1</td>
+						<td>user01</td>
+						<td>user02</td>
+						<td>욕설이 너무 많아요</td>
+						<td>2024-01-01</td>
+						<td>3</td>
+						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>user01</td>
+						<td>user02</td>
+						<td>욕설이 너무 많아요</td>
+						<td>2024-01-01</td>
+						<td>3</td>
+						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>user01</td>
+						<td>user02</td>
+						<td>욕설이 너무 많아요</td>
+						<td>2024-01-01</td>
+						<td>3</td>
+						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>user01</td>
+						<td>user02</td>
+						<td>욕설이 너무 많아요</td>
+						<td>2024-01-01</td>
+						<td>3</td>
+						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>user01</td>
+						<td>user02</td>
+						<td>욕설이 너무 많아요</td>
+						<td>2024-01-01</td>
+						<td>3</td>
+						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+					</tr>
 				</tbody>
 			</table>
-			</div>
+		</div>
 			
 		<div id="abcd">
 			<ul class="pagination">
