@@ -10,12 +10,15 @@ import com.kh.semi.common.JDBCTemplate;
 
 public class CarService {
 	
-	public void selectListCount() {
+	public int selectListCount() {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int listCount = new CarDao().selectListCount(conn);
 		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
 		
 	}
 	
