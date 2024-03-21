@@ -79,6 +79,8 @@ public Member login(String memberId, String memberPwd) {
 			
 		}
 		
+		close(conn);
+		
 		
 		return result;
 	}

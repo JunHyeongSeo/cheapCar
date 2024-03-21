@@ -76,11 +76,11 @@
 				MEMBER_NAME = ?,
 				BIRTHDAY = ?,
 				PHONE = ?,
-				EMAIL ?
+				EMAIL = ?
 			WHERE
 				MEMBER_ID = ?
 			AND
-				MEMBER_STATUS = 'A'
+				MEMBER_STATUS = 'C'
 	</entry>
 	
 
