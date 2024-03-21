@@ -7,6 +7,7 @@ public class Notice {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
+	private String noticeWriter;
 	private Date createDate;
 	private String status;
 	private int count;
@@ -16,12 +17,13 @@ public class Notice {
 		super();
 	}
 
-	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date createDate, String status, int count,
-			int memberNo) {
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, Date createDate,
+			String status, int count, int memberNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
+		this.noticeWriter = noticeWriter;
 		this.createDate = createDate;
 		this.status = status;
 		this.count = count;
@@ -50,6 +52,14 @@ public class Notice {
 
 	public void setNoticeContent(String noticeContent) {
 		this.noticeContent = noticeContent;
+	}
+
+	public String getNoticeWriter() {
+		return noticeWriter;
+	}
+
+	public void setNoticeWriter(String noticeWriter) {
+		this.noticeWriter = noticeWriter;
 	}
 
 	public Date getCreateDate() {
@@ -94,6 +104,7 @@ public class Notice {
 		result = prime * result + ((noticeContent == null) ? 0 : noticeContent.hashCode());
 		result = prime * result + noticeNo;
 		result = prime * result + ((noticeTitle == null) ? 0 : noticeTitle.hashCode());
+		result = prime * result + ((noticeWriter == null) ? 0 : noticeWriter.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -128,6 +139,11 @@ public class Notice {
 				return false;
 		} else if (!noticeTitle.equals(other.noticeTitle))
 			return false;
+		if (noticeWriter == null) {
+			if (other.noticeWriter != null)
+				return false;
+		} else if (!noticeWriter.equals(other.noticeWriter))
+			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -139,9 +155,12 @@ public class Notice {
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-				+ ", createDate=" + createDate + ", status=" + status + ", count=" + count + ", memberNo=" + memberNo
-				+ "]";
+				+ ", noticeWriter=" + noticeWriter + ", createDate=" + createDate + ", status=" + status + ", count="
+				+ count + ", memberNo=" + memberNo + "]";
 	}
+	
+	
+	
 	
 	
 	

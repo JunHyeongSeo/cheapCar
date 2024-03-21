@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -42,11 +44,32 @@ public class NoticeDao {
 		
 		String sql = prop.getProperty("selectNoticeList");
 		
-		
-		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) { // notice 객체에 값 담기, rset에서 뽑아서
+				
+				Notice notice = new Notice();
+				
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				notice.setNoticeWriter(rset.getString("MEMBER_NAME"));
+				notice.setCreateDate(rset.getDate("CREATE_DATE"));
+				notice.setCount(rset.getInt("COUNT"));
+				
+				list.add(notice);				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+			
+		}
 		
 		
 		return list;
