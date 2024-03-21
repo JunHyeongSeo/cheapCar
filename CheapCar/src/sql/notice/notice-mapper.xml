@@ -11,13 +11,13 @@
 		SELECT
 			   NOTICE_NO,
 			   NOTICE_TITLE,
-			   USER_NAME,
+			   MEMBER_NAME,
 			   CREATE_DATE,
 			   COUNT
           FROM 
                NOTICE
           JOIN
-               MEMBER ON(NOTICE_WRITER = USER_NO)
+               MEMBER ON(MEMBER_NO)
          WHERE
                NOTICE.STATUS = 'Y'
          ORDER
