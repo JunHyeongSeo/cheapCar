@@ -39,12 +39,12 @@
 				</tr>
 				<tr>
 					<td>* 휴대번호</td>
-					<td><input type="email" name="phone" value="<%=loginUser.getPhone()%>"></td>
+					<td><input type="text" name="phone" value="<%=loginUser.getPhone()%>"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이메일</td>
-					<td><input type="text" name="email" value="<%=loginUser.getEmail()%>"></td>
+					<td><input type="email" name="email" value="<%=loginUser.getEmail()%>"></td>
 					<td></td>
 				</tr>
 				
