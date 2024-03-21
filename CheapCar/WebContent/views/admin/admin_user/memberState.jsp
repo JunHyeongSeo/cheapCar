@@ -89,11 +89,7 @@
 			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
-        
 	</div>
-
-
-        
        
 	
 </body>
