@@ -73,8 +73,8 @@
         height: 700px;
         padding-left: 50px;
         padding-top: 50px;
-        border-top: 2px solid #b1d6f3;
         border-bottom: 2px solid #b1d6f3;
+        font-size: 25px;
     }
 
 
@@ -141,7 +141,9 @@
                     </div>
                     <div class="content_body">내용</div>
                     <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.notice">목록으로</a>
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     </div>
                 </div>
 			 </div>
