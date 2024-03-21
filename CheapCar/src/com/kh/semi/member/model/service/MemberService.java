@@ -86,7 +86,13 @@ public Member login(String memberId, String memberPwd) {
 	}
 	
 	
-	
+	public int isCheck() {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().isCheck();
+		
+	}
 	
 	
 	
