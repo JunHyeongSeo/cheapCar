@@ -1,10 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.*" %>
+<%@ 
+	page import="java.util.ArrayList, 
+				 com.kh.semi.car.model.vo.*,
+				 com.kh.semi.common.model.vo.PageInfo" 
+	
+%>
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+    PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+%>
+
+<%
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -100,7 +113,7 @@
 <body>
     
     <!-- 나중에 border빼고 수치 1200으로 조정-->
-
+	
     <div>
         <%@ include file="../common/menuBar.jsp" %>
     </div>
@@ -197,13 +210,33 @@
                     
                     <div align="center">
 						<ul class="pagination" >
-							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <% if(currentPage > 1) { %>
+                                <li class="page-item">
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                </li>
+                            <% } %>
+
+							<% for(int i = startPage; i <= endPage; i++) { %>
+							
+								<% if(currentPage != i) { %>
+									<button
+									class="page-link"
+									onclick="location.href='<%=contextPath%>/list.car?currentPage=<%=i%>'">
+									<%=i%>
+									</button>
+								<% } else { %>
+									<button
+									disabled class="page-link"><%=i%>
+									</button>
+								<% } %>
+							
+							<% } %>
+                            
+                             <% if(currentPage != maxPage) {%>
+							<li class="page-item">
+                                <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage + 1%>'">Next</a>
+                            </li>
+                            <% } %>
 						</ul>
 					</div>
                 </div>

@@ -45,7 +45,6 @@ public class MemberListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		System.out.println(currentPage);
 		ArrayList<Member> list = new MemberService().selectList(pi);
 		
 		request.setAttribute("memberList", list);
