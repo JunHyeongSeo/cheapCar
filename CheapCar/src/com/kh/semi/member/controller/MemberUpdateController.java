@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
@@ -46,7 +47,19 @@ public class MemberUpdateController extends HttpServlet {
 		member.setEmail(email);
 		member.setMemberId(memberId);
 		
-		new MemberService().updatemember(member);
+		int result = new MemberService().updatemember(member);
+		
+		
+		if(result > 0) {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "정보수정 성공!!");
+			
+			
+		} else {
+			request.setAttribute("errorMsg", "정보수정에 실패했습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
 		
 		
 	
