@@ -221,15 +221,15 @@
 							<% for(int i = startPage; i <= endPage; i++) { %>
 							
 								<% if(currentPage != i) { %>
-									<button
+									<li
 									class="page-link"
 									onclick="location.href='<%=contextPath%>/list.car?currentPage=<%=i%>'">
 									<%=i%>
-									</button>
+									</li>
 								<% } else { %>
-									<button
-									disabled class="page-link"><%=i%>
-									</button>
+									<li
+									class="page-link"><%=i%>
+									</li>
 								<% } %>
 							
 							<% } %>
