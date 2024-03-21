@@ -73,6 +73,7 @@
         height: 700px;
         padding-left: 30px;
         padding-top: 30px;
+        border-bottom: 2px solid #b1d6f3;
     }
 
     .page-header{
