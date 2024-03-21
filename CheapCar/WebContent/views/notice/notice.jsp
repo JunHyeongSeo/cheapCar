@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
+<%@ page import="java.util.ArrayList, com.kh.semi.notice.model.vo.Notice" %>    
 <%
-	 
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -93,21 +94,18 @@
 						 <th style="width: 15%; text-align:center">작성일</th>
 						 <th style="width: 8%; text-align:center">조회수</th>
 					  </tr>
+					  <% if(){ %>
+					  
+					  
+					  <% } else { %>
 					  <tr class="notice_list">
-						<th style="text-align:center">1</th>
+						<th style="text-align:center"><%= list.get %></th>
 						<th>제목 1</th>
 						<th style="text-align:center">관리자</th>
 						<th style="text-align:center">2024-03-19</th>
 						<th style="text-align:center">1</th>
 					 </tr>
-					 <tr class="notice_list">
-						<th style="text-align:center">2</th>
-						<th>제목 2</th>
-						<th style="text-align:center">관리자</th>
-						<th style="text-align:center">2024-03-19</th>
-						<th style="text-align:center">5</th>
-					 </tr>
-					  
+					 <% } %>
 					  
 				   </table>               
 				</div>            
