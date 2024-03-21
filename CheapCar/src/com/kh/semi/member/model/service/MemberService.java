@@ -93,7 +93,6 @@ public Member login(String memberId, String memberPwd) {
 		int result = new MemberDao().idCheck(conn, checkId);
 		
 		
-		
 		close(conn);
 		
 		return result;
