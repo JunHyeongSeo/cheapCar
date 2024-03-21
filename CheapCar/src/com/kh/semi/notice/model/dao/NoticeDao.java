@@ -12,6 +12,12 @@ public class NoticeDao {
 
 	private Properties prop = new Properties();
 	
+	public NoticeDao() {
+		
+		String fileName = NoticeDao.class.getResource("/sql/notice/notice-mapper.xml").getPath();
+		
+	}
+	
 	
 	
 	
