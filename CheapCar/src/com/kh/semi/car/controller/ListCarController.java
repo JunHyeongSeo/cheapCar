@@ -33,7 +33,7 @@ public class ListCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		/*
+		
 		int listCount; // 현재 게시판 글 총 개수
 		int currentPage; // 현재 페이지
 		int pageLimit; // 페이지 하단에 보여질 페이징 바 개수
@@ -43,8 +43,8 @@ public class ListCarController extends HttpServlet {
 		int startPage; // 페이지 하단에 보여줄 페이징바의 시작수
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝 수
 		
-		new CarService().selectListCount();
-		*/
+		listCount = new CarService().selectListCount();
+		
 		
 		ArrayList<Car> carList =new CarService().selectCarList();
 		

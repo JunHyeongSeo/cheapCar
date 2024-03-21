@@ -27,6 +27,16 @@ public class CarDao {
 		}
 	}
 	
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		return listCount;
+	}
+	
 	public ArrayList<Car> selectCarList(Connection conn) {
 		
 		ArrayList<Car> carList = new ArrayList<Car>();
