@@ -81,6 +81,7 @@ public class CarDao {
 			
 			while(rset.next()) {
 				Option option = new Option();
+				option.setManagementNo(rset.getInt("MANAGEMENT_NO"));
 				option.setOptionNo(rset.getInt("OPTION_NO"));
 				option.setOptionName(rset.getString("OPTION_NAME"));
 				option.setOptionPrice(rset.getInt("OPTION_PRICE"));

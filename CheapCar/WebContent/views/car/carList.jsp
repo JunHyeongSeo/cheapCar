@@ -242,17 +242,17 @@
 	                        <span><%= c.getBrandName() %></span>
 	                        <span><%= c.getFuelName() %></span>
 	                        <span><%= c.getYear() %></span> <br><br>
-	                        
 
-	                                <% for(int i = 1; i <= carList.size(); i++) { %>
-	                                    	<% for(Option o : optionList) { %>
-	                                    		<% if(c.getManagementNo() == i) { %>
-	                                    			<span><%= o.getOptionName() %></span>
-	                                    		<% } %>
-	                                    	<% } %>
-	                                <% } %>
-	                        
-	                        <label>총가격</label> : <span>10억</span> <br>
+	        					<% for(Option o : optionList) { %>
+	        						<% if(c.getManagementNo() == o.getManagementNo()) { %>
+                               			<span> <%= o.getOptionName() %></span>
+                               		<% } %>
+	                            <% } %> 
+							<br>
+	                        <label>총 가격</label> : 
+	                        <span>
+	                        	<%= c.getGradePrice() + c.getModelPrice() + c.getYearPrice() %>
+							</span> <br>
                             
                             <a class="btn btn-sm btn-primary"href="#">예약버튼</a>
 	                    </div>
