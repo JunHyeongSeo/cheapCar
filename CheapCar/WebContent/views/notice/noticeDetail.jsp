@@ -71,9 +71,12 @@
     }
     .content_body{
         height: 700px;
-        padding-left: 30px;
-        padding-top: 30px;
+        padding-left: 50px;
+        padding-top: 50px;
+        border-bottom: 2px solid #b1d6f3;
+        font-size: 25px;
     }
+
 
     .page-header{
 		padding-top: 20px;
@@ -137,7 +140,11 @@
                         <span class="content_sub1">조회수 : 5</span>
                     </div>
                     <div class="content_body">내용</div>
-                    <div class="content_btn">버튼자리</div>
+                    <div class="content_btn" align="center">
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-danger">수&nbsp;정</a>
+                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                    </div>
                 </div>
 			 </div>
 		  </div>

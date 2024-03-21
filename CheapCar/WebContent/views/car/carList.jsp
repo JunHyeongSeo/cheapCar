@@ -84,6 +84,10 @@
     .pagination{
     	margin-left : 33%;
     }
+    #option-input{
+		width : 160px;
+		
+    }
 </style>
 </head>
 <body>
@@ -104,123 +108,24 @@
                 
                 <h2 align="center">옵션리스트</h2>
 
-                <form action="#" class="option-form">
-                    <table class="option-table" border="1">
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
-                    <table class="option-table" border="1"> 
-                        <tr>
-                            <td colspan="3"><input type="checkbox">전체</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox">경차</td>
-                            <td><input type="checkbox">중형</td>
-                            <td><input type="checkbox">대형</td>
-                        </tr>
-                    </table>
-
+                <form action="#" class="option-form form-inline" >
                     
-                    <button type="submit">제출</button>
-                    <button type="reset">초기화</button>
-                    
+                    <div class="form-check-inline">
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 1
+						</label>
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
+					</div>
+					<div>
+						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
+	    				<button class="btn btn-sm btn-success" type="submit">Search</button>
+	    				<button class="btn btn-sm btn-secondary" type="reset">초기화</button>
+					</div>
                 </form>
             </div>
 

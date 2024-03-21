@@ -32,6 +32,7 @@ public class MemberUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		
 		String memberName = request.getParameter("memberName");
 		String birthday = request.getParameter("birthday");
@@ -49,11 +50,18 @@ public class MemberUpdateController extends HttpServlet {
 		
 		int result = new MemberService().updatemember(member);
 		
+		//System.out.println(result);
 		
 		if(result > 0) {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "정보수정 성공!!");
+			
+			String memberPwd = ((Member)session.getAttribute("loginUser")).getMemberPwd();
+			Member updateMem = new MemberService().login(memberId, memberPwd);
+					
+			session.setAttribute("loginUser", updateMem);
+
 			
 			
 		} else {

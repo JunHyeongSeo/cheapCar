@@ -56,6 +56,23 @@
 </head>
 <body>
 
+	<script>
+		// script태그 안에서도 스크립틀릿 같은 JSP요소를 사용할 수 있음 
+		
+		const msg = '<%= alertMsg %>';
+		
+		if(msg != 'null'){
+			alert(msg);
+		
+			// menubar.jsp가 로딩 될 때마다 alert이 계쏙 수행됨
+			// session에 들어있는 alertMsg키값에 해당하는 밸류값을 지워줄 것!
+			// xx.removeAttribute("키값");
+			<% session.removeAttribute("alertMsg"); %>
+		}
+		
+	
+	</script>
+
 	
     <div id="wrap">
         
