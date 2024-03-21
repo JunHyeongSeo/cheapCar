@@ -54,7 +54,7 @@ public class ListCarController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
-		startPage = (currentPage - 1) / pageLimit / pageLimit * pageLimit + 1;
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
 		endPage = startPage + pageLimit - 1;
 		
