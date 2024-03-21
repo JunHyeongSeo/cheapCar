@@ -77,17 +77,34 @@
             
          <% } else { %>
 
-           
-            <!-- 사용자가 로그인 성공 후 보게될 화면 -->
-			<!-- 
-            <div id="user-info">
-                <span>XXX</span>님 환영합니다~! <br><br>
-                <div>
-                    <a href="#" class="btn btn-sm btn-primary">마이페이지</a>
-                    <a href="#" class="btn btn-sm btn-second">로그아웃</a>
-                </div>
-            </div>
-             -->
+	
+	 		<div id="user-info">
+		        <span><%= loginUser.getMemberName() %></span>님 환영합니다~~!! <br><br>
+		        <div>
+		            <a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
+		                <!-- <a href="/jsp/logout">로그아웃</a>-->
+		            <a href="<%= contextPath %>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+		        </div>
+	      </div>
+		<% } %>
+
+	 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
         </div>
 
         <br clear="both">
