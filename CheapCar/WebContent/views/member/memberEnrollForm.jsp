@@ -25,8 +25,33 @@
 				<tr>
 					<td>* 아이디</td>
 					<td><input type="text" maxlength="30" required name="memberId"></td>
-					<td><button type="button">중복확인</button></td>
-					<!-- 중복확인 나중에 AJAX배우고 다음주..? -->
+					<td><button type="button onclick="idCheck();">중복확인</button"></td>
+					
+					<script>
+						function idCheck(){
+
+							const $userId = $('#enroll-form input[name=userId]');
+
+							$.ajax({
+								url : 'idCheck.do',
+								data : {checkId : $userId.val()},
+								success : function(result){
+
+									if(result )
+
+								}
+
+
+							});
+
+						}
+
+					</script>
+					
+					
+					
+					
+					
 				</tr>
 				<tr>
 					<td>* 비밀번호</td>
@@ -68,6 +93,7 @@
 				<button type="reset">취소</button>
 				<button type="submit">회원가입</button>
 			</div>
+			
 
 			<br><br>
 		
