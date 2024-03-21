@@ -42,7 +42,7 @@ public class NoticeListController extends HttpServlet {
 		// 4) 서비스 호출
 		ArrayList<Notice> list = new NoticeService().selectNoticeList();
 		
-		
+		request.setAttribute("list", list);
 		
 		
 		
