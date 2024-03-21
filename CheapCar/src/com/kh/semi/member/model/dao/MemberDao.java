@@ -1,6 +1,6 @@
 package com.kh.semi.member.model.dao;
 
-import static com.kh.semi.common.JDBCTemplate.close;
+import static com.kh.semi.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -101,7 +101,73 @@ public class MemberDao {
 	
 	
 	
+public Member login(Connection conn, String memberId, String memberPwd) {
+		
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("login");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberPwd);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member(rset.getInt("MEMBER_NO"),
+							   rset.getString("MEMBER_ID"),
+							   rset.getString("MEMBER_NAME"),
+							   rset.getString("MEMBER_PWD"),
+							   rset.getString("BIRTHDAY"),
+							   rset.getString("PHONE"),
+							   rset.getString("EMAIL"),
+							   rset.getDate("ENROLL_DATE"),
+							   rset.getString("MEMBER_STATUS"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return m;
+	}
 	
+	public int insertMember(Connection conn, Member member) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertTBMember");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getMemberPwd());
+			pstmt.setString(4, member.getBirthday());
+			pstmt.setString(5, member.getPhone());
+			pstmt.setString(6, member.getEmail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
