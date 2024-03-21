@@ -24,6 +24,7 @@ public class MemberDao {
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));
+			System.out.println("숨 쉴 때마다 커밋을 해야해~");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,13 +66,14 @@ public class MemberDao {
 		try{ 
 			pstmt = conn.prepareStatement(sql);
 		
+			rset = pstmt.executeQuery();
+			/*
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-			
-			rset = pstmt.executeQuery();
+			*/
 			
 			while(rset.next()) {
 				
@@ -168,6 +170,28 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		
 		return result;
 	}
+	
+	public int updatemember(Connection conn, Member member) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatemember");
+		
+	
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
