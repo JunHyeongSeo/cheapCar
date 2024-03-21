@@ -1,10 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.*" %>
+<%@ 
+	page import="java.util.ArrayList, 
+				 com.kh.semi.car.model.vo.*,
+				 com.kh.semi.common.model.vo.PageInfo" 
+	
+%>
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+    PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+%>
+
+<%
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
