@@ -25,22 +25,22 @@
 				<tr>
 					<td>* 아이디</td>
 					<td><input type="text" maxlength="30" required name="memberId"></td>
-					<td><button type="button onclick="idCheck();">중복확인</button"></td>
+					<td><button type="button" onclick="idCheck();">중복확인</button></td>
 					
 					<script>
 						function idCheck(){
 
-							const $userId = $('#enroll-form input[name=userId]');
+							const $memberId = $('#enroll-form input[name=memberId]');
 
 							$.ajax({
 								url : 'idCheck.do',
 								data : {checkId : $memberId.val()},
 								success : function(result){
-
-									if(result == "NNN"){
+										
+									if(result == 'NNN'){
 										alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
 										
-										$memberId.val('').focus();
+										$memberId.val('스따뜨페이지~').focus();
 									}
 									else{
 										

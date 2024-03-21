@@ -80,8 +80,11 @@
 		</a>
 		-->
 		<iframe width="550" height="350" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen align="left"></iframe>
+		<iframe width="640" height="360" src="https://www.youtube.com/embed/9ovPNSN-9_U" title="*광고없는 메들리* 💋신나는 아이돌 관광 디스코 뽕짝 메들리 [퀸카, 슈퍼샤이, 손오공, 아이 엠, 이브 프시케 그리고 푸른수염의 아내]💘가수. 김홍남. 많이. 사랑해주세요." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		<marquee><h1>이 영상은 매일 업데이트 될 예정입니다. 오늘 하루도 화이팅하십쇼!!</h1></marquee>
 	</div>
+	
+	
 
 	
     <div id="wrap">
