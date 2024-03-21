@@ -36,11 +36,12 @@
 								url : 'idCheck.do',
 								data : {checkId : $memberId.val()},
 								success : function(result){
+									console.log(result);
 										
 									if(result == 'NNN'){
 										alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
 										
-										$memberId.val('스따뜨페이지~').focus();
+										$memberId.val('').focus();
 									}
 									else{
 										

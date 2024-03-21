@@ -220,7 +220,6 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		}
 		
 		
-		
 		return count;
 	}
 	
