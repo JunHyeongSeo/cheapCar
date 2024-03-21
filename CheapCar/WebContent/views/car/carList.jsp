@@ -85,9 +85,8 @@
     	margin-left : 33%;
     }
     #option-input{
-    	margin-right : 5px;
-    	margin-top : 5px;
-    	float : left;
+		width : 160px;
+		
     }
 </style>
 </head>
@@ -109,28 +108,24 @@
                 
                 <h2 align="center">옵션리스트</h2>
 
-                <form action="#" class="option-form">
+                <form action="#" class="option-form form-inline" >
                     
                     <div class="form-check-inline">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">Option 1
 						</label>
-					</div>
-					<div class="form-check-inline">
+						<label class="form-check-label">
+						   <input type="checkbox" class="form-check-input" value="">Option 2
+						</label>
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">Option 2
 						</label>
 					</div>
-					<div class="form-check-inline">
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="">Option 2
-						</label>
+					<div>
+						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
+	    				<button class="btn btn-sm btn-success" type="submit">Search</button>
+	    				<button class="btn btn-sm btn-secondary" type="reset">초기화</button>
 					</div>
-
-					<input id="option-input" type="text">
-                    <span><button type="submit" class="btn btn-sm btn-secondary">제출</button></span>
-                    <span><button type="reset" class="btn btn-sm btn-secondary">초기화</button></span>
-                    
                 </form>
             </div>
 
