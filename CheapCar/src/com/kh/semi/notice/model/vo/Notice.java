@@ -8,6 +8,14 @@ public class Notice {
 	STATUS
 	COUNT
 	MEMBER_NO
+	private int noticeNo;
+	private String noticeTitle;
+	private String noticeContent;
+	private Date createDate;
+	private String status;
+	private int count;
+	private int memberNo;
+	
 	
 	
 }
