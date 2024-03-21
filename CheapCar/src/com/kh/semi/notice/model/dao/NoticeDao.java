@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -54,23 +55,21 @@ public class NoticeDao {
 				
 				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
-				notice.setNoticeWriter(rset.getString("USER_NAME"));
+				notice.setNoticeWriter(rset.getString("MEMBER_NAME"));
+				notice.setCreateDate(rset.getDate("CREATE_DATE"));
+				notice.setCount(rset.getInt("COUNT"));
 				
-				
-				
-				
+				list.add(notice);				
 				
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+			
 		}
-		
-		
-		
-		
-		
-		
 		
 		
 		return list;

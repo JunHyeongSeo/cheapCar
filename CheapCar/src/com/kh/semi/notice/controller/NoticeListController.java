@@ -1,6 +1,7 @@
 package com.kh.semi.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.notice.model.service.NoticeService;
+import com.kh.semi.notice.model.vo.Notice;
 
 
 
@@ -38,9 +40,9 @@ public class NoticeListController extends HttpServlet {
 		// 2) 값뽑기 x
 		// 3) 데이터 가공 X
 		// 4) 서비스 호출
-		new NoticeService().selectNoticeList();
+		ArrayList<Notice> list = new NoticeService().selectNoticeList();
 		
-
+		
 		
 		
 		

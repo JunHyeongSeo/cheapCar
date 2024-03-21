@@ -15,11 +15,11 @@
 			   CREATE_DATE,
 			   COUNT
           FROM 
-               NOTICE
+               TB_NOTICE_BOARD
           JOIN
-               MEMBER ON(MEMBER_NO)
+               TB_MEMBER USING (MEMBER_NO)
          WHERE
-               NOTICE.STATUS = 'Y'
+               TB_NOTICE_BOARD.STATUS = 'Y'
          ORDER
             BY
                NOTICE_NO DESC                           			   
