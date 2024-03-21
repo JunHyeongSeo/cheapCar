@@ -176,7 +176,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updatemember");
 		
-		pstmt
+	
 		
 		
 		return result;
