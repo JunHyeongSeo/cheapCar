@@ -45,9 +45,19 @@ public class ListCarController extends HttpServlet {
 		
 		listCount = new CarService().selectListCount();
 		
-		//currentPage = 
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
-		ArrayList<Car> carList =new CarService().selectCarList();
+		pageLimit = 5;
+		
+		boardLimit = 5;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		System.out.println(maxPage);
+		
+		startPage = 
+		
+		ArrayList<Car> carList = new CarService().selectCarList();
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 		
