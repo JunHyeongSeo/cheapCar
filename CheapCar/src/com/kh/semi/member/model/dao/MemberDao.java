@@ -66,19 +66,20 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 		
 			rset = pstmt.executeQuery();
-			/*
+			
+			
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
-			*/
+			
 			
 			while(rset.next()) {
 				
 				Member m = new Member();
 				m.setMemberNo(rset.getInt("MEMBER_NO"));
-				m.setMemberId(rset.getString("MMEMBER_ID"));
+				m.setMemberId(rset.getString("MEMBER_ID"));
 				m.setMemberName(rset.getString("MEMBER_NAME"));	
 				m.setEmail(rset.getString("EMAIL"));
 				m.setEnrollDate(rset.getDate("ENROLL_DATE"));

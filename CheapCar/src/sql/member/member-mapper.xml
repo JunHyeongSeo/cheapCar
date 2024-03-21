@@ -16,15 +16,21 @@
 	</entry>
 	
 	<entry key="selectList">
-		SELECT MEMBER_NO,
-			   MEMBER_ID,
-			   MEMBER_NAME,
-			   EMAIL,
-			   ENROLL_DATE,
-		  FROM 
-		  	   TB_MEMBER
-	  ORDER BY 
-	  	       MEMBER_NO DESC
+		SELECT * 
+		  FROM(SELECT A.*, ROWNUM RNUM
+		         FROM(SELECT
+                            MEMBER_NO,
+                            MEMBER_ID,
+                            MEMBER_NAME,
+                            EMAIL,
+                            ENROLL_DATE,
+                            ROWNUM R
+                        FROM 
+                            TB_MEMBER
+		                ORDER 
+		                   BY 
+		                     CREATE_DATE DESC) A)
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="login">
