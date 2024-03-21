@@ -143,7 +143,7 @@
                     </div>
                     <div class="content_body">내용</div>
                     <div class="content_btn" align="center">
-                        
+                        <a href="<%=contextPath>/list.notice">목록으로</a>
                     </div>
                 </div>
 			 </div>
