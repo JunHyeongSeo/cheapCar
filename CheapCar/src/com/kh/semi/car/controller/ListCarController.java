@@ -53,9 +53,7 @@ public class ListCarController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
-		System.out.println(maxPage);
-		
-		startPage = 
+		startPage = (currentPage - 1) / pageLimit / pageLimit * pageLimit + 1;
 		
 		ArrayList<Car> carList = new CarService().selectCarList();
 		
