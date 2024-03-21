@@ -1,5 +1,7 @@
 package com.kh.semi.notice.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,13 @@ public class NoticeDao {
 	public NoticeDao() {
 		
 		String fileName = NoticeDao.class.getResource("/sql/notice/notice-mapper.xml").getPath();
+		
+		try {
+			prop.loadFromXML(new FileInputStream(fileName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
