@@ -113,7 +113,7 @@
 <body>
     
     <!-- 나중에 border빼고 수치 1200으로 조정-->
-
+	
     <div>
         <%@ include file="../common/menuBar.jsp" %>
     </div>
@@ -210,13 +210,34 @@
                     
                     <div align="center">
 						<ul class="pagination" >
-							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <% if(currentPage > 1) { %>
+                                <li class="page-item">
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                </li>
+                            <% } %>
+
+							<li class="page-item">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+
+							<li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+							<li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+							<li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+							<li class="page-item">
+                                <a class="page-link" href="#">5</a>
+                            </li>
+                            
+                             <% if(currentPage != maxPage) {%>
+							<li class="page-item">
+                                <a class="page-link" onclick="location.href='<%=contextPath%>/boardList?currentPage=<%= currentPage + 1%>'">Next</a>
+                            </li>
+                            <% } %>
 						</ul>
 					</div>
                 </div>

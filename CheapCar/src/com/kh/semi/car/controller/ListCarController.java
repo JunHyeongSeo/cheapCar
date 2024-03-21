@@ -58,9 +58,6 @@ public class ListCarController extends HttpServlet {
 		
 		endPage = startPage + pageLimit - 1;
 		
-		System.out.println(startPage);
-		System.out.println(pageLimit);
-		
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		};
@@ -73,6 +70,7 @@ public class ListCarController extends HttpServlet {
 		
 		request.setAttribute("carList", carList);
 		request.setAttribute("optionList", optionList);
+		request.setAttribute("pageInfo", pi);
 		
 		request.getRequestDispatcher("views/car/carList.jsp").forward(request, response);		
 	}
