@@ -19,6 +19,46 @@
 		SELECT * FROM TB_MEMBER ORDER BY MEMBER_NO DESC
 	</entry>
 	
+	<entry key="login">
+		SELECT
+				MEMBER_NO,
+				MEMBER_ID,
+				MEMBER_NAME,
+				MEMBER_PWD,
+				BIRTHDAY,
+				PHONE,
+				EMAIL,
+				ENROLL_DATE,
+				MEMBER_STATUS
+			FROM
+				TB_MEMBER
+			WHERE
+				MEMBER_ID = ?
+			AND
+				MEMBER_PWD = ?
+			AND
+				MEMBER_STATUS IN ('A', 'C')
+				 
+	</entry>
+	
+	<entry key="insertTBMember">
+		INSERT
+			INTO
+				TB_MEMBER
+			VALUES
+				(
+				SEQ_MEMBER_NO.NEXTVAL,
+				?,
+				?,
+				?,
+				?,
+				?,
+				?,
+				DEFAULT,
+				DEFAULT
+				)
+	
+	</entry>
 	
 	
 </properties>
