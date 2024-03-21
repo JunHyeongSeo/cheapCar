@@ -173,7 +173,9 @@
 
             <div class="area-list">
                 <% if(carList.isEmpty()) { %>
+                
                 	등록된 게시글이 존재하지 않습니다. <br>
+                	
                 <% } else {%>
 					
 					<% for(Car c : carList) { %>
@@ -233,9 +235,9 @@
 							<% } %>
                             
                              <% if(currentPage != maxPage) {%>
-							<li class="page-item">
-                                <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage + 1%>'">Next</a>
-                            </li>
+								<li class="page-item">
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage + 1%>'">Next</a>
+	                            </li>
                             <% } %>
 						</ul>
 					</div>
