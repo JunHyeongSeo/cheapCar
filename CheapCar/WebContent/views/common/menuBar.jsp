@@ -84,6 +84,9 @@
 		            <a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
 		                <!-- <a href="/jsp/logout">로그아웃</a>-->
 		            <a href="<%= contextPath %>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+		            <% if(loginUser.getMemberStatus().equals("A")) { %>
+		            <a href="<%= contextPath %>/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
+		            <% } %>
 		        </div>
 	      </div>
 		<% } %>

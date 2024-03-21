@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member"%>
 <%
 	String contextPath = request.getContextPath();
+	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@
         }
 
         .login-area{
-            width: 200px;
+            width: 300px;
             height: 30px;
             float: right;
             margin: auto;
@@ -45,7 +46,6 @@
         #login-area1{
             width: 50%;
             height: 100%;
-            border-right: 1px solid black;
             padding-right: 10px;
         }
 
@@ -182,8 +182,9 @@
         <h1>관리자 메인페이지</h1>
                 
         <div class="login-area">
-            <div id="login-area1"><a href="#">로그아웃</a></div>
-            <div id="login-area2"><a href="#">홈페이지</a></div>
+            <div id="login-area1"><a href="<%= contextPath %>/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
+            <div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
+            
         </div>
 
         <br clear="both">
