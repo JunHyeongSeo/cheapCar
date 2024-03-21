@@ -110,18 +110,18 @@
         
         	<% if(currentPage > 1) { %>
         
-	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%= currentPage - 1 %>'">이전</button>
+	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
 	        <% } %>
 	        	<% for(int i = startPage; i <= endPage; i++) { %>
 	            
 	            	<% if(currentPage != i) {  %>
-			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%=i%>'"><%= i %></button>
+			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%=i%>'"><%= i %></button>
 	            	<% } else { %>
 	            		<button disabled class="btn btn-danger"><%= i %></button>
 	            	<% } %>
 	            <% } %>
 	        <% if(currentPage != maxPage) {%>    
-			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberState?currentPage=<%= currentPage + 1 %>'">다음</button>
+			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
 	</div>
