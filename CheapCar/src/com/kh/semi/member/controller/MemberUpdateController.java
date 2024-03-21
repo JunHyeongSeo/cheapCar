@@ -64,6 +64,9 @@ public class MemberUpdateController extends HttpServlet {
 			session.setAttribute("loginUser", updateMem);
 
 			
+			response.sendRedirect(request.getContextPath() + "/updatemy");
+
+			
 			
 		} else {
 			request.setAttribute("errorMsg", "정보수정에 실패했습니다.");
