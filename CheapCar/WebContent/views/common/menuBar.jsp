@@ -94,9 +94,9 @@
         
         <div class="nav-area" align="center">
             <div class="menu"><a href="<%= contextPath %>/list.car">차량렌트</a></div>
-            <div class="menu"><a href="#">이벤트</a></div>
-            <div class="menu"><a href="#">공지사항</a></div>
-            <div class="menu"><a href="#">후기</a></div>
+            <div class="menu"><a href="<%=contextPath%>/list.event">이벤트</a></div>
+            <div class="menu"><a href="<%=contextPath%>/list.notice">공지사항</a></div>
+            <div class="menu"><a href="<%=contextPath%>/list.review">후기</a></div>
             <div class="menu"><a href="#">고객센터</a></div>
         </div>
         
