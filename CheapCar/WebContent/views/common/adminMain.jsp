@@ -137,9 +137,12 @@
     <div id="wrap">
 
         <div id="main">
+        	<!-- 
         	<a href="<%= request.getContextPath() %>" style="float:left; width:600px; height:500px; position:fixed; left : 600px; top: 300px">
             <img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkWyr2bnqm5VSo7Kq4yE3pjaHtNSXksy0_3w&usqp=CAU" alt="">
     		</a>
+    		-->
+    		<iframe width="1250" height="703" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         
         <h1>관리자 메인페이지</h1>
