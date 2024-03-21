@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admin_1;
+package com.kh.semi.report.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -27,8 +27,8 @@ public class ReportListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
+		int listCount = new
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		
 		
