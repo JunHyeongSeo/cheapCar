@@ -71,8 +71,9 @@
     }
     .content_body{
         height: 700px;
-        padding-left: 30px;
-        padding-top: 30px;
+        padding-left: 50px;
+        padding-top: 50px;
+        border-top: 2px solid #b1d6f3;
         border-bottom: 2px solid #b1d6f3;
     }
 
