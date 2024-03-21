@@ -6,6 +6,17 @@
 		Car Mapper
 	</comment>
 	
+	<entry key="selectListCount">
+	
+		SELECT
+				COUNT(*)
+		  FROM
+				TB_CAR
+		 WHERE
+				STATUS = 'Y'
+				
+	</entry>
+	
 	<entry key="selectCarList">
 	
 		SELECT
