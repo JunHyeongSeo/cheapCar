@@ -66,7 +66,7 @@ public class LoginController extends HttpServlet {
 			
 			} else {
 				
-				response.sendRedirect(request.getContextPath() + "/views/admin/adminMain.jsp");
+				response.sendRedirect(request.getContextPath() + "/views/common/adminMain.jsp");
 				
 			}
 			
