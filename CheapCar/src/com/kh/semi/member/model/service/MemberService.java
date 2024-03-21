@@ -86,7 +86,18 @@ public Member login(String memberId, String memberPwd) {
 	}
 	
 	
-	
+	public int idCheck(String checkId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().idCheck(conn, checkId);
+		
+		
+		
+		close(conn)
+		
+		return result;
+	}
 	
 	
 	

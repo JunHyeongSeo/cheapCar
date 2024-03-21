@@ -31,7 +31,10 @@ public class AjaxIdCheckCotroller extends HttpServlet {
 
 		String checkId = request.getParameter("checkId");
 		
-		int count = new MemberService().isCheck(checkId);
+		int count = new MemberService().idCheck(checkId);
+		
+		
+		
 		
 	}
 

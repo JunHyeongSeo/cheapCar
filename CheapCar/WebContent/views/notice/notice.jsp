@@ -80,11 +80,14 @@
 				<h2 class="page-header do-hyeon-regular" align="left">공지사항				   
 				</h2>
 
-				<div id="write">
-					<a href="" class="btn btn-info">글쓰기</a>
-				</div>  
 
+				<% if (loginUser != null && loginUser.getUserId().equals("admin") ){%>
+					<div id="write">
+						<a href="<%= contextPath %>/inserForm.notice" class="btn btn-info">글쓰기</a>
+					</div> 
+				<% } %> 
 
+				
 				   <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 5px;">
 				   
 					  <tr style="background-color: #6caddf; margin-top: 0; height: 40px; color: white; opacity: 0.8">
