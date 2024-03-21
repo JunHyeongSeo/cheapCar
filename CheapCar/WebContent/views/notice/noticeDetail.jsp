@@ -76,9 +76,7 @@
         border-top: 2px solid #b1d6f3;
         border-bottom: 2px solid #b1d6f3;
     }
-    .content_btn{
-        al
-    }
+
 
     .page-header{
 		padding-top: 20px;
