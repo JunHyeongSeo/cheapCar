@@ -64,7 +64,7 @@ public class MemberUpdateController extends HttpServlet {
 			session.setAttribute("loginUser", updateMem);
 
 			
-			response.sendRedirect(request.getContextPath() + "/updatemy");
+			response.sendRedirect(request.getContextPath() + "/update");
 
 			
 			
@@ -86,26 +86,7 @@ public class MemberUpdateController extends HttpServlet {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		System.out.println("나는 업데이트다");
+	
 	}
 
 }
