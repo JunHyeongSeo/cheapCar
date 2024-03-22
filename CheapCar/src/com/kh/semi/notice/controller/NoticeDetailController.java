@@ -2,6 +2,7 @@ package com.kh.semi.notice.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,8 +50,10 @@ public class NoticeDetailController extends HttpServlet {
 			
 			if(notice != null) {
 				
+				request.setAttribute("notice", notice);
+				
 				request.getRequestDispatcher("views/notice/noticeDetail.jsp").forward(request, response);
-		/*		
+				
 			} else {
 				request.setAttribute("errorMsg", "공지사항 상세 조회 실패");
 				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
@@ -61,7 +64,7 @@ public class NoticeDetailController extends HttpServlet {
 			request.setAttribute("errorMsg", "공지사항 상세 조회 실패");
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
-		}*/
+		}
 	}
 
 	/**
