@@ -80,6 +80,9 @@
 		</a>
 		-->
 		<iframe width="550" height="350" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen align="left"></iframe>
+		<iframe width="550" height="350" src="https://www.youtube.com/embed/vnS_jn2uibs" title="DAY6(데이식스) &quot;한 페이지가 될 수 있게&quot; M/V" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		<iframe width="550" height="350" src="https://www.youtube.com/embed/2Wmdrhj4QpY" title="[2026 FIFA 북중미 월드컵 아시아 2차 예선] 대한민국 vs 태국 5분 하이라이트" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		<iframe width="550" height="350" src="https://www.youtube.com/embed/11cta61wi0g" title="NewJeans (뉴진스) &#39;Hype Boy&#39; Official MV (Performance ver.1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		<h1>이 영상은 매일 업데이트 될 예정입니다. 오늘 하루도 화이팅하십쇼!!</h1>
 	</div>
 
