@@ -138,7 +138,7 @@
                 
                 <div class="content_outer">
                     <div class="content_header">
-                        <div class="content_header1"><%= notice.getNoticeNo()%></div>
+                        <!--<div class="content_header1"><%= notice.getNoticeNo()%></div>-->
                         <div class="content_header2"><%= notice.getNoticeTitle()%></div>
                     </div>
                     <div class="content_sub">
@@ -151,8 +151,8 @@
                         <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
                         
                            <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
-                            <a href="<%=contextPath%>/update.notice?noticeNo=<%=notice.getNoticeNo%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                            <a href="<%=contextPath%>/delete.notice?noticeNo=<%=notice.getNoticeNo%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                            <a href="<%=contextPath%>/update.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                            <a href="<%=contextPath%>/delete.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                            <% } %> 
                     </div>
                 </div>
