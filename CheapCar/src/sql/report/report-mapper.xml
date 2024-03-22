@@ -7,7 +7,10 @@
 	</comment>
 	
 	<entry key="selectListCount">
-		SELECT COUNT(*) FROM TB_REPORT
+		SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_REPORT
 	</entry>
 	
 	<entry key="selectList">

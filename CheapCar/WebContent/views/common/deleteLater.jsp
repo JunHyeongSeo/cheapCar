@@ -13,6 +13,9 @@
 		margin-top : 15px;
 		margin-bottom : 15px;
 	}
+	.a{
+		display: inline;
+	}
 
 </style>
 
@@ -30,7 +33,9 @@
 			<iframe width="550" height="350" src="https://www.youtube.com/embed/2Wmdrhj4QpY" title="[2026 FIFA 북중미 월드컵 아시아 2차 예선] 대한민국 vs 태국 5분 하이라이트" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 			<iframe width="550" height="350" src="https://www.youtube.com/embed/11cta61wi0g" title="NewJeans (뉴진스) &#39;Hype Boy&#39; Official MV (Performance ver.1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		</div>
-		
+		<div>
+			<iframe width="550" height="350" src="https://www.youtube.com/embed/-9RMTYZ2Etw" title="[페이스캠4K] 아이브 가을 &#39;After LIKE&#39; (IVE GAEUL FaceCam) @SBS Inkigayo 220904" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		</div>
 	
 	</div>
 
