@@ -130,7 +130,7 @@
 
                 <form action="#" class="option-form form-inline" >
                     
-                    <div class="form-check-inline option-check">
+                    <div class="form-check-inline option-check"> 제조사 <br>
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">현대
 						</label>	
@@ -151,7 +151,7 @@
 						</label>
 					</div>
 					
-					<div class="form-check-inline option-check">
+					<div class="form-check-inline option-check"> 차량 등급
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">경차
 						</label>
@@ -172,7 +172,7 @@
 						</label>
 					</div>
 
-                    <div class="form-check-inline option-check">
+                    <div class="form-check-inline option-check"> 사용 연료 <br>
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">전기
 						</label>
@@ -193,7 +193,7 @@
 						</label>
 					</div>
 
-                    <div class="form-check-inline option-check">
+                    <div class="form-check-inline option-check"> 차종 <br>
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">아반때
 						</label>
@@ -238,7 +238,7 @@
 						</label>
 					</div>
 					
-                    <div class="form-check-inline option-check">
+                    <div class="form-check-inline option-check"> 기타 옵션 <br>
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="">카시트
 						</label>
