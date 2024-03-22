@@ -139,7 +139,7 @@
 		  	
 			  <div class="form-group">
 			    <label for="userPwd">현재 비밀번호:</label>
-			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="userPwd" required>
+			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" required>
 			  </div>
 			  
 			  <div class="form-group">

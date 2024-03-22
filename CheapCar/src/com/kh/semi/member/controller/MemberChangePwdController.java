@@ -1,11 +1,16 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberPwdUpdateController
@@ -30,10 +35,32 @@ public class MemberChangePwdController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 	
 		String memberPwd = request.getParameter("memberPwd");
-		String changPwd = request.getParameter("changePwd");
+		String changePwd = request.getParameter("changePwd");
 	
-		request.getParameter("memberName");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 	
+		int result = new MemberService().updatePwd(memberPwd, changePwd, memberNo);
+		
+		HttpSession session = request.getSession();
+		Member loginUser = ((Member)session.getAttribute("loginUser"));
+		
+		String alertMsg = "";
+		
+		if(result > 0) {
+			
+			alertMsg = "비밀번호 변경 성공";
+			
+		} else {
+			
+			alertMsg = "비밀번호 변경 실패";
+			
+		}
+		session.setAttribute("alertMsg", alertMsg);
+		
+		
+		response.sendRedirect(request.getContextPath() + "/update" );
+
+		
 	}
 
 	/**

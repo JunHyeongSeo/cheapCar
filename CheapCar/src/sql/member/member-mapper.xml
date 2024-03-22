@@ -99,8 +99,24 @@
 			WHERE
 				MEMBER_ID = ?
 	
+	</entry>
+	
+	<entry key="updatePwd">
+		UPDATE
+				TB_MEMBER
+			SET
+				MEMBER_PWD = ?
+			WHERE
+				MEMBER_NO = ?
+			AND
+				MEMBER_PWD = ?
+			AND
+				MEMBER_STATUS IN ('A', 'C') 	
 	
 	</entry>
+	
+	
+	
 	
 	
 	
