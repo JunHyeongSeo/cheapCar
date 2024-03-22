@@ -51,7 +51,6 @@ public class MemberListController extends HttpServlet {
 		request.setAttribute("pageInfo", pi);
 		
 		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
-		
 	}
 
 	/**

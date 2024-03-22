@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.member.model.service.MemberService;
-
 /**
- * Servlet implementation class AjaxIdCheckCotroller
+ * Servlet implementation class MemberPwdUpdateController
  */
-@WebServlet("/idCheck.do")
-public class AjaxIdCheckCotroller extends HttpServlet {
+@WebServlet("/updatePwd")
+public class MemberChangePwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxIdCheckCotroller() {
+    public MemberChangePwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +27,13 @@ public class AjaxIdCheckCotroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String checkId = request.getParameter("checkId");
-		
-		int count = new MemberService().idCheck(checkId);
-		
-		response.setContentType("text/html; charset=UTF-8");
-		
-		String responseData = "";
-		
-		if(count > 0) {
-			responseData = "NNN";
-		} else {
-			responseData = "NNY";
-		}
-		
-		response.getWriter().print(count > 0 ? "NNN" : "NNY");
-		
-		
+		request.setCharacterEncoding("UTF-8");
+	
+		String memberPwd = request.getParameter("memberPwd");
+		String changPwd = request.getParameter("changePwd");
+	
+		request.getParameter("memberName");
+	
 	}
 
 	/**

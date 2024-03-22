@@ -198,7 +198,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	}
 	
 	
-	public int idCheck(Connection conn, String idCheck) {
+	public int idCheck(Connection conn, String checkId) {
 		
 		int count = 0;
 		PreparedStatement pstmt = null;
@@ -208,7 +208,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, idCheck);
+			pstmt.setString(1, checkId);
 			rset = pstmt.executeQuery();
 			rset.next();
 			count = rset.getInt("COUNT(*)");
@@ -218,7 +218,6 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			close(rset);
 			close(pstmt);
 		}
-		
 		
 		
 		return count;
