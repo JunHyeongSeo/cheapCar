@@ -80,7 +80,7 @@
 		</a>
 		-->
 		<iframe width="550" height="350" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen align="left"></iframe>
-		<marquee><h1>이 영상은 매일 업데이트 될 예정입니다. 오늘 하루도 화이팅하십쇼!!</h1></marquee>
+		<h1>이 영상은 매일 업데이트 될 예정입니다. 오늘 하루도 화이팅하십쇼!!</h1>
 	</div>
 
 	
