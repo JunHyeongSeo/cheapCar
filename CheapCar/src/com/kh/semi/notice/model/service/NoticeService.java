@@ -28,6 +28,8 @@ public class NoticeService {
 		
 		int result = new NoticeDao().increaseCount(conn, noticeNo);
 		
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
 		
 		
 		return result;

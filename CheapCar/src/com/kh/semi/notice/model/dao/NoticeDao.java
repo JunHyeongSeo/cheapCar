@@ -80,13 +80,19 @@ public class NoticeDao {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
 		String sql = prop.getProperty("increaseCount");
 		
-		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		
 		
 		return result;
