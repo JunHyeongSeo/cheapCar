@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.notice.model.vo.Notice"%>
+
+<%
+    Notice notice = (Notice)request.getAttribute("notice");
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,19 +138,22 @@
                 
                 <div class="content_outer">
                     <div class="content_header">
-                        <div class="content_header1">1</div>
-                        <div class="content_header2">공지사항 제목 1</div>
+                        <!--<div class="content_header1"><%= notice.getNoticeNo()%></div>-->
+                        <div class="content_header2"><%= notice.getNoticeTitle()%></div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성일 : 2024-03-19</span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : 관리자</span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : 5</span>
+                        <span class="content_sub1">작성일 : <%= notice.getCreateDate()%></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : <%= notice.getNoticeWriter()%></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : <%= notice.getCount()%></span>
                     </div>
-                    <div class="content_body">내용</div>
+                    <div class="content_body"><%= notice.getNoticeContent()%></div>
                     <div class="content_btn" align="center">
                         <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        
+                           <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
+                            <a href="<%=contextPath%>/update.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                            <a href="<%=contextPath%>/delete.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                           <% } %> 
                     </div>
                 </div>
 			 </div>
