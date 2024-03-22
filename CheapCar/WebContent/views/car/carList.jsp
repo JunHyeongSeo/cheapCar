@@ -183,6 +183,7 @@
 	                    <div class="list-size">
 	                    
 	                        <img class="car-img img-thumbnail" src="https://image.kmib.co.kr/online_image/2023/0404/2023040416513996855_1680594700_0018125706.jpg" alt="차량i번">
+	                    
 	                    </div>
                     	<div class="list-size car-info">	
 	                        <label><%= c.getModelName() %></label> <br>
