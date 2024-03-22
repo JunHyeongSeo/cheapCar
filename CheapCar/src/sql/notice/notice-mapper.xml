@@ -28,7 +28,7 @@
 	
 	<entry key="increaseCount">
 		UPDATE 
-		       TB_NOTICEBOARD
+		       TB_NOTICE_BOARD
 		   SET
 		       COUNT = COUNT + 1
 		 WHERE
