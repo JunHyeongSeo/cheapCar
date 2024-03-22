@@ -46,9 +46,14 @@ public class MemberChangePwdController extends HttpServlet {
 		
 		String alertMsg = "";
 		
+		System.out.println(result);
+		
 		if(result > 0) {
 			
 			alertMsg = "비밀번호 변경 성공";
+			
+//			session.setAttribute("loginUser", 
+//					new MemberService().selectMember(loginUser.getMemberId()));
 			
 		} else {
 			

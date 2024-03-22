@@ -154,7 +154,7 @@
 			  
 			  <button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
 			  
-			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="userNo">
+			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
 			  
 			  <script>
 			  	function validatePwd(){
