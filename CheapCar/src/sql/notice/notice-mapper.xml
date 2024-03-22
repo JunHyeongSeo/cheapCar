@@ -53,7 +53,15 @@
                TB_NOTICE_BOARD.STATUS = 'Y'
            AND 
                NOTICE_NO = ?    
-		       
+	</entry>
+	
+	<entry key="deleteNotice">
+		UPDATE
+		       TB_NOTICE_BOARD
+		   SET 
+		       STATUS = 'N'
+		 WHERE
+		       NOTICE_NO = ?          
 	</entry>
 	
 	

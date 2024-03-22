@@ -46,7 +46,23 @@ public class NoticeService {
 		
 		
 		return notice;
-	}
+	}//
+	
+	
+	public void delete(String noticeNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new NoticeDao().delete(conn, noticeNo);
+		
+	}//
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
