@@ -28,13 +28,32 @@
 	
 	<entry key="increaseCount">
 		UPDATE 
-		       NOTICE
+		       TB_NOTICEBOARD
 		   SET
 		       COUNT = COUNT + 1
 		 WHERE
 		       NOTICE_NO = ?
 		   AND 
 		       STATUS = 'Y'               
+	</entry>
+	
+	<entry key='selectNotice'>
+		SELECT
+		       NOTICE_NO,
+		       NOTICE_TITLE,
+		       NOTICE_CONTENT,
+		       CREATE_DATE,
+		       COUNT,
+		       MEMBER_NAME
+		  FROM
+		       TB_NOTICE_BOARD
+		  JOIN
+               TB_MEMBER USING (MEMBER_NO)
+         WHERE
+               TB_NOTICE_BOARD.STATUS = 'Y'
+           AND 
+               NOTICE_NO = ?    
+		       
 	</entry>
 	
 	

@@ -96,6 +96,26 @@ public class NoticeDao {
 		
 		
 		return result;
+	}//
+	
+	
+	public Notice selectNotice(Connection conn, int noticeNo) {
+		
+		Notice notice = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return notice;
 	}
 	
 	

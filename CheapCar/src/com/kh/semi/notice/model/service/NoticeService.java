@@ -33,7 +33,24 @@ public class NoticeService {
 		
 		
 		return result;
+	}//
+	
+	
+	public void selectNotice(int noticeNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new NoticeDao().selectNotice(conn, noticeNo);
+		
+		
+		
+		
+		
 	}
+	
+	
+	
+	
 	
 	
 	
