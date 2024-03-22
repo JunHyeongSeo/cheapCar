@@ -76,6 +76,36 @@ public class NoticeDao {
 	}//
 	
 	
+	public int increaseCount(Connection conn, int noticeNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		
+		
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
