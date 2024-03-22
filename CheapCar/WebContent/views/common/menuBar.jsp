@@ -79,11 +79,7 @@
 	       <img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkWyr2bnqm5VSo7Kq4yE3pjaHtNSXksy0_3w&usqp=CAU" alt="">
 		</a>
 		-->
-		<iframe width="550" height="350" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen align="left"></iframe>
-		<iframe width="550" height="350" src="https://www.youtube.com/embed/vnS_jn2uibs" title="DAY6(데이식스) &quot;한 페이지가 될 수 있게&quot; M/V" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		<iframe width="550" height="350" src="https://www.youtube.com/embed/2Wmdrhj4QpY" title="[2026 FIFA 북중미 월드컵 아시아 2차 예선] 대한민국 vs 태국 5분 하이라이트" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		<iframe width="550" height="350" src="https://www.youtube.com/embed/11cta61wi0g" title="NewJeans (뉴진스) &#39;Hype Boy&#39; Official MV (Performance ver.1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		<h1 style="color: orangered;">오늘만 하면 주말입니다~ 화이팅~!!!</h1>
+		
 	</div>
 
 	
@@ -138,6 +134,7 @@
         <br clear="both">
         
         <div class="nav-area" align="center">
+        	<div class="menu"><a href="<%= contextPath %>/views/common/deleteLater.jsp">쉬는시간</a></div>
             <div class="menu"><a href="<%= contextPath %>/list.car?currentPage=1">차량렌트</a></div>
             <div class="menu"><a href="<%= contextPath %>/list.event">이벤트</a></div>
             <div class="menu"><a href="<%= contextPath %>/list.notice">공지사항</a></div>
