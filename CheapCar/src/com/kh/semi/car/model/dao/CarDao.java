@@ -12,6 +12,7 @@ import java.util.Properties;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 
 public class CarDao {
 
@@ -52,7 +53,7 @@ public class CarDao {
 		return listCount;
 	}
 	
-	public ArrayList<Car> selectCarList(Connection conn) {
+	public ArrayList<Car> selectCarList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Car> carList = new ArrayList<Car>();
 		PreparedStatement pstmt = null;
@@ -63,13 +64,19 @@ public class CarDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				Car car = new Car();
 				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
 				car.setStatus(rset.getString("STATUS"));
-				car.setCarNo(rset.getString("CAR_No"));
+				car.setCarNo(rset.getString("CAR_NO"));
 				car.setLocationNo(rset.getInt("LOCATION_NO"));
 				car.setLocationName(rset.getString("LOCATION_NAME"));
 				car.setModelName(rset.getString("MODEL_NAME"));

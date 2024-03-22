@@ -7,6 +7,7 @@ import com.kh.semi.car.model.dao.CarDao;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 
 public class CarService {
 	
@@ -19,14 +20,14 @@ public class CarService {
 		JDBCTemplate.close(conn);
 		
 		return listCount;
-		
+			
 	}
 	
-	public ArrayList<Car> selectCarList() {
+	public ArrayList<Car> selectCarList(PageInfo pi) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> carList = new CarDao().selectCarList(conn);
+		ArrayList<Car> carList = new CarDao().selectCarList(conn, pi);
 		
 		JDBCTemplate.close(conn);
 		
