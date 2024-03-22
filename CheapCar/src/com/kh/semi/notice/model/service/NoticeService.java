@@ -21,5 +21,18 @@ public class NoticeService {
 	}//
 	
 	
+	public int increaseCount(int noticeNo) {
+		
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().increaseCount(conn, noticeNo);
+		
+		
+		
+		return result;
+	}
+	
+	
 	
 }//
