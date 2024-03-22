@@ -107,6 +107,8 @@ public Member login(String memberId, String memberPwd) {
 		int result = new MemberDao().updatePwd(conn, memberPwd, changePwd, memberNo);
 		
 		
+		
+		
 		return result;
 	}
 	
