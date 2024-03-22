@@ -158,9 +158,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="중형">중형
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="대형">대형
 						</label>
@@ -179,9 +176,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="가솔린">가솔린
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="디젤">디젤
 						</label>
@@ -200,9 +194,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="K3">K3
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="GV80">GV80
 						</label>
@@ -212,9 +203,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="카니발F">카니발F
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="아이오닉5">아이오닉5
 						</label>
@@ -224,9 +212,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="카이엔">카이엔
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="스포티지">스포티지
 						</label>
@@ -245,9 +230,6 @@
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="블랙박스">블랙박스
 						</label>
-					</div>
-
-                    <div class="form-check-inline option-check">
 						<label class="form-check-label">
 						   <input type="checkbox" class="form-check-input" value="후방카메라">후방카메라
 						</label>
