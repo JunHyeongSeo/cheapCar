@@ -135,7 +135,21 @@ public class NoticeDao {
 		
 		
 		return notice;
-	}
+	}//
+	
+	
+	public int delete(Connection conn, String noticeNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteNotice");
+		
+		
+		
+		
+		
+		return result;
+	}//
 	
 	
 	
