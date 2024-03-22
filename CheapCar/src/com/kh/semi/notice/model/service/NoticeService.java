@@ -49,12 +49,18 @@ public class NoticeService {
 	}//
 	
 	
-	public void delete(String noticeNo) {
+	public int delete(String noticeNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().delete(conn, noticeNo);
+		int result = new NoticeDao().delete(conn, noticeNo);
 		
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}//
 	
 	

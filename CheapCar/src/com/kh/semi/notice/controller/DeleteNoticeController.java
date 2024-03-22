@@ -32,15 +32,18 @@ public class DeleteNoticeController extends HttpServlet {
 
 		// 값 뽑기 X
 		// Service호출    /  + noticeNo
-		new NoticeService().delete(request.getAttribute("noticeNo"));
+		if(new NoticeService().delete(request.getAttribute("noticeNo")) > 0 ) {
+			
+			request.getSession().setAttribute("alertMsg", "삭제가 완료되었습니다." );
+			response.sendRedirect(request.getContextPath() + "/list.notice");
+		} else {
+			request.setAttribute("errorMsg", "삭제실패~");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}	
 		
 		
 		
-		
-		
-		
-		
-	}
+	}//
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
