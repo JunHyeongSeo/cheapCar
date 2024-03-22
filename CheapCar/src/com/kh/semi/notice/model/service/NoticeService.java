@@ -36,16 +36,16 @@ public class NoticeService {
 	}//
 	
 	
-	public void selectNotice(int noticeNo) {
+	public Notice selectNotice(int noticeNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().selectNotice(conn, noticeNo);
+		Notice notice = new NoticeDao().selectNotice(conn, noticeNo);
+		
+		JDBCTemplate.close(conn);
 		
 		
-		
-		
-		
+		return notice;
 	}
 	
 	
