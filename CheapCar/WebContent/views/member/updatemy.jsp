@@ -135,7 +135,7 @@
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
 			
-		  	<form action="<%=contextPath%>/updatePwd.me" method="post">
+		  	<form action="<%=contextPath%>/updatePwd" method="post">
 		  	
 			  <div class="form-group">
 			    <label for="userPwd">현재 비밀번호:</label>
