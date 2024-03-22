@@ -130,116 +130,67 @@
 
                 <form action="#" class="option-form form-inline" >
                     
-                    <div class="form-check-inline option-check"> 제조사 <br>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="HYUNDAI">현대
-						</label>	
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="KIA">기아
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="GENESIS">제네시스
-                        </label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="RNOSAMSUNG">르노삼성
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="PORSCHE">포르쉐
-						</label>
-					</div>
-					
-					<div class="form-check-inline option-check"> 차량 등급
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="경차">경차
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="준중형">준중형
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="중형">중형
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="대형">대형
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="SUV">SUV
-						</label>
-					</div>
+                    <div class="form-group">
+                        <label for="sel1">제조사</label>
+                        <select class="form-control" id="sel1">
+                          <option>현대</option>
+                          <option>기아</option>
+                          <option>제네시스</option>
+                          <option>르노삼성</option>
+                          <option>포르쉐</option>
+                        </select>
+                    </div>
 
-                    <div class="form-check-inline option-check"> 사용 연료 <br>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="전기">전기
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="하이브리드">하이브리드
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="가솔린">가솔린
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="디젤">디젤
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="LPG">LPG
-						</label>
-					</div>
-
-                    <div class="form-check-inline option-check"> 차종 <br>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="아반떄">아반때
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="소나타">소나타
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="K3">K3
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="GV80">GV80
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="QM3">QM3
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="카니발F">카니발F
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="아이오닉5">아이오닉5
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="모닝">모닝
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="카이엔">카이엔
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="스포티지">스포티지
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="스타렉스">스타렉스
-						</label>
-					</div>
+                    <div class="form-group">
+                        <label for="sel1">차량 등급</label>
+                        <select class="form-control" id="sel1">
+                          <option>경차</option>
+                          <option>준중형</option>
+                          <option>중형</option>
+                          <option>대형</option>
+                          <option>SUV</option>
+                        </select>
+                    </div>
 					
-                    <div class="form-check-inline option-check"> 기타 옵션 <br>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="카시트">카시트
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="선루프">선루프
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="블랙박스">블랙박스
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="후방카메라">후방카메라
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="네비게이션">네비게이션
-						</label>
-						<label class="form-check-label">
-						   <input type="checkbox" class="form-check-input" value="주차보조시스템">주차보조 시스템
-						</label>
-					</div>
+                    <div class="form-group">
+                        <label for="sel1">사용 연료</label>
+                        <select class="form-control" id="sel1">
+                          <option>전기</option>
+                          <option>하이브리드</option>
+                          <option>가솔린</option>
+                          <option>디젤</option>
+                          <option>LPG</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sel1">차종</label>
+                        <select class="form-control" id="sel1">
+                          <option>아반때</option>
+                          <option>소나타</option>
+                          <option>K3</option>
+                          <option>GV80</option>
+                          <option>QM3</option>
+                          <option>카니발F</option>
+                          <option>아이오닉5</option>
+                          <option>모닝</option>
+                          <option>카이엔</option>
+                          <option>스포티지</option>
+                          <option>스타렉스</option>
+                        </select>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="sel1">기타 옵션</label>
+                        <select class="form-control" id="sel1">
+                          <option>카시트</option>
+                          <option>선루프</option>
+                          <option>블랙박스</option>
+                          <option>후방카메라</option>
+                          <option value="">네비게이션</option>
+                          <option value="">주차보조 시스템</option>
+                        </select>
+                    </div>
 
 					<div>
 						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
