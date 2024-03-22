@@ -100,6 +100,16 @@ public Member login(String memberId, String memberPwd) {
 		return result;
 	}
 	
+	public int updatePwd(String memberPwd, String changePwd, int memberNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().updatePwd(conn, memberPwd, changePwd, memberNo);
+		
+		
+		return result;
+	}
+	
 	
 	
 	
