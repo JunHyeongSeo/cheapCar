@@ -27,7 +27,9 @@ public class DeleteNoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
+		// 값 뽑기 X
+		// Service호출    /  + noticeNo
+		new NoticeService().delete(noticeNo);
 		
 		
 		
