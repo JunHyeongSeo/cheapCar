@@ -12,6 +12,7 @@ import com.kh.semi.member.model.vo.Member;
 public class MemberService {
 	
 	public int selectListCount() {
+		// 회원의 리스트 총 갯수를 뽑아주는 메소드
 		
 		Connection conn = getConnection();
 		
@@ -23,6 +24,7 @@ public class MemberService {
 	}
 	
 	public ArrayList<Member> selectList(PageInfo pi) {
+		// 회원 내역 list에 담아주는 것 + 페이징바까지
 		
 		Connection conn = getConnection();
 		
@@ -93,8 +95,7 @@ public Member login(String memberId, String memberPwd) {
 		int result = new MemberDao().idCheck(conn, checkId);
 		
 		
-		
-		close(conn)
+		close(conn);
 		
 		return result;
 	}

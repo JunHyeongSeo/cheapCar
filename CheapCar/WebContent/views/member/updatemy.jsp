@@ -65,6 +65,124 @@
 		
 		</form>
 	</div>
+	
+	
+	
+	
+		<!-- 회원 탈퇴 모달 -->
+	<div class="modal" id="deleteForm">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">회원 탈퇴</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
+	      <div class="modal-body">
+			
+		  	<form action="<%=contextPath%>/delete.me" method="post">
+		  	
+			  <div class="form-group">
+			    <label for="userPwd" style="font-siae:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요:</label>
+			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="deletePwd" required>
+			  </div>
+			 
+			  
+			  <button type="submit" class="btn btn-danger" onclick="return deleteMember();">회원탈퇴</button>
+			  
+			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="userNo">
+			  
+			  <script>
+			  	function deleteMember(){
+			  		
+			  		const value = prompt('탈퇴를 원하신다면 "어쩌고저쩌고"를 정확히 입력해주세요.');
+			  		
+			  		if(value === '어쩌고어쩌고'){
+			  			return true;
+			  		} 
+			  		else{
+			  			return true;
+			  		}
+			  		
+			  	}
+			  
+			  
+			  </script>
+	    	 </form>
+	    	</div>
+	    	 
+		</div>
+	  </div>
+	</div>
+	
+	
+	
+	
+	<!-- 비밀번호 변경 모달 -->
+	<div class="modal" id="updatePwd">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">비밀번호 변경</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
+	      <div class="modal-body">
+			
+		  	<form action="<%=contextPath%>/updatePwd" method="post">
+		  	
+			  <div class="form-group">
+			    <label for="userPwd">현재 비밀번호:</label>
+			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="userPwd" required>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="changePwd">변경할 비밀번호:</label>
+			    <input type="password" name="changePwd" class="form-control" placeholder="변경할 비밀번호를 입력해수세요." id="changePwd" required>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="checkPwd">변경할 비밀번호 확인:</label>
+			    <input type="password" class="form-control" placeholder="다시 한 번 입력해주세요" id="checkPwd" required>
+			  </div>
+			  
+			  <button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
+			  
+			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="userNo">
+			  
+			  <script>
+			  	function validatePwd(){
+			  		
+			  		
+			  		
+			  		
+			  		if($('#changePwd').val() != $('#checkPwd').val()){
+			  			alert('비밀번호를 동일하게 입력해주세요!');
+			  			$('#checkPwd').focus().val('');
+			  			return false;
+			  		}
+			  		
+			  		return true;
+			  		
+			  	}
+			  
+			  
+			  </script>
+	    	 </form>
+	    	</div>
+	    	 
+		</div>
+	  </div>
+	</div>
+	
+	
+	
 
 
 </body>

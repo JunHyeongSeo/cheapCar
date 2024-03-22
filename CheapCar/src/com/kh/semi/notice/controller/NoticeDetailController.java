@@ -2,14 +2,13 @@ package com.kh.semi.notice.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.notice.model.service.NoticeServiceImpl;
+import com.kh.semi.notice.model.service.NoticeService;
 import com.kh.semi.notice.model.vo.Notice;
 
 
@@ -33,7 +32,7 @@ public class NoticeDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
+		
 		// 1) GET방식 => 인코딩 X
 		
 		// 2) request로부터 값 뽑기
@@ -42,14 +41,14 @@ public class NoticeDetailController extends HttpServlet {
 		// 3) VO가공 => 전달값 하나라 가공 필요 없음
 		
 		// 4) Service호출
-		int result = new NoticeServiceImpl().increaseCount(noticeNo);
+		int result = new NoticeService().increaseCount(noticeNo);
 		
 		if(result > 0) {
 			
-			Notice notice = new NoticeServiceImpl().selectNotice(noticeNo);
+			Notice notice = new NoticeService().selectNotice(noticeNo);
 			
 			if(notice != null) {
-		*/		
+				
 				request.getRequestDispatcher("views/notice/noticeDetail.jsp").forward(request, response);
 		/*		
 			} else {

@@ -21,5 +21,37 @@ public class NoticeService {
 	}//
 	
 	
+	public int increaseCount(int noticeNo) {
+		
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().increaseCount(conn, noticeNo);
+		
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		
+		return result;
+	}//
+	
+	
+	public void selectNotice(int noticeNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new NoticeDao().selectNotice(conn, noticeNo);
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 }//
