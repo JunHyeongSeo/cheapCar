@@ -104,8 +104,8 @@
 		  FROM
 		        TB_OPTION O
 		  JOIN
-		        TB_OPTION_BRIDGE OB
-		    ON (O.OPTION_NO = OB.OPTION_NO)
+		        TB_OPTION_BRIDGE OB ON (O.OPTION_NO = OB.OPTION_NO)
+		   
 		 ORDER
 		    BY
 		        MANAGEMENT_NO
