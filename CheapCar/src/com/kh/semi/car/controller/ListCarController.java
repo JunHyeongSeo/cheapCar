@@ -64,7 +64,7 @@ public class ListCarController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Car> carList = new CarService().selectCarList();
+		ArrayList<Car> carList = new CarService().selectCarList(pi);
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 		

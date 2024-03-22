@@ -81,7 +81,7 @@
 				</h2>
 
 
-				<% if (loginUser != null && loginUser.getUserId().equals("admin") ){%>
+				<% if (loginUser != null && loginUser.getMemberId().equals("admin") ){%>
 					<div id="write">
 						<a href="<%= contextPath %>/inserForm.notice" class="btn btn-info">글쓰기</a>
 					</div> 
@@ -137,7 +137,8 @@
 
 	<script>
 		$('.notice_list').click(function(){
-			location.href = '<%=contextPath%>/detail.notice';
+			const noticeNo = $(this).children().eq(0).text();
+			location.href = '<%=contextPath%>/detail.notice?noticeNo=' + noticeNo;
 
 		})
 	</script>
