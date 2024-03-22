@@ -32,8 +32,7 @@ public class DeleteNoticeController extends HttpServlet {
 
 		// 값 뽑기 X
 		// Service호출    /  + noticeNo
-		if(new NoticeService().delete(request.getAttribute("noticeNo")) > 0 ) {
-			
+		if(new NoticeService().delete(request.getParameter("noticeNo")) > 0 ) {
 			request.getSession().setAttribute("alertMsg", "삭제가 완료되었습니다." );
 			response.sendRedirect(request.getContextPath() + "/list.notice");
 		} else {
