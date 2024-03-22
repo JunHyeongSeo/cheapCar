@@ -137,8 +137,8 @@
 
 	<script>
 		$('.notice_list').click(function(){
-			const noticeNo = $('this').children().eq(0).text();
-			location.href = '<%=contextPath%>/detail.notice?noticeNo='+noticeNo;
+			const noticeNo = $(this).children().eq(0).text();
+			location.href = '<%=contextPath%>/detail.notice?noticeNo=' + noticeNo;
 
 		})
 	</script>
