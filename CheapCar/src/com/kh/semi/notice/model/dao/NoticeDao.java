@@ -144,6 +144,16 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteNotice");
 		
+		try {
+			result = pstmt.executeUpdate();
+			
+			pstmt.setInt(1, Integer.parseInt(noticeNo));
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		
