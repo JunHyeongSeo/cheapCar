@@ -138,15 +138,15 @@
                 
                 <div class="content_outer">
                     <div class="content_header">
-                        <div class="content_header1"><%= notice.getNoticeNo></div>
-                        <div class="content_header2"><%= notice.getNoticeTitle></div>
+                        <div class="content_header1"><%= notice.getNoticeNo()%></div>
+                        <div class="content_header2"><%= notice.getNoticeTitle()%></div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= notice.getCreateDate></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= notice.getNoticeWriter></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : <%= notice.getCount></span>
+                        <span class="content_sub1">작성일 : <%= notice.getCreateDate()%></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : <%= notice.getNoticeWriter()%></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : <%= notice.getCount()%></span>
                     </div>
-                    <div class="content_body"><%= notice.getNoticeContent%></div>
+                    <div class="content_body"><%= notice.getNoticeContent()%></div>
                     <div class="content_btn" align="center">
                         <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-secondary">수&nbsp;정</a>
