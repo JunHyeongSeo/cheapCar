@@ -9,12 +9,12 @@
 
 <style>
 	.song>iframe{
-		display : block;
 		margin-top : 15px;
 		margin-bottom : 15px;
 	}
+	
 	.a{
-		display: inline;
+		align : center;
 	}
 
 </style>
@@ -25,16 +25,12 @@
 	<%@ include file="menuBar.jsp" %>
 	
 	<div>
-		<h1 style="color: orangered;"><marquee>오늘만 하면 주말입니다~ 화이팅~!!!</marquee></h1>
+		<h1 style="color: orangered;"><marquee>좋은 주말 보내세요~!!</marquee></h1>
 		
 		<div class="song">
-			<iframe width="550" height="350" src="https://www.youtube.com/embed/IPF3aSvM6S0" title="240309 아이브 장원영 - &#39;LOVE DIVE&#39; 직캠 IVE Wonyoung FANCAM @FANMEETING MAGAZINE IVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-			<iframe width="550" height="350" src="https://www.youtube.com/embed/vnS_jn2uibs" title="DAY6(데이식스) &quot;한 페이지가 될 수 있게&quot; M/V" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-			<iframe width="550" height="350" src="https://www.youtube.com/embed/2Wmdrhj4QpY" title="[2026 FIFA 북중미 월드컵 아시아 2차 예선] 대한민국 vs 태국 5분 하이라이트" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-			<iframe width="550" height="350" src="https://www.youtube.com/embed/11cta61wi0g" title="NewJeans (뉴진스) &#39;Hype Boy&#39; Official MV (Performance ver.1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		</div>
-		<div>
-			<iframe width="550" height="350" src="https://www.youtube.com/embed/-9RMTYZ2Etw" title="[페이스캠4K] 아이브 가을 &#39;After LIKE&#39; (IVE GAEUL FaceCam) @SBS Inkigayo 220904" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			<div class='a'>
+				<iframe class= 'a' width="550" height="325" src="https://www.youtube.com/embed/LqME1y6Mlyg" title="[𝐖𝐎𝐑𝐊&amp;𝐉𝐀𝐙𝐙] 사무실에서 일하다가 몰래 리듬타기 좋은 펑키한 재즈비지엠😎💖 l Relaxing Jazz Piano Music for Office, Work, Study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			</div>
 		</div>
 	
 	</div>
