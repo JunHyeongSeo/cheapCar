@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
 		
 		Member loginUser = new MemberService().login(memberId, memberPwd);
 		
-		
+		//System.out.println(loginUser);
 		
 		if(loginUser == null) {
 			
