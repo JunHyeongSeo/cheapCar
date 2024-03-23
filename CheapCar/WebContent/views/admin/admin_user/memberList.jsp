@@ -115,7 +115,7 @@
         <div class="paging-area">
         	<% if(currentPage > 1) { %>
 	       		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
-	        <% } %>
+	        <% } %>	
 	        
 	       	<% for(int i = startPage; i <= endPage; i++) { %>
 	           	<% if(currentPage != i) {  %>
