@@ -4,7 +4,6 @@
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("memberList");
 	PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 	
-	// 페이징바 만들 때 필요한 변수 미리 세팅
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -15,6 +14,10 @@
 <style>
 	.container{
 	   margin-top: 20px;
+	}
+	
+	#top11{
+		display: flex;
 	}
 	
 	#middleTable{
@@ -45,6 +48,12 @@
 	.mileage{
 	    margin-top: 30px;
 	}
+	
+	.paging-area{
+		align : center;
+		margin-top : 12px;
+	} 
+	
        
 </style>
 <head>
@@ -58,11 +67,10 @@
     <div class="outer">
         <div id="top1">
                 
-            <form class="form-inline" action="abc.do">
+            <form class="form-inline" action="">
                 <div id="top11" style="display: flex;">
                     <label for="userId" style="margin: 0px 15px;">회원 아이디 : </label>
                     <input type="text" class="form-control" id="userId" placeholder="조회하실 회원 아이디를 입력해주세요." name="userId" style="width: 300px;">
-                    
                     <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
                 </div>
             </form>
@@ -83,7 +91,6 @@
                 </tr>
               </thead>
               <tbody>
-              
                 <% if(list.isEmpty()) { %>
                  	<tr>
                  		<td colspan="7">등록되어있는 회원이 존재하지 않습니다.</td>
@@ -105,22 +112,21 @@
             </table>
 		</div>
             
-        <div class="paging-area" align="center" style="margin-top:12px">
-        
+        <div class="paging-area">
         	<% if(currentPage > 1) { %>
-        
-	       	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
+	       		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
 	        <% } %>
-	        	<% for(int i = startPage; i <= endPage; i++) { %>
-	            
-	            	<% if(currentPage != i) {  %>
-			            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%=i%>'"><%= i %></button>
-	            	<% } else { %>
-	            		<button disabled class="btn btn-danger"><%= i %></button>
-	            	<% } %>
-	            <% } %>
+	        
+	       	<% for(int i = startPage; i <= endPage; i++) { %>
+	           	<% if(currentPage != i) {  %>
+		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%=i%>'"><%= i %></button>
+	           	<% } else { %>
+	           		<button disabled class="btn btn-danger"><%= i %></button>
+	           	<% } %>
+			<% } %>
+			
 	        <% if(currentPage != maxPage) {%>    
-			<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage + 1 %>'">다음</button>
+				<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
 	</div>

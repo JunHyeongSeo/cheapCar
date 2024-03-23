@@ -77,7 +77,7 @@
             font-weight: 700;
             display: block; /* 인라인요소를 블럭요소로 바꿔줌 */
             width: 100%;
-            height: 100%; /* a태그는 인라인 요소기 때문에 width, height속성이 적용 X */
+            height: 100%;
             line-height: 40px;
         }
 
@@ -127,31 +127,24 @@
             width: 20%;
             height: 10%;
             float: left;
-            
         }
-
-        
 	</style>
 </head>
 <body>
  
     <div id="wrap">
-        
         <h1>관리자 메인페이지</h1>
-                
         <div class="login-area">
-        
-            <div id="login-area1"><a href="<%= contextPath %>/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
-            <div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
-            
+			<div id="login-area1"><a href="<%= contextPath %>/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
+			<div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
         </div>
 
         <br clear="both">
        
         <ul id="navi">
-            <li><a href="#">회원관리</a>
-                <ul>
-                    <li><a href="<%=contextPath%>/memberList?currentPage=1">회원현황</a></li>
+			<li><a href="#">회원관리</a>
+				<ul>
+					<li><a href="<%=contextPath%>/memberList?currentPage=1">회원현황</a></li>
                     <li><a href="<%=contextPath%>/reportList?currentPage=1">신고내역</a></li>
                     <li><a href="<%=contextPath%>/blackList?currentPage=1">블랙리스트관리</a></li>
                 </ul>
@@ -177,18 +170,13 @@
                     <li><a href="#">이벤트게시판</a></li>
                 </ul>
             </li>
+        </ul>
 
         <!-- 메인페이지 상세 나중에 -->
-        </ul>
- 
-
         <div id="reservation">
-
-            
         </div>
 
         <div id="replyBoard">
-			
         </div>
    
     <br clear="both">
