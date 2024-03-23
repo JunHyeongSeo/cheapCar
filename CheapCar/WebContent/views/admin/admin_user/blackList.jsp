@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.semi.common.model.vo.PageInfo" %>
+<%@ page import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo" %>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("blackList");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -83,98 +84,48 @@
 					<th>제재사유</th>
 					<th>상태</th>
 					<th>제재날짜</th>
+					<th>상세보기</th>
                 </tr>
               </thead>
               <tbody>
-				<tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>부적절한 후기 등록</td>
-					<td>C</td>
-					<td>2024-01-01</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>user02</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-02</td>
-				</tr>
-                <tr>
-					<td>3</td>
-					<td>user03</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-03</td>
-				</tr>
-                <tr>
-					<td>4</td>
-					<td>user04</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-04</td>
-				</tr>
-                <tr>
-					<td>5</td>
-					<td>user05</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-05</td>
-				</tr>
-                <tr>
-					<td>1</td>
-					<td>user01</td>
-					<td>부적절한 후기 등록</td>
-					<td>C</td>
-					<td>2024-01-01</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>user02</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-02</td>
-				</tr>
-                <tr>
-					<td>3</td>
-					<td>user03</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-03</td>
-				</tr>
-                <tr>
-					<td>4</td>
-					<td>user04</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-04</td>
-				</tr>
-                <tr>
-					<td>5</td>
-					<td>user05</td>
-					<td>부적절한 후기 등록</td>
-					<td>B</td>
-					<td>2024-01-05</td>
-				</tr>
+	             <% if(list.isEmpty()) { %>
+	             	
+                	<tr>
+                		<td colspan="6">등록되어있는 회원이 존재하지 않습니다.</td>
+                	</tr>
+              	 <% } else { %>
+                  	<% for(Member m : list) { %>
+                  		<% if(m.getMemberStatus() != null && m.getMemberStatus().equals("B")) { %>
+		                    <tr style="color: orangered;" class="board" id="<%= m.getMemberNo() %>">
+		                    	<td><%= m.getMemberNo() %></td>
+		                        <td><%= m.getMemberId() %></td>
+		                        <td>흠....이걸 어케하지?</td>
+		                        <td><%= m.getMemberStatus() %></td>
+		                        <td>날짜 고려 한번하보자</td>
+		                        <td><a type="submit" class="btn btn-secondary" href="#">보기</a></td>
+		                    </tr>
+	                    <% } %>
+                  	<% } %>
+               <% } %>
 				</tbody>            
 			</table>
 		</div>
             
         <div class="paging-area">
         	<% if(currentPage > 1) { %>
-	       		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
+	       		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/blackList?currentPage=<%= currentPage - 1 %>'">이전</button>
 	        <% } %>	
 	        
 	       	<% for(int i = startPage; i <= endPage; i++) { %>
 	           	<% if(currentPage != i) {  %>
-		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%=i%>'"><%= i %></button>
+		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/blackList?currentPage=<%=i%>'"><%= i %></button>
 	           	<% } else { %>
 	           		<button disabled class="btn btn-danger"><%= i %></button>
 	           	<% } %>
 			<% } %>
 			
 	        <% if(currentPage != maxPage) {%>    
-				<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage + 1 %>'">다음</button>
+				<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/blackList?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
 	</div>

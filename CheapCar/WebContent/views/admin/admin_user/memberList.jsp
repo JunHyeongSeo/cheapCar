@@ -52,7 +52,10 @@
 	.paging-area{
 		align : center;
 		margin-top : 12px;
-	} 
+	}
+	.pagin-area>button{
+		margin : auto;
+	}
 	
        
 </style>

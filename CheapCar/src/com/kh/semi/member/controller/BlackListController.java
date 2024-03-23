@@ -1,11 +1,17 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class BlackListController
@@ -27,23 +33,29 @@ public class BlackListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 페이지 인포 할라면
-		// 게시될 글의 총 갯수
-		// 현재 페이지
-		// 페이징바에 몇개를 최대로 보여줄지
-		// 한 페이지당 몇개의 글을 보여줄지
-		// 시작페이지
-		// 끝페이지
-		// 단, 엔드페이지가 맥스보다 커지면-> 엔드랑 맥스랑 같게끔 설정하기
+		int listCount = new MemberService().selectBlackListCount();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int pageLimit = 10;
+		int boardLimit = 1;
+		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit - 1;
 		
-		int listCount;
-		int currentPage;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
 		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		ArrayList<Member> list = new MemberService().blackListCount(pi);
 		
+		for(Member m : list) {
+			System.out.println(m);
+		}
 		
+		request.setAttribute("blackList", list);
+		request.setAttribute("pageInfo", pi);
 		
-		
-		
+		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
 	}
 
 	/**

@@ -31,8 +31,35 @@
 		    BY 
 		       MEMBER_NO ASC) A
 		       ORDER BY RNUM ASC)
- WHERE 
+ 		 WHERE 
       RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectBlackistCount">
+		SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_MEMBER 
+		 WHERE 
+		 	  MEMBER_STATUS = 'B'
+	</entry>
+	
+	<entry key="blackListCount">
+	SELECT *
+  	  FROM (SELECT A.*,
+        ROWNUM RNUM
+          FROM (SELECT
+                *
+          FROM 
+                TB_MEMBER
+         ORDER 
+		    BY 
+		       MEMBER_NO ASC) A
+		       ORDER BY RNUM ASC)
+ 		 WHERE 
+      RNUM BETWEEN ? AND ?
+      AND 
+         MEMBER_STATUS = 'B'
 	</entry>
 	
 	<entry key="login">

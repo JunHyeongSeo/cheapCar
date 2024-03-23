@@ -74,7 +74,6 @@ public class MemberDao {
 			
 			rset = pstmt.executeQuery();
 			
-			
 			while(rset.next()) {
 				
 				Member m = new Member();
@@ -84,6 +83,73 @@ public class MemberDao {
 				m.setEmail(rset.getString("EMAIL"));
 				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				
+				list.add(m);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+	
+		return list;
+	}
+	
+	public int selectBlackListCount(Connection conn) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public ArrayList<Member> blackListCount(Connection conn, PageInfo pi) {
+		
+		ArrayList<Member> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("blackListCount");
+		
+		try{ 
+			pstmt = conn.prepareStatement(sql);
+		
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Member m = new Member();
+				m.setMemberNo(rset.getInt("MEMBER_NO"));
+				m.setMemberId(rset.getString("MEMBER_ID"));
+				m.setMemberName(rset.getString("MEMBER_NAME"));	
+				m.setEmail(rset.getString("EMAIL"));
+				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				m.setMemberStatus(rset.getString("MEMER_STATUS"));
 				list.add(m);
 			}
 		
