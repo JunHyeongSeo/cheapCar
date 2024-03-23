@@ -77,25 +77,23 @@
 		<div class="container">
             <h2>블랙리스트</h2>   
             <table class="table">
-              <thead>
-                <tr>
-                    <th>번호</th>
-					<th>아이디</th>
-					<th>제재사유</th>
-					<th>상태</th>
-					<th>제재날짜</th>
-					<th>상세보기</th>
-                </tr>
-              </thead>
-              <tbody>
-	             <% if(list.isEmpty()) { %>
-	             	
-                	<tr>
-                		<td colspan="6">등록되어있는 회원이 존재하지 않습니다.</td>
-                	</tr>
-              	 <% } else { %>
-                  	<% for(Member m : list) { %>
-                  		<% if(m.getMemberStatus() != null && m.getMemberStatus().equals("B")) { %>
+            	<thead>
+	                <tr>
+	                    <th>번호</th>
+						<th>아이디</th>
+						<th>제재사유</th>
+						<th>상태</th>
+						<th>제재날짜</th>
+						<th>상세보기</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+		             <% if(list.isEmpty()) { %>
+	                	<tr>
+	                		<td colspan="6">등록되어있는 회원이 존재하지 않습니다.</td>
+	                	</tr>
+	              	 <% } else { %>
+	                  	<% for(Member m : list) { %>
 		                    <tr style="color: orangered;" class="board" id="<%= m.getMemberNo() %>">
 		                    	<td><%= m.getMemberNo() %></td>
 		                        <td><%= m.getMemberId() %></td>
@@ -104,9 +102,8 @@
 		                        <td>날짜 고려 한번하보자</td>
 		                        <td><a type="submit" class="btn btn-secondary" href="#">보기</a></td>
 		                    </tr>
-	                    <% } %>
-                  	<% } %>
-               <% } %>
+	                  	<% } %>
+	               <% } %>
 				</tbody>            
 			</table>
 		</div>

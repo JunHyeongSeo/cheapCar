@@ -46,11 +46,8 @@ public class BlackListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Member> list = new MemberService().blackListCount(pi);
 		
-		for(Member m : list) {
-			System.out.println(m);
-		}
+		ArrayList<Member> list = new MemberService().blackListCount(pi);
 		
 		request.setAttribute("blackList", list);
 		request.setAttribute("pageInfo", pi);

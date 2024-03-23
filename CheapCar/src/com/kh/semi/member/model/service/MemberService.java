@@ -52,12 +52,10 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectList(conn, pi);
-		
+		ArrayList<Member> list = new MemberDao().blackListCount(conn, pi);
 		close(conn);
 		
 		return list;
-		
 	}
 	
 	

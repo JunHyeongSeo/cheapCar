@@ -100,12 +100,24 @@ public class Member {
 	public void setMemberStatus(String memberStatus) {
 		this.memberStatus = memberStatus;
 	}
-	@Override
-	public String toString() {
-		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberName=" + memberName + ", memberPwd="
-				+ memberPwd + ", birthday=" + birthday + ", phone=" + phone + ", email=" + email + ", enrollDate="
-				+ enrollDate + ", memberStatus=" + memberStatus + "]";
+
+
+	public Member(int memberNo, String memberId, String memberName, String memberPwd, String birthday, String phone,
+			String email, Date enrollDate, String memberStatus, int mileage) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberPwd = memberPwd;
+		this.birthday = birthday;
+		this.phone = phone;
+		this.email = email;
+		this.enrollDate = enrollDate;
+		this.memberStatus = memberStatus;
+		this.mileage = mileage;
 	}
+
+	
 	
 	
 	

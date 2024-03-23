@@ -17,25 +17,23 @@
 	
 	<entry key="selectList">
 		SELECT *
-  FROM (SELECT A.*,
-        ROWNUM RNUM
-          FROM (SELECT
-                MEMBER_NO,
-                MEMBER_ID,
-                MEMBER_NAME,
-                EMAIL,
-                ENROLL_DATE
-          FROM 
-                TB_MEMBER
-         ORDER 
-		    BY 
-		       MEMBER_NO ASC) A
-		       ORDER BY RNUM ASC)
- 		 WHERE 
-      RNUM BETWEEN ? AND ?
+		  FROM (SELECT A.*,
+        			   ROWNUM RNUM
+		          FROM (SELECT
+				                *
+				          FROM 
+				                TB_MEMBER
+				         ORDER 
+						    BY 
+						       MEMBER_NO ASC) A
+	    		   ORDER BY RNUM ASC)
+ 		  WHERE 
+      			RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="selectBlackistCount">
+	
+	
+	<entry key="selectBlackListCount">
 		SELECT 
 			  COUNT(*) 
 		  FROM 
@@ -45,21 +43,31 @@
 	</entry>
 	
 	<entry key="blackListCount">
-	SELECT *
-  	  FROM (SELECT A.*,
-        ROWNUM RNUM
-          FROM (SELECT
-                *
-          FROM 
-                TB_MEMBER
-         ORDER 
-		    BY 
-		       MEMBER_NO ASC) A
+		
+		SELECT 
+				MEMBER_NO,
+				MEMBER_ID,
+				MEMBER_NAME,
+				MEMBER_PWD,
+				BIRTHDAY,
+				PHONE,
+				EMAIL,
+				ENROLL_DATE,
+				MEMBER_STATUS
+	  	  FROM (SELECT A.*,
+				       ROWNUM RNUM
+		          FROM (SELECT
+		                		*
+				          FROM 
+				                TB_MEMBER
+				         ORDER 
+						    BY 
+				       			MEMBER_NO ASC) A
 		       ORDER BY RNUM ASC)
- 		 WHERE 
-      RNUM BETWEEN ? AND ?
-      AND 
-         MEMBER_STATUS = 'B'
+		WHERE 
+	      	  RNUM BETWEEN ? AND ?
+      	  AND 
+        	  MEMBER_STATUS = 'B'
 	</entry>
 	
 	<entry key="login">
