@@ -27,6 +27,19 @@ public class BlackListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 페이지 인포 할라면
+		// 게시될 글의 총 갯수
+		// 현재 페이지
+		// 페이징바에 몇개를 최대로 보여줄지
+		// 한 페이지당 몇개의 글을 보여줄지
+		// 시작페이지
+		// 끝페이지
+		// 단, 엔드페이지가 맥스보다 커지면-> 엔드랑 맥스랑 같게끔 설정하기
+		
+		int listCount;
+		int currentPage;
+		
+		
 		
 		
 		

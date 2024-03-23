@@ -11,6 +11,7 @@ import com.kh.semi.member.model.vo.Member;
 
 public class MemberService {
 	
+	// 근경 시작 ///////////////////////////////////////////////////////////////////////
 	public int selectListCount() {
 		// 회원의 리스트 총 갯수를 뽑아주는 메소드
 		
@@ -35,7 +36,14 @@ public class MemberService {
 		return list;
 	}
 	
+	public int blackListCount() {
+		
+	}
 	
+	
+	
+	
+	// 근경 끝 ///////////////////////////////////////////////////////////////////////
 	
 	
 public Member login(String memberId, String memberPwd) {
