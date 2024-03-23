@@ -234,7 +234,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			
 			pstmt.setString(1, changePwd);
 			pstmt.setInt(2, memberNo);
-			pstmt.setString(1, memberPwd);
+			pstmt.setString(3, memberPwd);
 			
 			result = pstmt.executeUpdate();
 			
