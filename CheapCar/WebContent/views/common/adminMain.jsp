@@ -139,7 +139,7 @@
 			<div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
         </div>
 
-        <br clear="both">
+        <br clear="both">1
        
         <ul id="navi">
 			<li><a href="#">회원관리</a>
