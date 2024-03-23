@@ -1,6 +1,6 @@
 package com.kh.semi.member.model.dao;
 
-import static com.kh.semi.common.JDBCTemplate.*;
+import static com.kh.semi.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -248,7 +248,42 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		return result;
 	}
 
-	
+	public Member selectMember(Connection conn, String memberId) {
+		
+		Member member = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member(rset.getInt("MEMBER_NO"),
+									rset.getString("MEMBER_ID"),
+									rset.getString("MEMBER_NAME"),
+									rset.getString("MEMBER_PWD"),
+									rset.getString("BIRTHDAY"),
+									rset.getString("PHONE"),
+									rset.getString("EMAIL"),
+									rset.getDate("ENROLL_DATE"),
+									rset.getString("MEMBER_STATUS"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return member;
+	}
 	
 	
 	

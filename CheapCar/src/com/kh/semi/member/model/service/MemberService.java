@@ -115,13 +115,21 @@ public Member login(String memberId, String memberPwd) {
 		int result = new MemberDao().updatePwd(conn, memberPwd, changePwd, memberNo);
 		
 		
-		
-		
 		return result;
 	}
 	
 	
-	
+	public Member selectMember(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDao().selectMember(conn, memberId);
+
+		close(conn);
+		
+		
+		return member;
+	}
 	
 	
 	
