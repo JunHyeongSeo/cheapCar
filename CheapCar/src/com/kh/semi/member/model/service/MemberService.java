@@ -36,9 +36,9 @@ public class MemberService {
 		return list;
 	}
 	
-	public int blackListCount() {
+//	public int blackListCount() {
 		
-	}
+//	}
 	
 	
 	
@@ -114,6 +114,12 @@ public Member login(String memberId, String memberPwd) {
 		
 		int result = new MemberDao().updatePwd(conn, memberPwd, changePwd, memberNo);
 		
+		if(result > 0) {
+			commit(conn);
+		}
+		
+		
+		close(conn);
 		
 		return result;
 	}
