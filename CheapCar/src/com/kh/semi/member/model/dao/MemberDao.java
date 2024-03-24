@@ -353,6 +353,35 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	}
 	
 	
+	public int deleteMember(Connection conn, String memberPwd, int memberNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, memberPwd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			
+			
+		}
+		
+		return result;
+	}
+	
+	
+	
 	
 	
 	

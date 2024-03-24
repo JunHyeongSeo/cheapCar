@@ -170,7 +170,19 @@
 				
 	</entry>
 	
+	<entry key="deleteMember">
+		UPDATE
+				TB_MEMBER
+			SET
+				MEMBER_STATUS = 'D'
+			WHERE
+				MEMBER_NO = ?
+			AND
+				MEMBER_PWD = ?
 	
+	
+	
+	</entry>
 	
 	
 	

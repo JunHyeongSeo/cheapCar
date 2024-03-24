@@ -155,6 +155,22 @@ public Member login(String memberId, String memberPwd) {
 		return member;
 	}
 	
+	public int deleteMember(String memberPwd, int memberNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, memberPwd, memberNo);
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

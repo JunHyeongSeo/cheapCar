@@ -83,17 +83,17 @@
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
 			
-		  	<form action="<%=contextPath%>/delete.me" method="post">
+		  	<form action="<%=contextPath%>/delete" method="post">
 		  	
 			  <div class="form-group">
-			    <label for="userPwd" style="font-siae:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요:</label>
-			    <input type="password" name="userPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="deletePwd" required>
+			    <label for="memberPwd" style="font-siae:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요:</label>
+			    <input type="password" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="deletePwd" required>
 			  </div>
 			 
 			  
 			  <button type="submit" class="btn btn-danger" onclick="return deleteMember();">회원탈퇴</button>
 			  
-			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="userNo">
+			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
 			  
 			  <script>
 			  	function deleteMember(){
@@ -106,6 +106,17 @@
 			  		else{
 			  			return true;
 			  		}
+			  		
+			  		
+			  		//if($('#changePwd').val() != $('#checkPwd').val()){
+			  		//	alert('비밀번호를 동일하게 입력해주세요!');
+			  		//	$('#checkPwd').focus().val('');
+			  		//	return false;
+			  		//}
+			  		
+			  		//return true;
+			  		
+			  		
 			  		
 			  	}
 			  
