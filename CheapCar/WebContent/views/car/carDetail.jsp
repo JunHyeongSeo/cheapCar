@@ -6,6 +6,7 @@
 	com.kh.semi.car.model.vo.*,
 	com.kh.semi.common.model.vo.PageInfo" 
 %>
+
 <%
 	Car car = (Car)request.getAttribute("car");
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
@@ -21,8 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>차량 예약 페이지</title>
 <style>
     div{
         border: 1px solid red;
@@ -52,14 +52,15 @@
         text-align: center;
     }
 
-    .img{
+    .image{
         width : 580px;
         height: auto;
     }
 
-    .car-info-detail{
+    .car-info > div{
         text-align: right;
     }
+    
 </style>
 </head>
 <body>
@@ -70,16 +71,21 @@
     <div class="area-board">
 
         <div class="car-image"> 
-            <img class="img" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
+            <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
         </div>
-        <div class="car-info"> 차량 상세 설명 
-
-            
-            <div class="car-info-detail"> <%= car.getModelName()%> </div>
-            <div class="car-info-detail"> <%= car.getGradeName()%> </div>
-            <div class="car-info-detail"> <%= car.getBrandName()%></div>
-            <div class="car-info-detail"> <%= car.getYear()%>식</div>
-            <div class="car-info-detail"> <%= car.getFuelName()%></div>
+        
+        <div class="car-info"> 차량 상세 정보
+        
+			    <p>대여 기간 선택
+			        <input type="date" id="datepicker1">
+			        <input type="date" id="datepicker2">
+			    </p>
+            	
+            <div> <%= car.getModelName()%> </div>
+            <div> <%= car.getGradeName()%> </div>
+            <div> <%= car.getBrandName()%></div>
+            <div> <%= car.getYear()%>년 식</div>
+            <div> <%= car.getFuelName()%></div>
             
             	<% carPrice = car.getGradePrice()+ car.getModelPrice() + car.getYearPrice(); %>
             	
@@ -93,14 +99,17 @@
             	<% } %>
       
             </div>
+            
             	<% totalPrice = carPrice + optionPrice; %>
+            	
 			<div>      	
 	        		총 가격 : <%=totalPrice%>
-	            <a class="btn btn-primary"href="#">결제버튼</a>
+	        		<br>
+	            <a class="btn btn-primary "href="#">결제버튼</a>
+	            <a class="btn btn-secondary" href="#">취소버튼</a>
 	        </div>	  
+	        
         </div>
-
-
 
         <br clear="both">
         

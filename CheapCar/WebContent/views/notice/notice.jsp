@@ -104,6 +104,7 @@
 					  
 					  <% } else { %>
 
+						
 						<% for(Notice n: list) { %>
 							<tr class="notice_list">
 								<th style="text-align:center"><%= n.getNoticeNo() %></th>
@@ -137,7 +138,7 @@
 
 	<script>
 		$('.notice_list').click(function(){
-			const noticeNo = $(this).children().eq(0).text();
+			 const noticeNo = $(this).children().eq(0).text();
 			location.href = '<%=contextPath%>/detail.notice?noticeNo=' + noticeNo;
 
 		})

@@ -94,6 +94,9 @@
     	float : left;
     }
     
+    div{
+		align : center;
+    }
     
     
 </style>
@@ -117,35 +120,48 @@
 	    
 
 
-	<div class="container1">
-		<h4>예약내역</h4>
-	  	<table class="table" id="aa">
-	    	<thead class="thead-dark">
-	      		<tr>
-		        	<th>Firstname</th>
-		        	<th>안녕하세요</th>
-	        	<th>Email</th>
-	      	</tr>
-		    </thead>
-		    <tbody>
-		    	<tr>
-			        <td>안녕하세요</td>
-			        <td>Doe</td>
-		        	<td>john@example.com</td>
+	<div class="container1" >
+		<form method="get" action="<%=contextPath%>/reservation.my">
+			<h4>예약내역</h4>
+		  	<table class="table" id="aa" href="">
+		    	<thead class="thead-dark">
+		      		<tr>
+			        	<th>차량번호</th>
+			        	<th>차종</th>
+		        		<th>대여장소</th>
+						<th>예약일자</th>
+						<th>반납일자</th>
 		      	</tr>
-		      	<tr>
-			        <td>Mary</td>
-			        <td>Moe</td>
-			        <td>mary@example.com</td>
-		      	</tr>
-		      	<tr>
-			        <td>July</td>
-			        <td>Dooley</td>
-			        <td>july@example.com</td>
-		      	</tr>
-		   </tbody>
-	  </table>
+			    </thead>
+			    <tbody>
+			    	<tr>
+				        <td>1</td>
+				        <td>2</td>
+			        	<td>3</td>
+			        	<td>4</td>
+			        	<td>5</td>
+			      	</tr>
+			      	<tr>
+				        <td>1</td>
+				        <td>2</td>
+			        	<td>3</td>
+			        	<td>4</td>
+			        	<td>5</td>
+			      	</tr>
+			      	<tr>
+				        <td>1</td>
+				        <td>2</td>
+			        	<td>3</td>
+			        	<td>4</td>
+			        	<td>5</td>
+			      	</tr>
+			   </tbody>
+		  </table>
+	  </form>
   </div>
+  
+  
+  
 
   <div id="con23">
   

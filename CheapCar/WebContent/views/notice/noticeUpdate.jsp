@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.notice.model.vo.Notice" %>    
+<%
+	Notice notice = (Notice)request.getAttribute("notice");
+%>
+
+
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 글쓰기</title>
+<title>공지사항 수정</title>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -131,20 +139,21 @@
 				</div>
                 
                 <div class="content_outer">
-                    <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
+                    <form action="<%=contextPath%>/update.notice" method="post" id="insert-form">
                      <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
+                     <input type="hidden" name="noticeNo" value="<%= notice.getNoticeNo() %>" />
                      <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" >                            
+                            <input type="text" name="title" ><%= notice.getNoticeTitle() %>                            
                         </div>
                     </div>
                     <div class="content_sub">
                         <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
                     </div>
                     <div class="content_body">
-                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
+                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"><%= notice.getNoticeContent()%></textarea>
                     </div>
                     
                     <div class="content_btn" align="center">
@@ -161,10 +170,8 @@
 		  </div>
 
 	</div>
-	   
-
-	
 		
 	
+
 </body>
 </html>
