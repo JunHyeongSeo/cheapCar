@@ -4,6 +4,11 @@
 <%
 	ArrayList<Car> list = (ArrayList<Car>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -47,25 +52,42 @@
                 </tr>
               </thead>
               <tbody>
-                
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
+              <% if(list.isEmpty()) { %>
+              	<tr>
+              		<td colspan="5">등록되어있는 차량이 없습니다.</td>
+              	</tr>
+              <% } else { %>
+              	<% for(Car c : list) { %>
+              		<tr>
+              			<td><%= c.getManagementNo() %></td>
+              			<td><%= c.getModelName() %></td>
+              			<td><%= c.getCarNo() %></td>
+              			<td><%= c.getStatus() %></td>
+              			<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+              		</tr>
+              	<% } %>
+              <% } %>
               </tbody>
             </table>
           </div>
             
         <div class="paging-area">
             
-            <% if(currentPage) %>
-            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
-            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%=i%>'"><%= i %></button>
-            <button disabled class="btn btn-danger"><%= i %></button>
-            
+            <% if(currentPage > 1) { %>
+	            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage - 1 %>'">이전</button>
+    		<% } %>
+
+			<% for(int i = startPage; i <= endPage; i++) { %>
+				<% if(currentPage != i) { %>
+		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%=i%>'"><%= i %></button>
+				<% } else { %>			
+		            <button disabled class="btn btn-danger"><%= i %></button>
+				<% } %>
+			<% } %>
+				
+            <% if(currentPage != maxPage) { %>
+          		  <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage + 1 %>'">다음</button>
+            <% } %>
             
         </div>
         
@@ -73,8 +95,8 @@
 			<table class="table table-bordered">
 				<tbody>
 					<tr>
-						<th>차량번호</th>
-						<td>02하 1234</td>
+						<th>1</th>
+						<td>2</td>
 					</tr>
 					<tr>
 						<th>차량정보</th>
