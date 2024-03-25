@@ -26,7 +26,7 @@
 				         ORDER 
 						    BY 
 						       MEMBER_NO ASC) A
-	    		   ORDER BY RNUM ASC)
+	    	   ORDER BY RNUM ASC)
  		  WHERE 
       			RNUM BETWEEN ? AND ?
 	</entry>
@@ -45,29 +45,21 @@
 	<entry key="blackListCount">
 		
 		SELECT 
-				MEMBER_NO,
-				MEMBER_ID,
-				MEMBER_NAME,
-				MEMBER_PWD,
-				BIRTHDAY,
-				PHONE,
-				EMAIL,
-				ENROLL_DATE,
-				MEMBER_STATUS
+				*
 	  	  FROM (SELECT A.*,
 				       ROWNUM RNUM
 		          FROM (SELECT
 		                		*
 				          FROM 
 				                TB_MEMBER
+                         WHERE 	
+                         	    MEMBER_STATUS = 'B'
 				         ORDER 
 						    BY 
-				       			MEMBER_NO ASC) A
+				       			 MEMBER_NO ASC) A
 		       ORDER BY RNUM ASC)
 		WHERE 
 	      	  RNUM BETWEEN ? AND ?
-      	  AND 
-        	  MEMBER_STATUS = 'B'
 	</entry>
 	
 	<entry key="login">
@@ -181,8 +173,66 @@
 				MEMBER_PWD = ?
 	
 	
+	</entry>
+	
+	<entry key="reservation">
+	SELECT
+               MANAGEMENT_NO,
+                STATUS,
+                CAR_NO,
+                C.LOCATION_NO,
+                LOCATION_NAME,
+                MODEL_NAME,
+                FUEL_NAME,
+                BRAND_NAME,
+                GRADE_NAME,
+                YEAR,
+                GRADE_PRICE,
+                MODEL_PRICE,
+                YEAR_PRICE
+          FROM
+                TB_CAR C
+          JOIN  
+                TB_CAR_BRIDGE CB
+            ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+          JOIN
+                TB_LOCATION L
+            ON (C.LOCATION_NO = L.LOCATION_NO)
+          JOIN
+                TB_MODEL M
+            ON (CB.MODEL_NO = M.MODEL_NO)
+          JOIN
+                TB_FUEL F
+            ON (CB.FUEL_NO = F.FUEL_NO)
+          JOIN
+                TB_BRAND B
+            ON (CB.BRAND_NO = B.BRAND_NO)
+          JOIN
+                TB_GRADE G
+            ON (CB.GRADE_NO = G.GRADE_NO)
+          JOIN
+                TB_YEAR Y
+            ON (CB.YEAR_NO = Y.YEAR_NO)
+          JOIN
+                TB_RESERVATION R
+            ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+          JOIN
+                TB_MEMBER MM
+            ON (R.RESERVATION_NO = MM.MEMBER_NO)
+        WHERE 
+            MM.MEMBER_NO = ?
+	
 	
 	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

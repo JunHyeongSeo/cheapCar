@@ -84,6 +84,19 @@
    	           )      
 	</entry>
 	
+	<entry key="updateNotice">
+		UPDATE
+		       TB_NOTICE_BOARD
+		   SET
+		       NOTICE_TITLE = ?,
+		       NOTICE_CONTENT = ?
+		 WHERE
+		       NOTICE_NO = ?
+		   AND
+		       STATUS = 'Y'     
+	</entry>
+	
+	
 	
 	
 	

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -195,6 +196,50 @@ public class NoticeDao {
 		
 		return result;
 		
+	}//
+	
+	
+	
+	public int updateNotice(Connection conn, Notice notice) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, notice.getNoticeTitle());
+			pstmt.setString(2, notice.getNoticeContent());
+			pstmt.setInt(3, notice.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}//
+	
+	
+	public PageInfo selectListCount(Connection conn) {
+		
+		PageInfo pi = new PageInfo();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		
+		
+		
+		
+		
+		return pi;
 	}
 	
 	

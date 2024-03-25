@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.cs.model.vo.Cs, com.kh.semi.common.model.vo.PageInfo" %>
+<%
+	ArrayList<Cs> list = (ArrayList<Cs>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,33 +33,52 @@
                 <tr>
                     <th>제목</th>
                     <th>아이디</th>
-                    <th>제목</th>
+                    <th>내용</th>
                     <th>답변여부</th>
                     <th>상세보기</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>user01</td>
-                    <td>차가 이상해요</td>
-                    <td>N</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                
+	              <% if(list.isEmpty()) { %>
+	              		<tr>
+	              			<td colspan="5">등록된 문의내역이 없습니다.....</td>
+	              		<tr>
+	              <% } else { %>
+	              	<% for(Cs cs : list) { %>
+			       		<tr>
+			       			<td><%= cs.getCsTitle() %></td>
+			       			<td><%= cs.getMemberId() %></td>
+			       			<td><%= cs.getCsContent() %></td>
+			       			<td><%= cs.getReplyYn() %></td>
+			       			<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+			       		</tr>
+		       		<% } %>
+	              <% } %>
               </tbody>
             </table>
           </div>
             
-        <div id="abcd">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#"><</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">></a></li>
-            </ul>
+        <div class="paging-area">
+            <% if(pi.getCurrentPage() > 1) { %>
+            	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/selectCsList?currentPage=<%= pi.getCurrentPage() - 1 %>'">이전</button>
+            <% } %>
+			
+			<% for(int i = pi.getStartPage(); i <= pi.getEndPage(); i++) { %>
+            	
+            	<% if(pi.getCurrentPage() != i) { %>
+            		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/selectCsList?currentPage=<%=i%>'"><%= i %></button>
+				<% } else { %>
+					<button disabled class="btn btn-danger"><%= i %></button>
+				<% } %>
+				            	
+            <% } %>
+            
+            <% if(pi.getCurrentPage() < pi.getMaxPage()) { %>
+            	<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/selectCsList?currentPage=<%= pi.getCurrentPage() + 1 %>'">다음</button>
+            <% } %>
         </div>
+        
+        
         
         <div class="container">       
 			<table class="table table-bordered">

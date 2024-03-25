@@ -10,8 +10,16 @@ public class Cs {
 	private String status;
 	private int memberNo;
 	private int replyNo;
+	private String memberId;
 	
-	
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
 	public Cs() {
 		super();
 	}
