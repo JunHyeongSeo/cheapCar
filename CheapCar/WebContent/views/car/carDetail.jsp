@@ -6,6 +6,7 @@
 	com.kh.semi.car.model.vo.*,
 	com.kh.semi.common.model.vo.PageInfo" 
 %>
+
 <%
 	Car car = (Car)request.getAttribute("car");
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
@@ -22,7 +23,6 @@
 <head>
 <meta charset="UTF-8">
 <title>차량 예약 페이지</title>
-
 <style>
     div{
         border: 1px solid red;
@@ -73,9 +73,14 @@
         <div class="car-image"> 
             <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
         </div>
+        
         <div class="car-info"> 차량 상세 정보
-
-            
+        
+			    <p>대여 기간 선택
+			        <input type="date" id="datepicker1">
+			        <input type="date" id="datepicker2">
+			    </p>
+            	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
             <div> <%= car.getBrandName()%></div>
