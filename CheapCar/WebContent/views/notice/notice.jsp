@@ -104,13 +104,14 @@
 					  
 					  <% } else { %>
 
-						<% for(Notice n: list) { %>
+						
+						<% for(int i = list.size()-1; i >= 0; i--) { %>
 							<tr class="notice_list">
-								<th style="text-align:center"><%= n.getNoticeNo() %></th>
-								<th><%= n.getNoticeTitle() %></th>
-								<th style="text-align:center"><%= n.getNoticeWriter() %></th>
-								<th style="text-align:center"><%= n.getCreateDate() %></th>
-								<th style="text-align:center"><%= n.getCount() %></th>
+								<th style="text-align:center"><%= i-1 %></th>
+								<th><%= list.get(i).getNoticeTitle() %></th>
+								<th style="text-align:center"><%= list.get(i).getNoticeWriter() %></th>
+								<th style="text-align:center"><%= list.get(i).getCreateDate() %></th>
+								<th style="text-align:center"><%= list.get(i).getCount() %></th>
 							</tr>
 						<% } %>	
 					 <% } %>
