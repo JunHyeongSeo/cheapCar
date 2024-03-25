@@ -66,6 +66,22 @@
 	
 	
 	<entry key="insertNotice">
+		INSERT
+		  INTO
+		       TB_NOTICE_BOARD
+		       (
+		       NOTICE_NO,
+		       NOTICE_TITLE,
+		       NOTICE_CONTENT,
+		       MEMBER_NO
+		       )
+   	    VALUES
+   	           (
+   	           SEQ_NOTICE_BOARD_NO.NEXTVAL,
+   	           ?,
+   	           ?,
+   	           ?,
+   	           )      
 	</entry>
 	
 	

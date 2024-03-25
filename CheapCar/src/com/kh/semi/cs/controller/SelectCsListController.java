@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.cs.model.service.CsService;
 
 /**
  * Servlet implementation class selectCsController
@@ -34,8 +35,12 @@ public class SelectCsListController extends HttpServlet {
 		PageInfo pi = new PageInfo();
 		
 		int listCount = new CsService().selectCsListCount();
-		
-		
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int pageLimit = 10;
+		int boardLimit = 5;
+		int maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + 
 		
 		
 		

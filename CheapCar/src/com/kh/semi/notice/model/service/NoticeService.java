@@ -64,16 +64,19 @@ public class NoticeService {
 	}//
 	
 	
-	public void insert(Notice notice) {
+	public int insert(Notice notice) {
 		
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().insert(conn, notice);
+		int result = new NoticeDao().insert(conn, notice);
+		
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
 				
 		
 		
-		
+		return result;
 		
 	}//
 	

@@ -7,7 +7,26 @@
 	</comment>
 	
 	<entry key="selectCsListCount">
-		
-	
+		SELECT COUNT(*) FROM TB_CS_BOARD
 	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>
