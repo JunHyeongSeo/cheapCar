@@ -1,11 +1,16 @@
 package com.kh.semi.notice.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class NoticeInsertFormController
@@ -27,8 +32,21 @@ public class NoticeInsertFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		request.getRequestDispatcher("views/notice/noticeInsert.jsp").forward(request, response);
+		if(loginUser != null && loginUser.getMemberId().equals("admin")) {
+			RequestDispatcher view = request.getRequestDispatcher("views/notice/noticeInsert.jsp");
+			view.forward(request, response);
+		} else {
+			session.setAttribute("alertMsg", "잘못된 접근입니다.");
+			response.sendRedirect(request.getContextPath());
+		}
+		
+		
+		
+		
+		
 		
 		
 		
