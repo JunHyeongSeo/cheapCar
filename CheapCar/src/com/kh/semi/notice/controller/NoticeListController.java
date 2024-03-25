@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.service.NoticeService;
 import com.kh.semi.notice.model.vo.Notice;
 
@@ -56,6 +57,15 @@ public class NoticeListController extends HttpServlet {
 		
 		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
 		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		new NoticeService().selectList(pi);
 		
 		
 		// 1) 인코딩 -> a태그는 무조건 get방식 => 인코딩 필요 X

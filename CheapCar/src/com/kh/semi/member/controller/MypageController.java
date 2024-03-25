@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class MypageController
@@ -34,22 +36,23 @@ public class MypageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		HttpSession session = request.getSession();
 		
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		ArrayList<Car> list = new MemberService().reservation(memberNo);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(list.isEmpty()) {
-			
-			
+		
+		
+		ArrayList<Car> carlist = new MemberService().reservation(loginUser);
+		System.out.println(carlist);
+		
+		if(carlist.isEmpty()) {
 			
 		} else {
 			
+			request.setAttribute("list", carlist);
+			
 		}
-		
-		
-		
-		
 		
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
