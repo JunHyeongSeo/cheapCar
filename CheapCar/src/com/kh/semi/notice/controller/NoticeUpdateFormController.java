@@ -41,7 +41,8 @@ public class NoticeUpdateFormController extends HttpServlet {
 		request.setAttribute("notice", notice);
 		
 		
-		request.getRequestDispatcher("views/notice/noticeUpdate.jsp");
+		request.getRequestDispatcher("views/notice/noticeUpdate.jsp").forward(request, response);
+		
 		
 		
 		
