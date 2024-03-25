@@ -37,14 +37,12 @@ public class NoticeInsertController extends HttpServlet {
 		// 값
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
-		String noticeWriter = request.getParameter("memberName");
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		// 가공
 		Notice notice = new Notice();
 		notice.setNoticeTitle(noticeTitle);
 		notice.setNoticeContent(noticeContent);
-		notice.setNoticeWriter(noticeWriter);
 		notice.setMemberNo(memberNo);
 		
 		
@@ -66,7 +64,7 @@ public class NoticeInsertController extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("views/notice/noticeInsert.jsp").forward(request, response);
+		
 		
 		
 		
