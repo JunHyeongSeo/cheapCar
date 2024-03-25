@@ -41,13 +41,7 @@
                     <td>N</td>
                     <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user02</td>
-                    <td>차가 이상해요2</td>
-                    <td>Y</td>
-                    <td>-</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>
