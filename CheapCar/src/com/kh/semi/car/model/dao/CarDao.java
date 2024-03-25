@@ -129,4 +129,79 @@ public class CarDao {
 		}
 		return optionList;
 	}
+	
+	public Car selectDetailCar(Connection conn, int managementNo) {
+		
+		Car car = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, managementNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				car = new Car();
+				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car.setStatus(rset.getString("STATUS"));
+				car.setCarNo(rset.getString("CAR_NO"));
+				car.setLocationNo(rset.getInt("LOCATION_NO"));
+				car.setLocationName(rset.getString("LOCATION_NAME"));
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
+				car.setBrandName(rset.getString("BRAND_NAME"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setYear(rset.getInt("YEAR"));
+				car.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return car;
+	}
+	
+	public Option selectDetailOption(Connection conn, int managementNo) {
+		
+		Option option = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, managementNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				option = new Option();
+				
+				option.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				option.setOptionNo(rset.getInt("OPTION_NO"));
+				option.setOptionName(rset.getString("OPTION_NAME"));
+				option.setOptionPrice(rset.getInt("OPTION_PRICE"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return option;
+	}
 }

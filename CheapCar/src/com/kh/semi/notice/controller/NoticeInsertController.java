@@ -2,27 +2,26 @@ package com.kh.semi.notice.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.notice.model.service.NoticeService;
+import com.kh.semi.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeInsertFormController
+ * Servlet implementation class NoticeInsertController
  */
-@WebServlet("/insertForm.notice")
-public class NoticeInsertFormController extends HttpServlet {
+@WebServlet("/insert.notice")
+public class NoticeInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertFormController() {
+    public NoticeInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +31,30 @@ public class NoticeInsertFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
+		// post
+		request.setCharacterEncoding("UTF-8");
 		
-		if(loginUser != null && loginUser.getMemberId().equals("admin")) {
-			RequestDispatcher view = request.getRequestDispatcher("views/notice/noticeInsert.jsp");
-			view.forward(request, response);
-		} else {
-			session.setAttribute("alertMsg", "잘못된 접근입니다.");
-			response.sendRedirect(request.getContextPath());
-		}
+		// 값
+		String noticeTitle = request.getParameter("title");
+		String noticeContent = request.getParameter("content");
+		String memberNo = request.getParameter("memberNo");
+		
+		// 가공
+		Notice notice = new Notice();
+		notice.setNoticeTitle(noticeTitle);
+		notice.setNoticeContent(noticeContent);
+		notice.setNoticeWriter(memberNo);
+		
+		// service
+		new NoticeService().insert(notice);
 		
 		
 		
 		
+		
+		
+		
+		request.getRequestDispatcher("views/notice/noticeInsert.jsp").forward(request, response);
 		
 		
 		
