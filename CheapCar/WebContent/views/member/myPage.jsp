@@ -117,7 +117,7 @@
 		<br clear = "both">
 
     <div class="area">
-        <div class="inline" id="introduce">안녕하세요! <span>나는 널이다 ㅋ <%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
+        <div class="inline" id="introduce">안녕하세요! <span><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
         <div class="inline" id="mymodify"><a href="<%=contextPath %>/update" >개인정보수정</a></div>
     </div>
     
@@ -158,7 +158,7 @@
   <div id="con23">
   
   <div class="container2">
-		<h4>예약내역</h4>
+		<h4>마일리지</h4>
 	  	<table class="table" id="aa">
 	    	<thead class="thead-dark">
 	      		<tr>
@@ -167,48 +167,36 @@
 	      		</tr>
 		    </thead>
 		    <tbody>
+		    <% for(Car car : carlist) { %>
 		    	<tr>
-			        <td>안녕하세요</td>
-			        <td>Doe</td>
+			        <td><%= car.getMileageDate() %></td>
+			        <td><%= car.getMileage() %></td>
 		      	</tr>
-		      	<tr>
-			        <td>Mary</td>
-			        <td>Moe</td>
-		      	</tr>
-		      	<tr>
-			        <td>July</td>
-			        <td>Dooley</td>
-		      	</tr>
+		    <% } %>
 		   </tbody>
 	  </table>
   </div>
   
   <div class="container3">
-		<h4>예약내역</h4>
+		<h4>나의 문의내역</h4>
 	  	<table class="table" id="aa">
 	    	<thead class="thead-dark">
 	      		<tr>
-		        	<th>Firstname</th>
-		        	<th>안녕하세요</th>
-	        		<th>Email</th>
-	      	</tr>
+		        	<th>문의 번호</th>
+		        	<th>제목</th>
+	        		<th>문의 일자</th>
+	        		<th>문의 답변 여부</th>
+	      		</tr>
 		    </thead>
 		    <tbody>
+		    <% for(Car car : carlist) { %>
 		    	<tr>
-			        <td>안녕하세요</td>
-			        <td>Doe</td>
-		        	<td>john@example.com</td>
+			        <td><%= car.getCsNo()%></td>
+			        <td><%= car.getCsTitle()%></td>
+		        	<td><%= car.getCreateDate() %></td>
+		        	<td><%= car.getReplyYn() %></td>
 		      	</tr>
-		      	<tr>
-			        <td>Mary</td>
-			        <td>Moe</td>
-			        <td>mary@example.com</td>
-		      	</tr>
-		      	<tr>
-			        <td>July</td>
-			        <td>Dooley</td>
-			        <td>july@example.com</td>
-		      	</tr>
+		      	<% } %>
 		   </tbody>
 	  </table>
   </div>
