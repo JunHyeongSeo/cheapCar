@@ -11,7 +11,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
-	<input type="text" name="datetimes" />
+
+	<form>
+		<input type="text" name="datetimes" />
+	</form>
 
 	<script>
 		$(function() {

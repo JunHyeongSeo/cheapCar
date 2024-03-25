@@ -97,7 +97,7 @@
         
         <div class="car-info"> 차량 상세 정보
         
-        	<%@ include file="../common.dateRangePicker.jsp" %>
+        	<%@ include file="../common/dateRangePicker.jsp" %>
             	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
