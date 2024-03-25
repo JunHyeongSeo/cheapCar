@@ -11,6 +11,12 @@
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
 %>
 
+<%
+	int carPrice = 0;
+	int optionPrice = 0;
+	int totalPrice = 0;
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,22 +80,24 @@
             <div class="car-info-detail"> <%= car.getBrandName()%></div>
             <div class="car-info-detail"> <%= car.getYear()%>식</div>
             <div class="car-info-detail"> <%= car.getFuelName()%></div>
+            
+            	<% carPrice = car.getGradePrice()+ car.getModelPrice() + car.getYearPrice(); %>
+            	
             <div class="car-info-detail"> 옵션 리스트 : 
             
             	<% for(Option o : optionList) { %>
 	                
 	                <span><%= o.getOptionName() %></span>
-            	
+            		<% optionPrice += o.getOptionPrice(); %>
+            
             	<% } %>
       
             </div>
-            
-	        <div>
-	        	
-	        	총 가격 : <%= %>
+            	<% totalPrice = carPrice + optionPrice; %>
+			<div>      	
+	        		총 가격 : <%=totalPrice%>
 	            <a class="btn btn-primary"href="#">결제버튼</a>
-	        </div>
-            
+	        </div>	  
         </div>
 
 
