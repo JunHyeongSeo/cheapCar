@@ -73,7 +73,6 @@
 		       NOTICE_NO,
 		       NOTICE_TITLE,
 		       NOTICE_CONTENT,
-		       NOTICE_WRITER,
 		       MEMBER_NO
 		       )
    	    VALUES
@@ -82,7 +81,6 @@
    	           ?,
    	           ?,
    	           ?,
-   	           ?
    	           )      
 	</entry>
 	
