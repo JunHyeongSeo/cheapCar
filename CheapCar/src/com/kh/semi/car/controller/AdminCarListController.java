@@ -49,10 +49,9 @@ public class AdminCarListController extends HttpServlet {
 		ArrayList<Car> list = new CarService().adminCarList(pi);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
-		request.getRequestDispatcher("경로").forward(request, response);
-		
-		
+		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
 	}
 
 	/**
