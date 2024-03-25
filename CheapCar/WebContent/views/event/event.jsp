@@ -124,7 +124,8 @@
 							<a href="" alt="">
 								<div class="img-area event_1">사진</div>
 								<div class="text-area event_1">
-									세일세일세일
+									<span>세일세일세일세일세일세일세일세일세일세일세일세일세일 </span><br><br>
+									<span style="font-size: 15px;">조회수  </span>
 								</div>
 							</a>
 						</li>
