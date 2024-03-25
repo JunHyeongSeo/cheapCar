@@ -245,7 +245,7 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%= currentPage - 1 %>'">Previous</a>
                                 </li>
                             <% } %>
 
@@ -254,7 +254,7 @@
 								<% if(currentPage != i) { %>
 									<li
 									class="page-link"
-									onclick="location.href='<%=contextPath%>/list.car?currentPage=<%=i%>'">
+									onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%=i%>'">
 									<%=i%>
 									</li>
 								<% } else { %>
@@ -267,7 +267,7 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/list.car?currentPage=<%= currentPage + 1%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%= currentPage + 1%>'">Next</a>
 	                            </li>
                             <% } %>
 						</ul>
