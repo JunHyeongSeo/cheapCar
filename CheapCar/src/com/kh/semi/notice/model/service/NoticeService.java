@@ -20,6 +20,8 @@ public class NoticeService {
 		return list;
 	}//
 	
+
+	
 	
 	public int increaseCount(int noticeNo) {
 		
@@ -93,6 +95,18 @@ public class NoticeService {
 		
 		
 		return result;
+	}//
+	
+	
+	public void selectListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		
+				
+		
+		
+		
 	}//
 	
 	
