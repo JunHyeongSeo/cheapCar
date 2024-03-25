@@ -132,7 +132,7 @@
                 
                 <div class="content_outer">
                     <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
-                     <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>" />
+                     <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성자 : 
+                        <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
                     </div>
                     <div class="content_body">
                         <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
