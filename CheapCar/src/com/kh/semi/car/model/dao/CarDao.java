@@ -129,4 +129,27 @@ public class CarDao {
 		}
 		return optionList;
 	}
+	
+	public Car selectDetailCar(Connection conn, int managementNo) {
+		
+		Car car = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		return car;
+		
+	}
 }

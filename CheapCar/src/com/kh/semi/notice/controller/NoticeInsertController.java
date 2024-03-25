@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NoticeInsertFormController
+ * Servlet implementation class NoticeInsertController
  */
-@WebServlet("/insertForm.notice")
-public class NoticeInsertFormController extends HttpServlet {
+@WebServlet("/insert.notice")
+public class NoticeInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertFormController() {
+    public NoticeInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,6 +29,7 @@ public class NoticeInsertFormController extends HttpServlet {
 		
 		
 		request.getRequestDispatcher("views/notice/noticeInsert.jsp").forward(request, response);
+		
 		
 		
 		

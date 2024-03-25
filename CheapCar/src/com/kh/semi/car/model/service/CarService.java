@@ -44,4 +44,13 @@ public class CarService {
 		
 		return optionList;
 	}
+	
+	public Car selectDetailCar(int managementNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new CarDao().selectDetailCar(conn,managementNo);
+		
+		return null;
+	}
 }
