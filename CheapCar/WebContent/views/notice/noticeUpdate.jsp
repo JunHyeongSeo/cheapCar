@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.notice.model.vo.Notice" %>    
+<%
+	Notice notice = (Notice)request.getAttribute("notice");
+%>
+
+
+    
 <!DOCTYPE html>
 <html>
 <head>
