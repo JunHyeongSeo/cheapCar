@@ -44,7 +44,6 @@ public class MypageController extends HttpServlet {
 		
 		
 		ArrayList<Car> carlist = new MemberService().reservation(loginUser);
-		System.out.println(carlist);
 		
 		if(carlist.isEmpty()) {
 			

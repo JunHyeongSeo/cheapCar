@@ -46,9 +46,12 @@ public class AdminCarListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Car> list = new CarService().selectCarList(pi);
-		// 나중에 매핑값 바꾸기
+		ArrayList<Car> list = new CarService().adminCarList(pi);
 		
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
+		
+		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
 	}
 
 	/**

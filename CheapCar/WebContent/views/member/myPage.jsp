@@ -131,7 +131,7 @@
 		    	<thead class="thead-dark">
 		      		<tr>
 			        	<th>차량번호</th>
-			        	<th>차종</th>
+			        	<th>모델명</th>
 		        		<th>대여장소</th>
 						<th>예약일자</th>
 						<th>반납일자</th>
@@ -141,10 +141,10 @@
 			    	<% for(Car car : carlist) { %>
 			    	<tr>
 				        <td><%= car.getCarNo() %></td>
-				        <td>2</td>
-			        	<td>3</td>
-			        	<td>4</td>
-			        	<td>5</td>
+				        <td><%= car.getModelName() %></td>
+			        	<td><%= car.getLocationName() %></td>
+			        	<td><%= car.getStartDate()%></td>
+			        	<td><%= car.getEndDate() %></td>
 			      	</tr>
 			      	<% } %>
 			   </tbody>

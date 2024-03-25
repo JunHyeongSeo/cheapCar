@@ -10,6 +10,7 @@ import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeService {
 
+	/*
 	public ArrayList<Notice> selectNoticeList() {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -20,7 +21,7 @@ public class NoticeService {
 		
 		return list;
 	}//
-	
+	*/
 
 	
 	
@@ -111,12 +112,16 @@ public class NoticeService {
 		return listCount;
 	}//
 	
-	public void selectList(PageInfo pi) {
+	public ArrayList<Notice> selectList(PageInfo pi) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().selectList(conn, pi);
+		ArrayList<Notice> list = new NoticeDao().selectList(conn, pi);
 		
+		JDBCTemplate.close(conn);
+		
+		
+		return list;
 	}
 	
 	

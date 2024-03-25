@@ -411,6 +411,8 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setStartDate(rset.getDate("START_DATE"));
+				car.setEndDate(rset.getDate("END_DATE"));
 				
 				list.add(car);
 			}
