@@ -12,10 +12,7 @@
 	
 	<entry key="selectCsList"> 
 		SELECT 
-			  CS_TITLE,
-              MEMBER_ID,
-              CS_CONTENT,
-              REPLY_YN
+			  *
 		  FROM
 				(SELECT 
 					   A.* , 
@@ -28,7 +25,7 @@
                         JOIN
                             TB_MEMBER USING(MEMBER_NO)
 				    ORDER BY 
-				            CS_NO DESC) A)
+				            CS_NO ASC) A)
     	 WHERE 
 				RNUM BETWEEN ? AND ?
 	</entry>
