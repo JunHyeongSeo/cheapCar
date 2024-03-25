@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.kh.semi.car.model.vo.Car;
@@ -136,7 +137,7 @@ public class CarDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectBoard");
+		String sql = prop.getProperty("selectDetailCar");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -171,13 +172,13 @@ public class CarDao {
 		return car;
 	}
 	
-	public Option selectDetailOption(Connection conn, int managementNo) {
+	public List<Option> selectDetailOption(Connection conn, int managementNo) {
 		
-		Option option = null;
+		List<Option> optionList = new ArrayList<Option>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectBoard");
+		String sql = prop.getProperty("selectDetailOption");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -186,14 +187,15 @@ public class CarDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				
-				option = new Option();
+			while(rset.next()) {
+				Option option = new Option();
 				
 				option.setManagementNo(rset.getInt("MANAGEMENT_NO"));
 				option.setOptionNo(rset.getInt("OPTION_NO"));
 				option.setOptionName(rset.getString("OPTION_NAME"));
 				option.setOptionPrice(rset.getInt("OPTION_PRICE"));
+				
+				optionList.add(option);
 				
 			}
 		} catch (SQLException e) {
@@ -202,6 +204,6 @@ public class CarDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return option;
+		return optionList;
 	}
 }

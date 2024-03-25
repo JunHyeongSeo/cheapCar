@@ -1,6 +1,7 @@
 package com.kh.semi.car.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,13 @@ public class ListCarDetailController extends HttpServlet {
 		
 		Car car = new CarService().selectDetailCar(managementNo);
 		
-		Option option = new CarService().selectDetailOption(managementNo);
+		List<Option> optionList = new CarService().selectDetailOption(managementNo);
 		
-		request.setAttribute("Car", car);
-		request.setAttribute("Option", option);
+		System.out.println(car);
+		System.out.println(optionList);
+		
+		request.setAttribute("car", car);
+		request.setAttribute("optionList", optionList);
 		
 		request.getRequestDispatcher("views/car/carDetail.jsp").forward(request, response);
 	
