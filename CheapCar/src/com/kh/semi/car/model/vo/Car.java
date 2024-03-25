@@ -1,5 +1,7 @@
 package com.kh.semi.car.model.vo;
 
+import java.sql.Date;
+
 public class Car {
 	private int managementNo;
 	private String status;
@@ -14,7 +16,34 @@ public class Car {
 	private int gradePrice;
 	private int modelPrice;
 	private int yearPrice;
+	private Date startDate;
+	private Date endDate;
 	
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+
+
 	public Car() {
 		super();
 	}

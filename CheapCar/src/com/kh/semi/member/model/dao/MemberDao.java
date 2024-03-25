@@ -382,9 +382,9 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	}
 	
 	
-	public ArrayList<Car> reservation(Connection conn, int memberNo){
+	public ArrayList<Car> reservation(Connection conn, Member loginUser){
 		
-		ArrayList<Car> list = null;
+		ArrayList<Car> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -392,7 +392,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, memberNo);
+			pstmt.setInt(1, loginUser.getMemberNo());
 			
 			rset = pstmt.executeQuery();
 			
@@ -411,6 +411,8 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setStartDate(rset.getDate("START_DATE"));
+				car.setEndDate(rset.getDate("END_DATE"));
 				
 				list.add(car);
 			}
