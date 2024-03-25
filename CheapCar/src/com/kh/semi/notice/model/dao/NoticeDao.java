@@ -278,7 +278,10 @@ public class NoticeDao {
 			while(rset.next()) {
 				
 				Notice notice = new Notice();
-				
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				notice.setNoticeContent(rset.getString("NOTICE_CONTENT"));
+				notice.setNoticeWriter(rset.getString("MEMBER_NAME"));
 				
 				
 				
