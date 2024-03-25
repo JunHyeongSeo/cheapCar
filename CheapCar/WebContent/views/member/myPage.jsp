@@ -53,6 +53,7 @@
     
     
     #all{
+    	position : relateve;
     	width : 100%;
     	
     }
@@ -62,21 +63,34 @@
     	width : 100%;
     }
     
-    .container{
-    	width : 100%;
+    .container1{
+    	padding-top: 30px;
+    	margin-left : 30px;
+    	width : 96%;
     }
     
     #aa2{
     	width : 100%;
     }
-
-
-	container2{
+ 
+	.container2{
+		margin-left : 30px;
+		position: absolute;
 		float : left;
+		width : 48%;
 	}
 	
-    container3{
+    .container3{
+    	margin-left : 50%;
+		position: absolute;
+    	float : left;
+    	width : 48%;
+    } 
+	
     
+    
+    #con23{
+		padding-top: 30px;
     	float : left;
     }
     
@@ -132,6 +146,8 @@
 		   </tbody>
 	  </table>
   </div>
+
+  <div id="con23">
   
   <div class="container2">
 		<h4>예약내역</h4>
@@ -191,6 +207,8 @@
 		      	</tr>
 		   </tbody>
 	  </table>
+  </div>
+
   </div>
   
   
