@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -221,14 +222,25 @@ public class NoticeDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
-		
-		
-		
 		return result;
 		
 	}//
+	
+	
+	public PageInfo selectListCount(Connection conn) {
+		
+		PageInfo pi = new PageInfo();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		
+		
+		
+		
+		
+		return pi;
+	}
 	
 	
 	

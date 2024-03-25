@@ -102,6 +102,7 @@ public class NoticeService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
+		new NoticeDao().selectListCount(conn);
 		
 				
 		
