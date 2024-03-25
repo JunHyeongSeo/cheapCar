@@ -373,7 +373,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			e.printStackTrace();
 		} finally {
 			
-			
+			close(pstmt);
 			
 		}
 		

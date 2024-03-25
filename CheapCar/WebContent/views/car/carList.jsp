@@ -132,64 +132,64 @@
                 <form action="#" class="option-form form-inline form-location" >
                     
                     <div class="form-group">
-                        <label for="sel1">제조사 : </label>
+                        <label>제조사 : </label>
                         <select class="form-control">
-                          <option value="">현대</option>
-                          <option value="">기아</option>
-                          <option value="">제네시스</option>
-                          <option value="">르노삼성</option>
-                          <option value="">포르쉐</option>
+                          <option value="현대">현대</option>
+                          <option value="기아">기아</option>
+                          <option value="제네시스">제네시스</option>
+                          <option value="르노삼성">르노삼성</option>
+                          <option value="포르쉐">포르쉐</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="sel1">차량 등급 : </label>
+                        <label>차량 등급 : </label>
                         <select class="form-control">
-                          <option value="">경차</option>
-                          <option value="">준중형</option>
-                          <option value="">중형</option>
-                          <option value="">대형</option>
-                          <option value="">SUV</option>
+                          <option value="경차">경차</option>
+                          <option value="준중형">준중형</option>
+                          <option value="중형">중형</option>
+                          <option value="대형">대형</option>
+                          <option value="SUV">SUV</option>
                         </select>
                     </div>
 					
                     <div class="form-group">
-                        <label for="sel1">사용 연료 : </label>
+                        <label>사용 연료 : </label>
                         <select class="form-control">
-                          <option value="">전기</option>
-                          <option value="">하이브리드</option>
-                          <option value="">가솔린</option>
-                          <option value="">디젤</option>
-                          <option value="">LPG</option>
+                          <option value="전기">전기</option>
+                          <option value="하이브리드">하이브리드</option>
+                          <option value="가솔린">가솔린</option>
+                          <option value="디젤">디젤</option>
+                          <option value="LPG">LPG</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="sel1">차종 : </label>
+                        <label>차종 : </label>
                         <select class="form-control">
-                          <option value="">아반때</option>
-                          <option value="">소나타</option>
-                          <option value="">K3</option>
-                          <option value="">GV80</option>
-                          <option value="">QM3</option>
-                          <option value="">카니발F</option>
-                          <option value="">아이오닉5</option>
-                          <option value="">모닝</option>
-                          <option value="">카이엔</option>
-                          <option value="">스포티지</option>
-                          <option value="">스타렉스</option>
+                          <option value="아반때">아반때</option>
+                          <option value="소나타">소나타</option>
+                          <option value="K3">K3</option>
+                          <option value="GV80">GV80</option>
+                          <option value="QM3">QM3</option>
+                          <option value="카니발F">카니발F</option>
+                          <option value="아이오닉5">아이오닉5</option>
+                          <option value="모닝">모닝</option>
+                          <option value="카이엔">카이엔</option>
+                          <option value="스포티지">스포티지</option>
+                          <option value="스타렉스">스타렉스</option>
                         </select>
                     </div>  
 
                     <div class="form-group">
-                        <label for="sel1">기타 옵션 : </label>
+                        <label>기타 옵션 : </label>
                         <select class="form-control">
-                          <option value="">카시트</option>
-                          <option value="">선루프</option>
-                          <option value="">블랙박스</option>
-                          <option value="">후방카메라</option>
-                          <option value="">네비게이션</option>
-                          <option value="">주차보조 시스템</option>
+                          <option value="카시트">카시트</option>
+                          <option value="선루프">선루프</option>
+                          <option value="블랙박스">블랙박스</option>
+                          <option value="후방카메라">후방카메라</option>
+                          <option value="네비게이션">네비게이션</option>
+                          <option value="주차보조시스템">주차보조시스템</option>
                         </select>
                     </div>
 
@@ -234,7 +234,7 @@
 	                        	<%= c.getGradePrice() + c.getModelPrice() + c.getYearPrice() %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="#">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="listDetail.do?=<%=c.getManagementNo()%>">예약버튼</a>
 	                    </div>
                     </div>
 	                <% } %>
