@@ -99,7 +99,9 @@
             	
 			<div>      	
 	        		총 가격 : <%=totalPrice%>
-	            <a class="btn btn-primary"href="#">결제버튼</a>
+	        		<br>
+	            <a class="btn btn-primary "href="#">결제버튼</a>
+	            <a class="btn btn-secondary" href="#">취소버튼</a>
 	        </div>	  
 	        
         </div>
