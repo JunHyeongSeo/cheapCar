@@ -80,7 +80,7 @@
    	           SEQ_NOTICE_BOARD_NO.NEXTVAL,
    	           ?,
    	           ?,
-   	           ?,
+   	           ?
    	           )      
 	</entry>
 	
