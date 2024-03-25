@@ -17,7 +17,6 @@
 	int optionPrice = 0;
 	int totalPrice = 0;
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,9 +80,9 @@
 	<% if(loginUser == null) { %>
 		<script>
 			alert('렌트 예약은 회원만 가능합니다.');
-			location.href = '<%=contextPath%>';
+			location.href = '<%=contextPath%>/loginPage';
 		</script>
-	<% } %>
+	<% } else { %>
 
         <div class="car-image"> 
             <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
@@ -138,7 +137,7 @@
                                 <form>
 	                                <div class="modal-area">
                                         <div>
-                                            결제 방식 : 
+                                       	    결제 방식 : 
                                             <select name="">
                                                 <option value="선불충전">선불충전</option>
                                                 <option value="가상계좌">가상계좌</option>
@@ -146,16 +145,16 @@
                                             </select>
                                         </div>
                                         <div>
-                                            결제자 명 : 
-                                            <input type="text">
-                                        </div>
-                                        <div>
-                                            예약자 명 :
+                                          	예약자 명 :
                                             <span><%= loginUser.getMemberName()%></span>
                                         </div>
                                         <div>
-                                            예약 차량 : 
+                                           	예약 차량 : 
                                             <span><%= car.getBrandName()%> / <%= car.getCarNo()%></span>
+                                        </div>
+                                        <div>
+                                         	이메일 : 
+                                            <input type="text">
                                         </div>
 	                                </div>
                                 </form>
@@ -174,7 +173,7 @@
 
         <br clear="both">
         
-            
+    <% } %>        
     </div>
 
 
