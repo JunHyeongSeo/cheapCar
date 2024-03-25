@@ -65,8 +65,20 @@ public class CarService {
 		
 		JDBCTemplate.close(conn);
 
-		return optionList;
-		
-		
+		return optionList;		
 	}
+	
+	public ArrayList<Car> adminCarList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().adminCarList(conn, pi);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	
+	
+	
 }

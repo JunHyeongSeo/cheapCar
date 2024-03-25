@@ -117,13 +117,14 @@
 	
 	
 	<!-- 근경 -->
-	<entry key="selectCarList1">
+	<entry key="adminCarList">
 	
 		SELECT 
 		        MANAGEMENT_NO,
 		        STATUS,
 		        CAR_NO,
-				LOCATION_NO,
+		        LOCATION_NO,
+		        LOCATION_NAME,
 		        MODEL_NAME,
 		        FUEL_NAME,
 		        BRAND_NAME,
@@ -137,7 +138,8 @@
 		                MANAGEMENT_NO,
 		                STATUS,
 		                CAR_NO,
-						LOCATION_NO,
+		                LOCATION_NO,
+		                LOCATION_NAME,
 		                MODEL_NAME,
 		                FUEL_NAME,
 		                BRAND_NAME,
@@ -151,7 +153,8 @@
 		                        C.MANAGEMENT_NO,
 		                        STATUS,
 		                        CAR_NO,
-								C.LOCATION_NO,
+		                        C.LOCATION_NO,
+		                        LOCATION_NAME,
 		                        MODEL_NAME,
 		                        FUEL_NAME,
 		                        BRAND_NAME,
@@ -162,31 +165,39 @@
 		                        YEAR_PRICE
 		                  FROM
 		                        TB_CAR C
-		                  JOIN  
+		                  LEFT
+                          JOIN  
 		                        TB_CAR_BRIDGE CB
 		                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
-		                  
+                          LEFT  
+		                  JOIN
+		                        TB_LOCATION L
+		                    ON (C.LOCATION_NO = L.LOCATION_NO)
+                            LEFT
 		                  JOIN
 		                        TB_MODEL M
 		                    ON (CB.MODEL_NO = M.MODEL_NO)
+                            LEFT
 		                  JOIN
 		                        TB_FUEL F
 		                    ON (CB.FUEL_NO = F.FUEL_NO)
+                            LEFT
 		                  JOIN
 		                        TB_BRAND B
 		                    ON (CB.BRAND_NO = B.BRAND_NO)
+                            LEFT
 		                  JOIN
 		                        TB_GRADE G
 		                    ON (CB.GRADE_NO = G.GRADE_NO)
+                            LEFT
 		                  JOIN
 		                        TB_YEAR Y
 		                    ON (CB.YEAR_NO = Y.YEAR_NO)
 		                 ORDER
 		                    BY
 		                        C.MANAGEMENT_NO))
-		         WHERE
+		                 WHERE
 		                RNUM BETWEEN ? AND ?
-
 	</entry>
 	
 	<entry key="selectOptionList">
