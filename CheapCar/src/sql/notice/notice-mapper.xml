@@ -96,6 +96,15 @@
 		       STATUS = 'Y'     
 	</entry>
 	
+	<entry key="selectListCount">
+		SELECT 
+		 	   COUNT(*)
+		  FROM
+		       TB_NOTICE_BOARD
+		 WHERE
+		       STATUS = 'Y'         
+	</entry>
+	
 	
 	
 	

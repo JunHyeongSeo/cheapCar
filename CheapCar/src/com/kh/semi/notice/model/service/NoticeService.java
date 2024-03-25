@@ -98,16 +98,16 @@ public class NoticeService {
 	}//
 	
 	
-	public void selectListCount() {
+	public int selectListCount() {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().selectListCount(conn);
+		int listCount = new NoticeDao().selectListCount(conn);
 		
-				
+		JDBCTemplate.close(conn);
 		
 		
-		
+		return listCount;
 	}//
 	
 	
