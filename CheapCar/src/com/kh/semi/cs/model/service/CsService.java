@@ -29,8 +29,9 @@ public class CsService {
 		
 		ArrayList<Cs> list = new CsDao().selectCsList(conn, pi);
 		
+		close(conn);
 		
-		
+		return list;
 	}
 	
 	

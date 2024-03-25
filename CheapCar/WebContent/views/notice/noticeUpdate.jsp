@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.notice.model.vo.Notice" %>    
+<%
+	Notice notice = (Notice)request.getAttribute("notice");
+%>
+
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,20 +139,21 @@
 				</div>
                 
                 <div class="content_outer">
-                    <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
+                    <form action="<%=contextPath%>/update.notice" method="post" id="insert-form">
                      <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
+                     <input type="hidden" name="noticeNo" value="<%= notice.getNoticeNo() %>" />
                      <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" >                            
+                            <input type="text" name="title" ><%= notice.getNoticeTitle() %>                            
                         </div>
                     </div>
                     <div class="content_sub">
                         <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
                     </div>
                     <div class="content_body">
-                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
+                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"><%= notice.getNoticeContent()%></textarea>
                     </div>
                     
                     <div class="content_btn" align="center">
