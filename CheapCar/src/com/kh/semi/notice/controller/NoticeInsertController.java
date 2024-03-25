@@ -37,16 +37,28 @@ public class NoticeInsertController extends HttpServlet {
 		// 값
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
-		String memberNo = request.getParameter("memberNo");
+		String noticeWriter = request.getParameter("memberName");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		// 가공
 		Notice notice = new Notice();
 		notice.setNoticeTitle(noticeTitle);
 		notice.setNoticeContent(noticeContent);
-		notice.setNoticeWriter(memberNo);
+		notice.setNoticeWriter(noticeWriter);
+		notice.setMemberNo(memberNo);
+		
 		
 		// service
-		new NoticeService().insert(notice);
+		int result = new NoticeService().insert(notice);
+		
+		
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/list.notice");
+		} else {
+			request.setAttribute("errorMsg", "공지사항 작성에 실패하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+		}
 		
 		
 		

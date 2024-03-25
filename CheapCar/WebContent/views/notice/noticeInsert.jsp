@@ -133,6 +133,7 @@
                 <div class="content_outer">
                     <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
                      <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
+                     <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
