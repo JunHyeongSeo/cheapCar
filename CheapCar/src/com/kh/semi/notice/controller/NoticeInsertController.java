@@ -44,6 +44,10 @@ public class NoticeInsertController extends HttpServlet {
 		notice.setNoticeContent(noticeContent);
 		notice.setNoticeWriter(memberNo);
 		
+		// service
+		new NoticeService().insert(notice);
+		
+		
 		
 		
 		
