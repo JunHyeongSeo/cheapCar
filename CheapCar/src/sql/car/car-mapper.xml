@@ -111,6 +111,102 @@
 		        MANAGEMENT_NO
 
 	</entry>
+	
+	
+	
+	
+	
+	<!-- 근경 -->
+	<entry key="selectCarList">
+	
+		SELECT 
+        MANAGEMENT_NO,
+        STATUS,
+        CAR_NO,
+        MODEL_NAME,
+        FUEL_NAME,
+        BRAND_NAME,
+        GRADE_NAME,
+        YEAR,
+        GRADE_PRICE,
+        MODEL_PRICE,
+        YEAR_PRICE,
+        ROWNUM RNUM
+  FROM (SELECT
+                MANAGEMENT_NO,
+                STATUS,
+                CAR_NO,
+                MODEL_NAME,
+                FUEL_NAME,
+                BRAND_NAME,
+                GRADE_NAME,
+                YEAR,
+                GRADE_PRICE,
+                MODEL_PRICE,
+                YEAR_PRICE,
+                ROWNUM RNUM
+          FROM (SELECT
+                        C.MANAGEMENT_NO,
+                        STATUS,
+                        CAR_NO,
+                        MODEL_NAME,
+                        FUEL_NAME,
+                        BRAND_NAME,
+                        GRADE_NAME,
+                        YEAR,
+                        GRADE_PRICE,
+                        MODEL_PRICE,
+                        YEAR_PRICE
+                  FROM
+                        TB_CAR C
+                  JOIN  
+                        TB_CAR_BRIDGE CB
+                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+                  
+                  JOIN
+                        TB_MODEL M
+                    ON (CB.MODEL_NO = M.MODEL_NO)
+                  JOIN
+                        TB_FUEL F
+                    ON (CB.FUEL_NO = F.FUEL_NO)
+                  JOIN
+                        TB_BRAND B
+                    ON (CB.BRAND_NO = B.BRAND_NO)
+                  JOIN
+                        TB_GRADE G
+                    ON (CB.GRADE_NO = G.GRADE_NO)
+                  JOIN
+                        TB_YEAR Y
+                    ON (CB.YEAR_NO = Y.YEAR_NO)
+                 ORDER
+                    BY
+                        C.MANAGEMENT_NO))
+         WHERE
+                RNUM BETWEEN ? AND ?
+
+	</entry>
+	
+	<entry key="selectOptionList">
+	
+		SELECT
+		        MANAGEMENT_NO,
+		        O.OPTION_NO,
+		        OPTION_NAME,
+		        OPTION_PRICE
+		  FROM
+		        TB_OPTION O
+		  JOIN
+		        TB_OPTION_BRIDGE OB ON (O.OPTION_NO = OB.OPTION_NO)
+		   
+		 ORDER
+		    BY
+		        MANAGEMENT_NO
+
+	</entry>
+	<!-- </entry> 이거 뭐지요??? 혹시 몰라서 남겨둡니다.-->
+	
+	
+	
 
 	<entry key="selectDetailCar">
 		SELECT

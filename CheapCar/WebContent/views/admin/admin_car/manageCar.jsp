@@ -5,12 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>차량관리</title>
+<style>
+	.container{
+		margin-top : 15px;
+	}
+
+</style>
+
 </head>
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	
 	<div class="outer">
-        <div id="top1" style = "border : 1px solid green";>
+        <div id="top1">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
@@ -35,34 +42,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>N</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
+                
                 <tr>
                     <td>1</td>
                     <td>아반떼</td>

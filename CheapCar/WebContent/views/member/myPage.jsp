@@ -70,7 +70,15 @@
     	width : 100%;
     }
 
+
+	container2{
+		float : left;
+	}
+	
+    container3{
     
+    	float : left;
+    }
     
     
     
@@ -123,12 +131,79 @@
 		      	</tr>
 		   </tbody>
 	  </table>
+  </div>
   
+  <div class="container2">
+		<h4>예약내역</h4>
+	  	<table class="table" id="aa">
+	    	<thead class="thead-dark">
+	      		<tr>
+		        	<th>Firstname</th>
+		        	<th>안녕하세요</th>
+	        	<th>Email</th>
+	      	</tr>
+		    </thead>
+		    <tbody>
+		    	<tr>
+			        <td>안녕하세요</td>
+			        <td>Doe</td>
+		        	<td>john@example.com</td>
+		      	</tr>
+		      	<tr>
+			        <td>Mary</td>
+			        <td>Moe</td>
+			        <td>mary@example.com</td>
+		      	</tr>
+		      	<tr>
+			        <td>July</td>
+			        <td>Dooley</td>
+			        <td>july@example.com</td>
+		      	</tr>
+		   </tbody>
+	  </table>
+  </div>
   
-  
+  <div class="container3">
+		<h4>예약내역</h4>
+	  	<table class="table" id="aa">
+	    	<thead class="thead-dark">
+	      		<tr>
+		        	<th>Firstname</th>
+		        	<th>안녕하세요</th>
+	        	<th>Email</th>
+	      	</tr>
+		    </thead>
+		    <tbody>
+		    	<tr>
+			        <td>안녕하세요</td>
+			        <td>Doe</td>
+		        	<td>john@example.com</td>
+		      	</tr>
+		      	<tr>
+			        <td>Mary</td>
+			        <td>Moe</td>
+			        <td>mary@example.com</td>
+		      	</tr>
+		      	<tr>
+			        <td>July</td>
+			        <td>Dooley</td>
+			        <td>july@example.com</td>
+		      	</tr>
+		   </tbody>
+	  </table>
   </div>
   
   
+
+
+
+
+</div>
+
+
+
+
+
 
 </body>
     
