@@ -145,14 +145,14 @@
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" >                            
+                            <input type="text" name="title" ><%= notice.getNoticeTitle() %>                            
                         </div>
                     </div>
                     <div class="content_sub">
                         <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
                     </div>
                     <div class="content_body">
-                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
+                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"><%= notice.getNoticeContent()%></textarea>
                     </div>
                     
                     <div class="content_btn" align="center">
