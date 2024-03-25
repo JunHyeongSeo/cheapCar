@@ -18,6 +18,12 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
+	
+%>
+<%
+	int carPrice = 0;
+	int optionPrice = 0;
+	int totalPrice = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -223,15 +229,19 @@
 	                        <span><%= c.getFuelName() %></span>
 	                        <span><%= c.getYear() %></span> <br><br>
 
+	                        	<%carPrice = c.getGradePrice() + c.getModelPrice() + c.getYearPrice(); %>
+
 	        					<% for(Option o : optionList) { %>
 	        						<% if(c.getManagementNo() == o.getManagementNo()) { %>
                                			<span> <%= o.getOptionName() %></span>
+                               			<% optionPrice += o.getOptionPrice(); %>
                                		<% } %>
 	                            <% } %> 
 							<br>
+							
 	                        <label>총 가격</label> : 
 	                        <span>
-	                        	<%= c.getGradePrice() + c.getModelPrice() + c.getYearPrice() %>
+	                        	<%= totalPrice = carPrice + optionPrice %>
 							</span> <br>
                             
                             <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>">예약버튼</a>
