@@ -27,6 +27,7 @@
         height: 1000px;
         margin-top: 50px;
         float: right;
+        font-family: "Do Hyeon", sans-serif;
     }
     .content_outer>div{
         width: 100%;
@@ -69,11 +70,11 @@
         opacity: 0.8;
     }
     .content_body{
-        height: 700px;
+        height: auto;
         padding-left: 50px;
         padding-top: 50px;
         border-bottom: 2px solid #b1d6f3;
-        font-size: 25px;
+        font-size: 30px;
     }
 
 
@@ -97,7 +98,9 @@
 		text-align: center;
 		margin-top: 10px;
 	}
-    
+    #comment{
+        font-size: 25px;
+    }
 	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
 		font-weight: 300px;
@@ -109,9 +112,7 @@
 		border: 2px solid #6caddf;
 		border-radius: 5px;
 	}
-	.table{
-		font-size: 18px;
-	}
+	
 
 </style>
 </head>
@@ -131,21 +132,26 @@
                 
                 <div class="content_outer">
                     <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
-                        <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>" />
-                        <label class="">제목 : </label>
-                        <input type="text">    
+                     <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>" />
                     <div class="content_header">
                         <div class="content_header2">
-                            <input type="text" name="title">                            
+                            <label class="form-title">제목 : </label>
+                            <input type="text" name="title" >                            
                         </div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성자 : 관리자
+                        <span class="content_sub1">작성자 : 
                     </div>
-                    <div class="content_body">내용</div>
+                    <div class="content_body">
+                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
+                    </div>
                     
                     <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <div align="center">
+                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
+                            
+                        </div>
                            
                     </div>
                     </form>
