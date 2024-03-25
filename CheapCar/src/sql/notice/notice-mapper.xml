@@ -112,6 +112,7 @@
        			  FROM (SELECT
                        NOTICE_NO,
                        NOTICE_TITLE,
+                       NOTICE_CONTENT,
                        MEMBER_NAME,
                        COUNT,
                        CREATE_DATE

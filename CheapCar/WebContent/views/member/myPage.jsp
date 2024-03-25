@@ -143,8 +143,8 @@
 				        <td><%= car.getCarNo() %></td>
 				        <td><%= car.getModelName() %></td>
 			        	<td><%= car.getLocationName() %></td>
-			        	<td>4</td>
-			        	<td>5</td>
+			        	<td><%= car.getStartDate()%></td>
+			        	<td><%= car.getEndDate() %></td>
 			      	</tr>
 			      	<% } %>
 			   </tbody>
