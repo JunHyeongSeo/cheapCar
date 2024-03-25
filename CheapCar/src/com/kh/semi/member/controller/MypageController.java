@@ -43,7 +43,10 @@ public class MypageController extends HttpServlet {
 		
 		
 		
+		
 		ArrayList<Car> carlist = new MemberService().reservation(loginUser);
+		
+		//System.out.println(carlist);
 		
 		if(carlist.isEmpty()) {
 			
@@ -52,6 +55,8 @@ public class MypageController extends HttpServlet {
 			request.setAttribute("list", carlist);
 			
 		}
+		
+		
 		
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");

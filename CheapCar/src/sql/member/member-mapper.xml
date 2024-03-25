@@ -225,10 +225,10 @@
           JOIN
                 TB_MILEAGE MI
             ON (R.RESERVATION_NO = MI.RESERVATION_NO)
-          	
         WHERE 
             MM.MEMBER_NO = ?
-	
+		AND
+			MI.STATUS = 'Y'
 	
 	</entry>
 	

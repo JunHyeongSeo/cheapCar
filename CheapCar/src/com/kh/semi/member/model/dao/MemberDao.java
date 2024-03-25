@@ -388,6 +388,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
+		
 		String sql = prop.getProperty("reservation");
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -417,6 +418,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				
 				list.add(car);
 			}
+		
 		
 			
 		} catch (SQLException e) {
