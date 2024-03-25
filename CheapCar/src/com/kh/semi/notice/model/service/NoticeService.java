@@ -64,6 +64,20 @@ public class NoticeService {
 	}//
 	
 	
+	public void insert(Notice notice) {
+		
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new NoticeDao().insert(conn, notice);
+				
+		
+		
+		
+		
+	}//
+	
+	
 	
 	
 	

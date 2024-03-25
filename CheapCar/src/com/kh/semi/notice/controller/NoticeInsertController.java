@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.notice.model.service.NoticeService;
 import com.kh.semi.notice.model.vo.Notice;
 
 /**
