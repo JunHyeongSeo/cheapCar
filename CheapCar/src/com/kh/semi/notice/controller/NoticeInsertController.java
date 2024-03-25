@@ -46,7 +46,16 @@ public class NoticeInsertController extends HttpServlet {
 		notice.setNoticeWriter(memberNo);
 		
 		// service
-		new NoticeService().insert(notice);
+		int result = new NoticeService().insert(notice);
+		
+		
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/list.notice");
+		} else {
+			request.setAttribute("errorMsg", "공지사항 작성에 실패하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+		}
 		
 		
 		

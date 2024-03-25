@@ -170,7 +170,23 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertNotice");
 		
-		pstmt = conn.prepareStatement(sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, notice.getNoticeTitle());
+			pstmt.setString(2, notice.getNoticeContent());
+			pstmt.setInt(3, Integer.parseInt(notice.getNoticeWriter()));
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		
 		
 		
