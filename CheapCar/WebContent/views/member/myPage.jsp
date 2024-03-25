@@ -121,8 +121,9 @@
 
 
 	<div class="container1" >
+		<form method="get" action="<%=contextPath%>/reservation.my">
 		<h4>예약내역</h4>
-	  	<table class="table" id="aa" >
+	  	<table class="table" id="aa" href="">
 	    	<thead class="thead-dark">
 	      		<tr>
 		        	<th>차량번호</th>
@@ -156,7 +157,11 @@
 		      	</tr>
 		   </tbody>
 	  </table>
+	  </form>
   </div>
+  
+  
+  
 
   <div id="con23">
   
