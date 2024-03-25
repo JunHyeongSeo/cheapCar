@@ -153,10 +153,10 @@
                     <li><a href="<%=contextPath%>/blackList?currentPage=1">블랙리스트관리</a></li>
                 </ul>
             </li>
-            <li><a href="<%=contextPath%>/manageCar">차량관리</a></li>
+            <li><a href="<%=contextPath%>/manageCar?currentPage=1">차량관리</a></li>
             <li><a href="#">고객센터</a>
                 <ul>
-                    <li><a href="<%=contextPath%>/selectCs">회원문의글조회</a></li>
+                    <li><a href="<%=contextPath%>/selectCsList?currentPage=1">회원문의글조회</a></li>
                     <li><a href="#">FAQ관리</a></li>
                 </ul>
             </li>

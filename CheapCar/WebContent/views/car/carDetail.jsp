@@ -7,7 +7,7 @@
 %>
 <%
 	Car car = (Car)request.getAttribute("car");
-	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+	// List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
 %>
 
 <!DOCTYPE html>
@@ -67,7 +67,8 @@
         </div>
         <div class="car-info"> 차량 설명 
 
-            <div class="car-info-detail"> 차종</div>
+            
+            <div class="car-info-detail"> <%= car.getModelName()%> </div>
             <div class="car-info-detail"> 차이름 </div>
             <div class="car-info-detail"> 차제조사</div>
             <div class="car-info-detail"> 차량 등급</div>

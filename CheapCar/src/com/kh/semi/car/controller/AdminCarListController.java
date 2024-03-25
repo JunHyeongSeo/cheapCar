@@ -16,7 +16,7 @@ import com.kh.semi.common.model.vo.PageInfo;
 /**
  * Servlet implementation class AdminCarListController
  */
-@WebServlet("/manageCar")
+@WebServlet("/manageCar1")
 public class AdminCarListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,6 +47,7 @@ public class AdminCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Car> list = new CarService().selectCarList(pi);
+		// 나중에 매핑값 바꾸기
 		
 	}
 
