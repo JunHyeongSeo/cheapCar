@@ -177,9 +177,9 @@
 
             <li><a href="#">게시판관리</a>
                 <ul>
-                    <li><a href="#">공지사항게시판</a></li>
-                    <li><a href="#">후기게시판</a></li>
-                    <li><a href="#">이벤트게시판</a></li>
+                    <li><a href="<%=contextPath%>/list.notice?currentPage=1">공지사항게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.review">후기게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.event">이벤트게시판</a></li>
                 </ul>
             </li>
         </ul>
