@@ -163,6 +163,25 @@ public class NoticeDao {
 	
 	
 	
+	public int insert(Connection conn, Notice notice) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNotice");
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		
+		
+		
+		
+		
+		return result;
+		
+	}
+	
+	
 	
 	
 	
