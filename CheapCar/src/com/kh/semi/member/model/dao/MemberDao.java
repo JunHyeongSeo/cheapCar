@@ -415,6 +415,12 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				car.setStartDate(rset.getDate("START_DATE"));
 				car.setEndDate(rset.getDate("END_DATE"));
 				car.setMileage(rset.getInt("MILEAGE"));
+				car.setMileageDate(rset.getDate("MILEAGE_DATE"));
+				car.setCsNo(rset.getInt("CS_NO"));
+				car.setCsTitle(rset.getString("CS_TITLE"));
+				car.setCsContent(rset.getString("CS_CONTENT"));
+				car.setCreateDate(rset.getDate("CREATE_DATE"));
+				car.setReplyYn(rset.getString("REPLY_YN"));
 				
 				list.add(car);
 			}

@@ -71,10 +71,7 @@
         padding-top: 10px;
     }
     
-    .date > input{
-    	width : 100px;
-    	margin : 10px;
-    }
+
 </style>
 </head>
 <body>

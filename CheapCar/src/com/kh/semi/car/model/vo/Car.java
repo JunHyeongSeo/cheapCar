@@ -19,10 +19,79 @@ public class Car {
 	private Date startDate;
 	private Date endDate;
 	private int mileage;
+	private Date mileageDate;
+	private int csNo;
+	private String csTitle;
+	private String csContent;
+	private Date createDate;
+	private String replyYn;
 	
+
 	public Car() {
 		super();
 	}
+	
+	
+	public int getCsNo() {
+		return csNo;
+	}
+
+
+	public void setCsNo(int csNo) {
+		this.csNo = csNo;
+	}
+
+
+	public String getCsTitle() {
+		return csTitle;
+	}
+
+
+	public void setCsTitle(String csTitle) {
+		this.csTitle = csTitle;
+	}
+
+
+	public String getCsContent() {
+		return csContent;
+	}
+
+
+	public void setCsContent(String csContent) {
+		this.csContent = csContent;
+	}
+
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+
+	public String getReplyYn() {
+		return replyYn;
+	}
+
+
+	public void setReplyYn(String replyYn) {
+		this.replyYn = replyYn;
+	}
+
+
+	public Date getMileageDate() {
+		return mileageDate;
+	}
+
+
+	public void setMileageDate(Date mileageDate) {
+		this.mileageDate = mileageDate;
+	}
+
+
 
 	
 	public int getMileage() {
