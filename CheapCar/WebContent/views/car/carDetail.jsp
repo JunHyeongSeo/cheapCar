@@ -70,6 +70,13 @@
 
     <div class="area-board">
 
+	<% if(loginUser == null) { %>
+		<script>
+			alert('렌트 예약은 회원만 가능합니다.');
+			location.href = '<%=contextPath%>';
+		</script>
+	<% } %>
+
         <div class="car-image"> 
             <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
         </div>
@@ -105,8 +112,7 @@
 			<div>      	
 	        		총 가격 : <%=totalPrice%>
 	        		<br>
-	            <a class="btn btn-primary "href="#">결제버튼</a>
-	            <a class="btn btn-secondary" href="#">취소버튼</a>
+	            <a class="btn btn-primary "href="#">예약</a>
 	        </div>	  
 	        
         </div>
