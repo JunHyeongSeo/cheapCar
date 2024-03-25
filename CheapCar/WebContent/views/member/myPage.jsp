@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.Car" %>
+<%
+	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,27 +138,15 @@
 		      	</tr>
 			    </thead>
 			    <tbody>
+			    	<% for(Car car : carlist) { %>
 			    	<tr>
-				        <td>1</td>
+				        <td><%= car.getCarNo() %></td>
 				        <td>2</td>
 			        	<td>3</td>
 			        	<td>4</td>
 			        	<td>5</td>
 			      	</tr>
-			      	<tr>
-				        <td>1</td>
-				        <td>2</td>
-			        	<td>3</td>
-			        	<td>4</td>
-			        	<td>5</td>
-			      	</tr>
-			      	<tr>
-				        <td>1</td>
-				        <td>2</td>
-			        	<td>3</td>
-			        	<td>4</td>
-			        	<td>5</td>
-			      	</tr>
+			      	<% } %>
 			   </tbody>
 		  </table>
 	  </form>

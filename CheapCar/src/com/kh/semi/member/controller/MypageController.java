@@ -37,19 +37,15 @@ public class MypageController extends HttpServlet {
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		ArrayList<Car> list = new MemberService().reservation(memberNo);
+		ArrayList<Car> carlist = new MemberService().reservation(memberNo);
 		
-		if(list.isEmpty()) {
-			
-			
+		if(carlist.isEmpty()) {
 			
 		} else {
 			
+			request.setAttribute("list", carlist);
+			
 		}
-		
-		
-		
-		
 		
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
