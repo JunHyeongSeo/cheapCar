@@ -81,11 +81,11 @@
 				</h2>
 
 
-				
+					<% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
 					<div id="write">
 						<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
 					</div> 
-				 
+				    <% } %>
 
 				
 				   <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 5px;">
