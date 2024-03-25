@@ -64,7 +64,7 @@ public class NoticeInsertController extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("views/notice/noticeInsert.jsp").forward(request, response);
+		
 		
 		
 		
