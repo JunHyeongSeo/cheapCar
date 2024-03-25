@@ -132,12 +132,20 @@
         .container{
 		   margin-top: 20px;
 		}
+		.paging-area{
+		text-align : center;
+		margin-top : 12px;
+		}
+		.pagin-area>button{
+			margin : auto;
+		}
 	</style>
 </head>
 <body>
  
     <div id="wrap">
         <h1>관리자 메인페이지</h1>
+        
         <div class="login-area">
 			<div id="login-area1"><a href="<%= contextPath %>/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
 			<div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>

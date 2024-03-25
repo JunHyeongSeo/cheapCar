@@ -16,7 +16,7 @@ import com.kh.semi.common.model.vo.PageInfo;
 /**
  * Servlet implementation class AdminCarListController
  */
-@WebServlet("/manageCar1")
+@WebServlet("/manageCar")
 public class AdminCarListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

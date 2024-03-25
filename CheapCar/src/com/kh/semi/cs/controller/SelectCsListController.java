@@ -49,8 +49,8 @@ public class SelectCsListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Cs> list = new CsService().selectCsList(pi);
 		
-		
-		
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		request.getRequestDispatcher("views/admin/admin_cs/selectCs.jsp").forward(request, response);
 		
