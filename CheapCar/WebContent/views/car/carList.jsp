@@ -114,7 +114,15 @@
     .form-check-label{
     	margin-left : 3%;
     }
-
+    
+    .form-group{
+    	align : center;
+    }
+	
+	select > option{
+		width: 150px;
+		height: 50px;
+	}
 </style>
 </head>
 <body>
