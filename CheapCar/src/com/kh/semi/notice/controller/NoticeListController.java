@@ -65,16 +65,13 @@ public class NoticeListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		new NoticeService().selectList(pi);
+		ArrayList<Notice> list = new NoticeService().selectList(pi);
 		
 		
-		// 1) 인코딩 -> a태그는 무조건 get방식 => 인코딩 필요 X
-		// 2) 값뽑기 x
-		// 3) 데이터 가공 X
-		// 4) 서비스 호출
-		ArrayList<Notice> list = new NoticeService().selectNoticeList();
-		
+
+				
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		
 		

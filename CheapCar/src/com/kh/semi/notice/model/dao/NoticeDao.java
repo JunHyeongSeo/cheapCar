@@ -257,9 +257,9 @@ public class NoticeDao {
 	}
 	
 	
-	public ArrayList<PageInfo> selectList(Connection conn, PageInfo pi){
+	public ArrayList<Notice> selectList(Connection conn, PageInfo pi){
 		
-		ArrayList<PageInfo> list = new ArrayList();
+		ArrayList<Notice> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectNoticeList");
@@ -282,20 +282,20 @@ public class NoticeDao {
 				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
 				notice.setNoticeContent(rset.getString("NOTICE_CONTENT"));
 				notice.setNoticeWriter(rset.getString("MEMBER_NAME"));
+				notice.setCount(rset.getInt("COUNT"));
+				notice.setCreateDate(rset.getDate("CREATE_DATE"));
 				
-				
+				list.add(notice);
 				
 			}
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
-		
-		
-		
-		
 		
 		return list;
 	}
