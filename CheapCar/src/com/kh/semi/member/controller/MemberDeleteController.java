@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
@@ -38,17 +39,34 @@ public class MemberDeleteController extends HttpServlet {
 		
 		int result = new MemberService().deleteMember(memberPwd, memberNo);
 		
-		HttpSession session = request.getSession();
-		Member loginUser = ((Member)session.getAttribute("loginUser"));
+//		HttpSession session = request.getSession();
+//		Member loginUser = ((Member)session.getAttribute("loginUser"));
 		
-		String alertMsg = "";
 		
 		System.out.println(result);
 		
-		
-		
+		if(result > 0) {
+			request.setAttribute("erorrMsg", "회원탈퇴에 성공하셨습니다!!!");
+			request.getRequestDispatcher("views/common/errorPage").forward(request, response);
+
+			
+			HttpSession session = request.getSession();
+			session.removeAttribute("loginUser");
+			
+			response.sendRedirect(request.getContextPath() + "/update");
+			
+		} else {
+			
+			request.setAttribute("errorMsg", "회원탈퇴에 실패하셨습니다...");
+			request.getRequestDispatcher("views/common/errorPage").forward(request, response);
+
+		}
 		
 	
+		
+		
+//		response.sendRedirect(request.getContextPath() + "/update" );
+		
 	
 	}
 
