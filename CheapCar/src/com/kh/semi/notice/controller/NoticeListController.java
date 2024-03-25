@@ -36,6 +36,28 @@ public class NoticeListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new NoticeService().selectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		
+		pageLimit = 5;
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
+		
+		
+		
 		// 1) 인코딩 -> a태그는 무조건 get방식 => 인코딩 필요 X
 		// 2) 값뽑기 x
 		// 3) 데이터 가공 X
