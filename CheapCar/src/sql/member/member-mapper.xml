@@ -189,7 +189,9 @@
                 YEAR,
                 GRADE_PRICE,
                 MODEL_PRICE,
-                YEAR_PRICE
+                YEAR_PRICE,
+                START_DATE,
+                END_DATE
           FROM
                 TB_CAR C
           JOIN  

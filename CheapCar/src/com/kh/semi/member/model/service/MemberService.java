@@ -186,8 +186,6 @@ public Member login(String memberId, String memberPwd) {
 		
 		close(conn);
 		
-		System.out.println(list);
-		
 		return list;
 	}
 	
