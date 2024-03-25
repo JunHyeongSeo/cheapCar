@@ -208,7 +208,7 @@
 	
 	
 
-	<entry key="">
+	<entry key="selectDetailCar">
 		SELECT
 		        C.MANAGEMENT_NO,
 		        STATUS,
@@ -248,5 +248,19 @@
 		    ON (CB.YEAR_NO = Y.YEAR_NO)
 		 WHERE
 		        C.MANAGEMENT_NO = ?
+	</entry>
+	<entry key="selectDetailOption">
+		SELECT
+		        MANAGEMENT_NO,
+		        O.OPTION_NO,
+		        OPTION_NAME,
+		        OPTION_PRICE
+		  FROM
+		        TB_OPTION O
+		  JOIN
+		        TB_OPTION_BRIDGE OB
+		    ON (O.OPTION_NO = OB.OPTION_NO)
+		 WHERE
+		        MANAGEMENT_NO = ?
 	</entry>
 </properties>

@@ -2,6 +2,7 @@ package com.kh.semi.car.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.kh.semi.car.model.dao.CarDao;
 import com.kh.semi.car.model.vo.Car;
@@ -56,15 +57,15 @@ public class CarService {
 		return car;
 	}
 	
-	public Option selectDetailOption(int managementNo) {
+	public List<Option> selectDetailOption(int managementNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		Option option = new CarDao().selectDetailOption(conn,managementNo);
+		List<Option> optionList = new CarDao().selectDetailOption(conn,managementNo);
 		
 		JDBCTemplate.close(conn);
 
-		return option;
+		return optionList;
 		
 		
 	}
