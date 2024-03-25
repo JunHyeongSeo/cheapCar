@@ -105,7 +105,7 @@
 	
 	<div class="nav-area" align="center">
 		<div class="menu"><a href="<%= contextPath %>/views/common/deleteLater.jsp">쉬는시간</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.car?currentPage=1">차량렌트</a></div>
+		<div class="menu"><a href="<%= contextPath %>/listCar.do?currentPage=1">차량렌트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.event">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice">공지사항</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.review">후기</a></div>
