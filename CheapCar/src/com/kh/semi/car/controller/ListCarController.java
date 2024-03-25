@@ -17,7 +17,7 @@ import com.kh.semi.common.model.vo.PageInfo;
 /**
  * Servlet implementation class ListCarController
  */
-@WebServlet("/list.car")
+@WebServlet("/listCar.do")
 public class ListCarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
