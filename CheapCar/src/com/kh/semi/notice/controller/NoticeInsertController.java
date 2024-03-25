@@ -37,13 +37,16 @@ public class NoticeInsertController extends HttpServlet {
 		// 값
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
-		String memberNo = request.getParameter("memberNo");
+		String noticeWriter = request.getParameter("memberName");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		// 가공
 		Notice notice = new Notice();
 		notice.setNoticeTitle(noticeTitle);
 		notice.setNoticeContent(noticeContent);
-		notice.setNoticeWriter(memberNo);
+		notice.setNoticeWriter(noticeWriter);
+		notice.setMemberNo(memberNo);
+		
 		
 		// service
 		int result = new NoticeService().insert(notice);

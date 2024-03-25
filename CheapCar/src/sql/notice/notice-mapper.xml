@@ -74,10 +74,12 @@
 		       NOTICE_TITLE,
 		       NOTICE_CONTENT,
 		       NOTICE_WRITER,
+		       MEMBER_NO
 		       )
    	    VALUES
    	           (
    	           SEQ.NNO.NEXTVAL,
+   	           ?,
    	           ?,
    	           ?,
    	           ?
