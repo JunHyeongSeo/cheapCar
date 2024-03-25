@@ -78,7 +78,7 @@
 		       )
    	    VALUES
    	           (
-   	           SEQ.NOTICE_NO.NEXTVAL,
+   	           SEQ.NOTICE_BOARD_NO.NEXTVAL,
    	           ?,
    	           ?,
    	           ?,
