@@ -39,9 +39,6 @@ public class ListCarDetailController extends HttpServlet {
 		
 		List<Option> optionList = new CarService().selectDetailOption(managementNo);
 		
-		System.out.println(car);
-		System.out.println(optionList);
-		
 		request.setAttribute("car", car);
 		request.setAttribute("optionList", optionList);
 		
