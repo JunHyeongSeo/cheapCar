@@ -161,7 +161,13 @@ public Member login(String memberId, String memberPwd) {
 		
 		int result = new MemberDao().deleteMember(conn, memberPwd, memberNo);
 		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			
+		}
 		
+		close(conn);
 		
 		
 		return result;
