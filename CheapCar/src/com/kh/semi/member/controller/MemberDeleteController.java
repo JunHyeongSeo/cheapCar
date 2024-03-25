@@ -1,6 +1,8 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,30 +43,34 @@ public class MemberDeleteController extends HttpServlet {
 		
 //		HttpSession session = request.getSession();
 //		Member loginUser = ((Member)session.getAttribute("loginUser"));
-		
+//		
+//		
+//		String alertMsg = "";
 		
 		System.out.println(result);
 		
 		if(result > 0) {
-			request.setAttribute("erorrMsg", "회원탈퇴에 성공하셨습니다!!!");
-			request.getRequestDispatcher("views/common/errorPage").forward(request, response);
 
+//			alertMsg = "회원삭제 성공!!!";
+//			session.removeAttribute("loginUser");
 			
 			HttpSession session = request.getSession();
 			session.removeAttribute("loginUser");
 			
-			response.sendRedirect(request.getContextPath() + "/update");
+			response.sendRedirect(request.getContextPath());
+			
+			
 			
 		} else {
 			
-			request.setAttribute("errorMsg", "회원탈퇴에 실패하셨습니다...");
-			request.getRequestDispatcher("views/common/errorPage").forward(request, response);
-
+			//alertMsg = "회원삭제 실패...";
+			request.setAttribute("errorMsg", "회원탈퇴에 실패했습니다!");
+			request.getRequestDispatcher("views/common/errorPage.jsp")
+			.forward(request, response);
+			
 		}
 		
-	
-		
-		
+//		session.setAttribute("alertMsg", alertMsg);
 //		response.sendRedirect(request.getContextPath() + "/update" );
 		
 	
