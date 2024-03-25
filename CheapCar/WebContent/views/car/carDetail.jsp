@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ 
-	page import="java.util.ArrayList, 
+	page import="java.util.List, 
 	com.kh.semi.car.model.vo.*,
 	com.kh.semi.common.model.vo.PageInfo" 
 %>
 <%
-	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
-	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+	Car car = (Car)request.getAttribute("car");
+	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
 %>
 
 <!DOCTYPE html>
@@ -73,9 +73,6 @@
             <div class="car-info-detail"> 차량 등급</div>
             <div class="car-info-detail"> 사용 연료</div>
             <div class="car-info-detail"> 기타 옵션 리스트
-                <span>span</span>
-                <span>span</span>
-                <span>span</span>
                 <span>span</span>
             </div>
             <a class="btn btn-sm btn-primary"href="#">결제버튼</a>

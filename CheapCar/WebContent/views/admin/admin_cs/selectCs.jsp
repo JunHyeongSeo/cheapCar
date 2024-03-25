@@ -9,7 +9,7 @@
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	<div class="outer">
-        <div id="top1" style = "border : 1px solid green";>
+        <div id="top1">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
