@@ -105,13 +105,13 @@
 					  <% } else { %>
 
 						
-						<% for(int i = list.size()-1; i >= 0; i--) { %>
+						<% for(Notice n: list) { %>
 							<tr class="notice_list">
-								<th style="text-align:center"><%= i-1 %></th>
-								<th><%= list.get(i).getNoticeTitle() %></th>
-								<th style="text-align:center"><%= list.get(i).getNoticeWriter() %></th>
-								<th style="text-align:center"><%= list.get(i).getCreateDate() %></th>
-								<th style="text-align:center"><%= list.get(i).getCount() %></th>
+								<th style="text-align:center"><%= n.getNoticeNo() %></th>
+								<th><%= n.getNoticeTitle() %></th>
+								<th style="text-align:center"><%= n.getNoticeWriter() %></th>
+								<th style="text-align:center"><%= n.getCreateDate() %></th>
+								<th style="text-align:center"><%= n.getCount() %></th>
 							</tr>
 						<% } %>	
 					 <% } %>
@@ -138,7 +138,7 @@
 
 	<script>
 		$('.notice_list').click(function(){
-			const noticeNo = $(this).children().eq(0).text();
+			 const noticeNo = $(this).children().eq(0).text();
 			location.href = '<%=contextPath%>/detail.notice?noticeNo=' + noticeNo;
 
 		})
