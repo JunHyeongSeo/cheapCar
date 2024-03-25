@@ -26,6 +26,14 @@ public class NoticeUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		// post
+		request.setCharacterEncoding("UTF-8");
+		
+		// 값 뽑기
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		String noticeTitle = request.getParameter("noticeTitle");
+		
 		
 		
 		
