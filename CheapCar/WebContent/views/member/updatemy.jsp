@@ -98,13 +98,13 @@
 			  <script>
 			  	function deleteMember(){
 			  		
-			  		const value = prompt('탈퇴를 원하신다면 "어쩌고저쩌고"를 정확히 입력해주세요.');
+			  		const value = prompt('탈퇴를 원하신다면 "삭제"를 정확히 입력해주세요.');
 			  		
-			  		if(value === '어쩌고어쩌고'){
+			  		if(value === '삭제'){
 			  			return true;
 			  		} 
 			  		else{
-			  			return true;
+			  			return false;
 			  		}
 			  		
 			  		
