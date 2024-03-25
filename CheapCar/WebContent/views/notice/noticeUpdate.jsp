@@ -132,7 +132,7 @@
 				</div>
                 
                 <div class="content_outer">
-                    <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
+                    <form action="<%=contextPath%>/update.notice" method="post" id="insert-form">
                      <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
                      <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
                     <div class="content_header">
