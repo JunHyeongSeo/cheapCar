@@ -18,9 +18,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	
 	<style>
 		.login-area{
 			float : right;
@@ -92,7 +90,6 @@
 				<span><%= loginUser.getMemberName() %></span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
-			  		<input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
 					<!-- <a href="/jsp/logout">로그아웃</a>-->
 					<a href="<%= contextPath %>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
 					<% if(loginUser.getMemberStatus().equals("A")) { %>

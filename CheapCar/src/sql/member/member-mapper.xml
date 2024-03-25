@@ -178,7 +178,7 @@
 	<entry key="reservation">
 	SELECT
                MANAGEMENT_NO,
-                STATUS,
+                C.STATUS,
                 CAR_NO,
                 C.LOCATION_NO,
                 LOCATION_NAME,
@@ -191,7 +191,8 @@
                 MODEL_PRICE,
                 YEAR_PRICE,
                 START_DATE,
-                END_DATE
+                END_DATE,
+                MI.MILEAGE
           FROM
                 TB_CAR C
           JOIN  
@@ -221,9 +222,13 @@
           JOIN
                 TB_MEMBER MM
             ON (R.RESERVATION_NO = MM.MEMBER_NO)
+          JOIN
+                TB_MILEAGE MI
+            ON (R.RESERVATION_NO = MI.RESERVATION_NO)
         WHERE 
             MM.MEMBER_NO = ?
-	
+		AND
+			MI.STATUS = 'Y'
 	
 	</entry>
 	
