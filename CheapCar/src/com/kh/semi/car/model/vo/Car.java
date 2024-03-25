@@ -18,8 +18,25 @@ public class Car {
 	private int yearPrice;
 	private Date startDate;
 	private Date endDate;
+	private int mileage;
 	
+	public Car() {
+		super();
+	}
+
 	
+	public int getMileage() {
+		return mileage;
+	}
+
+
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
+
+
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -44,9 +61,6 @@ public class Car {
 
 
 
-	public Car() {
-		super();
-	}
 
 
 
