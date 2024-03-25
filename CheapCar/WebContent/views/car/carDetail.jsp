@@ -17,7 +17,6 @@
 	int optionPrice = 0;
 	int totalPrice = 0;
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +59,14 @@
     .car-info > div{
         text-align: right;
     }
+
+    .modal-area{
+        text-align: left;
+    }
+
+    .modal-area > div{
+        padding-top: 10px;
+    }
     
 </style>
 </head>
@@ -70,16 +77,24 @@
 
     <div class="area-board">
 
+	<% if(loginUser == null) { %>
+		<script>
+			alert('렌트 예약은 회원만 가능합니다.');
+			location.href = '<%=contextPath%>/loginPage';
+		</script>
+	<% } else { %>
+
         <div class="car-image"> 
             <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
         </div>
         
         <div class="car-info"> 차량 상세 정보
-        
+            <form>
 			    <p>대여 기간 선택
-			        <input type="date" id="datepicker1">
-			        <input type="date" id="datepicker2">
+			        <input type="date" id="datepicker1" name="">
+			        <input type="date" id="datepicker2" name="">
 			    </p>
+            </form>
             	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
@@ -103,17 +118,62 @@
             	<% totalPrice = carPrice + optionPrice; %>
             	
 			<div>      	
-	        		총 가격 : <%=totalPrice%>
-	        		<br>
-	            <a class="btn btn-primary "href="#">결제버튼</a>
-	            <a class="btn btn-secondary" href="#">취소버튼</a>
+	        	총 가격 : <%=totalPrice%>
+	        	<br>
+	            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+				  	Open modal
+				</button>
+				
+				<div class="modal" id="myModal">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+				
+                            <div class="modal-header">
+                                <h4 class="modal-title">저렴하니카 결제 화면</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+				
+                            <div class="modal-body">
+                                <form>
+	                                <div class="modal-area">
+                                        <div>
+                                       	    결제 방식 : 
+                                            <select name="">
+                                                <option value="선불충전">선불충전</option>
+                                                <option value="가상계좌">가상계좌</option>
+                                                <option value="카드결제">신용카드</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                          	예약자 명 :
+                                            <span><%= loginUser.getMemberName()%></span>
+                                        </div>
+                                        <div>
+                                           	예약 차량 : 
+                                            <span><%= car.getBrandName()%> / <%= car.getCarNo()%></span>
+                                        </div>
+                                        <div>
+                                         	이메일 : 
+                                            <input type="text">
+                                        </div>
+	                                </div>
+                                </form>
+                            </div>
+				
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-primary">결제</button>
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">취소</button>
+                            </div>
+				        </div>
+				    </div>
+			    </div>
 	        </div>	  
 	        
         </div>
 
         <br clear="both">
         
-            
+    <% } %>        
     </div>
 
 

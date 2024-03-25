@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.dao.NoticeDao;
 import com.kh.semi.notice.model.vo.Notice;
 
@@ -19,6 +20,8 @@ public class NoticeService {
 		
 		return list;
 	}//
+	
+
 	
 	
 	public int increaseCount(int noticeNo) {
@@ -95,6 +98,26 @@ public class NoticeService {
 		return result;
 	}//
 	
+	
+	public int selectListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int listCount = new NoticeDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return listCount;
+	}//
+	
+	public void selectList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new NoticeDao().selectList(conn, pi);
+		
+	}
 	
 	
 	

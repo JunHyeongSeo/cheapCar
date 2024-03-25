@@ -245,6 +245,7 @@
 							</span> <br>
                             
                             <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>">예약버튼</a>
+                            <% optionPrice = 0; %>
 	                    </div>
                     </div>
 	                <% } %>

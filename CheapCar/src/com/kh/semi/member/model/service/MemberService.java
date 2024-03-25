@@ -1,10 +1,14 @@
 package com.kh.semi.member.model.service;
 
-import static com.kh.semi.common.JDBCTemplate.*;
+import static com.kh.semi.common.JDBCTemplate.close;
+import static com.kh.semi.common.JDBCTemplate.commit;
+import static com.kh.semi.common.JDBCTemplate.getConnection;
+import static com.kh.semi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.dao.MemberDao;
 import com.kh.semi.member.model.vo.Member;
@@ -174,7 +178,16 @@ public Member login(String memberId, String memberPwd) {
 	}
 	
 	
-	
+	public ArrayList<Car> reservation (Member loginUser){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Car> list = new MemberDao().reservation(conn, loginUser);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 	
 	

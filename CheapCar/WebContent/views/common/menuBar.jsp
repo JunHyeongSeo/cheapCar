@@ -90,6 +90,7 @@
 				<span><%= loginUser.getMemberName() %></span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
+			  		<input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
 					<!-- <a href="/jsp/logout">로그아웃</a>-->
 					<a href="<%= contextPath %>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
 					<% if(loginUser.getMemberStatus().equals("A")) { %>
