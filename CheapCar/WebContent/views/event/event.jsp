@@ -122,7 +122,7 @@
 					<ul id="event_list">
 						<li>
 							<a href="" alt="">
-								<div class="img-area event_1">1</div>
+								<div class="img-area event_1">사진</div>
 								<div class="text-area event_1">
 									세일세일세일
 								</div>
