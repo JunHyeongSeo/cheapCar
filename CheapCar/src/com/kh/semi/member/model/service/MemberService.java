@@ -178,14 +178,15 @@ public Member login(String memberId, String memberPwd) {
 	}
 	
 	
-	public ArrayList<Car> reservation (int memberNo){
+	public ArrayList<Car> reservation (Member loginUser){
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Car> list = new MemberDao().reservation(conn, memberNo);
+		ArrayList<Car> list = new MemberDao().reservation(conn, loginUser);
 		
 		close(conn);
 		
+		System.out.println(list);
 		
 		return list;
 	}
