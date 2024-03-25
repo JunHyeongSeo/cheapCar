@@ -146,7 +146,7 @@
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" ><%= notice.getNoticeTitle() %>                            
+                            <input type="text" name="title" required><%= notice.getNoticeTitle() %>                            
                         </div>
                     </div>
                     <div class="content_sub">

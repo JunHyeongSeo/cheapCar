@@ -149,7 +149,7 @@
                     </div>
                     <div class="content_body"><%= notice.getNoticeContent()%></div>
                     <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%=contextPath%>/list.notice?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         
                            <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
                             <a href="<%=contextPath%>/updateForm.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
