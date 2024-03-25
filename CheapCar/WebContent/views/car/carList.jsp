@@ -234,7 +234,7 @@
 	                        	<%= c.getGradePrice() + c.getModelPrice() + c.getYearPrice() %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="listDetail.do?=<%=c.getManagementNo()%>">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>">예약버튼</a>
 	                    </div>
                     </div>
 	                <% } %>
