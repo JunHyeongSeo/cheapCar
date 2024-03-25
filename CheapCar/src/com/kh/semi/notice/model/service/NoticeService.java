@@ -81,17 +81,19 @@ public class NoticeService {
 	}//
 	
 	
-	public void updateNotice(Notice notice) {
+	public int updateNotice(Notice notice) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new NoticeDao().updateNotice(conn, notice);
+		int result = new NoticeDao().updateNotice(conn, notice);
 				
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
 		
 		
 		
-		
-	}
+		return result;
+	}//
 	
 	
 	

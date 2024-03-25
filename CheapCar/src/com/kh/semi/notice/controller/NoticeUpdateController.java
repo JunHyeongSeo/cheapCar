@@ -48,9 +48,21 @@ public class NoticeUpdateController extends HttpServlet {
 		
 		
 		// service
-		new NoticeService().updateNotice(notice);
+		int result = new NoticeService().updateNotice(notice);
 		
 		
+		// 응답화면
+		if(result > 0) {
+		
+			response.sendRedirect(request.getContextPath() + "detail.notice?noticeNo=" + noticeNo);
+			
+		} else {
+			
+			request.setAttribute("errorMsg", "공지사항 수정에 실패하였습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+			
+		}
 		
 		
 	}
