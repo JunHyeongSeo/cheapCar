@@ -37,14 +37,14 @@ public class NoticeListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount;
-		int currentPage;
-		int pageLimit;
-		int boardLimit;
+		int listCount = 0;
+		int currentPage= 0;
+		int pageLimit= 0;
+		int boardLimit= 0;
 		
-		int maxPage;
-		int startPage;
-		int endPage;
+		int maxPage= 0;
+		int startPage= 0;
+		int endPage= 0;
 		
 		listCount = new NoticeService().selectListCount();
 		
@@ -65,22 +65,18 @@ public class NoticeListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		new NoticeService().selectList(pi);
+		ArrayList<Notice> list = new NoticeService().selectList(pi);
 		
-		
-		// 1) 인코딩 -> a태그는 무조건 get방식 => 인코딩 필요 X
-		// 2) 값뽑기 x
-		// 3) 데이터 가공 X
-		// 4) 서비스 호출
-		ArrayList<Notice> list = new NoticeService().selectNoticeList();
-		
+				
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		
 		
 		// 최종적으로 얘가 할 일 : 응답화면 띄우기. -> noticeList.jsp에다가
 		RequestDispatcher view = request.getRequestDispatcher("views/notice/notice.jsp");
 		view.forward(request, response);
+		
 	}
 	
 	/**
