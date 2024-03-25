@@ -1,14 +1,18 @@
 package com.kh.semi.cs.model.dao;
 
+import static com.kh.semi.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.kh.semi.common.JDBCTemplate.*;
+import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.cs.model.vo.Cs;
 
 public class CsDao {
 	
@@ -49,5 +53,17 @@ public class CsDao {
 		
 		return result;
 	}
+	
+	public ArrayList<Cs> selectCsList(Connection conn, PageInfo pi){
+		
+		ArrayList<Cs> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCsList");
+		
+		
+		
+	}
+	
 
 }

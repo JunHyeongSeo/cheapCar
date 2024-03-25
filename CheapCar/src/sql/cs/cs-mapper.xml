@@ -10,7 +10,9 @@
 		SELECT COUNT(*) FROM TB_CS_BOARD
 	</entry>
 	
-	
+	<entry key="selectCsList"> 
+		SELECT A.* ROWNUM RNUM FROM (SELECT * FROM TB_CS_BOARD ORDER BY CS_NO ASC) A
+	</entry>
 	
 	
 	
