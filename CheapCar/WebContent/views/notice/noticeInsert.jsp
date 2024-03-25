@@ -130,14 +130,17 @@
 				</div>
                 
                 <div class="content_outer">
-                    
+                    <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
+                        <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %>" />
+                        <label class="">제목 : </label>
+                        <input type="text">    
                     <div class="content_header">
                         <div class="content_header2">
                             <input type="text" name="title">                            
                         </div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성자 : 관리자</span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : 관리자
                     </div>
                     <div class="content_body">내용</div>
                     
@@ -145,6 +148,7 @@
                         <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
                            
                     </div>
+                    </form>
                 </div>
 			 </div>
 		  </div>
