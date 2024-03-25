@@ -54,7 +54,7 @@ public class NoticeUpdateController extends HttpServlet {
 		// 응답화면
 		if(result > 0) {
 		
-			response.sendRedirect(request.getContextPath() + "detail.notice?noticeNo=" + noticeNo);
+			response.sendRedirect(request.getContextPath() + "/detail.notice?noticeNo=" + noticeNo);
 			
 		} else {
 			

@@ -141,6 +141,7 @@
                 <div class="content_outer">
                     <form action="<%=contextPath%>/update.notice" method="post" id="insert-form">
                      <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
+                     <input type="hidden" name="noticeNo" value="<%= notice.getNoticeNo() %>" />
                      <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
                     <div class="content_header">
                         <div class="content_header2">
