@@ -105,7 +105,29 @@
 		       STATUS = 'Y'         
 	</entry>
 	
+	<entry key="selectList">
+	SELECT *
+  		FROM
+      		  (SELECT A.*, ROWNUM RNUM
+       			  FROM (SELECT
+                       NOTICE_NO,
+                       NOTICE_TITLE,
+                       MEMBER_NAME,
+                       COUNT,
+                       CREATE_DATE
+                  FROM
+                       TB_NOTICE_BOARD
+                  JOIN
+                       TB_MEMBER USING (MEMBER_NO)
+                 WHERE
+                       TB_NOTICE_BOARD.STATUS = 'Y'
+                 ORDER
+                    BY
+                       CREATE_DATE DESC)A)
+   WHERE
+         RNUM BETWEEN ? AND ?
 	
+	</entry>
 	
 	
 	

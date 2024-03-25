@@ -32,7 +32,7 @@ public class NoticeDao {
 	
 	
 	
-	
+	/*
 	public ArrayList<Notice> selectNoticeList(Connection conn) {
 		
 		// 조회된 공지사항 리스트 담을 ArrayList 선언
@@ -76,7 +76,7 @@ public class NoticeDao {
 		return list;
 	}//
 	
-	
+	*/
 	public int increaseCount(Connection conn, int noticeNo) {
 		
 		int result = 0;
@@ -254,6 +254,47 @@ public class NoticeDao {
 		
 		
 		return listCount;
+	}
+	
+	
+	public ArrayList<PageInfo> selectList(Connection conn, PageInfo pi){
+		
+		ArrayList<PageInfo> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoticeList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Notice notice = new Notice();
+				
+				
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		return list;
 	}
 	
 	
