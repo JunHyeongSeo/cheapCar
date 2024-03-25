@@ -83,7 +83,7 @@
 
 				<% if (loginUser != null && loginUser.getMemberId().equals("admin") ){%>
 					<div id="write">
-						<a href="<%= contextPath %>/inserForm.notice" class="btn btn-info">글쓰기</a>
+						<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
 					</div> 
 				<% } %> 
 
