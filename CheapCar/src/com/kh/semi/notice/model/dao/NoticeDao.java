@@ -195,7 +195,26 @@ public class NoticeDao {
 		
 		return result;
 		
-	}
+	}//
+	
+	
+	
+	public int updateNotice(Connection conn, Notice notice) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNotice");
+		
+		
+		
+		
+		
+		
+		
+		return result;
+		
+	}//
 	
 	
 	
