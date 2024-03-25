@@ -9,7 +9,7 @@
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	<div class="outer">
-        <div id="top1" style = "border : 1px solid green";>
+        <div id="top1">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
@@ -41,13 +41,7 @@
                     <td>N</td>
                     <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user02</td>
-                    <td>차가 이상해요2</td>
-                    <td>Y</td>
-                    <td>-</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>

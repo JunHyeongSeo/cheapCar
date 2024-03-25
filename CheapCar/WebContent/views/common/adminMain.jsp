@@ -128,6 +128,10 @@
             height: 10%;
             float: left;
         }
+        
+        .container{
+		   margin-top: 20px;
+		}
 	</style>
 </head>
 <body>
@@ -139,7 +143,7 @@
 			<div id="login-area2"><a href="<%= contextPath %>" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
         </div>
 
-        <br clear="both">1
+        <br clear="both">
        
         <ul id="navi">
 			<li><a href="#">회원관리</a>
@@ -149,10 +153,10 @@
                     <li><a href="<%=contextPath%>/blackList?currentPage=1">블랙리스트관리</a></li>
                 </ul>
             </li>
-            <li><a href="<%=contextPath%>/manageCar">차량관리</a></li>
+            <li><a href="<%=contextPath%>/manageCar?currentPage=1">차량관리</a></li>
             <li><a href="#">고객센터</a>
                 <ul>
-                    <li><a href="<%=contextPath%>/selectCs">회원문의글조회</a></li>
+                    <li><a href="<%=contextPath%>/selectCsList?currentPage=1">회원문의글조회</a></li>
                     <li><a href="#">FAQ관리</a></li>
                 </ul>
             </li>
