@@ -117,7 +117,7 @@
 		<br clear = "both">
 
     <div class="area">
-        <div class="inline" id="introduce">안녕하세요! <span> <%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
+        <div class="inline" id="introduce">안녕하세요! <span>나는 널이다 ㅋ <%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
         <div class="inline" id="mymodify"><a href="<%=contextPath %>/update" >개인정보수정</a></div>
     </div>
     
@@ -127,7 +127,7 @@
 	<div class="container1" >
 		<form method="get" action="<%=contextPath%>/reservation.my">
 			<h4>예약내역</h4>
-		  	<table class="table" id="aa" href="">
+		  	<table class="table" id="aa">
 		    	<thead class="thead-dark">
 		      		<tr>
 			        	<th>차량번호</th>
@@ -162,26 +162,22 @@
 	  	<table class="table" id="aa">
 	    	<thead class="thead-dark">
 	      		<tr>
-		        	<th>Firstname</th>
-		        	<th>안녕하세요</th>
-	        	<th>Email</th>
-	      	</tr>
+		        	<th>적립날짜</th>
+		        	<th>마일리지</th>
+	      		</tr>
 		    </thead>
 		    <tbody>
 		    	<tr>
 			        <td>안녕하세요</td>
 			        <td>Doe</td>
-		        	<td>john@example.com</td>
 		      	</tr>
 		      	<tr>
 			        <td>Mary</td>
 			        <td>Moe</td>
-			        <td>mary@example.com</td>
 		      	</tr>
 		      	<tr>
 			        <td>July</td>
 			        <td>Dooley</td>
-			        <td>july@example.com</td>
 		      	</tr>
 		   </tbody>
 	  </table>
@@ -194,7 +190,7 @@
 	      		<tr>
 		        	<th>Firstname</th>
 		        	<th>안녕하세요</th>
-	        	<th>Email</th>
+	        		<th>Email</th>
 	      	</tr>
 		    </thead>
 		    <tbody>

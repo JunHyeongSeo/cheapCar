@@ -413,6 +413,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
 				car.setStartDate(rset.getDate("START_DATE"));
 				car.setEndDate(rset.getDate("END_DATE"));
+				car.setMileage(rset.getInt("MILEAGE"));
 				
 				list.add(car);
 			}
