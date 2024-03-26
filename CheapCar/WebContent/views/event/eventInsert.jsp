@@ -141,7 +141,7 @@
                     </div>
                     <div class="content_body">
                         <div class="img-area" align="center">
-							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" alt="" align="center"> 이미지
+							<img src="경로경로" alt="" align="center" id="imgimg"> 이미지
 						</div>
                         <div class="text-area"> 텍스트</div>
                     </div>
@@ -158,7 +158,7 @@
                         <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                           
+                        <button onclick="test()">테스트</button>   
                     </div>
                 </div>
 				</div>            
@@ -169,8 +169,13 @@
 	
 	<script>
 		
-		const thumbnail = 
+		const thumbnail = document.getElementById('thumbnail');
+        const img_area = document.getElementsByClassName('img-area');
+        
 
+        function test(){
+            console.log(document.getElementsByClassName('imgimg'));
+        }
 
 
 	</script>
