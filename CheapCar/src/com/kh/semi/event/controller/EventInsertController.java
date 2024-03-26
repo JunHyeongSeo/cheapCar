@@ -62,6 +62,24 @@ public class EventInsertController extends HttpServlet {
 			
 			ArrayList<EventPhoto> list = new ArrayList();
 			
+			for(int i = 4; i <= 4; i++) {
+				
+				String key = "file" + i;
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					EventPhoto ePhoto = new EventPhoto();
+					ePhoto.setPhotoName(multiRequest.getOriginalFileName(key));
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+			
 			
 			
 			
