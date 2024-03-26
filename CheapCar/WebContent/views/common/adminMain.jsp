@@ -143,11 +143,11 @@
         }
         
         .container{
-		   margin-top: 20px;
+		   	margin-top: 20px;
 		}
 		.paging-area{
-		text-align : center;
-		margin-top : 12px;
+			text-align : center;
+			margin-top : 12px;
 		}
 		.pagin-area>button{
 			margin : auto;
@@ -160,6 +160,7 @@
 
 	</style>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <body>
  
     <div id="wrap">

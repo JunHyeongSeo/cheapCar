@@ -439,6 +439,44 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	}
 	
 	
+	public String findId(Connection conn, Member member) {
+		
+		String memId = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findId");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberName());
+			pstmt.setString(2, member.getBirthday());
+			pstmt.setString(3, member.getPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memId =rset.getString("MEMBER_ID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+				
+		System.out.println(memId);
+		
+		return memId;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

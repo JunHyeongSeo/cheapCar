@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class InsertCarController
  */
-@WebServlet("/insertCar")
+@WebServlet("/insertCar.do")
 public class InsertCarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,11 +27,9 @@ public class InsertCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_car/insertCar.jsp").forward(request, response);
 		
 		
-		
-		
+		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
 		
 	}
 
