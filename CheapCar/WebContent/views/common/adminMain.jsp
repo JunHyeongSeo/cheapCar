@@ -143,11 +143,11 @@
         }
         
         .container{
-		   margin-top: 20px;
+		   	margin-top: 20px;
 		}
 		.paging-area{
-		text-align : center;
-		margin-top : 12px;
+			text-align : center;
+			margin-top : 12px;
 		}
 		.pagin-area>button{
 			margin : auto;
