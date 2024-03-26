@@ -94,8 +94,10 @@
         
         <div class="car-info"> 차량 상세 정보
 
-			<form action="">
+			<form action="<%=contextPath%>/reservation.do">
         		<%@ include file="../common/dateRangePicker.jsp" %>
+        		<input type="hidden" value="<%=loginUser.getMemberNo()%>"/>
+        		<input type="hidden" value="<%=car.getManagementNo()%>"/>
             </form>
         	
         	

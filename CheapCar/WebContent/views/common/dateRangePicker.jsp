@@ -48,7 +48,19 @@
 	    "endDate": new Date(),
 	    "drops": "auto"
 	}, function (start, end, label) {
-	    console.log(start.format('YYYY-MM-DD-HH:mm') + ' to ' + end.format('YYYY-MM-DD-HH:mm'));
+		
+	    var startTime = start.toDate();
+	    var endTime = end.toDate();
+	    
+	    var startHour = startTime.getTime();
+	    var endHour = endTime.getTime();
+	    
+	    var hourDifference = (endHour - startHour) / (1000*60*60);
+	    
+	    console.log(startHour);
+	    console.log(endHour);
+	    console.log(hourDifference);
+	    
 	});
 		
 		

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Reservation</h1>
+
+	<%@ include file="../common/menuBar.jsp" %>
+	
 </body>
 </html>
