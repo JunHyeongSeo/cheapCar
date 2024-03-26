@@ -34,6 +34,7 @@ public class AdminSelectMemberController extends HttpServlet {
 		
 		String memberId = request.getParameter("memberId");
 		Member m = new MemberService().asmc(memberId);
+		ArrayList<Member> list = new MemberService().asmcs(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
