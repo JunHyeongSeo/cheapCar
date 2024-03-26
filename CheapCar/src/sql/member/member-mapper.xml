@@ -279,7 +279,25 @@
 	
 	</entry>
 	
-	
+	<!-- 회원 아이디 중 일치하는 값이 존재하는지 식별하는 SQl문  -->
+	<entry key="asmc">
+		SELECT
+  			MEMBER_NO,
+	  		MEMBER_ID,
+		  	MEMBER_NAME,
+			MEMBER_PWD,
+			BIRTHDAY,
+			PHONE,
+			EMAIL,
+			ENROLL_DATE,
+			MEMBER_STATUS
+		FROM
+			TB_MEMBER
+		WHERE
+			MEMBER_STATUS IN ('A', 'C')
+		AND
+			MEMBER_ID IN ( ? )
+	</entry>
 	
 	
 	

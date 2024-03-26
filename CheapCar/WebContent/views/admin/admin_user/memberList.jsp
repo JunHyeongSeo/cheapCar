@@ -145,12 +145,8 @@
       	                    	+= 				'</button></td>
 								       		</tr>
 								       	</tbody>
-							       	</table>';       				
-	       				
-					       				
+							       	</table>';
 				       			};
-					       			
-        		
         		})
         		
         		
