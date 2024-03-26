@@ -16,14 +16,14 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/adminSM")
-public class AdminSelectMemberController extends HttpServlet {
+@WebServlet("/adminSMS")
+public class AdminSelectMembersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSelectMemberController() {
+    public AdminSelectMembersController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,11 +34,11 @@ public class AdminSelectMemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberId = request.getParameter("memberId");
-		Member m = new MemberService().asmc(memberId);
+		ArrayList<Member> lists = new MemberService().asmcs(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
-		new Gson().toJson(m, response.getWriter());
+		new Gson().toJson(lists, response.getWriter());
 		
 		
 	}

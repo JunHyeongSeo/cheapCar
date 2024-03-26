@@ -6,6 +6,58 @@
 		Event Mapper
 	</comment>
 	
+	<entry key="insertEventBoard">
+		INSERT
+		  INTO
+		       TB_EVENT_BOARD
+		       (
+		       EVENT_NO,
+		       EVENT_TITLE,
+		       EVENT_CONTENT,
+		       CREATE_DATE,
+		       STATUS,
+		       MEMBER_NO
+		       )
+        VALUES
+               (
+               SEQ_EVENT_BOARD_NO.NEXTVAL,
+               ?,
+               ?,
+               SYSDATE,
+               DEFAULT,
+               ?
+               )		       
+	</entry>
+	
+	<entry key="insertEventPhoto">
+		INSERT 
+		  INTO
+		       TB_EVENT_PHOTO
+		       (
+		       EVENT_PHOTO_NO,
+		       EVENT_PHOTO_NAME,
+		       EVENT_PHOTO_ADDRESS,
+		       EVENT_NO,
+		       STATUS,
+		       FILELEVEL
+		       )
+   	    VALUES
+   	           (
+   	           SEQ_EVENT_PHOTO_NO.NEXTVAL,
+   	           ?,
+   	           ?,
+   	           SEQ_EVENT_NO.CURRVAL,
+   	           DEFAULT,
+   	           ?
+   	           )
+   	                 
+	</entry>
+	
+	
+	
+	
+	
+	
 	
 	
 	
