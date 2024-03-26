@@ -70,7 +70,7 @@ public class EventInsertController extends HttpServlet {
 					
 					EventPhoto ePhoto = new EventPhoto();
 					ePhoto.setPhotoName(multiRequest.getOriginalFileName(key));
-					
+					ePhoto.setPhotoPath("/resources/event_upfiles");
 					
 				}
 				
