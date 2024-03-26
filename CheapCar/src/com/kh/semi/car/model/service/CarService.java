@@ -9,6 +9,7 @@ import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.vo.Member;
 
 public class CarService {
 	
@@ -105,9 +106,16 @@ public class CarService {
 	}
 	
 	
-	public ArrayList<Car> reservationbring(Member loinUser){
+	public ArrayList<Car> reservationbring(Member loginUser){
+	
+		Connection conn = JDBCTemplate.getConnection();
 		
-	})
+		ArrayList<Car> car = new CarDao().reservationbring(conn, loginUser);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
 	
 	
 	

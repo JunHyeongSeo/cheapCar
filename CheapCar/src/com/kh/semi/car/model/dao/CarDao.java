@@ -14,6 +14,7 @@ import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.vo.Member;
 
 public class CarDao {
 
@@ -328,6 +329,55 @@ public class CarDao {
 		}
 		return carList;
 	}
+	
+	
+	public ArrayList<Car> reservationbring(Connection conn, Member loginUser){
+		
+		ArrayList<Car> carList = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("reservationbring");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Car car = new Car();
+				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car.setStatus(rset.getString("STATUS"));
+				car.setCarNo(rset.getString("CAR_NO"));
+				car.setLocationNo(rset.getInt("LOCATION_NO"));
+				car.setLocationName(rset.getString("LOCATION_NAME"));
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
+				car.setBrandName(rset.getString("BRAND_NAME"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setYear(rset.getInt("YEAR"));
+				car.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				
+				carList.add(car);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println(carList);
+		
+		return carList;
+	}
+	
+	
+	
+	
 	
 	
 	
