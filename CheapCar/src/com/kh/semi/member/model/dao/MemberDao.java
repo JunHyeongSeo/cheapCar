@@ -457,8 +457,6 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			
 			rset = pstmt.executeQuery();
 			
-			System.out.println(rset);
-			
 			if(rset.next()) {
 				memId = rset.getString("MEMBER_ID");
 			}
@@ -470,6 +468,8 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			close(pstmt);
 		}
 				
+		
+		
 		
 		return memId;
 	}

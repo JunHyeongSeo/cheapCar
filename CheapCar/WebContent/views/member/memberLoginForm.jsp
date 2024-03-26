@@ -51,7 +51,7 @@
 		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
 		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
 		                    	<a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> /
-		                    	<a href="<%= contextPath%>/findPwd">비밀번호 찾기</a>
+		                    	<a data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a>
 		                    </th>
 		                </tr>
 		           </table>
@@ -100,9 +100,7 @@
 			</div>
 			
 			
-			
 			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
-			
 			
 			
 			<script>
@@ -139,13 +137,36 @@
 	  </div>
 	</div>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
 
 
-
-	
-	<div class="modal-body">
+<!-- 비밀번호 찾기 모달 -->
+<div class="modal" id="findPwd">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">비밀번호 찾기</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- 찾을실 분의 이름, 생년월일, -->
+		<div class="modal-body">
 		  
 			<form method="post">
+			
+			<div class="form-group">
+			  <label for="memberId">아이디</label>
+			  <input type="text" name="memberId" class="form-control" placeholder="아이디를 입력해주세요" id="memberName" required>
+			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">이름</label>
@@ -201,10 +222,7 @@
 			</script>
 		   </form>
 		  </div>
-		   
-	  </div>
-	</div>
-  </div>
+
 
 
 
