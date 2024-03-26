@@ -256,7 +256,7 @@
 			AND
 				PHONE = ?
 			AND
-				MEMBER_STATUS IN ('A', 'Y')
+				MEMBER_STATUS IN ('A', 'C')
 	
 	</entry>
 	
