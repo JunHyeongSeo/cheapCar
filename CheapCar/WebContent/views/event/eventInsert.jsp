@@ -178,10 +178,7 @@
 	
 	<script>
 		
-        $(function(){
-        	$('#imgArea').hide();
-        	
-        });
+        
         
         
         function loadImg(inputFile, num){
