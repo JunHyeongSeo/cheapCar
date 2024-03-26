@@ -27,6 +27,10 @@ public class EventInsertFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
+		
+		
 		request.getRequestDispatcher("views/event/eventInsert.jsp").forward(request, response);
 		
 		
