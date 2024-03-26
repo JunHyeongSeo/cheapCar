@@ -11,6 +11,7 @@
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
     PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+    int hours = (int)session.getAttribute("hours");
 %>
 
 <%

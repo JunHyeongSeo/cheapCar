@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
@@ -34,6 +35,8 @@ public class SelectedCarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		int listCount; // 현재 게시판 글 총 개수
@@ -45,7 +48,7 @@ public class SelectedCarListController extends HttpServlet {
 		int startPage; // 페이지 하단에 보여줄 페이징바의 시작수
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝 수
 		
-		// int hours = Integer.parseInt(request.getParameter("hours"));
+		int hours = Integer.parseInt(request.getParameter("hours"));
 		
 		String locations = request.getParameter("locations"); 
 		
@@ -78,6 +81,7 @@ public class SelectedCarListController extends HttpServlet {
 		request.setAttribute("carList", carList);
 		request.setAttribute("optionList", optionList);
 		request.setAttribute("pageInfo", pi);
+		session.setAttribute("hours", hours);
 		
 		request.getRequestDispatcher("views/car/selectedCarList.jsp").forward(request, response);
 		
