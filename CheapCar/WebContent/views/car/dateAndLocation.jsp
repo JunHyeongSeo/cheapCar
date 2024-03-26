@@ -27,7 +27,7 @@
 	<%@ include file="../common/menuBar.jsp" %>
 	
     <div class="area-board">
-        <form method="post" action="selectedCarList.do">
+        <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
                 총 대여시간 :         
