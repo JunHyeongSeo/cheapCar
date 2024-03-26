@@ -54,12 +54,8 @@
 	    var endHour = endTime.getTime();
 	    
 	    var hourDifference = (endHour - startHour) / (1000*60*60);
-	    
-	    console.log(startHour);
-	    console.log(endHour);
-	    console.log(hourDifference);
 
-		document.getElementById('totalHour').innerHTML = hourDifference;
+		document.getElementById('totalHour').value = hourDifference;
 	    
 	});
 		
