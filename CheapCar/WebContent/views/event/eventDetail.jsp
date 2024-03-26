@@ -75,7 +75,8 @@
         padding-left: 50px;
         padding-top: 50px;
         border-bottom: 2px solid #b1d6f3;
-        font-size: 25px;
+        font-size: 20px;
+        
     }
     .page-header{
 		padding-top: 20px;
@@ -98,7 +99,7 @@
 		margin-top: 10px;
 	}
     
-	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
+	.do-hyeon-regular {  /* 이벤트 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
 		font-weight: 300px;
 		font-style: normal;
