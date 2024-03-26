@@ -35,12 +35,13 @@
                     <input type="text" class="form-control" id="userId" placeholder="조회하실 차량 번호를 입력해주세요." name="userId" style="width: 300px;">
                     
                     <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+                    <a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
                 </div>
             </form>
 		</div>
 
         <div class="container">
-            <h2>차량현황</h2>   
+            <h2>차량현황</h2> 
             <table class="table">
               <thead>
                 <tr>
@@ -89,6 +90,7 @@
           		  <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage + 1 %>'">다음</button>
             <% } %>
             
+           
         </div>
         
         <div class="container">       

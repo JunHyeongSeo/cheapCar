@@ -1,4 +1,4 @@
-package com.kh.semi.common;
+package com.kh.semi.event.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminMainController
+ * Servlet implementation class EventInsertController
  */
-@WebServlet("/adminMain")
-public class AdminMainController extends HttpServlet {
+@WebServlet("/insert.event")
+public class EventInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMainController() {
+    public EventInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,12 +26,8 @@ public class AdminMainController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		response.sendRedirect("views/common/adminMain.jsp");
-//		response.sendRedirect(location);
-		
-		request.getRequestDispatcher("views/common/adminMain.jsp").forward(request, response);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

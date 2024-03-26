@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트상세</title>
+<title>이벤트 글쓰기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -12,8 +12,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
-
-
 
 <style>
 	.outer{
@@ -106,6 +104,15 @@
 		font-size: 60px;
 		color: #6caddf;
 	}
+	.content_add_img{
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+	.img-area>img{
+		width: 100%;
+		height: 100%;
+	}
+	
     
 
 </style>
@@ -125,18 +132,27 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2">제목</div>
+                        <div class="content_header2">
+							제목 : <input type="text" name="title" required> 
+						</div>
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : </span>
+                        <span class="content_sub1">작성자 : </span> 
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 이미지 </div>
+                        <div class="img-area" align="center">
+							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" alt="" align="center"> 이미지
+						</div>
                         <div class="text-area"> 텍스트</div>
                     </div>
 
+					<div class="content_add_img">
+						<span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+						대표이미지 - <input type="file" name="photo" id="thumbnail">
+						첨부파일_2 - <input type="file" name="photo"> <br><br>
+						첨부파일_3 - <input type="file" name="photo">
+						첨부파일_4 - <input type="file" name="photo">
+					</div>
 
                     <div class="content_btn" align="center">
                         <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
@@ -145,17 +161,19 @@
                            
                     </div>
                 </div>
-
-				
-				
-
-
 				</div>            
 			 </div>
 		  </div>
 					  
 	</div>
-	   
+	
+	<script>
+		
+		const thumbnail = 
+
+
+
+	</script>
 	
 		
 	
