@@ -178,22 +178,32 @@
 	
 	<script>
 		
-        removeEventListener
-        
-        
-        
+		$(function(){ // 사진 첨부가 안되었을 때 이미지 들어갈 화면 가리기
+			
+			$('#img_1').hide();
+			$('#img_2').hide();
+			$('#img_3').hide();
+			$('#img_4').hide();
+			
+		})
+		
         function loadImg(inputFile, num){
             //console.log(inputFile.files.length);
             if(inputFile.files.length){
+            	
                 const reader = new FileReader();
-                console.log(inputFile.files[0]);
+                //console.log(inputFile.files[0]);
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_1').attr('src', e.target.result); break;
-                    	case 2 : $('#img_2').attr('src', e.target.result); break;
-                    	case 3 : $('#img_3').attr('src', e.target.result); break;
-                    	case 4 : $('#img_4').attr('src', e.target.result); break;
+                    	case 1 : $('#img_1').attr('src', e.target.result); 
+                    	         $('#img_1').show(); break;                   			  
+                    	case 2 : $('#img_2').attr('src', e.target.result);
+                    			 $('#img_2').show(); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); 
+                    	   	     $('#img_3').show(); break; 
+                    	case 4 : $('#img_4').attr('src', e.target.result); 
+                    	         $('#img_4').show(); break;
                     }
                     
                 }

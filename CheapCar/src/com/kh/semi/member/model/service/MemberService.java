@@ -211,6 +211,30 @@ public Member login(String memberId, String memberPwd) {
 		return memPwd;
 	}
 	
+	public Member asmc(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDao().selectMember(conn, memberId);
+
+		close(conn);
+		
+		
+		return member;
+	}
+	
+	public ArrayList<Member> asmcs(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().selectMember(conn, memberId);
+
+		close(conn);
+		
+		
+		return list;
+	}
+	
 	
 	
 
