@@ -13,14 +13,14 @@
 
 <style>
 	#dateRange{
-		width : 300px;
+		width : 350px;
 		text-align : center;
 	}
 </style>
 </head>
 <body>
 
-	<span>대여 기간</span>
+	<span>대여 기간</span><br>
 	<input id="dateRange"type="text" name="datetimes" readonly required/>
 
 	<script>
@@ -31,7 +31,7 @@
 		"minDate" : moment().startOf('day'),
 		"maxDate" : moment().add(1, 'month'),
 	    "locale": {
-	        "format": "YYYY-MM-DD-HH:mm",
+	        "format": "YYYY-MM-DD-HH:00A",
 	        "separator": " ~ ",
 	        "applyLabel": "확인",
 	        "cancelLabel": "취소",
@@ -58,6 +58,8 @@
 	    console.log(startHour);
 	    console.log(endHour);
 	    console.log(hourDifference);
+
+		document.getElementById('totalHour').innerHTML = hourDifference;
 	    
 	});
 		

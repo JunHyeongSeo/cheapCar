@@ -30,7 +30,7 @@
 
     .area-board{
         width : 1400px;
-        height : auto;
+        height : 100%;
         margin : auto;
         padding-top : 50px;
         padding-bottom : 50px;
@@ -93,13 +93,6 @@
         </div>
         
         <div class="car-info"> 차량 상세 정보
-
-			<form action="<%=contextPath%>/reservation.do">
-        		<%@ include file="../common/dateRangePicker.jsp" %>
-        		<input type="hidden" value="<%=loginUser.getMemberNo()%>"/>
-        		<input type="hidden" value="<%=car.getManagementNo()%>"/>
-            </form>
-        	
         	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
@@ -123,9 +116,7 @@
             	<% totalPrice = carPrice + optionPrice; %>
             	
 	        	시간당 가격 : <%=totalPrice%>원
-	        	<br>
-	        	총 가격 : <%=totalPrice%>
-			<a class="btn btn-sm btn-primary" href="<%=contextPath%>/reservation.do">결제하기</a>
+			<a class="btn btn-sm btn-primary" href="#">결제하기</a>
 
         <br clear="both">
         
