@@ -441,7 +441,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	
 	public String findId(Connection conn, Member member) {
 		
-		String memId = "1";
+		String memId = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -454,9 +454,6 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			pstmt.setString(2, member.getBirthday());
 			pstmt.setString(3, member.getPhone());
 			
-//			System.out.println(member.getMemberName());
-//			System.out.println(member.getBirthday());
-//			System.out.println(member.getPhone());
 			
 			rset = pstmt.executeQuery();
 			
@@ -473,7 +470,6 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			close(pstmt);
 		}
 				
-		System.out.println(memId);
 		
 		return memId;
 	}
