@@ -9,6 +9,7 @@ import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.vo.Member;
 
 public class CarService {
 	
@@ -79,11 +80,23 @@ public class CarService {
 		return list;
 	}
 	
-	public ArrayList<Car> selectedCarList(PageInfo pi, int hours, String locations){
+	public int selectLocationListCount(String locations) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> list = new CarDao().selectedCarList(conn,pi,hours,locations);
+		int listCount = new CarDao().selectLocationListCount(conn, locations);
+		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
+		
+	}
+	
+	public ArrayList<Car> selectedCarList(PageInfo pi, String locations){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().selectedCarList(conn,pi,locations);
 				
 		JDBCTemplate.close(conn);
 				
@@ -91,6 +104,33 @@ public class CarService {
 		
 		
 	}
+	
+	
+	public ArrayList<Car> reservationbring(Member loginUser){
+	
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> car = new CarDao().reservationbring(conn, loginUser);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

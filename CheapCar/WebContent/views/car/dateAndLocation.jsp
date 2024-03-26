@@ -35,7 +35,7 @@
         <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
-                총 대여시간 :         
+               		 총 대여시간 :         
                 <input id="totalHour" name="hours" type="text" readonly value=""/>  
                
             </div>
