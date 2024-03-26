@@ -25,7 +25,29 @@ public class Car {
 	private String csContent;
 	private Date createDate;
 	private String replyYn;
+	private String memberId;
+	private int reservationNo;
 	
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+
+	public int getReservationNo() {
+		return reservationNo;
+	}
+
+
+	public void setReservationNo(int reservationNo) {
+		this.reservationNo = reservationNo;
+	}
+
 
 	public Car() {
 		super();

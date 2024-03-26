@@ -361,6 +361,8 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
 				car.setStartDate(rset.getDate("START_DATE"));
 				car.setEndDate(rset.getDate("END_DATE"));
+				car.setMemberId(rset.getString("MEMBER_ID"));
+				car.setReservationNo(rset.getInt("RESERVATION_NO"));
 				
 				carList.add(car);
 			}

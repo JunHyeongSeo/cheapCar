@@ -386,7 +386,9 @@
                 MODEL_PRICE,
                 YEAR_PRICE,
                 START_DATE,
-                END_DATE             
+                END_DATE,
+                MM.MEMBER_ID,
+                RESERVATION_NO           
           FROM
                 TB_CAR C
           JOIN  

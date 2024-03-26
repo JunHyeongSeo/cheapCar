@@ -38,7 +38,7 @@ public class SalesController extends HttpServlet {
 		
 		ArrayList<Car> carlist = new CarService().carcarall();
 		
-		//System.out.println(carlist);
+		System.out.println(carlist);
 		
 		if(carlist.isEmpty()) {
 			

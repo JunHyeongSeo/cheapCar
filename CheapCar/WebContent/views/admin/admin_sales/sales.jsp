@@ -79,13 +79,14 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% for(Car car : carlist){ %>
 					<tr>
-						<td>1</td>
-						<td>user01</td>
+						<td><%= car.getReservationNo()  %></td>
+						<td><%= car.getMemberId()  %></td>
 						<td>10000</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
-					
+					<% } %>
 				</tbody>
 			</table>
 			
