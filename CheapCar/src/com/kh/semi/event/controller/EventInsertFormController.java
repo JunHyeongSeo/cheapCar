@@ -29,8 +29,6 @@ public class EventInsertFormController extends HttpServlet {
 		
 		
 		
-		
-		
 		request.getRequestDispatcher("views/event/eventInsert.jsp").forward(request, response);
 		
 		

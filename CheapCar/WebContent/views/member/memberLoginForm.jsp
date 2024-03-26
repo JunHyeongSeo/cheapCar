@@ -117,7 +117,6 @@
 							//$birthday.val(),
 							checkPhone : $('#iphone').val()
 							//$phone.val()
-							//뭐지????????? 평일에도하고 주말에도 한다 근데 주말에 힘듬???
 						},
 						success : function(result){
 							if(result == 'null'){ // 아이디 없는거

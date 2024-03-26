@@ -12,9 +12,11 @@ public class EventBoard {
 	private String status;
 	private int memberNo;
 	private int count;
+	
 	public EventBoard() {
 		super();
 	}
+
 	public EventBoard(int eventNo, String eventTitle, String eventContent, String eventWriter, Date createDate,
 			String status, int memberNo, int count) {
 		super();
@@ -27,60 +29,78 @@ public class EventBoard {
 		this.memberNo = memberNo;
 		this.count = count;
 	}
+
 	public int getEventNo() {
 		return eventNo;
 	}
+
 	public void setEventNo(int eventNo) {
 		this.eventNo = eventNo;
 	}
+
 	public String getEventTitle() {
 		return eventTitle;
 	}
+
 	public void setEventTitle(String eventTitle) {
 		this.eventTitle = eventTitle;
 	}
+
 	public String getEventContent() {
 		return eventContent;
 	}
+
 	public void setEventContent(String eventContent) {
 		this.eventContent = eventContent;
 	}
+
 	public String getEventWriter() {
 		return eventWriter;
 	}
+
 	public void setEventWriter(String eventWriter) {
 		this.eventWriter = eventWriter;
 	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}
+
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
+
 	public int getCount() {
 		return count;
 	}
+
 	public void setCount(int count) {
 		this.count = count;
 	}
+
 	@Override
 	public String toString() {
 		return "EventBoard [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", eventContent=" + eventContent
 				+ ", eventWriter=" + eventWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
 				+ memberNo + ", count=" + count + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,6 +115,7 @@ public class EventBoard {
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -137,6 +158,8 @@ public class EventBoard {
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 	
