@@ -45,14 +45,13 @@ public class SelectedCarListController extends HttpServlet {
 		int startPage; // 페이지 하단에 보여줄 페이징바의 시작수
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝 수
 		
-		int hours = Integer.parseInt(request.getParameter("hours"));
+		// int hours = Integer.parseInt(request.getParameter("hours"));
 		
 		String locations = request.getParameter("locations"); 
 		
-		System.out.println(hours);
-		System.out.println(locations);
 		
-		listCount = new CarService().selectListCount();
+		listCount = new CarService().selectLocationListCount(locations);
+		
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
@@ -72,7 +71,7 @@ public class SelectedCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Car> carList = new CarService().selectCarList(pi);
+		ArrayList<Car> carList = new CarService().selectedCarList(pi, locations);
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 		
