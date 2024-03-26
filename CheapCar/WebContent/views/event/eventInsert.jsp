@@ -133,13 +133,14 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form">
-                        <div class="content_header"> 
+                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
+                            <div class="content_header"> 
                             
-                        <div class="content_header2">
-							제목 : <input type="text" name="title" required> 
-						</div>
-                        </div>
+                            <div class="content_header2">
+		    					제목 : <input type="text" name="title" required> 
+			    			</div>
+                            </div>
                         <div class="content_sub">
                             <span class="content_sub1">작성자 : </span> 
                         </div>
