@@ -50,8 +50,8 @@
 		                    <th colspan="2">
 		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
 		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
-		                    	<a href="#">아이디 찾기</a> /
-		                    	<a href="#">비밀번호 찾기</a>
+		                    	<a href="<%= contextPath%>/findId">아이디 찾기</a> /
+		                    	<a href="<%= contextPath%>/findPwd">비밀번호 찾기</a>
 		                    </th>
 		                </tr>
 		           </table>
