@@ -92,7 +92,7 @@
 			
 			<div class="form-group">
 			  <label for="checkPwd">전화번호</label>
-			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phon" required>
+			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
 			</div>
 			
 			
@@ -112,11 +112,7 @@
 					data : 
 					{
 						checkName : $('#memberName').val(),
-						
-						
 						//$memberName.val(),
-
-
 						checkBirthday : $('#birthday').val(),
 						//$birthday.val(),
 						checkPhone : $('#phone').val()
@@ -124,7 +120,8 @@
 					},
 					success : function(result){
 						if(result != null){// 있는거
-							$('#id').innerHtml().val(result);
+							//console.log(result);
+							$('#id').html(result);
 						}
 						
 
