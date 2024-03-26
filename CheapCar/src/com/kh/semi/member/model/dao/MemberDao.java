@@ -1,6 +1,7 @@
 package com.kh.semi.member.model.dao;
 
 import static com.kh.semi.common.JDBCTemplate.close;
+import static com.kh.semi.common.JDBCTemplate.getConnection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -519,6 +520,7 @@ public String findPwd(Connection conn, Member member) {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberId);
 			
 			rset = pstmt.executeQuery();
 			
@@ -542,16 +544,45 @@ public String findPwd(Connection conn, Member member) {
 		}
 		
 		return member;
-}
-
+	}
 	
+	public ArrayList<Member> asmcs(Connection conn, String memberId) {
+		
+		ArrayList<Member> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("asmc");
 	
-	
-	
-	
-	
-	
-	
-	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member m = new Member(rset.getInt("MEMBER_NO"),
+									rset.getString("MEMBER_ID"),
+									rset.getString("MEMBER_NAME"),
+									rset.getString("MEMBER_PWD"),
+									rset.getString("BIRTHDAY"),
+									rset.getString("PHONE"),
+									rset.getString("EMAIL"),
+									rset.getDate("ENROLL_DATE"),
+									rset.getString("MEMBER_STATUS"));
+				
+				list.add(m);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	
 }

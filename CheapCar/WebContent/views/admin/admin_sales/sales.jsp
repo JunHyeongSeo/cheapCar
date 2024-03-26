@@ -20,10 +20,12 @@
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	
-	<div class="outer">
+	<div class="outer" style="padding-bottom:50px; height:auto;">
 		<div class="container">
 			<div id="top1">
 	                
+	                
+	            <!--  -->
 	            <form class="form-inline" action="abc.do">
 	                <div id="top11" style="display: flex;">
 	                    <label for="carNum" style="margin: 0px 15px;">차 모델 검색 : </label>
@@ -52,16 +54,21 @@
 	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
 	                </div>
 	            </form>
-			</div>
-			<h2>매출내역</h2>   
-			
-			<div class="salesList">		
-				<a type="submit" class="btn btn-secondary" href="#">모델별 매출 내역</a>
-				<a type="submit" class="btn btn-secondary" href="#">기간별 매출 내역</a>
-				<a type="submit" class="btn btn-secondary" href="#">지점별 매출 내역</a>
+	            
+	            
+	            
 			</div>
 			
-			<table class="table">
+			<h2 style="margin:20px 0px;" align="center">매출내역</h2>   
+			
+			<div class="salesList" style="margin-bottom:20px;" align="right">		
+				<a type="submit" class="btn btn-outline-info" href="#">모델별 매출 내역</a>
+				<a type="submit" class="btn btn-outline-primary" href="#">기간별 매출 내역</a>
+				<a type="submit" class="btn btn-outline-warning" href="#">지점별 매출 내역</a>
+			</div>
+			
+			
+			<table class="table" style="text-align:center">
 				<thead>
 					<tr>
 						<th>모델</th>
@@ -81,7 +88,7 @@
 				</tbody>
 			</table>
 			
-			<table class="table">
+			<table class="table" style="text-align:center">
 				<thead>
 					<tr>
 						<th>기간</th>
@@ -97,11 +104,11 @@
 						<td>user02</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
-					
 				</tbody>
 			</table>
 			
-			<table class="table">
+			
+			<table class="table" style="text-align:center">
 				<thead>
 					<tr>
 						<th>지점</th>
@@ -117,15 +124,14 @@
 						<td>user02</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
-					
 				</tbody>
 			</table>
 		</div>
 			
 		
 
-		<div class="container">
-			<h3>상세내역</h3>
+		<div class="container" style="text-align:center; line-height:64px;">
+			<h3 style="margin: 30px 0px;">상세내역</h3>
 			<table class="table table-bordered">
 			
 			<thead>

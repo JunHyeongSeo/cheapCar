@@ -279,8 +279,8 @@
 	
 	</entry>
 	
-	<!-- 회원 아이디 중 일치하는 값이 존재하는지 식별하는 SQl문  -->
-	<entry key="asmc">
+	<!-- 회원 아이디 중 일치하는 값이 존재하는지 식별하는 SQL문 -> list  -->
+	<entry key="asmcs">
 		SELECT
   			MEMBER_NO,
 	  		MEMBER_ID,
@@ -296,7 +296,9 @@
 		WHERE
 			MEMBER_STATUS IN ('A', 'C')
 		AND
-			MEMBER_ID IN ( ? )
+			MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		 OR	
+		 	MEMBER_ID LIKE '%' || LOWER(?) || '%'
 	</entry>
 	
 	
