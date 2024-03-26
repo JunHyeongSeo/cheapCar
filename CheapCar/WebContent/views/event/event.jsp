@@ -121,9 +121,9 @@
 				<div class="event_content">
 					<ul id="event_list">
 						<li>
-							<a href="" alt="">
+							<a href="<%= contextPath %>/detail.event" alt="">
 								<div class="img-area event_1">사진</div>
-								<div class="text-area event_1">
+								<div class="text-area event_1" >
 									<span>세일세일세일세일세일세일세일세일세일세일세일세일세일 </span><br><br>
 									<span style="font-size: 15px;">조회수  </span>
 								</div>
