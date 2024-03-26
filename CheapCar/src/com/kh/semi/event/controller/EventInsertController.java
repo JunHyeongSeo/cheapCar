@@ -62,6 +62,35 @@ public class EventInsertController extends HttpServlet {
 			
 			ArrayList<EventPhoto> list = new ArrayList();
 			
+			for(int i = 4; i <= 4; i++) {
+				
+				String key = "file" + i;
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					EventPhoto ePhoto = new EventPhoto();
+					ePhoto.setPhotoName(multiRequest.getOriginalFileName(key));
+					ePhoto.setPhotoPath("resources/event_upfiles");
+					
+					if(i == 1) {
+						// 대표이지미
+						ePhoto.setFileLevel(1);
+						
+					} else {
+						ePhoto.setFileLevel(2);
+					}
+					list.add(ePhoto);
+					
+				}
+				
+				new EventService().insertEventBoard(eBoard, list);
+				
+				
+				
+				
+				
+			}
+			
 			
 			
 			
