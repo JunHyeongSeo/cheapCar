@@ -11,6 +11,8 @@
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
     PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+    int hours = (int)request.getAttribute("hours");
+    String locations = (String)request.getAttribute("hours");
 %>
 
 <%
@@ -264,7 +266,7 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>'">Previous</a>
                                 </li>
                             <% } %>
 
@@ -273,7 +275,7 @@
 								<% if(currentPage != i) { %>
 									<li
 									class="page-link"
-									onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%=i%>'">
+									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>'">
 									<%=i%>
 									</li>
 								<% } else { %>
@@ -286,7 +288,7 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/listCar.do?currentPage=<%= currentPage + 1%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>'">Next</a>
 	                            </li>
                             <% } %>
 						</ul>

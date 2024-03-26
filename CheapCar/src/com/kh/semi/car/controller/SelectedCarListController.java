@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
@@ -49,10 +50,8 @@ public class SelectedCarListController extends HttpServlet {
 		
 		String locations = request.getParameter("locations"); 
 		
-		System.out.println(hours);
-		System.out.println(locations);
+		listCount = new CarService().selectLocationListCount(locations);
 		
-		listCount = new CarService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
@@ -72,13 +71,15 @@ public class SelectedCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Car> carList = new CarService().selectCarList(pi);
+		ArrayList<Car> carList = new CarService().selectedCarList(pi, locations);
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 		
 		request.setAttribute("carList", carList);
 		request.setAttribute("optionList", optionList);
 		request.setAttribute("pageInfo", pi);
+		request.setAttribute("hours", hours);
+		request.setAttribute("locations", locations);
 		
 		request.getRequestDispatcher("views/car/selectedCarList.jsp").forward(request, response);
 		
