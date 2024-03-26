@@ -112,6 +112,9 @@
 		width: 100%;
 		height: 100%;
 	}
+    .form-control{
+        height: auto;
+    }
 	
     
 
@@ -130,37 +133,41 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="">
-                        <div class="content_header"> 
+                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
+                            <div class="content_header"> 
                             
-                        <div class="content_header2">
-							제목 : <input type="text" name="title" required> 
-						</div>
-                        </div>
+                            <div class="content_header2">
+		    					제목 : <input type="text" name="title" required> 
+			    			</div>
+                            </div>
                         <div class="content_sub">
                             <span class="content_sub1">작성자 : </span> 
                         </div>
                         <div class="content_body">
-                        <div class="img-area" align="center">
-							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" id="imgimg"> 이미지
+                        <div class="img-area" align="center" id="imgArea">
+							<img src="" id="img_1">
+							<img src="" id="img_2">
+							<img src="" id="img_3">
+							<img src="" id="img_4">
 						</div>
-                        <div class="text-area"> 텍스트</div>
+                        <div class="text-area">
+                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
+                        </div>
                         </div>
                     
 					    <div class="content_add_img">
                             <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)">
-                            첨부파일_2 - <input type="file" name="photo" id="subImg1"> <br><br>
-                            첨부파일_3 - <input type="file" name="photo" id="subImg2">
-                            첨부파일_4 - <input type="file" name="photo" id="subImg3">
+                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
+                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
+                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
+                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
 					    </div>
                     
 
                         <div class="content_btn" align="center">
-                            <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
-                            <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                            <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                            <button onclick="test();">테스트</button>   
+                            <a href="" class="btn btn-sm btn-info">등&nbsp;록</a>
+                            <a href="" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</a>
                         </div>
                         </form>
                     </div>
@@ -172,24 +179,38 @@
 	
 	<script>
 		
+		$(function(){ // 사진 첨부가 안되었을 때 이미지 들어갈 화면 가리기
+			
+			$('#img_1').hide();
+			$('#img_2').hide();
+			$('#img_3').hide();
+			$('#img_4').hide();
+			
+		})
+		
         function loadImg(inputFile, num){
             //console.log(inputFile.files.length);
             if(inputFile.files.length){
+            	
                 const reader = new FileReader();
-                console.log(inputFile.files[0]);
+                //console.log(inputFile.files[0]);
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_1').attr('src', e.target.result); break;
-                    	case 2 : $('#img_2').attr('src', e.target.result); break;
-                    	case 3 : $('#img_3').attr('src', e.target.result); break;
-                    	case 4 : $('#img_4').attr('src', e.target.result); break;
+                    	case 1 : $('#img_1').attr('src', e.target.result); 
+                    	         $('#img_1').show(); break;                   			  
+                    	case 2 : $('#img_2').attr('src', e.target.result);
+                    			 $('#img_2').show(); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); 
+                    	   	     $('#img_3').show(); break; 
+                    	case 4 : $('#img_4').attr('src', e.target.result); 
+                    	         $('#img_4').show(); break;
                     }
                     
                 }
             }
             else{
-            	const str = 'https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png'
+            	const str = ''
             	
             	switch(num){
             		case 1 : $('#img_1').attr('src', str); break;

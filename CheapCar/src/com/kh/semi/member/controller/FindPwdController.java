@@ -29,7 +29,6 @@ public class FindPwdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	
 		String memberId = request.getParameter("checkId");
 		String memberName = request.getParameter("checkName");

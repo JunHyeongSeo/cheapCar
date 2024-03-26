@@ -1,23 +1,28 @@
-package com.kh.semi.car.controller;
+package com.kh.semi.car.admincontroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
+
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class salesController
  */
-@WebServlet("/insertCar.do")
-public class InsertCarController extends HttpServlet {
+@WebServlet("/sales")
+public class SalesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCarController() {
+    public SalesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +34,12 @@ public class InsertCarController extends HttpServlet {
 		
 		
 		
-		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
 		
+		ArrayList<Car> car = new CarService().reservattionbring();
+		
+		
+		
+		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 	}
 
 	/**
