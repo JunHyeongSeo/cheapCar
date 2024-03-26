@@ -10,6 +10,9 @@
 	
 	<%@ include file="../common/menuBar.jsp" %>
 	
+    이벤트 상세
+
+    
 	
 	
 	
