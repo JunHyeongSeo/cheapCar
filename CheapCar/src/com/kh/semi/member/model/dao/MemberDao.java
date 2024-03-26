@@ -584,5 +584,5 @@ public String findPwd(Connection conn, Member member) {
 		}
 		
 		return list;
-	
+	}
 }
