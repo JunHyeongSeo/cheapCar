@@ -123,6 +123,8 @@
             	<% totalPrice = carPrice + optionPrice; %>
             	
 	        	시간당 가격 : <%=totalPrice%>원
+	        	<br>
+	        	총 가격 : <%=totalPrice%>
 			<a class="btn btn-sm btn-primary" href="<%=contextPath%>/reservation.do">결제하기</a>
 
         <br clear="both">

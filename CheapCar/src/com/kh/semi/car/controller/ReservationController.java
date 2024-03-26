@@ -27,6 +27,8 @@ public class ReservationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	
+		
 		request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
 	
 	}

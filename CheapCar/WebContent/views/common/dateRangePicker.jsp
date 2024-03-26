@@ -20,16 +20,14 @@
 </head>
 <body>
 
-
 	<span>대여 기간</span>
 	<input id="dateRange"type="text" name="datetimes" readonly required/>
-
 
 	<script>
 	
 	$('#dateRange').daterangepicker({
 		"timePicker" : true,
-		"timePickerIncrement": 10,
+		"timePickerIncrement": 60,
 		"minDate" : moment().startOf('day'),
 		"maxDate" : moment().add(1, 'month'),
 	    "locale": {
