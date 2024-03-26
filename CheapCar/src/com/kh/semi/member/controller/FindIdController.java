@@ -1,13 +1,16 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class FindIdController
@@ -29,8 +32,23 @@ public class FindIdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
-		view.forward(request, response);
+		String memberName = request.getParameter("memberName");
+		String birthday = request.getParameter("birthday");
+		String phone = request.getParameter("phone");
+		
+		
+		Member member = new Member();
+		
+		member.setMemberName(memberName);
+		member.setBirthday(birthday);
+		member.setPhone(phone);
+		
+		Member m = new MemberService().findId(member); 
+		
+		
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().print(m);
+		
 	
 	}
 
