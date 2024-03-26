@@ -370,10 +370,10 @@
 		        MANAGEMENT_NO = ?
 	</entry>
 	
-	<entry key="reservationbring">
-	SELECT
+	<entry key="carcarall">
+		SELECT
                 MANAGEMENT_NO,
-                C.STATUS CAR_STAUS,
+                STATUS,
                 CAR_NO,
                 C.LOCATION_NO,
                 LOCATION_NAME,

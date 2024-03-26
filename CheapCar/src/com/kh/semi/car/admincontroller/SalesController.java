@@ -34,12 +34,12 @@ public class SalesController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
 		
 		
+		ArrayList<Car> carcarall = new CarService().carcarall();
 		
-		ArrayList<Car> car = new CarService().reservationbring(loginUser);
+		System.out.println(carcarall);
+		
 		
 		
 		

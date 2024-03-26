@@ -105,17 +105,21 @@ public class CarService {
 		
 	}
 	
-	
-	public ArrayList<Car> reservationbring(Member loginUser){
-	
+	public ArrayList<Car> carcarall(){
+		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> car = new CarDao().reservationbring(conn, loginUser);
+		ArrayList<Car> car = new CarDao().carcarall(conn);
 		
 		JDBCTemplate.close(conn);
 		
 		return car;
 	}
+	
+	
+
+	
+	
 	
 	
 	
