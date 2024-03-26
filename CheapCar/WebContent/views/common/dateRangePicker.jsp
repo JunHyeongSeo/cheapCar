@@ -13,41 +13,52 @@
 
 <style>
 	#dateRange{
-		width : 300px;
+		width : 350px;
 		text-align : center;
 	}
 </style>
 </head>
 <body>
 
-	<form>
-		<input id="dateRange"type="text" name="datetimes" readonly/>
-	</form>
+	<span>대여 기간</span><br>
+	<input id="dateRange"type="text" name="datetimes" readonly required/>
 
 	<script>
-		$(function() {
-		  $('input[name="datetimes"]').daterangepicker({
-		    timePicker: true,
-		    "timePickerIncrement": 5,
-		    startDate: moment().startOf('hour'),
-		    endDate: moment().startOf('hour').add(32, 'hour'),
-		    locale: {
-		      format: 'M/DD hh:mm A',
-		      "separator": " ~ ",
-		        "applyLabel": "확인",
-		        "cancelLabel": "취소",
-		        "fromLabel": "From",
-		        "toLabel": "To",
-		        "customRangeLabel": "Custom",
-		        "weekLabel": "W",
-		      "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-		      "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-		    },
-		    "startDate": new Date(),
-		    "endDate": new Date(),
-		    "drops": "auto"
-		  });
-		});
+	
+	$('#dateRange').daterangepicker({
+		"timePicker" : true,
+		"timePickerIncrement": 60,
+		"minDate" : moment().startOf('day'),
+		"maxDate" : moment().add(1, 'month'),
+	    "locale": {
+	        "format": "YYYY-MM-DD-HH:00A",
+	        "separator": " ~ ",
+	        "applyLabel": "확인",
+	        "cancelLabel": "취소",
+	        "fromLabel": "From",
+	        "toLabel": "To",
+	        "customRangeLabel": "Custom",
+	        "weekLabel": "W",
+	        "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+	        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	    },
+	    "startDate": new Date(),
+	    "endDate": new Date(),
+	    "drops": "auto"
+	}, function (start, end, label) {
+		
+	    var startTime = start.toDate();
+	    var endTime = end.toDate();
+	    
+	    var startHour = startTime.getTime();
+	    var endHour = endTime.getTime();
+	    
+	    var hourDifference = (endHour - startHour) / (1000*60*60);
+
+		document.getElementById('totalHour').value = hourDifference;
+	    
+	});
+		
 		
 	</script>
 </body>

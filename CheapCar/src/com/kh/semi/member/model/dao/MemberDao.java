@@ -441,7 +441,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	
 	public String findId(Connection conn, Member member) {
 		
-		String memId = "";
+		String memId = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -454,10 +454,11 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			pstmt.setString(2, member.getBirthday());
 			pstmt.setString(3, member.getPhone());
 			
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				memId =rset.getString("MEMBER_ID");
+				memId = rset.getString("MEMBER_ID");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -467,11 +468,63 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			close(pstmt);
 		}
 				
-		System.out.println(memId);
+		
+		
 		
 		return memId;
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	
+public String findPwd(Connection conn, Member member) {
+		
+		String memPwd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getBirthday());
+			pstmt.setString(4, member.getPhone());
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memPwd = rset.getString("MEMBER_PWD");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+				
+		
+		
+		
+		return memPwd;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> c6a5f41c169756f5b8f7f021d20dd641f9fc5051
 
 }

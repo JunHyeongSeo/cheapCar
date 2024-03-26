@@ -1,8 +1,6 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +11,16 @@ import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class FindIdController
+ * Servlet implementation class FindPwdController
  */
-@WebServlet("/findId")
-public class FindIdController extends HttpServlet {
+@WebServlet("/findPwd")
+public class FindPwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindIdController() {
+    public FindPwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +30,27 @@ public class FindIdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	
+		String memberId = request.getParameter("checkId");
 		String memberName = request.getParameter("checkName");
 		String birthday = request.getParameter("checkBirthday");
 		String phone = request.getParameter("checkPhone");
 		
 		
 		Member member = new Member();
-		
+		member.setMemberId(memberId);
 		member.setMemberName(memberName);
 		member.setBirthday(birthday);
 		member.setPhone(phone);
 		
 		
-		String memId = new MemberService().findId(member); 
+		String memPwd = new MemberService().findPwd(member); 
+		
+//		System.out.println(memPwd);
 		
 		
 		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().print(memId);
-		
+		response.getWriter().print(memPwd);
 		
 	
 	}

@@ -200,6 +200,18 @@ public Member login(String memberId, String memberPwd) {
 		return memId;
 	}
 	
+	public String findPwd(Member member) {
+		
+		Connection conn = getConnection();
+		
+		String memPwd = new MemberDao().findPwd(conn, member);
+		
+		close(conn);
+		
+		return memPwd;
+	}
+	
+	
 	
 
 }

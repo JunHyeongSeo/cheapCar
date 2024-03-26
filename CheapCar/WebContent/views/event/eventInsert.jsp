@@ -26,7 +26,7 @@
         margin-top: 50px;
         float: right;
     }
-    .content_outer>div{
+    .content_outer div{
         width: 100%;
         font-family: "Do Hyeon", sans-serif;
     }
@@ -130,6 +130,7 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
+                        <form action="">
                         <div class="content_header"> 
                             
                         <div class="content_header2">
@@ -137,30 +138,32 @@
 						</div>
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성자 : </span> 
-                    </div>
-                    <div class="content_body">
+                            <span class="content_sub1">작성자 : </span> 
+                        </div>
+                        <div class="content_body">
                         <div class="img-area" align="center">
-							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" alt="" align="center"> 이미지
+							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" id="imgimg"> 이미지
 						</div>
                         <div class="text-area"> 텍스트</div>
-                    </div>
+                        </div>
+                    
+					    <div class="content_add_img">
+                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)">
+                            첨부파일_2 - <input type="file" name="photo" id="subImg1"> <br><br>
+                            첨부파일_3 - <input type="file" name="photo" id="subImg2">
+                            첨부파일_4 - <input type="file" name="photo" id="subImg3">
+					    </div>
+                    
 
-					<div class="content_add_img">
-						<span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-						대표이미지 - <input type="file" name="photo" id="thumbnail">
-						첨부파일_2 - <input type="file" name="photo"> <br><br>
-						첨부파일_3 - <input type="file" name="photo">
-						첨부파일_4 - <input type="file" name="photo">
-					</div>
-
-                    <div class="content_btn" align="center">
-                        <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                           
+                        <div class="content_btn" align="center">
+                            <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
+                            <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                            <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                            <button onclick="test();">테스트</button>   
+                        </div>
+                        </form>
                     </div>
-                </div>
 				</div>            
 			 </div>
 		  </div>
@@ -169,8 +172,40 @@
 	
 	<script>
 		
-		const thumbnail = 
+        function loadImg(inputFile, num){
+            //console.log(inputFile.files.length);
+            if(inputFile.files.length){
+                const reader = new FileReader();
+                console.log(inputFile.files[0]);
+                reader.readAsDataURL(inputFile.files[0]);
+                reader.onload = function(e){
+                    switch(num){
+                    	case 1 : $('#img_1').attr('src', e.target.result); break;
+                    	case 2 : $('#img_2').attr('src', e.target.result); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); break;
+                    	case 4 : $('#img_4').attr('src', e.target.result); break;
+                    }
+                    
+                }
+            }
+            else{
+            	const str = 'https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png'
+            	
+            	switch(num){
+            		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
+            	};
+            }
+        }
+        
+        
+        
+		
+        
 
+        
 
 
 	</script>
