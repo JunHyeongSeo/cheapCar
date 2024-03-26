@@ -19,7 +19,6 @@
 </head>
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
-
 	
 	<div class="outer">
 		<div class="container">
@@ -33,6 +32,7 @@
 	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
 	                </div>
 	            </form>
+	            
 	            
 	            <form class="form-inline" action="abc.do">
 	                <div id="top11" style="display: flex;">

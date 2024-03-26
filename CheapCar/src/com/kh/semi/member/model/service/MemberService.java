@@ -213,13 +213,5 @@ public Member login(String memberId, String memberPwd) {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

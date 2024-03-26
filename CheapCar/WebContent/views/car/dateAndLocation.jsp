@@ -36,11 +36,11 @@
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
                 총 대여시간 :         
-                <input id="totalHour" type="text" readonly value=""/>  
+                <input id="totalHour" name="hours" type="text" readonly value=""/>  
                
             </div>
             <div class="location">
-                <select >
+                <select name="locations">
                     <option value="강남점">강남점</option>
                     <option value="종로점">종로점</option>
                     <option value="일산점">일산점</option>
