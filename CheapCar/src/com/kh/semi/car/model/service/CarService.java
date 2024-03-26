@@ -79,6 +79,18 @@ public class CarService {
 		return list;
 	}
 	
+	public ArrayList<Car> selectedCarList(PageInfo pi, int hours, String locations){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().selectedCarList(conn,pi,hours,locations);
+				
+		JDBCTemplate.close(conn);
+				
+		return list;
+		
+		
+	}
 	
 	
 }

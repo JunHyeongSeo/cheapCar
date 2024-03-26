@@ -476,7 +476,41 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	
 	
 	
-	
+public String findPwd(Connection conn, Member member) {
+		
+		String memPwd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getBirthday());
+			pstmt.setString(4, member.getPhone());
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memPwd = rset.getString("MEMBER_PWD");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+				
+		
+		
+		
+		return memPwd;
+	}
 	
 	
 	

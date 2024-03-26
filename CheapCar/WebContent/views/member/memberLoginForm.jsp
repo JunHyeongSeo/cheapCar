@@ -82,17 +82,17 @@
 			
 			<div class="form-group">
 			  <label for="memberName">이름</label>
-			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
+			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="imemberName" required>
 			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">생년월일</label>
-			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
+			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="ibirthday" required>
 			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">전화번호</label>
-			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
+			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="iphone" required>
 			</div>
 
 			<div class="form-group">
@@ -100,30 +100,31 @@
 			</div>
 			
 			
-			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
+			<button type="button" class="btn btn-primary" onclick="checkId();">확인</button>
 			
 			
 			<script>
 			
-				function check(){
+				function checkId(){
 				
 					$.ajax({
 						url : 'findId',
 						data : 
 						{
-							checkName : $('#memberName').val(),
+							checkName : $('#imemberName').val(),
 							//$memberName.val(),
-							checkBirthday : $('#birthday').val(),
+							checkBirthday : $('#ibirthday').val(),
 							//$birthday.val(),
-							checkPhone : $('#phone').val()
+							checkPhone : $('#iphone').val()
 							//$phone.val()
 							//뭐지????????? 평일에도하고 주말에도 한다 근데 주말에 힘듬???
 						},
 						success : function(result){
 							if(result == 'null'){ // 아이디 없는거
-								alert('아이디가 없습니다');
+								alert('아이디를 찾을 수 없습니다');
 							} else{  // 아이디 있는거
-								$('#idid').html('아이디 : ' + result);
+								//$('#idid').html('아이디 : ' + result);
+								alert('아이디 : ' + result)
 							}
 	
 						}
@@ -165,54 +166,57 @@
 			
 			<div class="form-group">
 			  <label for="memberId">아이디</label>
-			  <input type="text" name="memberId" class="form-control" placeholder="아이디를 입력해주세요" id="memberName" required>
+			  <input type="text" name="memberId" class="form-control" placeholder="아이디를 입력해주세요" id="pmemberId" required>
 			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">이름</label>
-			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
+			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="pmemberName" required>
 			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">생년월일</label>
-			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
+			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="pbirthday" required>
 			</div>
 			
 			<div class="form-group">
 			  <label for="memberName">전화번호</label>
-			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
+			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="pphone" required>
 			</div>
 
 			<div class="form-group">
-			  <label id="idid"></label>
+			  <label id="pwdpwd"></label>
 			</div>
 			
 			
 			
-			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
+			<button type="button" class="btn btn-primary" onclick="checkPwd();">확인</button>
 			
 			
 			
 			<script>
 			
-				function check(){
+				function checkPwd(){
 				
 					$.ajax({
-						url : 'findId',
+						url : 'findPwd',
 						data : 
 						{
-							checkName : $('#memberName').val(),
+							checkId : $('#pmemberId').val(),
+							
+							checkName : $('#pmemberName').val(),
 							//$memberName.val(),
-							checkBirthday : $('#birthday').val(),
+							checkBirthday : $('#pbirthday').val(),
 							//$birthday.val(),
-							checkPhone : $('#phone').val()
+							checkPhone : $('#pphone').val()
 							//$phone.val()
 						},
 						success : function(result){
-							if(result == 'null'){ // 아이디 없는거
-								alert('아이디가 없습니다');
+							if(result == 'null'){ // 비밀번호 없는거
+								alert('비밀번호를 찾을 수 없습니다');
 							} else{  // 아이디 있는거
-								$('#idid').html('아이디 : ' + result);
+								//$('#idid').html('비밀번호 : ' + result);
+								alert('비밀번호 : ' + result);
 							}
 	
 						}
