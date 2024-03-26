@@ -144,7 +144,7 @@
                             <span class="content_sub1">작성자 : </span> 
                         </div>
                         <div class="content_body">
-                        <div class="img-area" align="center" id="imgArea" display>
+                        <div class="img-area" align="center" id="imgArea">
 							<img src="" id="img_1">
 							<img src="" id="img_2">
 							<img src="" id="img_3">
@@ -178,10 +178,8 @@
 	
 	<script>
 		
-        $(function(){
-        	$('#imgArea').hide();
-        	
-        });
+        removeEventListener
+        
         
         
         function loadImg(inputFile, num){
