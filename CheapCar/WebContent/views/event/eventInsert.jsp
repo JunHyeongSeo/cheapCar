@@ -174,9 +174,9 @@
 		
         function loadImg(inputFile, num){
             //console.log(inputFile.files.length);
-            if(inputFile.file.length){
+            if(inputFile.files.length){
                 const reader = new FileReader();
-                //console.log(inputFile.file[0]);
+                console.log(inputFile.files[0]);
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
