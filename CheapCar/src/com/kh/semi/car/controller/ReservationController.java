@@ -1,28 +1,23 @@
-package com.kh.semi.member.controller;
+package com.kh.semi.car.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
-
 /**
- * Servlet implementation class FindIdController
+ * Servlet implementation class ReservationController
  */
-@WebServlet("/findId")
-public class FindIdController extends HttpServlet {
+@WebServlet("/reservation.do")
+public class ReservationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindIdController() {
+    public ReservationController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +26,10 @@ public class FindIdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String memberName = request.getParameter("memberName");
-		String birthday = request.getParameter("birthday");
-		String phone = request.getParameter("phone");
 		
+	
 		
-		Member member = new Member();
-		
-		member.setMemberName(memberName);
-		member.setBirthday(birthday);
-		member.setPhone(phone);
-		
-		String memId = new MemberService().findId(member); 
-		
-		
-		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().print(memId);
-		
-		System.out.println(memId);
+		request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
 	
 	}
 
