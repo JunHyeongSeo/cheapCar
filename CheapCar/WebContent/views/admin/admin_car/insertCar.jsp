@@ -126,18 +126,31 @@
 			$.ajax({
 				url : 'insertCar.do',
 				data : {boardNo : $('#input3').val()},
-				success : return true,
-				fail : return false
-
+				
 				}
 			});
 		}
 		
 		function insertCar(){
 			
-			const brandName = 
+			const brandName = document.getElementByName('brandName').innerHTML.value;
+			const modelName = document.getElementByName('modelName').innerHTML.value;
+			const gradeName = document.getElementByName('gradeName').innerHTML.value;
+			const fuelName = document.getElementByName('fuelName').innerHTML.value;
+			const year = document.getElementByName('year').innerHTML.value;
+			const locationName = document.getElementByName('locationName').innerHTML.value;
 			
 			
+			let arr = [brandName, modelName, gradeName, fuelName, year, locationName];
+			
+			if(arr.indexOf('-') == -1){
+                return true;
+            }
+            else{
+                return false;
+            }
+			
+			console.log(arr.indexOf('-'));
 		}
 		
 		

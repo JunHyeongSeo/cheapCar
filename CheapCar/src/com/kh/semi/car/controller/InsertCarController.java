@@ -29,7 +29,7 @@ public class InsertCarController extends HttpServlet {
 		
 		
 		
-		
+		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
 		
 	}
 
