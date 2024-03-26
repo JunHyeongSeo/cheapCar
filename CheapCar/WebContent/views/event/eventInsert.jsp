@@ -142,7 +142,10 @@
                         </div>
                         <div class="content_body">
                         <div class="img-area" align="center">
-							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" id="imgimg"> 이미지
+							<img src="" id="img_1">
+                            <img src="" id="img_2">
+                            <img src="" id="img_3">
+                            <img src="" id="img_4">
 						</div>
                         <div class="text-area"> 텍스트</div>
                         </div>
@@ -150,9 +153,9 @@
 					    <div class="content_add_img">
                             <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
                             대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)">
-                            첨부파일_2 - <input type="file" name="photo" id="subImg1"> <br><br>
-                            첨부파일_3 - <input type="file" name="photo" id="subImg2">
-                            첨부파일_4 - <input type="file" name="photo" id="subImg3">
+                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
+                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
+                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
 					    </div>
                     
 
@@ -181,6 +184,7 @@
                 reader.onload = function(e){
                     switch(num){
                     	case 1 : $('#imgimg').attr('src', e.target.result); break;
+                    	case 2 : $('#img_1').attr('src', e.target.result); break;
                     }
                     
                 }
