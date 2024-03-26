@@ -43,7 +43,6 @@ public class FindIdController extends HttpServlet {
 		member.setBirthday(birthday);
 		member.setPhone(phone);
 		
-		System.out.println(memberName);
 		
 		String memId = new MemberService().findId(member); 
 		
@@ -51,7 +50,7 @@ public class FindIdController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().print(memId);
 		
-		//System.out.println(memId);
+		
 	
 	}
 

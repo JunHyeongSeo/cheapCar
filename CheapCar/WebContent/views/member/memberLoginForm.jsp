@@ -94,10 +94,76 @@
 			  <label for="memberName">전화번호</label>
 			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
 			</div>
+
+			<div class="form-group">
+			  <label id="idid"></label>
+			</div>
 			
+			
+			
+			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
+			
+			
+			
+			<script>
+			
+				function check(){
+				
+					$.ajax({
+						url : 'findId',
+						data : 
+						{
+							checkName : $('#memberName').val(),
+							//$memberName.val(),
+							checkBirthday : $('#birthday').val(),
+							//$birthday.val(),
+							checkPhone : $('#phone').val()
+							//$phone.val()
+							//뭐지????????? 평일에도하고 주말에도 한다 근데 주말에 힘듬???
+						},
+						success : function(result){
+							if(result == 'null'){ // 아이디 없는거
+								alert('아이디가 없습니다');
+							} else{  // 아이디 있는거
+								$('#idid').html('아이디 : ' + result);
+							}
+	
+						}
+	
+					});
+				}
+			</script>
+		   </form>
+		  </div>
+		   
+	  </div>
+	</div>
+  </div>
+
+
+
+	
+	<div class="modal-body">
+		  
+			<form method="post">
 			
 			<div class="form-group">
-			  <label id="id"></label>
+			  <label for="memberName">이름</label>
+			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="memberName">생년월일</label>
+			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="memberName">전화번호</label>
+			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
+			</div>
+
+			<div class="form-group">
+			  <label id="idid"></label>
 			</div>
 			
 			
@@ -122,19 +188,15 @@
 							//$phone.val()
 						},
 						success : function(result){
-							if(result.equals("")){
+							if(result == 'null'){ // 아이디 없는거
 								alert('아이디가 없습니다');
-							} else{// 있는거
-								//console.log(result);
-								$('#id').html(result);
+							} else{  // 아이디 있는거
+								$('#idid').html('아이디 : ' + result);
 							}
-							
 	
 						}
 	
-	
 					});
-			
 				}
 			</script>
 		   </form>
@@ -143,9 +205,6 @@
 	  </div>
 	</div>
   </div>
-
-
-
 
 
 
