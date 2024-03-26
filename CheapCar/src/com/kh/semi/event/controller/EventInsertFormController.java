@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class EventInsertForm
  */
 @WebServlet("/insertForm.event")
-public class EventInsertForm extends HttpServlet {
+public class EventInsertFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventInsertForm() {
+    public EventInsertFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
