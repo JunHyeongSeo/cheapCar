@@ -50,7 +50,7 @@
 		                    <th colspan="2">
 		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
 		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
-		                    	<a href="<%= contextPath%>/findId">아이디 찾기</a> /
+		                    	<a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> /
 		                    	<a href="<%= contextPath%>/findPwd">비밀번호 찾기</a>
 		                    </th>
 		                </tr>
@@ -59,11 +59,71 @@
 		</div>
 		
 		
-		
-		
-		
-		
 	</div>
+
+
+
+
+<!-- 아이디 찾기 모달 -->
+<div class="modal" id="findId">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">아이디 찾기</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- 찾을실 분의 이름, 생년월일, 전화번호 -->
+		<div class="modal-body">
+		  
+			<form action="<%=contextPath%>/updatePwd" method="post">
+			
+			<div class="form-group">
+			  <label for="memberPwd">현재 비밀번호:</label>
+			  <input type="password" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="changePwd">변경할 비밀번호:</label>
+			  <input type="password" name="changePwd" class="form-control" placeholder="변경할 비밀번호를 입력해수세요." id="changePwd" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="checkPwd">변경할 비밀번호 확인:</label>
+			  <input type="password" class="form-control" placeholder="다시 한 번 입력해주세요" id="checkPwd" required>
+			</div>
+			
+			<button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
+			
+			
+			
+			<script>
+				function validatePwd(){
+					
+					
+				
+					
+				}
+			
+			
+			</script>
+		   </form>
+		  </div>
+		   
+	  </div>
+	</div>
+  </div>
+
+
+
+
+
+
+
+
+
 	
 
 </body>
