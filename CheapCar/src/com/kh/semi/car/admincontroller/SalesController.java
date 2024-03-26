@@ -36,14 +36,20 @@ public class SalesController extends HttpServlet {
 		
 		
 		
-		ArrayList<Car> carcarall = new CarService().carcarall();
+		ArrayList<Car> carlist = new CarService().carcarall();
 		
-		System.out.println(carcarall);
+		//System.out.println(carlist);
+		
+		if(carlist.isEmpty()) {
+			
+		} else {
+			request.setAttribute("carlist", carlist);
+			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
+		}
 		
 		
 		
 		
-		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 	}
 
 	/**
