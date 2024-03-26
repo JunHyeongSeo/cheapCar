@@ -112,6 +112,9 @@
 		width: 100%;
 		height: 100%;
 	}
+    .form-control{
+        height: auto;
+    }
 	
     
 
@@ -141,13 +144,15 @@
                             <span class="content_sub1">작성자 : </span> 
                         </div>
                         <div class="content_body">
-                        <div class="img-area" align="center" id="imgArea">
+                        <div class="img-area" align="center" id="imgArea" display>
 							<img src="" id="img_1">
 							<img src="" id="img_2">
 							<img src="" id="img_3">
 							<img src="" id="img_4">
 						</div>
-                        <div class="text-area"> 텍스트</div>
+                        <div class="text-area">
+                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
+                        </div>
                         </div>
                     
 					    <div class="content_add_img">
@@ -173,9 +178,12 @@
 	
 	<script>
 		
-	
-		
-		
+        $(function(){
+        	$('#imgArea').hide();
+        	
+        });
+        
+        
         function loadImg(inputFile, num){
             //console.log(inputFile.files.length);
             if(inputFile.files.length){
