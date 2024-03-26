@@ -31,6 +31,12 @@ public class Member {
 	}
 	
 	
+	public Member(String memberId) {
+		super();
+		this.memberId = memberId;
+	}
+
+
 	public Member(int memberNo, String memberId, String memberName, String memberPwd, String birthday, String phone,
 			String email, Date enrollDate, String memberStatus) {
 		super();

@@ -244,6 +244,22 @@
 	
 	</entry>
 	
+	<entry key="findId">
+		SELECT
+				MEMBER_ID
+			FROM
+				TB_MEMBER
+			WHERE
+				MEMBER_NAME = ?
+			AND
+				BIRTHDAY = ?
+			AND
+				PHONE = ?
+			AND
+				MEMBER_STATUS = 'Y'
+	
+	</entry>
+	
 	
 	
 	

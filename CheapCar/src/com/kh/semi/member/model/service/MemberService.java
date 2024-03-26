@@ -189,6 +189,17 @@ public Member login(String memberId, String memberPwd) {
 		return list;
 	}
 	
+	public Member findId(Member member) {
+		
+		Connection conn = getConnection();
+		
+		Member m = new MemberDao().findId(conn, member);
+		
+		
+		return m;
+	}
+	
+	
 	
 	
 	
