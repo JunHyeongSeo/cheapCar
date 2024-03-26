@@ -33,7 +33,7 @@ public class AdminSelectMemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberId = request.getParameter("memberId");
-		Member m = new MemberService().selectMember(memberId);
+		Member m = new MemberService().asmc(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
