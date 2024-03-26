@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class salesController
@@ -32,10 +34,12 @@ public class SalesController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
 		
 		
-		ArrayList<Car> car = new CarService().reservattionbring();
+		ArrayList<Car> car = new CarService().reservationbring(loginUser);
 		
 		
 		
