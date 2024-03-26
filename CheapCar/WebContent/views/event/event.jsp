@@ -115,15 +115,15 @@
 					<form>
 						<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 						<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-						<a href="" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+						<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
 					</form>
 				</div>  
 				<div class="event_content">
 					<ul id="event_list">
 						<li>
-							<a href="" alt="">
+							<a href="<%= contextPath %>/detail.event" alt="">
 								<div class="img-area event_1">사진</div>
-								<div class="text-area event_1">
+								<div class="text-area event_1" >
 									<span>세일세일세일세일세일세일세일세일세일세일세일세일세일 </span><br><br>
 									<span style="font-size: 15px;">조회수  </span>
 								</div>

@@ -192,7 +192,13 @@
                 YEAR_PRICE,
                 START_DATE,
                 END_DATE,
-                MI.MILEAGE
+                MI.MILEAGE,
+                MILEAGE_DATE,
+                CS_NO,
+                CS_TITLE,
+                CS_CONTENT,
+                CSB.CREATE_DATE,
+                REPLY_YN
           FROM
                 TB_CAR C
           JOIN  
@@ -225,6 +231,12 @@
           JOIN
                 TB_MILEAGE MI
             ON (R.RESERVATION_NO = MI.RESERVATION_NO)
+          JOIN
+                TB_CS_BOARD CSB
+            ON (MM.MEMBER_NO = CSB.MEMBER_NO)
+          JOIN
+                TB_REPLY_BOARD REB
+            ON (REB.REPLY_NO = CSB.REPLY_NO)
         WHERE 
             MM.MEMBER_NO = ?
 		AND
