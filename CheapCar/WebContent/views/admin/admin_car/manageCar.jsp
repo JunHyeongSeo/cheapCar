@@ -41,7 +41,7 @@
 		</div>
 
         <div class="container">
-            <h2>차량현황</h2>   
+            <h2>차량현황</h2> 
             <table class="table">
               <thead>
                 <tr>
