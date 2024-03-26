@@ -25,11 +25,11 @@
 	<%@ include file="menuBar.jsp" %>
 	
 	<div>
-		<h1 style="color: orangered;"><marquee>좋은 주말 보내세요~!!</marquee></h1>
+		<h1 style="color: orangered;"><marquee>오늘 하루도 고생 많으셨습니다~~~</marquee></h1>
 		
 		<div class="song">
 			<div class='a'>
-				<iframe class= 'a' width="550" height="325" src="https://www.youtube.com/embed/LqME1y6Mlyg" title="[𝐖𝐎𝐑𝐊&amp;𝐉𝐀𝐙𝐙] 사무실에서 일하다가 몰래 리듬타기 좋은 펑키한 재즈비지엠😎💖 l Relaxing Jazz Piano Music for Office, Work, Study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			<iframe width="550" height="325" src="https://www.youtube.com/embed/ATK7gAaZTOM" title="(여자)아이들((G)I-DLE) - &#39;나는 아픈 건 딱 질색이니까(Fate)&#39; LIVE CLIP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 			</div>
 		</div>
 	
