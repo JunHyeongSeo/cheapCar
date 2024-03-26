@@ -457,7 +457,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				memId = new Member(rset.getString("MEMBER_ID"));
+				memId =rset.getString("MEMBER_ID");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -467,7 +467,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			close(pstmt);
 		}
 				
-		
+		System.out.println(memId);
 		
 		return memId;
 	}
