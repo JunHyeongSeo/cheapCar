@@ -1,4 +1,4 @@
-package com.kh.semi.car.controller;
+package com.kh.semi.car.admincontroller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class payListController
  */
-@WebServlet("/insertCar.do")
-public class InsertCarController extends HttpServlet {
+@WebServlet("/payList")
+public class PayListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCarController() {
+    public PayListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,11 +26,7 @@ public class InsertCarController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
-		
+		request.getRequestDispatcher("views/admin/admin_sales/payList.jsp").forward(request, response);
 	}
 
 	/**

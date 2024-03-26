@@ -1,4 +1,4 @@
-package com.kh.semi.car.controller;
+package com.kh.semi.car.admincontroller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class salesController
  */
-@WebServlet("/insertCar")
-public class InsertCarFormController extends HttpServlet {
+@WebServlet("/sales")
+public class SalesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCarFormController() {
+    public SalesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,12 +27,12 @@ public class InsertCarFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_car/insertCar.jsp").forward(request, response);
 		
 		
 		
 		
 		
+		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 	}
 
 	/**

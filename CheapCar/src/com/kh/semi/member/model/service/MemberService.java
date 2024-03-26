@@ -227,10 +227,9 @@ public Member login(String memberId, String memberPwd) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectMember(conn, memberId);
+		ArrayList<Member> list = new MemberDao().asmcs(conn, memberId);
 
 		close(conn);
-		
 		
 		return list;
 	}

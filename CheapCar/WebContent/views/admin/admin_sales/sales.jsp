@@ -59,7 +59,7 @@
 	            
 			</div>
 			
-			<h2 style="margin:20px 0px;" align="center">매출내역</h2>   
+			<h2 style="margin:20px 0px;" align="center">이번 달 매출내역</h2>   
 			
 			<div class="salesList" style="margin-bottom:20px;" align="right">		
 				<a type="submit" class="btn btn-outline-info" href="#">모델별 매출 내역</a>
@@ -71,9 +71,9 @@
 			<table class="table" style="text-align:center">
 				<thead>
 					<tr>
-						<th>모델</th>
-						<th>예약건수</th>
-						<th>예약금액</th>
+						<th>예약번호</th>
+						<th>회원아이디</th>
+						<th>결재금액</th>
 						<th>상세보기</th>
 					</tr>
 				</thead>
@@ -81,7 +81,7 @@
 					<tr>
 						<td>1</td>
 						<td>user01</td>
-						<td>user02</td>
+						<td>10000</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 					
