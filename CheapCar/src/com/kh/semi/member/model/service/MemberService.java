@@ -189,14 +189,15 @@ public Member login(String memberId, String memberPwd) {
 		return list;
 	}
 	
-	public Member findId(Member member) {
+	public String findId(Member member) {
 		
 		Connection conn = getConnection();
 		
-		Member m = new MemberDao().findId(conn, member);
+		String memId = new MemberDao().findId(conn, member);
 		
+		close(conn);
 		
-		return m;
+		return memId;
 	}
 	
 	

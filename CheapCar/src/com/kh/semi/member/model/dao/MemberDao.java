@@ -439,9 +439,9 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 	}
 	
 	
-	public Member findId(Connection conn, Member member) {
+	public String findId(Connection conn, Member member) {
 		
-		Member m = new Member();
+		String memId = "";
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -457,7 +457,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				m = new Member(rset.getString("MEMBER_ID"));
+				memId = new Member(rset.getString("MEMBER_ID"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -469,7 +469,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				
 		
 		
-		return m;
+		return memId;
 	}
 	
 	
