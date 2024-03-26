@@ -29,9 +29,6 @@ public class CarDao {
 		}
 	}
 	
-
-Google
-datepicker
 	public int selectListCount(Connection conn) {
 		
 		int listCount = 0;
