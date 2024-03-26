@@ -46,7 +46,9 @@
    	           SEQ_EVENT_PHOTO_NO.NEXTVAL,
    	           ?,
    	           ?,
-   	           
+   	           SEQ_EVENT_NO.CURRVAL,
+   	           DEFAULT,
+   	           ?
    	           )
    	                 
 	</entry>
