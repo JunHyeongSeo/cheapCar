@@ -97,7 +97,7 @@
 			
 			
 			<div class="form-group">
-			  <label id="id">전화번호</label>
+			  <label id="id"></label>
 			</div>
 			
 			
@@ -111,13 +111,20 @@
 					url : 'findId',
 					data : 
 					{
-						checkName : $memberName.val(),
-						checkBirthday : $birthday.val(),
-						checkPhone : $phone.val()
+						checkName : $('#memberName').val(),
+						
+						
+						//$memberName.val(),
+
+
+						checkBirthday : $('#birthday').val(),
+						//$birthday.val(),
+						checkPhone : $('#phone').val()
+						//$phone.val()
 					},
 					success : function(result){
 						if(result != null){// 있는거
-							
+							$('#id').innerHtml().val(result);
 						}
 						
 
