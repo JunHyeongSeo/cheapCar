@@ -81,17 +81,17 @@
 			<form method="post">
 			
 			<div class="form-group">
-			  <label for="memberPwd">이름</label>
+			  <label for="memberName">이름</label>
 			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="changePwd">생년월일</label>
+			  <label for="memberName">생년월일</label>
 			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="checkPwd">전화번호</label>
+			  <label for="memberName">전화번호</label>
 			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
 			</div>
 			
@@ -102,35 +102,40 @@
 			
 			
 			
-			<button type="submit" class="btn btn-primary">확인</button>
+			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
 			
 			
 			
 			<script>
-				$.ajax({
-					url : 'findId',
-					data : 
-					{
-						checkName : $('#memberName').val(),
-						//$memberName.val(),
-						checkBirthday : $('#birthday').val(),
-						//$birthday.val(),
-						checkPhone : $('#phone').val()
-						//$phone.val()
-					},
-					success : function(result){
-						if(result != null){// 있는거
-							//console.log(result);
-							$('#id').html(result);
+			
+				function check(){
+				
+					$.ajax({
+						url : 'findId',
+						data : 
+						{
+							checkName : $('#memberName').val(),
+							//$memberName.val(),
+							checkBirthday : $('#birthday').val(),
+							//$birthday.val(),
+							checkPhone : $('#phone').val()
+							//$phone.val()
+						},
+						success : function(result){
+							if(result.equals("")){
+								alert('아이디가 없습니다');
+							} else{// 있는거
+								//console.log(result);
+								$('#id').html(result);
+							}
+							
+	
 						}
-						
-
-					}
-
-
-				});
+	
+	
+					});
 			
-			
+				}
 			</script>
 		   </form>
 		  </div>
