@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이벤트 글쓰기</title>
 </head>
 <body>
+	
+	<%@ include file="../common/menuBar.jsp" %>
+	
+	
+	
 
 </body>
 </html>
