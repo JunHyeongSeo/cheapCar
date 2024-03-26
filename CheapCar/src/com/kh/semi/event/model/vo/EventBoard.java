@@ -12,11 +12,12 @@ public class EventBoard {
 	private String status;
 	private int memberNo;
 	private int count;
+	private int fileLevel;
 	public EventBoard() {
 		super();
 	}
 	public EventBoard(int eventNo, String eventTitle, String eventContent, String eventWriter, Date createDate,
-			String status, int memberNo, int count) {
+			String status, int memberNo, int count, int fileLevel) {
 		super();
 		this.eventNo = eventNo;
 		this.eventTitle = eventTitle;
@@ -26,6 +27,7 @@ public class EventBoard {
 		this.status = status;
 		this.memberNo = memberNo;
 		this.count = count;
+		this.fileLevel = fileLevel;
 	}
 	public int getEventNo() {
 		return eventNo;
@@ -75,11 +77,22 @@ public class EventBoard {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public int getFileLevel() {
+		return fileLevel;
+	}
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
+	}
 	@Override
 	public String toString() {
 		return "EventBoard [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", eventContent=" + eventContent
 				+ ", eventWriter=" + eventWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
-				+ memberNo + ", count=" + count + "]";
+				+ memberNo + ", count=" + count + ", fileLevel=" + fileLevel + ", getEventNo()=" + getEventNo()
+				+ ", getEventTitle()=" + getEventTitle() + ", getEventContent()=" + getEventContent()
+				+ ", getEventWriter()=" + getEventWriter() + ", getCreateDate()=" + getCreateDate() + ", getStatus()="
+				+ getStatus() + ", getMemberNo()=" + getMemberNo() + ", getCount()=" + getCount() + ", getFileLevel()="
+				+ getFileLevel() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -91,6 +104,7 @@ public class EventBoard {
 		result = prime * result + eventNo;
 		result = prime * result + ((eventTitle == null) ? 0 : eventTitle.hashCode());
 		result = prime * result + ((eventWriter == null) ? 0 : eventWriter.hashCode());
+		result = prime * result + fileLevel;
 		result = prime * result + memberNo;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
@@ -128,6 +142,8 @@ public class EventBoard {
 				return false;
 		} else if (!eventWriter.equals(other.eventWriter))
 			return false;
+		if (fileLevel != other.fileLevel)
+			return false;
 		if (memberNo != other.memberNo)
 			return false;
 		if (status == null) {
@@ -137,6 +153,8 @@ public class EventBoard {
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 	
