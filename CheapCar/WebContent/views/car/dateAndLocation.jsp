@@ -21,20 +21,26 @@
         padding-top : 30px;
         padding-bottom: 30px;
     }
+
+    #totalHour{
+        width : 30px;
+        text-align : center;
+    }
 </style>
 </head>
 <body>
 	<%@ include file="../common/menuBar.jsp" %>
 	
     <div class="area-board">
-        <form method="post" action="selectedCarList.do">
+        <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
                 총 대여시간 :         
-                <span id="totalHour"> ? </span>
+                <input id="totalHour" type="text" readonly value=""/>  
+               
             </div>
             <div class="location">
-                <select>
+                <select >
                     <option value="강남점">강남점</option>
                     <option value="종로점">종로점</option>
                     <option value="일산점">일산점</option>

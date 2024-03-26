@@ -180,7 +180,10 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#imgimg').attr('src', e.target.result); break;
+                    	case 1 : $('#img_1').attr('src', e.target.result); break;
+                    	case 2 : $('#img_2').attr('src', e.target.result); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); break;
+                    	case 4 : $('#img_4').attr('src', e.target.result); break;
                     }
                     
                 }
@@ -189,16 +192,15 @@
             	const str = 'https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png'
             	
             	switch(num){
-            		case 1 : $('#imgimg').attr('src', str); break;
+            		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
         }
         
-        $(function(){
-        	$('#imgimg').click(function(){
-        		$('#thumbnail').click();
-        	})
-        })
+        
         
 		
         
