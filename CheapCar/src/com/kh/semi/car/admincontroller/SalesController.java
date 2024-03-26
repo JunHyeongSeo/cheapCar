@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class salesController
@@ -34,12 +36,20 @@ public class SalesController extends HttpServlet {
 		
 		
 		
+		ArrayList<Car> carlist = new CarService().carcarall();
 		
-		ArrayList<Car> car = new CarService().reservattionbring();
+		//System.out.println(carlist);
+		
+		if(carlist.isEmpty()) {
+			
+		} else {
+			request.setAttribute("carlist", carlist);
+			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
+		}
 		
 		
 		
-		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
+		
 	}
 
 	/**
