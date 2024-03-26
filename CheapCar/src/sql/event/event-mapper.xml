@@ -6,7 +6,28 @@
 		Event Mapper
 	</comment>
 	
-	
+	<entry key="insertEventBoard">
+		INSERT
+		  INTO
+		       TB_EVENT_BOARD
+		       (
+		       EVENT_NO,
+		       EVENT_TITLE,
+		       EVENT_CONTENT,
+		       CREATE_DATE,
+		       STATUS,
+		       MEMBER_NO
+		       )
+        VALUES
+               (
+               SEQ_EVENT_BOARD_NO.NEXTVAL,
+               ?,
+               ?,
+               SYSDATE,
+               DEFAULT,
+               ?
+               )		       
+	</entry>
 	
 	
 	
