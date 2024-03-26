@@ -1,26 +1,28 @@
 package com.kh.semi.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class FindPwdController
+ * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/findPwd")
-public class FindPwdController extends HttpServlet {
+@WebServlet("/adminSM")
+public class AdminSelectMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindPwdController() {
+    public AdminSelectMemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,30 +31,15 @@ public class FindPwdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println();
-	
-		String memberId = request.getParameter("checkId");
-		String memberName = request.getParameter("checkName");
-		String birthday = request.getParameter("checkBirthday");
-		String phone = request.getParameter("checkPhone");
+		
+		String memberId = request.getParameter("memberId");
+		Member m = new MemberService().selectMember(memberId);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		
+		new Gson().toJson(m, response.getWriter());
 		
 		
-		Member member = new Member();
-		member.setMemberId(memberId);
-		member.setMemberName(memberName);
-		member.setBirthday(birthday);
-		member.setPhone(phone);
-		
-		
-		String memPwd = new MemberService().findPwd(member); 
-		
-//		System.out.println(memPwd);
-		
-		
-		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().print(memPwd);
-		
-	
 	}
 
 	/**
