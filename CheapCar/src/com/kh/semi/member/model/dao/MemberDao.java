@@ -474,10 +474,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		return memId;
 	}
 	
-	
-<<<<<<< HEAD
-=======
-	
+
 public String findPwd(Connection conn, Member member) {
 		
 		String memPwd = null;
@@ -507,24 +504,18 @@ public String findPwd(Connection conn, Member member) {
 			close(rset);
 			close(pstmt);
 		}
-				
-		
-		
-		
 		return memPwd;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
->>>>>>> c6a5f41c169756f5b8f7f021d20dd641f9fc5051
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
