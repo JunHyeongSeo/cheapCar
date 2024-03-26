@@ -75,37 +75,36 @@
 		  <button type="button" class="close" data-dismiss="modal">&times;</button>
 		</div>
   
-		<!-- 찾을실 분의 이름, 생년월일, 전화번호 -->
+		<!-- 찾을실 분의 이름, 생년월일, -->
 		<div class="modal-body">
 		  
-			<form action="<%=contextPath%>/updatePwd" method="post">
+			<form method="post">
 			
 			<div class="form-group">
-			  <label for="memberPwd">현재 비밀번호:</label>
-			  <input type="password" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" required>
+			  <label for="memberPwd">이름</label>
+			  <input type="text" name="memberPwd" class="form-control" placeholder="이름을 입력해주세요" id="memberPwd" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="changePwd">변경할 비밀번호:</label>
-			  <input type="password" name="changePwd" class="form-control" placeholder="변경할 비밀번호를 입력해수세요." id="changePwd" required>
+			  <label for="changePwd">생년월일</label>
+			  <input type="text" name="changePwd" class="form-control" placeholder="-포함해서 입력해주세요." id="changePwd" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="checkPwd">변경할 비밀번호 확인:</label>
-			  <input type="password" class="form-control" placeholder="다시 한 번 입력해주세요" id="checkPwd" required>
+			  <label for="checkPwd">전화번호</label>
+			  <input type="text" class="form-control" placeholder="-포함해서 입력해주세요." id="checkPwd" required>
 			</div>
 			
-			<button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
+			<button type="submit" class="btn btn-primary">확인</button>
 			
 			
 			
 			<script>
-				function validatePwd(){
-					
-					
-				
-					
-				}
+				$.ajax({
+					url : 'findId'
+
+
+				});
 			
 			
 			</script>
