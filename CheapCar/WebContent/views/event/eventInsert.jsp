@@ -142,7 +142,7 @@
                         </div>
                         <div class="content_body">
                         <div class="img-area" align="center">
-							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" alt="" align="center" id="imgimg"> 이미지
+							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" id="imgimg"> 이미지
 						</div>
                         <div class="text-area"> 텍스트</div>
                         </div>
@@ -180,7 +180,7 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#thumbnail').attr('src', e.target.result); break;
+                    	case 1 : $('#imgimg').attr('src', e.target.result); break;
                     }
                     
                 }
@@ -189,13 +189,17 @@
             	const str = 'https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png'
             	
             	switch(num){
-            		case 1 : $('#thumbnail').attr('src', str); break;
-            	}
-            	
+            		case 1 : $('#imgimg').attr('src', str); break;
+            	};
             }
-            
-
         }
+        
+        $(function(){
+        	$('#imgimg').click(function(){
+        		$('#thumbnail').click();
+        	})
+        })
+        
 		
         
 
