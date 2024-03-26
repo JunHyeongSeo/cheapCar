@@ -11,7 +11,8 @@
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
     PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
-    int hours = (int)session.getAttribute("hours");
+    int hours = (int)request.getAttribute("hours");
+    String locations = (String)request.getAttribute("hours");
 %>
 
 <%
@@ -274,7 +275,7 @@
 								<% if(currentPage != i) { %>
 									<li
 									class="page-link"
-									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>'">
+									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>'">
 									<%=i%>
 									</li>
 								<% } else { %>

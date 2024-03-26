@@ -35,8 +35,6 @@ public class SelectedCarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		
 		request.setCharacterEncoding("UTF-8");
 		
 		int listCount; // 현재 게시판 글 총 개수
@@ -51,7 +49,6 @@ public class SelectedCarListController extends HttpServlet {
 		int hours = Integer.parseInt(request.getParameter("hours"));
 		
 		String locations = request.getParameter("locations"); 
-		
 		
 		listCount = new CarService().selectLocationListCount(locations);
 		
@@ -81,7 +78,8 @@ public class SelectedCarListController extends HttpServlet {
 		request.setAttribute("carList", carList);
 		request.setAttribute("optionList", optionList);
 		request.setAttribute("pageInfo", pi);
-		session.setAttribute("hours", hours);
+		request.setAttribute("hours", hours);
+		request.setAttribute("locations", locations);
 		
 		request.getRequestDispatcher("views/car/selectedCarList.jsp").forward(request, response);
 		
