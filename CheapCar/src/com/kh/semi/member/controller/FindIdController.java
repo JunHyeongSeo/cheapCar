@@ -32,9 +32,9 @@ public class FindIdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String memberName = request.getParameter("memberName");
-		String birthday = request.getParameter("birthday");
-		String phone = request.getParameter("phone");
+		String memberName = request.getParameter("checkName");
+		String birthday = request.getParameter("checkBirthday");
+		String phone = request.getParameter("checkPhone");
 		
 		
 		Member member = new Member();
@@ -43,13 +43,14 @@ public class FindIdController extends HttpServlet {
 		member.setBirthday(birthday);
 		member.setPhone(phone);
 		
+		
 		String memId = new MemberService().findId(member); 
 		
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().print(memId);
 		
-		System.out.println(memId);
+		
 	
 	}
 

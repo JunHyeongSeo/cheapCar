@@ -51,7 +51,7 @@
 		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
 		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
 		                    	<a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> /
-		                    	<a href="<%= contextPath%>/findPwd">비밀번호 찾기</a>
+		                    	<a data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a>
 		                    </th>
 		                </tr>
 		           </table>
@@ -81,56 +81,55 @@
 			<form method="post">
 			
 			<div class="form-group">
-			  <label for="memberPwd">이름</label>
+			  <label for="memberName">이름</label>
 			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="changePwd">생년월일</label>
+			  <label for="memberName">생년월일</label>
 			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
 			</div>
 			
 			<div class="form-group">
-			  <label for="checkPwd">전화번호</label>
+			  <label for="memberName">전화번호</label>
 			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
 			</div>
-			
-			
+
 			<div class="form-group">
-			  <label id="id"></label>
+			  <label id="idid"></label>
 			</div>
 			
 			
-			
-			<button type="submit" class="btn btn-primary">확인</button>
-			
+			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
 			
 			
 			<script>
-				$.ajax({
-					url : 'findId',
-					data : 
-					{
-						checkName : $('#memberName').val(),
-						//$memberName.val(),
-						checkBirthday : $('#birthday').val(),
-						//$birthday.val(),
-						checkPhone : $('#phone').val()
-						//$phone.val()
-					},
-					success : function(result){
-						if(result != null){// 있는거
-							//console.log(result);
-							$('#id').html(result);
+			
+				function check(){
+				
+					$.ajax({
+						url : 'findId',
+						data : 
+						{
+							checkName : $('#memberName').val(),
+							//$memberName.val(),
+							checkBirthday : $('#birthday').val(),
+							//$birthday.val(),
+							checkPhone : $('#phone').val()
+							//$phone.val()
+							//뭐지????????? 평일에도하고 주말에도 한다 근데 주말에 힘듬???
+						},
+						success : function(result){
+							if(result == 'null'){ // 아이디 없는거
+								alert('아이디가 없습니다');
+							} else{  // 아이디 있는거
+								$('#idid').html('아이디 : ' + result);
+							}
+	
 						}
-						
-
-					}
-
-
-				});
-			
-			
+	
+					});
+				}
 			</script>
 		   </form>
 		  </div>
@@ -138,8 +137,91 @@
 	  </div>
 	</div>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
 
 
+<!-- 비밀번호 찾기 모달 -->
+<div class="modal" id="findPwd">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">비밀번호 찾기</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- 찾을실 분의 이름, 생년월일, -->
+		<div class="modal-body">
+		  
+			<form method="post">
+			
+			<div class="form-group">
+			  <label for="memberId">아이디</label>
+			  <input type="text" name="memberId" class="form-control" placeholder="아이디를 입력해주세요" id="memberName" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="memberName">이름</label>
+			  <input type="text" name="memberName" class="form-control" placeholder="이름을 입력해주세요" id="memberName" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="memberName">생년월일</label>
+			  <input type="text" name="birthday" class="form-control" placeholder="-포함해서 입력해주세요." id="birthday" required>
+			</div>
+			
+			<div class="form-group">
+			  <label for="memberName">전화번호</label>
+			  <input type="text" name="phone" class="form-control" placeholder="-포함해서 입력해주세요." id="phone" required>
+			</div>
+
+			<div class="form-group">
+			  <label id="idid"></label>
+			</div>
+			
+			
+			
+			<button type="button" class="btn btn-primary" onclick="check();">확인</button>
+			
+			
+			
+			<script>
+			
+				function check(){
+				
+					$.ajax({
+						url : 'findId',
+						data : 
+						{
+							checkName : $('#memberName').val(),
+							//$memberName.val(),
+							checkBirthday : $('#birthday').val(),
+							//$birthday.val(),
+							checkPhone : $('#phone').val()
+							//$phone.val()
+						},
+						success : function(result){
+							if(result == 'null'){ // 아이디 없는거
+								alert('아이디가 없습니다');
+							} else{  // 아이디 있는거
+								$('#idid').html('아이디 : ' + result);
+							}
+	
+						}
+	
+					});
+				}
+			</script>
+		   </form>
+		  </div>
 
 
 
