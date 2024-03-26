@@ -106,7 +106,7 @@
                   <select name="locationName">
                   	<option value="-">-----------</option>
                     <option value="구리점">구리점</option>
-                    <option value="강남점">강남점</option>
+                    <option value="강남점">강남점</option> 
                     <option value="종로점">종로점</option>
                     <option value="일산점">일산점</option>
                     <option value="강북점">강북점</option>
@@ -115,12 +115,34 @@
               </tr>
             </tbody>
           </table>
-          <button type="submit" class="insbut">등록</button>
+          <button type="submit" class="insbut" onclick="return insertCar();">등록</button>
         </form>
       </div>
 	</div>
 
+	<script>
+		function selectCar(){
 
+			$.ajax({
+				url : 'insertCar.do',
+				data : {boardNo : $('#input3').val()},
+				success : return true,
+				fail : return false
+
+				}
+			});
+		}
+		
+		function insertCar(){
+			
+			const brandName = 
+			
+			
+		}
+		
+		
+		
+	</script>
 
 
 
