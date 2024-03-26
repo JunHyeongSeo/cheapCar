@@ -142,10 +142,7 @@
                         </div>
                         <div class="content_body">
                         <div class="img-area" align="center">
-							<img src="" id="img_1">
-                            <img src="" id="img_2">
-                            <img src="" id="img_3">
-                            <img src="" id="img_4">
+							<img src="https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png" id="imgimg"> 이미지
 						</div>
                         <div class="text-area"> 텍스트</div>
                         </div>
@@ -153,9 +150,9 @@
 					    <div class="content_add_img">
                             <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
                             대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)">
-                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
-                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
-                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
+                            첨부파일_2 - <input type="file" name="photo" id="subImg1"> <br><br>
+                            첨부파일_3 - <input type="file" name="photo" id="subImg2">
+                            첨부파일_4 - <input type="file" name="photo" id="subImg3">
 					    </div>
                     
 
@@ -183,8 +180,10 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#imgimg').attr('src', e.target.result); break;
-                    	case 2 : $('#img_1').attr('src', e.target.result); break;
+                    	case 1 : $('#img_1').attr('src', e.target.result); break;
+                    	case 2 : $('#img_2').attr('src', e.target.result); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); break;
+                    	case 4 : $('#img_4').attr('src', e.target.result); break;
                     }
                     
                 }
@@ -193,16 +192,15 @@
             	const str = 'https://backend.jeju-the-rentcar.com/imagefiles/16982127398568444599348342104.png'
             	
             	switch(num){
-            		case 1 : $('#imgimg').attr('src', str); break;
+            		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
         }
         
-        $(function(){
-        	$('#imgimg').click(function(){
-        		$('#thumbnail').click();
-        	})
-        })
+        
         
 		
         
