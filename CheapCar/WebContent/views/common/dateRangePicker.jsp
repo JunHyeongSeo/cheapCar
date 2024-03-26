@@ -22,7 +22,7 @@
 
 
 	<span>대여 기간</span>
-	<input id="dateRange"type="text" name="datetimes" readonly/>
+	<input id="dateRange"type="text" name="datetimes" readonly required/>
 
 
 	<script>
@@ -30,8 +30,10 @@
 	$('#dateRange').daterangepicker({
 		"timePicker" : true,
 		"timePickerIncrement": 10,
+		"minDate" : moment().startOf('day'),
+		"maxDate" : moment().add(1, 'month'),
 	    "locale": {
-	        "format": "YYYY-MM-DD-HH:m",
+	        "format": "YYYY-MM-DD-HH:mm",
 	        "separator": " ~ ",
 	        "applyLabel": "확인",
 	        "cancelLabel": "취소",
@@ -46,7 +48,7 @@
 	    "endDate": new Date(),
 	    "drops": "auto"
 	}, function (start, end, label) {
-	    console.log(start.format('YYYY-MM-DD-HH:m') + ' to ' + end.format('YYYY-MM-DD-HH:m'));
+	    console.log(start.format('YYYY-MM-DD-HH:mm') + ' to ' + end.format('YYYY-MM-DD-HH:mm'));
 	});
 		
 		

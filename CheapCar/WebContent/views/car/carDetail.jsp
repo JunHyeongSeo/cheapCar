@@ -93,9 +93,11 @@
         </div>
         
         <div class="car-info"> 차량 상세 정보
-			<div>
+
+			<form action="">
         		<%@ include file="../common/dateRangePicker.jsp" %>
-        	</div>
+            </form>
+        	
         	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
@@ -118,14 +120,14 @@
             
             	<% totalPrice = carPrice + optionPrice; %>
             	
-	        	시간당 가격 : <%=totalPrice%>
-			<a class="btn btn-sm btn-primary" href="#">결제하기</a>
+	        	시간당 가격 : <%=totalPrice%>원
+			<a class="btn btn-sm btn-primary" href="<%=contextPath%>/reservation.do">결제하기</a>
 
         <br clear="both">
         
     <% } %>        
         </div>
-        
+
     </div>
 
 

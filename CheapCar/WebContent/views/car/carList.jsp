@@ -230,8 +230,8 @@
 	                    
 	                    </div>
                     	<div class="list-size car-info">	
+                            
 	                        <label><%= c.getModelName() %></label> <br>
-	
 	                        <span><%= c.getGradeName() %></span>
 	                        <span><%= c.getBrandName() %></span>
 	                        <span><%= c.getFuelName() %></span>
