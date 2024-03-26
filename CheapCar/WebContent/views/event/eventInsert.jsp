@@ -133,7 +133,7 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="">
+                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form">
                         <div class="content_header"> 
                             
                         <div class="content_header2">
@@ -166,7 +166,7 @@
 
                         <div class="content_btn" align="center">
                             <a href="" class="btn btn-sm btn-info">등&nbsp;록</a>
-                            <a href="" class="btn btn-sm btn-secondary">뒤로가기</a>
+                            <a href="" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</a>
                         </div>
                         </form>
                     </div>
