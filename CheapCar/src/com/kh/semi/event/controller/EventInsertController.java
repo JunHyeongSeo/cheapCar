@@ -1,6 +1,7 @@
 package com.kh.semi.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
 import com.kh.semi.event.model.vo.EventBoard;
+import com.kh.semi.event.model.vo.EventPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -59,6 +61,8 @@ public class EventInsertController extends HttpServlet {
 			eBoard.setMemberNo(memberNo);
 			
 			ArrayList<EventPhoto> list = new ArrayList();
+			
+			
 			
 			
 		}
