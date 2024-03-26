@@ -93,14 +93,15 @@
         </div>
         
         <div class="car-info"> 차량 상세 정보
-
-        	<%@ include file="../common/dateRangePicker.jsp" %>
+			<div>
+        		<%@ include file="../common/dateRangePicker.jsp" %>
+        	</div>
         	
             <div> <%= car.getModelName()%> </div>
             <div> <%= car.getGradeName()%> </div>
-            <div> <%= car.getBrandName()%></div>
-            <div> <%= car.getYear()%>년 식</div>
-            <div> <%= car.getFuelName()%></div>
+            <div> <%= car.getBrandName()%> </div>
+            <div> <%= car.getYear()%>년 식 </div>
+            <div> <%= car.getFuelName()%> </div>
             
             	<% carPrice = car.getGradePrice()+ car.getModelPrice() + car.getYearPrice(); %>
             	
@@ -117,69 +118,14 @@
             
             	<% totalPrice = carPrice + optionPrice; %>
             	
-			<div>      	
 	        	시간당 가격 : <%=totalPrice%>
-	        	<br>
-	            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-				  	Open modal
-				</button>
-				
-				<div class="modal" id="myModal">
-				    <div class="modal-dialog">
-				        <div class="modal-content">
-				
-                            <div class="modal-header">
-                                <h4 class="modal-title">저렴하니카 결제 화면</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-				
-                            <div class="modal-body">
-                                <form>
-	                                <div class="modal-area">
-                                        <div>
-                                       	    결제 방식 : 
-                                            <select name="">
-                                                <option value="선불충전">선불충전</option>
-                                                <option value="가상계좌">가상계좌</option>
-                                                <option value="카드결제">신용카드</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                          	예약자 명 :
-                                            <span><%= loginUser.getMemberName()%></span>
-                                        </div>
-                                        <div>
-                                           	예약 차량 : 
-                                            <span><%= car.getBrandName()%> / <%= car.getCarNo()%></span>
-                                        </div>
-                                        <div>
-                                         	이메일 : 
-                                            <input type="text">
-                                        </div>
-                                        <div>
-                                        	총 가격 : 
-                                        	
-                                        </div>
-	                                </div>
-                                </form>
-                            </div>
-				
-                            <div class="modal-footer">
-                            
-                                <button id="paid"type="button" class="btn btn-sm btn-primary" href="<%=contextPath%>/views/common/reserveDetail.do">결제</button>
-                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">취소</button>
-                              
-                            </div>
-				        </div>
-				    </div>
-			    </div>
-	        </div>	  
-	        
-        </div>
+			<a class="btn btn-sm btn-primary" href="#">결제하기</a>
 
         <br clear="both">
         
     <% } %>        
+        </div>
+        
     </div>
 
 

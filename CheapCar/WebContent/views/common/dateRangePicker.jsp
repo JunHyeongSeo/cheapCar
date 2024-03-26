@@ -20,10 +20,10 @@
 </head>
 <body>
 
-	<form>
-		<span>대여 기간</span>
-		<input id="dateRange"type="text" name="datetimes" readonly/>
-	</form>
+
+	<span>대여 기간</span>
+	<input id="dateRange"type="text" name="datetimes" readonly/>
+
 
 	<script>
 	
@@ -46,7 +46,7 @@
 	    "endDate": new Date(),
 	    "drops": "auto"
 	}, function (start, end, label) {
-	    console.log(start.format('YYYY-MM-DD-HH:MI') + ' to ' + end.format('YYYY-MM-DD-HH:MM'));
+	    console.log(start.format('YYYY-MM-DD-HH:m') + ' to ' + end.format('YYYY-MM-DD-HH:m'));
 	});
 		
 		
