@@ -85,7 +85,7 @@ public class EventInsertController extends HttpServlet {
 					list.add(ep);
 				}
 			}
-			
+			System.out.println("하하호호");
 			int result = new EventService().insert(eBoard, list);
 			
 			
