@@ -64,7 +64,7 @@ public class EventInsertController extends HttpServlet {
 			
 			
 			EventPhoto ePhoto = null;
-			if(multiRequest.getOriginalFileName("photo") != null) {
+			if(multiRequest.getOriginalFileName("photo1") != null) {
 				
 				ePhoto = new EventPhoto();
 				
@@ -72,8 +72,6 @@ public class EventInsertController extends HttpServlet {
 				ePhoto.setPhotoPath("resources/event_upfiles");
 				
 			}
-			
-			System.out.println(ePhoto);
 			
 			
 			int result = new EventService().insert(eBoard, ePhoto);

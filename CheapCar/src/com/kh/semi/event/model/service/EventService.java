@@ -12,7 +12,7 @@ public class EventService {
 	
 	public int insert(EventBoard eBoard, EventPhoto ePhoto) {
 	
-		System.out.println(ePhoto);
+		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int eBoardResult = new EventDao().insertEventBoard(conn, eBoard);

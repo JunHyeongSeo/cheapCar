@@ -38,15 +38,15 @@
 		       EVENT_PHOTO_NAME,
 		       EVENT_PHOTO_ADDRESS,
 		       EVENT_NO,
-		       STATUS,
+		       STATUS
 		       )
    	    VALUES
    	           (
    	           SEQ_EVENT_PHOTO_NO.NEXTVAL,
    	           ?,
    	           ?,
-   	           SEQ_EVENT_NO.CURRVAL,
-   	           DEFAULT,
+   	           SEQ_EVENT_BOARD_NO.CURRVAL,
+   	           DEFAULT
    	           )
    	                 
 	</entry>
