@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,34 +143,35 @@
 		    					제목 : <input type="text" name="title" required> 
 			    			</div>
                             </div>
-                        <div class="content_sub">
-                            <span class="content_sub1">작성자 : </span> 
-                        </div>
-                        <div class="content_body">
-                        <div class="img-area" align="center" id="imgArea">
-							<img src="" id="img_1">
-							<img src="" id="img_2">
-							<img src="" id="img_3">
-							<img src="" id="img_4">
-						</div>
-                        <div class="text-area">
-                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
-                        </div>
-                        </div>
-                    
-					    <div class="content_add_img">
-                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
-                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
-                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
-                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
-					    </div>
+	                        <div class="content_sub">
+	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span> 
+	                        </div>
+	                        <div class="content_body">
+	                        <div class="img-area" align="center" id="imgArea">
+								<img src="" id="img_1">
+								<img src="" id="img_2">
+								<img src="" id="img_3">
+								<img src="" id="img_4">
+							</div>
+	                        <div class="text-area">
+	                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
+	                        </div>
+	                        </div>
+	                    
+						    <div class="content_add_img">
+	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+	                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
+	                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
+	                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
+
+						    </div>
                     
 
-                        <div class="content_btn" align="center">
-                            <a href="" class="btn btn-sm btn-info">등&nbsp;록</a>
-                            <a href="" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</a>
-                        </div>
+	                        <div class="content_btn" align="center">
+	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
+	                        </div>
                         </form>
                     </div>
 				</div>            
@@ -234,4 +237,6 @@
 		
 	
 </body>
+
+
 </html>

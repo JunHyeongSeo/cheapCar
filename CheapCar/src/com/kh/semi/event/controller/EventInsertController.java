@@ -53,7 +53,7 @@ public class EventInsertController extends HttpServlet {
 			
 			String eventTitle = multiRequest.getParameter("title");
 			String eventContent = multiRequest.getParameter("content");
-			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
+			int memberNo = Integer.parseInt(multiRequest.getParameter("userNo"));
 			
 			
 			EventBoard eBoard = new EventBoard();
@@ -61,19 +61,35 @@ public class EventInsertController extends HttpServlet {
 			eBoard.setEventContent(eventContent);
 			eBoard.setMemberNo(memberNo);
 			
+			// ---------------- 이벤트 게시판 테이블 값 가공 ----------
 			
-			EventPhoto ePhoto = null;
+			ArrayList<EventPhoto> list = new ArrayList();
 			
-			if(multiRequest.getOriginalFileName("upfile") != null) {
+			// 첨부파일 최소 1 ~ 최대 4개
+			
+			for(int i = 1; i <= 4; i++) {
+				String key = "photo" + i;
 				
-				ePhoto = new EventPhoto();
-				
-				ePhoto.setPhotoName(multiRequest.getOriginalFileName("upfile"));
-				ePhoto.setPhotoPath("resources/event_upfiles");
-				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					EventPhoto ep = new EventPhoto();
+					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
+					ep.setPhotoCname(multiRequest.getFilesystemName(key));
+					ep.setPhotoPath("resources/event_upfiles");
+					
+					if(i == 1) {
+						ep.setFileLevel(1); // 대표
+					} else {
+						ep.setFileLevel(2); // 서브이미지
+					}
+					list.add(ep);
+				}
 			}
 			
-			new EventService().insertEventBoard(eBoard, ePhoto);
+			int result = new EventService().insert(eBoard, list);
+			
+			
+			
 			
 			
 			

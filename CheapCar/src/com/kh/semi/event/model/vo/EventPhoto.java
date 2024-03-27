@@ -3,7 +3,8 @@ package com.kh.semi.event.model.vo;
 public class EventPhoto {
 
 	private int photoNo; 
-	private String photoName; 
+	private String photoOname;
+	private String photoCname;
 	private String photoPath;
 	private int eventNo;
 	private String status;
@@ -13,10 +14,12 @@ public class EventPhoto {
 		super();
 	}
 
-	public EventPhoto(int photoNo, String photoName, String photoPath, int eventNo, String status, int fileLevel) {
+	public EventPhoto(int photoNo, String photoOname, String photoCname, String photoPath, int eventNo, String status,
+			int fileLevel) {
 		super();
 		this.photoNo = photoNo;
-		this.photoName = photoName;
+		this.photoOname = photoOname;
+		this.photoCname = photoCname;
 		this.photoPath = photoPath;
 		this.eventNo = eventNo;
 		this.status = status;
@@ -31,12 +34,20 @@ public class EventPhoto {
 		this.photoNo = photoNo;
 	}
 
-	public String getPhotoName() {
-		return photoName;
+	public String getPhotoOname() {
+		return photoOname;
 	}
 
-	public void setPhotoName(String photoName) {
-		this.photoName = photoName;
+	public void setPhotoOname(String photoOname) {
+		this.photoOname = photoOname;
+	}
+
+	public String getPhotoCname() {
+		return photoCname;
+	}
+
+	public void setPhotoCname(String photoCname) {
+		this.photoCname = photoCname;
 	}
 
 	public String getPhotoPath() {
@@ -73,8 +84,9 @@ public class EventPhoto {
 
 	@Override
 	public String toString() {
-		return "EventPhoto [photoNo=" + photoNo + ", photoName=" + photoName + ", photoPath=" + photoPath + ", eventNo="
-				+ eventNo + ", status=" + status + ", fileLevel=" + fileLevel + "]";
+		return "EventPhoto [photoNo=" + photoNo + ", photoOname=" + photoOname + ", photoCname=" + photoCname
+				+ ", photoPath=" + photoPath + ", eventNo=" + eventNo + ", status=" + status + ", fileLevel="
+				+ fileLevel + "]";
 	}
 
 	@Override
@@ -83,8 +95,9 @@ public class EventPhoto {
 		int result = 1;
 		result = prime * result + eventNo;
 		result = prime * result + fileLevel;
-		result = prime * result + ((photoName == null) ? 0 : photoName.hashCode());
+		result = prime * result + ((photoCname == null) ? 0 : photoCname.hashCode());
 		result = prime * result + photoNo;
+		result = prime * result + ((photoOname == null) ? 0 : photoOname.hashCode());
 		result = prime * result + ((photoPath == null) ? 0 : photoPath.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
@@ -103,12 +116,17 @@ public class EventPhoto {
 			return false;
 		if (fileLevel != other.fileLevel)
 			return false;
-		if (photoName == null) {
-			if (other.photoName != null)
+		if (photoCname == null) {
+			if (other.photoCname != null)
 				return false;
-		} else if (!photoName.equals(other.photoName))
+		} else if (!photoCname.equals(other.photoCname))
 			return false;
 		if (photoNo != other.photoNo)
+			return false;
+		if (photoOname == null) {
+			if (other.photoOname != null)
+				return false;
+		} else if (!photoOname.equals(other.photoOname))
 			return false;
 		if (photoPath == null) {
 			if (other.photoPath != null)

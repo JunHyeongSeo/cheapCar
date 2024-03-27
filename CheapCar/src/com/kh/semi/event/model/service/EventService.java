@@ -1,6 +1,7 @@
 package com.kh.semi.event.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.event.model.dao.EventDao;
@@ -10,24 +11,26 @@ import com.kh.semi.event.model.vo.EventPhoto;
 public class EventService {
 
 	
-	public int insertEventBoard(EventBoard eBoard, EventPhoto ePhoto) {
+	public int insert(EventBoard eBoard, ArrayList<EventPhoto> list) {
 	
-		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int eBoardResult = new EventDao().insertEventBoard(conn, eBoard);
-		int ePhotoResult = 1; 
-		if(ePhoto != null) {
-			ePhotoResult = new EventDao().insertEventPhoto(conn, ePhoto);
-		}
 		
-		if((eBoardResult * ePhotoResult) > 0) {
+		int ePhotoResult = new EventDao().insertEventPhoto(conn, list);
+		
+		if(eBoardResult * ePhotoResult > 0) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
+			
+		return (eBoardResult * ePhotoResult);
+	}	
 		
-	return (eBoardResult * ePhotoResult);
-	}
+		
+		
+		
+		
 	
 }
