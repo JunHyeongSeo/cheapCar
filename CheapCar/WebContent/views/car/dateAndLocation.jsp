@@ -24,7 +24,7 @@
 
     
     .calendar > input{
-		width : 100px;    
+		width : 175px;    
         text-align : center;
     }
 
