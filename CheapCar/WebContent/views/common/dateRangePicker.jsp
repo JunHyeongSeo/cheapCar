@@ -53,8 +53,14 @@
 	    var startHour = startTime.getTime();
 	    var endHour = endTime.getTime();
 	    
+	    var startRent = start.format('YYYY-MM-DD');
+	    var endRent = end.format('YYYY-MM-DD');
+	    
+	    
 	    var hourDifference = (endHour - startHour) / (1000*60*60);
 
+	    document.getElementById('startRent').value = startRent;
+	    document.getElementById('endRent').value = endRent;
 		document.getElementById('totalHour').value = hourDifference;
 	    
 	});

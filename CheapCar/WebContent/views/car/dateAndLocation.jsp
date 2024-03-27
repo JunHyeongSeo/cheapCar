@@ -22,9 +22,14 @@
         padding-bottom: 30px;
     }
 
-    #totalHour{
-        width : 30px;
+    
+    .calendar > input{
+		width : 100px;    
         text-align : center;
+    }
+
+    #totalHour{
+        width : 50px;
     }
 </style>
 </head>
@@ -35,7 +40,13 @@
         <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
-               		 총 대여시간 :         
+                    시작 날짜 :
+                <input id="startRent" name="startRent" type="text" readonly value=""/><br>
+
+		            종료 날짜 : 
+                <input id="endRent" name="endRent" type="text" readonly value=""/><br>
+                
+                    대여 시간 :         
                 <input id="totalHour" name="hours" type="text" readonly value=""/>  
                
             </div>
