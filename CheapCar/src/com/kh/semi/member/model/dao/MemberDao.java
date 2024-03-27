@@ -585,8 +585,4 @@ public String findPwd(Connection conn, Member member) {
 		
 		return list;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 1afc646af28bb3f48ae4cf9842b754ef3643566a
 }
