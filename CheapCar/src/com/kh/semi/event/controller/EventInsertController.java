@@ -94,6 +94,8 @@ public class EventInsertController extends HttpServlet {
 				request.getSession().setAttribute("alertMsg", "★이벤트 게시물 등록에 성공하였습니다");
 				response.sendRedirect(request.getContentType() + "/list.event");
 			} else {
+				request.setAttribute("errorMsg", "게시물 등록에 실패하였습니다");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				
 			}
 			
