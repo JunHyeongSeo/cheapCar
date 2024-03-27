@@ -397,6 +397,8 @@ public ArrayList<Car> carcarall(Connection conn){
 			try {
 				pstmt.setInt(1, checkReservationNo);
 				
+				rset = pstmt.executeQuery();
+				
 				if(rset.next()) {
 					car = new Car();
 					car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
@@ -426,6 +428,9 @@ public ArrayList<Car> carcarall(Connection conn){
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
 			}
 			
 			
@@ -458,22 +463,22 @@ public ArrayList<Car> carcarall(Connection conn){
 	
 	
 	
-	public int insertReservation(Connection conn, Reservation reservation) {
-		
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String sql =  prop.getProperty("insertReservation");
-		
-		pstmt.setString(1, reservation.getStartDate());
-		pstmt.setString(2, reservation.getEndDate());
-		pstmt.setInt(3, reservation.getMemberNo());
-		pstmt.setInt(4, reservation.getManagementNo());
-		pstmt.setInt(5, reservation.getTotalPrice());
-	
-		result = pstmt.executeUpdate();
-		
-	}
+//	public int insertReservation(Connection conn, Reservation reservation) {
+//		
+//		int result = 0;
+//		PreparedStatement pstmt = null;
+//		
+//		String sql =  prop.getProperty("insertReservation");
+//		
+//		pstmt.setString(1, reservation.getStartDate());
+//		pstmt.setString(2, reservation.getEndDate());
+//		pstmt.setInt(3, reservation.getMemberNo());
+//		pstmt.setInt(4, reservation.getManagementNo());
+//		pstmt.setInt(5, reservation.getTotalPrice());
+//	
+//		result = pstmt.executeUpdate();
+//		
+//	}
 
 	
 	

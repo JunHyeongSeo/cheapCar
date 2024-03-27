@@ -106,7 +106,7 @@
 					$.ajax({
 						url : 'sales2',
 						data{
-							checkReservationNo = $(e.target).parent().first().content()
+							checkReservationNo = $(e.target).parent().first().text()
 							
 						},
 						
