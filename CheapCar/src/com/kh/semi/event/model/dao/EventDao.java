@@ -58,6 +58,21 @@ public class EventDao {
 	public int insertEventPhoto(Connection conn, ArrayList<EventPhoto> list) {
 		
 		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertEventPhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 		
 		

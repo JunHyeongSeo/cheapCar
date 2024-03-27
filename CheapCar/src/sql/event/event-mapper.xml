@@ -35,18 +35,22 @@
 		       TB_EVENT_PHOTO
 		       (
 		       EVENT_PHOTO_NO,
-		       EVENT_PHOTO_NAME,
+		       EVENT_PHOTO_ONAME,
+		       EVENT_PHOTO_CNAME,
 		       EVENT_PHOTO_ADDRESS,
 		       EVENT_NO,
-		       STATUS
+		       STATUS,
+		       FILELEVEL
 		       )
    	    VALUES
    	           (
    	           SEQ_EVENT_PHOTO_NO.NEXTVAL,
    	           ?,
    	           ?,
+   	           ?,
    	           SEQ_EVENT_BOARD_NO.CURRVAL,
    	           DEFAULT
+   	           ?
    	           )
    	                 
 	</entry>
