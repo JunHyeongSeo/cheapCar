@@ -10,11 +10,15 @@
 <%
 	Car car = (Car)request.getAttribute("car");
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+	int hours = (int)request.getAttribute("hours");
+	String startRent = (String)request.getAttribute("startRent");
+    String endRent = (String)request.getAttribute("endRent");
 %>
 
 <%
 	int carPrice = 0;
 	int optionPrice = 0;
+	int hourPrice = 0;
 	int totalPrice = 0;
 %>
 <!DOCTYPE html>
@@ -30,7 +34,7 @@
 
     .area-board{
         width : 1400px;
-        height : 100%;
+        height : 600px;
         margin : auto;
         padding-top : 50px;
         padding-bottom : 50px;
@@ -113,10 +117,44 @@
       
             </div>
             
-            	<% totalPrice = carPrice + optionPrice; %>
-            	
-	        	시간당 가격 : <%=totalPrice%>원
-			<a class="btn btn-sm btn-primary" href="#">결제하기</a>
+            	<% hourPrice = carPrice + optionPrice; %>
+            	<% totalPrice = hourPrice * hours; %>
+            <div>
+	        	시간당 가격 : <%=hourPrice%>원 <br>
+                                총 가격 : <%=totalPrice%>원 <br>
+            </div>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+               	결제하기
+            </button>
+
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startRent=<%=startRent%>&endRent=<%=endRent%>">
+                            <div class="modal-header">
+                                <h4 class="modal-title">CheepCar 결제 페이지</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <div class="modal-body">
+                                사용자 이름 : <%=loginUser.getMemberName()%> <br>
+                                대여 모델 : <%=car.getModelName()%> <br>
+                                차량 연식 : <%=car.getYear()%> <br>
+                                사용 연료 : <%=car.getFuelName()%> <br>
+                                대여 기간 : <%= startRent%> - <%= endRent%> <br>
+                                총 가격 : <%= totalPrice%>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">결제</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
 
         <br clear="both">
         

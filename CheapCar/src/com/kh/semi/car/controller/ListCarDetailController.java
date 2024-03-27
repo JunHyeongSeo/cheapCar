@@ -35,12 +35,23 @@ public class ListCarDetailController extends HttpServlet {
 
 		int managementNo = Integer.parseInt(request.getParameter("carNo"));
 		
+		int hours = Integer.parseInt(request.getParameter("hours"));
+		
+		
+		String startRent = (String)request.getParameter("startRent");
+	    String endRent = (String)request.getParameter("endRent");
+	    System.out.println(startRent);
+	    System.out.println(endRent);
+	    
 		Car car = new CarService().selectDetailCar(managementNo);
 		
 		List<Option> optionList = new CarService().selectDetailOption(managementNo);
 		
 		request.setAttribute("car", car);
+		request.setAttribute("hours", hours);
 		request.setAttribute("optionList", optionList);
+		request.setAttribute("startRent", startRent);
+		request.setAttribute("endRent", endRent);
 		
 		request.getRequestDispatcher("views/car/carDetail.jsp").forward(request, response);
 	
