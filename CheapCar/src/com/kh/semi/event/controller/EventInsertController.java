@@ -1,7 +1,7 @@
 package com.kh.semi.event.controller;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,37 +61,37 @@ public class EventInsertController extends HttpServlet {
 			eBoard.setEventContent(eventContent);
 			eBoard.setMemberNo(memberNo);
 			
+			// ---------------- 이벤트 게시판 테이블 값 가공 ----------
 			
+			ArrayList<EventPhoto> list = new ArrayList();
 			
-			EventPhoto ePhoto = null;
-			if(multiRequest.getOriginalFileName("photo1") != null) {
-				
-				ePhoto = new EventPhoto();
-				
-				ePhoto.setPhotoName(multiRequest.getOriginalFileName("photo1"));
-				ePhoto.setPhotoPath("resources/event_upfiles");
-				
-			}
+			// 첨부파일 최소 1 ~ 최대 4개
 			
-			
-			int result = new EventService().insert(eBoard, ePhoto);
-			
-			if(result > 0) {
+			for(int i = 1; i <= 4; i++) {
+				String key = "photo" + i;
 				
-				request.getSession().setAttribute("alertMsg", "등록 성공!");
-				response.sendRedirect(request.getContextPath() + "/list.event");
-				
-			} else {
-				
-				if(ePhoto != null) {
-					new File(ePhoto.getPhotoName()).delete();
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					EventPhoto ep = new EventPhoto();
+					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
+					ep.setPhotoCname(multiRequest.getFilesystemName(key));
+					ep.setPhotoPath("resources/event_upfiles");
+					
+					if(i == 1) {
+						ep.setFileLevel(1); // 대표
+					} else {
+						ep.setFileLevel(2); // 서브이미지
+					}
+					list.add(ep);
 				}
-				
-				request.getSession().setAttribute("errorMsg", "이벤트등록에 실패했습니다.");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-				
-				
 			}
+			
+			new EventService().insert(eBoard, list);
+			
+			
+			
+			
+			
 			
 			
 		}
