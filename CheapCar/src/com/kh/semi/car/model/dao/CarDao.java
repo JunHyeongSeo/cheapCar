@@ -439,7 +439,7 @@ public ArrayList<Car> carcarall(Connection conn){
 				
 			
 			}
->>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185 
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
