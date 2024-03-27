@@ -363,6 +363,9 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setEndDate(rset.getDate("END_DATE"));
 				car.setMemberId(rset.getString("MEMBER_ID"));
 				car.setReservationNo(rset.getInt("RESERVATION_NO"));
+				car.setMemberName(rset.getString("MEMBER_NAME"));
+				car.setPhone(rset.getString("PHONE"));
+				car.setEmail(rset.getString("EMAIL"));
 				
 				//System.out.println(rset.getString("MEMBER_ID"));
 				
