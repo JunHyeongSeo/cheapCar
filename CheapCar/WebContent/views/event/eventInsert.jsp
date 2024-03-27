@@ -168,8 +168,8 @@
                     
 
 	                        <div class="content_btn" align="center">
-	                            <a class="btn btn-sm btn-info">등&nbsp;록</a>
-	                            <a class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</a>
+	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
                         </form>
                     </div>

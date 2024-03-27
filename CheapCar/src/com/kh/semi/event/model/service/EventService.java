@@ -10,9 +10,9 @@ import com.kh.semi.event.model.vo.EventPhoto;
 public class EventService {
 
 	
-	public int insertEventBoard(EventBoard eBoard, EventPhoto ePhoto) {
+	public int insert(EventBoard eBoard, EventPhoto ePhoto) {
 	
-		System.out.println("이벤트 서비스 접속");
+		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int eBoardResult = new EventDao().insertEventBoard(conn, eBoard);
