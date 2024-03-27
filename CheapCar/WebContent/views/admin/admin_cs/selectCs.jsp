@@ -13,6 +13,7 @@
 </head>
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
+	
 	<div class="outer">
         <div id="top1">
                 

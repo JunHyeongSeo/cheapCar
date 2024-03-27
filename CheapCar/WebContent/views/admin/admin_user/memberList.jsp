@@ -48,9 +48,6 @@
 	.mileage{
 	    margin-top: 30px;
 	}
-	
-	
-	
        
 </style>
 <head>
@@ -74,57 +71,53 @@
         
         <script>
         
+        	// 1. 실행되면 전체 리스트 나오는 ajax
         	window.onload = function(){
         		
+        		const url = new URL(location.href);
+        		const currentPage = url.searchParams.get('currentPage');
+        		
         		$.ajax({
-        			url : 'memberList',
-        			data : {memberId : $userId.val()},
+        			url : 'memberList.do', // 전체 리스트 가져오는 서블릿
+        			data : {num : currentPage},
         			success : function(lists){
-        				let resultStr = '';
-        				resultStr = '<table class="table table-bordered"><tbody><tr><th>'
-								 += '회원번호</th><td>'
-		  						 += 1
-		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
-		                    	 += 수정
-		                    	 += '</button></td></tr><tr><th>'
-			       				 += 아이디
-			       				 += '</th> <td>'
-		  						 += user01
-		  						 += '회원번호</td><td><button type="submit" class="btn btn-secondary">'
-		                    	 += 수정
-	                    		 += '</button></td></tr><tr><th>'
-  								 += 이름
- 								 += '</th><td>'
-		  						 += 1996-03-01
-		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
-		                    	 += 수정
-		                    	 +='</button></td></tr><tr><th>'
-		  						 += 연락처
-		  						 +=	'</th><td>'
-		  						 += 010-1234-5678
-								 += '</td><td><button type="submit" class="btn btn-secondary">'
-		                    	 += 수정
-	                    		 += '</button></td></tr><tr><th>'
-		  						 += 이메일
-		  						 += '</th><td>'
-		  						 += 123@naver.com
-		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
-		                    	 += 수정
-		                    	 += '</button></td></tr></tbody></table>';
+        				let resultStr1 = '';
+        				resultStr1 = '<tr><td>'
+        						  += 01
+        						  += '</td><td>'
+         						  += 정근경
+         						  += '</td><td>'
+         						  += user01
+         						  += '</td><td><button type="button" class="btn btn-secondary" onclick="asmc();">'
+         						  += 상세보기
+          						  += '</button></td>';
+        			}
+        		});
+        		
+        		$.ajax({
+        			url : 'memberCount.do', // 페이징바 만들기 위해서 가져오는 서블릿
+        			data : {num : currentPage},
+        			success : function(pi){
+        				
+        				let resultStr1 = '';
+        				resultStr1 = '<tr><td>'
+        						  += 01
+        						  += '</td><td>'
+         						  += 정근경
+         						  += '</td><td>'
+         						  += user01
+         						  += '</td><td><button type="button" class="btn btn-secondary" onclick="asmc();">'
+         						  += 상세보기
+          						  += '</button></td>';
         			}
         		});	
+        		
+        		
         			
-        		})
-        		
-        		
-        		// 1. 전체 띄우기
+        			
+        			
         	}
         	
-        	// 2. ajax 이용해서 조회값 띄우기
-        	
-        	// 3. ajax 이용해서 상세조회 띄우기
-        
-        
         	function asmcs(){
         		
         		$.ajax({
@@ -219,12 +212,16 @@
 		           </tr>
 		       </thead>
 		       <tbody>
+		       
+		       
 		           <tr>
 		               <td>01</td>
 		               <td>정근경</td>
 		               <td>user01</td>
 		               <td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</button></td>
 		           </tr>
+		           
+		           
 		       </tbody>
 		   </table>
 		
