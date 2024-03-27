@@ -364,6 +364,8 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setMemberId(rset.getString("MEMBER_ID"));
 				car.setReservationNo(rset.getInt("RESERVATION_NO"));
 				
+				//System.out.println(rset.getString("MEMBER_ID"));
+				
 				carList.add(car);
 			}
 			

@@ -4,6 +4,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
+	//System.out.println(carlist);
 %>
 <!DOCTYPE html>
 <html>
@@ -83,8 +84,8 @@
 					<tr>
 						<td><%= car.getReservationNo()  %></td>
 						<td><%= car.getMemberId()  %></td>
-						<td>10000</td>
-						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+						<td>123</td>
+						<td><button type="submit" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
@@ -129,6 +130,61 @@
 				</tbody>
 			</table>
 		</div>
+			
+			
+			
+			
+			
+			
+			
+				<!-- 회원 탈퇴 모달 -->
+	<div class="modal" id="reserdetail">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">회원 탈퇴</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
+	      <div class="modal-body">
+			
+		  	<form method="post">
+		  	
+			  <div class="form-group">
+			    <label for="memberPwd" style="font-siae:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요:</label>
+			    <input type="password" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="deletePwd" required>
+			  </div>
+			 
+			  
+			  
+			  
+			
+			  
+			  
+			  </script>
+	    	 </form>
+	    	</div>
+	    	 
+		</div>
+	  </div>
+	</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		
 
