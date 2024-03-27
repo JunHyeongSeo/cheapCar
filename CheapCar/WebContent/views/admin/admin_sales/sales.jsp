@@ -4,6 +4,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
+	
 	//System.out.println(carlist);
 %>
 <!DOCTYPE html>
@@ -85,7 +86,7 @@
 						<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
 						<td><%= carlist.get(i).getMemberId()  %></td>
 						<td>123</td>
-						<td id="car<%=i%>"><button onclick="btn1();" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
+						<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
@@ -96,14 +97,16 @@
 			
 			<script>
 
-				function btn1(){
-					 
+				function btn1(e){
+					
 					let selectResult = '';
+					console.log(e);
+					console.log(e.target);
 					
 					$.ajax({
 						url : 'sales2',
 						data{
-							checkReservationNo = $('#carreserNo')
+							checkReservationNo = $(e.target).parent().first().content()
 							
 						},
 						
