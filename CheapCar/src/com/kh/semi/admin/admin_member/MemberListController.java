@@ -34,13 +34,12 @@ public class MemberListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		int listCount = new MemberService().selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int currentPage = Integer.parseInt(request.getParameter("num"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
 		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		int endPage = startPage + pageLimit - 1;
-		
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}

@@ -156,6 +156,16 @@
         .naviA:hover{
             cursor: context-menu
         }
+        
+        #paging-area{
+			text-align : center;
+			margin-top : 12px;
+		}
+		
+		.paging-area{
+			text-align : center;
+			margin-top : 12px;
+		} 
 	</style>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

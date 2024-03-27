@@ -69,7 +69,7 @@
             </form>
         </div>
         
-        <script>
+        <script>/*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*//*asdasda*/
         
         	// 1. 실행되면 전체 리스트 나오는 ajax
         	window.onload = function(){
@@ -81,6 +81,8 @@
         			url : 'memberList.do', // 전체 리스트 가져오는 서블릿
         			data : {num : currentPage},
         			success : function(lists){
+        				
+        				
         				let resultStr1 = '';
         				resultStr1 = '<tr><td>'
         						  += 01
@@ -111,11 +113,6 @@
           						  += '</button></td>';
         			}
         		});	
-        		
-        		
-        			
-        			
-        			
         	}
         	
         	function asmcs(){
