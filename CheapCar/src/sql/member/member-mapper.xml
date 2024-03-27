@@ -15,6 +15,15 @@
 		 	  MEMBER_STATUS IN ('A','B','C','D')
 	</entry>
 	
+	<entry key="selectListCountById">
+		SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_MEMBER
+		 WHERE 
+		 	  MEMBER_ID = ?
+	</entry>
+	
 	<entry key="selectList">
 		SELECT *
 		  FROM (SELECT A.*,
