@@ -86,14 +86,14 @@
 						<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
 						<td><%= carlist.get(i).getMemberId()  %></td>
 						<td>123</td>
-						<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
+						<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
 			</table>
 			
 			
-			<div id="reservationdetail2"></div>
+			<div id="reservationdetail"></div>
 			
 			<script>
 
@@ -113,8 +113,11 @@
 							
 							console.log(result);
 							resultStr += '<tr>'
-								  + '<td>' +'아이디 : '+ car.getMemberId() '</td>'
-								 
+								  + '<td>' +'아이디 : '+ result.getMmeberId() + '</td>'
+								 // + '<td>' +'이름 : '+ memberName() + '</td>'
+								 // + '<td>' +'모델명 :'+ modelName() + '</td>'
+								 // + '<td>' +'대여날짜 : '+ startDate() + '</td>'
+								 // + '<td>' +'반납날짜 : '+ endDate() + '</td>'
 								  
 								  + '</tr>'
 							
