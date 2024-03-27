@@ -137,6 +137,8 @@
                                 사용자 이름 : <%=loginUser.getMemberName()%> <br>
                                 대여 모델 : <%=car.getModelName()%> <br>
                                 차량 연식 : <%=car.getYear()%> <br>
+                                사용 연료 : <%=car.getFuelName()%> <br>
+                                총 가격 : <%= totalPrice%>
                             </div>
                             
                             <div class="modal-footer">
