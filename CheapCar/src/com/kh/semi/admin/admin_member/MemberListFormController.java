@@ -33,7 +33,7 @@ public class MemberListFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/memberList2.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
 	}
 
 	/**

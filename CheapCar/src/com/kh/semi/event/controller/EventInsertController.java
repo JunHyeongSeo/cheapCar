@@ -66,7 +66,7 @@ public class EventInsertController extends HttpServlet {
 			ArrayList<EventPhoto> list = new ArrayList();
 			
 			// 첨부파일 최소 1 ~ 최대 4개
-			
+			System.out.println(multiRequest.getParameter("photo1"));
 			for(int i = 1; i <= 4; i++) {
 				String key = "photo" + i;
 				
@@ -92,7 +92,7 @@ public class EventInsertController extends HttpServlet {
 			if(result > 0) {
 				
 				request.getSession().setAttribute("alertMsg", "★이벤트 게시물 등록에 성공하였습니다");
-				response.sendRedirect(request.getContentType() + "/list.event");
+				response.sendRedirect(request.getContextPath() + "/list.event");
 			} else {
 				request.setAttribute("errorMsg", "게시물 등록에 실패하였습니다");
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

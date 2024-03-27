@@ -160,10 +160,10 @@
 	                    
 						    <div class="content_add_img">
 	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-	                            대표이미지 - <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
-	                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
-	                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
-	                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
+	                            대표이미지 - <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            첨부파일_2 - <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
+	                            첨부파일_3 - <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 3)">
+	                            첨부파일_4 - <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 4)">
 
 						    </div>
                     

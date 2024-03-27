@@ -363,6 +363,9 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setEndDate(rset.getDate("END_DATE"));
 				car.setMemberId(rset.getString("MEMBER_ID"));
 				car.setReservationNo(rset.getInt("RESERVATION_NO"));
+				car.setMemberName(rset.getString("MEMBER_NAME"));
+				car.setPhone(rset.getString("PHONE"));
+				car.setEmail(rset.getString("EMAIL"));
 				
 				carList.add(car);
 			}
@@ -378,16 +381,27 @@ public ArrayList<Car> carcarall(Connection conn){
 	}
 	
 	
+<<<<<<< HEAD
 	public int insertReservation(Connection conn, Reservation reservation) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		String sql =  prop.getProperty("insertReservation");
+=======
+	public Car carcarone(Connection conn, int checkReservationNo) {
+		
+		Car car = new Car();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("checkReservationNo");
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+<<<<<<< HEAD
 			pstmt.setString(1, reservation.getStartDate());
 			pstmt.setString(2, reservation.getEndDate());
 			pstmt.setInt(3, reservation.getMemberNo());
@@ -395,10 +409,42 @@ public ArrayList<Car> carcarall(Connection conn){
 			pstmt.setInt(5, reservation.getTotalPrice());
 			
 			result = pstmt.executeUpdate();
+=======
+			pstmt.setInt(1, checkReservationNo);
+			
+			if(rset.next()) {
+				car = new Car();
+				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car.setStatus(rset.getString("STATUS"));
+				car.setCarNo(rset.getString("CAR_NO"));
+				car.setLocationNo(rset.getInt("LOCATION_NO"));
+				car.setLocationName(rset.getString("LOCATION_NAME"));
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
+				car.setBrandName(rset.getString("BRAND_NAME"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setYear(rset.getInt("YEAR"));
+				car.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setStartDate(rset.getDate("START_DATE"));
+				car.setEndDate(rset.getDate("END_DATE"));
+				car.setMemberId(rset.getString("MEMBER_ID"));
+				car.setReservationNo(rset.getInt("RESERVATION_NO"));
+				car.setMemberName(rset.getString("MEMBER_NAME"));
+				car.setPhone(rset.getString("PHONE"));
+				car.setEmail(rset.getString("EMAIL"));
+				
+				//System.out.println(rset.getString("MEMBER_ID"));
+				
+			
+			}
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+<<<<<<< HEAD
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
@@ -406,6 +452,14 @@ public ArrayList<Car> carcarall(Connection conn){
 	
 	
 	
+=======
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return car;
+	}
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 	
 	
 	

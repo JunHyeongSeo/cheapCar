@@ -123,7 +123,7 @@
 								alert('아이디를 찾을 수 없습니다');
 							} else{  // 아이디 있는거
 								//$('#idid').html('아이디 : ' + result);
-								alert('아이디 : ' + result)
+								alert('아이디 : ' + result);
 							}
 	
 						}

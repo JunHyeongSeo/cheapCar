@@ -80,33 +80,83 @@
 					</tr>
 				</thead>
 				<tbody>
-				<% for(Car car : carlist){ %>
+				<% for(int i = 0; i < carlist.size() ; i++){ %>
 					<tr>
-						<td><%= car.getReservationNo()  %></td>
-						<td><%= car.getMemberId()  %></td>
+						<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
+						<td><%= carlist.get(i).getMemberId()  %></td>
 						<td>123</td>
-						<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
+						<td id="car<%=i%>"><button onclick="btn1();" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
 			</table>
 			
 			
-			<div id="reservationdetail"></div>
+			<div id="reservationdetail2"></div>
 			
 			<script>
-			
-				$.ajax({
-					url : 'sales',
+
+				function btn1(){
+					 
+					let selectResult = '';
 					
-				})
-			
+					$.ajax({
+						url : 'sales2',
+						data{
+							checkReservationNo = $('#carreserNo')
+							
+						},
+						
+						success : function(result){
+							
+							console.log(result);
+							
+							
+							
+							
+							
+							
+							let resultStr = '';
+							for(let i = 0; i < result.length; i++){
+								
+								const aa = $('#car' + i);
+								console.log(aa);
+								
+								
+							
+								
+								resultStr += '<tr>'
+									  + '<td>' +'아이디 : '+ result[i].memberId + '</td>'
+									  + '<td>' +'이름 : '+ result[i].memberName + '</td>'
+									  + '<td>' +'모델명 :'+ result[i].modelName + '</td>'
+									  + '<td>' +'대여날짜 : '+ result[i].startDate + '</td>'
+									  + '<td>' +'반납날짜 : '+ result[i].endDate + '</td>'
+									  
+									  + '</tr>'
+								
+							};
+							
+							$('#reservationdetail').html(resultStr);
+						
+							
+						}
+					
+					
+					});
+				}
 			</script>
 			
+
+
+
+
+
+
 			
 			
 			
-			<table class="table" style="text-align:center">
+			
+			<!-- <table class="table" style="text-align:center">
 				<thead>
 					<tr>
 						<th>기간</th>
@@ -143,7 +193,7 @@
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 			
 			
@@ -163,6 +213,8 @@
 			<table class="table table-bordered">
 			
 			<thead>
+			</thead>
+			
 				<tbody>
 					<tr>
 						<th>모델명</th>
@@ -190,10 +242,72 @@
 						<td><button type="submit" class="btn btn-secondary">수정</button></td>
 					</tr>
 				</tbody>
-			</thead>
+
 			</table>
 		</div>
+		
+		
+		
 	</div>
+	
+	<!-- The Modal -->
+		<div class="modal" id="reserdetail">
+		  <div class="modal-dialog">
+		    <div class="modal-content" style="width:1000px; color:white; font-weight:bold; background:silver;">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title" style="font-size : 36px; margin-top:30px; margin-bottom:30px;">회원 상세 정보</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body" style="text-align:center; line-height:64px;">
+					<h3 style="margin: 30px 0px;">상세내역</h3>
+					<table class="table table-bordered"  >
+					
+					<thead>
+					</thead>
+					
+						<tbody>
+							<tr>
+								<th>모델명</th>
+								<th>연식</th>
+								<td><button type="submit" class="btn btn-secondary">수정</button></td>
+							</tr>
+							<tr>
+								<th>아이디</th>
+								<td>user01</td>
+								<td><button type="submit" class="btn btn-secondary">수정</button></td>
+							</tr>
+							<tr>
+								<th>생년월일</th>
+								<td>1996-03-01</td>
+								<td><button type="submit" class="btn btn-secondary">수정</button></td>
+							</tr>
+							<tr>
+								<th>연락처</th>
+								<td>010-1234-5678</td>
+								<td><button type="submit" class="btn btn-secondary">수정</button></td>
+							</tr>
+							<tr>
+								<th>이메일</th>
+								<td>123@naver.com</td>
+								<td><button type="submit" class="btn btn-secondary">수정</button></td>
+							</tr>
+						</tbody>
+		
+					</table>
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
 
 </body>
 </html>
