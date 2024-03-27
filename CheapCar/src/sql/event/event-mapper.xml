@@ -49,7 +49,7 @@
    	           ?,
    	           ?,
    	           SEQ_EVENT_BOARD_NO.CURRVAL,
-   	           DEFAULT
+   	           DEFAULT,
    	           ?
    	           )
    	                 

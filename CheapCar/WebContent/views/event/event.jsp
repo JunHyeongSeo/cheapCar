@@ -126,51 +126,12 @@
 							<a href="<%= contextPath %>/detail.event" alt="">
 								<div class="img-area event_1">사진</div>
 								<div class="text-area event_1" >
-									<span>세일세일세일세일세일세일세일세일세일세일세일세일세일 </span><br><br>
-									<span style="font-size: 15px;">조회수  </span>
+									<span> 제목 </span><br><br>
+									<span style="font-size: 15px;">조회수 :  </span>
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 222222
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 333333
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 44
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 555555
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 6666666
-								</div>
-							</a>
-						</li>
+						
 						
 					</ul>
 				</div>
