@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Reservation;
 
 /**
  * Servlet implementation class ReservationController
@@ -32,18 +33,25 @@ public class ReservationController extends HttpServlet {
 		
 		int managementNo = Integer.parseInt(request.getParameter("managementNo"));
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
-		String startRent = (String)request.getParameter("startRent");
-		String endRent = (String)request.getParameter("endRent");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		String startDate = (String)request.getParameter("startRent");
+		String endDate = (String)request.getParameter("endRent");
 		
+		Reservation reservation = new Reservation();
+		reservation.setManagementNo(managementNo);
+		reservation.setTotalPrice(totalPrice);
+		reservation.setStartDate(startDate);
+		reservation.setMemberNo(memberNo);
+		reservation.setEndDate(endDate);
 		
+		int result = new CarService().insertReservation(reservation);
 		
-	    new CarService().insertReservation(managementNo);
+		if(result > 0) {
+			request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("views/common/errorMsg.jsp").forward(request, response);
+		}
 	    
-	    request.setAttribute("totalPrice", totalPrice);
-	    request.setAttribute("startRent", startRent);
-	    request.setAttribute("endRent", endRent);
-	    
-		request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
 	
 	}
 

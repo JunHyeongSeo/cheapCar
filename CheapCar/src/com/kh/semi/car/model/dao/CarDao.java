@@ -12,9 +12,9 @@ import java.util.Properties;
 
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
+import com.kh.semi.car.model.vo.Reservation;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.vo.Member;
 
 public class CarDao {
 
@@ -364,8 +364,6 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setMemberId(rset.getString("MEMBER_ID"));
 				car.setReservationNo(rset.getInt("RESERVATION_NO"));
 				
-				//System.out.println(rset.getString("MEMBER_ID"));
-				
 				carList.add(car);
 			}
 			
@@ -376,12 +374,35 @@ public ArrayList<Car> carcarall(Connection conn){
 			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
 		return carList;
 	}
 	
 	
+	public int insertReservation(Connection conn, Reservation reservation) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql =  prop.getProperty("insertReservation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reservation.getStartDate());
+			pstmt.setString(2, reservation.getEndDate());
+			pstmt.setInt(3, reservation.getMemberNo());
+			pstmt.setInt(4, reservation.getManagementNo());
+			pstmt.setInt(5, reservation.getTotalPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	
