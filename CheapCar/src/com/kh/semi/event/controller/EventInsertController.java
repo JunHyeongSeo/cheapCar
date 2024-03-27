@@ -1,7 +1,7 @@
 package com.kh.semi.event.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,6 +85,10 @@ public class EventInsertController extends HttpServlet {
 				if(ePhoto != null) {
 					new File(ePhoto.getPhotoName()).delete();
 				}
+				
+				request.getSession().setAttribute("errorMsg", "이벤트등록에 실패했습니다.");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				
 				
 			}
 			
