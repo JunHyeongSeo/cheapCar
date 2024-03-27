@@ -123,7 +123,7 @@
 				<div class="event_content">
 					<ul id="event_list">
 						<li>
-							<a href="<%= contextPath %>/detail.event" alt="">
+							<a href="<%= contextPath %>/detail.event">
 								<div class="img-area event_1">사진</div>
 								<div class="text-area event_1" >
 									<span> 제목 </span><br><br>

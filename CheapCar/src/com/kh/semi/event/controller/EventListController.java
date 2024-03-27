@@ -29,6 +29,7 @@ public class EventListController extends HttpServlet {
 		
 		
 		
+		
 		request.getRequestDispatcher("views/event/event.jsp").forward(request, response);
 		
 		
