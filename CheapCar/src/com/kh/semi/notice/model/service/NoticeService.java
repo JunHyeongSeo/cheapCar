@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.dao.NoticeDao;
 import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeService {
 
+	/*
 	public ArrayList<Notice> selectNoticeList() {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -19,6 +21,8 @@ public class NoticeService {
 		
 		return list;
 	}//
+	*/
+
 	
 	
 	public int increaseCount(int noticeNo) {
@@ -63,6 +67,62 @@ public class NoticeService {
 		return result;
 	}//
 	
+	
+	public int insert(Notice notice) {
+		
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().insert(conn, notice);
+		
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+				
+		
+		
+		return result;
+		
+	}//
+	
+	
+	public int updateNotice(Notice notice) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().updateNotice(conn, notice);
+				
+		if(result > 0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		
+		
+		return result;
+	}//
+	
+	
+	public int selectListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int listCount = new NoticeDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return listCount;
+	}//
+	
+	public ArrayList<Notice> selectList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Notice> list = new NoticeDao().selectList(conn, pi);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return list;
+	}
 	
 	
 	

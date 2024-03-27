@@ -127,6 +127,7 @@
 
 	<%@ include file="../common/menuBar.jsp" %>
 	
+
 	<div class="outer" >
 		<div class="row">
 		  <div class="col-lg-1">
@@ -148,10 +149,10 @@
                     </div>
                     <div class="content_body"><%= notice.getNoticeContent()%></div>
                     <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.notice" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%=contextPath%>/list.notice?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         
                            <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
-                            <a href="<%=contextPath%>/update.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                            <a href="<%=contextPath%>/updateForm.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                             <a href="<%=contextPath%>/delete.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                            <% } %> 
                     </div>

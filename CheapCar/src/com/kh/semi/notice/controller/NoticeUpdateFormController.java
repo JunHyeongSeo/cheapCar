@@ -1,23 +1,27 @@
-package com.kh.semi.admin.admin_menuMoving;
+package com.kh.semi.notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.notice.model.service.NoticeService;
+import com.kh.semi.notice.model.vo.Notice;
+
 /**
- * Servlet implementation class salesController
+ * Servlet implementation class NoticeUpdateFormController
  */
-@WebServlet("/sales")
-public class SalesController extends HttpServlet {
+@WebServlet("/updateForm.notice")
+public class NoticeUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SalesController() {
+    public NoticeUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +30,23 @@ public class SalesController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
+		
+		// 값 뽑기
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
+		
+		// 값 가공
+		// service
+		Notice notice = new NoticeService().selectNotice(noticeNo);
+		
+		request.setAttribute("notice", notice);
+		
+		
+		request.getRequestDispatcher("views/notice/noticeUpdate.jsp").forward(request, response);
+		
+		
+		
+		
+		
 	}
 
 	/**

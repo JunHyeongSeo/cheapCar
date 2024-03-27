@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.notice.model.service.NoticeService;
 import com.kh.semi.notice.model.vo.Notice;
 
@@ -36,19 +37,46 @@ public class NoticeListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 1) 인코딩 -> a태그는 무조건 get방식 => 인코딩 필요 X
-		// 2) 값뽑기 x
-		// 3) 데이터 가공 X
-		// 4) 서비스 호출
-		ArrayList<Notice> list = new NoticeService().selectNoticeList();
+		int listCount = 0;
+		int currentPage= 0;
+		int pageLimit= 0;
+		int boardLimit= 0;
 		
+		int maxPage= 0;
+		int startPage= 0;
+		int endPage= 0;
+		
+		listCount = new NoticeService().selectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		
+		pageLimit = 5;
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Notice> list = new NoticeService().selectList(pi);
+		
+				
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		
 		
 		// 최종적으로 얘가 할 일 : 응답화면 띄우기. -> noticeList.jsp에다가
 		RequestDispatcher view = request.getRequestDispatcher("views/notice/notice.jsp");
 		view.forward(request, response);
+		
 	}
 	
 	/**

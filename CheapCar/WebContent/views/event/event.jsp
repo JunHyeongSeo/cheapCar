@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard" %>    
+
+<%
+	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
+%>    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,59 +123,25 @@
 					<form>
 						<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 						<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-						<a href="" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+						<% if(loginUser != null && loginUser.getMemberId().equals("admin")) {%>
+						<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+						<%}%>
 					</form>
 				</div>  
 				<div class="event_content">
 					<ul id="event_list">
+						<% if(list.isEmpty()) { %>
+						<li> 리스트가 존재하지 않습니다. <li>
 						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									세일세일세일
+							<a href="<%= contextPath %>/detail.event">
+								<div class="img-area event_1">d</div>
+								<div class="text-area event_1" >
+									<span> 제목 </span><br><br>
+									<span style="font-size: 15px;">조회수 :  </span>
 								</div>
 							</a>
 						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 222222
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 333333
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 44
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 555555
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
-									이벤트 6666666
-								</div>
-							</a>
-						</li>
+						
 						
 					</ul>
 				</div>

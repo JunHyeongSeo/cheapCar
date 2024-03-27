@@ -1,5 +1,7 @@
 package com.kh.semi.car.model.vo;
 
+import java.sql.Date;
+
 public class Car {
 	private int managementNo;
 	private String status;
@@ -14,10 +16,176 @@ public class Car {
 	private int gradePrice;
 	private int modelPrice;
 	private int yearPrice;
+	private Date startDate;
+	private Date endDate;
+	private int mileage;
+	private Date mileageDate;
+	private int csNo;
+	private String csTitle;
+	private String csContent;
+	private Date createDate;
+	private String replyYn;
+	private String memberId;
+	private int reservationNo;
+	private String memberName;
+	private String phone;
+	public String getMemberName() {
+		return memberName;
+	}
+
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	private String email;
 	
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+
+	public int getReservationNo() {
+		return reservationNo;
+	}
+
+
+	public void setReservationNo(int reservationNo) {
+		this.reservationNo = reservationNo;
+	}
+
+
 	public Car() {
 		super();
 	}
+	
+	
+	public int getCsNo() {
+		return csNo;
+	}
+
+
+	public void setCsNo(int csNo) {
+		this.csNo = csNo;
+	}
+
+
+	public String getCsTitle() {
+		return csTitle;
+	}
+
+
+	public void setCsTitle(String csTitle) {
+		this.csTitle = csTitle;
+	}
+
+
+	public String getCsContent() {
+		return csContent;
+	}
+
+
+	public void setCsContent(String csContent) {
+		this.csContent = csContent;
+	}
+
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+
+	public String getReplyYn() {
+		return replyYn;
+	}
+
+
+	public void setReplyYn(String replyYn) {
+		this.replyYn = replyYn;
+	}
+
+
+	public Date getMileageDate() {
+		return mileageDate;
+	}
+
+
+	public void setMileageDate(Date mileageDate) {
+		this.mileageDate = mileageDate;
+	}
+
+
+
+	
+	public int getMileage() {
+		return mileage;
+	}
+
+
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
+
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+
+
 
 
 
@@ -40,6 +208,45 @@ public class Car {
 		this.yearPrice = yearPrice;
 	}
 
+
+
+	
+
+
+	public Car(int managementNo, String status, String carNo, int locationNo, String locationName, String modelName,
+			String fuelName, String brandName, String gradeName, int year, int gradePrice, int modelPrice,
+			int yearPrice, Date startDate, Date endDate, int mileage, Date mileageDate, int csNo, String csTitle,
+			String csContent, Date createDate, String replyYn, String memberId, int reservationNo, String memberName,
+			String phone, String email) {
+		super();
+		this.managementNo = managementNo;
+		this.status = status;
+		this.carNo = carNo;
+		this.locationNo = locationNo;
+		this.locationName = locationName;
+		this.modelName = modelName;
+		this.fuelName = fuelName;
+		this.brandName = brandName;
+		this.gradeName = gradeName;
+		this.year = year;
+		this.gradePrice = gradePrice;
+		this.modelPrice = modelPrice;
+		this.yearPrice = yearPrice;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.mileage = mileage;
+		this.mileageDate = mileageDate;
+		this.csNo = csNo;
+		this.csTitle = csTitle;
+		this.csContent = csContent;
+		this.createDate = createDate;
+		this.replyYn = replyYn;
+		this.memberId = memberId;
+		this.reservationNo = reservationNo;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.email = email;
+	}
 
 
 	public String getFuelName() {
@@ -148,14 +355,25 @@ public class Car {
 
 
 
+	
+
+
+
+
+
+	
+
+
 	@Override
 	public String toString() {
 		return "Car [managementNo=" + managementNo + ", status=" + status + ", carNo=" + carNo + ", locationNo="
 				+ locationNo + ", locationName=" + locationName + ", modelName=" + modelName + ", fuelName=" + fuelName
 				+ ", brandName=" + brandName + ", gradeName=" + gradeName + ", year=" + year + ", gradePrice="
-				+ gradePrice + ", modelPrice=" + modelPrice + ", yearPrice=" + yearPrice + "]";
+				+ gradePrice + ", modelPrice=" + modelPrice + ", yearPrice=" + yearPrice + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", mileage=" + mileage + ", mileageDate=" + mileageDate + ", csNo=" + csNo
+				+ ", csTitle=" + csTitle + ", csContent=" + csContent + ", createDate=" + createDate + ", replyYn="
+				+ replyYn + ", memberId=" + memberId + ", reservationNo=" + reservationNo + "]";
 	}
-
 
 
 	@Override

@@ -1,23 +1,28 @@
-package com.kh.semi.admin.admin_menuMoving;
+package com.kh.semi.notice.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class manageCarController
+ * Servlet implementation class NoticeInsertFormController
  */
-@WebServlet("/manageCar")
-public class ManageCarController extends HttpServlet {
+@WebServlet("/insertForm.notice")
+public class NoticeInsertFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCarController() {
+    public NoticeInsertFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +32,25 @@ public class ManageCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if(loginUser != null && loginUser.getMemberId().equals("admin")) {
+			RequestDispatcher view = request.getRequestDispatcher("views/notice/noticeInsert.jsp");
+			view.forward(request, response);
+		} else {
+			session.setAttribute("alertMsg", "잘못된 접근입니다.");
+			response.sendRedirect(request.getContextPath());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**

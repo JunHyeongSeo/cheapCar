@@ -1,16 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.Car, com.kh.semi.common.model.vo.PageInfo" %>
+<%
+	ArrayList<Car> list = (ArrayList<Car>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>차량관리</title>
+<style>
+	.container{
+		margin-top : 15px;
+	}
+
+</style>
+
 </head>
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	
 	<div class="outer">
-        <div id="top1" style = "border : 1px solid green";>
+        <div id="top1">
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
@@ -18,12 +35,13 @@
                     <input type="text" class="form-control" id="userId" placeholder="조회하실 차량 번호를 입력해주세요." name="userId" style="width: 300px;">
                     
                     <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+                    <a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
                 </div>
             </form>
 		</div>
 
         <div class="container">
-            <h2>차량현황</h2>   
+            <h2>차량현황</h2> 
             <table class="table">
               <thead>
                 <tr>
@@ -35,61 +53,52 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>N</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>아반떼</td>
-                    <td>02하1234</td>
-                    <td>Y</td>
-                    <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-                </tr>
+              <% if(list.isEmpty()) { %>
+              	<tr>
+              		<td colspan="5">등록되어있는 차량이 없습니다.</td>
+              	</tr>
+              <% } else { %>
+              	<% for(Car c : list) { %>
+              		<tr>
+              			<td><%= c.getManagementNo() %></td>
+              			<td><%= c.getModelName() %></td>
+              			<td><%= c.getCarNo() %></td>
+              			<td><%= c.getStatus() %></td>
+              			<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+              		</tr>
+              	<% } %>
+              <% } %>
               </tbody>
             </table>
           </div>
             
-        <div id="abcd">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#"><</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">></a></li>
-            </ul>
+        <div class="paging-area">
+            
+            <% if(currentPage > 1) { %>
+	            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage - 1 %>'">이전</button>
+    		<% } %>
+
+			<% for(int i = startPage; i <= endPage; i++) { %>
+				<% if(currentPage != i) { %>
+		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%=i%>'"><%= i %></button>
+				<% } else { %>			
+		            <button disabled class="btn btn-danger"><%= i %></button>
+				<% } %>
+			<% } %>
+				
+            <% if(currentPage != maxPage) { %>
+          		  <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage + 1 %>'">다음</button>
+            <% } %>
+            
+           
         </div>
         
         <div class="container">       
 			<table class="table table-bordered">
 				<tbody>
 					<tr>
-						<th>차량번호</th>
-						<td>02하 1234</td>
+						<th>1</th>
+						<td>2</td>
 					</tr>
 					<tr>
 						<th>차량정보</th>

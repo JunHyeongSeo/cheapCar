@@ -20,77 +20,77 @@
 	<entry key="selectCarList">
 	
 		SELECT 
-        MANAGEMENT_NO,
-        STATUS,
-        CAR_NO,
-        LOCATION_NO,
-        LOCATION_NAME,
-        MODEL_NAME,
-        FUEL_NAME,
-        BRAND_NAME,
-        GRADE_NAME,
-        YEAR,
-        GRADE_PRICE,
-        MODEL_PRICE,
-        YEAR_PRICE,
-        ROWNUM RNUM
-  FROM (SELECT
-                MANAGEMENT_NO,
-                STATUS,
-                CAR_NO,
-                LOCATION_NO,
-                LOCATION_NAME,
-                MODEL_NAME,
-                FUEL_NAME,
-                BRAND_NAME,
-                GRADE_NAME,
-                YEAR,
-                GRADE_PRICE,
-                MODEL_PRICE,
-                YEAR_PRICE,
-                ROWNUM RNUM
-          FROM (SELECT
-                        C.MANAGEMENT_NO,
-                        STATUS,
-                        CAR_NO,
-                        C.LOCATION_NO,
-                        LOCATION_NAME,
-                        MODEL_NAME,
-                        FUEL_NAME,
-                        BRAND_NAME,
-                        GRADE_NAME,
-                        YEAR,
-                        GRADE_PRICE,
-                        MODEL_PRICE,
-                        YEAR_PRICE
-                  FROM
-                        TB_CAR C
-                  JOIN  
-                        TB_CAR_BRIDGE CB
-                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
-                  JOIN
-                        TB_LOCATION L
-                    ON (C.LOCATION_NO = L.LOCATION_NO)
-                  JOIN
-                        TB_MODEL M
-                    ON (CB.MODEL_NO = M.MODEL_NO)
-                  JOIN
-                        TB_FUEL F
-                    ON (CB.FUEL_NO = F.FUEL_NO)
-                  JOIN
-                        TB_BRAND B
-                    ON (CB.BRAND_NO = B.BRAND_NO)
-                  JOIN
-                        TB_GRADE G
-                    ON (CB.GRADE_NO = G.GRADE_NO)
-                  JOIN
-                        TB_YEAR Y
-                    ON (CB.YEAR_NO = Y.YEAR_NO)
-                 ORDER
-                    BY
-                        C.MANAGEMENT_NO))
-         WHERE
-                RNUM BETWEEN ? AND ?
+		        MANAGEMENT_NO,
+		        STATUS,
+		        CAR_NO,
+		        LOCATION_NO,
+		        LOCATION_NAME,
+		        MODEL_NAME,
+		        FUEL_NAME,
+		        BRAND_NAME,
+		        GRADE_NAME,
+		        YEAR,
+		        GRADE_PRICE,
+		        MODEL_PRICE,
+		        YEAR_PRICE,
+		        ROWNUM RNUM
+		  FROM (SELECT
+		                MANAGEMENT_NO,
+		                STATUS,
+		                CAR_NO,
+		                LOCATION_NO,
+		                LOCATION_NAME,
+		                MODEL_NAME,
+		                FUEL_NAME,
+		                BRAND_NAME,
+		                GRADE_NAME,
+		                YEAR,
+		                GRADE_PRICE,
+		                MODEL_PRICE,
+		                YEAR_PRICE,
+		                ROWNUM RNUM
+		          FROM (SELECT
+		                        C.MANAGEMENT_NO,
+		                        STATUS,
+		                        CAR_NO,
+		                        C.LOCATION_NO,
+		                        LOCATION_NAME,
+		                        MODEL_NAME,
+		                        FUEL_NAME,
+		                        BRAND_NAME,
+		                        GRADE_NAME,
+		                        YEAR,
+		                        GRADE_PRICE,
+		                        MODEL_PRICE,
+		                        YEAR_PRICE
+		                  FROM
+		                        TB_CAR C
+		                  JOIN  
+		                        TB_CAR_BRIDGE CB
+		                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+		                  JOIN
+		                        TB_LOCATION L
+		                    ON (C.LOCATION_NO = L.LOCATION_NO)
+		                  JOIN
+		                        TB_MODEL M
+		                    ON (CB.MODEL_NO = M.MODEL_NO)
+		                  JOIN
+		                        TB_FUEL F
+		                    ON (CB.FUEL_NO = F.FUEL_NO)
+		                  JOIN
+		                        TB_BRAND B
+		                    ON (CB.BRAND_NO = B.BRAND_NO)
+		                  JOIN
+		                        TB_GRADE G
+		                    ON (CB.GRADE_NO = G.GRADE_NO)
+		                  JOIN
+		                        TB_YEAR Y
+		                    ON (CB.YEAR_NO = Y.YEAR_NO)
+		                 ORDER
+		                    BY
+		                        C.MANAGEMENT_NO))
+		         WHERE
+		                RNUM BETWEEN ? AND ?
 
 	</entry>
 	
@@ -111,4 +111,412 @@
 		        MANAGEMENT_NO
 
 	</entry>
+	
+	
+	
+	
+	
+	<!-- 근경 -->
+	<entry key="adminCarList">
+	
+		SELECT 
+		        MANAGEMENT_NO,
+		        STATUS,
+		        CAR_NO,
+		        LOCATION_NO,
+		        LOCATION_NAME,
+		        MODEL_NAME,
+		        FUEL_NAME,
+		        BRAND_NAME,
+		        GRADE_NAME,
+		        YEAR,
+		        GRADE_PRICE,
+		        MODEL_PRICE,
+		        YEAR_PRICE,
+		        ROWNUM RNUM
+		  FROM (SELECT
+		                MANAGEMENT_NO,
+		                STATUS,
+		                CAR_NO,
+		                LOCATION_NO,
+		                LOCATION_NAME,
+		                MODEL_NAME,
+		                FUEL_NAME,
+		                BRAND_NAME,
+		                GRADE_NAME,
+		                YEAR,
+		                GRADE_PRICE,
+		                MODEL_PRICE,
+		                YEAR_PRICE,
+		                ROWNUM RNUM
+		          FROM (SELECT
+		                        C.MANAGEMENT_NO,
+		                        STATUS,
+		                        CAR_NO,
+		                        C.LOCATION_NO,
+		                        LOCATION_NAME,
+		                        MODEL_NAME,
+		                        FUEL_NAME,
+		                        BRAND_NAME,
+		                        GRADE_NAME,
+		                        YEAR,
+		                        GRADE_PRICE,
+		                        MODEL_PRICE,
+		                        YEAR_PRICE
+		                  FROM
+		                        TB_CAR C
+		                  LEFT
+                          JOIN  
+		                        TB_CAR_BRIDGE CB
+		                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+                          LEFT  
+		                  JOIN
+		                        TB_LOCATION L
+		                    ON (C.LOCATION_NO = L.LOCATION_NO)
+                            LEFT
+		                  JOIN
+		                        TB_MODEL M
+		                    ON (CB.MODEL_NO = M.MODEL_NO)
+                            LEFT
+		                  JOIN
+		                        TB_FUEL F
+		                    ON (CB.FUEL_NO = F.FUEL_NO)
+                            LEFT
+		                  JOIN
+		                        TB_BRAND B
+		                    ON (CB.BRAND_NO = B.BRAND_NO)
+                            LEFT
+		                  JOIN
+		                        TB_GRADE G
+		                    ON (CB.GRADE_NO = G.GRADE_NO)
+                            LEFT
+		                  JOIN
+		                        TB_YEAR Y
+		                    ON (CB.YEAR_NO = Y.YEAR_NO)
+		                 ORDER
+		                    BY
+		                        C.MANAGEMENT_NO))
+		                 WHERE
+		                RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectOptionList">
+	
+		SELECT
+		        MANAGEMENT_NO,
+		        O.OPTION_NO,
+		        OPTION_NAME,
+		        OPTION_PRICE
+		  FROM
+		        TB_OPTION O
+		  JOIN
+		        TB_OPTION_BRIDGE OB ON (O.OPTION_NO = OB.OPTION_NO)
+		   
+		 ORDER
+		    BY
+		        MANAGEMENT_NO
+
+	</entry>
+	
+	<entry key="selectLocationListCount">
+		SELECT
+		        COUNT(*)
+		  FROM
+		        TB_CAR C
+		  JOIN
+		        TB_LOCATION L
+		    ON  (C.LOCATION_NO = L.LOCATION_NO)
+		 WHERE
+		        STATUS = 'Y'
+		   AND
+		        LOCATION_NAME = ?
+	</entry>
+	
+	<entry key="selectedCarList">
+		SELECT 
+		        MANAGEMENT_NO,
+		        STATUS,
+		        CAR_NO,
+		        LOCATION_NO,
+		        LOCATION_NAME,
+		        MODEL_NAME,
+		        FUEL_NAME,
+		        BRAND_NAME,
+		        GRADE_NAME,
+		        YEAR,
+		        GRADE_PRICE,
+		        MODEL_PRICE,
+		        YEAR_PRICE,
+		        ROWNUM RNUM
+		  FROM (SELECT
+		                MANAGEMENT_NO,
+		                STATUS,
+		                CAR_NO,
+		                LOCATION_NO,
+		                LOCATION_NAME,
+		                MODEL_NAME,
+		                FUEL_NAME,
+		                BRAND_NAME,
+		                GRADE_NAME,
+		                YEAR,
+		                GRADE_PRICE,
+		                MODEL_PRICE,
+		                YEAR_PRICE,
+		                ROWNUM RNUM
+		          FROM (SELECT
+		                        C.MANAGEMENT_NO,
+		                        STATUS,
+		                        CAR_NO,
+		                        C.LOCATION_NO,
+		                        LOCATION_NAME,
+		                        MODEL_NAME,
+		                        FUEL_NAME,
+		                        BRAND_NAME,
+		                        GRADE_NAME,
+		                        YEAR,
+		                        GRADE_PRICE,
+		                        MODEL_PRICE,
+		                        YEAR_PRICE
+		                  FROM
+		                        TB_CAR C
+		                  JOIN  
+		                        TB_CAR_BRIDGE CB
+		                    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+		                  JOIN
+		                        TB_LOCATION L
+		                    ON (C.LOCATION_NO = L.LOCATION_NO)
+		                  JOIN
+		                        TB_MODEL M
+		                    ON (CB.MODEL_NO = M.MODEL_NO)
+		                  JOIN
+		                        TB_FUEL F
+		                    ON (CB.FUEL_NO = F.FUEL_NO)
+		                  JOIN
+		                        TB_BRAND B
+		                    ON (CB.BRAND_NO = B.BRAND_NO)
+		                  JOIN
+		                        TB_GRADE G
+		                    ON (CB.GRADE_NO = G.GRADE_NO)
+		                  JOIN
+		                        TB_YEAR Y
+		                    ON (CB.YEAR_NO = Y.YEAR_NO)
+		                    WHERE
+		                        LOCATION_NAME = ?
+		                 ORDER
+		                    BY
+		                        C.MANAGEMENT_NO))
+		         WHERE
+		                RNUM BETWEEN ? AND ?
+		           AND
+		                STATUS = 'Y'
+	</entry>
+	
+	<entry key="insertReservation">
+		
+		INSERT 
+		  INTO 
+				TB_RESERVATION 
+		VALUES 
+				(
+				SEQ_RESERVATION_NO.NEXTVAL,
+				?,
+				?, 
+				?, 
+				?,
+				?)
+		
+	</entry>
+	
+	<!-- </entry> 이거 뭐지요??? 혹시 몰라서 남겨둡니다.-->
+	
+	<entry key="selectDetailCar">
+		SELECT
+		        C.MANAGEMENT_NO,
+		        STATUS,
+		        CAR_NO,
+		        C.LOCATION_NO,
+		        LOCATION_NAME,
+		        MODEL_NAME,
+		        FUEL_NAME,
+		        BRAND_NAME,
+		        GRADE_NAME,
+		        YEAR,
+		        GRADE_PRICE,
+		        MODEL_PRICE,
+		        YEAR_PRICE
+		  FROM
+		        TB_CAR C
+		  JOIN  
+		        TB_CAR_BRIDGE CB
+		    ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+		  JOIN
+		        TB_LOCATION L
+		    ON (C.LOCATION_NO = L.LOCATION_NO)
+		  JOIN
+		        TB_MODEL M
+		    ON (CB.MODEL_NO = M.MODEL_NO)
+		  JOIN
+		        TB_FUEL F
+		    ON (CB.FUEL_NO = F.FUEL_NO)
+		  JOIN
+		        TB_BRAND B
+		    ON (CB.BRAND_NO = B.BRAND_NO)
+		  JOIN
+		        TB_GRADE G
+		    ON (CB.GRADE_NO = G.GRADE_NO)
+		  JOIN
+		        TB_YEAR Y
+		    ON (CB.YEAR_NO = Y.YEAR_NO)
+		 WHERE
+		        C.MANAGEMENT_NO = ?
+	</entry>
+	
+	<entry key="selectDetailOption">
+		SELECT
+		        MANAGEMENT_NO,
+		        O.OPTION_NO,
+		        OPTION_NAME,
+		        OPTION_PRICE
+		  FROM
+		        TB_OPTION O
+		  JOIN
+		        TB_OPTION_BRIDGE OB
+		    ON (O.OPTION_NO = OB.OPTION_NO)
+		 WHERE
+		        MANAGEMENT_NO = ?
+	</entry>
+	
+	<entry key="carcarall">
+		SELECT
+                MANAGEMENT_NO,
+                STATUS,
+                CAR_NO,
+                C.LOCATION_NO,
+                LOCATION_NAME,
+                MODEL_NAME,
+                FUEL_NAME,
+                BRAND_NAME,
+                GRADE_NAME,
+                YEAR,
+                GRADE_PRICE,
+                MODEL_PRICE,
+                YEAR_PRICE,
+                START_DATE,
+                END_DATE,
+                MM.MEMBER_ID,
+                RESERVATION_NO,
+                MM.MEMBER_NAME,
+                MM.PHONE,
+                MM.EMAIL         
+          FROM
+                TB_CAR C
+          JOIN  
+                TB_CAR_BRIDGE CB
+            ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+          JOIN
+                TB_LOCATION L
+            ON (C.LOCATION_NO = L.LOCATION_NO)
+          JOIN
+                TB_MODEL M
+            ON (CB.MODEL_NO = M.MODEL_NO)
+          JOIN
+                TB_FUEL F
+            ON (CB.FUEL_NO = F.FUEL_NO)
+          JOIN
+                TB_BRAND B
+            ON (CB.BRAND_NO = B.BRAND_NO)
+          JOIN
+                TB_GRADE G
+            ON (CB.GRADE_NO = G.GRADE_NO)
+          JOIN
+                TB_YEAR Y
+            ON (CB.YEAR_NO = Y.YEAR_NO)
+          JOIN
+                TB_RESERVATION R
+            ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+          LEFT
+          JOIN
+                TB_MEMBER MM
+            ON (R.MEMBER_NO = MM.MEMBER_NO)
+		WHERE
+           EXTRACT ( MONTH FROM START_DATE) = EXTRACT (MONTH FROM SYSDATE)
+        AND
+            EXTRACT ( YEAR FROM START_DATE) = EXTRACT (YEAR FROM SYSDATE)
+	
+	</entry>
+	
+	
+	<entry key="carcarone">
+		SELECT
+                MANAGEMENT_NO,
+                STATUS,
+                CAR_NO,
+                C.LOCATION_NO,
+                LOCATION_NAME,
+                MODEL_NAME,
+                FUEL_NAME,
+                BRAND_NAME,
+                GRADE_NAME,
+                YEAR,
+                GRADE_PRICE,
+                MODEL_PRICE,
+                YEAR_PRICE,
+                START_DATE,
+                END_DATE,
+                MM.MEMBER_ID,
+                RESERVATION_NO,
+                MM.MEMBER_NAME,
+                MM.PHONE,
+                MM.EMAIL         
+          FROM
+                TB_CAR C
+          JOIN  
+                TB_CAR_BRIDGE CB
+            ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+          JOIN
+                TB_LOCATION L
+            ON (C.LOCATION_NO = L.LOCATION_NO)
+          JOIN
+                TB_MODEL M
+            ON (CB.MODEL_NO = M.MODEL_NO)
+          JOIN
+                TB_FUEL F
+            ON (CB.FUEL_NO = F.FUEL_NO)
+          JOIN
+                TB_BRAND B
+            ON (CB.BRAND_NO = B.BRAND_NO)
+          JOIN
+                TB_GRADE G
+            ON (CB.GRADE_NO = G.GRADE_NO)
+          JOIN
+                TB_YEAR Y
+            ON (CB.YEAR_NO = Y.YEAR_NO)
+          JOIN
+                TB_RESERVATION R
+            ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+          LEFT
+          JOIN
+                TB_MEMBER MM
+            ON (R.MEMBER_NO = MM.MEMBER_NO)
+		WHERE
+           EXTRACT ( MONTH FROM START_DATE) = EXTRACT (MONTH FROM SYSDATE)
+        AND
+            EXTRACT ( YEAR FROM START_DATE) = EXTRACT (YEAR FROM SYSDATE)
+        AND
+        	RESERVATION_NO = ?
+	
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>

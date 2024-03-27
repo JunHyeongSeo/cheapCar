@@ -1,10 +1,14 @@
 package com.kh.semi.member.model.service;
 
-import static com.kh.semi.common.JDBCTemplate.*;
+import static com.kh.semi.common.JDBCTemplate.close;
+import static com.kh.semi.common.JDBCTemplate.commit;
+import static com.kh.semi.common.JDBCTemplate.getConnection;
+import static com.kh.semi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.dao.MemberDao;
 import com.kh.semi.member.model.vo.Member;
@@ -155,7 +159,95 @@ public Member login(String memberId, String memberPwd) {
 		return member;
 	}
 	
+	public int deleteMember(String memberPwd, int memberNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, memberPwd, memberNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			
+		}
+		
+		close(conn);
+		
+		
+		return result;
+	}
 	
+	
+	public ArrayList<Car> reservation (Member loginUser){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Car> list = new MemberDao().reservation(conn, loginUser);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	public String findId(Member member) {
+		
+		Connection conn = getConnection();
+		
+		String memId = new MemberDao().findId(conn, member);
+		
+		close(conn);
+		
+		return memId;
+	}
+	
+	public String findPwd(Member member) {
+		
+		Connection conn = getConnection();
+		
+		String memPwd = new MemberDao().findPwd(conn, member);
+		
+		close(conn);
+		
+		return memPwd;
+	}
+	
+	public int adminSMSCount(String searchId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().adminSMSCount(conn, searchId);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public ArrayList<Member> asmcs(PageInfo pi, String searchId) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().asmcs(conn, pi, searchId);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	public Member asmc(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDao().selectMember(conn, memberId);
+
+		close(conn);
+		
+		
+		return member;
+	}
 	
 	
 	
