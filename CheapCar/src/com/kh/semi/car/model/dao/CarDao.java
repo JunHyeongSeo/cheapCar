@@ -12,9 +12,9 @@ import java.util.Properties;
 
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
+import com.kh.semi.car.model.vo.Reservation;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.vo.Member;
 
 public class CarDao {
 
@@ -367,8 +367,6 @@ public ArrayList<Car> carcarall(Connection conn){
 				car.setPhone(rset.getString("PHONE"));
 				car.setEmail(rset.getString("EMAIL"));
 				
-				//System.out.println(rset.getString("MEMBER_ID"));
-				
 				carList.add(car);
 			}
 			
@@ -379,12 +377,18 @@ public ArrayList<Car> carcarall(Connection conn){
 			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
 		return carList;
 	}
 	
 	
+<<<<<<< HEAD
+	public int insertReservation(Connection conn, Reservation reservation) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql =  prop.getProperty("insertReservation");
+=======
 	public Car carcarone(Connection conn, int checkReservationNo) {
 		
 		Car car = new Car();
@@ -392,10 +396,20 @@ public ArrayList<Car> carcarall(Connection conn){
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("checkReservationNo");
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+<<<<<<< HEAD
+			pstmt.setString(1, reservation.getStartDate());
+			pstmt.setString(2, reservation.getEndDate());
+			pstmt.setInt(3, reservation.getMemberNo());
+			pstmt.setInt(4, reservation.getManagementNo());
+			pstmt.setInt(5, reservation.getTotalPrice());
+			
+			result = pstmt.executeUpdate();
+=======
 			pstmt.setInt(1, checkReservationNo);
 			
 			if(rset.next()) {
@@ -425,18 +439,27 @@ public ArrayList<Car> carcarall(Connection conn){
 				
 			
 			}
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+<<<<<<< HEAD
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	
+=======
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
 		
 		return car;
 	}
-	
-	
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 	
 	
 	

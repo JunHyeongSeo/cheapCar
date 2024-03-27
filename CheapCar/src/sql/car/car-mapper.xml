@@ -311,6 +311,22 @@
 		                STATUS = 'Y'
 	</entry>
 	
+	<entry key="insertReservation">
+		
+		INSERT 
+		  INTO 
+				TB_RESERVATION 
+		VALUES 
+				(
+				SEQ_RESERVATION_NO.NEXTVAL,
+				?,
+				?, 
+				?, 
+				?,
+				?)
+		
+	</entry>
+	
 	<!-- </entry> 이거 뭐지요??? 혹시 몰라서 남겨둡니다.-->
 	
 	<entry key="selectDetailCar">
