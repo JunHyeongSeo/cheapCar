@@ -113,7 +113,7 @@
 							
 							console.log(result);
 							resultStr += '<tr>'
-								  + '<td>' +'아이디 : '+ result.getMmeberId() + '</td>'
+								  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
 								 // + '<td>' +'이름 : '+ memberName() + '</td>'
 								 // + '<td>' +'모델명 :'+ modelName() + '</td>'
 								 // + '<td>' +'대여날짜 : '+ startDate() + '</td>'
