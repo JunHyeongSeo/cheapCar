@@ -3,7 +3,7 @@ package com.kh.semi.member.model.vo;
 import java.sql.Date;
 
 public class Member {
-	
+
 	private int memberNo;
 	private String memberId;
 	private String memberName;

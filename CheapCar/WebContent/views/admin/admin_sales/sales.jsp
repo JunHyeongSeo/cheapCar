@@ -80,12 +80,12 @@
 					</tr>
 				</thead>
 				<tbody>
-				<% for(Car car : carlist){ %>
+				<% for(int i = 0; i < carlist.size() ; i++){ %>
 					<tr>
-						<td><%= car.getReservationNo()  %></td>
-						<td><%= car.getMemberId()  %></td>
+						<td><%= carlist.get(i).getReservationNo()  %></td>
+						<td><%= carlist.get(i).getMemberId()  %></td>
 						<td>123</td>
-						<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
+						<td id="car<%=i%>"><button onclick="btn1();" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
@@ -95,18 +95,78 @@
 			<div id="reservationdetail"></div>
 			
 			<script>
-			
-				$.ajax({
-					url : 'sales',
+
+				function btn1(){
+					 
+					let selectResult = '';
 					
-				})
-			
+					$.ajax({
+						url : 'sales2',
+						data{
+							checkReservationNo = 
+						},
+						success : function(result){
+							
+							console.log(result);
+							
+							
+							
+							
+							
+							
+							let resultStr = '';
+							for(let i = 0; i < result.length; i++){
+								
+								const aa = $('#car' + i);
+								console.log(aa);
+								
+								
+								if(aa.){
+									
+									
+								}
+							
+							
+							
+							
+							
+							
+							
+							
+								
+								
+								resultStr += '<tr>'
+									  + '<td>' +'아이디 : '+ result[i].memberId + '</td>'
+									  + '<td>' +'이름 : '+ result[i].memberName + '</td>'
+									  + '<td>' +'모델명 :'+ result[i].model_Name + '</td>'
+									  + '<td>' +'대여날짜 : '+ result[i].startDate + '</td>'
+									  + '<td>' +'반납날짜 : '+ result[i].endDate + '</td>'
+									  
+									  + '</tr>'
+								
+							};
+							
+							$('#reservationdetail').html(resultStr);
+						
+							
+						}
+					
+					
+					});
+				}
 			</script>
 			
+
+
+
+
+
+
 			
 			
 			
-			<table class="table" style="text-align:center">
+			
+			<!-- <table class="table" style="text-align:center">
 				<thead>
 					<tr>
 						<th>기간</th>
@@ -143,7 +203,7 @@
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 			
 			
