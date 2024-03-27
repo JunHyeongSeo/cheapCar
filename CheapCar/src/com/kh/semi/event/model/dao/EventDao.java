@@ -92,6 +92,25 @@ public class EventDao {
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectEventList");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				EventBoard eBoard = 
+				
+				
+				
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 		
