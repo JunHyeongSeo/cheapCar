@@ -55,14 +55,14 @@ public class EventDao {
 		return result;
 	}//
 	
-	public int insertEventPhoto(Connection conn, EventPhoto ePhoto) {
+	public int insertEventPhoto(Connection conn, ArrayList<EventPhoto> list) {
+		
+		int result = 0;
 		
 		
 		
 		
-		
-		
-		
+		return result;
 	}
 	
 	
