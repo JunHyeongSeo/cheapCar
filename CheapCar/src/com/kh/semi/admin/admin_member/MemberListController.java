@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
@@ -33,7 +34,7 @@ public class MemberListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		int listCount = new MemberService().selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int currentPage = /*Integer.parseInt(request.getParameter("currentPage"));*/1;
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
@@ -47,10 +48,17 @@ public class MemberListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Member> list = new MemberService().selectList(pi);
 		
+		/*
 		request.setAttribute("memberList", list);
 		request.setAttribute("pageInfo", pi);
 		
 		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
+		*/
+		
+		response.setContentType("application/json; charset=UTF-8");
+		System.out.println(list);
+		new Gson().toJson(list, response.getWriter());
+		
 	}
 
 	/**
