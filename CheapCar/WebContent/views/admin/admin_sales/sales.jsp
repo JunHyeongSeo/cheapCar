@@ -99,7 +99,7 @@
 
 				function btn1(e){
 					
-					let selectResult = '';
+					let resultStr = '';
 					//console.log($(e).parent().siblings().first().text());
 					// console.log(e.target);
 					
@@ -113,11 +113,8 @@
 							
 							console.log(result);
 							resultStr += '<tr>'
-								  + '<td>' +'아이디 : '+ memberId + '</td>'
-								  + '<td>' +'이름 : '+ memberName + '</td>'
-								  + '<td>' +'모델명 :'+ modelName + '</td>'
-								  + '<td>' +'대여날짜 : '+ startDate + '</td>'
-								  + '<td>' +'반납날짜 : '+ endDate + '</td>'
+								  + '<td>' +'아이디 : '+ car.getMemberId() '</td>'
+								 
 								  
 								  + '</tr>'
 							
