@@ -73,9 +73,20 @@ public class EventInsertController extends HttpServlet {
 				
 			}
 			
-			new EventService().insertEventBoard(eBoard, ePhoto);
+			int result = new EventService().insertEventBoard(eBoard, ePhoto);
 			
-			
+			if(result > 0) {
+				
+				request.getSession().setAttribute("alertMsg", "등록 성공!");
+				response.sendRedirect(request.getContextPath() + "/list.event");
+				
+			} else {
+				
+				if(ePhoto != null) {
+					new File(ePhoto.getPhotoName()).delete();
+				}
+				
+			}
 			
 			
 		}
