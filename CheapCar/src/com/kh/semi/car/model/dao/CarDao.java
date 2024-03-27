@@ -398,7 +398,7 @@ public ArrayList<Car> carcarall(Connection conn){
 		result = pstmt.executeUpdate();
 		
 	}
-}
+
 
 	public Car carcarone(Connection conn, int checkReservationNo) {
 		
@@ -409,47 +409,50 @@ public ArrayList<Car> carcarall(Connection conn){
 		String sql = prop.getProperty("checkReservationNo");
 
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
 
-			pstmt.setInt(1, checkReservationNo);
+			try {
+				pstmt.setInt(1, checkReservationNo);
+				
+				if(rset.next()) {
+					car = new Car();
+					car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+					car.setStatus(rset.getString("STATUS"));
+					car.setCarNo(rset.getString("CAR_NO"));
+					car.setLocationNo(rset.getInt("LOCATION_NO"));
+					car.setLocationName(rset.getString("LOCATION_NAME"));
+					car.setModelName(rset.getString("MODEL_NAME"));
+					car.setFuelName(rset.getString("FUEL_NAME"));
+					car.setBrandName(rset.getString("BRAND_NAME"));
+					car.setGradeName(rset.getString("GRADE_NAME"));
+					car.setYear(rset.getInt("YEAR"));
+					car.setGradePrice(rset.getInt("GRADE_PRICE"));
+					car.setModelPrice(rset.getInt("MODEL_PRICE"));
+					car.setYearPrice(rset.getInt("YEAR_PRICE"));
+					car.setStartDate(rset.getDate("START_DATE"));
+					car.setEndDate(rset.getDate("END_DATE"));
+					car.setMemberId(rset.getString("MEMBER_ID"));
+					car.setReservationNo(rset.getInt("RESERVATION_NO"));
+					car.setMemberName(rset.getString("MEMBER_NAME"));
+					car.setPhone(rset.getString("PHONE"));
+					car.setEmail(rset.getString("EMAIL"));
+					
+					//System.out.println(rset.getString("MEMBER_ID"));
+					
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
-			if(rset.next()) {
-				car = new Car();
-				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
-				car.setStatus(rset.getString("STATUS"));
-				car.setCarNo(rset.getString("CAR_NO"));
-				car.setLocationNo(rset.getInt("LOCATION_NO"));
-				car.setLocationName(rset.getString("LOCATION_NAME"));
-				car.setModelName(rset.getString("MODEL_NAME"));
-				car.setFuelName(rset.getString("FUEL_NAME"));
-				car.setBrandName(rset.getString("BRAND_NAME"));
-				car.setGradeName(rset.getString("GRADE_NAME"));
-				car.setYear(rset.getInt("YEAR"));
-				car.setGradePrice(rset.getInt("GRADE_PRICE"));
-				car.setModelPrice(rset.getInt("MODEL_PRICE"));
-				car.setYearPrice(rset.getInt("YEAR_PRICE"));
-				car.setStartDate(rset.getDate("START_DATE"));
-				car.setEndDate(rset.getDate("END_DATE"));
-				car.setMemberId(rset.getString("MEMBER_ID"));
-				car.setReservationNo(rset.getInt("RESERVATION_NO"));
-				car.setMemberName(rset.getString("MEMBER_NAME"));
-				car.setPhone(rset.getString("PHONE"));
-				car.setEmail(rset.getString("EMAIL"));
-				
-				//System.out.println(rset.getString("MEMBER_ID"));
-				
+			
+			
 			
 			}
-
 			
-		
+			
 	
 
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
+			
 		
 		return car;
 	}
