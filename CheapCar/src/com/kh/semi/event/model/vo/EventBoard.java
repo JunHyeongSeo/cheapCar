@@ -12,13 +12,14 @@ public class EventBoard {
 	private String status;
 	private int memberNo;
 	private int count;
+	private String titleImg;
 	
 	public EventBoard() {
 		super();
 	}
 
 	public EventBoard(int eventNo, String eventTitle, String eventContent, String eventWriter, Date createDate,
-			String status, int memberNo, int count) {
+			String status, int memberNo, int count, String titleImg) {
 		super();
 		this.eventNo = eventNo;
 		this.eventTitle = eventTitle;
@@ -28,6 +29,7 @@ public class EventBoard {
 		this.status = status;
 		this.memberNo = memberNo;
 		this.count = count;
+		this.titleImg = titleImg;
 	}
 
 	public int getEventNo() {
@@ -94,11 +96,12 @@ public class EventBoard {
 		this.count = count;
 	}
 
-	@Override
-	public String toString() {
-		return "EventBoard [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", eventContent=" + eventContent
-				+ ", eventWriter=" + eventWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
-				+ memberNo + ", count=" + count + "]";
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 	@Override
@@ -113,6 +116,7 @@ public class EventBoard {
 		result = prime * result + ((eventWriter == null) ? 0 : eventWriter.hashCode());
 		result = prime * result + memberNo;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((titleImg == null) ? 0 : titleImg.hashCode());
 		return result;
 	}
 
@@ -156,10 +160,20 @@ public class EventBoard {
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
+		if (titleImg == null) {
+			if (other.titleImg != null)
+				return false;
+		} else if (!titleImg.equals(other.titleImg))
+			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "EventBoard [eventNo=" + eventNo + ", eventTitle=" + eventTitle + ", eventContent=" + eventContent
+				+ ", eventWriter=" + eventWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
+				+ memberNo + ", count=" + count + ", titleImg=" + titleImg + "]";
+	}
 	
 	
 	
