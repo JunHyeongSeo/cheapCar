@@ -506,6 +506,78 @@ public String findPwd(Connection conn, Member member) {
 		}
 		return memPwd;
 	}
+
+	public int adminSMSCount(Connection conn, String searchId) {
+	
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("adminSMSCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchId);
+			pstmt.setString(2, searchId);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Member> asmcs(Connection conn, PageInfo pi, String searchId) {
+		
+		ArrayList<Member> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("asmcs");
+		
+		try{ 
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			pstmt.setString(3, searchId);
+			pstmt.setString(4, searchId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member member = new Member(rset.getInt("MEMBER_NO"),
+										   rset.getString("MEMBER_ID"),
+										   rset.getString("MEMBER_NAME"),
+										   rset.getString("MEMBER_PWD"),
+										   rset.getString("BIRTHDAY"),
+										   rset.getString("PHONE"),
+										   rset.getString("EMAIL"),
+										   rset.getDate("ENROLL_DATE"),
+										   rset.getString("MEMBER_STATUS"));
+				list.add(member);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+	
+		return list;
+	}
 	
 	public Member asmc(Connection conn, String memberId) {
 	
@@ -545,43 +617,12 @@ public String findPwd(Connection conn, Member member) {
 		return member;
 	}
 	
-	public ArrayList<Member> asmcs(Connection conn, String memberId) {
-		
-		ArrayList<Member> list = new ArrayList();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("asmc");
 	
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, memberId);
-			pstmt.setString(2, memberId);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member m = new Member(rset.getInt("MEMBER_NO"),
-									rset.getString("MEMBER_ID"),
-									rset.getString("MEMBER_NAME"),
-									rset.getString("MEMBER_PWD"),
-									rset.getString("BIRTHDAY"),
-									rset.getString("PHONE"),
-									rset.getString("EMAIL"),
-									rset.getDate("ENROLL_DATE"),
-									rset.getString("MEMBER_STATUS"));
-				
-				list.add(m);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally{
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-	}
+	
+	
+	
+	
+	
+	
+	
 }
