@@ -62,22 +62,25 @@ public class EventDao {
 		String sql = prop.getProperty("insertEventPhoto");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
 			
-			
-			
-			
+			for(EventPhoto ep : list) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, ep.getPhotoOname());
+				pstmt.setString(2, ep.getPhotoOname());
+				pstmt.setString(3, ep.getPhotoPath());
+				pstmt.setInt(4, ep.getFileLevel());
+				
+				result += pstmt.executeUpdate();
+				
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
-		
-		
-		
-		
-		return result;
+		return result == list.size()? 1 : 0;
 	}
 	
 	

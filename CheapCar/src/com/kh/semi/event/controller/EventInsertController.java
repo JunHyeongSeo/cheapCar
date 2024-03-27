@@ -86,7 +86,7 @@ public class EventInsertController extends HttpServlet {
 				}
 			}
 			
-			new EventService().insert(eBoard, list);
+			int result = new EventService().insert(eBoard, list);
 			
 			
 			

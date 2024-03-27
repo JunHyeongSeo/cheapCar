@@ -11,22 +11,21 @@ import com.kh.semi.event.model.vo.EventPhoto;
 public class EventService {
 
 	
-	public void insert(EventBoard eBoard, ArrayList<EventPhoto> list) {
+	public int insert(EventBoard eBoard, ArrayList<EventPhoto> list) {
 	
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().insertEventBoard(conn, eBoard);
-		new EventDao().insertEventPhoto(conn, list);
+		int eBoardResult = new EventDao().insertEventBoard(conn, eBoard);
 		
+		int ePhotoResult = new EventDao().insertEventPhoto(conn, list);
 		
-		
-		
-		
-		
-		
-		
-		
-		return result;
+		if(eBoardResult * ePhotoResult > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+			
+		return (eBoardResult * ePhotoResult);
 	}	
 		
 		
