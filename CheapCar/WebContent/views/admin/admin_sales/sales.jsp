@@ -102,8 +102,8 @@
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>user01</td>
-						<td>user02</td>
+						<td>2</td>
+						<td>3</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>
@@ -122,8 +122,8 @@
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>user01</td>
-						<td>user02</td>
+						<td>2</td>
+						<td>3</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>

@@ -419,7 +419,10 @@
           JOIN
                 TB_MEMBER MM
             ON (R.RESERVATION_NO = MM.MEMBER_NO)
-	
+		WHERE
+           EXTRACT ( MONTH FROM START_DATE) = EXTRACT (MONTH FROM SYSDATE)
+        AND
+            EXTRACT ( YEAR FROM START_DATE) = EXTRACT (YEAR FROM SYSDATE)
 	
 	</entry>
 	

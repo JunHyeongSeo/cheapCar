@@ -38,11 +38,12 @@ public class SalesController extends HttpServlet {
 		
 		ArrayList<Car> carlist = new CarService().carcarall();
 		
-		System.out.println(carlist);
+	
 		
 		if(carlist.isEmpty()) {
 			
-		} else {
+		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
+			System.out.println(carlist);
 			request.setAttribute("carlist", carlist);
 			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 		}

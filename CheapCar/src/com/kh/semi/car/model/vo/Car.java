@@ -176,6 +176,30 @@ public class Car {
 
 
 
+	public Car(int managementNo, String status, String carNo, int locationNo, String locationName, String modelName,
+			String fuelName, String brandName, String gradeName, int year, int gradePrice, int modelPrice,
+			int yearPrice, Date startDate, Date endDate, String memberId, int reservationNo) {
+		super();
+		this.managementNo = managementNo;
+		this.status = status;
+		this.carNo = carNo;
+		this.locationNo = locationNo;
+		this.locationName = locationName;
+		this.modelName = modelName;
+		this.fuelName = fuelName;
+		this.brandName = brandName;
+		this.gradeName = gradeName;
+		this.year = year;
+		this.gradePrice = gradePrice;
+		this.modelPrice = modelPrice;
+		this.yearPrice = yearPrice;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.memberId = memberId;
+		this.reservationNo = reservationNo;
+	}
+
+
 	public String getFuelName() {
 		return fuelName;
 	}
