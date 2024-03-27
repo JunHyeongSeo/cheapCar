@@ -281,6 +281,28 @@
 	
 	<!-- 회원 아이디 중 일치하는 값이 존재하는지 식별하는 SQL문 -> list  -->
 	
+	<entry key="asmcs">
+		SELECT *
+		  FROM (SELECT A.*,
+        			   ROWNUM RNUM
+		          FROM (SELECT
+				                *
+				          FROM 
+				                TB_MEMBER
+				         ORDER 
+						    BY 
+						       MEMBER_NO ASC) A
+	    	   ORDER BY RNUM ASC)
+ 		  WHERE 
+      			RNUM BETWEEN ? AND ?
+      		AND
+				MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		 	 OR	
+		 		MEMBER_ID LIKE '%' || LOWER(?) || '%'
+	</entry>
+	
+	
+	
 	<entry key="asmc">
 		SELECT
   			MEMBER_NO,
@@ -298,26 +320,16 @@
 			MEMBER_ID = ?
 	</entry>
 	
-	<entry key="asmcs">
-		SELECT
-  			MEMBER_NO,
-	  		MEMBER_ID,
-		  	MEMBER_NAME,
-			MEMBER_PWD,
-			BIRTHDAY,
-			PHONE,
-			EMAIL,
-			ENROLL_DATE,
-			MEMBER_STATUS
-		FROM
-			TB_MEMBER
-	   WHERE
-			MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		 OR	
-		 	MEMBER_ID LIKE '%' || LOWER(?) || '%'
+	<entry key="adminSMSCount">
+		SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_MEMBER 
+		 WHERE
+		      MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		    OR	
+	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
 	</entry>
-	
-	
 	
 	
 	

@@ -28,13 +28,15 @@ public class EventService {
 		return (eBoardResult * ePhotoResult);
 	}//
 	
-	public void selectEvent() {
+	public ArrayList<EventBoard> selectEventList() {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().selectEventList(conn);
+		ArrayList<EventBoard> list = new EventDao().selectEventList(conn);
 		
+		JDBCTemplate.close(conn);
 		
+		return list;
 	}
 	
 	

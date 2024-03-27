@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard" %>    
+
+<%
+	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
+%>    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,9 +130,11 @@
 				</div>  
 				<div class="event_content">
 					<ul id="event_list">
+						<% if(list.isEmpty()) { %>
+						<li> 리스트가 존재하지 않습니다. <li>
 						<li>
 							<a href="<%= contextPath %>/detail.event">
-								<div class="img-area event_1">사진</div>
+								<div class="img-area event_1">d</div>
 								<div class="text-area event_1" >
 									<span> 제목 </span><br><br>
 									<span style="font-size: 15px;">조회수 :  </span>

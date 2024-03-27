@@ -211,6 +211,32 @@ public Member login(String memberId, String memberPwd) {
 		return memPwd;
 	}
 	
+	public int adminSMSCount(String searchId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().adminSMSCount(conn, searchId);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public ArrayList<Member> asmcs(PageInfo pi, String searchId) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().asmcs(conn, pi, searchId);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	
+	
+	
 	public Member asmc(String memberId) {
 		
 		Connection conn = getConnection();
@@ -223,16 +249,8 @@ public Member login(String memberId, String memberPwd) {
 		return member;
 	}
 	
-	public ArrayList<Member> asmcs(String memberId) {
-		
-		Connection conn = getConnection();
-		
-		ArrayList<Member> list = new MemberDao().asmcs(conn, memberId);
-
-		close(conn);
-		
-		return list;
-	}
+	
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.kh.semi.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.event.model.service.EventService;
+import com.kh.semi.event.model.vo.EventBoard;
 
 /**
  * Servlet implementation class EventListController
@@ -31,7 +33,9 @@ public class EventListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//값
-		new EventService().selectEventList();
+		ArrayList<EventBoard> list = new EventService().selectEventList();
+		
+		request.setAttribute("list", list);
 		
 		
 		request.getRequestDispatcher("views/event/event.jsp").forward(request, response);

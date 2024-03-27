@@ -102,20 +102,19 @@ public class EventDao {
 				EventBoard eBoard = new EventBoard();
 				
 				eBoard.setEventNo(rset.getInt("EVENT_NO"));
+				eBoard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eBoard.setCount(rset.getInt("COUNT"));
+				eBoard.setTitleImg(rset.getString("TITLE_IMG"));
 				
-				
-				
-				
+				list.add(eBoard);
 			}
-			
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
-		
-		
 		
 		
 		return list;
