@@ -93,7 +93,8 @@
 			</table>
 			
 			
-			<div id="reservationdetail"></div>
+			<div id="reservationdetail">
+			</div>
 			
 			<script>
 
@@ -111,6 +112,7 @@
 						},
 						success : function(result){
 							
+							
 							console.log(result);
 							resultStr += '<tr>'
 								  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
@@ -119,7 +121,7 @@
 								 // + '<td>' +'대여날짜 : '+ startDate() + '</td>'
 								 // + '<td>' +'반납날짜 : '+ endDate() + '</td>'
 								  
-								  + '</tr>'
+								  + '</tr>';
 							
 							
 						}
