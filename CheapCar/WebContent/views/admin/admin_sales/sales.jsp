@@ -86,7 +86,7 @@
 						<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
 						<td><%= carlist.get(i).getMemberId()  %></td>
 						<td>123</td>
-						<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
+						<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
@@ -100,26 +100,24 @@
 				function btn1(e){
 					
 					let selectResult = '';
-					console.log(e);
-					console.log(e.target);
+					console.log($(e).parent().siblings().first().text());
+					// console.log(e.target);
 					
 					$.ajax({
 						url : 'sales2',
-						data{
-							checkReservationNo = $(e.target).parent().first().text()
+						data: {
+							 checkReservationNo :  $(e).parent().siblings().first().text()
 							
 						},
-						
 						success : function(result){
 							
 							console.log(result);
-							
-							
-							
-							
-							
-							
-							let resultStr = '';
+					
+					});
+				}
+			</script>
+			<!-- 
+			let resultStr = '';
 							for(let i = 0; i < result.length; i++){
 								
 								const aa = $('#car' + i);
@@ -143,12 +141,7 @@
 						
 							
 						}
-					
-					
-					});
-				}
-			</script>
-			
+			 -->
 
 
 

@@ -117,23 +117,23 @@ public class CarService {
 	}
 	
 
-	public int insertReservation(Reservation reservation) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new CarDao().insertReservation(conn, reservation);
-		
-		if(result > 0) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		JDBCTemplate.close(conn);
-		
-		return result;
-		
-	}
+//	public int insertReservation(Reservation reservation) {
+//		
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		int result = new CarDao().insertReservation(conn, reservation);
+//		
+//		if(result > 0) {
+//			JDBCTemplate.commit(conn);
+//		} else {
+//			JDBCTemplate.rollback(conn);
+//		}
+//		
+//		JDBCTemplate.close(conn);
+//		
+//		return result;
+//		
+//	}
 	
 
 	public Car carcarone(int checkReservationNo){

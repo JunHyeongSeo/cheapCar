@@ -390,7 +390,7 @@ public ArrayList<Car> carcarall(Connection conn){
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("checkReservationNo");
+		String sql = prop.getProperty("carcarone");
 
 		
 
