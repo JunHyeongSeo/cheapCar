@@ -27,6 +27,40 @@ public class Car {
 	private String replyYn;
 	private String memberId;
 	private int reservationNo;
+	private String memberName;
+	private String phone;
+	public String getMemberName() {
+		return memberName;
+	}
+
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	private String email;
 	
 
 	public String getMemberId() {
@@ -176,9 +210,14 @@ public class Car {
 
 
 
+	
+
+
 	public Car(int managementNo, String status, String carNo, int locationNo, String locationName, String modelName,
 			String fuelName, String brandName, String gradeName, int year, int gradePrice, int modelPrice,
-			int yearPrice, Date startDate, Date endDate, String memberId, int reservationNo) {
+			int yearPrice, Date startDate, Date endDate, int mileage, Date mileageDate, int csNo, String csTitle,
+			String csContent, Date createDate, String replyYn, String memberId, int reservationNo, String memberName,
+			String phone, String email) {
 		super();
 		this.managementNo = managementNo;
 		this.status = status;
@@ -195,8 +234,18 @@ public class Car {
 		this.yearPrice = yearPrice;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.mileage = mileage;
+		this.mileageDate = mileageDate;
+		this.csNo = csNo;
+		this.csTitle = csTitle;
+		this.csContent = csContent;
+		this.createDate = createDate;
+		this.replyYn = replyYn;
 		this.memberId = memberId;
 		this.reservationNo = reservationNo;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.email = email;
 	}
 
 

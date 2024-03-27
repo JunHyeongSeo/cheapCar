@@ -388,7 +388,10 @@
                 START_DATE,
                 END_DATE,
                 MM.MEMBER_ID,
-                RESERVATION_NO           
+                RESERVATION_NO,
+                MM.MEMBER_NAME,
+                MM.PHONE,
+                MM.EMAIL         
           FROM
                 TB_CAR C
           JOIN  
@@ -418,7 +421,7 @@
           LEFT
           JOIN
                 TB_MEMBER MM
-            ON (R.RESERVATION_NO = MM.MEMBER_NO)
+            ON (R.MEMBER_NO = MM.MEMBER_NO)
 		WHERE
            EXTRACT ( MONTH FROM START_DATE) = EXTRACT (MONTH FROM SYSDATE)
         AND
