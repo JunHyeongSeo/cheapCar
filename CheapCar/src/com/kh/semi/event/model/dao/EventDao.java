@@ -55,21 +55,33 @@ public class EventDao {
 		return result;
 	}//
 	
-	public int insertEventPhoto(Connection conn, ArrayList<EventPhoto> list) {
+	public int insertEventPhoto(Connection conn, EventPhoto ePhoto) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertEventPhoto");
 		
-		
-		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, ePhoto.getPhotoName());
+			pstmt.setString(2, ePhoto.getPhotoPath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		
 		
 		return result;
 	}
+	
+	
+	
+	
 	
 	
 	

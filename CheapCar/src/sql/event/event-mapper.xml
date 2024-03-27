@@ -39,7 +39,6 @@
 		       EVENT_PHOTO_ADDRESS,
 		       EVENT_NO,
 		       STATUS,
-		       FILELEVEL
 		       )
    	    VALUES
    	           (
@@ -48,7 +47,6 @@
    	           ?,
    	           SEQ_EVENT_NO.CURRVAL,
    	           DEFAULT,
-   	           ?
    	           )
    	                 
 	</entry>
