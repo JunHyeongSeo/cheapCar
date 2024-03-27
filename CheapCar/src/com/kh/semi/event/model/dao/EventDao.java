@@ -99,7 +99,9 @@ public class EventDao {
 			
 			while(rset.next()) {
 				
-				EventBoard eBoard = 
+				EventBoard eBoard = new EventBoard();
+				
+				eBoard.setEventNo(rset.getInt("EVENT_NO"));
 				
 				
 				
