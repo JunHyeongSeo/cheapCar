@@ -26,7 +26,31 @@ public class EventService {
 		}
 			
 		return (eBoardResult * ePhotoResult);
-	}	
+	}//
+	
+	public ArrayList<EventBoard> selectEventList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EventBoard> list = new EventDao().selectEventList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 		
 		

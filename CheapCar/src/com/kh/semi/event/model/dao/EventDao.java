@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -81,7 +82,46 @@ public class EventDao {
 		}
 		
 		return result == list.size()? 1 : 0;
+	}//
+	
+	
+	public ArrayList<EventBoard> selectEventList(Connection conn){
+		
+		ArrayList<EventBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEventList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				EventBoard eBoard = new EventBoard();
+				
+				eBoard.setEventNo(rset.getInt("EVENT_NO"));
+				eBoard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eBoard.setCount(rset.getInt("COUNT"));
+				eBoard.setTitleImg(rset.getString("TITLE_IMG"));
+				
+				list.add(eBoard);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
 	}
+	
+	
+	
 	
 	
 	
