@@ -1,7 +1,7 @@
 package com.kh.semi.event.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,13 +47,13 @@ public class EventInsertController extends HttpServlet {
 			
 			String savePath = request.getServletContext().getRealPath("/resources/event_upfiles");
 			
-			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8");
 					
 			
 			
 			String eventTitle = multiRequest.getParameter("title");
 			String eventContent = multiRequest.getParameter("content");
-			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
+			int memberNo = Integer.parseInt(multiRequest.getParameter("userNo"));
 			
 			
 			EventBoard eBoard = new EventBoard();
@@ -62,18 +62,21 @@ public class EventInsertController extends HttpServlet {
 			eBoard.setMemberNo(memberNo);
 			
 			
-			EventPhoto ePhoto = null;
 			
-			if(multiRequest.getOriginalFileName("upfile") != null) {
+			EventPhoto ePhoto = null;
+			if(multiRequest.getOriginalFileName("photo") != null) {
 				
 				ePhoto = new EventPhoto();
 				
-				ePhoto.setPhotoName(multiRequest.getOriginalFileName("upfile"));
+				ePhoto.setPhotoName(multiRequest.getOriginalFileName("photo1"));
 				ePhoto.setPhotoPath("resources/event_upfiles");
 				
 			}
 			
-			int result = new EventService().insertEventBoard(eBoard, ePhoto);
+			System.out.println(ePhoto);
+			
+			
+			int result = new EventService().insert(eBoard, ePhoto);
 			
 			if(result > 0) {
 				
@@ -85,6 +88,10 @@ public class EventInsertController extends HttpServlet {
 				if(ePhoto != null) {
 					new File(ePhoto.getPhotoName()).delete();
 				}
+				
+				request.getSession().setAttribute("errorMsg", "이벤트등록에 실패했습니다.");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				
 				
 			}
 			

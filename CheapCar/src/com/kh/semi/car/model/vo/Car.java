@@ -306,14 +306,25 @@ public class Car {
 
 
 
+	
+
+
+
+
+
+	
+
+
 	@Override
 	public String toString() {
 		return "Car [managementNo=" + managementNo + ", status=" + status + ", carNo=" + carNo + ", locationNo="
 				+ locationNo + ", locationName=" + locationName + ", modelName=" + modelName + ", fuelName=" + fuelName
 				+ ", brandName=" + brandName + ", gradeName=" + gradeName + ", year=" + year + ", gradePrice="
-				+ gradePrice + ", modelPrice=" + modelPrice + ", yearPrice=" + yearPrice + "]";
+				+ gradePrice + ", modelPrice=" + modelPrice + ", yearPrice=" + yearPrice + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", mileage=" + mileage + ", mileageDate=" + mileageDate + ", csNo=" + csNo
+				+ ", csTitle=" + csTitle + ", csContent=" + csContent + ", createDate=" + createDate + ", replyYn="
+				+ replyYn + ", memberId=" + memberId + ", reservationNo=" + reservationNo + "]";
 	}
-
 
 
 	@Override

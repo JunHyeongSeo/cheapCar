@@ -4,6 +4,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
+	//System.out.println(carlist);
 %>
 <!DOCTYPE html>
 <html>
@@ -83,12 +84,27 @@
 					<tr>
 						<td><%= car.getReservationNo()  %></td>
 						<td><%= car.getMemberId()  %></td>
-						<td>10000</td>
-						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+						<td>123</td>
+						<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reserdetail">상세보기</button></td>
 					</tr>
 					<% } %>
 				</tbody>
 			</table>
+			
+			
+			<div id="reservationdetail"></div>
+			
+			<script>
+			
+				$.ajax({
+					url : 'sales',
+					
+				})
+			
+			</script>
+			
+			
+			
 			
 			<table class="table" style="text-align:center">
 				<thead>
@@ -129,6 +145,16 @@
 				</tbody>
 			</table>
 		</div>
+			
+			
+			
+			
+
+			
+			
+			
+			
+			
 			
 		
 
