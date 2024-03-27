@@ -116,7 +116,7 @@ public class CarService {
 		return car;
 	}
 	
-<<<<<<< HEAD
+
 	public int insertReservation(Reservation reservation) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -135,7 +135,7 @@ public class CarService {
 		
 	}
 	
-=======
+
 	public Car carcarone(int checkReservationNo){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -146,7 +146,6 @@ public class CarService {
 		
 		return car;
 	}
->>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 
 	
 	
