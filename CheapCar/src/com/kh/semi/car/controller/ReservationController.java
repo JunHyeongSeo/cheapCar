@@ -27,8 +27,13 @@ public class ReservationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
 		
+		String startRent = (String)request.getAttribute("startRent");
+	    String endRent = (String)request.getAttribute("endRent");
+	    
+	    request.setAttribute("startRent", startRent);
+	    request.setAttribute("endRent", endRent);
+	    
 		request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
 	
 	}

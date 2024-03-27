@@ -164,6 +164,7 @@
 	                            첨부파일_2 - <input type="file" name="photo" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
 	                            첨부파일_3 - <input type="file" name="photo" id="subImg2" onchange="loadImg(this, 3)">
 	                            첨부파일_4 - <input type="file" name="photo" id="subImg3" onchange="loadImg(this, 4)">
+
 						    </div>
                     
 
@@ -236,4 +237,6 @@
 		
 	
 </body>
+
+
 </html>
