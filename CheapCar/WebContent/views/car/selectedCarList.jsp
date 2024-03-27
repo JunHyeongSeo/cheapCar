@@ -250,12 +250,12 @@
 	                            <% } %> 
 							<br>
 							
-	                        <label>총 가격</label> : 
+	                        <label>시간당 가격</label> : 
 	                        <span>
 	                        	<%= totalPrice = carPrice + optionPrice %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&hours=<%=hours%>">예약버튼</a>
                             <% optionPrice = 0; %>
 	                    </div>
                     </div>

@@ -10,11 +10,13 @@
 <%
 	Car car = (Car)request.getAttribute("car");
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
+	int hours = (int)request.getAttribute("hours");
 %>
 
 <%
 	int carPrice = 0;
 	int optionPrice = 0;
+	int hourPrice = 0;
 	int totalPrice = 0;
 %>
 <!DOCTYPE html>
@@ -80,6 +82,8 @@
 
     <div class="area-board">
 
+	console.log(hours);
+
 	<% if(loginUser == null) { %>
 		<script>
 			alert('렌트 예약은 회원만 가능합니다.');
@@ -113,14 +117,14 @@
       
             </div>
             
-            	<% totalPrice = carPrice + optionPrice; %>
-            	
+            	<% hourPrice = carPrice + optionPrice; %>
+            	<% totalPrice = hourPrice * hours; %>
             <div>
-	        	시간당 가격 : <%=totalPrice%>원 <br>
-                총 가격 : ? <br>
+	        	시간당 가격 : <%=hourPrice%>원 <br>
+                                총 가격 : ? <br>
             </div>
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                결제하기
+               	결제하기
             </button>
 
             <div class="modal fade" id="myModal">
