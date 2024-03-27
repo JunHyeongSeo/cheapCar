@@ -311,6 +311,22 @@
 		                STATUS = 'Y'
 	</entry>
 	
+	<entry key="insertReservation">
+		
+		INSERT 
+		  INTO 
+				TB_RESERVATION 
+		VALUES 
+				(
+				SEQ_RESERVATION_NO.NEXTVAL,
+				?,
+				?, 
+				?, 
+				?,
+				?)
+		
+	</entry>
+	
 	<!-- </entry> 이거 뭐지요??? 혹시 몰라서 남겨둡니다.-->
 	
 	<entry key="selectDetailCar">
@@ -429,6 +445,67 @@
 	
 	</entry>
 	
+	
+	<entry key="carcarall">
+		SELECT
+                MANAGEMENT_NO,
+                STATUS,
+                CAR_NO,
+                C.LOCATION_NO,
+                LOCATION_NAME,
+                MODEL_NAME,
+                FUEL_NAME,
+                BRAND_NAME,
+                GRADE_NAME,
+                YEAR,
+                GRADE_PRICE,
+                MODEL_PRICE,
+                YEAR_PRICE,
+                START_DATE,
+                END_DATE,
+                MM.MEMBER_ID,
+                RESERVATION_NO,
+                MM.MEMBER_NAME,
+                MM.PHONE,
+                MM.EMAIL         
+          FROM
+                TB_CAR C
+          JOIN  
+                TB_CAR_BRIDGE CB
+            ON (C.MANAGEMENT_NO = CB.MANAGEMENT_NO)
+          JOIN
+                TB_LOCATION L
+            ON (C.LOCATION_NO = L.LOCATION_NO)
+          JOIN
+                TB_MODEL M
+            ON (CB.MODEL_NO = M.MODEL_NO)
+          JOIN
+                TB_FUEL F
+            ON (CB.FUEL_NO = F.FUEL_NO)
+          JOIN
+                TB_BRAND B
+            ON (CB.BRAND_NO = B.BRAND_NO)
+          JOIN
+                TB_GRADE G
+            ON (CB.GRADE_NO = G.GRADE_NO)
+          JOIN
+                TB_YEAR Y
+            ON (CB.YEAR_NO = Y.YEAR_NO)
+          JOIN
+                TB_RESERVATION R
+            ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+          LEFT
+          JOIN
+                TB_MEMBER MM
+            ON (R.MEMBER_NO = MM.MEMBER_NO)
+		WHERE
+           EXTRACT ( MONTH FROM START_DATE) = EXTRACT (MONTH FROM SYSDATE)
+        AND
+            EXTRACT ( YEAR FROM START_DATE) = EXTRACT (YEAR FROM SYSDATE)
+        AND
+        	RESERVATION_NO = ?
+	
+	</entry>
 	
 	
 	

@@ -7,9 +7,9 @@ import java.util.List;
 import com.kh.semi.car.model.dao.CarDao;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
+import com.kh.semi.car.model.vo.Reservation;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.vo.Member;
 
 public class CarService {
 	
@@ -116,7 +116,37 @@ public class CarService {
 		return car;
 	}
 	
+<<<<<<< HEAD
+	public int insertReservation(Reservation reservation) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new CarDao().insertReservation(conn, reservation);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+	}
 	
+=======
+	public Car carcarone(int checkReservationNo){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Car car = new CarDao().carcarone(conn, checkReservationNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
+>>>>>>> 05ccae270279fc76d99c2cde9c412847105f6185
 
 	
 	
