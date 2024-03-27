@@ -100,7 +100,7 @@
 				function btn1(e){
 					
 					let selectResult = '';
-					console.log($(e).parent().siblings().first().text());
+					//console.log($(e).parent().siblings().first().text());
 					// console.log(e.target);
 					
 					$.ajax({
@@ -112,7 +112,7 @@
 						success : function(result){
 							
 							console.log(result);
-					
+						}
 					});
 				}
 			</script>

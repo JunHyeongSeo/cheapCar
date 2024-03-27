@@ -395,6 +395,8 @@ public ArrayList<Car> carcarall(Connection conn){
 		
 
 			try {
+				pstmt = conn.prepareStatement(sql);
+				
 				pstmt.setInt(1, checkReservationNo);
 				
 				rset = pstmt.executeQuery();
@@ -424,6 +426,8 @@ public ArrayList<Car> carcarall(Connection conn){
 					
 					//System.out.println(rset.getString("MEMBER_ID"));
 				}
+				
+				
 				
 				
 			} catch (SQLException e) {

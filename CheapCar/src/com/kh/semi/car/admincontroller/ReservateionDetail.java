@@ -38,8 +38,8 @@ public class ReservateionDetail extends HttpServlet {
 		
 		Car car = new CarService().carcarone(checkReservationNo);
 		
-	
-	
+		
+		
 		
 		if(car == null) {
 			
@@ -50,6 +50,8 @@ public class ReservateionDetail extends HttpServlet {
 			response.setContentType("application/json; charset=UTF-8");
 			Gson gson = new Gson();
 			gson.toJson(car, response.getWriter());
+			
+			
 			
 			
 		}
