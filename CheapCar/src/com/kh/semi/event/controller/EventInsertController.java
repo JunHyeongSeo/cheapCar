@@ -89,6 +89,15 @@ public class EventInsertController extends HttpServlet {
 			int result = new EventService().insert(eBoard, list);
 			
 			
+			if(result > 0) {
+				
+				request.getSession().setAttribute("alertMsg", "★이벤트 게시물 등록에 성공하였습니다");
+				response.sendRedirect(request.getContentType() + "/list.event");
+			} else {
+				
+			}
+			
+			
 			
 			
 			
