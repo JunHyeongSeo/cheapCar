@@ -1,11 +1,14 @@
 package com.kh.semi.car.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.semi.car.model.service.CarService;
 
 /**
  * Servlet implementation class ReservationController
@@ -27,10 +30,16 @@ public class ReservationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int managementNo = Integer.parseInt(request.getParameter("managementNo"));
+		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+		String startRent = (String)request.getParameter("startRent");
+		String endRent = (String)request.getParameter("endRent");
 		
-		String startRent = (String)request.getAttribute("startRent");
-	    String endRent = (String)request.getAttribute("endRent");
+		
+		
+	    new CarService().insertReservation(managementNo);
 	    
+	    request.setAttribute("totalPrice", totalPrice);
 	    request.setAttribute("startRent", startRent);
 	    request.setAttribute("endRent", endRent);
 	    

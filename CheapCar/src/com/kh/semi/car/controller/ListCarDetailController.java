@@ -40,8 +40,6 @@ public class ListCarDetailController extends HttpServlet {
 		
 		String startRent = (String)request.getParameter("startRent");
 	    String endRent = (String)request.getParameter("endRent");
-	    System.out.println(startRent);
-	    System.out.println(endRent);
 	    
 		Car car = new CarService().selectDetailCar(managementNo);
 		
