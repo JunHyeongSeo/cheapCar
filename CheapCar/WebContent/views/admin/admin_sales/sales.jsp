@@ -112,8 +112,21 @@
 						success : function(result){
 							
 							console.log(result);
+							resultStr += '<tr>'
+								  + '<td>' +'아이디 : '+ memberId + '</td>'
+								  + '<td>' +'이름 : '+ memberName + '</td>'
+								  + '<td>' +'모델명 :'+ modelName + '</td>'
+								  + '<td>' +'대여날짜 : '+ startDate + '</td>'
+								  + '<td>' +'반납날짜 : '+ endDate + '</td>'
+								  
+								  + '</tr>'
+							
+							
 						}
 					});
+					
+					$('#reservationdetail').html(resultStr);
+					
 				}
 			</script>
 			<!-- 
