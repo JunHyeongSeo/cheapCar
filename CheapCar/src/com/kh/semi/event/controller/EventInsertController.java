@@ -47,7 +47,7 @@ public class EventInsertController extends HttpServlet {
 			
 			String savePath = request.getServletContext().getRealPath("/resources/event_upfiles");
 			
-			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8");
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 					
 			
 			
