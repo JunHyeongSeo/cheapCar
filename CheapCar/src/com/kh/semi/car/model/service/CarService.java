@@ -116,7 +116,16 @@ public class CarService {
 		return car;
 	}
 	
-	
+	public Car carcarone(int checkReservationNo){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Car car = new CarDao().carcarone(conn, checkReservationNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
 
 	
 	

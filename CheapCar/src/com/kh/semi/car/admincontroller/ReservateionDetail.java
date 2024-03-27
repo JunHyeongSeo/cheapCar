@@ -33,16 +33,25 @@ public class ReservateionDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<Car> carlist2 = new CarService().carcarall();
+		int checkReservationNo = Integer.parseInt(request.getParameter("checkReservationNo"));
+		
+		
+		Car car = new CarService().carcarone(checkReservationNo);
+		
+	
 	
 		
-		if(carlist2.isEmpty()) {
+		if(car == null) {
 			
 		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			System.out.println(carlist2);
+			System.out.println(car);
+			
+			
 			response.setContentType("application/json; charset=UTF-8");
 			Gson gson = new Gson();
-			gson.toJson(carlist2, response.getWriter());
+			gson.toJson(car, response.getWriter());
+			
+			
 		}
 	
 	
