@@ -17,7 +17,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class MemberListController
  */
-@WebServlet("/memberList")
+@WebServlet("/memberList.do")
 public class MemberListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class MemberListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		int listCount = new MemberService().selectListCount();
-		int currentPage = /*Integer.parseInt(request.getParameter("currentPage"));*/1;
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
@@ -56,7 +56,6 @@ public class MemberListController extends HttpServlet {
 		*/
 		
 		response.setContentType("application/json; charset=UTF-8");
-		System.out.println(list);
 		new Gson().toJson(list, response.getWriter());
 		
 	}
