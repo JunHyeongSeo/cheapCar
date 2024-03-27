@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -81,7 +82,26 @@ public class EventDao {
 		}
 		
 		return result == list.size()? 1 : 0;
+	}//
+	
+	
+	public ArrayList<EventBoard> selectEventList(Connection conn){
+		
+		ArrayList<EventBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEventList");
+		
+		
+		
+		
+		
+		
+		return list;
 	}
+	
+	
+	
 	
 	
 	

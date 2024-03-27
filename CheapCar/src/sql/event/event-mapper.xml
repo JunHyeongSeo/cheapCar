@@ -55,6 +55,26 @@
    	                 
 	</entry>
 	
+	<entry key="selectEventList">
+		SELECT 
+		       EVENT_NO,
+		       EVENT_TITLE,
+		       COUNT,
+		       EVENT_PHOTO_ADDRESS || '/' || EVENT_PHOTO_CNAME
+		  FROM
+		       TB_EVENT_BOARD
+		  JOIN
+		       TB_EVENT_PHOTO USING(EVENT_NO)
+		 WHERE
+		       TB_EVENT_BOARD.STATUS = 'Y'
+		   AND
+		       TB_EVENT_PHOTO.FILELEVEL = 1
+		 ORDER
+		    BY
+		       TB_EVENT_BOARD.EVENT_NO DESC                  
+		        
+	</entry>
+	
 	
 	
 	
