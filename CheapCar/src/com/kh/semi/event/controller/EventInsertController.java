@@ -73,7 +73,7 @@ public class EventInsertController extends HttpServlet {
 				
 			}
 			
-			int result = new EventService().insertEventBoard(eBoard, ePhoto);
+			int result = new EventService().insert(eBoard, ePhoto);
 			
 			if(result > 0) {
 				

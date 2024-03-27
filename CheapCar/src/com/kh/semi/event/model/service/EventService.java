@@ -10,7 +10,7 @@ import com.kh.semi.event.model.vo.EventPhoto;
 public class EventService {
 
 	
-	public int insertEventBoard(EventBoard eBoard, EventPhoto ePhoto) {
+	public int insert(EventBoard eBoard, EventPhoto ePhoto) {
 	
 		
 		Connection conn = JDBCTemplate.getConnection();
