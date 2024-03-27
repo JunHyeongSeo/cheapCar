@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.semi.common.model.vo.PageInfo" %>
+<%@ page import="com.kh.semi.common.model.vo.PageInfo, java.util.ArrayList, com.kh.semi.car.model.vo.Car" %>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
 %>
 <!DOCTYPE html>
 <html>
@@ -78,13 +79,14 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% for(Car car : carlist){ %>
 					<tr>
-						<td>1</td>
-						<td>user01</td>
+						<td><%= car.getReservationNo()  %></td>
+						<td><%= car.getMemberId()  %></td>
 						<td>10000</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
-					
+					<% } %>
 				</tbody>
 			</table>
 			
@@ -100,8 +102,8 @@
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>user01</td>
-						<td>user02</td>
+						<td>2</td>
+						<td>3</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>
@@ -120,8 +122,8 @@
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>user01</td>
-						<td>user02</td>
+						<td>2</td>
+						<td>3</td>
 						<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
 					</tr>
 				</tbody>

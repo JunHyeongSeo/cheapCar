@@ -63,91 +63,173 @@
 	
     <div class="outer">
         <div id="top1">
-                
             <form class="searchMem" action="">
                 <div id="top11" style="display: flex;">
                     <label for="userId" style="margin: 0px 15px;">회원 아이디 : </label>
                     <input type="text" class="form-control" id="userId" placeholder="조회하실 회원 아이디를 입력해주세요." name="userId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchId();" >조회</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="asmcs();" >조회</button>
                 </div>
             </form>
         </div>
         
         <script>
-        	function searchId(){
+        
+        	window.onload = function(){
         		
+        		$.ajax({
+        			url : 'memberList',
+        			data : {memberId : $userId.val()},
+        			success : function(lists){
+        				let resultStr = '';
+        				resultStr = '<table class="table table-bordered"><tbody><tr><th>'
+								 += '회원번호</th><td>'
+		  						 += 1
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr><tr><th>'
+			       				 += 아이디
+			       				 += '</th> <td>'
+		  						 += user01
+		  						 += '회원번호</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+	                    		 += '</button></td></tr><tr><th>'
+  								 += 이름
+ 								 += '</th><td>'
+		  						 += 1996-03-01
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 +='</button></td></tr><tr><th>'
+		  						 += 연락처
+		  						 +=	'</th><td>'
+		  						 += 010-1234-5678
+								 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+	                    		 += '</button></td></tr><tr><th>'
+		  						 += 이메일
+		  						 += '</th><td>'
+		  						 += 123@naver.com
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr></tbody></table>';
+        			}
+        		});	
+        			
+        		})
+        		
+        		
+        		// 1. 전체 띄우기
+        	}
+        	
+        	// 2. ajax 이용해서 조회값 띄우기
+        	
+        	// 3. ajax 이용해서 상세조회 띄우기
+        
+        
+        	function asmcs(){
+        		
+        		$.ajax({
+        			url : 'adminSMS',
+        			data : {memberId : $userId.val(), currentPage  : <%= currentPage %>},
+        			success : function(lists){
+        				let resultStr = '';
+        				resultStr = '<table class="table table-bordered"><tbody><tr><th>'
+								 += '회원번호</th><td>'
+		  						 += 1
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr><tr><th>'
+			       				 += 아이디
+			       				 += '</th> <td>'
+		  						 += user01
+		  						 += '회원번호</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+	                    		 += '</button></td></tr><tr><th>'
+  								 += 이름
+ 								 += '</th><td>'
+		  						 += 1996-03-01
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 +='</button></td></tr><tr><th>'
+		  						 += 연락처
+		  						 +=	'</th><td>'
+		  						 += 010-1234-5678
+								 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+	                    		 += '</button></td></tr><tr><th>'
+		  						 += 이메일
+		  						 += '</th><td>'
+		  						 += 123@naver.com
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr></tbody></table>';
+        			}
+        		});		
+        	}
+        
+        	function asmc(){
         		const $userId = $('#userId');
-        		
         		$.ajax({
         			url : 'adminSM',
         			data : {userId : $userId.val()},
         			success : function(m){
-        				console.log(m);
-        				console.log(m['memberNo']);
-        				
-        				let resultStr = '';
-        			});
-        		
-        	}
-        
-        
-        
-        
-        	function idChecka(){
-        		
-        		$.ajax({
-        			url : 'adminSM',
-        			data : {memberId : $userId.val()},
-        			success : function(m){
-        				console.log(m);
-        				console.log(m['memberNo']);
-        				
-        				let resultStr = '';
-        			
-        				resultStr = '<table class="table table-bordered"><tbody><tr><th>4</th></tr></tbody></table>';
+	       				let resultStr = '';
+	       				resultStr = '<table class="table table-bordered"><tbody><tr><th>4</th></tr></tbody></table>'
 								 += '이름</th><td>'
-	       						 += 
-	       						 += '</td><td><button type="submit" class="btn btn-secondary">'
-      	                    	 += 수정
-      	                    	 += '</button></td></tr><tr><th>'
-		        				 += 아이디
-		        				 += '</th> <td>'
-	       						 += user01
-	       						 += '</td><td><button type="submit" class="btn btn-secondary">'
-      	                    	 += 수정
-      	                    	 += '</button></td></tr><tr><th>'
-	       						 += 생년월일
-       							 += '</th><td>'
-	       						 += 1996-03-01
-	       						 += '</td><td><button type="submit" class="btn btn-secondary">'
-      	                    	 += 수정
-    	                    	 +='</button></td></tr><tr><th>'
-	       						 += 연락처
-	       						 +=	'</th><td>'
-	       						 += 010-1234-5678
+		  						 += ''
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr><tr><th>'
+			       				 += 아이디
+			       				 += '</th> <td>'
+		  						 += user01
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+	                   			 += '</button></td></tr><tr><th>'
+								 += 생년월일
+								 += '</th><td>'
+		  						 += 1996-03-01
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 +='</button></td></tr><tr><th>'
+		  						 += 연락처
+		  						 +=	'</th><td>'
+		  						 += 010-1234-5678
 								 += '</td><td><button type="submit" class="btn btn-secondary">'
-      	                    	 += 수정
-      	                    	 += '</button></td></tr><tr><th>'
-	       						 += 이메일
-	       						 += '</th><td>'
-	       						 += 123@naver.com
-	       						 += '</td><td><button type="submit" class="btn btn-secondary">'
-      	                    	 += 수정
-      	                    	 += '</button></td></tr></tbody></table>';
-      	                    	 
-        				console.log(resultStr);
-							       	
-				       			}
-        		});		
+		                    	 += 수정
+	                   			 += '</button></td></tr><tr><th>'
+		  						 += 이메일
+		  						 += '</th><td>'
+		  						 += 123@naver.com
+		  						 += '</td><td><button type="submit" class="btn btn-secondary">'
+		                    	 += 수정
+		                    	 += '</button></td></tr></tbody></table>';
+					}
+       			});
         	}
-        
         </script>
-        
-        
-        
-        
 		
 		<div class="container">
+			<table class="table table-bordered">
+		       <thead>
+		           <tr>
+		               <th>회원번호</th>
+		               <th>이름</th>
+		               <th>아이디</th>
+		               <th>상세보기</th>
+		           </tr>
+		       </thead>
+		       <tbody>
+		           <tr>
+		               <td>01</td>
+		               <td>정근경</td>
+		               <td>user01</td>
+		               <td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</button></td>
+		           </tr>
+		       </tbody>
+		   </table>
+		
+		
+		<!-- 
             <h2>회원현황</h2>   
             <table class="table">
               <thead>
@@ -175,14 +257,15 @@
 	                        <td><%= m.getEmail() %></td>
 	                        <td><%= m.getEnrollDate() %></td>
 	                        <td><%= m.getMileage() %></td>
-	                        <td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
+	                        <td><a type="submit" class="btn btn-secondary" href="#" onclick="asmc();">상세보기</a></td>
 	                    </tr>
                    	<% } %>
                 <% } %>
               </tbody>
             </table>
+             
 		</div>
-            
+          -->  
         <div class="paging-area">
         	<% if(currentPage > 1) { %>
 	       		<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage - 1 %>'">이전</button>
@@ -200,6 +283,7 @@
 				<button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/memberList?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
         </div>
+        
 	</div>
 	
 </body>

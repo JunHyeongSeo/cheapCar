@@ -331,13 +331,13 @@ public class CarDao {
 	}
 	
 	
-	public ArrayList<Car> reservationbring(Connection conn, Member loginUser){
+public ArrayList<Car> carcarall(Connection conn){
 		
 		ArrayList<Car> carList = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("reservationbring");
+		String sql = prop.getProperty("carcarall");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -359,6 +359,10 @@ public class CarDao {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setStartDate(rset.getDate("START_DATE"));
+				car.setEndDate(rset.getDate("END_DATE"));
+				car.setMemberId(rset.getString("MEMBER_ID"));
+				car.setReservationNo(rset.getInt("RESERVATION_NO"));
 				
 				carList.add(car);
 			}
@@ -370,10 +374,12 @@ public class CarDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		System.out.println(carList);
+		
 		
 		return carList;
 	}
+	
+	
 	
 	
 	

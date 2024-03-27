@@ -7,12 +7,13 @@
 				 com.kh.semi.common.model.vo.PageInfo" 
 	
 %>
+
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
     PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
     int hours = (int)request.getAttribute("hours");
-    String locations = (String)request.getAttribute("hours");
+    String locations = (String)request.getAttribute("locations");
 %>
 
 <%
@@ -20,8 +21,8 @@
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
-	
 %>
+
 <%
 	int carPrice = 0;
 	int optionPrice = 0;
@@ -266,7 +267,7 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>'">Previous</a>
                                 </li>
                             <% } %>
 
@@ -288,7 +289,7 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>'">Next</a>
 	                            </li>
                             <% } %>
 						</ul>
