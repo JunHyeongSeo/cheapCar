@@ -181,7 +181,7 @@
                     <div class="form-group">
                         <label>차종 : </label>
                         <select class="form-control">
-                          <option value="아반때">아반때</option>
+                          <option value="아반떼">아반떼</option>
                           <option value="소나타">소나타</option>
                           <option value="K3">K3</option>
                           <option value="GV80">GV80</option>
