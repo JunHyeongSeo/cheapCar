@@ -135,7 +135,8 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2"><%= eBoard.getEventTitle() %></div>
+                        <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
+                        <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
@@ -143,8 +144,8 @@
                         <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 이미지 </div>
-                        <div class="text-area"> 텍스트</div>
+                        <div class="img-area">  </div>
+                        <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
 
 
