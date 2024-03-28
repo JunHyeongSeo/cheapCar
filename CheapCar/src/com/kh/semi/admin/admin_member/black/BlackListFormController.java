@@ -1,23 +1,29 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.admin.admin_member.black;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
+
 /**
- * Servlet implementation class EventDetailController
+ * Servlet implementation class BlackListController
  */
-@WebServlet("/detail.event")
-public class EventDetailController extends HttpServlet {
+@WebServlet("/blackList")
+public class BlackListFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventDetailController() {
+    public BlackListFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,16 +33,7 @@ public class EventDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		
-		
-		request.getRequestDispatcher("views/event/eventDetail.jsp").forward(request, response);
-		
-		
-		
-		
-		
+		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
 	}
 
 	/**
