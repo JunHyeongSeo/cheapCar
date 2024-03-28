@@ -1,6 +1,7 @@
 package com.kh.semi.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.event.model.service.EventService;
+import com.kh.semi.event.model.vo.EventBoard;
+import com.kh.semi.event.model.vo.EventPhoto;
 
 /**
  * Servlet implementation class EventUpdateFormController
@@ -34,8 +37,15 @@ public class EventUpdateFormController extends HttpServlet {
 		
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
 		
-		new EventService().selectEvent(eventNo);
-		new EventService().selectEventPhoto(eventNo);
+		EventBoard eBoard = new EventService().selectEvent(eventNo);
+		ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
+		
+		
+		request.setAttribute("eBoard", eBoard);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
+		
 		
 		
 		
