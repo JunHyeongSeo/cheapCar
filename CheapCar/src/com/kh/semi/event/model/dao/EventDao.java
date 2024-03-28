@@ -149,6 +149,7 @@ public class EventDao {
 	
 	public EventBoard selectEvent(Connection conn, int eventNo) {
 		
+		EventBoard eBoard = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selctEvent");
@@ -162,32 +163,25 @@ public class EventDao {
 			
 			if(rset.next()) {
 				
-				EventBoard eboard = new EventBoard();
-				eboard.setEventNo(rset.getInt("EVENT_NO"));
-				eboard.setEventTitle(rset.getString("EVENT_TITLE"));
-				eboard.setEventContent(rset.getString("EVENT_CONTENT"));
-				eboard.setCreateDate(rset.getDate("CREATE_DATE"));
-				eboard.setEventWriter(rset.getString("MEMBER_NAME"));
-				eboard.setStatus(rset.getString("STATUS"));
-				eboard.setCount(rset.getInt("COUNT"));
-				
-				
-				
+				eBoard = new EventBoard();
+				eBoard.setEventNo(rset.getInt("EVENT_NO"));
+				eBoard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eBoard.setEventContent(rset.getString("EVENT_CONTENT"));
+				eBoard.setCreateDate(rset.getDate("CREATE_DATE"));
+				eBoard.setEventWriter(rset.getString("MEMBER_NAME"));
+				eBoard.setStatus(rset.getString("STATUS"));
+				eBoard.setCount(rset.getInt("COUNT"));
 				
 			}
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
-		
-		
-		
-		
-		return eboard;
+		return eBoard;
 	}
 	
 	

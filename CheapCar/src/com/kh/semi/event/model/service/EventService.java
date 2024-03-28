@@ -54,7 +54,7 @@ public class EventService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().selectEvent(conn, eventNo));
+		EventBoard eBoard = new EventDao().selectEvent(conn, eventNo);
 		
 		
 	}//
