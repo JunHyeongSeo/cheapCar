@@ -1,29 +1,27 @@
-package com.kh.semi.admin.admin_car;
+package com.kh.semi.admin.ab.admin_member.member.c;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.car.model.service.CarService;
-import com.kh.semi.car.model.vo.Car;
+import com.google.gson.Gson;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.service.MemberService;
 
 /**
- * Servlet implementation class AdminCarListController
+ * Servlet implementation class AjaxSelectMemsCount
  */
-@WebServlet("/manageCar")
-public class Admin_AdminCarListController extends HttpServlet {
+@WebServlet("/memberCount.search")
+public class AjaxSearchedMemberCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_AdminCarListController() {
+    public AjaxSearchedMemberCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,11 +31,13 @@ public class Admin_AdminCarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new CarService().selectListCount();
+		String searchId = request.getParameter("searchId");
+		
+		int listCount = new MemberService().searchedMemberCount(searchId);
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;
-		int maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
 		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		int endPage = startPage + pageLimit - 1;
 		
@@ -46,12 +46,9 @@ public class Admin_AdminCarListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Car> list = new CarService().adminCarList(pi);
-		
-		request.setAttribute("list", list);
-		request.setAttribute("pi", pi);
-		
-		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
+
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(pi, response.getWriter());
 	}
 
 	/**

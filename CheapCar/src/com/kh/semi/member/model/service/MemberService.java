@@ -15,55 +15,72 @@ import com.kh.semi.member.model.vo.Member;
 
 public class MemberService {
 	
-	// 근경 시작 ///////////////////////////////////////////////////////////////////////
-	public int selectListCount() {
-		// 회원의 리스트 총 갯수를 뽑아주는 메소드
-		
+	/******************************** 근경 시작  ***************************************/
+	
+	public int selectMemberListCount() {
+
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().selectListCount(conn);
+		int result = new MemberDao().selectMemberListCount(conn);
 		
 		close(conn);
 		
 		return result;
 	}
 	
-	public int selectListCount(String searchId) {
-		// 회원의 리스트 총 갯수를 뽑아주는 메소드
+	public ArrayList<Member> selectMemberList(PageInfo pi) {
 		
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().selectListCount(conn, searchId);
+		ArrayList<Member> list = new MemberDao().selectMemberList(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	public int searchedMemberCount(String searchId) {
+		// 아이디가 인자값을 포함하는 회원의 리스트 총 갯수를 뽑아주는 메소드
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().searchedMemberCount(conn, searchId);
 		
 		close(conn);
 		
 		return result;
 	}
 	
-	public ArrayList<Member> selectList(PageInfo pi) {
-		// 회원 내역 list에 담아주는 것 + 페이징바까지
+	public ArrayList<Member> searchedMemberList(PageInfo pi, String searchId) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().selectList(conn, pi);
+		ArrayList<Member> list = new MemberDao().searchedMemberList(conn, pi, searchId);
 		
 		close(conn);
 		
 		return list;
+	}
+/////////////////// 일단 회원 현황 상세보기만 하면 됨 ////////////////////////////////
+
+	
+	
+	public Member asmc(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDao().selectMember(conn, memberId);
+
+		close(conn);
+		
+		
+		return member;
 	}
 	
-	public ArrayList<Member> blackListCount(PageInfo pi) {
-		
-		Connection conn = getConnection();
-		
-		ArrayList<Member> list = new MemberDao().blackListCount(conn, pi);
-		close(conn);
-		
-		return list;
-	}
+	
+/////////////////// 블랙리스트 시작 ////////////////////////////////
 	
 	public int selectBlackListCount() {
-		// 회원의 리스트 총 갯수를 뽑아주는 메소드
 		
 		Connection conn = getConnection();
 		
@@ -74,17 +91,65 @@ public class MemberService {
 		return result;
 	}
 	
-	public int selectBlackListCount(String id) {
-		// 회원의 리스트 총 갯수를 뽑아주는 메소드
+	public ArrayList<Member> selectBlackList(PageInfo pi) {
 		
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().selectBlackListCount(conn, id);
+		ArrayList<Member> list = new MemberDao().selectBlackList(conn, pi);
+		close(conn);
+		
+		return list;
+	}
+	
+	public int searchedBlackCount(String id) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().searchedBlackCount(conn, id);
 		
 		close(conn);
 		
 		return result;
 	}
+	
+	public ArrayList<Member> searchedBlackList(PageInfo pi, String searchId) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().searchedBlackList(conn, pi, searchId);
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -237,43 +302,6 @@ public Member login(String memberId, String memberPwd) {
 		return memPwd;
 	}
 	
-	public int adminSMSCount(String searchId) {
-		
-		Connection conn = getConnection();
-		
-		int result = new MemberDao().adminSMSCount(conn, searchId);
-		
-		close(conn);
-		
-		return result;
-	}
-	
-	public ArrayList<Member> asmcs(PageInfo pi, String searchId) {
-		
-		Connection conn = getConnection();
-		
-		ArrayList<Member> list = new MemberDao().asmcs(conn, pi, searchId);
-		
-		close(conn);
-		
-		return list;
-	}
-	
-	
-	
-	
-	
-	public Member asmc(String memberId) {
-		
-		Connection conn = getConnection();
-		
-		Member member = new MemberDao().selectMember(conn, memberId);
-
-		close(conn);
-		
-		
-		return member;
-	}
 	
 	
 	

@@ -1,26 +1,23 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.admin.ac.admin_car.insert.a;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.event.model.service.EventService;
-
 /**
- * Servlet implementation class EventDeleteController
+ * Servlet implementation class InsertCarController
  */
-@WebServlet("/delete.event")
-public class EventDeleteController extends HttpServlet {
+@WebServlet("/insertCar")
+public class AdminInsertCarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventDeleteController() {
+    public AdminInsertCarController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,29 +27,7 @@ public class EventDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
-		
-		int result = new EventService().deleteEvent(eventNo);
-		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "이벤트게시물 삭제에 성공하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/list.event");
-		} else { 
-			request.setAttribute("errorMsg", "이벤트 삭제에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		request.getRequestDispatcher("views/admin/admin_car/insertCar.jsp").forward(request, response);
 	}
 
 	/**

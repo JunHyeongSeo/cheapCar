@@ -131,8 +131,7 @@
 		UPDATE
 		       TB_EVENT_BOARD
 		   SET
-		       STATUS = 'N'
-		   AND
+		       STATUS = 'N',
 		       COUNT = 0
 		 WHERE
 		       EVENT_NO = ?               

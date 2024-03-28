@@ -6,7 +6,9 @@
 		Member Mapper
 	</comment>
 	
-	<entry key="selectListCount">
+	<!-- 근경 시작 -->
+	
+	<entry key="selectMemberListCount">
 		SELECT 
 			  COUNT(*) 
 		  FROM 
@@ -15,16 +17,7 @@
 		 	  MEMBER_STATUS IN ('A','B','C','D')
 	</entry>
 	
-	<entry key="selectListCountById">
-		SELECT 
-			  COUNT(*) 
-		  FROM 
-		  	  TB_MEMBER
-		 WHERE 
-		 	  MEMBER_ID = ?
-	</entry>
-	
-	<entry key="selectList">
+	<entry key="selectMemberList">
 		SELECT *
 		  FROM (SELECT A.*,
         			   ROWNUM RNUM
@@ -42,6 +35,56 @@
 	
 	
 	
+	<entry key="searchedMemberCount">
+	 	 SELECT 
+			  COUNT(*) 
+		  FROM 
+		  	  TB_MEMBER 
+		 WHERE
+		      MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		    OR	
+	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
+	</entry>
+	
+	<entry key="searchedMemberList">
+		SELECT *
+		  FROM (SELECT A.*,
+        			   ROWNUM RNUM
+		          FROM (SELECT
+				                *
+				          FROM 
+				                TB_MEMBER
+				         ORDER 
+						    BY 
+						       MEMBER_NO ASC) A
+	    	   ORDER BY RNUM ASC)
+ 		  WHERE 
+      			RNUM BETWEEN ? AND ?
+      		AND
+				MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		 	 OR	
+		 		MEMBER_ID LIKE '%' || LOWER(?) || '%'
+	</entry>
+	<!-- 여기까지 순서 완료!  -->
+	
+	<entry key="asmc">
+		SELECT
+  			MEMBER_NO,
+	  		MEMBER_ID,
+		  	MEMBER_NAME,
+			MEMBER_PWD,
+			BIRTHDAY,
+			PHONE,
+			EMAIL,
+			ENROLL_DATE,
+			MEMBER_STATUS
+		FROM
+			TB_MEMBER
+	   WHERE
+			MEMBER_ID = ?
+	</entry>
+	<!-- /////////////////// 블랙리스트 시작 //////////////////////////////// -->
+
 	<entry key="selectBlackListCount">
 		SELECT 
 			  COUNT(*) 
@@ -51,8 +94,7 @@
 		 	  MEMBER_STATUS = 'B'
 	</entry>
 	
-	<entry key="blackListCount">
-		
+	<entry key="selectBlackList">
 		SELECT 
 				*
 	  	  FROM (SELECT A.*,
@@ -71,7 +113,7 @@
 	      	  RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="selectBlackListCountById">
+	<entry key="searchedBlackCount">
 		SELECT 
 			  COUNT(*) 
 		  FROM 
@@ -84,7 +126,7 @@
 	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
 	</entry>
 	
-	<entry key="blackListCountById">
+	<entry key="searchedBlackList">
 		
 		SELECT 
 				*
@@ -107,6 +149,14 @@
 		  OR	
 	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
 	</entry>
+	
+	
+	
+	
+	<!--////////////////////////////////// 근경 끝 //////////////////////////////////-->
+	
+	
+	
 	
 	<entry key="login">
 		SELECT
@@ -324,60 +374,6 @@
 				MEMBER_STATUS IN ('A', 'C')
 	
 	</entry>
-	
-	<!-- 회원 아이디 중 일치하는 값이 존재하는지 식별하는 SQL문 -> list  -->
-	
-	<entry key="asmcs">
-		SELECT *
-		  FROM (SELECT A.*,
-        			   ROWNUM RNUM
-		          FROM (SELECT
-				                *
-				          FROM 
-				                TB_MEMBER
-				         ORDER 
-						    BY 
-						       MEMBER_NO ASC) A
-	    	   ORDER BY RNUM ASC)
- 		  WHERE 
-      			RNUM BETWEEN ? AND ?
-      		AND
-				MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		 	 OR	
-		 		MEMBER_ID LIKE '%' || LOWER(?) || '%'
-	</entry>
-	
-	
-	
-	<entry key="asmc">
-		SELECT
-  			MEMBER_NO,
-	  		MEMBER_ID,
-		  	MEMBER_NAME,
-			MEMBER_PWD,
-			BIRTHDAY,
-			PHONE,
-			EMAIL,
-			ENROLL_DATE,
-			MEMBER_STATUS
-		FROM
-			TB_MEMBER
-	   WHERE
-			MEMBER_ID = ?
-	</entry>
-	
-	<entry key="adminSMSCount">
-		SELECT 
-			  COUNT(*) 
-		  FROM 
-		  	  TB_MEMBER 
-		 WHERE
-		      MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		    OR	
-	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
-	</entry>
-	
-	
 	
 	
 	
