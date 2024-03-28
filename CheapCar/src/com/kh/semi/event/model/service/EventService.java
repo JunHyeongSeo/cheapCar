@@ -50,14 +50,25 @@ public class EventService {
 	}
 	
 	
-	public void selectEvent(int eventNo) {
+	public EventBoard selectEvent(int eventNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		EventBoard eBoard = new EventDao().selectEvent(conn, eventNo);
 		
-		
+		return eBoard;
 	}//
+	
+	public void selectEventPhoto(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new EventDao().selectEventPhoto(conn, eventNo);
+		
+		
+		
+		
+	}
 	
 	
 	

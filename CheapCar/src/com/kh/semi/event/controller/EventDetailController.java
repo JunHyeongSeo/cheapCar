@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.event.model.service.EventService;
+import com.kh.semi.event.model.vo.EventBoard;
 
 /**
  * Servlet implementation class EventDetailController
@@ -39,8 +40,8 @@ public class EventDetailController extends HttpServlet {
 		
 		if(result > 0) {
 			
-			new EventService().selectEvent(eventNo);
-			
+			EventBoard eBoard = new EventService().selectEvent(eventNo);
+			new EventService().selectEventPhoto(eventNo);
 		}
 		
 		

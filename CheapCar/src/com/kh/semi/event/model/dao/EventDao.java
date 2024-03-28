@@ -185,6 +185,23 @@ public class EventDao {
 	}
 	
 	
+	public ArrayList<EventPhoto> selectEventPhoto(Connection conn, int eventNo){
+		
+		ArrayList<EventPhoto> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEventPhoto");
+		
+		
+		
+		
+		
+		
+		
+		
+		return list;
+	}
+	
 	
 	
 	
