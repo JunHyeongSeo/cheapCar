@@ -231,10 +231,19 @@ public class EventDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteEventBoard");
 		
-		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
 		
 		return result;
 	}//
@@ -245,6 +254,17 @@ public class EventDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteEventPhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		
