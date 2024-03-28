@@ -95,11 +95,12 @@
 				
 				//const url = new URL(location.href);
         		//const currentPage = url.searchParams.get("currentPage");
+        		
 				$.ajax({
 					url : 'adminSMS',
 					data : {
 						searchId : document.getElementById('searchId').value,
-						currentPage : result
+						currentPage : 1
 					},
 					success : function(list){
 						let resultStr = '';
@@ -130,6 +131,7 @@
         	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="asmc();'
         	       					   + "'"
         	       					   + '"'
+        	       					   + (pi.currentPage - 1)
         	       					   + '>'
         	       					   + '이전</button>';
        			        }
