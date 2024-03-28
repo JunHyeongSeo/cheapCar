@@ -145,12 +145,9 @@
                     </div>
                     <div class="content_body">
                         <div class="img-area"> 
-                            <% if(list != null) { %>
-							
-                            	<% for(int i = 0; i < list.size(); i++) { %>
-                                	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
-							    <% } %>
-							<% } %>
+                           	<% for(int i = 0; i < list.size(); i++) { %>
+                              	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
+						    <% } %>
                         </div>
                         <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
