@@ -45,9 +45,12 @@ public class EventService {
 		
 		int result = new EventDao().increaseCount(conn, eventNo);
 		
+		JDBCTemplate.close(conn);
+		
+		
 		return result;
 		
-	}
+	}//
 	
 	
 	public EventBoard selectEvent(int eventNo) {
@@ -56,8 +59,11 @@ public class EventService {
 		
 		EventBoard eBoard = new EventDao().selectEvent(conn, eventNo);
 		
+		JDBCTemplate.close(conn);
+		
 		return eBoard;
 	}//
+	
 	
 	public ArrayList<EventPhoto> selectEventPhoto(int eventNo) {
 		
@@ -65,6 +71,7 @@ public class EventService {
 		
 		ArrayList<EventPhoto> list = new EventDao().selectEventPhoto(conn, eventNo);
 		
+		JDBCTemplate.close(conn);
 		
 		return list;
 		

@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventPhoto, com.kh.semi.event.model.vo.EventBoard" %>    
+
+<%
+	ArrayList<EventPhoto> list = (ArrayList<EventPhoto>)request.getAttribute("list");
+	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
+
+%>
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,12 +135,12 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2">제목</div>
+                        <div class="content_header2"><%= eBoard.getEventTitle() %></div>
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : </span>
+                        <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : <%= eBoard.getEventWriter() %></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
                         <div class="img-area"> 이미지 </div>
