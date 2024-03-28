@@ -28,6 +28,18 @@ public class MemberService {
 		return result;
 	}
 	
+	public int selectListCount(String searchId) {
+		// 회원의 리스트 총 갯수를 뽑아주는 메소드
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().selectListCount(conn, searchId);
+		
+		close(conn);
+		
+		return result;
+	}
+	
 	public ArrayList<Member> selectList(PageInfo pi) {
 		// 회원 내역 list에 담아주는 것 + 페이징바까지
 		

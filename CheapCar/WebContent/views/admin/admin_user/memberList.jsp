@@ -56,7 +56,7 @@
     			<div id="top11" style="display: flex;">
     				<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
                     <input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="asmcs();">조회</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="asmcs(1);">조회</button>
                 </div>
             </form>
         </div>
@@ -91,20 +91,18 @@
 		<script>
 		
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
-			function asmcs(){
+			function asmcs(result){
 				
-				const url = new URL(location.href);
-        		const currentPage = url.searchParams.get("currentPage");
+				//const url = new URL(location.href);
+        		//const currentPage = url.searchParams.get("currentPage");
         		
 				$.ajax({
 					url : 'adminSMS',
 					data : {
 						searchId : document.getElementById('searchId').value,
-						num : currentPage
+						currentPage : 1
 					},
 					success : function(list){
-						console.log(searchId);
-						console.log(list);
 						let resultStr = '';
 						for(let i in list){
 							resultStr += '<tr>'
@@ -121,17 +119,19 @@
 				
 				$.ajax({
         			url : 'adminSMSCount', // 페이징바 만들기 위해서 가져오는 서블릿
-        			data : {num : currentPage},
+        			data : {
+        				currentPage : 1,
+        				searchId : searchId
+       				},
         			success : function(pi){
         				let resultStr1 = '';
         				console.log(pi);
         				
         				if(pi.currentPage > 1) {
-        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="location.href='
-        	       					   + "'<%=contextPath%>/memberList?currentPage="
-        	       					   + (pi.currentPage - 1)
+        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="asmc();'
         	       					   + "'"
         	       					   + '"'
+        	       					   + (pi.currentPage - 1)
         	       					   + '>'
         	       					   + '이전</button>';
        			        }

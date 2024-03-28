@@ -57,6 +57,32 @@ public class MemberDao {
 		return result;
 	}
 	
+	public int selectListCount(Connection conn, String searchId) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCountById");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchId);
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	public ArrayList<Member> selectList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Member> list = new ArrayList();
@@ -131,11 +157,11 @@ public class MemberDao {
 		String sql = prop.getProperty("blackListCount");
 		
 		try{ 
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
 
 			pstmt = conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			

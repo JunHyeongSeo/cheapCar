@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Reservation;
 
 /**
@@ -47,11 +48,23 @@ public class ReservationController extends HttpServlet {
 		int result = new CarService().insertReservation(reservation);
 		
 		if(result > 0) {
+
+			Car car = new CarService().selectDetailCar(managementNo);
+			
+			request.setAttribute("car", car);
+			request.setAttribute("totalPrice", totalPrice);
+			request.setAttribute("startDate", startDate);
+			request.setAttribute("endDate", endDate);
+			
 			request.getRequestDispatcher("views/car/reservation.jsp").forward(request, response);
+			
 		} else {
 			request.getRequestDispatcher("views/common/errorMsg.jsp").forward(request, response);
 		}
 	    
+		
+		
+		
 	
 	}
 
