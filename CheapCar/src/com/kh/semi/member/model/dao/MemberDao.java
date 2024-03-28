@@ -31,18 +31,19 @@ public class MemberDao {
 		}
 	}
 	
-	public int selectListCount(Connection conn) {
+	/******************************** 근경 시작  ***************************************/
+	
+	public int selectMemberListCount(Connection conn) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCount");
+		String sql = prop.getProperty("selectMemberListCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			rset = pstmt.executeQuery();
-			
 			rset.next();
 			
 			result = rset.getInt("COUNT(*)");
@@ -53,42 +54,15 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-		
 		return result;
 	}
 	
-	public int selectListCount(Connection conn, String searchId) {
-		
-		int result = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCountById");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, searchId);
-			rset = pstmt.executeQuery();
-			
-			rset.next();
-			
-			result = rset.getInt("COUNT(*)");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
-	public ArrayList<Member> selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Member> selectMemberList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Member> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("selectMemberList");
 		
 		try{ 
 			pstmt = conn.prepareStatement(sql);
@@ -119,42 +93,68 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-	
 		return list;
 	}
+
+	public int searchedMemberCount(Connection conn, String searchId) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedMemberCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchId);
+			pstmt.setString(2, searchId);
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
-	public ArrayList<Member> blackListCount(Connection conn, PageInfo pi) {
+	public ArrayList<Member> searchedMemberList(Connection conn, PageInfo pi, String searchId) {
 		
 		ArrayList<Member> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("blackListCount");
+		String sql = prop.getProperty("searchedMemberList");
 		
 		try{ 
-
 			pstmt = conn.prepareStatement(sql);
 			
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
+			pstmt.setString(3, searchId);
+			pstmt.setString(4, searchId);
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				
-				Member m = new Member(rset.getInt("MEMBER_NO"),
-							          rset.getString("MEMBER_ID"),
-									  rset.getString("MEMBER_NAME"),
-									  rset.getString("MEMBER_PWD"),
-									  rset.getString("BIRTHDAY"),
-									  rset.getString("PHONE"),
-									  rset.getString("EMAIL"),
-									  rset.getDate("ENROLL_DATE"),
-							          rset.getString("MEMBER_STATUS"));
-				list.add(m);
+				Member member = new Member(rset.getInt("MEMBER_NO"),
+										   rset.getString("MEMBER_ID"),
+										   rset.getString("MEMBER_NAME"),
+										   rset.getString("MEMBER_PWD"),
+										   rset.getString("BIRTHDAY"),
+										   rset.getString("PHONE"),
+										   rset.getString("EMAIL"),
+										   rset.getDate("ENROLL_DATE"),
+										   rset.getString("MEMBER_STATUS"));
+				list.add(member);
 			}
-			
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -162,9 +162,14 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
+	
 		return list;
 	}
 	
+/////////////////// 여기까지 순서 완료! ////////////////////////////////
+/////////////////// 일단 회원 현황 상세보기만 하면 됨 ////////////////////////////////
+	
+/////////////////// 블랙리스트 시작 ////////////////////////////////
 	
 	public int selectBlackListCount(Connection conn) {
 		
@@ -191,18 +196,59 @@ public class MemberDao {
 		
 		return result;
 	}
-	////////////////////////////////////////////////////////////////////////
-	public int selectBlackListCount(Connection conn, String id) {
+	
+	public ArrayList<Member> selectBlackList(Connection conn, PageInfo pi){
 		
-		int result = 0;
+		ArrayList<Member> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectBlackListCountById");
+		String sql = prop.getProperty("selectBlackList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			rset = p2456stmt.executeQuery();
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member member = new Member(rset.getInt("MEMBER_NO"),
+						   rset.getString("MEMBER_ID"),
+						   rset.getString("MEMBER_NAME"),
+						   rset.getString("MEMBER_PWD"),
+						   rset.getString("BIRTHDAY"),
+						   rset.getString("PHONE"),
+						   rset.getString("EMAIL"),
+						   rset.getDate("ENROLL_DATE"),
+						   rset.getString("MEMBER_STATUS"));
+				list.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int searchedBlackCount(Connection conn, String searchId) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedBlackCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchId);
+			pstmt.setString(2, searchId);
+			rset = pstmt.executeQuery();
 			
 			rset.next();
 			
@@ -214,9 +260,53 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-		
 		return result;
 	}
+	
+	
+	
+	public ArrayList<Member> searchedBlackList(Connection conn, PageInfo pi){
+		
+		ArrayList<Member> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedBlackList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member member = new Member(rset.getInt("MEMBER_NO"),
+						   rset.getString("MEMBER_ID"),
+						   rset.getString("MEMBER_NAME"),
+						   rset.getString("MEMBER_PWD"),
+						   rset.getString("BIRTHDAY"),
+						   rset.getString("PHONE"),
+						   rset.getString("EMAIL"),
+						   rset.getDate("ENROLL_DATE"),
+						   rset.getString("MEMBER_STATUS"));
+				list.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////////////
 	
 	
 	
@@ -561,115 +651,11 @@ public String findPwd(Connection conn, Member member) {
 		return memPwd;
 	}
 
-	public int adminSMSCount(Connection conn, String searchId) {
 	
-		int result = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("adminSMSCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, searchId);
-			pstmt.setString(2, searchId);
-			
-			rset = pstmt.executeQuery();
-			
-			
-			rset.next();
-			
-			result = rset.getInt("COUNT(*)");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return result;
-	}
 
-	public ArrayList<Member> asmcs(Connection conn, PageInfo pi, String searchId) {
-		
-		ArrayList<Member> list = new ArrayList();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("asmcs");
-		
-		try{ 
-			pstmt = conn.prepareStatement(sql);
-			
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
-			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, searchId);
-			pstmt.setString(4, searchId);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Member member = new Member(rset.getInt("MEMBER_NO"),
-										   rset.getString("MEMBER_ID"),
-										   rset.getString("MEMBER_NAME"),
-										   rset.getString("MEMBER_PWD"),
-										   rset.getString("BIRTHDAY"),
-										   rset.getString("PHONE"),
-										   rset.getString("EMAIL"),
-										   rset.getDate("ENROLL_DATE"),
-										   rset.getString("MEMBER_STATUS"));
-				list.add(member);
-			}
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
 	
-		return list;
-	}
 	
-	public Member asmc(Connection conn, String memberId) {
 	
-		Member member = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("asmc");
-	
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, memberId);
-			pstmt.setString(2, memberId);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				member = new Member(rset.getInt("MEMBER_NO"),
-									rset.getString("MEMBER_ID"),
-									rset.getString("MEMBER_NAME"),
-									rset.getString("MEMBER_PWD"),
-									rset.getString("BIRTHDAY"),
-									rset.getString("PHONE"),
-									rset.getString("EMAIL"),
-									rset.getDate("ENROLL_DATE"),
-									rset.getString("MEMBER_STATUS"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally{
-			close(rset);
-			close(pstmt);
-		}
-		
-		return member;
-	}
 	
 	
 	

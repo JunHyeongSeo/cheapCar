@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admin_member.member;
+package com.kh.semi.admin.ab.admin_member.black.b;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import com.kh.semi.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberCountController
  */
-@WebServlet("/memberCount.do")
-public class AjaxMemberCountController extends HttpServlet {
+@WebServlet("/blackCount.do")
+public class AjaxBlackCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxMemberCountController() {
+    public AjaxBlackCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +33,8 @@ public class AjaxMemberCountController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new MemberService().selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int listCount = new MemberService().selectBlackListCount();
+		int currentPage = Integer.parseInt(request.getParameter("num"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
@@ -46,7 +46,7 @@ public class AjaxMemberCountController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
+
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(pi, response.getWriter());
 	}
