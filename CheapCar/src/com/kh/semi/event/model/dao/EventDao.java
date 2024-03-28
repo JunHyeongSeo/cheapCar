@@ -249,6 +249,7 @@ public class EventDao {
 	}//
 	
 	
+	
 	public int deleteEventPhoto(Connection conn, int eventNo) {
 		
 		int result = 0;
@@ -258,16 +259,15 @@ public class EventDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, eventNo);
 			
-			
+			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
-		
-		
-		
-		
 		
 		return result;
 	}//
