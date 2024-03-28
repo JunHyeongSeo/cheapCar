@@ -147,7 +147,16 @@ public class CarService {
 		return car;
 	}
 
-	
+	public ArrayList<Car> modelSale(String checkmodels) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> car = new CarDao().modelSale(conn, checkmodels);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
 	
 	
 	

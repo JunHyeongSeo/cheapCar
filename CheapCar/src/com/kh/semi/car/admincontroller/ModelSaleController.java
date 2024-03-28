@@ -32,17 +32,14 @@ public class ModelSaleController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String checkmodels[] =  request.getParameterValues("checkmodels");
+		String checkmodels =  request.getParameter("checkmodels");
 		
-		String cmodel = "";
-		
-		if(checkmodels != null) {
-			cmodel = String.join(",", checkmodels);
-		}
+
 	
 			
-		ArrayList<Car> car = new CarService().modelSale();
+		ArrayList<Car> car = new CarService().modelSale(checkmodels);
 	
+		//System.out.println(car);
 	}
 
 	/**
