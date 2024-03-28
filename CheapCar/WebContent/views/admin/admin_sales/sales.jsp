@@ -73,25 +73,26 @@
 
 			<script>
 
-
-					var selectmodel1 = function(value){
+					let aa = "";
+					
+					
+					let selectmodel1 = function(value){
 						console.log(value);
+						aa = value;
 						//$('#changeInput').val(value);
 					}
 
 					//console.log($('#changeInput').val(value));
 
-					
+				
+					console.log(aa);
 
-					$('#changeTest').change(function(){
-						var aa = $(this).val();
-						console.log(aa);
-						;
-					})
+					// $('#changeTest').change(function(){
+					// 	var aa = $(this).val();
+					// 	console.log(aa);
+						
+					// })
 					
-					
-					
-
 			
 
 				function detailModel(){
@@ -108,11 +109,11 @@
 				$.ajax({
 					url : 'modelsale',
 					data : {
-						checkmodels : $('selectmodel1')
+						checkmodels : $('aa')
 						
 					},
 					success : function(result){
-						
+						console.log(result);
 						
 					}
 						
