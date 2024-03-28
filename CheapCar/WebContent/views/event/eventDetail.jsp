@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventPhoto, com.kh.semi.event.model.vo.EventBoard" %>    
+
+<%
+	ArrayList<EventPhoto> list = (ArrayList<EventPhoto>)request.getAttribute("list");
+	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
+
+%>
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,23 +135,28 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2">제목</div>
+                        <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
+                        <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : </span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : </span>
+                        <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : <%= eBoard.getEventWriter() %></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 이미지 </div>
-                        <div class="text-area"> 텍스트</div>
+                        <div class="img-area"> 
+                           	<% for(int i = 0; i < list.size(); i++) { %>
+                              	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
+						    <% } %>
+                        </div>
+                        <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
 
 
                     <div class="content_btn" align="center">
-                        <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        <a href="<%= contextPath%>/list.event" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%= contextPath%>/update.event" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        <a href="<%= contextPath%>/delete.event" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                            
                     </div>
                 </div>

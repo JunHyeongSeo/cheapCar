@@ -35,7 +35,9 @@ public class AjaxSelectBlsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new MemberService().selectBlackListCount();
+		String searchId = request.getParameter("searchId");
+		
+		int listCount = new MemberService().selectBlackListCount(searchId);
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 1;

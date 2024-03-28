@@ -56,7 +56,8 @@
     			<div id="top11" style="display: flex;">
     				<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
                     <input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="asmcs(1);">조회</button>
+                    <input type="hidden" id="pageNum" name="pageNum" value="">
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="asmcs();">조회</button>
                 </div>
             </form>
         </div>
@@ -84,17 +85,88 @@
 		</div>
 		
 		<div class="container2">
-			
+			<!-- 상세보기 누르면 나오는 ajax 여따 추가 -->
 		
 		</div>
 		
 		<script>
 		
+			// 1. 실행되면 전체 리스트 나오는 ajax
+	    	window.onload = function(){
+	    		const url = new URL(location.href);
+	    		const currentPage = url.searchParams.get("currentPage");
+	    		$.ajax({
+	    			url : 'memberList.do', // 전체 리스트 가져오는 서블릿
+	    			data : {currentPage : currentPage},
+	    			success : function(list){
+	    				let resultStr = '';
+	    				for(let i in list){
+	        				resultStr += '<tr>'
+	        						   + '<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].memberName + '</td>'
+	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '</tr>'
+	    				}
+	    				document.getElementById('conBody').innerHTML = resultStr;
+	    			}
+	    		});
+    		
+    		// 2. 실행되면 전체 리스트에 대한 페이징바가 나오는 ajax
+	    		$.ajax({
+	    			url : 'memberCount.do', // 페이징바 만들기 위해서 가져오는 서블릿
+	    			data : {currentPage : currentPage},
+	    			success : function(pi){
+	    				let resultStr1 = '';
+	    				
+	    				if(pi.currentPage > 1) {
+	    	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="location.href='
+	    	       					   + "'<%=contextPath%>/memberList?currentPage="
+	    	       					   + (pi.currentPage - 1)
+	    	       					   + "'"
+	    	       					   + '"'
+	    	       					   + '>'
+	    	       					   + '이전</button>';
+	   			        }
+	    				
+	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
+	   			        	if(pi.currentPage != i){
+	   			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
+	   			        				  + "'<%=contextPath%>/memberList?currentPage="
+	   			        				  + i
+	   			        				  + "'"
+	     	       					   	  + '"'
+	   			        				  + '>'
+	   			        				  + i
+	   			        				  + '</button>';
+	   			        	}
+	   			        	else {
+	   			        		resultStr1 += '<button disabled class="btn btn-danger">'
+	   			        			      + i 
+	   			        			      + '</button>';
+	   			        	}
+	   			        }
+	   			        
+	   			        if(pi.currentPage != pi.maxPage){
+	   			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
+			       					  + "'<%=contextPath%>/memberList?currentPage="
+			       					  + pi.currentPage + 1
+			       					  + "'"
+			       					  + '"'
+			       					  + '>'
+			       					  + '다음</button>';
+	   			        }
+	       			    document.getElementById('paging-area').innerHTML = resultStr1;
+	    			}
+    			});	
+    		}
+			
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
-			function asmcs(result){
+			function asmcs(){
 				
 				//const url = new URL(location.href);
         		//const currentPage = url.searchParams.get("currentPage");
+        		const currentPage = 1;
         		
 				$.ajax({
 					url : 'adminSMS',
@@ -121,32 +193,29 @@
         			url : 'adminSMSCount', // 페이징바 만들기 위해서 가져오는 서블릿
         			data : {
         				currentPage : 1,
-        				searchId : searchId
+        				searchId : document.getElementById('searchId').value
        				},
         			success : function(pi){
         				let resultStr1 = '';
-        				console.log(pi);
         				
+        				// 2페이지 이상 보고있으면 이전버튼을 만들겠다.
         				if(pi.currentPage > 1) {
-        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="asmc();'
-        	       					   + "'"
-        	       					   + '"'
-        	       					   + (pi.currentPage - 1)
-        	       					   + '>'
-        	       					   + '이전</button>';
+        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+        	       						+ (i-1)
+        	       						+ '">이전</button>';
        			        }
         				
+        				// 총 페이지에 대한 버튼을 만들겠다
        			        for(let i = pi.startPage; i <= pi.endPage; i++) {
+       			        	// 현재페이지 말고 다른 페이지 보이는거 있을때, 그거 누르면 그 페이지로 이동할거다.
        			        	if(pi.currentPage != i){
-       			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
-       			        				  + "'<%=contextPath%>/memberList?currentPage="
-       			        				  + i
-       			        				  + "'"
-         	       					   	  + '"'
-       			        				  + '>'
-       			        				  + i
-       			        				  + '</button>';
+       			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+       			        					+ i
+       			        					+ '">'
+       			        				    + i
+       			        				    + '</button>';
        			        	}
+       			    	 	// 근데 현재페이지를 내가 보고있으면 버튼이 안눌리게끔 할거다.
        			        	else {
        			        		resultStr1 += '<button disabled class="btn btn-danger">'
        			        			      + i 
@@ -154,81 +223,64 @@
        			        	}
        			        }
        			        
+        				// 맥스페이지가 안눌려있는 모든 상태라면 다음 버튼을 만들거다
        			        if(pi.currentPage != pi.maxPage){
-       			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					  + "'<%=contextPath%>/memberList?currentPage="
-			       					  + pi.currentPage + 1
-			       					  + "'"
-			       					  + '"'
-			       					  + '>'
-			       					  + '다음</button>';
+       			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+       			        				+ (pi.currentPage + 1)
+       			        				+ '">다음</button>';
        			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr1;
         			}
-        		});	
+        		});
 			}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			// 1. 실행되면 전체 리스트 나오는 ajax
-        	window.onload = function(){
+			
+			function cp(result){
+				// 버튼 눌렀을 때 currentPage 를 바꿔서 ajax를 해당 currentPage로 이동해주는 ajax
+				const currentPage = result.value;
 				
-        		const url = new URL(location.href);
-        		const currentPage = url.searchParams.get("currentPage");
-        		
-        		$.ajax({
-        			url : 'memberList.do', // 전체 리스트 가져오는 서블릿
-        			data : {num : currentPage},
-        			success : function(list){
-        				let resultStr = '';
-        				for(let i in list){
-	        				resultStr += '<tr>'
-	        						   + '<td>' + list[i].memberNo + '</td>'
+				$.ajax({
+					url : 'adminSMS',
+					data : {
+						searchId : document.getElementById('searchId').value,
+						currentPage : currentPage
+					},
+					success : function(list){
+						let resultStr = '';
+						for(let i in list){
+							resultStr += '<tr>'
+									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
 	        						   + '</tr>'
-        				}
+						}
+						
         				document.getElementById('conBody').innerHTML = resultStr;
-        			}
-        		});
-        		
-        		
-        		
-        		// 2. 실행되면 전체 리스트에 대한 페이징바가 나오는 ajax
-        		$.ajax({
-        			url : 'memberCount.do', // 페이징바 만들기 위해서 가져오는 서블릿
-        			data : {num : currentPage},
+					}
+				});
+				
+				$.ajax({
+        			url : 'adminSMSCount',
+        			data : {
+        				currentPage : currentPage,
+        				searchId : document.getElementById('searchId').value
+       				},
         			success : function(pi){
         				let resultStr1 = '';
         				
         				if(pi.currentPage > 1) {
-        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="location.href='
-        	       					   + "'<%=contextPath%>/memberList?currentPage="
-        	       					   + (pi.currentPage - 1)
-        	       					   + "'"
-        	       					   + '"'
-        	       					   + '>'
-        	       					   + '이전</button>';
+        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+        	       						+ (pi.currentPage - 1)
+        	       						+ '">이전</button>';
        			        }
         				
        			        for(let i = pi.startPage; i <= pi.endPage; i++) {
        			        	if(pi.currentPage != i){
-       			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
-       			        				  + "'<%=contextPath%>/memberList?currentPage="
-       			        				  + i
-       			        				  + "'"
-         	       					   	  + '"'
-       			        				  + '>'
-       			        				  + i
-       			        				  + '</button>';
+       			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+       			        					+ i
+       			        					+ '">'
+       			        				    + i
+       			        				    + '</button>';
        			        	}
        			        	else {
        			        		resultStr1 += '<button disabled class="btn btn-danger">'
@@ -238,26 +290,14 @@
        			        }
        			        
        			        if(pi.currentPage != pi.maxPage){
-       			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					  + "'<%=contextPath%>/memberList?currentPage="
-			       					  + pi.currentPage + 1
-			       					  + "'"
-			       					  + '"'
-			       					  + '>'
-			       					  + '다음</button>';
+       			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+       			        				+ (pi.currentPage + 1)
+       			        				+ '">다음</button>';
        			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr1;
         			}
-        		});	
-        	}
-			
-			
-			
-			
-			
-			
-			
-			
+        		});
+			}
 			
 			
         	</script>

@@ -74,6 +74,18 @@ public class MemberService {
 		return result;
 	}
 	
+	public int selectBlackListCount(String id) {
+		// 회원의 리스트 총 갯수를 뽑아주는 메소드
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().selectBlackListCount(conn, id);
+		
+		close(conn);
+		
+		return result;
+	}
+	
 	
 	
 	
