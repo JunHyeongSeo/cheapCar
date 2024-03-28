@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto"%>
+
+<%
+	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
+	ArrayList<EventPhoto> list = (ArrayList<EventPhoto>)request.getAttribute("list");
+
+%>
     
 <!DOCTYPE html>
 <html>
@@ -140,7 +147,7 @@
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required> 
+		    					제목 : <input type="text" name="title" required><%= eBoard.getEventTitle() %> 
 			    			</div>
                             </div>
 	                        <div class="content_sub">
@@ -148,13 +155,13 @@
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
-								<img src="" id="img_1">
-								<img src="" id="img_2">
-								<img src="" id="img_3">
-								<img src="" id="img_4">
+	                          <% for(int i = 0; i < list.size(); i++){ %>
+								<img src="<%=contextPath %>/<%=list.get(i).getPhotoPath() %>/<%list.get(i).getPhotoCname() %>" id="img_<%=i%>">
+							  <% }%>
+								
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
+	                            <textarea name="content" class="form-control" rows="20" id="comment"><%= eBoard.getEventContent() %></textarea>
 	                        </div>
 	                        </div>
 	                    
