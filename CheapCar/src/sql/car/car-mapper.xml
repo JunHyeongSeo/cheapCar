@@ -319,11 +319,12 @@
 		VALUES 
 				(
 				SEQ_RESERVATION_NO.NEXTVAL,
-				?,
+				TO_DATE(?, 'YYYY-MM-DD HH24:MI'),
+				TO_DATE(?, 'YYYY-MM-DD HH24:MI'), 
 				?, 
-				?, 
 				?,
-				?)
+				?
+				)
 		
 	</entry>
 	
