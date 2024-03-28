@@ -168,7 +168,7 @@
                     </div>
                     
                     <div class="detail-option">
-                        <label>차량 등급 : </label>
+                        <label>차량 등급 </label>
                         <select class="form-control">
                             <option value="경차">경차</option>
                             <option value="준중형">준중형</option>
@@ -181,7 +181,7 @@
 
 					
                     <div class="detail-option">
-                        <label>사용 연료 : </label>
+                        <label>사용 연료 </label>
                         <select class="form-control">
                           <option value="전기">전기</option>
                           <option value="하이브리드">하이브리드</option>
@@ -192,7 +192,7 @@
                     </div>
 
                     <div class="detail-option">
-                        <label>차종 : </label>
+                        <label>차종</label>
                         <select class="form-control">
                           <option value="아반때">아반때</option>
                           <option value="소나타">소나타</option>
