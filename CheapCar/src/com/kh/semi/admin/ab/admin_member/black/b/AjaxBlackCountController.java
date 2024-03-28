@@ -16,7 +16,7 @@ import com.kh.semi.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberCountController
  */
-@WebServlet("/blackCount.do")
+@WebServlet("/blackCount.all")
 public class AjaxBlackCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class AjaxBlackCountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int listCount = new MemberService().selectBlackListCount();
-		int currentPage = Integer.parseInt(request.getParameter("num"));
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);

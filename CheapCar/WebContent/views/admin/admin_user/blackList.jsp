@@ -60,12 +60,13 @@
                 <div id="top11" style="display: flex;">
                     <label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
                     <input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchBlack();">조회</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchBlack(this);">조회</button>
                 </div>
             </form>
         </div>
 		
 		<div class="container">
+		<h2>블랙리스트</h2> 
             <table class="table table-bordered">
             	<thead>
             		<tr>
@@ -93,12 +94,13 @@
 		
 			// 1. 실행되면 전체 리스트 나오는 ajax
 	    	window.onload = function(){
+				
 	    		const url = new URL(location.href);
 	    		const currentPage = url.searchParams.get("currentPage");
 	    		
 	    		$.ajax({
 	    			url : 'blackList.all',
-	    			data : {num : currentPage},
+	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
 	    				for(let i in list){
@@ -115,8 +117,8 @@
 	    		
 	    		// 2. 실행되면 전체 리스트에 대한 페이징바가 나오는 ajax
 	    		$.ajax({
-	    			url : 'blackCount.do',
-	    			data : {num : currentPage},
+	    			url : 'blackCount.all',
+	    			data : {currentPage : currentPage},
 	    			success : function(pi){
 	    				let resultStr = '';
 	    				if(pi.currentPage > 1) {
@@ -163,6 +165,8 @@
 		
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
 			function searchBlack(result){
+				
+				const currentPage = 1;
 				
 				$.ajax({
 					url : 'blackList.search',
@@ -234,17 +238,17 @@
 					url : 'blackList.search',
 					data : {
 						searchId : document.getElementById('searchId').value,
-						currentPage = currentPage
+						currentPage : currentPage
 					},
 					success : function(list){
 						let resultStr = '';
 						for(let i in list){
 							resultStr += '<tr>'
-								   + '<td>' + list[i].memberNo + '</td>'
-     						   + '<td>' + list[i].memberName + '</td>'
-     						   + '<td>' + list[i].memberId + '</td>'
-     						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
-     						   + '</tr>'
+									   + '<td>' + list[i].memberNo + '</td>'
+		     						   + '<td>' + list[i].memberName + '</td>'
+		     						   + '<td>' + list[i].memberId + '</td>'
+		     						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+		     						   + '</tr>'
 						}
 						document.getElementById('conbody').innerHTML = resultStr;
 					}
@@ -261,30 +265,30 @@
 						
 						if(pi.currentPage > 1){
 							resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-	       						+ (pi.currentPage - 1)
-	       						+ '">이전</button>';
+			       						+ (pi.currentPage - 1)
+			       						+ '">이전</button>';
 						}
 						
 						for(let i = pi.startPage; i <= pi.endPage; i++){
 							
 							if(pi.currentPage != i){
 								resultStr += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-			        					+ i
-			        					+ '">'
-			        				    + i
-			        				    + '</button>';
+				        					+ i
+				        					+ '">'
+				        				    + i
+				        				    + '</button>';
 							}
 							else{
 								resultStr += '<button disabled class="btn btn-danger">'
- 			        			      + i 
- 			        			      + '</button>';
+	 			        			      + i 
+	 			        			      + '</button>';
 							}
 						}
 						
 						if(pi.currentPage != pi.maxPage){
 							resultStr += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-			        				+ (pi.currentPage + 1)
-			        				+ '">다음</button>';
+				        				+ (pi.currentPage + 1)
+				        				+ '">다음</button>';
 						}
 						document.getElementById('paging-area').innerHTML = resultStr;
 					}

@@ -51,35 +51,64 @@
 			
 			<div style="display: none;" id="detailModelName">
 				<label for="">모델명</label>
-				<select name="" id="">
-					<option name="models" value="avante">아반때</option>
-					<option name="models" value="sonata">소나타</option>
-                    <option name="models" value="K3">K3</option>
-                    <option name="models" value="GV80">GV80</option>
-                    <option name="models" value="QM3">QM3</option>
-                    <option name="models" value="carnival">카니발</option>
-                    <option name="models" value="ionick5">아이오닉5</option>
-                    <option name="models" value="morning">모닝</option>
-                    <option name="models" value="kaien">카이엔</option>
-                    <option name="models" value="sportage">스포티지</option>
-                    <option name="models" value="starex">스타렉스</option>
+				<button type="button" id="changeInput"></button>
+
+				<select id="changeTest" onchange="selectmodel1(this.value);">
+					<option class="ch" id="idid1" value="avante">아반때</option>
+					<option class="ch" value="sonata">소나타</option>
+                    <option class="ch" value="K3">K3</option>
+                    <option class="ch" value="GV80">GV80</option>
+                    <option class="ch" value="QM3">QM3</option>
+                    <option class="ch" value="carnival">카니발</option>
+                    <option class="ch" value="ionick5">아이오닉5</option>
+                    <option class="ch" value="morning">모닝</option>
+                    <option class="ch" value="kaien">카이엔</option>
+                    <option class="ch" value="sportage">스포티지</option>
+                    <option class="ch" value="starex">스타렉스</option>
 				</select>
 			</div>
 			
 			
+
+
 			<script>
+
+
+					var selectmodel1 = function(value){
+						console.log(value);
+						//$('#changeInput').val(value);
+					}
+
+					//console.log($('#changeInput').val(value));
+
+					
+
+					$('#changeTest').change(function(){
+						var aa = $(this).val();
+						console.log(aa);
+						;
+					})
+					
+					
+					
+
+			
+
 				function detailModel(){
+					
 					$('#detailModelName').show();
-					console.log($('input[models]').val())
-					console.log($('input[models]'))
+				
+					
 				};
+				
+				
 				
 				
 				
 				$.ajax({
 					url : 'modelsale',
 					data : {
-						checkmodels : $('input[name=models]')
+						checkmodels : $('selectmodel1')
 						
 					},
 					success : function(result){

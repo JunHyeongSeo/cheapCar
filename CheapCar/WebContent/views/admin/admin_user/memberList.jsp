@@ -62,6 +62,7 @@
         </div>
 		
 		<div class="container1">
+		<h2>회원현황</h2> 
 			<table class="table table-bordered">
 				<thead>
 					<tr>

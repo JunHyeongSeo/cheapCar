@@ -1,29 +1,23 @@
-package com.kh.semi.admin.ab.admin_member.member.a;
+package com.kh.semi.admin.ac.admin_car;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
-
 /**
- * Servlet implementation class MemberListFormController
+ * Servlet implementation class InsertCarController
  */
-@WebServlet("/memberList")
-public class MemberListFormController extends HttpServlet {
+@WebServlet("/insertCar.do")
+public class Admin_CarListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberListFormController() {
+    public Admin_CarListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +27,10 @@ public class MemberListFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
+		
+		
+		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
+		
 	}
 
 	/**

@@ -112,11 +112,11 @@ public class MemberService {
 		return result;
 	}
 	
-	public ArrayList<Member> searchedBlackList(PageInfo pi) {
+	public ArrayList<Member> searchedBlackList(PageInfo pi, String searchId) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().searchedBlackList(conn, pi);
+		ArrayList<Member> list = new MemberDao().searchedBlackList(conn, pi, searchId);
 		close(conn);
 		
 		return list;

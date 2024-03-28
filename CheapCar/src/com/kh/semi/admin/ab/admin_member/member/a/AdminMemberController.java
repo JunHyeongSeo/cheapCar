@@ -1,23 +1,29 @@
-package com.kh.semi.admin.admin_car;
+package com.kh.semi.admin.ab.admin_member.member.a;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
+
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class MemberListFormController
  */
-@WebServlet("/insertCar")
-public class Admin_InsertCarFormController extends HttpServlet {
+@WebServlet("/memberList")
+public class AdminMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_InsertCarFormController() {
+    public AdminMemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,12 +33,7 @@ public class Admin_InsertCarFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_car/insertCar.jsp").forward(request, response);
-		
-		
-		
-		
-		
+		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
 	}
 
 	/**
