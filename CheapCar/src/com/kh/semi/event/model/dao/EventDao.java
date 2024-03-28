@@ -149,8 +149,6 @@ public class EventDao {
 	
 	public EventBoard selectEvent(Connection conn, int eventNo) {
 		
-		EventBoard eboard = new EventBoard();
-		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selctEvent");
@@ -163,6 +161,15 @@ public class EventDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
+				
+				EventBoard eboard = new EventBoard();
+				eboard.setEventNo(rset.getInt("EVENT_NO"));
+				eboard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eboard.setEventContent(rset.getString("EVENT_CONTENT"));
+				eboard.setCreateDate(rset.getDate("CREATE_DATE"));
+				eboard.setEventWriter(rset.getString("MEMBER_NAME"));
+				eboard.setStatus(rset.getString("STATUS"));
+				eboard.setCount(rset.getInt("COUNT"));
 				
 				
 				
