@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admin_member;
+package com.kh.semi.admin.admin_member.member;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,5 +1,5 @@
-package com.kh.semi.admin.admin_member;
-
+package com.kh.semi.admin.admin_member.black;
+	
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,21 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
-
+	
 /**
- * Servlet implementation class BlackListController
+ * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/blackList")
-public class BlackListFormController extends HttpServlet {
+@WebServlet("/adminBLS")
+public class AjaxSelectBlsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BlackListFormController() {
+    public AjaxSelectBlsController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,8 +55,6 @@ public class BlackListFormController extends HttpServlet {
 		request.setAttribute("pageInfo", pi);
 		
 		
-		
-		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
 	}
 
 	/**

@@ -52,6 +52,16 @@ public class MemberService {
 		return list;
 	}
 	
+	public ArrayList<Member> blackListCount(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().blackListCount(conn, pi);
+		close(conn);
+		
+		return list;
+	}
+	
 	public int selectBlackListCount() {
 		// 회원의 리스트 총 갯수를 뽑아주는 메소드
 		
@@ -64,15 +74,7 @@ public class MemberService {
 		return result;
 	}
 	
-	public ArrayList<Member> blackListCount(PageInfo pi) {
-		
-		Connection conn = getConnection();
-		
-		ArrayList<Member> list = new MemberDao().blackListCount(conn, pi);
-		close(conn);
-		
-		return list;
-	}
+	
 	
 	
 	
