@@ -35,7 +35,14 @@ public class EventDeleteController extends HttpServlet {
 		
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
 		
-		new EventService().deleteEvent(eventNo);
+		int result = new EventService().deleteEvent(eventNo);
+		
+		if(result > 0) {
+			
+			request.setAttribute("alertMsg", "이벤트게시물 삭제에 성공하였습니다.");
+			request.getRequestDispatcher("views/event/event.jsp").forward(request, response);
+			
+		} 
 		
 		
 		

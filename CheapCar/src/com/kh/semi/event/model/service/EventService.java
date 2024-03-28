@@ -79,15 +79,22 @@ public class EventService {
 	}//
 	
 	
-	public void deleteEvent(int eventNo) {
+	public int deleteEvent(int eventNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().deleteEventBoard(conn, eventNo);
-		new EventDao().deleteEventPhoto(conn, eventNo);
+		int boardResult = new EventDao().deleteEventBoard(conn, eventNo);
+		int photoResult = new EventDao().deleteEventPhoto(conn, eventNo);
+		
+		if((boardResult * photoResult) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
 		
 		
-		
+		return (boardResult * photoResult);
 	}
 	
 	
