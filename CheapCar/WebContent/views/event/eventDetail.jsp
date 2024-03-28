@@ -146,8 +146,8 @@
                     <div class="content_body">
                         <div class="img-area"> 
                             <% if(list.isEmpty()) { %>
-                            	<% for(int i = 0; i < list.size(); i++) {%>
-                                <img src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" >
+                            	<% for(int i = 0; i < list.size(); i++) { %>
+                                <img src="<%=contextPath%>/<%=list.get(i).getPhotoPath()%>/<%= list.get(i).getPhotoCname() %>" />
 							    <% } %>
 							<% } %>
 
