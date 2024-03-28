@@ -41,7 +41,7 @@ public class EventDetailController extends HttpServlet {
 		if(result > 0) {
 			
 			EventBoard eBoard = new EventService().selectEvent(eventNo);
-			new EventService().selectEventPhoto(eventNo);
+			ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
 		}
 		
 		

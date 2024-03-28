@@ -59,13 +59,14 @@ public class EventService {
 		return eBoard;
 	}//
 	
-	public void selectEventPhoto(int eventNo) {
+	public ArrayList<EventPhoto> selectEventPhoto(int eventNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().selectEventPhoto(conn, eventNo);
+		ArrayList<EventPhoto> list = new EventDao().selectEventPhoto(conn, eventNo);
 		
 		
+		return list;
 		
 		
 	}
