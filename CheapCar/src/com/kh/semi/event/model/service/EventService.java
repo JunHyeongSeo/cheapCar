@@ -50,16 +50,11 @@ public class EventService {
 	}
 	
 	
-	
-	
-	
-	
-	
 	public void selectEvent(int eventNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().selectEvent(conn);
+		new EventDao().selectEvent(conn, eventNo));
 		
 		
 	}//

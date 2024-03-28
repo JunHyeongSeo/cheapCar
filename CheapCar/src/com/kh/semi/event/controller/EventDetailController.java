@@ -35,9 +35,15 @@ public class EventDetailController extends HttpServlet {
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
 
 		
-		new EventService().increaseCount(eventNo);
+		int result = new EventService().increaseCount(eventNo);
 		
-		new EventService().selectEvent(eventNo);
+		if(result > 0) {
+			
+			new EventService().selectEvent(eventNo);
+			
+		}
+		
+		
 		
 		
 		

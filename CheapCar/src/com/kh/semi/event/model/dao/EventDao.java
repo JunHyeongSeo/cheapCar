@@ -147,13 +147,33 @@ public class EventDao {
 		return result;
 	}
 	
-	public EventBoard selectEvent(Connection conn) {
+	public EventBoard selectEvent(Connection conn, int eventNo) {
 		
 		EventBoard eboard = new EventBoard();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selctEvent");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		
