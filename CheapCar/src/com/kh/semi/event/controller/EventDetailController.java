@@ -33,6 +33,9 @@ public class EventDetailController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+
+		
+		new EventService().increaseCount(eventNo);
 		
 		new EventService().selectEvent(eventNo);
 		
