@@ -265,7 +265,7 @@ public class MemberDao {
 	
 	
 	
-	public ArrayList<Member> searchedBlackList(Connection conn, PageInfo pi){
+	public ArrayList<Member> searchedBlackList(Connection conn, PageInfo pi, String searchId){
 		
 		ArrayList<Member> list = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -280,6 +280,8 @@ public class MemberDao {
 			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
+			pstmt.setString(3, searchId);
+			pstmt.setString(4, searchId);
 			
 			rset = pstmt.executeQuery();
 			

@@ -50,7 +50,7 @@ public class AjaxSearchedBlackListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Member> list = new MemberService().searchedBlackList(pi);
+		ArrayList<Member> list = new MemberService().searchedBlackList(pi, searchId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
