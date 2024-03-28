@@ -34,7 +34,7 @@ public class AjaxSelectMemsCount extends HttpServlet {
 		String searchId = request.getParameter("searchId");
 		
 		int listCount = new MemberService().adminSMSCount(searchId);
-		int currentPage = Integer.parseInt(request.getParameter("num"));
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
@@ -46,7 +46,7 @@ public class AjaxSelectMemsCount extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
+
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(pi, response.getWriter());
 	}

@@ -191,6 +191,32 @@ public class MemberDao {
 		
 		return result;
 	}
+	////////////////////////////////////////////////////////////////////////
+	public int selectBlackListCount(Connection conn, String id) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlackListCountById");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = p2456stmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

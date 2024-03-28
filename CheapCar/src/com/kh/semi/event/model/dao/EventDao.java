@@ -147,22 +147,83 @@ public class EventDao {
 		return result;
 	}
 	
-	public EventBoard selectEvent(Connection conn) {
+	public EventBoard selectEvent(Connection conn, int eventNo) {
 		
-		EventBoard eboard = new EventBoard();
-		
+		EventBoard eBoard = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selctEvent");
+		String sql = prop.getProperty("selectEvent");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				eBoard = new EventBoard();
+				eBoard.setEventNo(rset.getInt("EVENT_NO"));
+				eBoard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eBoard.setEventContent(rset.getString("EVENT_CONTENT"));
+				eBoard.setCreateDate(rset.getDate("CREATE_DATE"));
+				eBoard.setEventWriter(rset.getString("MEMBER_NAME"));
+				eBoard.setStatus(rset.getString("STATUS"));
+				eBoard.setCount(rset.getInt("COUNT"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
 		
-		
-		
-		
-		
-		return eboard;
+		return eBoard;
 	}
 	
+	
+	public ArrayList<EventPhoto> selectEventPhoto(Connection conn, int eventNo){
+		
+		ArrayList<EventPhoto> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEventPhoto");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				EventPhoto ePhoto = new EventPhoto();
+				
+				ePhoto.setPhotoNo(rset.getInt("EVENT_PHOTO_NO"));
+				ePhoto.setPhotoOname(rset.getString("EVENT_PHOTO_ONAME"));
+				ePhoto.setPhotoCname(rset.getString("EVENT_PHOTO_CNAME"));
+				ePhoto.setPhotoPath(rset.getString("EVENT_PHOTO_ADDRESS"));
+				ePhoto.setEventNo(rset.getInt("EVENT_NO"));
+				ePhoto.setStatus(rset.getString("STATUS"));
+				ePhoto.setFileLevel(rset.getInt("FILELEVEL"));
+				
+				list.add(ePhoto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+	}
 	
 	
 	

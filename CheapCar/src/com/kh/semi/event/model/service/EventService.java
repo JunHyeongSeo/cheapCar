@@ -45,24 +45,38 @@ public class EventService {
 		
 		int result = new EventDao().increaseCount(conn, eventNo);
 		
+		JDBCTemplate.close(conn);
+		
+		
 		return result;
 		
-	}
+	}//
 	
 	
-	
-	
-	
-	
-	
-	public void selectEvent(int eventNo) {
+	public EventBoard selectEvent(int eventNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().selectEvent(conn);
+		EventBoard eBoard = new EventDao().selectEvent(conn, eventNo);
 		
+		JDBCTemplate.close(conn);
 		
+		return eBoard;
 	}//
+	
+	
+	public ArrayList<EventPhoto> selectEventPhoto(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EventPhoto> list = new EventDao().selectEventPhoto(conn, eventNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+		
+		
+	}
 	
 	
 	

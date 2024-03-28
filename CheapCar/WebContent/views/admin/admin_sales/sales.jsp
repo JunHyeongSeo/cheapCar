@@ -47,6 +47,20 @@
 				</div>
 			</div>
 			
+			
+			
+			<div style="display: none;">
+				<label for="">모델명</label>
+				<select name="" id="">
+					<option value="avante">아반때</option>
+
+				</select>
+
+			</div>
+			
+			
+			
+			
 			<div>
 				<table class="table" style="text-align:center">
 					<thead>

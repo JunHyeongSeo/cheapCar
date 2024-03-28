@@ -34,7 +34,7 @@ public class AjaxMemberCountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int listCount = new MemberService().selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("num"));
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
