@@ -76,7 +76,30 @@ public class EventService {
 		return list;
 		
 		
+	}//
+	
+	
+	public int deleteEvent(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int boardResult = new EventDao().deleteEventBoard(conn, eventNo);
+		int photoResult = new EventDao().deleteEventPhoto(conn, eventNo);
+		
+		if((boardResult * photoResult) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		
+		return (boardResult * photoResult);
 	}
+	
+	
+	
+	
 	
 	
 	

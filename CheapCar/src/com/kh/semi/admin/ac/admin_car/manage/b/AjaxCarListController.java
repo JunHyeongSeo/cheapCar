@@ -1,29 +1,23 @@
-package com.kh.semi.admin.admin_member.member;
+package com.kh.semi.admin.ac.admin_car.manage.b;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
-
 /**
- * Servlet implementation class MemberListFormController
+ * Servlet implementation class AjaxCarListController
  */
-@WebServlet("/memberList")
-public class MemberListFormController extends HttpServlet {
+@WebServlet("/carList.all")
+public class AjaxCarListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberListFormController() {
+    public AjaxCarListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +26,8 @@ public class MemberListFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

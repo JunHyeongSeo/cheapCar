@@ -31,7 +31,6 @@
             width : 100%;
             margin: auto;
         }
-
        
         #wrap>h1>a{
         	text-align : center;
@@ -221,7 +220,8 @@
         <div id="replyBoard">
         </div>
    
-    <br clear="both">
+    	<br clear="both">
+    </div>
     
 </body>
 </html>

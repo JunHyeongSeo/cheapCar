@@ -155,8 +155,11 @@
 
                     <div class="content_btn" align="center">
                         <a href="<%= contextPath%>/list.event" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <a href="<%= contextPath%>/update.event" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        <a href="<%= contextPath%>/delete.event" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
+                        	<a href="<%= contextPath%>/updateForm.event?eventNo=<%= eBoard.getEventNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        	<a href="<%= contextPath%>/delete.event?eventNo=<%= eBoard.getEventNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        <% } %>
+                        
                            
                     </div>
                 </div>

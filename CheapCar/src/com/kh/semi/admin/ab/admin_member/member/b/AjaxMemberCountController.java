@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admin_member.member;
+package com.kh.semi.admin.ab.admin_member.member.b;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import com.kh.semi.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberCountController
  */
-@WebServlet("/memberCount.do")
+@WebServlet("/memberCount.all")
 public class AjaxMemberCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class AjaxMemberCountController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new MemberService().selectListCount();
+		int listCount = new MemberService().selectMemberListCount();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
 		int boardLimit = 5;

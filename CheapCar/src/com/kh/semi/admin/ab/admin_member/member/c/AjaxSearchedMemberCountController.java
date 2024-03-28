@@ -1,8 +1,6 @@
-package com.kh.semi.admin.admin_member.black;
+package com.kh.semi.admin.ab.admin_member.member.c;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +12,16 @@ import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberCountController
+ * Servlet implementation class AjaxSelectMemsCount
  */
-@WebServlet("/blackCount.do")
-public class AjaxBlackCountController extends HttpServlet {
+@WebServlet("/memberCount.search")
+public class AjaxSearchedMemberCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxBlackCountController() {
+    public AjaxSearchedMemberCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,10 +31,12 @@ public class AjaxBlackCountController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new MemberService().selectBlackListCount();
-		int currentPage = Integer.parseInt(request.getParameter("num1"));
+		String searchId = request.getParameter("searchId");
+		
+		int listCount = new MemberService().searchedMemberCount(searchId);
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageLimit = 10;
-		int boardLimit = 1;
+		int boardLimit = 5;
 		int maxPage =(int)Math.ceil((double)listCount / boardLimit);
 		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		int endPage = startPage + pageLimit - 1;
