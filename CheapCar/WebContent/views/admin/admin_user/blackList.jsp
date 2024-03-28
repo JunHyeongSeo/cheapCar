@@ -164,6 +164,87 @@
 		
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
 			
+			function asbcs(result){
+				
+				//const url = new URL(location.href);
+        		//const currentPage = url.searchParams.get("currentPage");
+        		
+				$.ajax({
+					url : 'adminBLS',
+					data : {
+						searchId : document.getElementById('searchId').value,
+						currentPage : 1
+					},
+					success : function(list){
+						let resultStr = '';
+						for(let i in list){
+							resultStr += '<tr>'
+									   + '<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].memberName + '</td>'
+	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '</tr>'
+						}
+						
+        				document.getElementById('conBody').innerHTML = resultStr;
+					}
+				});
+				
+				$.ajax({
+        			url : 'adminSMSCount', // 페이징바 만들기 위해서 가져오는 서블릿
+        			data : {
+        				currentPage : 1,
+        				searchId : searchId
+       				},
+        			success : function(pi){
+        				let resultStr1 = '';
+        				console.log(pi);
+        				
+        				if(pi.currentPage > 1) {
+        	       			resultStr1  += '<button class="btn btn-outline-danger" onclick="asmc();'
+        	       					   + "'"
+        	       					   + '"'
+        	       					   + (pi.currentPage - 1)
+        	       					   + '>'
+        	       					   + '이전</button>';
+       			        }
+        				
+       			        for(let i = pi.startPage; i <= pi.endPage; i++) {
+       			        	if(pi.currentPage != i){
+       			        		resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
+       			        				  + "'<%=contextPath%>/memberList?currentPage="
+       			        				  + i
+       			        				  + "'"
+         	       					   	  + '"'
+       			        				  + '>'
+       			        				  + i
+       			        				  + '</button>';
+       			        	}
+       			        	else {
+       			        		resultStr1 += '<button disabled class="btn btn-danger">'
+       			        			      + i 
+       			        			      + '</button>';
+       			        	}
+       			        }
+       			        
+       			        if(pi.currentPage != pi.maxPage){
+       			        	resultStr1 += '<button class="btn btn-outline-danger" onclick="location.href='
+			       					  + "'<%=contextPath%>/memberList?currentPage="
+			       					  + pi.currentPage + 1
+			       					  + "'"
+			       					  + '"'
+			       					  + '>'
+			       					  + '다음</button>';
+       			        }
+	       			    document.getElementById('paging-area').innerHTML = resultStr1;
+        			}
+        		});	
+			}
+			
+			
+			
+			
+			
 			
 			
         	</script>
