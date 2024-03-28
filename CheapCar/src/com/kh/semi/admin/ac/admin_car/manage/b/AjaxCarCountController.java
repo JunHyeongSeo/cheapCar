@@ -1,4 +1,4 @@
-package com.kh.semi.admin.ac.admin_car;
+package com.kh.semi.admin.ac.admin_car.manage.b;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class AjaxCarCountController
  */
-@WebServlet("/insertCar")
-public class Admin_InsertCarFormController extends HttpServlet {
+@WebServlet("/carCount.all")
+public class AjaxCarCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_InsertCarFormController() {
+    public AjaxCarCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,13 +26,8 @@ public class Admin_InsertCarFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/admin/admin_car/insertCar.jsp").forward(request, response);
-		
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

@@ -31,18 +31,19 @@
                 
             <form class="form-inline" action="abc.do">
                 <div id="top11" style="display: flex;">
-                    <label for="carNum" style="margin: 0px 15px;">차량 번호 : </label>
-                    <input type="text" class="form-control" id="userId" placeholder="조회하실 차량 번호를 입력해주세요." name="userId" style="width: 300px;">
+                    <label for="searchCarNo" style="margin: 0px 15px;">차량 번호 : </label>
+                    <input type="text" class="form-control" id="searchCarNo" placeholder="조회하실 차량 번호를 입력해주세요." name="searchCarNo" style="width: 300px;">
                     
-                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="a();">조회</button>
                     <a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
                 </div>
             </form>
 		</div>
 
-        <div class="container">
+        <div class="container1">
+        
             <h2>차량현황</h2> 
-            <table class="table">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                     <th>번호</th>
@@ -52,73 +53,100 @@
                     <th>상세보기</th>
                 </tr>
               </thead>
-              <tbody>
-              <% if(list.isEmpty()) { %>
-              	<tr>
-              		<td colspan="5">등록되어있는 차량이 없습니다.</td>
-              	</tr>
-              <% } else { %>
-              	<% for(Car c : list) { %>
-              		<tr>
-              			<td><%= c.getManagementNo() %></td>
-              			<td><%= c.getModelName() %></td>
-              			<td><%= c.getCarNo() %></td>
-              			<td><%= c.getStatus() %></td>
-              			<td><a type="submit" class="btn btn-secondary" href="#">상세보기</a></td>
-              		</tr>
-              	<% } %>
-              <% } %>
+              <tbody id="conBody">
+              
               </tbody>
             </table>
           </div>
             
-        <div class="paging-area">
+        <div id="paging-area">
             
-            <% if(currentPage > 1) { %>
-	            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage - 1 %>'">이전</button>
-    		<% } %>
-
-			<% for(int i = startPage; i <= endPage; i++) { %>
-				<% if(currentPage != i) { %>
-		            <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%=i%>'"><%= i %></button>
-				<% } else { %>			
-		            <button disabled class="btn btn-danger"><%= i %></button>
-				<% } %>
-			<% } %>
-				
-            <% if(currentPage != maxPage) { %>
-          		  <button class="btn btn-outline-danger" onclick="location.href='<%=contextPath%>/manageCar?currentPage=<%= currentPage + 1 %>'">다음</button>
-            <% } %>
+            
             
            
         </div>
         
-        <div class="container">       
-			<table class="table table-bordered">
-				<tbody>
-					<tr>
-						<th>1</th>
-						<td>2</td>
-					</tr>
-					<tr>
-						<th>차량정보</th>
-						<td>2024 뉴 소나타 하이브리드</td>
-					</tr>
-					<tr>
-						<th>아이디</th>
-						<td>010-1234-5678</td>
-					</tr>
-					<tr>
-						<th>대여날짜</th>
-						<td>user01</td>
-					</tr>
-					<tr>
-						<th>반납날짜</th>
-						<td>1996-03-01</td>
-					</tr>
-				</tbody>
-			</table>
+        <div class="container2">       
+			
 		</div>
+		
+		<script>
+			window.onload = function(){
+				
+	    		const url = new URL(location.href);
+	    		const currentPage = url.searchParams.get("currentPage");
+	    		
+				// 1. 실행되면 전체 리스트 나오는 ajax
+	    		$.ajax({
+	    			url : 'memberList.all', // 전체 리스트 가져오는 서블릿
+	    			data : {currentPage : currentPage},
+	    			success : function(list){
+	    				let resultStr = '';
+	    				for(let i in list){
+	        				resultStr += '<tr>'
+	        						   + '<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].memberName + '</td>'
+	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '</tr>'
+	    				}
+	    				document.getElementById('conBody').innerHTML = resultStr;
+	    			}
+	    		});
+			
+				// 2. 실행되면 전체 리스트에 대한 페이징바가 나오는 ajax
+	    		$.ajax({
+	    			url : 'memberCount.all', // 페이징바 만들기 위해서 가져오는 서블릿
+	    			data : {currentPage : currentPage},
+	    			success : function(pi){
+	    				let resultStr = '';
+	    				
+	    				if(pi.currentPage > 1) {
+	    	       			resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
+	    	       					   + "'<%=contextPath%>/memberList?currentPage="
+	    	       					   + (pi.currentPage - 1)
+	    	       					   + "'"
+	    	       					   + '"'
+	    	       					   + '>'
+	    	       					   + '이전</button>';
+	   			        }
+	    				
+	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
+	   			        	if(pi.currentPage != i){
+	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
+	   			        				  + "'<%=contextPath%>/memberList?currentPage="
+	   			        				  + i
+	   			        				  + "'"
+	     	       					   	  + '"'
+	   			        				  + '>'
+	   			        				  + i
+	   			        				  + '</button>';
+	   			        	}
+	   			        	else {
+	   			        		resultStr += '<button disabled class="btn btn-danger">'
+	   			        			      + i 
+	   			        			      + '</button>';
+	   			        	}
+	   			        }
+	   			        
+	   			        if(pi.currentPage != pi.maxPage){
+	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
+			       					  + "'<%=contextPath%>/memberList?currentPage="
+			       					  + pi.currentPage + 1
+			       					  + "'"
+			       					  + '"'
+			       					  + '>'
+			       					  + '다음</button>';
+	   			        }
+	       			    document.getElementById('paging-area').innerHTML = resultStr;
+	    			}
+				});	
+			}
+		
+		</script>
+		
+		
+		
 	</div>
 	
 	

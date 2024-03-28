@@ -66,6 +66,7 @@
         </div>
 		
 		<div class="container">
+		<h2>블랙리스트</h2> 
             <table class="table table-bordered">
             	<thead>
             		<tr>

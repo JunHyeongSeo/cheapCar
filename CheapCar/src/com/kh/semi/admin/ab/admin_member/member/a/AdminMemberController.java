@@ -1,4 +1,4 @@
-package com.kh.semi.admin.ab.admin_member.black.a;
+package com.kh.semi.admin.ab.admin_member.member.a;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class BlackListController
+ * Servlet implementation class MemberListFormController
  */
-@WebServlet("/blackList")
-public class BlackListFormController extends HttpServlet {
+@WebServlet("/memberList")
+public class AdminMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BlackListFormController() {
+    public AdminMemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,7 @@ public class BlackListFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_user/memberList.jsp").forward(request, response);
 	}
 
 	/**
