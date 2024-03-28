@@ -14,16 +14,16 @@ import com.kh.semi.event.model.vo.EventBoard;
 import com.kh.semi.event.model.vo.EventPhoto;
 
 /**
- * Servlet implementation class EventDetailController
+ * Servlet implementation class EventUpdateFormController
  */
-@WebServlet("/detail.event")
-public class EventDetailController extends HttpServlet {
+@WebServlet("/updateForm.event")
+public class EventUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventDetailController() {
+    public EventUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,29 +36,15 @@ public class EventDetailController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
-
 		
-		int result = new EventService().increaseCount(eventNo);
-		
-		if(result > 0) {
-			
-			EventBoard eBoard = new EventService().selectEvent(eventNo);
-			ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
-			
-			request.setAttribute("eBoard", eBoard);
-			request.setAttribute("list", list);
-			
-			request.getRequestDispatcher("views/event/eventDetail.jsp").forward(request, response);
-			
-		} else {
-			
-			request.setAttribute("errorMsg", "이벤트 상세조회 실패하였습니다.");
-			
-		}
+		EventBoard eBoard = new EventService().selectEvent(eventNo);
+		ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
 		
 		
+		request.setAttribute("eBoard", eBoard);
+		request.setAttribute("list", list);
 		
-		
+		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
 		
 		
 		

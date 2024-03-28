@@ -145,21 +145,18 @@
                     </div>
                     <div class="content_body">
                         <div class="img-area"> 
-                            <% if(list.isEmpty()) { %>
-                            	<% for(int i = 0; i < list.size(); i++) {%>
-                                <img src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" >
-							    <% } %>
-							<% } %>
-
+                           	<% for(int i = 0; i < list.size(); i++) { %>
+                              	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
+						    <% } %>
                         </div>
                         <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
 
 
                     <div class="content_btn" align="center">
-                        <a href="" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <a href="" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        <a href="" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        <a href="<%= contextPath%>/list.event" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%= contextPath%>/updateForm.event?eventNo=<%= eBoard.getEventNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        <a href="<%= contextPath%>/delete.event?eventNo=<%= eBoard.getEventNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                            
                     </div>
                 </div>

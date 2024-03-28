@@ -108,6 +108,12 @@
 		border-top-left-radius: 16px;
 		border-top-right-radius: 16px;
 	}
+	#NoMsg{
+		font-family: "Do Hyeon", sans-serif;
+		font-size: 20px;
+		color: #6caddf;
+		text-align: center;
+	}
 
 
 </style>
@@ -135,9 +141,9 @@
 					</form>
 				</div>  
 				<div class="event_content">
-					<ul id="event_list">
+					<ul id="event_list" >
 						<% if(list.isEmpty()) { %>
-						<li> 리스트가 존재하지 않습니다. <li>
+						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
 						<% } else { %>
 							<% for(EventBoard eb: list) { %>
 							<li>

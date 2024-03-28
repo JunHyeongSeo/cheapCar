@@ -127,6 +127,25 @@
               		       
 	</entry>
 	
+	<entry key="deleteEventBoard">
+		UPDATE
+		       TB_EVENT_BOARD
+		   SET
+		       STATUS = 'N',
+		       COUNT = 0
+		 WHERE
+		       EVENT_NO = ?               
+	</entry>
+	
+	
+	<entry key="deleteEventPhoto">
+		UPDATE
+		       TB_EVENT_PHOTO
+		   SET
+		       STATUS = 'N'
+		 WHERE
+		       EVENT_NO = ?         
+	</entry>
 	
 	
 	

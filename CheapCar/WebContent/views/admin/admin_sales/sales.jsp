@@ -41,7 +41,7 @@
 				<h2 style="margin:20px 0px;" align="center">이번 달 매출내역</h2>   
 				
 				<div class="salesList" style="margin-bottom:20px;" align="right">		
-					<a type="submit" class="btn btn-outline-info" href="#">모델별 매출 내역</a>
+					<a type="submit" class="btn btn-outline-info" onclick="detailModel();" href="#">모델별 매출 내역</a>
 					<a type="submit" class="btn btn-outline-primary" href="#">기간별 매출 내역</a>
 					<a type="submit" class="btn btn-outline-warning" href="#">지점별 매출 내역</a>
 				</div>
@@ -49,14 +49,47 @@
 			
 			
 			
-			<div style="display: none;">
+			<div style="display: none;" id="detailModelName">
 				<label for="">모델명</label>
 				<select name="" id="">
-					<option value="avante">아반때</option>
-
+					<option name="models" value="avante">아반때</option>
+					<option name="models" value="sonata">소나타</option>
+                    <option name="models" value="K3">K3</option>
+                    <option name="models" value="GV80">GV80</option>
+                    <option name="models" value="QM3">QM3</option>
+                    <option name="models" value="carnival">카니발</option>
+                    <option name="models" value="ionick5">아이오닉5</option>
+                    <option name="models" value="morning">모닝</option>
+                    <option name="models" value="kaien">카이엔</option>
+                    <option name="models" value="sportage">스포티지</option>
+                    <option name="models" value="starex">스타렉스</option>
 				</select>
-
 			</div>
+			
+			
+			<script>
+				function detailModel(){
+					$('#detailModelName').show();
+					console.log($('input[models]').val())
+					console.log($('input[models]'))
+				};
+				
+				
+				
+				$.ajax({
+					url : 'modelsale',
+					data : {
+						checkmodels : $('input[name=models]')
+						
+					},
+					success : function(result){
+						
+						
+					}
+						
+				});
+
+			</script>
 			
 			
 			
@@ -100,8 +133,9 @@
 								let resultStr = '';
 								
 								
-								console.log(result);
-								console.log(result['memberName'])
+								//console.log(result);
+								//console.log(result['memberName'])
+								//console.log(result['modelName'])
 								
 								//resultStr += '<tr>'
 								//	  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
@@ -114,12 +148,14 @@
 								
 								//$('#reservationdetail').html(resultStr);
 								$('#noneDiv').show();
-								$('#detailName').html(result['memberName']);
-								$('#detailId').html(result['memberId']);
+								$('#detailMemberName').html(result['memberName']);
+								$('#detailMemberId').html(result['memberId']);
+								$('#detailModelName1').html(result['modelName']);
 								$('#detailStartDate').html(result['startDate']);
 								$('#detailEndDate').html(result['endDate']);
 								$('#detailPhone').html(result['phone']);
 								$('#detailEmail').html(result['email']);
+							
 						}
 						});
 						
@@ -150,12 +186,17 @@
 				<tbody>
 					<tr>
 						<th>이름</th>
-						<th id="detailName"></th>
+						<th id="detailMemberName"></th>
 						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>
 						<th>아이디</th>
-						<td id="detailId"></td>
+						<td id="detailMemberId"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+					<tr>
+						<th>모델명</th>
+						<td id="detailModelName1"></td>
 						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>

@@ -1,6 +1,7 @@
-package com.kh.semi.notice.controller;
+package com.kh.semi.car.admincontroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.notice.model.service.NoticeService;
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
 
 /**
- * Servlet implementation class DeleteNoticeController
+ * Servlet implementation class ModelSaleController
  */
-@WebServlet("/delete.notice")
-public class DeleteNoticeController extends HttpServlet {
+@WebServlet("/modelsale")
+public class ModelSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteNoticeController() {
+    public ModelSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +32,15 @@ public class DeleteNoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 값 뽑기 X
-		// Service호출    /  + noticeNo
-		if(new NoticeService().delete(request.getParameter("noticeNo")) > 0 ) {
-			request.getSession().setAttribute("alertMsg", "삭제가 완료되었습니다." );
-			response.sendRedirect(request.getContextPath() + "/list.notice");
-		} else {
-			request.setAttribute("errorMsg", "삭제실패~");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}	
+		String checkmodels =  request.getParameter("checkmodels");
 		
-		
-		
-	}//
+
+	
+			
+		ArrayList<Car> car = new CarService().modelSale(checkmodels);
+	
+		//System.out.println(car);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
