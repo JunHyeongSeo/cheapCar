@@ -39,7 +39,7 @@ public class ModelSaleController extends HttpServlet {
 	
 			
 		ArrayList<Car> car = new CarService().modelSale(checkmodels);
-	
+		System.out.println(car);
 		if(car.isEmpty()) {
 			
 		}else {
