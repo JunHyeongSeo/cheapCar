@@ -186,7 +186,7 @@
                           <option value="K3">K3</option>
                           <option value="GV80">GV80</option>
                           <option value="QM3">QM3</option>
-                          <option value="카니발F">카니발F</option>
+                          <option value="카니발">카니발</option>
                           <option value="아이오닉5">아이오닉5</option>
                           <option value="모닝">모닝</option>
                           <option value="카이엔">카이엔</option>

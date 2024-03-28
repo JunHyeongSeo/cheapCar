@@ -8,23 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
-import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class salesController
+ * Servlet implementation class ModelSaleController
  */
-@WebServlet("/sales")
-public class SalesController extends HttpServlet {
+@WebServlet("/modelsale")
+public class ModelSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SalesController() {
+    public ModelSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,24 +31,18 @@ public class SalesController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String checkmodels[] =  request.getParameterValues("checkmodels");
 		
+		String cmodel = "";
 		
-		
-		ArrayList<Car> carlist = new CarService().carcarall();
-		
-	
-		
-		if(carlist.isEmpty()) {
-			
-		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			System.out.println(carlist);
-			request.setAttribute("carlist", carlist);
-			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
+		if(checkmodels != null) {
+			cmodel = String.join(",", checkmodels);
 		}
-		
-		
-		
-		
+	
+			
+		ArrayList<Car> car = new CarService().modelSale();
+	
 	}
 
 	/**
