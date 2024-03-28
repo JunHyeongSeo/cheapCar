@@ -102,6 +102,12 @@
 		background-color: #6caddf;
 		font-size: 20px;
 	}
+	#titleImg{
+		height: 100%;
+		width: 100%;
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+	}
 
 
 </style>
@@ -135,12 +141,11 @@
 						<% } else { %>
 							<% for(EventBoard eb: list) { %>
 							<li>
-							  <a href="<%= contextPath %>/detail.event">
-								<div class="img-area event_1">
+								<div class="img-area event_1 content">
 								 <input type="hidden" value="<%= eb.getEventNo()%>"/>
-								 <img src="<%= eb.getTitleImg() %>"/>
+								 <img src="<%= eb.getTitleImg() %>" id="titleImg"/>
 								</div>
-								<div class="text-area event_1" >
+								<div class="text-area event_1 content" >
 								 <span> <%= eb.getEventTitle() %> </span><br><br>
 								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
 								</div>
@@ -168,7 +173,19 @@
 	    </div>			  
 	</div>
 	   
-	
+	<script>
+		$(function(){
+
+			$('.content').click(function(){
+
+				const eventNo = $(this).children().eq(0).val(); 
+
+				location.href
+			})
+
+
+		})
+	</script>
 		
 	
 </body>
