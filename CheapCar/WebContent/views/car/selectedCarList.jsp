@@ -38,7 +38,7 @@
 <style>
     
     div{
-        border: 1px solid red;
+        border : 1px solid red;
     }
 
     .area{
@@ -47,7 +47,7 @@
     }
     
     .area-option{
-        width : 300px;
+        width : 350px;
         height: auto;
         float :left;
         margin-left : 50px;
@@ -128,6 +128,12 @@
 		width: 150px;
 		height: 50px;
 	}
+
+    .detail-option{
+        width : 100%;
+        text-align : center;
+        padding : 5px;
+    }
 </style>
 </head>
 <body>
@@ -146,33 +152,35 @@
 			
             <div class="area-option">
                 
-                <h2 align="center">옵션리스트</h2>
+                <h2 align="center">세부 검색</h2>
 
                 <form action="#" class="option-form form-inline form-location" >
-                    
-                    <div class="form-group">
-                        <label>제조사 : </label>
+
+                    <div class="detail-option">
+                        <label>제조사</label>
                         <select class="form-control">
-                          <option value="현대">현대</option>
-                          <option value="기아">기아</option>
-                          <option value="제네시스">제네시스</option>
-                          <option value="르노삼성">르노삼성</option>
-                          <option value="포르쉐">포르쉐</option>
+                            <option value="현대">현대</option>
+                            <option value="기아">기아</option>
+                            <option value="제네시스">제네시스</option>
+                            <option value="르노삼성">르노삼성</option>
+                            <option value="포르쉐">포르쉐</option>
+                        </select>
+                    </div>
+                    
+                    <div class="detail-option">
+                        <label>차량 등급 : </label>
+                        <select class="form-control">
+                            <option value="경차">경차</option>
+                            <option value="준중형">준중형</option>
+                            <option value="중형">중형</option>
+                            <option value="대형">대형</option>
+                            <option value="SUV">SUV</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label>차량 등급 : </label>
-                        <select class="form-control">
-                          <option value="경차">경차</option>
-                          <option value="준중형">준중형</option>
-                          <option value="중형">중형</option>
-                          <option value="대형">대형</option>
-                          <option value="SUV">SUV</option>
-                        </select>
-                    </div>
+
 					
-                    <div class="form-group">
+                    <div class="detail-option">
                         <label>사용 연료 : </label>
                         <select class="form-control">
                           <option value="전기">전기</option>
@@ -183,7 +191,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="detail-option">
                         <label>차종 : </label>
                         <select class="form-control">
                           <option value="아반때">아반때</option>
@@ -200,22 +208,33 @@
                         </select>
                     </div>  
 
-                    <div class="form-group">
-                        <label>기타 옵션 : </label>
-                        <select class="form-control">
-                          <option value="카시트">카시트</option>
-                          <option value="선루프">선루프</option>
-                          <option value="블랙박스">블랙박스</option>
-                          <option value="후방카메라">후방카메라</option>
-                          <option value="네비게이션">네비게이션</option>
-                          <option value="주차보조시스템">주차보조시스템</option>
-                        </select>
+                    <div class="detail-option">
+                        옵션 리스트
                     </div>
 
-					<div>
-						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
-	    				<button class="btn btn-sm btn-success" type="submit">Search</button>
-	    				<button class="btn btn-sm btn-secondary" type="reset">초기화</button>
+					<div class="detail-option">
+
+                         <input type="checkbox" class="form-check-input" value="블랙박스">블랙박스
+
+                         <input type="checkbox" class="form-check-input" value="네비게이션">네비게이션
+                         
+                         <input type="checkbox" class="form-check-input" value="주차보조시스템">주차보조시스템
+                         
+                        </div>
+                        
+                        <div class="detail-option">
+                            
+                            <input type="checkbox" class="form-check-input" value="선루프">선루프
+                            
+                            <input type="checkbox" class="form-check-input" value="카시트">카시트
+                            
+                            <input type="checkbox" class="form-check-input" value="후방카메라">후방카메라
+
+					</div>
+
+					<div class="detail-option">
+	    				<button class="btn btn-primary" type="submit">검색</button>
+	    				<button class="btn btn-secondary" type="reset">리셋</button>
 					</div>
                 </form>
             </div>
