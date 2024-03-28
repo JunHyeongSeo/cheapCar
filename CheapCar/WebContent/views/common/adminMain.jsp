@@ -22,13 +22,14 @@
 	       width: 1200px;
 	       position: absolute;
 	       top: 250px;
-	       left: 350px;
 	       z-index: -1;
 	       height: 1000px;
         }
         
         #wrap{
             padding-top: 50px;
+            width : 100%;
+            margin: auto;
         }
 
        

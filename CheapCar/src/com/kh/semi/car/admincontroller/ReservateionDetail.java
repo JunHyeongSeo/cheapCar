@@ -44,7 +44,7 @@ public class ReservateionDetail extends HttpServlet {
 		if(car == null) {
 			
 		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			System.out.println(car);
+			//System.out.println(car);
 			
 			
 			response.setContentType("application/json; charset=UTF-8");

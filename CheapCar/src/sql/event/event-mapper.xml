@@ -75,6 +75,57 @@
 		        
 	</entry>
 	
+	<entry key="increaseCount">
+		UPDATE
+		       TB_EVENT_BOARD
+		   SET
+		       COUNT = COUNT + 1
+		 WHERE
+		       EVENT_NO = ?
+		   AND
+		       STATUS = 'Y'               
+	</entry>
+	
+	<entry key="selectEvent">
+		SELECT
+		       EVENT_NO,
+		       EVENT_TITLE,
+		       EVENT_CONTENT,
+		       CREATE_DATE,
+		       MEMBER_NAME,
+		       STATUS,
+		       COUNT
+		  FROM 
+		       TB_EVENT_BOARD
+          JOIN 
+               TB_MEMBER USING(MEMBER_NO)		       
+		 WHERE
+		       EVENT_NO = ?
+		   AND
+		       TB_EVENT_BOARD.STATUS = 'Y'           
+		             
+	</entry>
+	
+	<entry key="selectEventPhoto">
+		SELECT
+		       EVENT_PHOTO_NO,
+		       EVENT_PHOTO_ONAME,
+		       EVENT_PHOTO_CNAME,
+		       EVENT_PHOTO_ADDRESS,
+		       EVENT_NO,
+		       STATUS,
+		       FILELEVEL
+          FROM
+               TB_EVENT_PHOTO
+         WHERE
+               EVENT_NO = ?
+           AND
+               STATUS = 'Y'
+         ORDER
+            BY
+               FILELEVEL ASC                   
+              		       
+	</entry>
 	
 	
 	
