@@ -23,44 +23,9 @@
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	
-	<div class="outer" style="padding-bottom:50px; height:auto;">
+	<div class="outer" style="padding-bottom:50px; height:auto; display: flex; justify-content: center;">
 		<div class="container">
-			<div id="top1">
-	                
-	                
-	            <!--  -->
-	            <form class="form-inline" action="abc.do">
-	                <div id="top11" style="display: flex;">
-	                    <label for="carNum" style="margin: 0px 15px;">차 모델 검색 : </label>
-	                    <input type="text" class="form-control" id="userId" placeholder="조회하실 차량의 모델명을 입력해주세요." name="userId" style="width: 300px;">
-	                    
-	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
-	                </div>
-	            </form>
-	            
-	            
-	            <form class="form-inline" action="abc.do">
-	                <div id="top11" style="display: flex;">
-	                    <label for="carNum" style="margin: 0px 15px;">기간 검색 : </label>
-	                    <input type="text" class="form-control" id="userId" placeholder="조회하실 기간을 입력해주세요." name="userId" style="width: 300px;">
-	                    
-	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
-	                </div>
-	            </form>
-	            
-	            <form class="form-inline" action="abc.do">
-	                <div id="top11" style="display: flex;">
-	                    <label for="carNum" style="margin: 0px 15px;">지점 검색 : </label>
-	                    <!-- 얘는 뭔가 그 지점검색 누르면 아래에 모든 지점 뜨게끔 하고 그걸 누르면 아래에 지점별 목록 뜨게끔 하고 싶음 -->
-	                    <input type="text" class="form-control" id="userId" placeholder="조회하실 기간을 입력해주세요." name="userId" style="width: 300px;">
-	                    
-	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
-	                </div>
-	            </form>
-	            
-	            
-	            
-			</div>
+			
 			
 			<h2 style="margin:20px 0px;" align="center">이번 달 매출내역</h2>   
 			
@@ -100,7 +65,6 @@
 
 				function btn1(e){
 					
-					let resultStr = '';
 					//console.log($(e).parent().siblings().first().text());
 					// console.log(e.target);
 					
@@ -108,56 +72,73 @@
 						url : 'sales2',
 						data: {
 							 checkReservationNo :  $(e).parent().siblings().first().text()
-							
 						},
 						success : function(result){
+							let resultStr = '';
 							
 							
 							console.log(result);
-							resultStr += '<tr>'
-								  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
-								 // + '<td>' +'이름 : '+ memberName() + '</td>'
-								 // + '<td>' +'모델명 :'+ modelName() + '</td>'
-								 // + '<td>' +'대여날짜 : '+ startDate() + '</td>'
-								 // + '<td>' +'반납날짜 : '+ endDate() + '</td>'
+							console.log(result['memberName'])
+							
+							//resultStr += '<tr>'
+							//	  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
+							//	  + '<td>' +'이름 : '+ result['memberName'] + '</td>'
+							//	  + '<td>' +'모델명 :'+ result['modelName'] + '</td>'
+							//	  + '<td>' +'대여날짜 : '+ result['startDate'] + '</td>'
+							//	  + '<td>' +'반납날짜 : '+ result['endDate'] + '</td>'
 								  
-								  + '</tr>';
+							//	  + '</tr>';
 							
-							
-						}
+							//$('#reservationdetail').html(resultStr);
+							$('#noneDiv').show();
+							$('#detailName').html(result['memberName']);
+							$('#detailId').html(result['memberId']);
+							$('#detailStartDate').html(result['startDate']);
+							$('#detailEndDate').html(result['endDate']);
+							$('#detailPhone').html(result['phone']);
+							$('#detailEmail').html(result['email']);
+					}
 					});
 					
-					$('#reservationdetail').html(resultStr);
 					
 				}
 			</script>
-			<!-- 
-			let resultStr = '';
-							for(let i = 0; i < result.length; i++){
-								
-								const aa = $('#car' + i);
-								console.log(aa);
-								
-								
-							
-								
-								resultStr += '<tr>'
-									  + '<td>' +'아이디 : '+ result[i].memberId + '</td>'
-									  + '<td>' +'이름 : '+ result[i].memberName + '</td>'
-									  + '<td>' +'모델명 :'+ result[i].modelName + '</td>'
-									  + '<td>' +'대여날짜 : '+ result[i].startDate + '</td>'
-									  + '<td>' +'반납날짜 : '+ result[i].endDate + '</td>'
-									  
-									  + '</tr>'
-								
-							};
-							
-							$('#reservationdetail').html(resultStr);
-						
-							
-						}
-			 -->
-
+			<!-- <div id="top1">
+	                
+	                
+	           
+	            <form class="form-inline" action="abc.do">
+	                <div id="top11" style="display: flex;">
+	                    <label for="carNum" style="margin: 0px 15px;">차 모델 검색 : </label>
+	                    <input type="text" class="form-control" id="userId" placeholder="조회하실 차량의 모델명을 입력해주세요." name="userId" style="width: 300px;">
+	                    
+	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+	                </div>
+	            </form>
+	            
+	            
+	            <form class="form-inline" action="abc.do">
+	                <div id="top11" style="display: flex;">
+	                    <label for="carNum" style="margin: 0px 15px;">기간 검색 : </label>
+	                    <input type="text" class="form-control" id="userId" placeholder="조회하실 기간을 입력해주세요." name="userId" style="width: 300px;">
+	                    
+	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+	                </div>
+	            </form>
+	            
+	            <form class="form-inline" action="abc.do">
+	                <div id="top11" style="display: flex;">
+	                    <label for="carNum" style="margin: 0px 15px;">지점 검색 : </label>
+	                    <!-- 얘는 뭔가 그 지점검색 누르면 아래에 모든 지점 뜨게끔 하고 그걸 누르면 아래에 지점별 목록 뜨게끔 하고 싶음 -->
+	                    <!-- <input type="text" class="form-control" id="userId" placeholder="조회하실 기간을 입력해주세요." name="userId" style="width: 300px;">
+	                    
+	                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;">조회</button>
+	                </div>
+	            </form>
+	            
+	            
+	            
+			</div> -->
 
 
 
@@ -209,18 +190,17 @@
 			
 			
 			
-			
+		<script>
+			function show(){
+				$('#noneDiv').hide();
+			}
 
-			
-			
-			
-			
-			
-			
+		</script>
 		
 
-		<div class="container" style="text-align:center; line-height:64px;">
+		<div id="noneDiv" class="container" style="text-align:center; display: none ; line-height:64px;">
 			<h3 style="margin: 30px 0px;">상세내역</h3>
+			<div><button onclick="show();" id="showDiv" style="float: right; height: 30px; text-align:center; display: flex;align-items: center; margin-bottom: 20px;">상세내역 닫기</button></div>
 			<table class="table table-bordered">
 			
 			<thead>
@@ -228,29 +208,34 @@
 			
 				<tbody>
 					<tr>
-						<th>모델명</th>
-						<th>연식</th>
-						<td><button type="submit" class="btn btn-secondary">수정</button></td>
+						<th>이름</th>
+						<th id="detailName"></th>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>
 						<th>아이디</th>
-						<td>user01</td>
-						<td><button type="submit" class="btn btn-secondary">수정</button></td>
+						<td id="detailId"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>
-						<th>생년월일</th>
-						<td>1996-03-01</td>
-						<td><button type="submit" class="btn btn-secondary">수정</button></td>
+						<th>대여한 날짜</th>
+						<td id="detailStartDate"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+					<tr>
+						<th>반납 날짜</th>
+						<td id="detailEndDate"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>
 						<th>연락처</th>
-						<td>010-1234-5678</td>
-						<td><button type="submit" class="btn btn-secondary">수정</button></td>
+						<td id="detailPhone"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>123@naver.com</td>
-						<td><button type="submit" class="btn btn-secondary">수정</button></td>
+						<td id="detailEmail"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 				</tbody>
 
