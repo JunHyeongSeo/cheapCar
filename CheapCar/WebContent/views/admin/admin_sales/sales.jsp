@@ -70,10 +70,11 @@
 			<script>
 				function detailModel(){
 					$('#detailModelName').show();
-					//console.log($('input[models]').val())
+					console.log($('input[models]').val())
+					console.log($('input[models]'))
 				};
 				
-				//console.log($('input[models]'))
+				
 				
 				$.ajax({
 					url : 'modelsale',
@@ -82,7 +83,7 @@
 						
 					},
 					success : function(result){
-						console.log(result)
+						
 						
 					}
 						

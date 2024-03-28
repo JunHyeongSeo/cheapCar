@@ -43,7 +43,7 @@ public class SalesController extends HttpServlet {
 		if(carlist.isEmpty()) {
 			
 		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			System.out.println(carlist);
+			//System.out.println(carlist);
 			request.setAttribute("carlist", carlist);
 			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
 		}
