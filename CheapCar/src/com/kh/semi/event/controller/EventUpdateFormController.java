@@ -44,6 +44,9 @@ public class EventUpdateFormController extends HttpServlet {
 		request.setAttribute("eBoard", eBoard);
 		request.setAttribute("list", list);
 		
+		System.out.println(eBoard);
+		System.out.println(list);
+		
 		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
 		
 		
