@@ -48,7 +48,7 @@ public class EventInsertController extends HttpServlet {
 			String savePath = request.getServletContext().getRealPath("/resources/event_upfiles");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-					
+																												
 			
 			
 			String eventTitle = multiRequest.getParameter("title");
@@ -82,6 +82,7 @@ public class EventInsertController extends HttpServlet {
 					} else {
 						ep.setFileLevel(2); // 서브이미지
 					}
+					
 					list.add(ep);
 				}
 			}
