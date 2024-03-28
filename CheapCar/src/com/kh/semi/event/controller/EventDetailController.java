@@ -31,8 +31,6 @@ public class EventDetailController extends HttpServlet {
 		
 		
 		
-		
-		
 		request.getRequestDispatcher("views/event/eventDetail.jsp").forward(request, response);
 		
 		

@@ -102,6 +102,12 @@
 		background-color: #6caddf;
 		font-size: 20px;
 	}
+	#titleImg{
+		height: 100%;
+		width: 100%;
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+	}
 
 
 </style>
@@ -132,15 +138,21 @@
 					<ul id="event_list">
 						<% if(list.isEmpty()) { %>
 						<li> 리스트가 존재하지 않습니다. <li>
-						<li>
-							<a href="<%= contextPath %>/detail.event">
-								<div class="img-area event_1">d</div>
-								<div class="text-area event_1" >
-									<span> 제목 </span><br><br>
-									<span style="font-size: 15px;">조회수 :  </span>
+						<% } else { %>
+							<% for(EventBoard eb: list) { %>
+							<li>
+								<div class="img-area event_1 content">
+								 <input type="hidden" value="<%= eb.getEventNo()%>"/>
+								 <img src="<%= eb.getTitleImg() %>" id="titleImg"/>
 								</div>
-							</a>
-						</li>
+								<div class="text-area event_1 content" >
+								 <span> <%= eb.getEventTitle() %> </span><br><br>
+								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
+								</div>
+							  </a>
+							</li>
+							<% } %>
+						<% } %>
 						
 						
 					</ul>
@@ -161,7 +173,19 @@
 	    </div>			  
 	</div>
 	   
-	
+	<script>
+		$(function(){
+
+			$('.content').click(function(){
+
+				const eventNo = $(this).children().eq(0).val(); 
+
+				location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+			})
+
+
+		})
+	</script>
 		
 	
 </body>

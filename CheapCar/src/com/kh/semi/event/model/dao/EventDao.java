@@ -68,7 +68,7 @@ public class EventDao {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, ep.getPhotoOname());
-				pstmt.setString(2, ep.getPhotoOname());
+				pstmt.setString(2, ep.getPhotoCname());
 				pstmt.setString(3, ep.getPhotoPath());
 				pstmt.setInt(4, ep.getFileLevel());
 				
@@ -107,7 +107,9 @@ public class EventDao {
 				eBoard.setTitleImg(rset.getString("TITLE_IMG"));
 				
 				list.add(eBoard);
+				
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
