@@ -152,7 +152,7 @@ public class EventDao {
 		EventBoard eBoard = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selctEvent");
+		String sql = prop.getProperty("selectEvent");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
