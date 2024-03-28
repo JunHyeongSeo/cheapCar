@@ -443,56 +443,31 @@ public ArrayList<Car> carcarall(Connection conn){
 		return car;
 	}
 	
+	public int insertReservation(Connection conn, Reservation reservation) {
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	public int insertReservation(Connection conn, Reservation reservation) {
-//		
-//		int result = 0;
-//		PreparedStatement pstmt = null;
-//		
-//		String sql =  prop.getProperty("insertReservation");
-//		
-//		pstmt.setString(1, reservation.getStartDate());
-//		pstmt.setString(2, reservation.getEndDate());
-//		pstmt.setInt(3, reservation.getMemberNo());
-//		pstmt.setInt(4, reservation.getManagementNo());
-//		pstmt.setInt(5, reservation.getTotalPrice());
-//	
-//		result = pstmt.executeUpdate();
-//		
-//	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql =  prop.getProperty("insertReservation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reservation.getStartDate());
+			pstmt.setString(2, reservation.getEndDate());
+			pstmt.setInt(3, reservation.getMemberNo());
+			pstmt.setInt(4, reservation.getManagementNo());
+			pstmt.setInt(5, reservation.getTotalPrice());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 	
 }
+
