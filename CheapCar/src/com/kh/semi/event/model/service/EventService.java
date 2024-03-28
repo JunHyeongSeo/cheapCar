@@ -37,7 +37,32 @@ public class EventService {
 		JDBCTemplate.close(conn);
 		
 		return list;
+	}//
+	
+	public int increaseCount(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new EventDao().increaseCount(conn, eventNo);
+		
+		return result;
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	public void selectEvent(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new EventDao().selectEvent(conn);
+		
+		
+	}//
 	
 	
 	
