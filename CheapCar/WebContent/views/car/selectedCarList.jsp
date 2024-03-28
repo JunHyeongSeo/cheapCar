@@ -199,21 +199,30 @@
                           <option value="스타렉스">스타렉스</option>
                         </select>
                     </div>  
-
-                    <div class="form-group">
-                        <label>기타 옵션 : </label>
-                        <select class="form-control">
-                          <option value="카시트">카시트</option>
-                          <option value="선루프">선루프</option>
-                          <option value="블랙박스">블랙박스</option>
-                          <option value="후방카메라">후방카메라</option>
-                          <option value="네비게이션">네비게이션</option>
-                          <option value="주차보조시스템">주차보조시스템</option>
-                        </select>
-                    </div>
+                    
+                    <br>
 
 					<div>
-						<input id="option-input"class="form-control mr-sm-2" type="text" placeholder="Search">
+
+                         <input type="checkbox" class="form-check-input" value="">Option 1
+
+                         <input type="checkbox" class="form-check-input" value="">Option 2
+
+                         <input type="checkbox" class="form-check-input" value="" disabled>Option 3
+
+					</div>
+					
+					<div>
+
+                         <input type="checkbox" class="form-check-input" value="">Option 1
+
+                         <input type="checkbox" class="form-check-input" value="">Option 2
+
+                         <input type="checkbox" class="form-check-input" value="" disabled>Option 3
+
+					</div>
+
+					<div>
 	    				<button class="btn btn-sm btn-success" type="submit">Search</button>
 	    				<button class="btn btn-sm btn-secondary" type="reset">초기화</button>
 					</div>
