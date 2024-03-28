@@ -13,6 +13,7 @@ import com.kh.semi.common.model.vo.PageInfo;
 
 public class CarService {
 	
+	
 	public int selectListCount() {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -34,6 +35,31 @@ public class CarService {
 		JDBCTemplate.close(conn);
 		
 		return carList;
+	}
+	
+	public int adminCarListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int listCount = new CarDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
+			
+	}
+	
+	
+	
+	public ArrayList<Car> adminCarList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().adminCarList(conn, pi);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
 	}
 	
 	public ArrayList<Option> selectOptionList(){
@@ -69,16 +95,7 @@ public class CarService {
 		return optionList;		
 	}
 	
-	public ArrayList<Car> adminCarList(PageInfo pi) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Car> list = new CarDao().adminCarList(conn, pi);
-		
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}
+	
 	
 	public int selectLocationListCount(String locations) {
 		

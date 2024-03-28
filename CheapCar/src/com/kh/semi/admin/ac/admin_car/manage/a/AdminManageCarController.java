@@ -16,7 +16,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class BlackListController
  */
-@WebServlet("/managecar")
+@WebServlet("/manageCar")
 public class AdminManageCarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class AdminManageCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_user/blackList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_car/manageCar.jsp").forward(request, response);
 	}
 
 	/**

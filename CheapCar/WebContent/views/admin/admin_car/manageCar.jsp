@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.Car, com.kh.semi.common.model.vo.PageInfo" %>
-<%
-	ArrayList<Car> list = (ArrayList<Car>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,14 +69,17 @@
 	    		
 				// 1. 실행되면 전체 리스트 나오는 ajax
 	    		$.ajax({
-	    			url : 'memberList.all', // 전체 리스트 가져오는 서블릿
+	    			url : 'carList.all', // 전체 리스트 가져오는 서블릿
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
+	    				console.log(list);
 	    				for(let i in list){
 	        				resultStr += '<tr>'
-	        						   + '<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].managementNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
+	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td>' + list[i].memberId + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
 	        						   + '</tr>'
