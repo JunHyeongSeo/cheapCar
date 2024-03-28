@@ -123,32 +123,6 @@ public class MemberDao {
 		return list;
 	}
 	
-	public int selectBlackListCount(Connection conn) {
-		
-		int result = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectBlackListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			rset.next();
-			
-			result = rset.getInt("COUNT(*)");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
 	public ArrayList<Member> blackListCount(Connection conn, PageInfo pi) {
 		
 		ArrayList<Member> list = new ArrayList();
@@ -190,6 +164,34 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	
+	public int selectBlackListCount(Connection conn) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlackListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	
 	
 	
