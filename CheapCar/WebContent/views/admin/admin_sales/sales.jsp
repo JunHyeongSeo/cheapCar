@@ -52,7 +52,7 @@
 			<div style="display: none;">
 				<label for="">모델명</label>
 				<select name="" id="">
-					<option value="">아반때</option>
+					<option value="avante">아반때</option>
 
 				</select>
 
