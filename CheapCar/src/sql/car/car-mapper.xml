@@ -200,6 +200,17 @@
 		                RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="adminCarListCount">
+		SELECT
+				COUNT(*)
+		  FROM
+				TB_CAR
+	</entry>
+	
+	
+	
+	<!-- 근경 끝 -->
+	
 	<entry key="selectOptionList">
 	
 		SELECT
@@ -319,11 +330,12 @@
 		VALUES 
 				(
 				SEQ_RESERVATION_NO.NEXTVAL,
-				?,
+				TO_DATE(?, 'YYYY-MM-DD HH24:MI'),
+				TO_DATE(?, 'YYYY-MM-DD HH24:MI'), 
 				?, 
-				?, 
 				?,
-				?)
+				?
+				)
 		
 	</entry>
 	
