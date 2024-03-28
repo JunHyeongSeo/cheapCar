@@ -68,7 +68,7 @@ public class EventDao {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, ep.getPhotoOname());
-				pstmt.setString(2, ep.getPhotoOname());
+				pstmt.setString(2, ep.getPhotoCname());
 				pstmt.setString(3, ep.getPhotoPath());
 				pstmt.setInt(4, ep.getFileLevel());
 				
@@ -107,7 +107,9 @@ public class EventDao {
 				eBoard.setTitleImg(rset.getString("TITLE_IMG"));
 				
 				list.add(eBoard);
+				
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,6 +120,47 @@ public class EventDao {
 		
 		
 		return list;
+	}//
+	
+	public int increaseCount(Connection conn, int eventNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eventNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		
+		
+		return result;
+	}
+	
+	public EventBoard selectEvent(Connection conn) {
+		
+		EventBoard eboard = new EventBoard();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selctEvent");
+		
+		
+		
+		
+		
+		
+		return eboard;
 	}
 	
 	

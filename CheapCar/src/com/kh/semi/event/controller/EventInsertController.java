@@ -48,7 +48,7 @@ public class EventInsertController extends HttpServlet {
 			String savePath = request.getServletContext().getRealPath("/resources/event_upfiles");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-					
+																												
 			
 			
 			String eventTitle = multiRequest.getParameter("title");
@@ -66,7 +66,7 @@ public class EventInsertController extends HttpServlet {
 			ArrayList<EventPhoto> list = new ArrayList();
 			
 			// 첨부파일 최소 1 ~ 최대 4개
-			System.out.println(multiRequest.getParameter("photo1"));
+			
 			for(int i = 1; i <= 4; i++) {
 				String key = "photo" + i;
 				
@@ -76,12 +76,13 @@ public class EventInsertController extends HttpServlet {
 					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
 					ep.setPhotoCname(multiRequest.getFilesystemName(key));
 					ep.setPhotoPath("resources/event_upfiles");
-					
+										
 					if(i == 1) {
 						ep.setFileLevel(1); // 대표
 					} else {
 						ep.setFileLevel(2); // 서브이미지
 					}
+					
 					list.add(ep);
 				}
 			}

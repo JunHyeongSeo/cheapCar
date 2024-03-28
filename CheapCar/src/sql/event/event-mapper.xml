@@ -57,14 +57,14 @@
 	
 	<entry key="selectEventList">
 		SELECT 
-		       EVENT_NO,
+		       TB_EVENT_BOARD.EVENT_NO,
 		       EVENT_TITLE,
 		       COUNT,
-		       EVENT_PHOTO_ADDRESS || '/' || EVENT_PHOTO_CNAME
+		       EVENT_PHOTO_ADDRESS || '/' || EVENT_PHOTO_CNAME "TITLE_IMG"
 		  FROM
 		       TB_EVENT_BOARD
 		  JOIN
-		       TB_EVENT_PHOTO USING(EVENT_NO)
+		       TB_EVENT_PHOTO ON (TB_EVENT_BOARD.EVENT_NO = TB_EVENT_PHOTO.EVENT_NO)
 		 WHERE
 		       TB_EVENT_BOARD.STATUS = 'Y'
 		   AND
@@ -73,6 +73,17 @@
 		    BY
 		       TB_EVENT_BOARD.EVENT_NO DESC                  
 		        
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+		       TB_EVENT_BOARD
+		   SET
+		       COUNT = COUNT + 1
+		 WHERE
+		       EVENT_NO = ?
+		   AND
+		       STATUS = 'Y'               
 	</entry>
 	
 	
