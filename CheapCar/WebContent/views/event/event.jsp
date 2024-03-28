@@ -132,15 +132,22 @@
 					<ul id="event_list">
 						<% if(list.isEmpty()) { %>
 						<li> 리스트가 존재하지 않습니다. <li>
-						<li>
-							<a href="<%= contextPath %>/detail.event">
-								<div class="img-area event_1">d</div>
-								<div class="text-area event_1" >
-									<span> 제목 </span><br><br>
-									<span style="font-size: 15px;">조회수 :  </span>
+						<% } else { %>
+							<% for(EventBoard eb: list) { %>
+							<li>
+							  <a href="<%= contextPath %>/detail.event">
+								<div class="img-area event_1">
+								 <input type="hidden" value="<%= eb.getEventNo()%>"/>
+								 <img src="<%= eb.getTitleImg() %>"/>
 								</div>
-							</a>
-						</li>
+								<div class="text-area event_1" >
+								 <span> <%= eb.getEventTitle() %> </span><br><br>
+								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
+								</div>
+							  </a>
+							</li>
+							<% } %>
+						<% } %>
 						
 						
 					</ul>
