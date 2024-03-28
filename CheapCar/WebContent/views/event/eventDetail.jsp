@@ -144,7 +144,14 @@
                         <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area">  </div>
+                        <div class="img-area"> 
+                            <% if(list.isEmpty()) { %>
+                            	<% for(int i = 0; i < list.size(); i++) {%>
+                                <img src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" >
+							    <% } %>
+							<% } %>
+
+                        </div>
                         <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
 
