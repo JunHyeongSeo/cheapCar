@@ -31,7 +31,7 @@
 		"minDate" : moment().startOf('day'),
 		"maxDate" : moment().add(1, 'month'),
 	    "locale": {
-	        "format": "YYYY-MM-DD HH:00 A",
+	        "format": "YYYY-MM-DD HH:mm",
 	        "separator": " ~ ",
 	        "applyLabel": "확인",
 	        "cancelLabel": "취소",
@@ -53,8 +53,8 @@
 	    var startHour = startTime.getTime();
 	    var endHour = endTime.getTime();
 	    
-	    var startRent = start.format('YYYY-MM-DD HH:00 A');
-	    var endRent = end.format('YYYY-MM-DD HH:00 A');
+	    var startRent = start.format('YYYY-MM-DD HH:mm');
+	    var endRent = end.format('YYYY-MM-DD HH:mm');
 	    
 	    
 	    var hourDifference = (endHour - startHour) / (1000*60*60);
