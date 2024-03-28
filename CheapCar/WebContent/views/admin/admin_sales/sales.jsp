@@ -85,7 +85,7 @@
 					function selectmodel1(va){
 						
 						
-						console.log(va);
+						//console.log(va);
 					}
 
 					//console.log($('#changeInput').val(value));
