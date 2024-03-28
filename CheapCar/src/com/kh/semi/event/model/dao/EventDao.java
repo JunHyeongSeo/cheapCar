@@ -223,7 +223,44 @@ public class EventDao {
 		
 		
 		return list;
-	}
+	}//
+	
+	public int deleteEventBoard(Connection conn, int eventNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteEventBoard");
+		
+		
+		
+		
+		
+		
+		return result;
+	}//
+	
+	
+	public int deleteEventPhoto(Connection conn, int eventNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteEventPhoto");
+		
+		
+		
+		
+		return result;
+	}//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

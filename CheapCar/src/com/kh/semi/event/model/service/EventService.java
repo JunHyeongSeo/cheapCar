@@ -76,6 +76,18 @@ public class EventService {
 		return list;
 		
 		
+	}//
+	
+	
+	public void deleteEvent(int eventNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new EventDao().deleteEventBoard(conn, eventNo);
+		new EventDao().deleteEventPhoto(conn, eventNo);
+		
+		
+		
 	}
 	
 	
