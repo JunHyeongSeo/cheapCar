@@ -177,12 +177,12 @@
 		<div class="paging-area" align="center" style="margin-top:12px">
 			<% if(currentPage > 1) { %>	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage - 1%>'">이전</button>
+		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage - 1%>'">이전</button>
             <% } %>
 	     	<% for(int i = startPage; i <= endPage; i++){%>
 	     		<% if(currentPage != i){ %>
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=i%>'"><%= i %></button>
+		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=i%>'"><%= i %></button>
 		     	<% } else { %>
 		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
 		     	<% } %>	
@@ -191,7 +191,7 @@
 			
 			<% if(currentPage != maxPage){ %>	
 			<button class="btn btn-outline-info" style="color:#6caddf"
-	     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage + 1%>'">다음</button>
+	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
 	     	<%} %>
 		   
 	    </div>			  			  
