@@ -43,7 +43,7 @@ public class EventListController extends HttpServlet {
 		int startPage= 0;
 		int endPage= 0;
 		
-		listCount = new NoticeService().selectListCount();
+		listCount = new EventService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
@@ -61,7 +61,7 @@ public class EventListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-
+		System.out.println(listCount);
 		//값
 		ArrayList<EventBoard> list = new EventService().selectEventList(pi);
 		
