@@ -154,7 +154,7 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form action="#" class="option-form form-inline form-location" >
+                <form action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
 
                     <div class="detail-option">
                         <label>제조사</label>
