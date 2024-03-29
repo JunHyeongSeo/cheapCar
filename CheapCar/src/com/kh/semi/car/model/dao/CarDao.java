@@ -100,6 +100,160 @@ public class CarDao {
 		return carList;
 	}
 	
+	/* 근경 시작 */
+	
+	public int adminCarListCount(Connection conn) {
+	
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("adminCarListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return listCount;
+	}
+	
+	
+	public ArrayList<Car> adminCarList(Connection conn, PageInfo pi) {
+		
+		ArrayList<Car> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("adminCarList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Car car = new Car();
+				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car.setStatus(rset.getString("STATUS"));
+				car.setCarNo(rset.getString("CAR_NO"));
+				car.setLocationNo(rset.getInt("LOCATION_NO"));
+				car.setLocationName(rset.getString("LOCATION_NAME"));
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
+				car.setBrandName(rset.getString("BRAND_NAME"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setYear(rset.getInt("YEAR"));
+				car.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				
+				list.add(car);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public int searchedCarCount(Connection conn, String searchCar) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedCarCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	public ArrayList<Car> searchedCarList(Connection conn, PageInfo pi, String checkCar){
+		
+		ArrayList<Car> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedCarList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Car car = new Car();
+				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car.setStatus(rset.getString("STATUS"));
+				car.setCarNo(rset.getString("CAR_NO"));
+				car.setLocationNo(rset.getInt("LOCATION_NO"));
+				car.setLocationName(rset.getString("LOCATION_NAME"));
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
+				car.setBrandName(rset.getString("BRAND_NAME"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setYear(rset.getInt("YEAR"));
+				car.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				
+				list.add(car);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	/* 근경 끝 */
+	
 	public ArrayList<Option> selectOptionList(Connection conn){
 		
 		ArrayList<Option> optionList = new ArrayList<Option>();
@@ -208,52 +362,7 @@ public class CarDao {
 		return optionList;
 	}
 	
-	public ArrayList<Car> adminCarList(Connection conn, PageInfo pi) {
-		
-		ArrayList<Car> list = new ArrayList();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("adminCarList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
-			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Car car = new Car();
-				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
-				car.setStatus(rset.getString("STATUS"));
-				car.setCarNo(rset.getString("CAR_NO"));
-				car.setLocationNo(rset.getInt("LOCATION_NO"));
-				car.setLocationName(rset.getString("LOCATION_NAME"));
-				car.setModelName(rset.getString("MODEL_NAME"));
-				car.setFuelName(rset.getString("FUEL_NAME"));
-				car.setBrandName(rset.getString("BRAND_NAME"));
-				car.setGradeName(rset.getString("GRADE_NAME"));
-				car.setYear(rset.getInt("YEAR"));
-				car.setGradePrice(rset.getInt("GRADE_PRICE"));
-				car.setModelPrice(rset.getInt("MODEL_PRICE"));
-				car.setYearPrice(rset.getInt("YEAR_PRICE"));
-				
-				list.add(car);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		
-		return list;
-	}
+	
 	
 	public int selectLocationListCount(Connection conn,String locations) {
 	

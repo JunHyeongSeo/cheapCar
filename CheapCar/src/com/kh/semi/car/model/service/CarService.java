@@ -13,6 +13,7 @@ import com.kh.semi.common.model.vo.PageInfo;
 
 public class CarService {
 	
+	
 	public int selectListCount() {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -35,6 +36,56 @@ public class CarService {
 		
 		return carList;
 	}
+	
+	/* 근경 시작 */
+	
+	public int adminCarListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int listCount = new CarDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return listCount;
+			
+	}
+	
+	public ArrayList<Car> adminCarList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().adminCarList(conn, pi);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	
+	public int searchedCarCount(String searchCar) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new CarDao().searchedCarCount(conn, searchCar);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	
+	public ArrayList<Car> searchedCarList(PageInfo pi, String searchCar){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().searchedCarList(conn, pi, searchCar);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+	
+	
+	/* 근경 끝 */
 	
 	public ArrayList<Option> selectOptionList(){
 		
@@ -69,16 +120,7 @@ public class CarService {
 		return optionList;		
 	}
 	
-	public ArrayList<Car> adminCarList(PageInfo pi) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Car> list = new CarDao().adminCarList(conn, pi);
-		
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}
+	
 	
 	public int selectLocationListCount(String locations) {
 		

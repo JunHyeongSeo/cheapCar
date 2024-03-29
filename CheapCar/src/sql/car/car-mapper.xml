@@ -200,6 +200,27 @@
 		                RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="adminCarListCount">
+		SELECT
+				COUNT(*)
+		  FROM
+				TB_CAR
+	</entry>
+	
+	<entry key="searchedCarCount">
+		
+	
+	</entry>
+	
+	<entry key="searchedCarList">
+		
+	
+	</entry>
+	
+	
+	
+	<!-- 근경 끝 -->
+	
 	<entry key="selectOptionList">
 	
 		SELECT
