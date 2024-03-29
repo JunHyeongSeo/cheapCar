@@ -120,7 +120,9 @@
 				<script>
 	
 					function btn1(e){
-						
+						window.onload = function(){
+							alert('일해라');
+						}
 						//console.log($(e).parent().siblings().first().text());
 						// console.log(e.target);
 						
