@@ -124,6 +124,11 @@
     .form-control{
         height: auto;
     }
+    .content_btn{
+        padding-top: 20px;
+    	padding-bottom: 100px;
+    }
+    
 	
     
 
@@ -188,7 +193,7 @@
 						    </div>
                     
 
-	                        <div class="content_btn" align="center">
+	                        <div class="content_btn" align="center" >
 	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
