@@ -34,7 +34,27 @@ public class CsService {
 		return list;
 	}
 	
+	public int searchedCsCount(String searchId) {
+		
+		Connection conn = getConnection();
+		
+		int result = new CsDao().searchedCsCount(conn, searchId);
+		
+		close(conn);
+		
+		return result;
+	}
 	
+	public ArrayList<Cs> searchedCsList(PageInfo pi, String searchId) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Cs> list = new CsDao().searchedCsList(conn, pi, searchId);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 	
 

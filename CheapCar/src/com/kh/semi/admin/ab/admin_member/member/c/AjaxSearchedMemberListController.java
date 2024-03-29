@@ -52,7 +52,7 @@ public class AjaxSearchedMemberListController extends HttpServlet {
 		ArrayList<Member> list = new MemberService().searchedMemberList(pi, searchId);
 		
 		response.setContentType("application/json; charset=UTF-8");
-		
+		System.out.println(list);
 		new Gson().toJson(list, response.getWriter());
 		
 	}

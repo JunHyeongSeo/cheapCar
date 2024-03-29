@@ -30,9 +30,34 @@
 				RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="searchedCsCount">
+		SELECT 
+				COUNT(*) 
+		FROM 
+				TB_CS_BOARD 
+		JOIN 
+				TB_MEMBER 
+		USING (MEMBER_NO) 
+		WHERE  
+				(MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		    OR	
+	 		 	MEMBER_ID LIKE '%' || LOWER(?) || '%')
+	</entry>
 	
+	<entry key="searchedCsList">
+	SELECT 
+				*
+		FROM 
+				TB_CS_BOARD 
+		JOIN 
+				TB_MEMBER 
+		USING (MEMBER_NO) 
+		WHERE  
+				(MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		    OR	
+	 		 	MEMBER_ID LIKE '%' || LOWER(?) || '%')
 	
-	
+	</entry>
 	
 	
 	

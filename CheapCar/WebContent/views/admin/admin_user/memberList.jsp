@@ -39,7 +39,6 @@
 	.mileage{
 	    margin-top: 30px;
 	}
-       
 </style>
 <head>
 <meta charset="UTF-8">
@@ -51,18 +50,14 @@
 	
     <div class="outer">
     
-    	<div id="top1">
-    		<form class="searchMem" action="">
-    			<div id="top11" style="display: flex;">
-    				<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
-                    <input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchMem();">조회</button>
-                </div>
-            </form>
-        </div>
+		<div id="top11" style="display: flex;">
+			<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
+			<input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
+			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchMem();">조회</button>
+		</div>
 		
-		<div class="container1">
-		<h2>회원현황</h2> 
+		<div class="container">
+			<h2>회원현황</h2> 
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -73,19 +68,19 @@
 					</tr>
 				</thead>
 				<tbody id="conBody">
-					<!-- 여기다가 윈도우 온로드 memberListController -->
 					
-					<!-- 나온거에서 컬럼 안에 상세보기 누르면 asmc 하고 container2에 추가 -->
+					
 				</tbody>
 			</table>
 		</div>
 		
 		<div id="paging-area">
+
 		
 		</div>
 		
 		<div class="container2">
-			<!-- 상세보기 누르면 나오는 ajax 여따 추가 -->
+
 		
 		</div>
 		
@@ -102,9 +97,10 @@
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
+	    				
 	    				for(let i in list){
-	        				resultStr += '<tr>'
-	        						   + '<td>' + list[i].memberNo + '</td>'
+	    					resultStr += '<tr>'
+	        						   +'<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
@@ -122,41 +118,41 @@
 	    				let resultStr = '';
 	    				
 	    				if(pi.currentPage > 1) {
-	    	       			resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
-	    	       					   + "'<%=contextPath%>/memberList?currentPage="
-	    	       					   + (pi.currentPage - 1)
-	    	       					   + "'"
-	    	       					   + '"'
-	    	       					   + '>'
-	    	       					   + '이전</button>';
+	    					resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
+	    	       					    + "'<%=contextPath%>/memberList?currentPage="
+	    	       					    + (pi.currentPage - 1)
+	    	       					    + "'"
+	    	       					    + '"'
+	    	       					    + '>'
+	    	       					    + '이전</button>';
 	   			        }
 	    				
 	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
 	   			        	if(pi.currentPage != i){
 	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	   			        				  + "'<%=contextPath%>/memberList?currentPage="
-	   			        				  + i
-	   			        				  + "'"
-	     	       					   	  + '"'
-	   			        				  + '>'
-	   			        				  + i
-	   			        				  + '</button>';
+	   			        				   + "'<%=contextPath%>/memberList?currentPage="
+	   			        				   + i
+	   			        				   + "'"
+	     	       					   	   + '"'
+	   			        				   + '>'
+	   			        				   + i
+	   			        				   + '</button>';
 	   			        	}
 	   			        	else {
 	   			        		resultStr += '<button disabled class="btn btn-danger">'
-	   			        			      + i 
-	   			        			      + '</button>';
+	   			        			       + i 
+	   			        			       + '</button>';
 	   			        	}
 	   			        }
 	   			        
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					  + "'<%=contextPath%>/memberList?currentPage="
-			       					  + pi.currentPage + 1
-			       					  + "'"
-			       					  + '"'
-			       					  + '>'
-			       					  + '다음</button>';
+			       					   + "'<%=contextPath%>/memberList?currentPage="
+			       					   + (pi.currentPage + 1)
+			       					   + "'"
+			       					   + '"'
+			       					   + '>'
+			       					   + '다음</button>';
 	   			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr;
 	    			}
@@ -178,6 +174,7 @@
 					},
 					success : function(list){
 						let resultStr = '';
+						
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].memberNo + '</td>'
@@ -186,10 +183,10 @@
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
 	        						   + '</tr>'
 						}
-						
         				document.getElementById('conBody').innerHTML = resultStr;
 					}
 				});
+				
 				
 				$.ajax({
         			url : 'memberCount.search', // 페이징바 만들기 위해서 가져오는 서블릿
@@ -202,9 +199,9 @@
         				
         				// 2페이지 이상 보고있으면 이전버튼을 만들겠다.
         				if(pi.currentPage > 1) {
-        	       			resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-        	       						+ (i-1)
-        	       						+ '">이전</button>';
+        					resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+        	       						 + (i-1)
+        	       						 + '">이전</button>';
        			        }
         				
         				// 총 페이지에 대한 버튼을 만들겠다
@@ -220,8 +217,8 @@
        			    	 	// 근데 현재페이지를 내가 보고있으면 버튼이 안눌리게끔 할거다.
        			        	else {
        			        		resultStr += '<button disabled class="btn btn-danger">'
-       			        			      + i 
-       			        			      + '</button>';
+       			        			        + i 
+       			        			        + '</button>';
        			        	}
        			        }
        			        
@@ -239,7 +236,7 @@
 			function cp(result){
 				// 버튼 눌렀을 때 currentPage 를 바꿔서 ajax를 해당 currentPage로 이동해주는 ajax
 				const currentPage = result.value;
-				
+
 				$.ajax({
 					url : 'memberList.search',
 					data : {
@@ -268,11 +265,10 @@
        				},
         			success : function(pi){
         				let resultStr = '';
-        				
         				if(pi.currentPage > 1) {
-        	       			resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-        	       						+ (pi.currentPage - 1)
-        	       						+ '">이전</button>';
+        					resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
+        	       						 + (pi.currentPage - 1)
+        	       						 + '">이전</button>';
        			        }
         				
        			        for(let i = pi.startPage; i <= pi.endPage; i++) {
@@ -285,31 +281,21 @@
        			        	}
        			        	else {
        			        		resultStr += '<button disabled class="btn btn-danger">'
-       			        			      + i 
-       			        			      + '</button>';
+       			        			        + i 
+       			        			        + '</button>';
        			        	}
        			        }
        			        
        			        if(pi.currentPage != pi.maxPage){
        			        	resultStr += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
-       			        				+ (pi.currentPage + 1)
-       			        				+ '">다음</button>';
+       			        			   + (pi.currentPage + 1)
+       			        			   + '">다음</button>';
        			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr;
         			}
         		});
 			}
-			
-			
-			
-			
-			
-			
         	</script>
-		
-		
-		
-		
 	</div>
 		
 	

@@ -21,7 +21,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class AjaxCarListController
  */
-@WebServlet("/carLi123123123st.all")
+@WebServlet("/csList.all")
 public class AjaxCsListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -50,14 +50,12 @@ public class AjaxCsListController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// pageInfo 객체 만들기
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Cs> list = new CsService().selectCsList(pi);
 		
-		request.setAttribute("list", list);
-		request.setAttribute("pi", pi);
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(list, response.getWriter());
 		
-		request.getRequestDispatcher("views/admin/admin_cs/selectCs.jsp").forward(request, response);
 	}
 
 	/**
