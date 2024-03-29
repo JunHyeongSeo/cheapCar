@@ -29,6 +29,19 @@ public class Car {
 	private int reservationNo;
 	private String memberName;
 	private String phone;
+	private int totalPrice;
+	
+	
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
 	public String getMemberName() {
 		return memberName;
 	}
