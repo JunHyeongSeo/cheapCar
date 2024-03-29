@@ -253,6 +253,7 @@
 	</entry>
 	
 	<entry key="selectedCarList">
+	
 		SELECT 
 		        MANAGEMENT_NO,
 		        STATUS,
@@ -266,8 +267,7 @@
 		        YEAR,
 		        GRADE_PRICE,
 		        MODEL_PRICE,
-		        YEAR_PRICE,
-		        ROWNUM RNUM
+		        YEAR_PRICE
 		  FROM (SELECT
 		                MANAGEMENT_NO,
 		                STATUS,
@@ -282,6 +282,8 @@
 		                GRADE_PRICE,
 		                MODEL_PRICE,
 		                YEAR_PRICE,
+		                START_DATE,
+		                END_DATE,
 		                ROWNUM RNUM
 		          FROM (SELECT
 		                        C.MANAGEMENT_NO,
@@ -296,7 +298,9 @@
 		                        YEAR,
 		                        GRADE_PRICE,
 		                        MODEL_PRICE,
-		                        YEAR_PRICE
+		                        YEAR_PRICE,
+		                        START_DATE,
+		                        END_DATE
 		                  FROM
 		                        TB_CAR C
 		                  JOIN  
@@ -320,8 +324,26 @@
 		                  JOIN
 		                        TB_YEAR Y
 		                    ON (CB.YEAR_NO = Y.YEAR_NO)
-		                    WHERE
+		                  LEFT
+		                  JOIN
+		                        TB_RESERVATION R
+		                    ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+		                 WHERE
 		                        LOCATION_NAME = ?
+		                   AND
+		                         MANAGEMENT_NO 
+		                NOT IN
+		                        (SELECT
+		                                C.MANAGEMENT_NO
+		                          FROM
+		                                TB_CAR C
+		                          JOIN
+		                                TB_RESERVATION R
+		                            ON  (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+		                         WHERE
+		                                <![CDATA[TO_CHAR(START_DATE, 'YYYY-MM-DD HH24:MI') <= ? ]]>
+		                           AND
+		                                <![CDATA[TO_CHAR(END_DATE, 'YYYY-MM-DD HH24:MI') >= ?) ]]>
 		                 ORDER
 		                    BY
 		                        C.MANAGEMENT_NO))
@@ -329,6 +351,21 @@
 		                RNUM BETWEEN ? AND ?
 		           AND
 		                STATUS = 'Y'
+		         GROUP 
+		            BY 
+		                MANAGEMENT_NO,
+		                STATUS,
+		                CAR_NO,
+		                LOCATION_NO,
+		                LOCATION_NAME,
+		                MODEL_NAME,
+		                FUEL_NAME,
+		                BRAND_NAME,
+		                GRADE_NAME,
+		                YEAR,
+		                GRADE_PRICE,
+		                MODEL_PRICE,
+               			YEAR_PRICE
 	</entry>
 	
 	<entry key="insertReservation">

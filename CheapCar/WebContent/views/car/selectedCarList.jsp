@@ -14,8 +14,8 @@
     PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
     int hours = (int)request.getAttribute("hours");
     String locations = (String)request.getAttribute("locations");
-    String startRent = (String)request.getAttribute("startRent");
-    String endRent = (String)request.getAttribute("endRent");
+    String startDate = (String)request.getAttribute("startDate");
+    String endDate = (String)request.getAttribute("endDate");
 %>
 
 <%
@@ -276,7 +276,7 @@
 	                        	<%= totalPrice = carPrice + optionPrice %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startRent=<%=startRent%>&endRent=<%=endRent%>&hours=<%=hours%>">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startRent=<%=startDate%>&endRent=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
                             <% optionPrice = 0; %>
 	                    </div>
                     </div>
@@ -288,7 +288,7 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startRent%>&endRent=<%=endRent%>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">Previous</a>
                                 </li>
                             <% } %>
 
@@ -297,7 +297,7 @@
 								<% if(currentPage != i) { %>
 									<li
 									class="page-link"
-									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startRent%>&endRent=<%=endRent%>'">
+									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">
 									<%=i%>
 									</li>
 								<% } else { %>
@@ -310,7 +310,7 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startRent%>&endRent=<%=endRent%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">Next</a>
 	                            </li>
                             <% } %>
 						</ul>
