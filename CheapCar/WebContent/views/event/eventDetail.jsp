@@ -145,7 +145,7 @@
                         <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 
+                        <div class="img-area">
                            	<% for(int i = 0; i < list.size(); i++) { %>
                               	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
 						    <% } %>
