@@ -283,7 +283,7 @@ public class CarDao {
 		return listCount;
 	}
 	
-	public ArrayList<Car> selectedCarList(Connection conn, PageInfo pi, String locations){
+	public ArrayList<Car> selectedCarList(Connection conn, PageInfo pi, String locations, String startDate, String endDate){
 		
 		ArrayList<Car> carList = new ArrayList<Car>();
 		PreparedStatement pstmt = null;
@@ -298,9 +298,13 @@ public class CarDao {
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
 			pstmt.setString(1, locations);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			pstmt.setString(2, endDate);
+			pstmt.setString(3, startDate);
+			pstmt.setInt(4, startRow);
+			pstmt.setInt(5, endRow);
 			
+			System.out.println( startDate );
+			System.out.println( endDate );
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

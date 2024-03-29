@@ -92,11 +92,11 @@ public class CarService {
 		
 	}
 	
-	public ArrayList<Car> selectedCarList(PageInfo pi, String locations){
+	public ArrayList<Car> selectedCarList(PageInfo pi, String locations, String startDate, String endDate){
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> list = new CarDao().selectedCarList(conn,pi,locations);
+		ArrayList<Car> list = new CarDao().selectedCarList(conn,pi,locations,startDate,endDate);
 				
 		JDBCTemplate.close(conn);
 				
