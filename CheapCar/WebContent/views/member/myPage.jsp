@@ -197,6 +197,7 @@
 		
 			
 		<% } else { %>
+		
 	
 	
 		<div class="container1" >
@@ -226,8 +227,6 @@
 			  </table>
 		  </form>
 	  </div>
-	  
-	  
 	  
 	
 	  <div id="con23">
@@ -280,7 +279,6 @@
 	  
 	  
 		<% } %>
-
 
 
 	</div>
