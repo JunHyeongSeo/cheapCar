@@ -73,33 +73,6 @@
 
 			<script>
 
-					var aa = "";
-					/*
-					var selectmodel1 = function(value){
-						console.log(value);
-						aa= value;
-						//$('#changeInput').val(value);
-					}
-					*/
-					
-					function selectmodel1(va){
-						
-						
-						//console.log(va);
-					}
-
-					//console.log($('#changeInput').val(value));
-
-				
-					/*
-					 $('#changeTest').change(function(){
-						aa = $(this).val();
-						console.log(aa);
-					})
-					*/
-					//console.log(aa);
-					
-			
 
 				function detailModel(){
 					
@@ -113,16 +86,9 @@
 						},
 						success : function(result){
 							console.log(result);
-							
 						}
-							
 					});
-				
-					
 				};
-				
-				
-
 			</script>
 			
 			
