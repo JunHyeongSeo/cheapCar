@@ -165,7 +165,8 @@
 		                          <% for(int i = 0; i < list.size(); i++){ %>
 									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
 									<input type="hidden" name="photoNo" value="<%= list.get(i).getPhotoNo() %>"/>
-									<input type="hidden" name="photoNo" value="<%= list.get(i).getPhotoNo() %>"/>
+									<input type="hidden" name="photoCname" value="<%= list.get(i).getPhotoCname() %>"/>
+									<input type="hidden" name="fileLevel" value="<%= list.get(i).getFileLevel() %>"/>
 								  <% }%>
 								  <% if(list.size() != 4 && list.size() != 1){ %>
 								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
@@ -187,7 +188,7 @@
 	                    
 						    <div class="content_add_img">
 	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-	                            대표이미지 - <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            대표이미지 - <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)">
 	                            첨부파일_2 - <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
 	                            첨부파일_3 - <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 3)">
 	                            첨부파일_4 - <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 4)">

@@ -41,7 +41,7 @@ public class EventUpdateController extends HttpServlet {
 			
 			int maxSize = 1024 * 1024 * 10;
 			
-			String savePath = request.getServletContext().getRealPath("sources/event/event_upfiles");
+			String savePath = request.getServletContext().getRealPath("resources/event_upfiles");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
@@ -54,15 +54,20 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
-			ArrayList<EventPhoto> SetList = new ArrayList();
+			ArrayList<EventPhoto> setList = new ArrayList();
 			ArrayList<EventPhoto> inList = new ArrayList();
 			
-			for(int i = 0; i <= 4; i++) {
+			for(EventPhoto ep : setList) {
 				
-				String key = "photo" + i;
-						
-				SetList.add(key);
-			}
+			   ep.setFileLevel(Integer.parseInt(multiRequest.getParameter("photoLevel")));
+			   ep.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
+			   ep.setPhotoCname(multiRequest.getParameter("photoCname"));
+			   
+				setList.add(ep);
+				
+			};
+			
+			System.out.println(setList);
 			
 			
 			
