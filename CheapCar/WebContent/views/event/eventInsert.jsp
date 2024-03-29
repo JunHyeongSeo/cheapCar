@@ -154,7 +154,7 @@
 								<img src="" id="img_4">
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment"></textarea>
+	                            <textarea name="content" class="form-control" rows="20" id="comment" required></textarea>
 	                        </div>
 	                        </div>
 	                    

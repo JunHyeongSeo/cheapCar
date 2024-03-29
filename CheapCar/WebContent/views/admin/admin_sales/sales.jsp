@@ -113,10 +113,25 @@
 						},
 						success : function(result){
 							console.log(result);
+							
 							$('#noneDiv2').show();
-							$('#detailModelName22').html(result['modelName']);
-							$('#detailStartDate22').html(result['startDate']);
-							$('#detailEndDate22').html(result['endDate']);
+							
+							if(result.length==0){
+								$('#detailModelName22').html("");
+								$('#detailStartDate22').html("");
+								$('#detailEndDate22').html("");
+							}
+							else{
+							
+								for(let i = 0; i < result.length; i++){
+									let a = result[i].modelName;
+									let b = result[i].startDate;
+									$('#detailModelName22').html(a);
+									$('#detailStartDate22').html(b);
+									$('#detailEndDate22').html(result[i].endDate);
+								
+								}
+							}
 							
 						}
 					});

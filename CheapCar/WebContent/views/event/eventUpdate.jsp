@@ -164,6 +164,7 @@
 	                          
 		                          <% for(int i = 0; i < list.size(); i++){ %>
 									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
+									<input type="hidden" name="photoNo" value="<%= list.get(i).getPhotoNo() %>"/>
 								  <% }%>
 								  <% if(list.size() != 4 && list.size() != 1){ %>
 								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
