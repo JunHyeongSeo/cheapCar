@@ -133,7 +133,7 @@ public class CarDao {
 		ArrayList<Car> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("adminCarList");
+		String sql = prop.getProperty("selectCarList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -184,6 +184,7 @@ public class CarDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchCar);
 			
 			rset = pstmt.executeQuery();
 			
@@ -201,7 +202,7 @@ public class CarDao {
 		return listCount;
 	}
 	
-	public ArrayList<Car> searchedCarList(Connection conn, PageInfo pi, String checkCar){
+	public ArrayList<Car> searchedCarList(Connection conn, PageInfo pi, String searchCar){
 		
 		ArrayList<Car> list = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -214,8 +215,9 @@ public class CarDao {
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setString(1, searchCar);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset = pstmt.executeQuery();
 			

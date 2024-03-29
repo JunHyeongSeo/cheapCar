@@ -35,7 +35,7 @@ public class AjaxSearchedCarCountController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String searchCar = request.getParameter("searchCarNo");
+		String searchCar = request.getParameter("searchCar");
 		
 		int listCount = new CarService().searchedCarCount(searchCar);
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));

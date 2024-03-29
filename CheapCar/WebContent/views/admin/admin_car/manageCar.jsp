@@ -72,7 +72,7 @@
 	    				let resultStr = '';
 	    				for(let i in list){
 	        				resultStr += '<tr>'
-	        						   + '<td>' + list[i].managementNo + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
 	        						   + '<td>' + list[i].carNo + '</td>'
 	        						   + '<td>' + list[i].carNo + '</td>'
 	        						   + '<td>' + list[i].carNo + '</td>'
@@ -135,20 +135,23 @@
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
 			function searchCarList(){
 				
+				const currentPage = 1;
+				
 				$.ajax({
 					url : 'carList.search',
 					data : {
 						searchCar : document.getElementById('searchCar').value,
-						currentPage : 1
+						currentPage :currentPage
 					},
 					success : function(list){
+						console.log(list);
 						let resultStr = '';
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].managementNo + '</td>'
-	        						   + '<td>' + list[i].status + '</td>'
-	        						   + '<td>' + list[i].status + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="">상세보기</td>'
 	        						   + '</tr>'
 						}
@@ -160,12 +163,12 @@
 				$.ajax({
         			url : 'carCount.search', // 페이징바 만들기 위해서 가져오는 서블릿
         			data : {
-        				currentPage : 1,
+        				currentPage : currentPage,
         				searchCar : document.getElementById('searchCar').value
        				},
         			success : function(pi){
         				let resultStr = '';
-        				
+        				console.log(pi);
         				// 2페이지 이상 보고있으면 이전버튼을 만들겠다.
         				if(pi.currentPage > 1) {
         	       			resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
@@ -217,9 +220,9 @@
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].managementNo + '</td>'
-	        						   + '<td>' + list[i].status + '</td>'
-	        						   + '<td>' + list[i].status + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
+	        						   + '<td>' + list[i].carNo + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
 	        						   + '</tr>'
 						}
