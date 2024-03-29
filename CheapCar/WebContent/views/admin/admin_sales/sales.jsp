@@ -4,6 +4,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
+	// 맴버카
+	
 	
 	//System.out.println(carlist);
 %>
