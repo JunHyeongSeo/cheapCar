@@ -61,24 +61,8 @@ public class MemberService {
 		
 		return list;
 	}
-/////////////////// 일단 회원 현황 상세보기만 하면 됨 ////////////////////////////////
-
 	
-	
-	public Member asmc(String memberId) {
-		
-		Connection conn = getConnection();
-		
-		Member member = new MemberDao().selectMember(conn, memberId);
-
-		close(conn);
-		
-		
-		return member;
-	}
-	
-	
-/////////////////// 블랙리스트 시작 ////////////////////////////////
+	/////////////////// 블랙리스트 시작 ////////////////////////////////
 	
 	public int selectBlackListCount() {
 		
