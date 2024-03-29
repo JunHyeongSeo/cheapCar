@@ -17,8 +17,7 @@ public class MyFileRenamePolicy implements FileRenamePolicy{
 		
 		// 원본 파일명!
 		String originName = originFile.getName();
-		// ex.) aaa.jpg
-		
+
 		// 수정파일명 만들기(규칙) => 최대한 이름이 안겹치게끔!
 		// KH_파일이업로드된시간(년월일시분초)_5자리랜덤값_원본파일확장자
 		/*
