@@ -426,13 +426,20 @@ public class CarDao {
 				
 				carList.add(car);
 			}
+			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
+			
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
+			
 		}
+		
 		return carList;
+		
 	}
 	
 	
@@ -614,32 +621,6 @@ public ArrayList<Car> carcarall(Connection conn){
 		}
 		
 		return car;
-	}
-	
-	public int SelectOptionAndCarList(Connection conn) {
-		
-		int listCount = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			rset.next();
-			
-			listCount = rset.getInt("COUNT(*)");
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return listCount;
-		
 	}
 	
 	

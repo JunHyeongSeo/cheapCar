@@ -154,7 +154,7 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
+                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
 
                     <div class="detail-option">
                         <label>제조사</label>
@@ -214,21 +214,21 @@
 
 					<div class="detail-option">
 
-                         <input type="checkbox" class="form-check-input" value="블랙박스">블랙박스
+                         <input type="checkbox" class="form-check-input" name="BlackBox" value="블랙박스">블랙박스
 
-                         <input type="checkbox" class="form-check-input" value="네비게이션">네비게이션
+                         <input type="checkbox" class="form-check-input" name="Navigation" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" value="주차보조시스템">주차보조시스템
+                         <input type="checkbox" class="form-check-input" name="ParkingSystem" value="주차보조시스템">주차보조시스템
                          
                         </div>
                         
                         <div class="detail-option">
                             
-                            <input type="checkbox" class="form-check-input" value="선루프">선루프
+                            <input type="checkbox" class="form-check-input" name="" value="선루프">선루프
                             
-                            <input type="checkbox" class="form-check-input" value="카시트">카시트
+                            <input type="checkbox" class="form-check-input" name="CarSeat" value="카시트">카시트
                             
-                            <input type="checkbox" class="form-check-input" value="후방카메라">후방카메라
+                            <input type="checkbox" class="form-check-input" name="BackCamera" value="후방카메라">후방카메라
 
 					</div>
 
@@ -276,7 +276,7 @@
 	                        	<%= totalPrice = carPrice + optionPrice %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startRent=<%=startDate%>&endRent=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
                             <% optionPrice = 0; %>
 	                    </div>
                     </div>
@@ -288,7 +288,7 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">Previous</a>
                                 </li>
                             <% } %>
 
@@ -297,7 +297,7 @@
 								<% if(currentPage != i) { %>
 									<li
 									class="page-link"
-									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">
+									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">
 									<%=i%>
 									</li>
 								<% } else { %>
@@ -310,7 +310,7 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startRent=<%=startDate%>&endRent=<%=endDate%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">Next</a>
 	                            </li>
                             <% } %>
 						</ul>

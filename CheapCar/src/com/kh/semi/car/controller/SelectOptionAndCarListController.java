@@ -1,6 +1,8 @@
 package com.kh.semi.car.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.model.vo.PageInfo;
 
 /**
@@ -59,7 +63,9 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
+		// ArrayList<Car> carList = new CarService().selectCarList(pi);
 		
+		// ArrayList<Option> optionList = new CarService().selectOptionList();
 
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		

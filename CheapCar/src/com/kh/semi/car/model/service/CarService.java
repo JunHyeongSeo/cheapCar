@@ -200,18 +200,7 @@ public class CarService {
 		return car;
 	}
 	
-	public int SelectOptionAndCarList() {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int listCount = new CarDao().selectListCount(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return listCount;
-			
-	}
-	
+
 	
 	
 	

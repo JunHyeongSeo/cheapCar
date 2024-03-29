@@ -11,8 +11,8 @@
 	Car car = (Car)request.getAttribute("car");
 	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
 	int hours = (int)request.getAttribute("hours");
-	String startRent = (String)request.getAttribute("startRent");
-    String endRent = (String)request.getAttribute("endRent");
+	String startDate = (String)request.getAttribute("startDate");
+    String endDate = (String)request.getAttribute("endDate");
 %>
 
 <%
@@ -131,7 +131,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
 
-                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startRent=<%=startRent%>&endRent=<%=endRent%>">
+                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startRent=<%=startDate%>&endRent=<%=endDate%>">
                             <div class="modal-header">
                                 <h4 class="modal-title">CheepCar 결제 페이지</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -143,7 +143,7 @@
 					                                대여 모델 : <%=car.getModelName()%> <br>
 					                                차량 연식 : <%=car.getYear()%> <br>
 					                                사용 연료 : <%=car.getFuelName()%> <br>
-					                                대여 기간 : <%= startRent%> - <%= endRent%> <br>
+					                                대여 기간 : <%= startDate%> - <%= endDate%> <br>
 					                                총 가격 : <%= totalPrice%>
                             </div>
                             
