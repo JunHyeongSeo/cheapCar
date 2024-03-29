@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 /**
  * Servlet implementation class EventUpdateController
  */
@@ -27,7 +29,16 @@ public class EventUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request
+		request.setCharacterEncoding("UTF-8");
+		
+		if(ServletFileUpload.isMultipartContent(request)) {
+			
+			int maxSize = 1024 * 1024 * 10;
+			
+			String savePath = request.getServletContext().getRealPath("sources/event/event_upfiles");
+			
+			
+		}
 		
 		
 		
