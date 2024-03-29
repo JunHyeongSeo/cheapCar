@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.kh.semi.car.model.vo.Attachment;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.car.model.vo.Reservation;
@@ -445,7 +446,7 @@ public class CarDao {
 	}
 	
 	
-public ArrayList<Car> carcarall(Connection conn){
+	public ArrayList<Car> carcarall(Connection conn){
 		
 		ArrayList<Car> carList = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -624,7 +625,6 @@ public ArrayList<Car> carcarall(Connection conn){
 		
 		return car;
 	}
-	
 	
 	
 	
