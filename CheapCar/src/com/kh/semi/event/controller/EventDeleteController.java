@@ -39,7 +39,7 @@ public class EventDeleteController extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "이벤트게시물 삭제에 성공하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/list.event");
+			response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
 		} else { 
 			request.setAttribute("errorMsg", "이벤트 삭제에 실패하였습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
