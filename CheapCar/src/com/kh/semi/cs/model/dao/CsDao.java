@@ -74,9 +74,9 @@ public class CsDao {
 			while(rset.next()) {
 				
 				Cs cs = new Cs();
+				cs.setCsNo(rset.getInt("CS_NO"));
 				cs.setCsTitle(rset.getString("CS_TITLE"));
-				cs.setMemberId(rset.getString("MEMBER_ID"));
-				cs.setCsContent(rset.getString("CS_CONTENT"));
+				cs.setMemberName(rset.getString("MEMBER_NAME"));
 				cs.setReplyYn(rset.getString("REPLY_YN"));
 				
 				list.add(cs);
@@ -88,9 +88,76 @@ public class CsDao {
 			close(rset);
 			close(pstmt);
 		}
-		
 		return list;
 	}
+	
+	public int searchedCsCount(Connection conn, String searchId) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedCsCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchId);
+			pstmt.setString(2, searchId);
+			
+			rset = pstmt.executeQuery();
+			
+			rset.next();
+			
+			result = rset.getInt("count(*)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<Cs> searchedCsList(Connection conn, PageInfo pi, String searchId){
+		
+		ArrayList<Cs> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchedCsList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Cs cs = new Cs();
+				cs.setCsNo(rset.getInt("CS_NO"));
+				cs.setCsTitle(rset.getString("CS_TITLE"));
+				cs.setMemberName(rset.getString("MEMBER_NAME"));
+				cs.setReplyYn(rset.getString("REPLY_YN"));
+				
+				list.add(cs);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
 	
 
 }

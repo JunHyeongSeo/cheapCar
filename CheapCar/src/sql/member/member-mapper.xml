@@ -61,9 +61,9 @@
  		  WHERE 
       			RNUM BETWEEN ? AND ?
       		AND
-				MEMBER_ID LIKE '%' || UPPER(?) || '%'
+				(MEMBER_ID LIKE '%' || UPPER(?) || '%'
 		 	 OR	
-		 		MEMBER_ID LIKE '%' || LOWER(?) || '%'
+		 		MEMBER_ID LIKE '%' || LOWER(?) || '%')
 	</entry>
 	<!-- 여기까지 순서 완료!  -->
 	
@@ -115,15 +115,19 @@
 	
 	<entry key="searchedBlackCount">
 		SELECT 
-			  COUNT(*) 
-		  FROM 
-		  	  TB_MEMBER 
-		 WHERE 
-		 	  MEMBER_STATUS = 'B'
-		   AND
-		   	  MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		    OR	
-	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
+				COUNT(*)
+	      FROM 
+				(SELECT 
+			 				*
+		  			FROM 
+		  				  TB_MEMBER 
+					WHERE 
+		 	  				MEMBER_STATUS = 'B')
+		WHERE
+				MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		 	 OR	
+		 		MEMBER_ID LIKE '%' || LOWER(?) || '%'
+		
 	</entry>
 	
 	<entry key="searchedBlackList">
@@ -141,13 +145,12 @@
 				         ORDER 
 						    BY 
 				       			 MEMBER_NO ASC) A
+		    	   WHERE 	MEMBER_ID LIKE '%' || UPPER(?) || '%'
+					  OR	
+	 						MEMBER_ID LIKE '%' || LOWER(?) || '%'
 		       ORDER BY RNUM ASC)
 		WHERE 
 	      	  RNUM BETWEEN ? AND ?
-	     AND 
-	     	  MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		  OR	
-	 		  MEMBER_ID LIKE '%' || LOWER(?) || '%'
 	</entry>
 	
 	

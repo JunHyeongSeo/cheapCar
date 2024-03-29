@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.car.model.vo.Car, com.kh.semi.common.model.vo.PageInfo" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,37 +17,31 @@
 	<%@ include file="../../common/adminMain.jsp" %>
 	
 	<div class="outer">
-        <div id="top1">
-                
-            <form class="form-inline" action="abc.do">
-                <div id="top11" style="display: flex;">
-                    <label for="searchCar" style="margin: 0px 15px;">차량 번호 : </label>
-                    <input type="text" class="form-control" id="searchCar" placeholder="조회하실 차량 번호를 입력해주세요." name="searchCar" style="width: 300px;">
-                    
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchCarList();">조회</button>
-                    <a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
-                </div>
-            </form>
+	
+		<div id="top11" style="display: flex;">
+			<label for="searchCar" style="margin: 0px 15px;">차량 번호 : </label>
+			<input type="text" class="form-control" id="searchCar" placeholder="조회하실 차량 번호를 입력해주세요." name="searchCar" style="width: 300px;">
+			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchCarList();">조회</button>
+			<a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
 		</div>
 
         <div class="container1">
-        
             <h2>차량현황</h2> 
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                    <th>관리번호</th>
-                    <th>차종</th>
-                    <th>차량번호</th>
-                    <th>모델명</th>
-                    <th>상세보기</th>
-                </tr>
-              </thead>
-              <tbody id="conBody">
+			<table class="table table-bordered">
+            	<thead>
+            		<tr>
+            			<th>관리번호</th>
+						<th>차종</th>
+						<th>차량번호</th>
+						<th>모델명</th>
+						<th>상세보기</th>
+					</tr>
+				</thead>
+				<tbody id="conBody">
               
-              </tbody>
-            </table>
-          </div>
+				</tbody>
+			</table>
+		</div>
             
         <div id="paging-area">
         	
@@ -59,6 +52,7 @@
 		</div>
 		
 		<script>
+		
 			window.onload = function(){
 				
 	    		const url = new URL(location.href);
@@ -70,6 +64,7 @@
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
+	    				
 	    				for(let i in list){
 	        				resultStr += '<tr>'
 	        						   + '<td>' + list[i].carNo + '</td>'
@@ -121,7 +116,7 @@
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
 			       					  + "'<%=contextPath%>/manageCar?currentPage="
-			       					  + pi.currentPage + 1
+			       					  + (pi.currentPage + 1)
 			       					  + "'"
 			       					  + '"'
 			       					  + '>'
@@ -141,11 +136,11 @@
 					url : 'carList.search',
 					data : {
 						searchCar : document.getElementById('searchCar').value,
-						currentPage :currentPage
+						currentPage : 1
 					},
 					success : function(list){
-						console.log(list);
 						let resultStr = '';
+						
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].carNo + '</td>'
@@ -155,7 +150,6 @@
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="">상세보기</td>'
 	        						   + '</tr>'
 						}
-						
         				document.getElementById('conBody').innerHTML = resultStr;
 					}
 				});
@@ -168,17 +162,14 @@
        				},
         			success : function(pi){
         				let resultStr = '';
-        				console.log(pi);
-        				// 2페이지 이상 보고있으면 이전버튼을 만들겠다.
+        				
         				if(pi.currentPage > 1) {
         	       			resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
         	       						+ (i-1)
         	       						+ '">이전</button>';
        			        }
         				
-        				// 총 페이지에 대한 버튼을 만들겠다
        			        for(let i = pi.startPage; i <= pi.endPage; i++) {
-       			        	// 현재페이지 말고 다른 페이지 보이는거 있을때, 그거 누르면 그 페이지로 이동할거다.
        			        	if(pi.currentPage != i){
        			        		resultStr += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
        			        					+ i
@@ -186,7 +177,6 @@
        			        				    + i
        			        				    + '</button>';
        			        	}
-       			    	 	// 근데 현재페이지를 내가 보고있으면 버튼이 안눌리게끔 할거다.
        			        	else {
        			        		resultStr += '<button disabled class="btn btn-danger">'
        			        			      + i 
@@ -194,7 +184,6 @@
        			        	}
        			        }
        			        
-        				// 맥스페이지가 안눌려있는 모든 상태라면 다음 버튼을 만들거다
        			        if(pi.currentPage != pi.maxPage){
        			        	resultStr += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
        			        				+ (pi.currentPage + 1)
@@ -206,7 +195,6 @@
 			}
 			
 			function cp(result){
-				// 버튼 눌렀을 때 currentPage 를 바꿔서 ajax를 해당 currentPage로 이동해주는 ajax
 				const currentPage = result.value;
 				
 				$.ajax({
@@ -217,6 +205,7 @@
 					},
 					success : function(list){
 						let resultStr = '';
+						
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].carNo + '</td>'
@@ -269,11 +258,7 @@
         			}
         		});
 			}
-		
 		</script>
-		
-		
-		
 	</div>
 	
 	

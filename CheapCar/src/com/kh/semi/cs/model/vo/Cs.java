@@ -10,14 +10,16 @@ public class Cs {
 	private String status;
 	private int memberNo;
 	private int replyNo;
-	private String memberId;
+	private String memberName;
 	
-	public String getMemberId() {
-		return memberId;
+	
+
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	public Cs() {
