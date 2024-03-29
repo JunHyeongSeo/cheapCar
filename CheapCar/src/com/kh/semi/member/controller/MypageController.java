@@ -41,7 +41,7 @@ public class MypageController extends HttpServlet {
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		System.out.println(loginUser);
+		//System.out.println(loginUser);
 		
 		
 		ArrayList<Car> carlist = new MemberService().reservation(loginUser);

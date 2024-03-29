@@ -124,6 +124,11 @@
     .form-control{
         height: auto;
     }
+    .content_btn{
+        padding-top: 20px;
+    	padding-bottom: 100px;
+    }
+    
 	
     
 
@@ -159,6 +164,7 @@
 	                          
 		                          <% for(int i = 0; i < list.size(); i++){ %>
 									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
+									<input type="hidden" name="photoNo" value="<%= list.get(i).getPhotoNo() %>"/>
 								  <% }%>
 								  <% if(list.size() != 4 && list.size() != 1){ %>
 								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
@@ -188,7 +194,7 @@
 						    </div>
                     
 
-	                        <div class="content_btn" align="center">
+	                        <div class="content_btn" align="center" >
 	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>

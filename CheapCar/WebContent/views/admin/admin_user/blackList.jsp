@@ -55,18 +55,14 @@
 	<%@ include file="../../common/adminMain.jsp" %>
 	
     <div class="outer">
-        <div id="top1">
-            <form class="searchBlack" action="">
-                <div id="top11" style="display: flex;">
-                    <label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
-                    <input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchBlack(this);">조회</button>
-                </div>
-            </form>
-        </div>
+    	<div id="top11" style="display: flex;">
+			<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
+			<input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
+			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchBlack(this);">조회</button>
+		</div>
 		
 		<div class="container">
-		<h2>블랙리스트</h2> 
+			<h2>블랙리스트</h2> 
             <table class="table table-bordered">
             	<thead>
             		<tr>
@@ -152,7 +148,7 @@
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
 			       					   + "'<%=contextPath%>/blackList?currentPage="
-			       					   + pi.currentPage + 1
+			       					   + (pi.currentPage + 1)
 			       					   + "'"
 			       					   + '"'
 			       					   + '>'
@@ -197,7 +193,6 @@
        				},
         			success : function(pi){
         				let resultStr = '';
-        				console.log(pi);
         				
         				if(pi.currentPage > 1) {
         	       			resultStr  += '<button class="btn btn-outline-danger" onclick="cp(this);" value="'
@@ -250,7 +245,7 @@
 		     						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
 		     						   + '</tr>'
 						}
-						document.getElementById('conbody').innerHTML = resultStr;
+						document.getElementById('conBody').innerHTML = resultStr;
 					}
 				});
 				
@@ -294,12 +289,7 @@
 					}
 				});
 			}
-			
-			
-			
-			
-			
-        	</script>
+       	</script>
 	</div>
 	
 </body>

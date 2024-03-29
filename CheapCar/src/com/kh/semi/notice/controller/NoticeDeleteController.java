@@ -34,7 +34,7 @@ public class NoticeDeleteController extends HttpServlet {
 		// Service호출    /  + noticeNo
 		if(new NoticeService().delete(request.getParameter("noticeNo")) > 0 ) {
 			request.getSession().setAttribute("alertMsg", "삭제가 완료되었습니다." );
-			response.sendRedirect(request.getContextPath() + "/list.notice");
+			response.sendRedirect(request.getContextPath() + "/list.notice?currentPage=1");
 		} else {
 			request.setAttribute("errorMsg", "삭제실패~");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

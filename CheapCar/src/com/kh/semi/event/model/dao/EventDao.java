@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.event.model.vo.EventBoard;
 import com.kh.semi.event.model.vo.EventPhoto;
 
@@ -85,15 +86,23 @@ public class EventDao {
 	}//
 	
 	
-	public ArrayList<EventBoard> selectEventList(Connection conn){
+	public ArrayList<EventBoard> selectEventList(Connection conn, PageInfo pi){
 		
 		ArrayList<EventBoard> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectEventList");
 		
+		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -122,6 +131,8 @@ public class EventDao {
 		return list;
 	}//
 	
+	
+	
 	public int increaseCount(Connection conn, int eventNo) {
 		
 		int result = 0;
@@ -146,6 +157,39 @@ public class EventDao {
 		
 		return result;
 	}
+	
+	
+	
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		
+		
+		
+		return listCount;
+	}//
+	
+	
 	
 	public EventBoard selectEvent(Connection conn, int eventNo) {
 		

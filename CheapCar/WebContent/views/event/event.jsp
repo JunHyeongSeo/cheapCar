@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard" %>    
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>    
 
 <%
 	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
 %>    
     
     
@@ -161,23 +168,32 @@
 							<% } %>
 						<% } %>
 						
-						
 					</ul>
-				</div>
-
-				
-				
-
-
-				</div>            
+            
 			 </div>
 		  </div>
 
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<button class="btn btn-outline-info" style="color:#6caddf">이전</button>
-			<button class="btn btn-outline-info" style="color:#6caddf">1</button>
-			<button class="btn btn-outline-info" style="color:#6caddf">다음</button>
-	    </div>			  
+			<% if(currentPage > 1) { %>	
+	        <button class="btn btn-outline-info" style="color:#6caddf"
+		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage - 1%>'">이전</button>
+            <% } %>
+	     	<% for(int i = startPage; i <= endPage; i++){%>
+	     		<% if(currentPage != i){ %>
+		     		<button class="btn btn-outline-info" style="color:#6caddf"
+		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=i%>'"><%= i %></button>
+		     	<% } else { %>
+		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
+		     	<% } %>	
+		     	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>	
+			<button class="btn btn-outline-info" style="color:#6caddf"
+	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
+	     	<%} %>
+		   
+	    </div>			  			  
 	</div>
 	   
 	<script>
