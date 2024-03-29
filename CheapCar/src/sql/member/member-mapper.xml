@@ -54,16 +54,16 @@
 				                *
 				          FROM 
 				                TB_MEMBER
+				          WHERE (MEMBER_ID LIKE '%' || UPPER(?) || '%'
+		 	 OR	
+		 		MEMBER_ID LIKE '%' || LOWER(?) || '%')
 				         ORDER 
 						    BY 
 						       MEMBER_NO ASC) A
 	    	   ORDER BY RNUM ASC)
  		  WHERE 
       			RNUM BETWEEN ? AND ?
-      		AND
-				(MEMBER_ID LIKE '%' || UPPER(?) || '%'
-		 	 OR	
-		 		MEMBER_ID LIKE '%' || LOWER(?) || '%')
+      		
 	</entry>
 	<!-- 여기까지 순서 완료!  -->
 	

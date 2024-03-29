@@ -17,13 +17,13 @@ import com.kh.semi.member.model.vo.Member;
  * Servlet implementation class AdminSelectMemberController
  */
 @WebServlet("/memberDetail.do")
-public class AjaxSelectMemController extends HttpServlet {
+public class AjaxDetailMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxSelectMemController() {
+    public AjaxDetailMemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +34,12 @@ public class AjaxSelectMemController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberId = request.getParameter("memberId");
-		
+
 		Member m = new MemberService().selectMember(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
 		new Gson().toJson(m, response.getWriter());
-		
-		
 	}
 
 	/**

@@ -79,10 +79,12 @@
 		
 		</div>
 		
-		<div id="container2">
-			<tbody id="con2Body">
-				
-			</tbody>
+		<div class="container">
+			<table class="table table-bordered">
+				<tbody id="con2Body">
+					
+				</tbody>
+			</table>
 		
 		</div>
 		
@@ -102,13 +104,10 @@
 	    				
 	    				for(let i in list){
 	    					resultStr += '<tr>'
-		    						   + '<input type="hidden" name="memberId" id="memberId" value="'
-									   + list[i].memberId
-									   + '">'
-	        						   +'<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this);">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
 	    				document.getElementById('conBody').innerHTML = resultStr;
@@ -182,13 +181,10 @@
 						
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td><input type="hidden" name="memberId" id="memberId" value="'
-									   + list[i].memberId
-									   + '">"'
-									   + list[i].memberNo + '</td>'
+									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this);">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
@@ -254,13 +250,10 @@
 						let resultStr = '';
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td><input type="hidden" name="memberId" id="memberId" value="'
-									   + list[i].memberId
-									   + '">"'
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this);">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
@@ -312,38 +305,36 @@
 				$.ajax({
 					url : "memberDetail.do",
 					data : {
-						memberId : document.getElementById('memberId').value
+						memberId : document.getElementById(result).value
 					},
 					success : function(m){
-						console.log(m);
 						let resultStr = '';
 						
 						resultStr += "<tr>"
 								   + "<td>회원번호</td>"
-								   + "<td><input type='text' value='" + m.memberNo + "' name='" + m.memberNo + "'</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
-								   + "<td>회원번호</td>"
-								   + "<td>" + m.memberNo + "</td>"
+								   + "<td><input type='text' value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
 								   + "</tr>"
-						
-						
+								   + "<tr>"
+								   + "<td>이름</td>"
+								   + "<td><input type='text' value='" + m.memberName + "' name='" + m.memberName + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>아이디</td>"
+								   + "<td><input type='text' value='" + m.memberId + "' name='" + m.memberId + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>회원상태</td>"
+								   + "<td><input type='text' value='" + m.memberStatus + "' name='" + m.memberStatus + "'></td>"
+								   + "</tr>"
+								   + "<td>연락처</td>"
+								   + "<td><input type='text' value='" + m.phone + "' name='" + m.phone + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>가입일자</td>"
+								   + "<td><input type='text' value='" + m.enrollDate + "' name='" + m.enrollDate + "'></td>"
+								   + "</tr>"
+								   
+						document.getElementById('con2Body').innerHTML = resultStr;
 					}
 					
 					

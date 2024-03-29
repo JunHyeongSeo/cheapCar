@@ -8,9 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Attachment;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.model.vo.PageInfo;
@@ -54,7 +54,6 @@ public class SelectedCarListController extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		
 		listCount = new CarService().selectLocationListCount(locations);
-		
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
