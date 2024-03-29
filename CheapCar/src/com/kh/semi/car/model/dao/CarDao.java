@@ -403,10 +403,10 @@ public class CarDao {
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
 			pstmt.setString(1, locations);
-			pstmt.setString(2, endDate);
-			pstmt.setString(3, startDate);
-			pstmt.setInt(4, startRow);
-			pstmt.setInt(5, endRow);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(4, endDate);
+			pstmt.setString(5, startDate);
 
 			rset = pstmt.executeQuery();
 			

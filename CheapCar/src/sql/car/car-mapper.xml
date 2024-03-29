@@ -319,20 +319,6 @@
 		                    ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
 		                 WHERE
 		                        LOCATION_NAME = ?
-		                   AND
-		                         MANAGEMENT_NO 
-		                NOT IN
-		                        (SELECT
-		                                C.MANAGEMENT_NO
-		                          FROM
-		                                TB_CAR C
-		                          JOIN
-		                                TB_RESERVATION R
-		                            ON  (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
-		                         WHERE
-		                                <![CDATA[TO_CHAR(START_DATE, 'YYYY-MM-DD HH24:MI') <= ? ]]>
-		                           AND
-		                                <![CDATA[TO_CHAR(END_DATE, 'YYYY-MM-DD HH24:MI') >= ?) ]]>
 		                 ORDER
 		                    BY
 		                        C.MANAGEMENT_NO))
@@ -340,6 +326,21 @@
 		                RNUM BETWEEN ? AND ?
 		           AND
 		                STATUS = 'Y'
+				   AND
+		                         MANAGEMENT_NO 
+                   NOT 
+					IN
+                        (SELECT
+                                C.MANAGEMENT_NO
+                          FROM
+                                TB_CAR C
+                          JOIN
+                                TB_RESERVATION R
+                            ON  (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+                         WHERE
+                                <![CDATA[TO_CHAR(START_DATE, 'YYYY-MM-DD HH24:MI') <= ? ]]>
+                           AND
+                                <![CDATA[TO_CHAR(END_DATE, 'YYYY-MM-DD HH24:MI') >= ?) ]]>
 		         GROUP 
 		            BY 
 		                MANAGEMENT_NO,
