@@ -250,10 +250,6 @@ public class CarDao {
 		return list;
 	}
 	
-	
-	
-	
-	
 	/* 근경 끝 */
 	
 	public ArrayList<Option> selectOptionList(Connection conn){
@@ -364,8 +360,6 @@ public class CarDao {
 		return optionList;
 	}
 	
-	
-	
 	public int selectLocationListCount(Connection conn,String locations) {
 	
 		int listCount = 0;
@@ -413,9 +407,7 @@ public class CarDao {
 			pstmt.setString(3, startDate);
 			pstmt.setInt(4, startRow);
 			pstmt.setInt(5, endRow);
-			
-			System.out.println( startDate );
-			System.out.println( endDate );
+
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -436,13 +428,20 @@ public class CarDao {
 				
 				carList.add(car);
 			}
+			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
+			
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
+			
 		}
+		
 		return carList;
+		
 	}
 	
 	
@@ -542,18 +541,12 @@ public ArrayList<Car> carcarall(Connection conn){
 					//System.out.println(rset.getString("MEMBER_ID"));
 				}
 				
-				
-				
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				JDBCTemplate.close(rset);
 				JDBCTemplate.close(pstmt);
 			}
-			
-			
-		
 		
 		return car;
 	}
@@ -629,12 +622,8 @@ public ArrayList<Car> carcarall(Connection conn){
 			e.printStackTrace();
 		}
 		
-		
-		
 		return car;
 	}
-	
-	
 	
 	
 	

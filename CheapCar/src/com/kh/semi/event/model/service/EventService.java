@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.event.model.dao.EventDao;
 import com.kh.semi.event.model.vo.EventBoard;
 import com.kh.semi.event.model.vo.EventPhoto;
@@ -28,16 +29,29 @@ public class EventService {
 		return (eBoardResult * ePhotoResult);
 	}//
 	
-	public ArrayList<EventBoard> selectEventList() {
+	public int selectListCount() {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<EventBoard> list = new EventDao().selectEventList(conn);
+		int listCount = new EventDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return listCount;
+	}//
+	
+	public ArrayList<EventBoard> selectEventList(PageInfo pi) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EventBoard> list = new EventDao().selectEventList(conn, pi);
 		
 		JDBCTemplate.close(conn);
 		
 		return list;
 	}//
+	
 	
 	public int increaseCount(int eventNo) {
 		

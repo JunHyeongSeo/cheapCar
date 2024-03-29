@@ -4,6 +4,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
+	// 맴버카
+	
 	
 	//System.out.println(carlist);
 %>
@@ -68,7 +70,32 @@
 				</select>
 			</div>
 			
+			<div id="noneDiv2" class="container2" style="text-align:center; display: none ; line-height:64px;">
+			<div><button onclick="show2();" id="showDiv2" style="float: right; height: 30px; text-align:center; display: flex;align-items: center; margin-bottom: 20px;">상세내역 닫기</button></div>
+			<table class="table table-bordered">
 			
+			<thead>
+			</thead>
+				<tbody>
+					<tr>
+						<th>모델명</th>
+						<td id="detailModelName22"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+					<tr>
+						<th>대여한 날짜</th>
+						<td id="detailStartDate22"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+					<tr>
+						<th>반납 날짜</th>
+						<td id="detailEndDate22"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	
 
 
 			<script>
@@ -86,10 +113,23 @@
 						},
 						success : function(result){
 							console.log(result);
+							$('#noneDiv2').show();
+							$('#detailModelName22').html(result['modelName']);
+							$('#detailStartDate22').html(result['startDate']);
+							$('#detailEndDate22').html(result['endDate']);
+							
 						}
 					});
+					
 				};
+
+				function show2(){
+					$('#noneDiv2').hide();
+				}
 			</script>
+			
+			
+			
 			
 			
 			
@@ -171,6 +211,9 @@
 				</script>
 			</div>
 		</div>
+			
+			
+			
 			
 			
 			

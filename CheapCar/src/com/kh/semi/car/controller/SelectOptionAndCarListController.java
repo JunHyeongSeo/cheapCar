@@ -1,4 +1,4 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.car.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.event.model.service.EventService;
-import com.kh.semi.event.model.vo.EventBoard;
-import com.kh.semi.notice.model.service.NoticeService;
 
 /**
- * Servlet implementation class EventListController
+ * Servlet implementation class SelectOptionAndCarListController
  */
-@WebServlet("/list.event")
-public class EventListController extends HttpServlet {
+@WebServlet("/selectOptionAndCarList.do")
+public class SelectOptionAndCarListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventListController() {
+    public SelectOptionAndCarListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,45 +33,41 @@ public class EventListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		int listCount;
+		int currentPage;
+		int pageLimit; 
+		int boardLimit;
 		
-		int listCount = 0;
-		int currentPage= 0;
-		int pageLimit= 0;
-		int boardLimit= 0;
+		int maxPage;
+		int startPage;
+		int endPage; 
 		
-		int maxPage= 0;
-		int startPage= 0;
-		int endPage= 0;
-		
-		listCount = new NoticeService().selectListCount();
+		listCount = new CarService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit = 5;
-		boardLimit = 6;
+		
+		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
-		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
 		endPage = startPage + pageLimit - 1;
 		
 		if(endPage > maxPage) {
 			endPage = maxPage;
-		}
+		};
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
-		//값
-		ArrayList<EventBoard> list = new EventService().selectEventList(pi);
+		// ArrayList<Car> carList = new CarService().selectCarList(pi);
 		
-		request.setAttribute("list", list);
-		request.setAttribute("pi", pi);
-		
-		
-		request.getRequestDispatcher("views/event/event.jsp").forward(request, response);
-		
-		
+		// ArrayList<Option> optionList = new CarService().selectOptionList();
+
+		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
 	}
 

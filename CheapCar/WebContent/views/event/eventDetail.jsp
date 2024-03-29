@@ -116,6 +116,10 @@
 		font-size: 60px;
 		color: #6caddf;
 	}
+    .content_btn{
+        padding-top: 20px;
+    	padding-bottom: 100px;
+    }
     
 
 </style>
@@ -137,6 +141,7 @@
                             
                         <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
                         <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
+                        <input type="hidden" name="userNo" value="<%= eBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
@@ -144,7 +149,7 @@
                         <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 
+                        <div class="img-area">
                            	<% for(int i = 0; i < list.size(); i++) { %>
                               	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
 						    <% } %>
@@ -154,7 +159,7 @@
 
 
                     <div class="content_btn" align="center">
-                        <a href="<%= contextPath%>/list.event" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="<%= contextPath%>/list.event?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
                         	<a href="<%= contextPath%>/updateForm.event?eventNo=<%= eBoard.getEventNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.event?eventNo=<%= eBoard.getEventNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>

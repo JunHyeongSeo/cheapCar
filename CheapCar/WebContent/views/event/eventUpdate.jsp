@@ -124,6 +124,11 @@
     .form-control{
         height: auto;
     }
+    .content_btn{
+        padding-top: 20px;
+    	padding-bottom: 100px;
+    }
+    
 	
     
 
@@ -144,6 +149,7 @@
                     <div class="content_outer">
                         <form action="<%=contextPath%>/update.event" method="post" id="insert-form" enctype="multipart/form-data">
                             <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
+                            <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo() %>" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
@@ -155,9 +161,21 @@
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
-	                          <% for(int i = 0; i < list.size(); i++){ %>
-								<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
-							  <% }%>
+	                          
+		                          <% for(int i = 0; i < list.size(); i++){ %>
+									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
+								  <% }%>
+								  <% if(list.size() != 4 && list.size() != 1){ %>
+								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
+										<img src=" "  id="img_<%=i%>"/>
+								  	<% }%>
+								  <%} %>
+								  <% if(list.size() == 1){ %>
+								  	<% for(int i = 1 + list.size(); i < 4 + list.size(); i++){ %>
+										<img src=" "  id="img_<%=i%>"/>
+								  	<% }%>
+								  <%} %>
+							  
 								
 							</div>
 	                        <div class="text-area">
@@ -175,7 +193,7 @@
 						    </div>
                     
 
-	                        <div class="content_btn" align="center">
+	                        <div class="content_btn" align="center" >
 	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
@@ -212,6 +230,7 @@
                     
                 }
             }
+             
             else{
             	const str = ''
             	
@@ -222,6 +241,7 @@
             		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
+            
         }
         
         
