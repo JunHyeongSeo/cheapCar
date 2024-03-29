@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.semi.car.model.dao.CarDao;
+import com.kh.semi.car.model.vo.Attachment;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.car.model.vo.Reservation;
@@ -193,11 +194,22 @@ public class CarService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> car = new CarDao().modelSale(conn, checkmodels);
+		ArrayList<Car> carList = new CarDao().modelSale(conn, checkmodels);
 		
 		JDBCTemplate.close(conn);
 		
-		return car;
+		return carList;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<Attachment> atList = new CarDao().selectAttachmentList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return atList;
 	}
 	
 
