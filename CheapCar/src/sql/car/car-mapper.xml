@@ -95,7 +95,6 @@
 	</entry>
 	
 	<entry key="selectOptionList">
-	
 		SELECT
 		        MANAGEMENT_NO,
 		        O.OPTION_NO,
@@ -220,7 +219,7 @@
 	
 	
 	<!-- 근경 끝 -->
-	
+	<!-- 
 	<entry key="selectOptionList">
 	
 		SELECT
@@ -238,7 +237,7 @@
 		        MANAGEMENT_NO
 
 	</entry>
-	
+	 -->
 	<entry key="selectLocationListCount">
 		SELECT
 		        COUNT(*)
