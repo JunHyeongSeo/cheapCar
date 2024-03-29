@@ -50,8 +50,8 @@ public class SelectedCarListController extends HttpServlet {
 		
 		String locations = request.getParameter("locations"); 
 		
-		String startRent = request.getParameter("startRent");
-		String endRent = request.getParameter("endRent");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 		
 		listCount = new CarService().selectLocationListCount(locations);
 		
@@ -74,7 +74,7 @@ public class SelectedCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Car> carList = new CarService().selectedCarList(pi, locations);
+		ArrayList<Car> carList = new CarService().selectedCarList(pi, locations, startDate, endDate);
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 		
@@ -83,8 +83,8 @@ public class SelectedCarListController extends HttpServlet {
 		request.setAttribute("pageInfo", pi);
 		request.setAttribute("hours", hours);
 		request.setAttribute("locations", locations);
-		request.setAttribute("startRent", startRent);
-		request.setAttribute("endRent", endRent);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
 		
 		request.getRequestDispatcher("views/car/selectedCarList.jsp").forward(request, response);
 		

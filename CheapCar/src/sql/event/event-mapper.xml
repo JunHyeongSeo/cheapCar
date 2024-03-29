@@ -35,8 +35,8 @@
 		       TB_EVENT_PHOTO
 		       (
 		       EVENT_PHOTO_NO,
-		       EVENT_PHOTO_ONAME,
-		       EVENT_PHOTO_CNAME,
+		       EVENT_PHOTO_ORIGINNAME,
+		       EVENT_PHOTO_CHANGENAME,
 		       EVENT_PHOTO_ADDRESS,
 		       EVENT_NO,
 		       STATUS,
@@ -60,7 +60,7 @@
 		       TB_EVENT_BOARD.EVENT_NO,
 		       EVENT_TITLE,
 		       COUNT,
-		       EVENT_PHOTO_ADDRESS || '/' || EVENT_PHOTO_CNAME "TITLE_IMG"
+		       EVENT_PHOTO_ADDRESS || '/' || EVENT_PHOTO_CHANGENAME "TITLE_IMG"
 		  FROM
 		       TB_EVENT_BOARD
 		  JOIN
@@ -109,8 +109,8 @@
 	<entry key="selectEventPhoto">
 		SELECT
 		       EVENT_PHOTO_NO,
-		       EVENT_PHOTO_ONAME,
-		       EVENT_PHOTO_CNAME,
+		       EVENT_PHOTO_ORIGINNAME,
+		       EVENT_PHOTO_CHANGENAME,
 		       EVENT_PHOTO_ADDRESS,
 		       EVENT_NO,
 		       STATUS,
