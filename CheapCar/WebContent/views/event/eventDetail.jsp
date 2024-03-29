@@ -137,6 +137,7 @@
                             
                         <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
                         <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
+                        <input type="hidden" name="userNo" value="<%= eBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
