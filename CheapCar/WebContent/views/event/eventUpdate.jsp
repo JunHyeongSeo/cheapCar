@@ -160,9 +160,10 @@
 									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
 								  <% }%>
 								  <% if(list.size() != 4){ %>
-								  <% for(int i = 1 + list.size(); i < 4 - list.size(); i++){ %>
-									<img src="" id="img_<%=i+1%>"/>
-								  <% }%>
+								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
+										<img src=" "  id="img_<%=i%>"/>
+								  	<% }%>
+								  <%} %>
 							  
 								
 							</div>
@@ -173,10 +174,10 @@
 	                    
 						    <div class="content_add_img">
 	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
-	                            대표이미지 - <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 4)" required>
-	                            첨부파일_2 - <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 3)"> <br><br>
-	                            첨부파일_3 - <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 2)">
-	                            첨부파일_4 - <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 1)">
+	                            대표이미지 - <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            첨부파일_2 - <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
+	                            첨부파일_3 - <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 3)">
+	                            첨부파일_4 - <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 4)">
 
 						    </div>
                     
@@ -206,13 +207,13 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_4').attr('src', e.target.result); break; 
+                    	case 1 : $('#img_1').attr('src', e.target.result); break; 
                     	                            			  
-                    	case 2 : $('#img_3').attr('src', e.target.result); break;
+                    	case 2 : $('#img_2').attr('src', e.target.result); break;
                     			 
-                    	case 3 : $('#img_2').attr('src', e.target.result); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); break;
                     	   	      
-                    	case 4 : $('#img_1').attr('src', e.target.result); break;
+                    	case 4 : $('#img_4').attr('src', e.target.result); break;
                     	         
                     }
                     
@@ -223,10 +224,10 @@
             	const str = ''
             	
             	switch(num){
-            		case 1 : $('#img_4').attr('src', str); break;
-            		case 2 : $('#img_3').attr('src', str); break;
-            		case 3 : $('#img_2').attr('src', str); break;
-            		case 4 : $('#img_1').attr('src', str); break;
+            		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
             
