@@ -48,13 +48,12 @@ public class AjaxSearchedBlackListController extends HttpServlet {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Member> list = new MemberService().searchedBlackList(pi, searchId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
-		new Gson().toJson(list,response.getWriter());
+		new Gson().toJson(list, response.getWriter());
 		
 		
 	}
