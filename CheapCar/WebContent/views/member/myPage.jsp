@@ -121,7 +121,40 @@
         <div class="inline" id="mymodify"><a href="<%=contextPath %>/update" >개인정보수정</a></div>
     </div>
     
-	    
+	   
+	<% if(carlist.isEmpty()) { %>
+	
+	<div class="container1" >
+		<form method="get" action="<%=contextPath%>/reservation.my">
+			<h4>예약내역</h4>
+		  	<table class="table" id="aa">
+		    	<thead class="thead-dark">
+		      		<tr>
+			        	<th>차량번호</th>
+			        	<th>모델명</th>
+		        		<th>대여장소</th>
+						<th>예약일자</th>
+						<th>반납일자</th>
+		      	</tr>
+			    </thead>
+			    <tbody>
+			    	
+			    	<tr>
+				        <td colsapn=4>예약내역이 존재하지 않습니다</td>
+				        <td></td>
+			        	<td></td>
+			        	<td></td>
+			      	</tr>
+			      
+			   </tbody>
+		  </table>
+	  </form>
+  </div>
+	
+	
+	
+		
+	<% } else { %>
 
 
 	<div class="container1" >
@@ -157,58 +190,58 @@
 
   <div id="con23">
   
-  <div class="container2">
-		<h4>마일리지</h4>
-	  	<table class="table" id="aa">
-	    	<thead class="thead-dark">
-	      		<tr>
-		        	<th>적립날짜</th>
-		        	<th>마일리지</th>
-	      		</tr>
-		    </thead>
-		    <tbody>
-		    <% for(Car car : carlist) { %>
-		    	<tr>
-			        <td><%= car.getMileageDate() %></td>
-			        <td><%= car.getMileage() %></td>
-		      	</tr>
-		    <% } %>
-		   </tbody>
-	  </table>
-  </div>
+	  <div class="container2">
+			<h4>마일리지</h4>
+		  	<table class="table" id="aa">
+		    	<thead class="thead-dark">
+		      		<tr>
+			        	<th>적립날짜</th>
+			        	<th>마일리지</th>
+		      		</tr>
+			    </thead>
+			    <tbody>
+			    <% for(Car car : carlist) { %>
+			    	<tr>
+				        <td><%= car.getMileageDate() %></td>
+				        <td><%= car.getMileage() %></td>
+			      	</tr>
+			    <% } %>
+			   </tbody>
+		  </table>
+	  </div>
+	  
+	  <div class="container3">
+			<h4>나의 문의내역</h4>
+		  	<table class="table" id="aa">
+		    	<thead class="thead-dark">
+		      		<tr>
+			        	<th>문의 번호</th>
+			        	<th>제목</th>
+		        		<th>문의 일자</th>
+		        		<th>문의 답변 여부</th>
+		      		</tr>
+			    </thead>
+			    <tbody>
+			    <% for(Car car : carlist) { %>
+			    	<tr>
+				        <td><%= car.getCsNo()%></td>
+				        <td><%= car.getCsTitle()%></td>
+			        	<td><%= car.getCreateDate() %></td>
+			        	<td><%= car.getReplyYn() %></td>
+			      	</tr>
+			      	<% } %>
+			   </tbody>
+		  	</table>
+	  	</div>
+
+  	</div>
   
-  <div class="container3">
-		<h4>나의 문의내역</h4>
-	  	<table class="table" id="aa">
-	    	<thead class="thead-dark">
-	      		<tr>
-		        	<th>문의 번호</th>
-		        	<th>제목</th>
-	        		<th>문의 일자</th>
-	        		<th>문의 답변 여부</th>
-	      		</tr>
-		    </thead>
-		    <tbody>
-		    <% for(Car car : carlist) { %>
-		    	<tr>
-			        <td><%= car.getCsNo()%></td>
-			        <td><%= car.getCsTitle()%></td>
-		        	<td><%= car.getCreateDate() %></td>
-		        	<td><%= car.getReplyYn() %></td>
-		      	</tr>
-		      	<% } %>
-		   </tbody>
-	  </table>
-  </div>
-
-  </div>
   
-  
+	<% } %>
 
 
 
-
-</div>
+	</div>
 
 
 

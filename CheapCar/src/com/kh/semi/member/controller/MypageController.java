@@ -41,20 +41,25 @@ public class MypageController extends HttpServlet {
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		
+		System.out.println(loginUser);
 		
 		
 		ArrayList<Car> carlist = new MemberService().reservation(loginUser);
 		
 		//System.out.println(carlist);
 		
-		if(carlist.isEmpty()) {
-			
-		} else {
-			
-			request.setAttribute("list", carlist);
-			
-		}
+//		if(carlist.isEmpty()) {
+//			Car car = new Car();
+//			
+//			carlist.add(car);
+//			request.setAttribute("list", arg1);
+//		} else {
+//			
+//			request.setAttribute("list", carlist);
+//			
+//		}
+		
+		request.setAttribute("list", carlist);
 		
 		
 		
