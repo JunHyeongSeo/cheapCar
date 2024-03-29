@@ -481,6 +481,7 @@ public class CarDao {
 				car.setMemberName(rset.getString("MEMBER_NAME"));
 				car.setPhone(rset.getString("PHONE"));
 				car.setEmail(rset.getString("EMAIL"));
+				car.setTotalPrice(rset.getInt("TOTAL_PRICE"));
 				
 				carList.add(car);
 			}

@@ -1,6 +1,8 @@
 package com.kh.semi.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.kh.semi.common.MyFileRenamePolicy;
+import com.kh.semi.event.model.vo.EventPhoto;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class EventUpdateController
@@ -35,7 +41,40 @@ public class EventUpdateController extends HttpServlet {
 			
 			int maxSize = 1024 * 1024 * 10;
 			
-			String savePath = request.getServletContext().getRealPath("sources/event/event_upfiles");
+			String savePath = request.getServletContext().getRealPath("resources/event_upfiles");
+			
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			
+			//----------------------
+			
+			int memberNo = Integer.parseInt(multiRequest.getParameter("userNo"));
+			int eventNo = Integer.parseInt(multiRequest.getParameter("eventNo"));
+			String eventTitle = multiRequest.getParameter("title");
+			String eventConetent = multiRequest.getParameter("content");
+			
+			//----------------------
+			
+			ArrayList<EventPhoto> setList = new ArrayList();
+			ArrayList<EventPhoto> inList = new ArrayList();
+			
+			for(EventPhoto ep : setList) {
+				
+			   ep.setFileLevel(Integer.parseInt(multiRequest.getParameter("photoLevel")));
+			   ep.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
+			   ep.setPhotoCname(multiRequest.getParameter("photoCname"));
+			   
+				setList.add(ep);
+				
+			};
+			
+			System.out.println(setList);
+			
+			
+			
+			
+			
+			
+			
 			
 			
 		}

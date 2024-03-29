@@ -79,8 +79,12 @@
 		
 		</div>
 		
-		<div class="container2">
-
+		<div class="container">
+			<table class="table table-bordered">
+				<tbody id="con2Body">
+					
+				</tbody>
+			</table>
 		
 		</div>
 		
@@ -100,10 +104,10 @@
 	    				
 	    				for(let i in list){
 	    					resultStr += '<tr>'
-	        						   +'<td>' + list[i].memberNo + '</td>'
+	        						   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
 	    				document.getElementById('conBody').innerHTML = resultStr;
@@ -180,13 +184,12 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
 					}
 				});
-				
 				
 				$.ajax({
         			url : 'memberCount.search', // 페이징바 만들기 위해서 가져오는 서블릿
@@ -250,7 +253,7 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
@@ -295,6 +298,64 @@
         			}
         		});
 			}
+			
+			function memberDetail(result){
+				
+				// 4. 상세보기 버튼 누르면 #container2 에 html 추가
+				$.ajax({
+					url : "memberDetail.do",
+					data : {
+						memberId : document.getElementById(result).value
+					},
+					success : function(m){
+						let resultStr = '';
+						
+						resultStr += "<tr>"
+								   + "<td>회원번호</td>"
+								   + "<td><input type='text' value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>이름</td>"
+								   + "<td><input type='text' value='" + m.memberName + "' name='" + m.memberName + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>아이디</td>"
+								   + "<td><input type='text' value='" + m.memberId + "' name='" + m.memberId + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>회원상태</td>"
+								   + "<td><input type='text' value='" + m.memberStatus + "' name='" + m.memberStatus + "'></td>"
+								   + "</tr>"
+								   + "<td>연락처</td>"
+								   + "<td><input type='text' value='" + m.phone + "' name='" + m.phone + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>가입일자</td>"
+								   + "<td><input type='text' value='" + m.enrollDate + "' name='" + m.enrollDate + "'></td>"
+								   + "</tr>"
+								   
+						document.getElementById('con2Body').innerHTML = resultStr;
+					}
+					
+					
+					
+					
+					
+				})
+				
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
         	</script>
 	</div>
 		
