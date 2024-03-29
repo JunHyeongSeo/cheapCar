@@ -116,6 +116,10 @@
 		font-size: 60px;
 		color: #6caddf;
 	}
+    .content_btn{
+        padding-top: 20px;
+    	padding-bottom: 100px;
+    }
     
 
 </style>
