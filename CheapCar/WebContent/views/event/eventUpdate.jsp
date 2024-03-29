@@ -159,8 +159,9 @@
 		                          <% for(int i = 0; i < list.size(); i++){ %>
 									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
 								  <% }%>
-								  <% for(int i = 0; i < 4-list.size(); i++){ %>
-									<img src="" id="img_<%=list.size() - i + 1%>"/>
+								  <% if(list.size() != 4){ %>
+								  <% for(int i = 1 + list.size(); i < 4 - list.size(); i++){ %>
+									<img src="" id="img_<%=i+1%>"/>
 								  <% }%>
 							  
 								
