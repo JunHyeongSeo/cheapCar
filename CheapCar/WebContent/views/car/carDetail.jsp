@@ -118,10 +118,12 @@
             </div>
             
             	<% hourPrice = carPrice + optionPrice; %>
-            	<% totalPrice = hourPrice * hours; %>
+            	<% totalPrice = hourPrice + (10000 * hours); %>
+            	
             <div>
-	        	시간당 가격 : <%=hourPrice%>원 <br>
-                                총 가격 : <%=totalPrice%>원 <br>
+            
+	        		시간당 가격 : <%=hourPrice%>원 <br>
+                                	총 가격 : <%=totalPrice%>원 <br>
             </div>
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                	결제하기
