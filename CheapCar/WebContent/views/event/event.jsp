@@ -152,6 +152,7 @@
 								 <img src="<%= eb.getTitleImg() %>" id="titleImg"/>
 								</div>
 								<div class="text-area event_1 content" >
+								<input type="hidden" value="<%= eb.getEventNo()%>"/>
 								 <span> <%= eb.getEventTitle() %> </span><br><br>
 								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
 								</div>

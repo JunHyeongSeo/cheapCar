@@ -204,8 +204,8 @@ public class EventDao {
 				EventPhoto ePhoto = new EventPhoto();
 				
 				ePhoto.setPhotoNo(rset.getInt("EVENT_PHOTO_NO"));
-				ePhoto.setPhotoOname(rset.getString("EVENT_PHOTO_ONAME"));
-				ePhoto.setPhotoCname(rset.getString("EVENT_PHOTO_CNAME"));
+				ePhoto.setPhotoOname(rset.getString("EVENT_PHOTO_ORIGINNAME"));
+				ePhoto.setPhotoCname(rset.getString("EVENT_PHOTO_CHANGENAME"));
 				ePhoto.setPhotoPath(rset.getString("EVENT_PHOTO_ADDRESS"));
 				ePhoto.setEventNo(rset.getInt("EVENT_NO"));
 				ePhoto.setStatus(rset.getString("STATUS"));

@@ -137,6 +137,7 @@
                             
                         <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
                         <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
+                        <input type="hidden" name="userNo" value="<%= eBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
@@ -144,7 +145,7 @@
                         <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area"> 
+                        <div class="img-area">
                            	<% for(int i = 0; i < list.size(); i++) { %>
                               	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
 						    <% } %>

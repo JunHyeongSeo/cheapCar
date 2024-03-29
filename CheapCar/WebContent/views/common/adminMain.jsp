@@ -193,7 +193,7 @@
             <li><a href="<%=contextPath%>/manageCar?currentPage=1">차량관리</a></li>
             <li><a href="#" class="naviA">고객센터</a>
                 <ul>
-                    <li><a href="<%=contextPath%>/selectCsList?currentPage=1">회원문의글조회</a></li>
+                    <li><a href="<%=contextPath%>/cs?currentPage=1">회원문의글조회</a></li>
                     <li><a href="#">FAQ관리</a></li>
                 </ul>
             </li>

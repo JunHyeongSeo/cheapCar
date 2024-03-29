@@ -1,29 +1,27 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.admin.ad.admin_cs.cs.b;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.event.model.service.EventService;
-import com.kh.semi.event.model.vo.EventBoard;
-import com.kh.semi.event.model.vo.EventPhoto;
+import com.google.gson.Gson;
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.common.model.vo.PageInfo;
 
 /**
- * Servlet implementation class EventUpdateFormController
+ * Servlet implementation class AjaxCarCountController
  */
-@WebServlet("/updateForm.event")
-public class EventUpdateFormController extends HttpServlet {
+@WebServlet("/carCo123123unt.all")
+public class AjaxCsCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventUpdateFormController() {
+    public AjaxCsCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,28 +30,6 @@ public class EventUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
-		
-		EventBoard eBoard = new EventService().selectEvent(eventNo);
-		ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
-		
-		
-		request.setAttribute("eBoard", eBoard);
-		request.setAttribute("list", list);
-		
-
-		
-		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	}
