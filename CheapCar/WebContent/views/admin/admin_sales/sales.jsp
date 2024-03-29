@@ -164,7 +164,7 @@
 						<tr>
 							<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
 							<td><%= carlist.get(i).getMemberId()  %></td>
-							<td>123</td>
+						 	<td>?</td> 
 							<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1">상세보기</button></td>
 						</tr>
 						<% } %>
