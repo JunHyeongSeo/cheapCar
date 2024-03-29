@@ -1,6 +1,7 @@
 package com.kh.semi.event.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
+import com.kh.semi.event.model.vo.EventPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -45,9 +47,22 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
+			int memberNo = Integer.parseInt(multiRequest.getParameter("userNo"));
 			int eventNo = Integer.parseInt(multiRequest.getParameter("eventNo"));
 			String eventTitle = multiRequest.getParameter("title");
 			String eventConetent = multiRequest.getParameter("content");
+			
+			//----------------------
+			
+			ArrayList<EventPhoto> SetList = new ArrayList();
+			ArrayList<EventPhoto> inList = new ArrayList();
+			
+			for(int i = 0; i <= 4; i++) {
+				
+				String key = "photo" + i;
+						
+				SetList.add(key);
+			}
 			
 			
 			
