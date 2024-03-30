@@ -230,7 +230,7 @@ public class Car {
 			String fuelName, String brandName, String gradeName, int year, int gradePrice, int modelPrice,
 			int yearPrice, Date startDate, Date endDate, int mileage, Date mileageDate, int csNo, String csTitle,
 			String csContent, Date createDate, String replyYn, String memberId, int reservationNo, String memberName,
-			String phone, String email) {
+			String phone, String email, int totalPrice) {
 		super();
 		this.managementNo = managementNo;
 		this.status = status;
@@ -259,6 +259,7 @@ public class Car {
 		this.memberName = memberName;
 		this.phone = phone;
 		this.email = email;
+		this.totalPrice = totalPrice;
 	}
 
 
