@@ -45,7 +45,7 @@
 				<div class="salesList" style="margin-bottom:20px;" align="right">		
 					<a type="submit" class="btn btn-outline-info" onclick="detailModel();">모델별 매출 내역</a>
 					<a type="submit" class="btn btn-outline-primary">기간별 매출 내역</a>
-					<a type="submit" class="btn btn-outline-warning">지점별 매출 내역</a>
+					<a type="submit" class="btn btn-outline-warning" onclick="detailLocation();">지점별 매출 내역</a>
 				</div>
 			</div>
 			
@@ -53,7 +53,6 @@
 			
 			<div style="display: none;" id="detailModelName">
 				<label for="">모델명</label>
-				<button type="button" id="changeInput"></button>
 
 				<select id="changeTest" onchange="detailModel()">
 					<option class="ch" id="idid1" value="아반때">아반때</option>
@@ -70,32 +69,51 @@
 				</select>
 			</div>
 			
+			<!--  
+			<div style="display: none;" id="detailLocationName">
+				<label>지점명</label>
+				
+				<select id="changeTest2" onchange="detailLochtion()">
+					<option class="ch2" value="강남점">강남점</option>
+                    <option class="ch2" value="종로점">종로점</option>
+                    <option class="ch2" value="일산점">일산점</option>
+                    <option class="ch2" value="강북점">강북점</option>
+                    <option class="ch2" value="구리점">구리점</option>
+				</select>
+			</div>
+			
+			-->
+			
+			
 			<div id="noneDiv2" class="container2" style="text-align:center; display: none ; line-height:64px;">
 			<div><button onclick="show2();" id="showDiv2" style="float: right; height: 30px; text-align:center; display: flex;align-items: center; margin-bottom: 20px;">상세내역 닫기</button></div>
 			<table class="table table-bordered">
 			
+			
+			
+			
 			<thead>
 			</thead>
 				<tbody>
-					<tr>
+					<tr id="hiddenModel" style="display : none">
 						<th>모델명</th>
 						<td id="detailModelName22"></td>
-						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
-					<tr>
+					<tr id="hiddenStartDate">
 						<th>대여한 날짜</th>
 						<td id="detailStartDate22"></td>
-						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
-					<tr>
+					<tr id="hiddenModel" style="display : none">
 						<th>반납 날짜</th>
 						<td id="detailEndDate22"></td>
-						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
+					<tr id="hiddenModel" style="display : none">
+						<th>지점</th>
+						<td id="detailEndDate22"></td>
 					</tr>
 					<tr>
 						<th>금액</th>
 						<td id="detailTotalPrice22"></td>
-						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
 				</tbody>
 			</table>
@@ -104,11 +122,13 @@
 
 
 			<script>
-
-
-				function detailModel(){
+				function detailModel(){ // 모델별 매출 내역
 					
 					$('#detailModelName').show();
+				
+				
+					$('#hiddenModel').show();
+					
 					
 					$.ajax({
 						url : 'modelsale',
@@ -126,7 +146,6 @@
 								$('#detailStartDate22').html("");
 								$('#detailEndDate22').html("");
 								$('#detailTotalPrice22').html("")
-								
 							}
 							else{
 							
@@ -137,14 +156,22 @@
 									$('#detailStartDate22').html(b);
 									$('#detailEndDate22').html(result[i].endDate);
 									$('#detailTotalPrice22').html(result[i].totalPrice);
-								
 								}
 							}
-							
 						}
 					});
-					
 				};
+				
+				
+				function detailLocationName(){
+					
+					
+				}
+				
+				
+				
+				
+				
 
 				function show2(){
 					$('#noneDiv2').hide();
@@ -183,11 +210,6 @@
 				<script>
 	
 					function btn1(e){
-						window.onload = function(){
-							alert('일해라');
-						}
-						//console.log($(e).parent().siblings().first().text());
-						// console.log(e.target);
 						
 						$.ajax({
 							url : 'sales2',
@@ -195,23 +217,6 @@
 								 checkReservationNo :  $(e).parent().siblings().first().text()
 							},
 							success : function(result){
-								let resultStr = '';
-								
-								
-								//console.log(result);
-								//console.log(result['memberName'])
-								//console.log(result['modelName'])
-								
-								//resultStr += '<tr>'
-								//	  + '<td>' +'아이디 : '+ result['memberId'] + '</td>'
-								//	  + '<td>' +'이름 : '+ result['memberName'] + '</td>'
-								//	  + '<td>' +'모델명 :'+ result['modelName'] + '</td>'
-								//	  + '<td>' +'대여날짜 : '+ result['startDate'] + '</td>'
-								//	  + '<td>' +'반납날짜 : '+ result['endDate'] + '</td>'
-									  
-								//	  + '</tr>';
-								
-								//$('#reservationdetail').html(resultStr);
 								$('#noneDiv').show();
 								$('#detailMemberName').html(result['memberName']);
 								$('#detailMemberId').html(result['memberId']);
@@ -220,13 +225,9 @@
 								$('#detailEndDate').html(result['endDate']);
 								$('#detailPhone').html(result['phone']);
 								$('#detailEmail').html(result['email']);
-							
-						}
+							}
 						});
-						
-						
 					};
-					
 					function show(){
 						$('#noneDiv').hide();
 					}
