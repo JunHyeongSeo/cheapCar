@@ -578,7 +578,8 @@
                 RESERVATION_NO,
                 MM.MEMBER_NAME,
                 MM.PHONE,
-                MM.EMAIL
+                MM.EMAIL,
+                TOTAL_PRICE
                           
           FROM
                 TB_CAR C

@@ -43,9 +43,9 @@
 				<h2 style="margin:20px 0px;" align="center">이번 달 매출내역</h2>   
 				
 				<div class="salesList" style="margin-bottom:20px;" align="right">		
-					<a type="submit" class="btn btn-outline-info" onclick="detailModel();" href="#">모델별 매출 내역</a>
-					<a type="submit" class="btn btn-outline-primary" href="#">기간별 매출 내역</a>
-					<a type="submit" class="btn btn-outline-warning" href="#">지점별 매출 내역</a>
+					<a type="submit" class="btn btn-outline-info" onclick="detailModel();">모델별 매출 내역</a>
+					<a type="submit" class="btn btn-outline-primary">기간별 매출 내역</a>
+					<a type="submit" class="btn btn-outline-warning">지점별 매출 내역</a>
 				</div>
 			</div>
 			
@@ -92,6 +92,11 @@
 						<td id="detailEndDate22"></td>
 						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
 					</tr>
+					<tr>
+						<th>금액</th>
+						<td id="detailTotalPrice22"></td>
+						<!-- <td><button type="submit" class="btn btn-secondary">수정</button></td> -->
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -120,6 +125,8 @@
 								$('#detailModelName22').html("");
 								$('#detailStartDate22').html("");
 								$('#detailEndDate22').html("");
+								$('#detailTotalPrice22').html("")
+								
 							}
 							else{
 							
@@ -129,6 +136,7 @@
 									$('#detailModelName22').html(a);
 									$('#detailStartDate22').html(b);
 									$('#detailEndDate22').html(result[i].endDate);
+									$('#detailTotalPrice22').html(result[i].totalPrice);
 								
 								}
 							}

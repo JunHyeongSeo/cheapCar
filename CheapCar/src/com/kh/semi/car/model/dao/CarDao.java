@@ -617,7 +617,7 @@ public class CarDao {
 				car1.setMemberName(rset.getString("MEMBER_NAME"));
 				car1.setPhone(rset.getString("PHONE"));
 				car1.setEmail(rset.getString("EMAIL"));
-				
+				car1.setTotalPrice(rset.getInt("TOTAL_PRICE"));
 				car.add(car1);
 			}
 		} catch (SQLException e) {
