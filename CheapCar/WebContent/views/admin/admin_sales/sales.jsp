@@ -69,7 +69,7 @@
 				</select>
 			</div>
 			
-			<!--  
+			 <!-- 
 			<div style="display: none;" id="detailLocationName">
 				<label>지점명</label>
 				
@@ -81,8 +81,8 @@
                     <option class="ch2" value="구리점">구리점</option>
 				</select>
 			</div>
+			 -->
 			
-			-->
 			
 			
 			<div id="noneDiv2" class="container2" style="text-align:center; display: none ; line-height:64px;">
@@ -145,7 +145,7 @@
 								$('#detailModelName22').html("");
 								$('#detailStartDate22').html("");
 								$('#detailEndDate22').html("");
-								$('#detailTotalPrice22').html("")
+								$('#detailTotalPrice22').html("");
 							}
 							else{
 							
@@ -163,9 +163,9 @@
 				};
 				
 				
-				function detailLocationName(){
+				function detailLocation(){
 					
-					
+					$('#detailLocationName').show();
 				}
 				
 				
