@@ -83,6 +83,12 @@
         </div>
         
         <div class="container2">
+        	<table class="table table-bordered">
+            	
+	              <tbody id="conBody2">
+	              	
+	              </tbody>        
+			</table>
 		
 		</div>
 		
@@ -288,44 +294,43 @@
 						document.getElementById('paging-area').innerHTML = resultStr;
 					}
 				});
+			}
 				
-				// 4. 상세보기 버튼 누르면 #container2 에 html 추가
-				
-				function blackDetail(result){
-					$.ajax({
-						url : "blackDetail.do",
-						data : {
-							memberId : document.getElementById(result).value
-						},
-						success : function(m){
-							let resultStr = '';
-							console.log(m);
-							console.log(memberId);
-						}
-						
-						
-						
-						
-						
-						
-						
-					});
-				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+			// 4. 상세보기 버튼 누르면 #container2 에 html 추가
+			
+			function blackDetail(result){
+				$.ajax({
+					url : "blackDetail.do",
+					data : {
+						memberId : document.getElementById(result).value
+					},
+					success : function(m){
+						let resultStr = '';
+						console.log(m);
+						resultStr += '<tr>'
+								   + '<td>회원번호</td>'
+								   + '<td>' + m.memberNo + '</td>'
+		 						   + '</tr>'
+		 						   + '<tr>'
+		 						   + '<td>이름</td>'
+								   + '<td>' + m.memberName + '</td>'
+		 						   + '</tr>'
+		 						   + '<tr>'
+		 						   + '<td>제재 사유</td>'
+								   + '<td>' + m.blackReason + '</td>'
+								   + '</tr>'
+								   + '<tr>'
+								   + '<td>제재 일자</td>'
+		 						   + '<td>' + m.blackDate + '</td>'
+		 						   + '</tr>'
+					}
+					
+					document.getElementById('conBody2').innerHTML = resultStr;
+					
+					
+					
+					
+				});
 			}
        	</script>
 	</div>

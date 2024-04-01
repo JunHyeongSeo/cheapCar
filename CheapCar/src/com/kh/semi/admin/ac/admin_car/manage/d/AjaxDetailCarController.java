@@ -1,7 +1,6 @@
 package com.kh.semi.admin.ac.admin_car.manage.d;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
 
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/adminSasdasdasdM")
-public class AjaxSelectCarController extends HttpServlet {
+@WebServlet("/carDetail.do")
+public class AjaxDetailCarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxSelectCarController() {
+    public AjaxDetailCarController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +32,12 @@ public class AjaxSelectCarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String memberId = request.getParameter("memberId");
-		Member m = new MemberService().asmc(memberId);
+		int managementNo = Integer.parseInt(request.getParameter("managementNo"));
+		
+		Car car = new CarService().selectDetailCar(managementNo);
 		
 		response.setContentType("application/json; charset=UTF-8");
-		
-		new Gson().toJson(m, response.getWriter());
-		
-		
+		new Gson().toJson(car, response.getWriter());
 	}
 
 	/**
