@@ -216,13 +216,12 @@ public class CarService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> carLocation = new CarDao().locationSale(conn, checkLocations){
+		ArrayList<Car> carLocation = new CarDao().locationSale(conn, checkLocations);
 			
 		JDBCTemplate.close(conn);
 		
-		
 		return carLocation;	
-		}
+		
 		
 		
 	}
