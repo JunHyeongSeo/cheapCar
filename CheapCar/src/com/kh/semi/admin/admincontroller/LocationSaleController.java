@@ -1,4 +1,4 @@
-package com.kh.semi.car.admincontroller;
+package com.kh.semi.admin.admincontroller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,23 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
-import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class salesController
+ * Servlet implementation class LocationSaleController
  */
-@WebServlet("/sales")
-public class SalesController extends HttpServlet {
+@WebServlet("/locationsale")
+public class LocationSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SalesController() {
+    public LocationSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,24 +32,20 @@ public class SalesController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		ArrayList<Car> carlist = new CarService().carcarall();
-		
+
+		String checkLocations = request.getParameter("checkLocations");
 	
 		
-		if(carlist.isEmpty()) {
-			
-		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			//System.out.println(carlist);
-			request.setAttribute("carlist", carlist);
-			request.getRequestDispatcher("views/admin/admin_sales/sales.jsp").forward(request, response);
-		}
+		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
 		
+		System.out.println(carLocation);
 		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(carLocation, response.getWriter());
+	
 		
-		
+	
 	}
 
 	/**
