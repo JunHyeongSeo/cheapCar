@@ -628,7 +628,28 @@ public class CarDao {
 	}
 	
 	
-	
+	public ArrayList<Car> locationSale(Connection conn, String checkLocations){
+		
+		ArrayList<Car> carLocation = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("checkLocations");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkLocations);
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return carLocation;
+	}
 	
 	
 	

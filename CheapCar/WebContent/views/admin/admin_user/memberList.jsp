@@ -232,8 +232,10 @@
        			        				+ '">다음</button>';
        			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr;
+	       			    document.getElementById('con2Body').innerHTML = '';
         			}
         		});
+				
 			}
 			
 			function cp(result){
@@ -309,7 +311,8 @@
 					},
 					success : function(m){
 						let resultStr = '';
-						
+						console.log(m);
+						console.log(m.memberNo);
 						resultStr += "<tr>"
 								   + "<td>회원번호</td>"
 								   + "<td><input type='text' value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
@@ -320,11 +323,16 @@
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>아이디</td>"
-								   + "<td><input type='text' value='" + m.memberId + "' name='" + m.memberId + "'></td>"
+								   + "<td><input type='text' disabled value='" + m.memberId + "' name='" + m.memberId + "'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>회원상태</td>"
-								   + "<td><input type='text' value='" + m.memberStatus + "' name='" + m.memberStatus + "'></td>"
+								   + "<td>
+								   + '<input type="checkbox" id="A" value="A" name="Status"><label for="A">여행</label>'
+								   + '<input type="checkbox" id="B" value="B" name="Status"><label for="B">여행</label>'
+								   + '<input type="checkbox" id="C" value="C" name="Status"><label for="C">여행</label>'
+								   + '<input type="checkbox" id="D" value="D" name="Status"><label for="D">여행</label>'
+								   + "</td>"
 								   + "</tr>"
 								   + "<td>연락처</td>"
 								   + "<td><input type='text' value='" + m.phone + "' name='" + m.phone + "'></td>"
@@ -335,13 +343,19 @@
 								   + "</tr>"
 								   
 						document.getElementById('con2Body').innerHTML = resultStr;
+						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
+						
+						let str = document.getElementsByName('Status').value;
+						
+						for(let i = 0; i < m.length; i++){
+							
+						}
+						
+						
 					}
-					
-					
-					
-					
-					
-				})
+				});
+				
+				
 				
 				
 				

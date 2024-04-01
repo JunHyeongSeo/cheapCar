@@ -1,4 +1,4 @@
-package com.kh.semi.admin.ab.admin_member.member.d;
+package com.kh.semi.car.admincontroller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.kh.semi.member.model.service.MemberService;
-import com.kh.semi.member.model.vo.Member;
+import com.kh.semi.car.model.service.CarService;
+import com.kh.semi.car.model.vo.Car;
 
 /**
- * Servlet implementation class AdminSelectMemberController
+ * Servlet implementation class LocationSaleController
  */
-@WebServlet("/memberDetail.do")
-public class AjaxDetailMemberController extends HttpServlet {
+@WebServlet("/locationsale")
+public class LocationSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDetailMemberController() {
+    public LocationSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +31,14 @@ public class AjaxDetailMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String memberId = request.getParameter("memberId");
 
-		Member m = new MemberService().selectMember(memberId);
+		String checkLocations = request.getParameter("checkLocations");
+	
 		
-		response.setContentType("application/json; charset=UTF-8");
-		new Gson().toJson(m, response.getWriter());
+		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
+		
+		
+	
 	}
 
 	/**
