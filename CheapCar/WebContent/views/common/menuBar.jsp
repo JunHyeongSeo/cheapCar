@@ -31,6 +31,19 @@
             display: table-cell;
         }
 
+        
+        #wrap{
+            padding-top: 50px;
+        }
+        
+		#logo{
+			width:200px;
+			height:200px;
+			margin: auto;
+			
+        }
+        
+        
         .menu>a{
             display: block;
             width: 100%;
@@ -46,10 +59,6 @@
             font-size: 21px;
             background-color: lightslategray;
             cursor: pointer;
-        }
-        
-        #wrap{
-            padding-top: 50px;
         }
 
 	</style>
@@ -74,9 +83,20 @@
 		
 	</div>
 	
+	
+	
     <div id="wrap">
-         <h1 align="center" style="color: skyblue;">  <a href="<%=contextPath%>">저렴하니Car</a></h1>
-
+    
+        <!--<h1 align="center" style="color: skyblue;">  <a href="<%=contextPath%>">저렴하니Car</a></h1> -->
+        
+        
+        <div id="logo">
+	        <a href="<%= contextPath%>">
+				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="200" height="200">
+			</a>
+		</div>
+		
+		
        	<div class="login-area">
        		<% if(loginUser == null) { %>
 	    	<form action="" method="post">

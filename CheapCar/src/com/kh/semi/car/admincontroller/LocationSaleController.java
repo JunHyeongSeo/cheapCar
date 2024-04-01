@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
 
@@ -37,6 +38,12 @@ public class LocationSaleController extends HttpServlet {
 		
 		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
 		
+		System.out.println(carLocation);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(carLocation, response.getWriter());
+	
 		
 	
 	}

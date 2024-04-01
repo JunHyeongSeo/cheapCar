@@ -104,7 +104,7 @@
 	        						   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="blackDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
 	    				document.getElementById('conBody').innerHTML = resultStr;
@@ -177,7 +177,7 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="blackDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
 						
@@ -242,7 +242,7 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 		     						   + '<td>' + list[i].memberName + '</td>'
 		     						   + '<td>' + list[i].memberId + '</td>'
-		     						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+		     						   + '<td><button type="button" class="btn btn-secondary" onclick="blackDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 		     						   + '</tr>'
 						}
 						document.getElementById('conBody').innerHTML = resultStr;
@@ -288,6 +288,44 @@
 						document.getElementById('paging-area').innerHTML = resultStr;
 					}
 				});
+				
+				// 4. 상세보기 버튼 누르면 #container2 에 html 추가
+				
+				function blackDetail(result){
+					$.ajax({
+						url : "blackDetail.do",
+						data : {
+							memberId : document.getElementById(result).value
+						},
+						success : function(m){
+							let resultStr = '';
+							console.log(m);
+							console.log(memberId);
+						}
+						
+						
+						
+						
+						
+						
+						
+					});
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}
        	</script>
 	</div>
