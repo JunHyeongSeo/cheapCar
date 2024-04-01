@@ -316,8 +316,7 @@
 					},
 					success : function(m){
 						let resultStr = '';
-						console.log(m);
-						console.log(m.memberNo);
+						
 						resultStr += "<tr>"
 								   + "<td>회원번호</td>"
 								   + "<td><input type='text' disabled value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
