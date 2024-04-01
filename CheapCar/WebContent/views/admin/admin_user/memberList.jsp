@@ -102,7 +102,6 @@
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
-	    				console.log(list);
 	    				
 	    				for(let i in list){
 	    					resultStr += '<tr>'
@@ -358,7 +357,6 @@
 						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
 						
 						let str = document.getElementsByName('Status');
-						console.log(str);
 						for(let i = 0; i < str.length; i++){
 							if(str[i].value.indexOf(m.memberStatus) == -1){
 								str[i].checked = false;

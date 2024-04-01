@@ -188,6 +188,7 @@
 						}
 						
         				document.getElementById('conBody').innerHTML = resultStr;
+        				document.getElementById('conBody2').innerHTML = '';
 					}
 				});
 				
@@ -323,13 +324,8 @@
 								   + '<td>제재 일자</td>'
 		 						   + '<td>' + m.blackDate + '</td>'
 		 						   + '</tr>'
-					}
-					
 					document.getElementById('conBody2').innerHTML = resultStr;
-					
-					
-					
-					
+					}
 				});
 			}
        	</script>

@@ -49,7 +49,6 @@
         
         <div id="container2">  
         	<table class="table table-bordered">
-            	
 				<tbody id="conBody2">
               
 				</tbody>
@@ -305,9 +304,6 @@
 								   + "<tr>"
 								   + "<td>차량 상태</td>"
 								   + "<td><input type='text' value='" + c.status + "' name='" + c.status + "'></td>"
-								   + "<td>"
-								   
-								   + "</td>"
 								   + "</tr>"
 								   
 						document.getElementById('conBody2').innerHTML = resultStr;
