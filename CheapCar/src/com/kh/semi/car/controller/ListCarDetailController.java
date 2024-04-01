@@ -38,8 +38,8 @@ public class ListCarDetailController extends HttpServlet {
 		int hours = Integer.parseInt(request.getParameter("hours"));
 		
 		
-		String startRent = (String)request.getParameter("startRent");
-	    String endRent = (String)request.getParameter("endRent");
+		String startDate = (String)request.getParameter("startDate");
+	    String endDate = (String)request.getParameter("endDate");
 	    
 		Car car = new CarService().selectDetailCar(managementNo);
 		
@@ -48,8 +48,8 @@ public class ListCarDetailController extends HttpServlet {
 		request.setAttribute("car", car);
 		request.setAttribute("hours", hours);
 		request.setAttribute("optionList", optionList);
-		request.setAttribute("startRent", startRent);
-		request.setAttribute("endRent", endRent);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
 		
 		request.getRequestDispatcher("views/car/carDetail.jsp").forward(request, response);
 	
