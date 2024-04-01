@@ -27,45 +27,40 @@
 					<td><input type="text" maxlength="30" required name="memberId"></td>
 					<td><button type="button" onclick="idCheck();">중복확인</button></td>
 					
-					<script>
-						function idCheck(){
+			<script>
+				function idCheck(){
 
-							const $memberId = $('#enroll-form input[name=memberId]');
+					const $memberId = $('#enroll-form input[name=memberId]');
 
-							$.ajax({
-								url : 'idCheck.do',
-								data : {checkId : $memberId.val()},
-								success : function(result){
-									console.log(result);
-										
-									if(result == 'NNN'){
-										alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
-										
-										$memberId.val('').focus();
-									}
-									else{
-										
-										if(confirm('사용 가능합니다 사용하시겠습니까?')){
-											
-											$memberId.attr('readonly', true);
-											
-											$('#enroll-form button[type=submit]').removeAttr('disabled');
-											
-										} else{
-											$memberId.focus();
-										}
-										
-									}
-
+					$.ajax({
+						url : 'idCheck.do',
+						data : {checkId : $memberId.val()},
+						success : function(result){
+							console.log(result);
+								
+							if(result == 'NNN'){
+								alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
+								
+								$memberId.val('').focus();
+							}
+							else{
+								
+								if(confirm('사용 가능합니다 사용하시겠습니까?')){
+									
+									$memberId.attr('readonly', true);
+									
+									$('#enroll-form button[type=submit]').removeAttr('disabled');
+									
+								} else{
+									$memberId.focus();
 								}
-
-
-							});
-
+							}
 						}
+					});
+				}
 
-					</script>
-					
+			</script>
+			
 					
 					
 					
