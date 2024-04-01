@@ -250,7 +250,7 @@
 	                <div class="car-list">
 	                    <div class="list-size">
 	                    
-	                        <img class="car-img img-thumbnail" src="https://image.kmibD.co.kr/online_image/2023/0404/2023040416513996855_1680594700_0018125706.jpg" alt="차량i번">
+	                        <img class="car-img img-thumbnail" src="" alt="차량사진">
 	                    
 	                    </div>
                     	<div class="list-size car-info">	

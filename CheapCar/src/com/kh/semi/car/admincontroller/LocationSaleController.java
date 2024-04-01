@@ -35,7 +35,9 @@ public class LocationSaleController extends HttpServlet {
 		String checkLocations = request.getParameter("checkLocations");
 	
 		
-		ArrayList<Car> car = new CarService().locationSale(checkLocations);
+		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
+		
+		
 	
 	}
 
