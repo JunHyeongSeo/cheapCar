@@ -1,7 +1,6 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.admin.ab.admin_member.black.e;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.event.model.service.EventService;
-import com.kh.semi.event.model.vo.EventBoard;
-import com.kh.semi.event.model.vo.EventPhoto;
+import com.kh.semi.member.model.service.MemberService;
 
 /**
- * Servlet implementation class EventUpdateFormController
+ * Servlet implementation class AjaxDeleteBlackController
  */
-@WebServlet("/updateForm.event")
-public class EventUpdateFormController extends HttpServlet {
+@WebServlet("/deleteBlack.do")
+public class AjaxDeleteBlackController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventUpdateFormController() {
+    public AjaxDeleteBlackController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +30,11 @@ public class EventUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
+		int result = new MemberService().updateMember(memberNo);
 		
-		EventBoard eBoard = new EventService().selectEvent(eventNo);
-		EventPhoto ePhoto = new EventService().selectEventPhoto(eventNo);
-		
-		
-		
-		request.setAttribute("eBoard", eBoard);
-		request.setAttribute("ePhoto", ePhoto);
-		
-
-		
-		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
-		
-		
-		
-		
-		
-		
-		
-		
+		response.getWriter().print(result);
 		
 	}
 

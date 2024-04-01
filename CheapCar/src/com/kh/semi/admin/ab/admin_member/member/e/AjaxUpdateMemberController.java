@@ -1,29 +1,23 @@
-package com.kh.semi.event.controller;
+package com.kh.semi.admin.ab.admin_member.member.e;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.event.model.service.EventService;
-import com.kh.semi.event.model.vo.EventBoard;
-import com.kh.semi.event.model.vo.EventPhoto;
-
 /**
- * Servlet implementation class EventUpdateFormController
+ * Servlet implementation class AjaxUpdateMemberController
  */
-@WebServlet("/updateForm.event")
-public class EventUpdateFormController extends HttpServlet {
+@WebServlet("/memberUpdate.do")
+public class AjaxUpdateMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventUpdateFormController() {
+    public AjaxUpdateMemberController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +27,29 @@ public class EventUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String birthday = request.getParameter("birthday");
+		String email = request.getParameter("email");
+		String[] status = request.getParameterValues("status");
+		String memId = request.getParameter("checkId");
 		
-		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
-		
-		EventBoard eBoard = new EventService().selectEvent(eventNo);
-		EventPhoto ePhoto = new EventService().selectEventPhoto(eventNo);
-		
+		System.out.println(1);
+		System.out.println(status);
+		System.out.println(1);
 		
 		
-		request.setAttribute("eBoard", eBoard);
-		request.setAttribute("ePhoto", ePhoto);
 		
-
 		
-		request.getRequestDispatcher("views/event/eventUpdate.jsp").forward(request, response);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

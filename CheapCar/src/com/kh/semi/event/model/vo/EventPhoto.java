@@ -100,10 +100,16 @@ public class EventPhoto {
 		this.fileLevel = fileLevel;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "EventPhoto [photoNo=" + photoNo + ", photoCname=" + photoCname + ", fileLevel=" + fileLevel + "]";
+		return "EventPhoto [photoNo=" + photoNo + ", photoOname=" + photoOname + ", photoCname=" + photoCname
+				+ ", photoPath=" + photoPath + ", eventNo=" + eventNo + ", status=" + status + ", fileLevel="
+				+ fileLevel + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {

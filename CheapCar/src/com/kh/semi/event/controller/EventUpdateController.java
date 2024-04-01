@@ -1,7 +1,7 @@
 package com.kh.semi.event.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,50 +62,46 @@ public class EventUpdateController extends HttpServlet {
 			eBoard.setEventTitle(eventTitle);
 			eBoard.setEventContent(eventContent);
 			
-			System.out.println(eBoard);
+			
 			
 			//----------------------
 			
-			int listsize = Integer.parseInt(multiRequest.getParameter("listSize"));
+			EventPhoto ePhoto = null;
 			
-			
-		    if(multiRequest.getParameter("rePhoto_1") == null && multiRequest.getParameter("rePhoto_2") == null) {
-			    ArrayList<EventPhoto> list = new ArrayList();				
-				for(int i = 0; i < listsize; i++) {
+			if(multiRequest.getOriginalFileName("rePhoto1") != null) {
+
+				ePhoto = new EventPhoto();
+				ePhoto.setPhotoOname(multiRequest.getOriginalFileName("rePhoto"));
+				ePhoto.setPhotoCname(multiRequest.getFilesystemName("rePhoto"));
+				ePhoto.setPhotoPath("resources/event_upfiles");
+				System.out.println(ePhoto);
+				
+				if(multiRequest.getParameter("photoNo") != null) {// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => DB에 저장된 원본파일 No가 필요함
+				
+					ePhoto.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
+					new File(savePath + multiRequest.getParameter("photoCname")).delete();
 					
-					list.add(new EventPhoto(Integer.parseInt(multiRequest.getParameter("photoNo_" + i)),
-											multiRequest.getParameter("photoCname_" + i),
-							                Integer.parseInt(multiRequest.getParameter("fileLevel_" + i))));
+				} else {
+					ePhoto.setEventNo(eventNo);	
 					
 				}
-				
-				new EventService().updateBoard(eBoard);
-				
+			} 
+			int result = new EventService().update(eBoard, ePhoto);
+			
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 수정에 성공하였습니다.");
+				response.sendRedirect(request.getContextPath() + "/detail.event?eventNo=" + eventNo);
 			} else {
+				request.setAttribute("errorMsg", "실패실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				
-				ArrayList<EventPhoto> setList = new ArrayList();
 				
-				for(int i = 0; i < 4; i++) {
-					String key = "rePhoto" + i;
-					
-					EventPhoto ep = new EventPhoto();
-					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
-					ep.setPhotoCname(multiRequest.getFilesystemName(key));
-					ep.setPhotoPath("resources/event_upfiles");
-					ep.setEventNo(eventNo);
-					
-					if(i == 1) {
-						ep.setFileLevel(1); // 대표
-					} else {
-						ep.setFileLevel(2); // 서브이미지
-					}
-				
-				setList.add(ep);
-				}
-				new EventService().update(eBoard, setList);
 			}
-		    
-		    
+			
+			
+			
+			
+		}
 				
 		    
 	            
@@ -139,7 +135,7 @@ public class EventUpdateController extends HttpServlet {
 		
 		
 		
-		}
+		
 		
 	}
 

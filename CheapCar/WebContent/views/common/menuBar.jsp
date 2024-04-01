@@ -74,28 +74,14 @@
 		}
 	</script>
 	
-	<div id="main">
-	   	<!-- 
-	   	<a href="<%= request.getContextPath() %>" style="float:left; width:600px; height:500px; position:fixed; left : 600px; top: 300px">
-	       <img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkWyr2bnqm5VSo7Kq4yE3pjaHtNSXksy0_3w&usqp=CAU" alt="">
-		</a>
-		-->
-		
-	</div>
-	
-	
 	
     <div id="wrap">
     
-        <!--<h1 align="center" style="color: skyblue;">  <a href="<%=contextPath%>">저렴하니Car</a></h1> -->
-        
-        
         <div id="logo">
 	        <a href="<%= contextPath%>">
 				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="200" height="200">
 			</a>
 		</div>
-		
 		
        	<div class="login-area">
        		<% if(loginUser == null) { %>
@@ -124,12 +110,21 @@
 	<br clear="both">
 	
 	<div class="nav-area" align="center">
-		<div class="menu"><a href="<%= contextPath %>/views/common/deleteLater.jsp">쉬는시간</a></div>
 		<div class="menu"><a href="<%= contextPath %>/dateAndLocation.do">차량렌트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.review">후기</a></div>
-		<div class="menu"><a href="#">고객센터</a></div>
+		<div class="menu">
+			<a href="#">고객센터</a>
+			<!-- <div class="menu55" id="faq">
+				<a href="#">FAQ</a>
+			</div>
+			
+			<div class="menu55" id="1to1Cs">
+				<a href="#">1대1 문의</a>
+			</div> -->
+			
+		</div>
 	</div>
 	
 </body>
