@@ -318,6 +318,30 @@ public class EventDao {
 	
 	
 	
+	public int updateBoard(Connection conn, EventBoard eBoard) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return result;
+	}
+	
+	
 	
 	
 	

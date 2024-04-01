@@ -40,10 +40,16 @@
 		</div>
 		
 		<div class="container2">
+			<table class="table table-bordered">
+	            <tbody id="conBody2">
+	
+	            </tbody>
+            </table>
 		
 		</div>
 		
 		<script>
+			// 1. CS 전체내역 ajax
 			window.onload = function(){
 				
 				const url = new URL(location.href);

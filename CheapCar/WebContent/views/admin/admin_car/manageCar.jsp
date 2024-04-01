@@ -31,9 +31,9 @@
             	<thead>
             		<tr>
             			<th>관리번호</th>
-						<th>차종</th>
 						<th>차량번호</th>
 						<th>모델명</th>
+						<th>차량종류</th>
 						<th>상세보기</th>
 					</tr>
 				</thead>
@@ -47,8 +47,12 @@
         	
         </div>
         
-        <div class="container2">  
-        	
+        <div id="container2">  
+        	<table class="table table-bordered">
+				<tbody id="conBody2">
+              
+				</tbody>
+			</table>
 		</div>
 		
 		<script>
@@ -64,14 +68,13 @@
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
-	    				
 	    				for(let i in list){
 	        				resultStr += '<tr>'
+	        						   + '<td>' + list[i].managementNo + '</td>'
 	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="">상세보기</td>'
+	        						   + '<td>' + list[i].modelName + '</td>'
+	        						   + '<td>' + list[i].gradeName + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
 	    				document.getElementById('conBody').innerHTML = resultStr;
@@ -143,14 +146,15 @@
 						
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="">상세보기</td>'
+									   + '<td>' + list[i].managementNo + '</td>'
+		      						   + '<td>' + list[i].carNo + '</td>'
+		      						   + '<td>' + list[i].modelName + '</td>'
+		      						   + '<td>' + list[i].gradeName + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
+        				document.getElementById('conBody2').innerHTML = '';
 					}
 				});
 				
@@ -204,15 +208,16 @@
 						currentPage : currentPage
 					},
 					success : function(list){
+						console.log(list);
 						let resultStr = '';
 						
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+									   + '<td>' + list[i].managementNo + '</td>'
+		      						   + '<td>' + list[i].carNo + '</td>'
+		      						   + '<td>' + list[i].modelName + '</td>'
+		      						   + '<td>' + list[i].gradeName + '</td>'
+	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
@@ -258,6 +263,56 @@
         			}
         		});
 			}
+				
+			// 4. 상세보기 버튼 누르면 추가 ajax
+			
+			function carDetail(result){
+				
+				$.ajax({
+					url : "carDetail.do",
+					data : {
+						managementNo : document.getElementById(result).value
+					},
+					success : function(c){
+						let resultStr = '';
+						console.log(c);
+						resultStr += "<tr>"
+								   + "<td>차량 관리번호</td>"
+								   + "<td><input type='text' disabled value='" + c.managementNo + "' name='" + c.managementNo + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>차량번호</td>"
+								   + "<td><input type='text' disabled value='" + c.carNo + "' name='" + c.carNo + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>브랜드</td>"
+								   + "<td><input type='text' value='" + c.brandName + "' name='" + c.brandName + "'></td>"
+								   + "</tr>"
+								   + "<td>모델명</td>"
+								   + "<td><input type='text' value='" + c.modelName + "' name='" + c.modelName + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>연식</td>"
+								   + "<td><input type='text' value='" + c.year + "' name='" + c.year + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>등급</td>"
+								   + "<td><input type='text' value='" + c.gradeName + "' name='" + c.gradeName + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>차량 위치</td>"
+								   + "<td><input type='text' value='" + c.locationName + "' name='" + c.locationName + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>차량 상태</td>"
+								   + "<td><input type='text' value='" + c.status + "' name='" + c.status + "'></td>"
+								   + "</tr>"
+								   
+						document.getElementById('conBody2').innerHTML = resultStr;
+					}
+				});
+			}	
+		
 		</script>
 	</div>
 	
