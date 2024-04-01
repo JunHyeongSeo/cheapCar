@@ -69,11 +69,11 @@
 				</select>
 			</div>
 			
-			 <!-- 
+			 
 			<div style="display: none;" id="detailLocationName">
 				<label>지점명</label>
-				
-				<select id="changeTest2" onchange="detailLochtion()">
+								
+				<select id="changeTest2" onchange="detailLocation()">
 					<option class="ch2" value="강남점">강남점</option>
                     <option class="ch2" value="종로점">종로점</option>
                     <option class="ch2" value="일산점">일산점</option>
@@ -81,7 +81,7 @@
                     <option class="ch2" value="구리점">구리점</option>
 				</select>
 			</div>
-			 -->
+			 
 			
 			
 			
@@ -99,7 +99,7 @@
 						<th>모델명</th>
 						<td id="detailModelName22"></td>
 					</tr>
-					<tr id="hiddenStartDate">
+					<tr id="hiddenStartDate"  style="display : none">
 						<th>대여한 날짜</th>
 						<td id="detailStartDate22"></td>
 					</tr>
@@ -133,7 +133,7 @@
 					$.ajax({
 						url : 'modelsale',
 						data : {
-							checkmodels : $('option:selected').text()
+							checkmodels : $('#changeTest').children('option:selected').text()
 							
 						},
 						success : function(result){
@@ -165,7 +165,27 @@
 				
 				function detailLocation(){
 					
+					$('#detailModelName').hide();
+					
 					$('#detailLocationName').show();
+					
+					$.ajax({
+						
+						url : 'locationsale',
+						data : {
+							checkLocations : $('#changeTest2').children('option:selected').text()
+							
+						},
+						success : function(result){
+							console.log(result);
+						
+							
+						
+						}
+						
+						
+					})
+					
 				}
 				
 				
