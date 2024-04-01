@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventPhoto, com.kh.semi.event.model.vo.EventBoard" %>    
 
 <%
-	ArrayList<EventPhoto> list = (ArrayList<EventPhoto>)request.getAttribute("list");
+	EventPhoto ePhoto = (EventPhoto)request.getAttribute("ePhoto");
 	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
 
 %>
@@ -150,9 +150,7 @@
                     </div>
                     <div class="content_body">
                         <div class="img-area">
-                           	<% for(int i = 0; i < list.size(); i++) { %>
-                              	<img width="100%" src="<%= contextPath %>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" />
-						    <% } %>
+                              	<img width="100%" src="<%= contextPath %>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" />
                         </div>
                         <div class="text-area"> <%= eBoard.getEventContent() %></div>
                     </div>
@@ -164,15 +162,9 @@
                         	<a href="<%= contextPath%>/updateForm.event?eventNo=<%= eBoard.getEventNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.event?eventNo=<%= eBoard.getEventNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         <% } %>
-                        
-                           
+
                     </div>
                 </div>
-
-				
-				
-
-
 				</div>            
 			 </div>
 		  </div>

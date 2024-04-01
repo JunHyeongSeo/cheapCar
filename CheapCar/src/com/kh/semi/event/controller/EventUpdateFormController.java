@@ -38,11 +38,12 @@ public class EventUpdateFormController extends HttpServlet {
 		int eventNo = Integer.parseInt(request.getParameter("eventNo"));
 		
 		EventBoard eBoard = new EventService().selectEvent(eventNo);
-		ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
+		EventPhoto ePhoto = new EventService().selectEventPhoto(eventNo);
+		
 		
 		
 		request.setAttribute("eBoard", eBoard);
-		request.setAttribute("list", list);
+		request.setAttribute("ePhoto", ePhoto);
 		
 
 		

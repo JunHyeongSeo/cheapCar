@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
 <style>
 
     .login-area1{
@@ -25,6 +25,8 @@
 		margin : auto;
 	}
 
+	
+
 </style>
 		
 </head>
@@ -34,7 +36,7 @@
 
 	<br clear="both">
 	
-	<div class="a">
+	<!-- <div class="a">
 		<div class="login-area1">
 		
 		 	<form action="<%=contextPath %>/login" method="post">
@@ -51,37 +53,43 @@
 		                    <th colspan="2">
 		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
 		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
-		                    	<a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> /
-		                    	<a data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a>
-		                    </th>
-		                </tr>
-		           </table>
-		        </form>
-		</div>
-	</div>
+		                    	<!-- <a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> / -->
+		                    	<!-- <a data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a> -->
+		                    <!-- </th> -->
+		                <!-- </tr> -->
+		           <!-- </table> -->
+		        <!-- </form> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	 -->
 	
 	
 	
-	
-	<!-- <div class="container">
+	 <div class="container" style="width: 600px;">
 	  	<h2>로그인</h2>
-	  	<p>안녕하세요  <code> 차빌려조 </code> 로그인 화면 입니다.</p>
-	  	<form action="/action_page.php" class="was-validated">
+	  	<p>안녕하세요  <code> 저렴하니car </code> 로그인 화면 입니다.</p>
+	  	<form action="<%=contextPath %>/login" method="post" class="was-validated">
+	  	
 	    	<div class="form-group">
-	     	<label for="uname">아이디 </label>
-	      	<input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-	      	<div class="valid-feedback">Valid.</div>
-	      	<div class="invalid-feedback">Please fill out this field.</div>
+		     	<label for="uname">아이디 : </label>
+		      	<input type="text" class="form-control" id="uname" name="memberId"  placeholder="아이디를 입력해주세요" name="uname" required>
+		      	<div class="valid-feedback"></div>
+		      	<div class="invalid-feedback">입력해주세요.</div>
 	    	</div>
-	    	<div class="form-group">
-	      	<label for="pwd">비밀번호</label>
-	      	<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-	      	<div class="valid-feedback">Valid.</div>
-	      	<div class="invalid-feedback">Please fill out this field.</div>
+	    	
+		    <div class="form-group">
+		      	<label for="pwd">비밀번호 : </label>
+		      	<input type="password" class="form-control" id="pwd" name="memberPwd"  placeholder="비밀번호를 입력해주세요" name="pswd" required>
+		      	<div class="valid-feedback"></div>
+		      	<div class="invalid-feedback">입력해주세요.</div>
 	    	</div>
-	    	<button type="submit" class="btn btn-primary">Submit</button>
+	    		<button type="submit" class="btn btn-primary">로그인</button>
+          <div style="margin: right; float : right;">
+            <a type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> /
+            <a type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a>
+          </div>
 	  	</form>
-	</div> -->
+	</div> 
 	
 	
 	

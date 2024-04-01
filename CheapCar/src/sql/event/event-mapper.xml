@@ -170,14 +170,25 @@
 		   SET
 		       EVENT_TITLE = ?,
 		       EVENT_CONTENT = ?
-         WEHER
+         WHERE
                EVENT_NO = ?
            AND 
                STATUS = 'Y'    		       
-		         
 	</entry>
 	
-	
+	<entry key="updatePhoto">
+		UPDATE
+		       TB_EVENT_PHOTO
+		   SET
+		       EVENT_PHOTO_ORIGINNAME = ?,
+		       EVENT_PHOTO_CHANGENAME = ?
+		 WHERE
+		       EVENT_PHOTO_NO = ?
+   	       AND
+   	           STATUS = 'Y'
+   	                
+		           
+	</entry>
 	
 	
 	

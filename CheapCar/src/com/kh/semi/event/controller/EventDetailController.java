@@ -43,10 +43,10 @@ public class EventDetailController extends HttpServlet {
 		if(result > 0) {
 			
 			EventBoard eBoard = new EventService().selectEvent(eventNo);
-			ArrayList<EventPhoto> list = new EventService().selectEventPhoto(eventNo);
+			EventPhoto ePhoto = new EventService().selectEventPhoto(eventNo);
 			
 			request.setAttribute("eBoard", eBoard);
-			request.setAttribute("list", list);
+			request.setAttribute("ePhoto", ePhoto);
 			
 			request.getRequestDispatcher("views/event/eventDetail.jsp").forward(request, response);
 			
