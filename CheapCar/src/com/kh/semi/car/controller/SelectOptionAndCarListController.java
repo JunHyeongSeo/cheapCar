@@ -34,6 +34,8 @@ public class SelectOptionAndCarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		request.setCharacterEncoding("UTF-8");
+		
 		int listCount;
 		int currentPage;
 		int pageLimit; 
@@ -42,6 +44,13 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		int maxPage;
 		int startPage;
 		int endPage; 
+		
+		String model = request.getParameter("model");
+		String fuel = request.getParameter("fuel");
+		String brand = request.getParameter("brand");
+		String grade = request.getParameter("grade");
+		
+		String[] options = request.getParameterValues("options"); 
 		
 		listCount = new CarService().selectListCount();
 		
@@ -63,9 +72,10 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
-		// ArrayList<Car> carList = new CarService().selectCarList(pi);
+		// ArrayList<Car> carList = new CarService().selectOptionAndCarList(pi);
 		
-		// ArrayList<Option> optionList = new CarService().selectOptionList();
+		ArrayList<Car> carList = new CarService().selectOptionList();
+		
 
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
