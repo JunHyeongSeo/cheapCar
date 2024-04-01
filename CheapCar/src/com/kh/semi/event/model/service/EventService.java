@@ -128,7 +128,21 @@ public class EventService {
 		
 		return result;
 		
+	}//
+	
+	public int update(EventBoard eBoard, ArrayList<EventPhoto> list) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new EventDao().insertEventPhoto(conn, list);
+		
+		
+		
+		return result;
+		
 	}
+	
+	
 	
 	
 	
