@@ -120,9 +120,9 @@
 				<a href="#">FAQ</a>
 			</div>
 			
-			<div class="menu55" id="1to1Cs">
+			<!-- <div class="menu55" id="1to1Cs">
 				<a href="#">1대1 문의</a>
-			</div>
+			</div> -->
 			
 		</div>
 	</div>
