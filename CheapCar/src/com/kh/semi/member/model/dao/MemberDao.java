@@ -83,6 +83,7 @@ public class MemberDao {
 				m.setMemberName(rset.getString("MEMBER_NAME"));	
 				m.setEmail(rset.getString("EMAIL"));
 				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				m.setMemberStatus(rset.getString("MEMBER_STATUS"));
 				
 				list.add(m);
 			}
@@ -306,6 +307,49 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	public Member selectBlack(Connection conn, String memberId) {
+		
+		Member m = new Member();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlack");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m.setMemberNo(rset.getInt("MEMBER_NO"));
+				m.setMemberId(rset.getString("MEMBER_ID"));
+				m.setMemberName(rset.getString("MEMBER_NAME"));
+				m.setBirthday(rset.getString("BIRTHDAY"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				m.setMemberStatus(rset.getString("MEMBER_STATUS"));
+				m.setBlackReason(rset.getString("BLACK_REASON"));
+				m.setBlackDate(rset.getDate("BLACK_DATE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	////////////////////////////////////////////////////////////////////////

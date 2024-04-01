@@ -201,6 +201,7 @@ public class CarService {
 		return carList;
 	}
 	
+<<<<<<< HEAD
 	public ArrayList<Attachment> selectAttachmentList(){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -212,6 +213,28 @@ public class CarService {
 		return atList;
 	}
 	
+	public ArrayList<Car> locationSale(String checkLocations){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> carLocation = new CarDao().locationSale(conn, checkLocations);
+			
+		JDBCTemplate.close(conn);
+		
+		return carLocation;	
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+=======
+>>>>>>> 22fd12f1da8cf13f87677fdfd84fb4b8ccd05537
 
 	
 	

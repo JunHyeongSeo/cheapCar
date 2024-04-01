@@ -62,8 +62,8 @@
 
     .car-list{
         width : 800px;
-        height : 250px;
-        margin : 35px;
+        height : 220px;
+        margin : auto;
         padding : 15px;
     }
 
@@ -73,7 +73,7 @@
 
     .list-size{
         width : 380px;
-        height : 215px;
+        height : 190px;
         float : left;
         margin : auto;
     }
@@ -87,7 +87,7 @@
     }
 
     .car-info {
-		padding-left : 10px;
+		padding : 10px;
     }
     
     td{
@@ -106,7 +106,8 @@
     }
     
     .pagination{
-    	margin-left : 33%;
+    	margin-left : 45%;
+    	margin-right : 45%;
     }
     #option-input{
 		width : 160px;
@@ -133,6 +134,9 @@
         width : 100%;
         text-align : center;
         padding : 5px;
+    }
+    .option-list{
+    	font-size : 12px;
     }
 </style>
 </head>
@@ -209,7 +213,7 @@
                     </div>  
 
                     <div class="detail-option">
-                        옵션 리스트
+                        	옵션 리스트
                     </div>
 
 					<div class="detail-option">
@@ -239,7 +243,8 @@
                 </form>
             </div>
 
-            <div class="area-list">
+            <div id="main-select" class="area-list">
+            
                 <% if(carList.isEmpty()) { %>
                 
                 	등록된 게시글이 존재하지 않습니다. <br>
@@ -248,11 +253,13 @@
 					
 					<% for(Car c : carList) { %>
 	                <div class="car-list">
+	                
 	                    <div class="list-size">
 	                    
-	                        <img class="car-img img-thumbnail" src="https://image.kmibD.co.kr/online_image/2023/0404/2023040416513996855_1680594700_0018125706.jpg" alt="차량i번">
+	                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
 	                    
 	                    </div>
+	                    
                     	<div class="list-size car-info">	
                             
 	                        <label><%= c.getModelName() %></label> <br>
@@ -265,7 +272,7 @@
 
 	        					<% for(Option o : optionList) { %>
 	        						<% if(c.getManagementNo() == o.getManagementNo()) { %>
-                               			<span> <%= o.getOptionName() %></span>
+                               			<span class="option-list"> <%= o.getOptionName() %></span>
                                			<% optionPrice += o.getOptionPrice(); %>
                                		<% } %>
 	                            <% } %> 
@@ -282,13 +289,40 @@
                     </div>
 	                <% } %>
                 <% } %>
+                
+                
+                <div id="detail-select" class="area-list" style="display:none">
+    
+	                <% %>
+                    <div class="car-list">
                     
+                        <div class="list-size">
+    
+                        </div>
+    
+                        <div class="list-size car-info">
+                            <label></label> <br>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span> <br><br>
+                            <span class="option-list"></span> <br>
+	                        <label>시간당 가격</label> : 
+	                        <span></span> <br>
+                        </div>
+                                
+                        <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=1&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
                     
-                    <div align="center">
+                    </div>
+                
+                </div>
+                    
+                    <div>
+                    
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">Previous</a>
+                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%="<"%></a>
                                 </li>
                             <% } %>
 
@@ -310,13 +344,22 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">Next</a>
+	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%=">"%></a>
 	                            </li>
                             <% } %>
-						</ul>
-					</div>
-                </div>
-                <br clear="both">
+					    </ul>
+					    
+				    </div>
+            </div>
+
+
+            <script>
+
+
+
+            </script>
+            
+            <br clear="both">
         </div>
     </div>
 

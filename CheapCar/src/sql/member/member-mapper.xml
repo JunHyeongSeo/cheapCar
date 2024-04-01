@@ -153,6 +153,11 @@
 	      	  RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectBlack">
+		SELECT * FROM TB_MEMBER WHERE MEMBER_STATUS = 'B' AND MEMBER_ID = ?
+	
+	</entry>
+	
 	
 	
 	
@@ -255,8 +260,6 @@
 			FROM
 				TB_MEMBER
 			WHERE
-				MEMBER_STATUS IN ('A', 'C')
-			AND
 				MEMBER_ID = ?
 				
 	</entry>

@@ -316,6 +316,9 @@ public class CarDao {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setChangeName(rset.getString("CHANGE_NAME"));
+				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -412,6 +415,7 @@ public class CarDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
+				
 				Car car = new Car();
 				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
 				car.setStatus(rset.getString("STATUS"));
@@ -426,8 +430,11 @@ public class CarDao {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
-				
+				car.setChangeName(rset.getString("CHANGE_NAME"));
+				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
+			
 				carList.add(car);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -540,7 +547,6 @@ public class CarDao {
 					car.setPhone(rset.getString("PHONE"));
 					car.setEmail(rset.getString("EMAIL"));
 					
-					//System.out.println(rset.getString("MEMBER_ID"));
 				}
 				
 			} catch (SQLException e) {
@@ -628,7 +634,54 @@ public class CarDao {
 	}
 	
 	
-	
+	public ArrayList<Car> locationSale(Connection conn, String checkLocations){
+		
+		ArrayList<Car> carLocation = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("checkLocations");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkLocations);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Car car1 = new Car();
+				car1.setManagementNo(rset.getInt("MANAGEMENT_NO"));
+				car1.setStatus(rset.getString("STATUS"));
+				car1.setCarNo(rset.getString("CAR_NO"));
+				car1.setLocationNo(rset.getInt("LOCATION_NO"));
+				car1.setLocationName(rset.getString("LOCATION_NAME"));
+				car1.setModelName(rset.getString("MODEL_NAME"));
+				car1.setFuelName(rset.getString("FUEL_NAME"));
+				car1.setBrandName(rset.getString("BRAND_NAME"));
+				car1.setGradeName(rset.getString("GRADE_NAME"));
+				car1.setYear(rset.getInt("YEAR"));
+				car1.setGradePrice(rset.getInt("GRADE_PRICE"));
+				car1.setModelPrice(rset.getInt("MODEL_PRICE"));
+				car1.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car1.setStartDate(rset.getDate("START_DATE"));
+				car1.setEndDate(rset.getDate("END_DATE"));
+				car1.setMemberId(rset.getString("MEMBER_ID"));
+				car1.setReservationNo(rset.getInt("RESERVATION_NO"));
+				car1.setMemberName(rset.getString("MEMBER_NAME"));
+				car1.setPhone(rset.getString("PHONE"));
+				car1.setEmail(rset.getString("EMAIL"));
+				car1.setTotalPrice(rset.getInt("TOTAL_PRICE"));
+				carLocation.add(car1);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return carLocation;
+	}
 	
 	
 	

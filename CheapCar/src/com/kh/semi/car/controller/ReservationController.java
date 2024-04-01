@@ -35,8 +35,8 @@ public class ReservationController extends HttpServlet {
 		int managementNo = Integer.parseInt(request.getParameter("managementNo"));
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String startDate = (String)request.getParameter("startRent");
-		String endDate = (String)request.getParameter("endRent");
+		String startDate = (String)request.getParameter("startDate");
+		String endDate = (String)request.getParameter("endDate");
 		
 		Reservation reservation = new Reservation();
 		reservation.setManagementNo(managementNo);

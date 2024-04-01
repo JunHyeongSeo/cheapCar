@@ -64,6 +64,7 @@
 						<th>회원번호</th>
 						<th>이름</th>
 						<th>아이디</th>
+						<th>회원상태</th>
 						<th>상세보기</th>
 					</tr>
 				</thead>
@@ -101,12 +102,14 @@
 	    			data : {currentPage : currentPage},
 	    			success : function(list){
 	    				let resultStr = '';
+	    				console.log(list);
 	    				
 	    				for(let i in list){
 	    					resultStr += '<tr>'
 	        						   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td>' + list[i].memberStatus + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
@@ -184,6 +187,7 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td>' + list[i].memberStatus + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
@@ -232,8 +236,10 @@
        			        				+ '">다음</button>';
        			        }
 	       			    document.getElementById('paging-area').innerHTML = resultStr;
+	       			    document.getElementById('con2Body').innerHTML = '';
         			}
         		});
+				
 			}
 			
 			function cp(result){
@@ -253,6 +259,7 @@
 									   + '<td>' + list[i].memberNo + '</td>'
 	        						   + '<td>' + list[i].memberName + '</td>'
 	        						   + '<td>' + list[i].memberId + '</td>'
+	        						   + '<td>' + list[i].memberStatus + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="memberDetail(this.id);" id="' + list[i].memberId + '" name="' + list[i].memberId + '" value="' + list[i].memberId + '">상세보기</td>'
 	        						   + '</tr>'
 						}
@@ -299,9 +306,9 @@
         		});
 			}
 			
+			// 4. 상세보기 버튼 누르면 #container2 에 html 추가
 			function memberDetail(result){
 				
-				// 4. 상세보기 버튼 누르면 #container2 에 html 추가
 				$.ajax({
 					url : "memberDetail.do",
 					data : {
@@ -309,45 +316,60 @@
 					},
 					success : function(m){
 						let resultStr = '';
-						
+						console.log(m);
+						console.log(m.memberNo);
 						resultStr += "<tr>"
 								   + "<td>회원번호</td>"
-								   + "<td><input type='text' value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
+								   + "<td><input type='text' disabled value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>아이디</td>"
+								   + "<td><input type='text' disabled value='" + m.memberId + "' name='" + m.memberId + "'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>이름</td>"
 								   + "<td><input type='text' value='" + m.memberName + "' name='" + m.memberName + "'></td>"
 								   + "</tr>"
-								   + "<tr>"
-								   + "<td>아이디</td>"
-								   + "<td><input type='text' value='" + m.memberId + "' name='" + m.memberId + "'></td>"
-								   + "</tr>"
-								   + "<tr>"
-								   + "<td>회원상태</td>"
-								   + "<td><input type='text' value='" + m.memberStatus + "' name='" + m.memberStatus + "'></td>"
-								   + "</tr>"
 								   + "<td>연락처</td>"
 								   + "<td><input type='text' value='" + m.phone + "' name='" + m.phone + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>생년월일</td>"
+								   + "<td><input type='text' value='" + m.birthday + "' name='" + m.birthday + "'></td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td>이메일</td>"
+								   + "<td><input type='text' value='" + m.email + "' name='" + m.email + "'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>가입일자</td>"
 								   + "<td><input type='text' value='" + m.enrollDate + "' name='" + m.enrollDate + "'></td>"
 								   + "</tr>"
+								   + "<tr>"
+								   + "<td>회원상태</td>"
+								   + "<td>"
+								   + '<input type="checkbox" id="A" value="A" name="Status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="B" value="B" name="Status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="C" value="C" name="Status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="D" value="D" name="Status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
+								   + "</td>"
+								   + "</tr>"
 								   
 						document.getElementById('con2Body').innerHTML = resultStr;
+						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
+						
+						let str = document.getElementsByName('Status');
+						console.log(str);
+						for(let i = 0; i < str.length; i++){
+							if(str[i].value.indexOf(m.memberStatus) == -1){
+								str[i].checked = false;
+							}
+							else{
+								str[i].checked = true;
+							}
+						}
 					}
-					
-					
-					
-					
-					
-				})
-				
-				
-				
-				
-				
-				
+				});
 			}
 			
 			

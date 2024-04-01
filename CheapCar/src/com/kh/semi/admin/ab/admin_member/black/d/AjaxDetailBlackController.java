@@ -1,4 +1,4 @@
-package com.kh.semi.admin.ab.admin_member.member.d;
+package com.kh.semi.admin.ab.admin_member.black.d;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/memberDetail.do")
-public class AjaxDetailMemberController extends HttpServlet {
+@WebServlet("/blackDetail.do")
+public class AjaxDetailBlackController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDetailMemberController() {
+    public AjaxDetailBlackController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,11 +34,12 @@ public class AjaxDetailMemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberId = request.getParameter("memberId");
-
-		Member m = new MemberService().selectMember(memberId);
+		
+		Member m = new MemberService().selectBlack(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(m, response.getWriter());
+		
 	}
 
 	/**
