@@ -1,4 +1,4 @@
-package com.kh.semi.car.admincontroller;
+package com.kh.semi.admin.admincontroller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
 
 /**
- * Servlet implementation class ReservateionDetail
+ * Servlet implementation class LocationSaleController
  */
-@WebServlet("/sales2")
-public class ReservateionDetail extends HttpServlet {
+@WebServlet("/locationsale")
+public class LocationSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservateionDetail() {
+    public LocationSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +33,18 @@ public class ReservateionDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int checkReservationNo = Integer.parseInt(request.getParameter("checkReservationNo"));
-		
-		
-		Car car = new CarService().carcarone(checkReservationNo);
-		
-		
-		
-		
-		if(car == null) {
-			
-		} else { // 올해 이번 달 자동차 리스트 매출조회 화면에 띄워줄
-			//System.out.println(car);
-			
-			
-			response.setContentType("application/json; charset=UTF-8");
-			Gson gson = new Gson();
-			gson.toJson(car, response.getWriter());
-			
-			
-			
-			
-		}
+		String checkLocations = request.getParameter("checkLocations");
 	
+		
+		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
+		
+		System.out.println(carLocation);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(carLocation, response.getWriter());
 	
+		
 	
 	}
 

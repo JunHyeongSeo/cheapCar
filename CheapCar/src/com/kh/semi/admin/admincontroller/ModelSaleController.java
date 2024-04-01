@@ -1,4 +1,4 @@
-package com.kh.semi.car.admincontroller;
+package com.kh.semi.admin.admincontroller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
 
 /**
- * Servlet implementation class LocationSaleController
+ * Servlet implementation class ModelSaleController
  */
-@WebServlet("/locationsale")
-public class LocationSaleController extends HttpServlet {
+@WebServlet("/modelsale")
+public class ModelSaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LocationSaleController() {
+    public ModelSaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +33,20 @@ public class LocationSaleController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String checkLocations = request.getParameter("checkLocations");
+		String checkmodels =  request.getParameter("checkmodels");
+		
+		System.out.println(checkmodels);
 	
+			
+		ArrayList<Car> car = new CarService().modelSale(checkmodels);
+		System.out.println(car);
+
+			response.setContentType("application/json; charset=UTF-8");
+			Gson gson = new Gson();
+			gson.toJson(car, response.getWriter());
 		
-		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
 		
-		System.out.println(carLocation);
-		
-		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(carLocation, response.getWriter());
-	
-		
-	
+		//System.out.println(car);
 	}
 
 	/**

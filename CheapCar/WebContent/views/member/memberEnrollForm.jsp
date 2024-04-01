@@ -15,7 +15,7 @@
 
 	<%@ include file="../common/menuBar.jsp" %>
 	
-	<div class="outer">
+	<div class="container">
 		<br>
 		<h2 align="center">회원가입</h2>
 		
@@ -70,6 +70,8 @@
 					<td>* 비밀번호</td>
 					<td><input type="password" maxlength="30" required name="memberPwd"></td>
 					<td></td>
+					<div class="valid-feedback"></div>
+		      		<div class="invalid-feedback">입력해주세요.</div>
 				</tr>
 				<tr>
 					<td>* 비밀번호확인</td>

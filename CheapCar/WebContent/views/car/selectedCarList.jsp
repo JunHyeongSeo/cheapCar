@@ -158,11 +158,11 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
+                <form method="post" action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
 
                     <div class="detail-option">
                         <label>제조사</label>
-                        <select class="form-control">
+                        <select name="brand"class="form-control">
                             <option value="현대">현대</option>
                             <option value="기아">기아</option>
                             <option value="제네시스">제네시스</option>
@@ -173,7 +173,7 @@
                     
                     <div class="detail-option">
                         <label>차량 등급 </label>
-                        <select class="form-control">
+                        <select name="grade" class="form-control">
                             <option value="경차">경차</option>
                             <option value="준중형">준중형</option>
                             <option value="중형">중형</option>
@@ -186,7 +186,7 @@
 					
                     <div class="detail-option">
                         <label>사용 연료 </label>
-                        <select class="form-control">
+                        <select name="fuel" class="form-control">
                           <option value="전기">전기</option>
                           <option value="하이브리드">하이브리드</option>
                           <option value="가솔린">가솔린</option>
@@ -197,7 +197,7 @@
 
                     <div class="detail-option">
                         <label>차종</label>
-                        <select class="form-control">
+                        <select name="model"class="form-control">
                           <option value="아반때">아반때</option>
                           <option value="소나타">소나타</option>
                           <option value="K3">K3</option>
@@ -224,21 +224,28 @@
                          
                          <input type="checkbox" class="form-check-input" name="ParkingSystem" value="주차보조시스템">주차보조시스템
                          
-                        </div>
+                    </div>
+                    
+                    <div class="detail-option">
                         
-                        <div class="detail-option">
-                            
-                            <input type="checkbox" class="form-check-input" name="" value="선루프">선루프
-                            
-                            <input type="checkbox" class="form-check-input" name="CarSeat" value="카시트">카시트
-                            
-                            <input type="checkbox" class="form-check-input" name="BackCamera" value="후방카메라">후방카메라
+                        <input type="checkbox" class="form-check-input" name="" value="선루프">선루프
+                        
+                        <input type="checkbox" class="form-check-input" name="carSeat" value="카시트">카시트
+                        
+                        <input type="checkbox" class="form-check-input" name="backCamera" value="후방카메라">후방카메라
 
 					</div>
 
 					<div class="detail-option">
+					
+						<input type="hidden" name="hours" value="<%=hours %>" />
+						<input type="hidden" name="locations" value="<%=locations %>" />
+						<input type="hidden" name="startDate" value="<%=startDate %>" />
+						<input type="hidden" name="endDate" value="<%=endDate %>" />
+						
 	    				<button class="btn btn-primary" type="submit">검색</button>
 	    				<button class="btn btn-secondary" type="reset">리셋</button>
+					
 					</div>
                 </form>
             </div>
@@ -290,33 +297,6 @@
 	                <% } %>
                 <% } %>
                 
-                
-                <div id="detail-select" class="area-list" style="display:none">
-    
-	                <% %>
-                    <div class="car-list">
-                    
-                        <div class="list-size">
-    
-                        </div>
-    
-                        <div class="list-size car-info">
-                            <label></label> <br>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span> <br><br>
-                            <span class="option-list"></span> <br>
-	                        <label>시간당 가격</label> : 
-	                        <span></span> <br>
-                        </div>
-                                
-                        <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=1&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
-                    
-                    </div>
-                
-                </div>
-                    
                     <div>
                     
 						<ul class="pagination" >
@@ -347,17 +327,11 @@
 	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%=">"%></a>
 	                            </li>
                             <% } %>
+                            
 					    </ul>
 					    
 				    </div>
             </div>
-
-
-            <script>
-
-
-
-            </script>
             
             <br clear="both">
         </div>
