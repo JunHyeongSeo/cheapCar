@@ -44,7 +44,7 @@ public class CarService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int listCount = new CarDao().adminCarListCount(conn);
+		int listCount = new CarDao().selectListCount(conn);
 		
 		JDBCTemplate.close(conn);
 		
@@ -201,7 +201,6 @@ public class CarService {
 		return carList;
 	}
 	
-
 	public ArrayList<Attachment> selectAttachmentList(){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -226,8 +225,6 @@ public class CarService {
 		
 		
 	}
-	
-	
 
 	
 	

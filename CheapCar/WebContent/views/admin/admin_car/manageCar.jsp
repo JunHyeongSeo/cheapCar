@@ -31,9 +31,9 @@
             	<thead>
             		<tr>
             			<th>관리번호</th>
-						<th>차종</th>
 						<th>차량번호</th>
 						<th>모델명</th>
+						<th>차량종류</th>
 						<th>상세보기</th>
 					</tr>
 				</thead>
@@ -70,10 +70,10 @@
 	    				let resultStr = '';
 	    				for(let i in list){
 	        				resultStr += '<tr>'
+	        						   + '<td>' + list[i].managementNo + '</td>'
 	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
+	        						   + '<td>' + list[i].modelName + '</td>'
+	        						   + '<td>' + list[i].gradeName + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 	    				}
@@ -146,14 +146,15 @@
 						
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
+									   + '<td>' + list[i].managementNo + '</td>'
+		      						   + '<td>' + list[i].carNo + '</td>'
+		      						   + '<td>' + list[i].modelName + '</td>'
+		      						   + '<td>' + list[i].gradeName + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 						}
         				document.getElementById('conBody').innerHTML = resultStr;
+        				document.getElementById('conBody2').innerHTML = '';
 					}
 				});
 				
@@ -207,14 +208,15 @@
 						currentPage : currentPage
 					},
 					success : function(list){
+						console.log(list);
 						let resultStr = '';
 						
 						for(let i in list){
 							resultStr += '<tr>'
-									   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
-	        						   + '<td>' + list[i].carNo + '</td>'
+									   + '<td>' + list[i].managementNo + '</td>'
+		      						   + '<td>' + list[i].carNo + '</td>'
+		      						   + '<td>' + list[i].modelName + '</td>'
+		      						   + '<td>' + list[i].gradeName + '</td>'
 	        						   + '<td><button type="button" class="btn btn-secondary" onclick="carDetail(this.id)" id="' + list[i].managementNo + '" value = "' + list[i].managementNo + '">상세보기</td>'
 	        						   + '</tr>'
 						}

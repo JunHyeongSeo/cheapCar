@@ -40,10 +40,16 @@
 		</div>
 		
 		<div class="container2">
+			<table class="table table-bordered">
+	            <tbody id="conBody2">
+	
+	            </tbody>
+            </table>
 		
 		</div>
 		
 		<script>
+
 			window.onload = function(){
 				
 				const url = new URL(location.href);
@@ -58,14 +64,13 @@
 					success : function(list){
 						let resultStr = '';
 
-	    				console.log(list);
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].csNo + '</td>'
 									   + '<td>' + list[i].csTitle + '</td>'
 									   + '<td>' + list[i].memberName + '</td>'
 									   + '<td>' + list[i].replyYn + '</td>'
-									   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+									   + '<td><button type="button" class="btn btn-secondary" onclick="csDetail(this.id);" id="' + list[i].csNo + '" name="' + list[i].csNo + '" value="' + list[i].csNo + '">상세보기</td>'
 									   + '</tr>'
 						}
 						document.getElementById('conBody').innerHTML = resultStr;
@@ -124,9 +129,9 @@
 			}
 			
 			// 3. 조회 누르면 포함된 값 보여주는 ajax
-			function searchCs(result){
+			function searchCs(){
 				
-				const current = 1;
+				const currentPage = 1;
 				
 				$.ajax({
 					url : 'csList.search',
@@ -136,13 +141,14 @@
 					},
 					success : function(list){
 						let resultStr = '';
+						
 						for(let i in list){
 							resultStr += '<tr>'
 									   + '<td>' + list[i].csNo + '</td>'
 									   + '<td>' + list[i].csTitle + '</td>'
 									   + '<td>' + list[i].memberName + '</td>'
 									   + '<td>' + list[i].replyYn + '</td>'
-									   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+									   + '<td><button type="button" class="btn btn-secondary" onclick="csDetail(this.id);" id="' + list[i].csNo + '" name="' + list[i].csNo + '" value="' + list[i].csNo + '">상세보기</td>'
 									   + '</tr>'
 						}
 						document.getElementById('conBody').innerHTML = resultStr;
@@ -206,7 +212,7 @@
 										   + '<td>' + list[i].csTitle + '</td>'
 										   + '<td>' + list[i].memberName + '</td>'
 										   + '<td>' + list[i].replyYn + '</td>'
-										   + '<td><button type="button" class="btn btn-secondary" onclick="asmc();">상세보기</td>'
+										   + '<td><button type="button" class="btn btn-secondary" onclick="csDetail(this.id);" id="' + list[i].csNo + '" name="' + list[i].csNo + '" value="' + list[i].csNo + '">상세보기</td>'
 										   + '</tr>'
 							}
 	        				document.getElementById('conBody').innerHTML = resultStr;
@@ -253,6 +259,18 @@
 	        		});
 				}
 			}
+			
+			function csDetail(result){
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
 		</script>
 		
 		
