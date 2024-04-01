@@ -1,11 +1,15 @@
 package com.kh.semi.admin.ab.admin_member.member.e;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
 
 /**
  * Servlet implementation class AjaxUpdateMemberController
@@ -27,38 +31,26 @@ public class AjaxUpdateMemberController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = request.getParameter("name");
+		String memberName = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String birthday = request.getParameter("birthday");
 		String email = request.getParameter("email");
-		String[] status = request.getParameterValues("status");
-		String memId = request.getParameter("checkId");
-		
-		System.out.println(1);
-		System.out.println(status);
-		System.out.println(1);
+		String memberStatus = request.getParameter("status");
+		String memberId = request.getParameter("checkId");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		
+		Member m = new Member();
+		m.setMemberName(memberName);
+		m.setPhone(phone);
+		m.setBirthday(birthday);
+		m.setEmail(email);
+		m.setMemberStatus(memberStatus);
+		m.setMemberId(memberId);
 		
+		int result = new MemberService().adminUpdateMem(m);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		response.getWriter().print(result);
 	}
 
 	/**

@@ -83,6 +83,21 @@
 	   WHERE
 			MEMBER_ID = ?
 	</entry>
+	
+	<entry key="adminUpdateMem">
+		UPDATE 
+				TB_MEMBER 
+		SET 
+				MEMBER_NAME = ?,
+				PHONE = ?,
+				BIRTHDAY = ?,
+				EMAIL = ?,
+				MEMBER_STATUS = ?
+		WHERE 
+				MEMBER_ID = ?
+	</entry>
+	
+	
 	<!-- /////////////////// 블랙리스트 시작 //////////////////////////////// -->
 
 	<entry key="selectBlackListCount">
@@ -157,7 +172,7 @@
 		SELECT * FROM TB_MEMBER WHERE MEMBER_STATUS = 'B' AND MEMBER_ID = ?
 	</entry>
 	
-	<entry key="updateMember">
+	<entry key="updateBlack">
 		UPDATE TB_MEMBER SET MEMBER_STATUS = 'C' WHERE MEMBER_NO = ?
 	</entry>
 	
