@@ -3,139 +3,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>메인화면</title>
-<style>
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- swiper.js 라이브러리추가 -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
+    <style>
+    /* 이미지 영역 사이즈 조절 */
+    .swiper {
+        width: 1200px;
+        height: 500px;
+    }
 
-/* Caption text */
-.text {
-  color: #000000;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
+    /* 이미지 사이즈 조절 */
+    .swiper-slide>img {
+        width : 100%;
+        height : 100%;
+    }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-</style>
+    /* 화살표 버튼색 변경 (기본색은 파란색) */
+    div[class^=swiper-button] {
+        color : white;
+        /* display : none; */ /* 아니면 안보이게 숨기기도 가능 */
+    }
+    </style>
+    
 </head>
 <body>
-
-
-	
 	
 	<% com.kh.semi.common.JDBCTemplate.getConnection(); %>
 
 	<%@ include file="views/common/menuBar.jsp" %>
 	
-	<div class="slideshow-container">
+	<!-- 
+        * 참고 링크
+        https://iridescent-zeal.tistory.com/150
+    -->
+    <div id="content_1">
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2017/04/11/15/55/animals-2222007__480.jpg"></div>
+                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/12/06/09/15/maple-1079235__480.jpg"></div>
+                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/09/01/19/53/pocket-watch-1637396__480.jpg"></div>
+                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275__480.jpg"></div>
+                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/09/01/09/32/alphabet-916673__480.jpg"></div>
+            </div>
+        
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
 
-		<div class="mySlides fade">
-		  <div class="numbertext">1 / 3</div>
-		  <img src="http://placehold.it/300x100" style="width:100%">
-		  <div class="text">Caption One</div>
-		</div>
-		
-		<div class="mySlides fade">
-		  <div class="numbertext">2 / 3</div>
-		  <img src="http://placehold.it/300x100" style="width:100%">
-		  <div class="text">Caption Two</div>
-		</div>
-		
-		<div class="mySlides fade">
-		  <div class="numbertext">3 / 3</div>
-		  <img src="http://placehold.it/300x100" style="width:100%">
-		  <div class="text">Caption Three</div>
-		</div>
-		
-		</div>
-		<br>
-		
-		<div style="text-align:center">
-		  <span class="dot"></span> 
-		  <span class="dot"></span> 
-		  <span class="dot"></span> 
-		</div>
-		
-		<script>
-		var slideIndex = 0;
-		showSlides();
-
-		function showSlides() {
-		    var i;
-		    var slides = document.getElementsByClassName("mySlides");
-		    var dots = document.getElementsByClassName("dot");
-		    for (i = 0; i < slides.length; i++) {
-		       slides[i].style.display = "none";  
-		    }
-		    slideIndex++;
-		    if (slideIndex > slides.length) {slideIndex = 1}    
-		    for (i = 0; i < dots.length; i++) {
-		        dots[i].className = dots[i].className.replace(" active", "");
-		    }
-		    slides[slideIndex-1].style.display = "block";  
-		    dots[slideIndex-1].className += " active";
-		    setTimeout(showSlides, 5000); // Change image every 2 seconds
-		}
-		</script>
+    <script>
+        // 슬라이더 동작 정의
+        const swiper = new Swiper('.swiper', {
+            autoplay : {
+                delay : 3000 // 3초마다 이미지 변경
+            },
+            loop : true, //반복 재생 여부
+            slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
+            pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next'
+            }
+        }); 
+    </script>
 	
 </body>
 </html>
