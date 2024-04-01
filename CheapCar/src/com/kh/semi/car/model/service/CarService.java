@@ -212,6 +212,25 @@ public class CarService {
 		return atList;
 	}
 	
+	public ArrayList<Car> locationSale(String checkLocations){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> carLocation = new CarDao().locationSale(conn, checkLocations){
+			
+		JDBCTemplate.close(conn);
+		
+		
+		return carLocation;	
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 
