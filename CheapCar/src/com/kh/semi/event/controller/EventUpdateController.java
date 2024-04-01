@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
+import com.kh.semi.event.model.vo.EventBoard;
 import com.kh.semi.event.model.vo.EventPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -47,10 +48,18 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
+			EventBoard eBoard = new EventBoard();
 			int memberNo = Integer.parseInt(multiRequest.getParameter("userNo"));
 			int eventNo = Integer.parseInt(multiRequest.getParameter("eventNo"));
 			String eventTitle = multiRequest.getParameter("title");
-			String eventConetent = multiRequest.getParameter("content");
+			String eventContent = multiRequest.getParameter("content");
+			
+			eBoard.setMemberNo(memberNo);
+			eBoard.setEventNo(eventNo);
+			eBoard.setEventTitle(eventTitle);
+			eBoard.setEventContent(eventContent);
+			
+			System.out.println(eBoard);
 			
 			//----------------------
 			
