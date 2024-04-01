@@ -112,6 +112,15 @@ public class EventService {
 	}
 	
 	
+	public void updateBoard(EventBoard eBoard) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new EventDao().updateBoard(conn, eBoard);
+		
+		
+		
+	}
 	
 	
 	

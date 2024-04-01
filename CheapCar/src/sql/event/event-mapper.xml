@@ -164,6 +164,23 @@
 		       EVENT_NO = ?         
 	</entry>
 	
+	<entry key="updateBoard">
+		UPDATE
+		       TB_EVENT_BOARD
+		   SET
+		       EVENT_TITLE = ?,
+		       EVENT_CONTENT = ?
+         WEHER
+               EVENT_NO = ?
+           AND 
+               STATUS = 'Y'    		       
+		         
+	</entry>
+	
+	
+	
+	
+	
 	
 	
 	
