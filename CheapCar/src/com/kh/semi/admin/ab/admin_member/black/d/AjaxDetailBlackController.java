@@ -1,23 +1,29 @@
-package com.kh.semi.admin.ac.admin_car;
+package com.kh.semi.admin.ab.admin_member.black.d;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
+
 /**
- * Servlet implementation class InsertCarController
+ * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/insertCar.do")
-public class Admin_CarListController extends HttpServlet {
+@WebServlet("/blackDetail.do")
+public class AjaxDetailBlackController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin_CarListController() {
+    public AjaxDetailBlackController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +33,12 @@ public class Admin_CarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String memberId = request.getParameter("memberId");
 		
+		Member m = new MemberService().selectBlack(memberId);
 		
-		response.sendRedirect(request.getContextPath() + "/manageCar?currentPage=1");
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(m, response.getWriter());
 		
 	}
 
