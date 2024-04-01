@@ -89,11 +89,12 @@
 			alert('렌트 예약은 회원만 가능합니다.');
 			location.href = '<%=contextPath%>/loginPage';
 		</script>
+		
 	<% } else { %>
 
 
         <div class="car-image"> 
-            <img class="image" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMzEyMjZfMjI4%2FMDAxNzAzNTc4NDIxNzM0.uTcxc4cFKOcNWG2Nc7Me-BpdXCV-s8vaWFYVcQOzDSQg.vfvPPCebjKLB0RGojjK6uRpMuPXX4gVZVvxvZhTua68g.JPEG%2FIm1KxuoEiMndVQdXGhKBl3wBDjbM.jpg&type=sc960_832" alt="대표이미지">
+            <img class="image" src="<%=contextPath%>/<%=car.getCarPhotoAddress()%>/<%=car.getChangeName()%>" alt="대표이미지">
         </div>
         
         <div class="car-info"> 차량 상세 정보
@@ -133,7 +134,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
 
-                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startRent=<%=startDate%>&endRent=<%=endDate%>">
+                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startDate=<%=startDate%>&endDate=<%=endDate%>">
                             <div class="modal-header">
                                 <h4 class="modal-title">CheepCar 결제 페이지</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -145,7 +146,7 @@
 					                                대여 모델 : <%=car.getModelName()%> <br>
 					                                차량 연식 : <%=car.getYear()%> <br>
 					                                사용 연료 : <%=car.getFuelName()%> <br>
-					                                대여 기간 : <%= startDate%> - <%= endDate%> <br>
+					                                대여 기간 : <%=startDate%> - <%=endDate%> <br>
 					                                총 가격 : <%= totalPrice%>
                             </div>
                             

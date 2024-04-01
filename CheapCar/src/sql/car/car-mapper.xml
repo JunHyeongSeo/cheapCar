@@ -392,7 +392,7 @@
 	<entry key="selectDetailCar">
 		SELECT
 		        C.MANAGEMENT_NO,
-		        STATUS,
+		        C.STATUS,
 		        CAR_NO,
 		        C.LOCATION_NO,
 		        LOCATION_NAME,
@@ -403,7 +403,9 @@
 		        YEAR,
 		        GRADE_PRICE,
 		        MODEL_PRICE,
-		        YEAR_PRICE
+		        YEAR_PRICE,
+                CHANGE_NAME,
+                CAR_PHOTO_ADDRESS
 		  FROM
 		        TB_CAR C
 		  JOIN  
@@ -427,6 +429,9 @@
 		  JOIN
 		        TB_YEAR Y
 		    ON (CB.YEAR_NO = Y.YEAR_NO)
+		  JOIN
+				TB_CAR_PHOTO CP
+			ON (C.MANAGEMENT_NO = CP.MANAGEMENT_NO) 
 		 WHERE
 		        C.MANAGEMENT_NO = ?
 	</entry>

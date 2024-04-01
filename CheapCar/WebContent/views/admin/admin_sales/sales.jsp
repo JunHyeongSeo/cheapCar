@@ -44,7 +44,7 @@
 				
 				<div class="salesList" style="margin-bottom:20px;" align="right">		
 					<a type="submit" class="btn btn-outline-info" onclick="detailModel();">모델별 매출 내역</a>
-					<a type="submit" class="btn btn-outline-primary">기간별 매출 내역</a>
+					<!-- <a type="submit" class="btn btn-outline-primary">기간별 매출 내역</a> -->
 					<a type="submit" class="btn btn-outline-warning" onclick="detailLocation();">지점별 매출 내역</a>
 				</div>
 			</div>
@@ -86,37 +86,34 @@
 			
 			
 			<div id="noneDiv2" class="container2" style="text-align:center; display: none ; line-height:64px;">
-			<div><button onclick="show2();" id="showDiv2" style="float: right; height: 30px; text-align:center; display: flex;align-items: center; margin-bottom: 20px;">상세내역 닫기</button></div>
-			<table class="table table-bordered">
-			
-			
-			
-			
-			<thead>
-			</thead>
-				<tbody>
-					<tr id="hiddenModel" style="display : none">
-						<th>모델명</th>
-						<td id="detailModelName22"></td>
-					</tr>
-					<tr id="hiddenStartDate"  style="display : none">
-						<th>대여한 날짜</th>
-						<td id="detailStartDate22"></td>
-					</tr>
-					<tr id="hiddenModel" style="display : none">
-						<th>반납 날짜</th>
-						<td id="detailEndDate22"></td>
-					</tr>
-					<tr id="hiddenModel" style="display : none">
-						<th>지점</th>
-						<td id="detailEndDate22"></td>
-					</tr>
-					<tr>
-						<th>금액</th>
-						<td id="detailTotalPrice22"></td>
-					</tr>
-				</tbody>
-			</table>
+				<div><button onclick="show2();" id="showDiv2" style="float: right; height: 30px; text-align:center; display: flex;align-items: center; margin-bottom: 20px;">상세내역 닫기</button></div>
+				
+				<table class="table table-bordered">
+				<thead>
+				</thead>
+					<tbody>
+						<tr id="hiddenModel" style="display : none">
+							<th>모델명</th>
+							<td id="detailModelName22"></td>
+						</tr>
+						<tr id="hiddenStartDate"  style="display : none">
+							<th>대여한 날짜</th>
+							<td id="detailStartDate22"></td>
+						</tr>
+						<tr id="hiddenEndDate" style="display : none">
+							<th>반납 날짜</th>
+							<td id="detailEndDate22"></td>
+						</tr>
+						<tr id="hiddenLocation" style="display : none">
+							<th>지점</th>
+							<td id="detailLocation22"></td>
+						</tr>
+						<tr>
+							<th>금액</th>
+							<td id="detailTotalPrice22"></td>
+						</tr>
+					</tbody>
+				</table>
 		</div>
 	
 
@@ -124,9 +121,12 @@
 			<script>
 				function detailModel(){ // 모델별 매출 내역
 					
+					$('#detailLocationName').hide();
+					
 					$('#detailModelName').show();
 				
-				
+					$('#hiddenLocation').hide();
+					
 					$('#hiddenModel').show();
 					
 					
@@ -145,6 +145,7 @@
 								$('#detailModelName22').html("");
 								$('#detailStartDate22').html("");
 								$('#detailEndDate22').html("");
+								$('#detailLocation22').html("");
 								$('#detailTotalPrice22').html("");
 							}
 							else{
@@ -163,11 +164,15 @@
 				};
 				
 				
-				function detailLocation(){
+				function detailLocation(){ // 지점별 매출 내역
 					
 					$('#detailModelName').hide();
 					
 					$('#detailLocationName').show();
+					
+					$('#hiddenModel').hide();
+					
+					$('#hiddenLocation').show();
 					
 					$.ajax({
 						
@@ -178,14 +183,31 @@
 						},
 						success : function(result){
 							console.log(result);
-						
 							
-						
+							$('#noneDiv2').show();
+							
+							if(result.length == 0){
+								$('#detailModelName22').html("");
+								$('#detailStartDate22').html("");
+								$('#detailEndDate22').html("");
+								$('#detailLocation22').html("");
+								$('#detailTotalPrice22').html("");
+								
+							}
+							else{
+								
+								for(let i = 0; i < result.length; i++){
+									let c = result[i].modelName;
+									let d = result[i].startDate;
+									$('#detailModelName22').html(c);
+									$('#detailStartDate22').html(d);
+									$('#detailEndDate22').html(result[i].endDate);
+									$('#detailLocation22').html(result[i].locationName);
+									$('#detailTotalPrice22').html(result[i].totalPrice);
+								}
+							}
 						}
-						
-						
-					})
-					
+					});
 				}
 				
 				

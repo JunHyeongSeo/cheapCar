@@ -38,6 +38,8 @@ public class EventUpdateController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+				
+		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			int maxSize = 1024 * 1024 * 10;
@@ -63,21 +65,27 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
-			ArrayList<EventPhoto> setList = new ArrayList();
-			ArrayList<EventPhoto> inList = new ArrayList();
+			int listsize = Integer.parseInt(multiRequest.getParameter("listSize"));
 			
-			for(EventPhoto ep : setList) {
+			
+		    if(multiRequest.getParameter("rePhoto_1") == null) {
+			    ArrayList<EventPhoto> list = new ArrayList();				
+				for(int i = 0; i < listsize; i++) {
+					
+					list.add(new EventPhoto(Integer.parseInt(multiRequest.getParameter("photoNo_" + i)),
+											multiRequest.getParameter("photoCname_" + i),
+							                Integer.parseInt(multiRequest.getParameter("fileLevel_" + i))));
+					
+				}
+				System.out.println(list);
+		    }	
 				
-			   ep.setFileLevel(Integer.parseInt(multiRequest.getParameter("photoLevel")));
-			   ep.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
-			   ep.setPhotoCname(multiRequest.getParameter("photoCname"));
-			   
-				setList.add(ep);
+		    
+	            
+			
 				
-			};
-			
-			System.out.println(setList);
-			
+				
+		
 			
 			
 			
@@ -86,17 +94,25 @@ public class EventUpdateController extends HttpServlet {
 			
 			
 			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 
