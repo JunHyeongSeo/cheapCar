@@ -201,7 +201,7 @@ public class CarService {
 		return carList;
 	}
 	
-<<<<<<< HEAD
+
 	public ArrayList<Attachment> selectAttachmentList(){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -228,13 +228,6 @@ public class CarService {
 	}
 	
 	
-	
-	
-	
-	
-	
-=======
->>>>>>> 22fd12f1da8cf13f87677fdfd84fb4b8ccd05537
 
 	
 	
