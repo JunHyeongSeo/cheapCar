@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
+import com.kh.semi.event.model.service.EventService;
 import com.kh.semi.event.model.vo.EventBoard;
 import com.kh.semi.event.model.vo.EventPhoto;
 import com.oreilly.servlet.MultipartRequest;
@@ -68,7 +69,7 @@ public class EventUpdateController extends HttpServlet {
 			int listsize = Integer.parseInt(multiRequest.getParameter("listSize"));
 			
 			
-		    if(multiRequest.getParameter("rePhoto_1") == null) {
+		    if(multiRequest.getParameter("rePhoto_1") == null && multiRequest.getParameter("rePhoto_2") == null) {
 			    ArrayList<EventPhoto> list = new ArrayList();				
 				for(int i = 0; i < listsize; i++) {
 					
@@ -77,8 +78,34 @@ public class EventUpdateController extends HttpServlet {
 							                Integer.parseInt(multiRequest.getParameter("fileLevel_" + i))));
 					
 				}
-				System.out.println(list);
-		    }	
+				
+				new EventService().updateBoard(eBoard);
+				
+			} else {
+				
+				ArrayList<EventPhoto> setList = new ArrayList();
+				
+				for(int i = 0; i < 4; i++) {
+					String key = "rePhoto" + i;
+					
+					EventPhoto ep = new EventPhoto();
+					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
+					ep.setPhotoCname(multiRequest.getFilesystemName(key));
+					ep.setPhotoPath("resources/event_upfiles");
+					ep.setEventNo(eventNo);
+					
+					if(i == 1) {
+						ep.setFileLevel(1); // 대표
+					} else {
+						ep.setFileLevel(2); // 서브이미지
+					}
+				
+				setList.add(ep);
+				}
+				new EventService().update(eBoard, setList);
+			}
+		    
+		    
 				
 		    
 	            
