@@ -183,9 +183,7 @@
 		       EVENT_PHOTO_ORIGINNAME = ?,
 		       EVENT_PHOTO_CHANGENAME = ?
 		 WHERE
-		       PHOTO_NO = ?
-		   AND  
-		       EVENT_NO = ?    
+		       EVENT_PHOTO_NO = ?
    	       AND
    	           STATUS = 'Y'
    	                

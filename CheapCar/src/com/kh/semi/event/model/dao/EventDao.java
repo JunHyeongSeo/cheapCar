@@ -228,9 +228,9 @@ public class EventDao {
 	}
 	
 	
-	public ArrayList<EventPhoto> selectEventPhoto(Connection conn, int eventNo){
+	public EventPhoto selectEventPhoto(Connection conn, int eventNo){
 		
-		ArrayList<EventPhoto> list = new ArrayList();
+		EventPhoto ePhoto = new EventPhoto();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectEventPhoto");
@@ -244,8 +244,6 @@ public class EventDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				EventPhoto ePhoto = new EventPhoto();
-				
 				ePhoto.setPhotoNo(rset.getInt("EVENT_PHOTO_NO"));
 				ePhoto.setPhotoOname(rset.getString("EVENT_PHOTO_ORIGINNAME"));
 				ePhoto.setPhotoCname(rset.getString("EVENT_PHOTO_CHANGENAME"));
@@ -253,9 +251,7 @@ public class EventDao {
 				ePhoto.setEventNo(rset.getInt("EVENT_NO"));
 				ePhoto.setStatus(rset.getString("STATUS"));
 				ePhoto.setFileLevel(rset.getInt("FILELEVEL"));
-				
-				list.add(ePhoto);
-			}
+			}	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -265,7 +261,7 @@ public class EventDao {
 		}
 		
 		
-		return list;
+		return ePhoto;
 	}//
 	
 	public int deleteEventBoard(Connection conn, int eventNo) {
@@ -354,7 +350,7 @@ public class EventDao {
 			pstmt.setString(1, ePhoto.getPhotoOname());
 			pstmt.setString(2, ePhoto.getPhotoCname());
 			pstmt.setInt(3, ePhoto.getPhotoNo());
-			pstmt.setInt(4, ePhoto.getEventNo());
+
 			
 			result = pstmt.executeUpdate();
 			

@@ -62,31 +62,30 @@ public class EventUpdateController extends HttpServlet {
 			eBoard.setEventTitle(eventTitle);
 			eBoard.setEventContent(eventContent);
 			
-			System.out.println(eBoard);
+			
 			
 			//----------------------
 			
 			EventPhoto ePhoto = null;
 			
-			if(multiRequest.getOriginalFileName("rePhoto") != null) {
-				
-				
+			if(multiRequest.getOriginalFileName("rePhoto1") != null) {
+
 				ePhoto = new EventPhoto();
 				ePhoto.setPhotoOname(multiRequest.getOriginalFileName("rePhoto"));
 				ePhoto.setPhotoCname(multiRequest.getFilesystemName("rePhoto"));
 				ePhoto.setPhotoPath("resources/event_upfiles");
+				System.out.println(ePhoto);
 				
 				if(multiRequest.getParameter("photoNo") != null) {// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => DB에 저장된 원본파일 No가 필요함
-					// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => 원본파일번호가 필요함
-					// 기존파일이 가지고 어떤 FileNo를 at에 담을 것
-					ePhoto.setPhotoNo(Integer.parseInt(multiRequest.getParameter("fileNo")));
+				
+					ePhoto.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
 					new File(savePath + multiRequest.getParameter("photoCname")).delete();
 					
-				} else {//첨부파일이 존재 + 원본파일은 없음 => INSERT ATTACHMENT => 어떤 게시글의 첨부파일인지(REF_BNO)
+				} else {
 					ePhoto.setEventNo(eventNo);	
 					
 				}
-			}
+			} 
 			int result = new EventService().update(eBoard, ePhoto);
 			
 			if(result > 0) {
