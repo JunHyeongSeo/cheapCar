@@ -327,11 +327,11 @@
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>회원상태</td>"
-								   + "<td>
-								   + '<input type="checkbox" id="A" value="A" name="Status"><label for="A">여행</label>'
-								   + '<input type="checkbox" id="B" value="B" name="Status"><label for="B">여행</label>'
-								   + '<input type="checkbox" id="C" value="C" name="Status"><label for="C">여행</label>'
-								   + '<input type="checkbox" id="D" value="D" name="Status"><label for="D">여행</label>'
+								   + "<td>"
+								   + '<input type="checkbox" id="A" value="A" name="Status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="B" value="B" name="Status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="C" value="C" name="Status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="D" value="D" name="Status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
 								   + "</td>"
 								   + "</tr>"
 								   + "<td>연락처</td>"
@@ -345,10 +345,15 @@
 						document.getElementById('con2Body').innerHTML = resultStr;
 						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
 						
-						let str = document.getElementsByName('Status').value;
-						
-						for(let i = 0; i < m.length; i++){
-							
+						let str = document.getElementsByName('Status');
+						console.log(str);
+						for(let i = 0; i < str.length; i++){
+							if(str[i].value.indexOf(m.memberStatus) == -1){
+								str[i].checked = false;
+							}
+							else{
+								str[i].checked = true;
+							}
 						}
 						
 						
