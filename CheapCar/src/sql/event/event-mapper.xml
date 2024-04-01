@@ -170,11 +170,10 @@
 		   SET
 		       EVENT_TITLE = ?,
 		       EVENT_CONTENT = ?
-         WEHER
+         WHERE
                EVENT_NO = ?
            AND 
                STATUS = 'Y'    		       
-		         
 	</entry>
 	
 	

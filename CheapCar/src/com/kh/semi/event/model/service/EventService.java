@@ -112,15 +112,37 @@ public class EventService {
 	}
 	
 	
-	public void updateBoard(EventBoard eBoard) {
+	public int updateBoard(EventBoard eBoard) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new EventDao().updateBoard(conn, eBoard);
+		int result = new EventDao().updateBoard(conn, eBoard);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
 		
 		
+		return result;
+		
+	}//
+	
+	public int update(EventBoard eBoard, ArrayList<EventPhoto> list) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new EventDao().insertEventPhoto(conn, list);
+		
+		
+		
+		return result;
 		
 	}
+	
+	
 	
 	
 	

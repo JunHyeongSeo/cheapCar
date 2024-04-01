@@ -66,26 +66,25 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
-			int listsize = Integer.parseInt(multiRequest.getParameter("listSize"));
-			
-			
-		    if(multiRequest.getParameter("rePhoto_1") == null && multiRequest.getParameter("rePhoto_2") == null) {
-			    ArrayList<EventPhoto> list = new ArrayList();				
-				for(int i = 0; i < listsize; i++) {
-					
-					list.add(new EventPhoto(Integer.parseInt(multiRequest.getParameter("photoNo_" + i)),
-											multiRequest.getParameter("photoCname_" + i),
-							                Integer.parseInt(multiRequest.getParameter("fileLevel_" + i))));
-					
+		    if(multiRequest.getOriginalFileName("rePhoto1") == null && multiRequest.getOriginalFileName("rePhoto2") == null
+		       && multiRequest.getOriginalFileName("rePhoto3") == null && multiRequest.getOriginalFileName("rePhoto4") == null	 	) {
+			   
+				int result = new EventService().updateBoard(eBoard);
+				
+				if(result > 0) {
+					request.getSession().setAttribute("alertMsg", "이벤트 게시글 수정에 성공하였습니다.");
+					response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
+				} else {
+					request.setAttribute("errorMsg", "게시글 수정에 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+
 				}
 				
-				new EventService().updateBoard(eBoard);
+		    } else {
 				
-			} else {
+				ArrayList<EventPhoto> list = new ArrayList();
 				
-				ArrayList<EventPhoto> setList = new ArrayList();
-				
-				for(int i = 0; i < 4; i++) {
+				for(int i = 1; i <= 4; i++) {
 					String key = "rePhoto" + i;
 					
 					EventPhoto ep = new EventPhoto();
@@ -100,12 +99,23 @@ public class EventUpdateController extends HttpServlet {
 						ep.setFileLevel(2); // 서브이미지
 					}
 				
-				setList.add(ep);
+				list.add(ep);
 				}
-				new EventService().update(eBoard, setList);
+				System.out.println(list);
+				int result = new EventService().update(eBoard, list);
+				
+				if(result > 0) {
+					request.getSession().setAttribute("alertMsg", "이벤트 게시글 수정에 성공하였습니다.");
+					response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
+				} else {
+					request.setAttribute("errorMsg", "게시글 수정에 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+					
 			}
 		    
 		    
+		    }
+		}
 				
 		    
 	            
@@ -139,7 +149,7 @@ public class EventUpdateController extends HttpServlet {
 		
 		
 		
-		}
+		
 		
 	}
 
