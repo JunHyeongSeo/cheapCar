@@ -429,10 +429,7 @@ public class CarDao {
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
 				car.setChangeName(rset.getString("CHANGE_NAME"));
 				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
-				
-				System.out.println(car.getCarPhotoAddress());
-				System.out.println(car.getChangeName());
-				
+			
 				carList.add(car);
 				
 			}

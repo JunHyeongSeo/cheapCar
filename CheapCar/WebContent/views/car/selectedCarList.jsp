@@ -62,7 +62,7 @@
 
     .car-list{
         width : 800px;
-        height : 250px;
+        height : 220px;
         margin : 35px;
         padding : 15px;
     }
@@ -73,7 +73,7 @@
 
     .list-size{
         width : 380px;
-        height : 215px;
+        height : 190px;
         float : left;
         margin : auto;
     }
@@ -87,7 +87,7 @@
     }
 
     .car-info {
-		padding-left : 10px;
+		padding : 10px;
     }
     
     td{
