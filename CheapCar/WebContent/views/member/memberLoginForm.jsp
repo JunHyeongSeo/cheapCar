@@ -63,36 +63,25 @@
 	
 	
 	
-	<div class="login">
-    <div class="login__content">
-      <div class="login__img">
-        <img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
-      </div>
-      <div class="login__forms">
-<!--         login form -->
-        <form action="" class="login__register" id="login-in">
-          <h1 class="login__title">Sign In</h1>
-          <div class="login__box">
-            <i class='bx bx-user login__icon'></i>
-            <input type="text" placeholder="Username" class="login__input">
-          </div>
-          <div class="login__box">
-            <i class='bx bx-lock login__icon'></i>
-            <input type="text" placeholder="Password" class="login__input">
-          </div>
-          <a href="#" class="login__forgot">Forgot Password? </a>
-          
-          <a href="#" class="login__button">Sign In</a>
-          
-          <div>
-            <span class="login__account login__account--account">Don't Have an Account?</span>
-            <span class="login__signin login__signin--signup" id="sign-up">Sign Up</span>
-          </div>
-        </form>
-  
-      </div>
-    </div>
-   </div>
+	<!-- <div class="container">
+	  	<h2>로그인</h2>
+	  	<p>안녕하세요  <code> 차빌려조 </code> 로그인 화면 입니다.</p>
+	  	<form action="/action_page.php" class="was-validated">
+	    	<div class="form-group">
+	     	<label for="uname">아이디 </label>
+	      	<input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+	      	<div class="valid-feedback">Valid.</div>
+	      	<div class="invalid-feedback">Please fill out this field.</div>
+	    	</div>
+	    	<div class="form-group">
+	      	<label for="pwd">비밀번호</label>
+	      	<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+	      	<div class="valid-feedback">Valid.</div>
+	      	<div class="invalid-feedback">Please fill out this field.</div>
+	    	</div>
+	    	<button type="submit" class="btn btn-primary">Submit</button>
+	  	</form>
+	</div> -->
 	
 	
 	
