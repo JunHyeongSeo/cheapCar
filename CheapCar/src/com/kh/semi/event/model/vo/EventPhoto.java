@@ -10,6 +10,24 @@ public class EventPhoto {
 	private String status;
 	private int fileLevel;
 	
+	
+	
+	
+	
+	public EventPhoto(int photoNo, String photoCname, int fileLevel) {
+		super();
+		this.photoNo = photoNo;
+		this.photoCname = photoCname;
+		this.fileLevel = fileLevel;
+	}
+	
+	
+
+	public EventPhoto(String photoCname) {
+		super();
+		this.photoCname = photoCname;
+	}
+
 	public EventPhoto() {
 		super();
 	}
@@ -84,9 +102,7 @@ public class EventPhoto {
 
 	@Override
 	public String toString() {
-		return "EventPhoto [photoNo=" + photoNo + ", photoOname=" + photoOname + ", photoCname=" + photoCname
-				+ ", photoPath=" + photoPath + ", eventNo=" + eventNo + ", status=" + status + ", fileLevel="
-				+ fileLevel + "]";
+		return "EventPhoto [photoNo=" + photoNo + ", photoCname=" + photoCname + ", fileLevel=" + fileLevel + "]";
 	}
 
 	@Override
@@ -102,6 +118,10 @@ public class EventPhoto {
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+	
+	
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {
