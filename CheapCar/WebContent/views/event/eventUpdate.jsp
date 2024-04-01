@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto"%>
+<%@ page import="com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto"%>
 
 <%
 	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
@@ -173,7 +173,7 @@
 	                    
 						    <div class="content_add_img">
 	                            <span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
-	                            대표이미지 - <input type="file" name="rePhoto1" id="thumbnail" onchange="loadImg(this, 1)">
+	                            대표이미지 - <input type="file" name="rePhoto1" id="thumbnail" onchange="loadImg(this, 1)" required>
 						    </div>
                     
 

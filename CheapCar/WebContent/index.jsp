@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta charset="UTF-8">
+<title>메인화면</title>
+
+<meta charset="utf-8">
+    <title>ROYAL CARS - Car Rental HTML Template</title>
+
  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,9 +50,9 @@
 <body>
 	
 	<% com.kh.semi.common.JDBCTemplate.getConnection(); %>
-
 	<%@ include file="views/common/menuBar.jsp" %>
 	
+
 	<!-- 
         * 참고 링크
         https://iridescent-zeal.tistory.com/150

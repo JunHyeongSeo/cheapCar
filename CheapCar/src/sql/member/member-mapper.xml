@@ -155,7 +155,10 @@
 	
 	<entry key="selectBlack">
 		SELECT * FROM TB_MEMBER WHERE MEMBER_STATUS = 'B' AND MEMBER_ID = ?
+	</entry>
 	
+	<entry key="updateMember">
+		UPDATE TB_MEMBER SET MEMBER_STATUS = 'C' WHERE MEMBER_NO = ?
 	</entry>
 	
 	
