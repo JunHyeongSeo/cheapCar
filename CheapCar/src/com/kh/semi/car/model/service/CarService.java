@@ -85,6 +85,17 @@ public class CarService {
 		return list;
 	}
 	
+	public Car selectCar(int managementNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Car car = new CarDao().selectCar(conn, managementNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
+	}
+	
 	
 	/* 근경 끝 */
 	
@@ -201,7 +212,7 @@ public class CarService {
 		return carList;
 	}
 	
-<<<<<<< HEAD
+
 	public ArrayList<Attachment> selectAttachmentList(){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -233,8 +244,7 @@ public class CarService {
 	
 	
 	
-=======
->>>>>>> 22fd12f1da8cf13f87677fdfd84fb4b8ccd05537
+
 
 	
 	

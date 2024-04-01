@@ -34,7 +34,7 @@ public class AjaxDetailCarController extends HttpServlet {
 		
 		int managementNo = Integer.parseInt(request.getParameter("managementNo"));
 		
-		Car car = new CarService().selectDetailCar(managementNo);
+		Car car = new CarService().selectCar(managementNo);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(car, response.getWriter());

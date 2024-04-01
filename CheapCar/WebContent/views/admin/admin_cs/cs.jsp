@@ -40,6 +40,20 @@
 		</div>
 		
 		<div class="container2">
+			<table class="table table-bordered">
+	            <thead>
+	                <tr>
+	                    <th>문의번호</th>
+	                    <th>문의제목</th>
+	                    <th>작성자</th>
+	                    <th>작성유무</th>
+	                    <th>상세보기</th>
+	                </tr>
+	            </thead>
+	            <tbody id="conBody">
+	
+	            </tbody>
+            </table>
 		
 		</div>
 		
