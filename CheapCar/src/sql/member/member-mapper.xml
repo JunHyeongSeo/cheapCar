@@ -255,8 +255,6 @@
 			FROM
 				TB_MEMBER
 			WHERE
-				MEMBER_STATUS IN ('A', 'C')
-			AND
 				MEMBER_ID = ?
 				
 	</entry>

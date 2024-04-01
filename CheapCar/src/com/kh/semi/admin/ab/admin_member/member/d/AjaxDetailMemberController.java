@@ -38,7 +38,6 @@ public class AjaxDetailMemberController extends HttpServlet {
 		Member m = new MemberService().selectMember(memberId);
 		
 		response.setContentType("application/json; charset=UTF-8");
-		
 		new Gson().toJson(m, response.getWriter());
 	}
 
