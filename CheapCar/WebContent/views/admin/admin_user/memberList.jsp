@@ -8,6 +8,7 @@
 	}
 	
 	#top11{
+		width: 100%;
 		display: flex;
 	}
 	
@@ -48,9 +49,9 @@
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
 	
-    <div class="outer">
+    <div class="outer" id="salemonth">
     
-		<div id="top11" style="display: flex;">
+		<div id="top11">
 			<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
 			<input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
 			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchMem();">조회</button>
@@ -322,41 +323,44 @@
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>아이디</td>"
-								   + "<td><input type='text' disabled value='" + m.memberId + "' name='" + m.memberId + "'></td>"
+								   + "<td><input type='text' disabled value='" + m.memberId + "' name='checkId'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>이름</td>"
-								   + "<td><input type='text' value='" + m.memberName + "' name='" + m.memberName + "'></td>"
+								   + "<td><input type='text' value='" + m.memberName + "' name='changedName'></td>"
 								   + "</tr>"
 								   + "<td>연락처</td>"
-								   + "<td><input type='text' value='" + m.phone + "' name='" + m.phone + "'></td>"
+								   + "<td><input type='text' value='" + m.phone + "' name='changedPhone'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>생년월일</td>"
-								   + "<td><input type='text' value='" + m.birthday + "' name='" + m.birthday + "'></td>"
+								   + "<td><input type='text' value='" + m.birthday + "' name='changedBirthday'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>이메일</td>"
-								   + "<td><input type='text' value='" + m.email + "' name='" + m.email + "'></td>"
+								   + "<td><input type='text' value='" + m.email + "' name='changedEmail'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>가입일자</td>"
-								   + "<td><input type='text' value='" + m.enrollDate + "' name='" + m.enrollDate + "'></td>"
+								   + "<td><input type='text' disabled value='" + m.enrollDate + "' name='" + m.enrollDate + "'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>회원상태</td>"
 								   + "<td>"
-								   + '<input type="checkbox" id="A" value="A" name="Status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="B" value="B" name="Status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="C" value="C" name="Status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="D" value="D" name="Status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="A" value="A" name="status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="B" value="B" name="status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="C" value="C" name="status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="checkbox" id="D" value="D" name="status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
 								   + "</td>"
+								   + "</tr>"
+								   + "<tr>"
+								   + "<td colspan='2'><button type='button' onclick='updateMember(this)'>회원 정보 수정</td>"
 								   + "</tr>"
 								   
 						document.getElementById('con2Body').innerHTML = resultStr;
 						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
 						
-						let str = document.getElementsByName('Status');
+						let str = document.getElementsByName('status');
 						for(let i = 0; i < str.length; i++){
 							if(str[i].value.indexOf(m.memberStatus) == -1){
 								str[i].checked = false;
@@ -369,7 +373,29 @@
 				});
 			}
 			
-			
+			function updateMember(result){
+				
+				if(confirm('회원정보를 수정하시겠습니까?')){
+					$.ajax({
+						url : 'memberUpdate.do',
+						data : {
+							name : document.getElementsByName('changedName'),
+							phone : document.getElementsByName('changedPhone'),
+							birthday : document.getElementsByName('changedBirthday'),
+							email : document.getElementsByName('changedEmail'),
+							status : document.getElementsByName('status'),
+							checkId : document.getElementsByName('checkId')	
+						},
+						success : function(result){
+							if(result > 0){
+								
+							}
+						}
+					});
+				}
+				
+				
+			}
 			
 			
 			

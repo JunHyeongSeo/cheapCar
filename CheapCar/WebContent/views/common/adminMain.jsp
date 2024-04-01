@@ -16,8 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+
         /* adminMain 스타일 */
-        
         .outer{
 	       width: 1200px;
 	       position: absolute;
@@ -212,14 +212,6 @@
                 </ul>
             </li>
         </ul>
-
-        <!-- 메인페이지 상세 나중에 -->
-        <div id="reservation">
-        </div>
-
-        <div id="replyBoard">
-        </div>
-   
     	<br clear="both">
     </div>
     
