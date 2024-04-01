@@ -79,9 +79,21 @@ public class EventUpdateController extends HttpServlet {
 					
 				}
 				
-				new EventService().updateBoard(eBoard);
+				int result = new EventService().updateBoard(eBoard);
 				
-			} else {
+				if(result > 0) {
+					request.getSession().setAttribute("alertMsg", "이벤트 게시글 수정에 성공하였습니다.");
+					response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
+				} else {
+					request.setAttribute("errorMsg", "게시글 수정에 실패하였습니다.");
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+					
+					
+				}
+				
+			} 
+		    /*
+		    else {
 				
 				ArrayList<EventPhoto> setList = new ArrayList();
 				
@@ -104,7 +116,7 @@ public class EventUpdateController extends HttpServlet {
 				}
 				new EventService().update(eBoard, setList);
 			}
-		    
+		    */
 		    
 				
 		    

@@ -326,20 +326,21 @@ public class EventDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, eBoard.getEventTitle());
+			pstmt.setString(2, eBoard.getEventContent());
+			pstmt.setInt(3, eBoard.getEventNo());
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		return result;
-	}
+	}// 
 	
 	
 	
