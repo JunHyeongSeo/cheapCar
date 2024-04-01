@@ -30,6 +30,13 @@
         color : white;
         /* display : none; */ /* 아니면 안보이게 숨기기도 가능 */
     }
+    
+     .swiper-slide:hover{
+            font-size: 21px;
+            background-color: lightslategray;
+            cursor: pointer;
+        }
+    
     </style>
     
 </head>
@@ -49,9 +56,9 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2017/04/11/15/55/animals-2222007__480.jpg"></div>
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/12/06/09/15/maple-1079235__480.jpg"></div>
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/09/01/19/53/pocket-watch-1637396__480.jpg"></div>
+                <div class="swiper-slide" onclick="aba();"><img src="views/common/공지사항 더미1.png"></div>
+                <div class="swiper-slide"><img src="views/common/공지사항 더미2.png"></div>
+                <div class="swiper-slide"><img src="views/common/공지사항 더미3.png"></div>
                 <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275__480.jpg"></div>
                 <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/09/01/09/32/alphabet-916673__480.jpg"></div>
             </div>
@@ -72,7 +79,7 @@
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
             autoplay : {
-                delay : 3000 // 3초마다 이미지 변경
+                delay : 5000 // 5초마다 이미지 변경
             },
             loop : true, //반복 재생 여부
             slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
@@ -85,6 +92,10 @@
                 nextEl: '.swiper-button-next'
             }
         }); 
+
+        function aba(){
+            alert('12121212');
+        }
     </script>
 	
 </body>
