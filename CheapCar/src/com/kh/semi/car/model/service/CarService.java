@@ -201,17 +201,6 @@ public class CarService {
 		return carList;
 	}
 	
-	public ArrayList<Attachment> selectAttachmentList(){
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		List<Attachment> atList = new CarDao().selectAttachmentList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return atList;
-	}
-	
 
 	
 	
