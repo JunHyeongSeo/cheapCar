@@ -14,8 +14,31 @@ public class Member {
 	private Date enrollDate;
 	private String memberStatus;
 	private int mileage = 10;
+	private String blackReason;
+	private Date blackDate;
 	
 	
+	
+	public String getBlackReason() {
+		return blackReason;
+	}
+
+
+	public void setBlackReason(String blackReason) {
+		this.blackReason = blackReason;
+	}
+
+
+	public Date getBlackDate() {
+		return blackDate;
+	}
+
+
+	public void setBlackDate(Date blackDate) {
+		this.blackDate = blackDate;
+	}
+
+
 	public int getMileage() {
 		return mileage;
 	}

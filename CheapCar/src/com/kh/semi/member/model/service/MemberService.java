@@ -106,6 +106,16 @@ public class MemberService {
 		return list;
 	}
 	
+	public Member selectBlack(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		Member m = new MemberDao().selectBlack(conn, memberId);
+		close(conn);
+		
+		return m;
+	}
+	
 	
 	
 	
@@ -229,7 +239,6 @@ public Member login(String memberId, String memberPwd) {
 		Member member = new MemberDao().selectMember(conn, memberId);
 
 		close(conn);
-		
 		
 		return member;
 	}

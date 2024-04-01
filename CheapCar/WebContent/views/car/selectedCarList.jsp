@@ -62,7 +62,7 @@
 
     .car-list{
         width : 800px;
-        height : 250px;
+        height : 220px;
         margin : 35px;
         padding : 15px;
     }
@@ -73,7 +73,7 @@
 
     .list-size{
         width : 380px;
-        height : 215px;
+        height : 190px;
         float : left;
         margin : auto;
     }
@@ -87,7 +87,7 @@
     }
 
     .car-info {
-		padding-left : 10px;
+		padding : 10px;
     }
     
     td{
@@ -250,7 +250,7 @@
 	                <div class="car-list">
 	                    <div class="list-size">
 	                    
-	                        <img class="car-img img-thumbnail" src="https://image.kmibD.co.kr/online_image/2023/0404/2023040416513996855_1680594700_0018125706.jpg" alt="차량i번">
+	                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
 	                    
 	                    </div>
                     	<div class="list-size car-info">	
