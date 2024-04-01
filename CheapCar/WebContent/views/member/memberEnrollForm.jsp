@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <style>
 		#enroll-form input{
@@ -15,7 +16,7 @@
 
 	<%@ include file="../common/menuBar.jsp" %>
 	
-	<div class="container">
+	<div class="outer">
 		<br>
 		<h2 align="center">회원가입</h2>
 		
@@ -26,52 +27,46 @@
 					<td>* 아이디</td>
 					<td><input type="text" maxlength="30" required name="memberId"></td>
 					<td><button type="button" onclick="idCheck();">중복확인</button></td>
+				</tr>	
 					
-			<script>
-				function idCheck(){
+		<script>
+			function idCheck(){
 
-					const $memberId = $('#enroll-form input[name=memberId]');
+				const $memberId = $('#enroll-form input[name=memberId]');
 
-					$.ajax({
-						url : 'idCheck.do',
-						data : {checkId : $memberId.val()},
-						success : function(result){
-							console.log(result);
+				$.ajax({
+					url : 'idCheck.do',
+					data : {checkId : $memberId.val()},
+					success : function(result){
+						console.log(result);
+							
+						if(result == 'NNN'){
+							alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
+							
+							$memberId.val('').focus();
+						}
+						else{
+							
+							if(confirm('사용 가능합니다 사용하시겠습니까?')){
 								
-							if(result == 'NNN'){
-								alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
+								$memberId.attr('readonly', true);
 								
-								$memberId.val('').focus();
-							}
-							else{
+								$('#enroll-form button[type=submit]').removeAttr('disabled');
 								
-								if(confirm('사용 가능합니다 사용하시겠습니까?')){
-									
-									$memberId.attr('readonly', true);
-									
-									$('#enroll-form button[type=submit]').removeAttr('disabled');
-									
-								} else{
-									$memberId.focus();
-								}
+							} else{
+								$memberId.focus();
 							}
 						}
-					});
-				}
+					}
+				});
+			}
 
-			</script>
-			
-					
-					
-					
-					
-				</tr>
+		</script>
+		
 				<tr>
 					<td>* 비밀번호</td>
 					<td><input type="password" maxlength="30" required name="memberPwd"></td>
 					<td></td>
-					<div class="valid-feedback"></div>
-		      		<div class="invalid-feedback">입력해주세요.</div>
 				</tr>
 				<tr>
 					<td>* 비밀번호확인</td>
