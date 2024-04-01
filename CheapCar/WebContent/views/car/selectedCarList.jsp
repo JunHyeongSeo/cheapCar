@@ -250,7 +250,7 @@
 	                <div class="car-list">
 	                    <div class="list-size">
 	                    
-	                        <img class="car-img img-thumbnail" src="" alt="차량사진">
+	                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
 	                    
 	                    </div>
                     	<div class="list-size car-info">	

@@ -412,6 +412,7 @@ public class CarDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
+				
 				Car car = new Car();
 				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
 				car.setStatus(rset.getString("STATUS"));
@@ -426,8 +427,14 @@ public class CarDao {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setChangeName(rset.getString("CHANGE_NAME"));
+				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
+				
+				System.out.println(car.getCarPhotoAddress());
+				System.out.println(car.getChangeName());
 				
 				carList.add(car);
+				
 			}
 			
 		} catch (SQLException e) {
