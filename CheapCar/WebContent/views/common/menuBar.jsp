@@ -116,11 +116,11 @@
 		<div class="menu"><a href="<%= contextPath %>/list.review">후기</a></div>
 		<div class="menu">
 			<a href="#">고객센터</a>
-			<div class="menu55" id="faq">
+			<!-- <div class="menu55" id="faq">
 				<a href="#">FAQ</a>
 			</div>
 			
-			<!-- <div class="menu55" id="1to1Cs">
+			<div class="menu55" id="1to1Cs">
 				<a href="#">1대1 문의</a>
 			</div> -->
 			
