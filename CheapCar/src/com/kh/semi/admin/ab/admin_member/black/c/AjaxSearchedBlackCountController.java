@@ -46,7 +46,6 @@ public class AjaxSearchedBlackCountController extends HttpServlet {
 		}
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		response.setContentType("application/json; charset=UTF-8");
-		System.out.println(pi);
 		new Gson().toJson(pi, response.getWriter());
 	}
 
