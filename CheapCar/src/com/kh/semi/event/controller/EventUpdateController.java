@@ -1,7 +1,7 @@
 package com.kh.semi.event.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,55 +66,42 @@ public class EventUpdateController extends HttpServlet {
 			
 			//----------------------
 			
-		    if(multiRequest.getOriginalFileName("rePhoto1") == null && multiRequest.getOriginalFileName("rePhoto2") == null
-		       && multiRequest.getOriginalFileName("rePhoto3") == null && multiRequest.getOriginalFileName("rePhoto4") == null	 	) {
-			   
-				int result = new EventService().updateBoard(eBoard);
+			EventPhoto ePhoto = null;
+			
+			if(multiRequest.getOriginalFileName("rePhoto") != null) {
 				
-				if(result > 0) {
-					request.getSession().setAttribute("alertMsg", "이벤트 게시글 수정에 성공하였습니다.");
-					response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
-				} else {
-					request.setAttribute("errorMsg", "게시글 수정에 실패하였습니다.");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-
+				
+				ePhoto = new EventPhoto();
+				ePhoto.setPhotoOname(multiRequest.getOriginalFileName("rePhoto"));
+				ePhoto.setPhotoCname(multiRequest.getFilesystemName("rePhoto"));
+				ePhoto.setPhotoPath("resources/event_upfiles");
+				
+				if(multiRequest.getParameter("photoNo") != null) {// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => DB에 저장된 원본파일 No가 필요함
+					// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => 원본파일번호가 필요함
+					// 기존파일이 가지고 어떤 FileNo를 at에 담을 것
+					ePhoto.setPhotoNo(Integer.parseInt(multiRequest.getParameter("fileNo")));
+					new File(savePath + multiRequest.getParameter("photoCname")).delete();
+					
+				} else {//첨부파일이 존재 + 원본파일은 없음 => INSERT ATTACHMENT => 어떤 게시글의 첨부파일인지(REF_BNO)
+					ePhoto.setEventNo(eventNo);	
+					
 				}
-				
-		    } else {
-				
-				ArrayList<EventPhoto> list = new ArrayList();
-				
-				for(int i = 1; i <= 4; i++) {
-					String key = "rePhoto" + i;
-					
-					EventPhoto ep = new EventPhoto();
-					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
-					ep.setPhotoCname(multiRequest.getFilesystemName(key));
-					ep.setPhotoPath("resources/event_upfiles");
-					ep.setEventNo(eventNo);
-					
-					if(i == 1) {
-						ep.setFileLevel(1); // 대표
-					} else {
-						ep.setFileLevel(2); // 서브이미지
-					}
-				
-				list.add(ep);
-				}
-				System.out.println(list);
-				int result = new EventService().update(eBoard, list);
-				
-				if(result > 0) {
-					request.getSession().setAttribute("alertMsg", "이벤트 게시글 수정에 성공하였습니다.");
-					response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
-				} else {
-					request.setAttribute("errorMsg", "게시글 수정에 실패하였습니다.");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-					
 			}
-		    
-		    
-		    }
+			int result = new EventService().update(eBoard, ePhoto);
+			
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 수정에 성공하였습니다.");
+				response.sendRedirect(request.getContextPath() + "/detail.event?eventNo=" + eventNo);
+			} else {
+				request.setAttribute("errorMsg", "실패실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				
+				
+			}
+			
+			
+			
+			
 		}
 				
 		    

@@ -62,32 +62,16 @@ public class EventInsertController extends HttpServlet {
 			eBoard.setMemberNo(memberNo);
 			
 			// ---------------- 이벤트 게시판 테이블 값 가공 ----------
+			EventPhoto ePhoto = new EventPhoto();
+			ePhoto.setPhotoOname(multiRequest.getOriginalFileName("photo"));
+			ePhoto.setPhotoCname(multiRequest.getFilesystemName("photo"));
+			ePhoto.setFileLevel(1);
+			ePhoto.setPhotoPath("resources/event_upfiles");
 			
-			ArrayList<EventPhoto> list = new ArrayList();
 			
-			// 첨부파일 최소 1 ~ 최대 4개
 			
-			for(int i = 1; i <= 4; i++) {
-				String key = "photo" + i;
-				
-				if(multiRequest.getOriginalFileName(key) != null) {
-					
-					EventPhoto ep = new EventPhoto();
-					ep.setPhotoOname(multiRequest.getOriginalFileName(key));
-					ep.setPhotoCname(multiRequest.getFilesystemName(key));
-					ep.setPhotoPath("resources/event_upfiles");
-										
-					if(i == 1) {
-						ep.setFileLevel(1); // 대표
-					} else {
-						ep.setFileLevel(2); // 서브이미지
-					}
-					
-					list.add(ep);
-				}
-			}
 			
-			int result = new EventService().insert(eBoard, list);
+			int result = new EventService().insert(eBoard, ePhoto);
 			
 			
 			if(result > 0) {

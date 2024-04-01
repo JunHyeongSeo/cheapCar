@@ -5,7 +5,7 @@
 
 <%
 	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
-	ArrayList<EventPhoto> list = (ArrayList<EventPhoto>)request.getAttribute("list");
+    EventPhoto ePhoto = (EventPhoto)request.getAttribute("ePhoto");
 
 %>
     
@@ -161,40 +161,19 @@
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
-	                          	  <input type="hidden" name="listSize" value="<%=list.size() %>"/>
-		                          <% for(int i = 0; i < list.size(); i++){ %>
-									<img src="<%=contextPath%>/<%= list.get(i).getPhotoPath() %>/<%= list.get(i).getPhotoCname() %>" id="img_<%=i+1%>"/>
-									<input type="hidden" name="photoNo_<%= i %>" value="<%= list.get(i).getPhotoNo() %>"/>
-									<input type="hidden" name="photoCname_<%= i %>" value="<%= list.get(i).getPhotoCname() %>"/>
-									<input type="hidden" name="fileLevel_<%= i %>" value="<%= list.get(i).getFileLevel() %>"/>
-									
-								  <% }%>
-								  <% if(list.size() != 4 && list.size() != 1){ %>
-								  	<% for(int i = 1 + list.size(); i < 3 + list.size(); i++){ %>
-										<img src=" "  id="img_<%=i%>"/>
-								  	<% }%>
-								  <%} %>
-								  <% if(list.size() == 1){ %>
-								  	<% for(int i = 1 + list.size(); i < 4 + list.size(); i++){ %>
-										<img src=" "  id="img_<%=i%>"/>
-								  	<% }%>
-								  <%} %>
-
-							  
-								
-							</div>
+									<img src="<%=contextPath%>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" id="img_1"/>
+									<input type="hidden" name="photoNo" value="<%= ePhoto.getPhotoNo() %>"/>
+									<input type="hidden" name="photoCname" value="<%= ePhoto.getPhotoCname() %>"/>
+									<input type="hidden" name="fileLevel" value="<%= ePhoto.getFileLevel() %>"/>
+															</div>
 	                        <div class="text-area">
 	                            <textarea name="content" class="form-control" rows="20" id="comment"><%= eBoard.getEventContent() %></textarea>
 	                        </div>
 	                        </div>
 	                    
 						    <div class="content_add_img">
-	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+	                            <span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
 	                            대표이미지 - <input type="file" name="rePhoto1" id="thumbnail" onchange="loadImg(this, 1)">
-	                            첨부파일_2 - <input type="file" name="rePhoto2" id="subImg1" onchange="loadImg(this, 2)"> <br><br>
-	                            첨부파일_3 - <input type="file" name="rePhoto3" id="subImg2" onchange="loadImg(this, 3)">
-	                            첨부파일_4 - <input type="file" name="rePhoto4" id="subImg3" onchange="loadImg(this, 4)">
-
 						    </div>
                     
 
@@ -223,14 +202,7 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_1').attr('src', e.target.result); break; 
-                    	                            			  
-                    	case 2 : $('#img_2').attr('src', e.target.result); break;
-                    			 
-                    	case 3 : $('#img_3').attr('src', e.target.result); break;
-                    	   	      
-                    	case 4 : $('#img_4').attr('src', e.target.result); break;
-                    	         
+                    	case 1 : $('#img_1').attr('src', e.target.result); break;  
                     }
                     
                 }
@@ -241,9 +213,6 @@
             	
             	switch(num){
             		case 1 : $('#img_1').attr('src', str); break;
-            		case 2 : $('#img_2').attr('src', str); break;
-            		case 3 : $('#img_3').attr('src', str); break;
-            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
             
