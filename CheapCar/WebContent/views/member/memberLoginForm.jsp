@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <style>
+
     .login-area1{
     	
     	width : 280px;
@@ -34,8 +37,6 @@
 	<div class="a">
 		<div class="login-area1">
 		
-		
-		
 		 	<form action="<%=contextPath %>/login" method="post">
 		           <table>
 		                <tr>
@@ -57,9 +58,43 @@
 		           </table>
 		        </form>
 		</div>
-		
-		
 	</div>
+	
+	
+	
+	
+	<!-- <div class="container">
+	  	<h2>로그인</h2>
+	  	<p>안녕하세요  <code> 차빌려조 </code> 로그인 화면 입니다.</p>
+	  	<form action="/action_page.php" class="was-validated">
+	    	<div class="form-group">
+	     	<label for="uname">아이디 </label>
+	      	<input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+	      	<div class="valid-feedback">Valid.</div>
+	      	<div class="invalid-feedback">Please fill out this field.</div>
+	    	</div>
+	    	<div class="form-group">
+	      	<label for="pwd">비밀번호</label>
+	      	<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+	      	<div class="valid-feedback">Valid.</div>
+	      	<div class="invalid-feedback">Please fill out this field.</div>
+	    	</div>
+	    	<button type="submit" class="btn btn-primary">Submit</button>
+	  	</form>
+	</div> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
