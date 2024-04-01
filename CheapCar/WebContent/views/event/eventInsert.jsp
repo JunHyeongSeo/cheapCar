@@ -157,7 +157,7 @@
 	                    
 						    <div class="content_add_img">
 	                            <span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
-	                            <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
 						    </div>
                     
 

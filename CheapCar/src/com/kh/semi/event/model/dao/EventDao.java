@@ -57,32 +57,31 @@ public class EventDao {
 		return result;
 	}//
 	
-	public int insertEventPhoto(Connection conn, ArrayList<EventPhoto> list) {
+	public int insertEventPhoto(Connection conn, EventPhoto ePhoto) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertEventPhoto");
 		
 		try {
-			
-			for(EventPhoto ep : list) {
+				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, ep.getPhotoOname());
-				pstmt.setString(2, ep.getPhotoCname());
-				pstmt.setString(3, ep.getPhotoPath());
-				pstmt.setInt(4, ep.getFileLevel());
+				pstmt.setString(1, ePhoto.getPhotoOname());
+				pstmt.setString(2, ePhoto.getPhotoCname());
+				pstmt.setString(3, ePhoto.getPhotoPath());
+				pstmt.setInt(4, ePhoto.getFileLevel());
 				
-				result += pstmt.executeUpdate();
+				result = pstmt.executeUpdate();
 				
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return result == list.size()? 1 : 0;
+		return result;
 	}//
 	
 	
@@ -343,6 +342,30 @@ public class EventDao {
 	}// 
 	
 	
+	public int updatePhoto(Connection conn, EventPhoto ePhoto) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, ePhoto.getPhotoOname());
+			pstmt.setString(2, ePhoto.getPhotoCname());
+			pstmt.setInt(3, ePhoto.getPhotoNo());
+			pstmt.setInt(4, ePhoto.getEventNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 	
 		
 		

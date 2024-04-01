@@ -12,13 +12,13 @@ import com.kh.semi.event.model.vo.EventPhoto;
 public class EventService {
 
 	
-	public int insert(EventBoard eBoard, ArrayList<EventPhoto> list) {
+	public int insert(EventBoard eBoard, EventPhoto ePhoto) {
 	
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int eBoardResult = new EventDao().insertEventBoard(conn, eBoard);
 		
-		int ePhotoResult = new EventDao().insertEventPhoto(conn, list);
+		int ePhotoResult = new EventDao().insertEventPhoto(conn, ePhoto);
 		
 		if(eBoardResult * ePhotoResult > 0) {
 			JDBCTemplate.commit(conn);
@@ -27,6 +27,7 @@ public class EventService {
 		}
 			
 		return (eBoardResult * ePhotoResult);
+		
 	}//
 	
 	public int selectListCount() {
@@ -112,13 +113,16 @@ public class EventService {
 	}
 	
 	
-	public int updateBoard(EventBoard eBoard) {
+	
+	public int update(EventBoard eBoard, EventPhoto ePhoto) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new EventDao().updateBoard(conn, eBoard);
+		int ebResult = new EventDao().updateBoard(conn, eBoard);
+		int epResult = new EventDao().updatePhoto(conn, ePhoto);
 		
-		if(result > 0) {
+		
+		if((ebResult * epResult) > 0){
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
@@ -126,19 +130,8 @@ public class EventService {
 		JDBCTemplate.close(conn);
 		
 		
-		return result;
 		
-	}//
-	
-	public int update(EventBoard eBoard, ArrayList<EventPhoto> list) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new EventDao().insertEventPhoto(conn, list);
-		
-		
-		
-		return result;
+		return (ebResult * epResult);
 		
 	}
 	
