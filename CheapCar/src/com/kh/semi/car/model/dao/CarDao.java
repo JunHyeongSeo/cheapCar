@@ -316,6 +316,9 @@ public class CarDao {
 				car.setGradePrice(rset.getInt("GRADE_PRICE"));
 				car.setModelPrice(rset.getInt("MODEL_PRICE"));
 				car.setYearPrice(rset.getInt("YEAR_PRICE"));
+				car.setChangeName(rset.getString("CHANGE_NAME"));
+				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -544,7 +547,6 @@ public class CarDao {
 					car.setPhone(rset.getString("PHONE"));
 					car.setEmail(rset.getString("EMAIL"));
 					
-					//System.out.println(rset.getString("MEMBER_ID"));
 				}
 				
 			} catch (SQLException e) {
