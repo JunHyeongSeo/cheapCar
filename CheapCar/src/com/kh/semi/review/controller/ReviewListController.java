@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.event.model.service.EventService;
-import com.kh.semi.event.model.vo.EventBoard;
+import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.Review;
 
 /**
  * Servlet implementation class ReviewListController
@@ -62,7 +63,11 @@ public class ReviewListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		//값
-		new ReviewService().selectReviewList(pi);
+		ArrayList<Review> list = new ReviewService().selectReviewList(pi);
+		
+		
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
 		
 		
 		
