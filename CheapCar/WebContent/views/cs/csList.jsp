@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@ page import="java.util.ArrayList, com.kh.semi.notice.model.vo.Notice, com.kh.semi.common.model.vo.PageInfo" %>    
+<%@ page import="java.util.ArrayList, com.kh.semi.cs.model.vo.Cs, com.kh.semi.common.model.vo.PageInfo" %>    
 <%
-
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Cs> list = (ArrayList<Cs>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();	
+	int endPage = pi.getEndPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -30,9 +36,8 @@
 		font-size: 40px;
 		font-weight: bold;
 		border-bottom: 6px solid #6caddf;
-		
-
 	}
+	
 	#title{
 		background-color: aquamarine;
 		font-size: large;
@@ -89,24 +94,45 @@
 						 	<th style="width: 45%; text-align:center">제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
 						 	<th style="width: 10%; text-align:center">작성자</th>
 						 	<th style="width: 15%; text-align:center">작성일</th>
-						 	<th style="width: 8%; text-align:center">조회수</th>
 					  	</tr>
-					  
+				  	<% if(list.isEmpty()) { %>
 					  	<tr>
 					  		<th colspan="5"> 문의글이 존재하지 않습니다.</th>
 				  		</tr>
-					  
-						<tr class="notice_list">
-							<th style="text-align:center">1</th>
-							<th>2</th>
-							<th style="text-align:center">3</th>
-							<th style="text-align:center">4</th>
-							<th style="text-align:center">5</th>
-						</tr>
+					<% } else {%>
+						<% for(Cs c : list) { %>
+							<tr class="notice_list">
+								<th style="text-align:center"><%= c.getCsNo() %></th>
+								<th><%= c.getCsTitle() %></th>
+								<th style="text-align:center"><%= c.getMemberName() %></th>
+								<th style="text-align:center"><%= c.getCreateDate() %></th>
+							</tr>
+						<% } %>
+				  	<% } %>
 					</table>               
 				</div>            
 			</div>
 		</div>
+		
+		<div class="paging-area" align="center" style="margin-top:12px">
+			
+			<% if(currentPage > 1) { %>
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/cs?currentPage=<%= currentPage - 1 %>'">이전</button>
+			<% } %>
+			
+			<% for(int i = startPage; i <= endPage; i++) { %>
+				<% if(currentPage != i) { %>
+					<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath %>/cs?currentPage=<%= i %>'"><%= i %></button>
+				<% } else { %>
+					<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
+				<% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage) { %>
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/cs?currentPage=<%= currentPage + 1 %>'">다음</button>
+			<% } %>
+		   
+	    </div>	
 		
 		<div class="search-area">
 			<form>

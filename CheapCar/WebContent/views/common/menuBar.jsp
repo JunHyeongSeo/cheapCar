@@ -150,7 +150,7 @@
 			<a href="#">고객센터</a>
 			<ul class="cs">
 				<li class="menu55" id="faq"><a href="#">FAQ</a></li>
-				<li class="menu55" id="1to1Cs"><a href="<%= contextPath %>/cs">1대1 문의</a></li>
+				<li class="menu55" id="1to1Cs"><a href="<%= contextPath %>/cs?currentPage=1">1대1 문의</a></li>
 			</ul>
 		</div>
 	</div>

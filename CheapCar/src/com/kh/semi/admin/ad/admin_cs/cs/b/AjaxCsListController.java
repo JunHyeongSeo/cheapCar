@@ -21,7 +21,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class AjaxCarListController
  */
-@WebServlet("/csList.all")
+@WebServlet("/cs")
 public class AjaxCsListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,6 +52,10 @@ public class AjaxCsListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Cs> list = new CsService().selectCsList(pi);
+		
+		System.out.println(1);
+		System.out.println(list.get(0).getCreateDate());
+		System.out.println(2);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

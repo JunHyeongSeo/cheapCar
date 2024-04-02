@@ -25,7 +25,7 @@
                         JOIN
                             TB_MEMBER USING(MEMBER_NO)
 				    ORDER BY 
-				            CS_NO ASC) A)
+				            CS_NO DESC) A)
     	 WHERE 
 				RNUM BETWEEN ? AND ?
 	</entry>
