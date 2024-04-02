@@ -92,6 +92,30 @@ public class CsDao {
 		return list;
 	}
 	
+	public Cs csDetail(Connection conn, int csNo) {
+		
+		Cs cs = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("csDetail");
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	public int searchedCsCount(Connection conn, String searchId) {
 		
 		int result = 0;
@@ -154,7 +178,7 @@ public class CsDao {
 		}
 		return list;
 	}
-	
+	*/
 	
 	
 	

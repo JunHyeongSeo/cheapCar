@@ -34,9 +34,9 @@ public class CsDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int csNo = Integer.parseInt(request.getParameter("csNo"));
 		
-		
-		
+		Cs cs = new CsService().csDetail(csNo);
 		
 		
 		
