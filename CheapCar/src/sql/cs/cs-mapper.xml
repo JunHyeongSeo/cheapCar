@@ -31,7 +31,7 @@
 	</entry>
 	
 	<entry key="csDetail">
-		SELECT * FROM TB_CS_BOARD WHERE CS_NO = ?
+		SELECT * FROM TB_CS_BOARD JOIN TB_MEMBER USING(MEMBER_NO) WHERE CS_NO = ?
 	</entry>
 	
 	

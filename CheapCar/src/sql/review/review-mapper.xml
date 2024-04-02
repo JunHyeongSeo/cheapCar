@@ -34,6 +34,17 @@
                RNUM BETWEEN ? AND ?
 	
 	</entry>
+
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*)
+		  FROM
+		       TB_REVIEW_BOARD
+		 WHERE
+		       STATUS = 'Y'            
+	</entry>
+	
 	
 	<entry key="insertReviewBoard">
 		INSERT

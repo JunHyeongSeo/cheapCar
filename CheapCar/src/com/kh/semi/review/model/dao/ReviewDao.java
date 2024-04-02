@@ -32,6 +32,36 @@ public class ReviewDao {
 		
 	}//
 	
+	
+	public int selectListCount(Connection conn) {
+	
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)"); 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return listCount;
+	}//
+	
+	
+	
+	
+	
 	public ArrayList<ReviewBoard> selectReviewList(Connection conn, PageInfo pi){
 		
 		ArrayList<ReviewBoard> list = new ArrayList();

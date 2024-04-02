@@ -12,6 +12,22 @@ import com.kh.semi.review.model.vo.ReviewPhoto;
 public class ReviewService {
 
 	
+	public int selectListCount() {
+		
+		int listCount = 0;
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		listCount = new ReviewDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return listCount;
+	}//
+	
+	
+	
 	public ArrayList<ReviewBoard> selectReviewList(PageInfo pi) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -43,17 +59,9 @@ public class ReviewService {
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
-				
+		JDBCTemplate.close(conn);
 		
-		
-				
-				
-				
-		
-		
-		
-		
-		return result;
+		return boardResult * photoResult;
 	}
 	
 	
