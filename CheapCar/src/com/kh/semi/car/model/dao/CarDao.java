@@ -732,7 +732,7 @@ public class CarDao {
 		return carLocation;
 	}
 	
-	public ArrayList<Car> selectOptionAndCarList(Connection conn, Search search, PageInfo pi, int hours, String locations, String startDate, String endDate){
+	public ArrayList<Car> selectOptionAndCarList(Connection conn, Search search, int hours, String locations, String startDate, String endDate){
 		
 		ArrayList<Car> carList = new ArrayList<Car>();
 		PreparedStatement pstmt = null;
@@ -886,8 +886,6 @@ public class CarDao {
 									   			+ "C.MANAGEMENT_NO)) "
 									    
 				+"WHERE "
-						+ "RNUM BETWEEN ? AND ? "
-				  +"AND "
 						+ "STATUS = 'Y' "
 				  +"AND " 
 						+ "MODEL_NAME = ? "
@@ -937,20 +935,15 @@ public class CarDao {
 		
 		try {
 			
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
-			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, locations);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
-			pstmt.setString(4, search.getModel());
-			pstmt.setString(5, search.getFuel());
-			pstmt.setString(6, search.getBrand());
-			pstmt.setString(7, search.getGrade());
-			pstmt.setString(8, endDate);
-			pstmt.setString(9, startDate);
+			pstmt.setString(2, search.getModel());
+			pstmt.setString(3, search.getFuel());
+			pstmt.setString(4, search.getBrand());
+			pstmt.setString(5, search.getGrade());
+			pstmt.setString(6, endDate);
+			pstmt.setString(7, startDate);
 			
 			rset = pstmt.executeQuery();
 			

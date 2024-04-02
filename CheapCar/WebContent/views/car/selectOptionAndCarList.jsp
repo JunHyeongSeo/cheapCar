@@ -11,7 +11,7 @@
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
+	//PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 	int hours = (int)request.getAttribute("hours");
 	String locations = (String)request.getAttribute("locations");
 	String startDate = (String)request.getAttribute("startDate");
@@ -19,10 +19,12 @@
 %>
 
 <%
+	/*
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
+	*/
 %>
 
 <%
@@ -296,46 +298,7 @@
 	                <% } %>
 					
                 <% } %>
-                    <div>
-                    
-						<ul class="pagination" >
-                            <% if(currentPage > 1) { %>
-                                <li class="page-item">
-                                    <a class="page-link" 
-                                    onclick="location.href='<%=contextPath%>">
-                                    <%="<"%>
-                                    </a>
-                                </li>
-                            <% } %>
-
-							<% for(int i = startPage; i <= endPage; i++) { %>
-							
-								<% if(currentPage != i) { %>
-									<li
-									class="page-link"
-									onclick="location.href='<%=contextPath%>">
-									<%=i%>
-									</li>
-								<% } else { %>
-									<li
-									class="page-link"><%=i%>
-									</li>
-								<% } %>
-							
-							<% } %>
-                            
-                             <% if(currentPage != maxPage) {%>
-								<li class="page-item">
-	                                <a class="page-link" 
-	                                onclick="location.href='<%=contextPath%>">
-	                                <%=">"%>
-	                                </a>
-	                            </li>
-                            <% } %>
-                            
-					    </ul>
-					    
-				    </div>
+              
             </div>
             
             <br clear="both">
