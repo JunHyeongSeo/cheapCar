@@ -78,6 +78,7 @@ public class CsDao {
 				cs.setCsTitle(rset.getString("CS_TITLE"));
 				cs.setMemberName(rset.getString("MEMBER_NAME"));
 				cs.setReplyYn(rset.getString("REPLY_YN"));
+				cs.setCreateDate(rset.getDate("CREATE_DATE"));
 				
 				list.add(cs);
 			}

@@ -40,6 +40,33 @@
 	.mileage{
 	    margin-top: 30px;
 	}
+	
+	.container{
+		   	margin-top: 20px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	.pagin-area>button{
+		margin : auto;
+	}
+
+       .naviA:hover{
+           cursor: context-menu
+       }
+       
+       #paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	} 
+	
 </style>
 <head>
 <meta charset="UTF-8">
@@ -92,7 +119,7 @@
 		
 		<script>
 		
-	    	window.onload = function(){
+	    	window.onload = function firstPage(){
 				
 	    		const url = new URL(location.href);
 	    		const currentPage = url.searchParams.get("currentPage");
@@ -354,7 +381,7 @@
 								   + "</td>"
 								   + "</tr>"
 								   + "<tr>"
-								   + "<td colspan='2'><button type='button' onclick='updateMember(this)' id='" + m.memberNo + "'>회원 정보 수정</td>"
+								   + "<td colspan='2'><button type='button' onclick='updateMember(this);' id='" + m.memberNo + "'>회원 정보 수정</td>"
 								   + "</tr>"
 								   
 						document.getElementById('con2Body').innerHTML = resultStr;
@@ -392,8 +419,10 @@
 						},
 						success : function(result){
 							if(result > 0){
-								alert('정보 수정 성공!')
+								alert('정보 수정 성공!');
+								location.reload();
 							}
+							
 						}
 					});
 				}
