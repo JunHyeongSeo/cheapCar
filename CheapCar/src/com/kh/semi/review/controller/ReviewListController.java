@@ -47,7 +47,7 @@ public class ReviewListController extends HttpServlet {
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit = 5;
-		boardLimit = 6;
+		boardLimit = 4;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
