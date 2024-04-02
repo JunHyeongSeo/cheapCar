@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.semi.common.MyFileRenamePolicy;
+import com.kh.semi.review.model.vo.Review;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -41,6 +43,51 @@ public class ReviewInsertController extends HttpServlet {
 			String savePath = request.getServletContext().getRealPath("resources/review_upfiles");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			
+			/*
+			 * 작성자, 제목, 내용, 첨부파일, 
+			 */
+			
+			String reviewTitle = multiRequest.getParameter("title");
+			String reviewContent = multiRequest.getParameter("content");
+			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
+			
+			
+			Review re = new Review();
+			re.setReviewTitle(reviewTitle);
+			re.setReviewContent(reviewContent);
+			re.setMemberNo(memberNo);
+			
+			//------------------
+			
+			ArrayList<ReviewPhoto> list = new ArrayList();
+			
+			if(multiRequest.getParameter("photo1") != null) {
+				
+				for(int i = 0; i <=4; i++) {
+					String key = "photo" + i;
+					
+					
+					
+					
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			
