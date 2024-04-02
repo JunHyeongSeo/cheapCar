@@ -32,7 +32,7 @@ public class AjaxDeleteBlackController extends HttpServlet {
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		int result = new MemberService().updateMember(memberNo);
+		int result = new MemberService().updateBlack(memberNo);
 		
 		response.getWriter().print(result);
 		

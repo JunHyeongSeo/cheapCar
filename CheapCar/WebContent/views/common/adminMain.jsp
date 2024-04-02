@@ -14,9 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
-
+    	
         /* adminMain 스타일 */
         .outer{
 	       width: 1200px;
@@ -24,6 +25,7 @@
 	       top: 250px;
 	       z-index: -1;
 	       height: 1000px;
+	       margin: auto;
         }
         
         #wrap{
@@ -168,7 +170,7 @@
 		} 
 	</style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <body>
  
     <div id="wrap">
@@ -185,7 +187,6 @@
 			<li><a href="#" class="naviA">회원관리</a>
 				<ul>
 					<li><a href="<%=contextPath%>/memberList?currentPage=1">회원현황</a></li>
-                    <li><a href="<%=contextPath%>/reportList?currentPage=1">신고내역</a></li>
                     <li><a href="<%=contextPath%>/blackList?currentPage=1">블랙리스트관리</a></li>
                 </ul>
             </li>
@@ -193,7 +194,7 @@
             <li><a href="<%=contextPath%>/manageCar?currentPage=1">차량관리</a></li>
             <li><a href="#" class="naviA">고객센터</a>
                 <ul>
-                    <li><a href="<%=contextPath%>/cs?currentPage=1">회원문의글조회</a></li>
+                    <li><a href="<%=contextPath%>/list.cs?currentPage=1">회원문의글조회</a></li>
                     <li><a href="#">FAQ관리</a></li>
                 </ul>
             </li>
@@ -207,12 +208,14 @@
             <li><a href="#" class="naviA">게시판관리</a>
                 <ul>
                     <li><a href="<%=contextPath%>/list.notice?currentPage=1" target="_blank">공지사항게시판</a></li>
-                    <li><a href="<%= contextPath %>/list.review" target="_blank">후기게시판</a></li>
-                    <li><a href="<%= contextPath %>/list.event" target="_blank">이벤트게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.review?currentPage=1" target="_blank">후기게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.event?currentPage=1" target="_blank">이벤트게시판</a></li>
                 </ul>
             </li>
         </ul>
+        
     	<br clear="both">
+    	
     </div>
     
 </body>

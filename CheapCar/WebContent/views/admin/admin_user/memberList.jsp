@@ -40,6 +40,33 @@
 	.mileage{
 	    margin-top: 30px;
 	}
+	
+	.container{
+		   	margin-top: 20px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	.pagin-area>button{
+		margin : auto;
+	}
+
+       .naviA:hover{
+           cursor: context-menu
+       }
+       
+       #paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	} 
+	
 </style>
 <head>
 <meta charset="UTF-8">
@@ -92,7 +119,7 @@
 		
 		<script>
 		
-	    	window.onload = function(){
+	    	window.onload = function firstPage(){
 				
 	    		const url = new URL(location.href);
 	    		const currentPage = url.searchParams.get("currentPage");
@@ -319,7 +346,7 @@
 						
 						resultStr += "<tr>"
 								   + "<td>회원번호</td>"
-								   + "<td><input type='text' disabled value='" + m.memberNo + "' name='" + m.memberNo + "'></td>"
+								   + "<td><input type='text' disabled value='" + m.memberNo + "' name='changedNo'></td>"
 								   + "</tr>"
 								   + "<tr>"
 								   + "<td>아이디</td>"
@@ -347,18 +374,19 @@
 								   + "<tr>"
 								   + "<td>회원상태</td>"
 								   + "<td>"
-								   + '<input type="checkbox" id="A" value="A" name="status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="B" value="B" name="status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="C" value="C" name="status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
-								   + '<input type="checkbox" id="D" value="D" name="status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="radio" id="A" value="A" name="status"><label for="A">A&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="radio" id="B" value="B" name="status"><label for="B">B&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="radio" id="C" value="C" name="status"><label for="C">C&nbsp;&nbsp;&nbsp;</label>'
+								   + '<input type="radio" id="D" value="D" name="status"><label for="D">D&nbsp;&nbsp;&nbsp;</label>'
 								   + "</td>"
 								   + "</tr>"
 								   + "<tr>"
-								   + "<td colspan='2'><button type='button' onclick='updateMember(this)'>회원 정보 수정</td>"
+								   + "<td colspan='2'><button type='button' onclick='updateMember(this);' id='" + m.memberNo + "'>회원 정보 수정</td>"
 								   + "</tr>"
 								   
 						document.getElementById('con2Body').innerHTML = resultStr;
-						// 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
+						
+					    // 5. 회원상태 체크박스 현재 상태로 체크해주는 ajax
 						
 						let str = document.getElementsByName('status');
 						for(let i = 0; i < str.length; i++){
@@ -375,26 +403,29 @@
 			
 			function updateMember(result){
 				
+				let statusValue = document.querySelector('input[name="status"]:checked').value;
+				
 				if(confirm('회원정보를 수정하시겠습니까?')){
 					$.ajax({
 						url : 'memberUpdate.do',
 						data : {
-							name : document.getElementsByName('changedName'),
-							phone : document.getElementsByName('changedPhone'),
-							birthday : document.getElementsByName('changedBirthday'),
-							email : document.getElementsByName('changedEmail'),
-							status : document.getElementsByName('status'),
-							checkId : document.getElementsByName('checkId')	
+							name : document.getElementsByName('changedName')[0].value,
+							phone : document.getElementsByName('changedPhone')[0].value,
+							birthday : document.getElementsByName('changedBirthday')[0].value,
+							email : document.getElementsByName('changedEmail')[0].value,
+							status : statusValue,
+							checkId : document.getElementsByName('checkId')[0].value,
+							memberNo : document.getElementsByName('changedNo')[0].value
 						},
 						success : function(result){
 							if(result > 0){
-								
+								alert('정보 수정 성공!');
+								location.reload();
 							}
+							
 						}
 					});
 				}
-				
-				
 			}
 			
 			

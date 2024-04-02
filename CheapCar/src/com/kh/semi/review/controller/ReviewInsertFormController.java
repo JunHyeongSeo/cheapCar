@@ -1,29 +1,27 @@
-package com.kh.semi.admin.ad.admin_cs.cs.a;
+package com.kh.semi.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class BlackListController
+ * Servlet implementation class ReviewInsertFormController
  */
-@WebServlet("/cs")
-public class AdminCsController extends HttpServlet {
+@WebServlet("/insertForm.review")
+public class ReviewInsertFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminCsController() {
+    public ReviewInsertFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +31,30 @@ public class AdminCsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_cs/cs.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if(loginUser != null && loginUser.getMemberStatus().equals("C")) {
+			
+			request.getRequestDispatcher("views/review/insert.review.jsp").forward(request, response);
+			
+		} else {
+			session.setAttribute("alertMsg", "잘못된 접근입니다.");
+			response.sendRedirect(request.getContextPath());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	/**

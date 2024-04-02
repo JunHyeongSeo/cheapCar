@@ -1,19 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ page import="com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto"%>
-
-<%
-	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
-    EventPhoto ePhoto = (EventPhoto)request.getAttribute("ePhoto");
-
-%>
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트게시글 수정</title>
+<title>후기글쓰기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -124,11 +115,6 @@
     .form-control{
         height: auto;
     }
-    .content_btn{
-        padding-top: 20px;
-    	padding-bottom: 100px;
-    }
-    
 	
     
 
@@ -144,40 +130,42 @@
 		  </div>
 			 <div class="col-lg-10">
 				<div class="panel-body">
-				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
+				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;뷰</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/update.event" method="post" id="insert-form" enctype="multipart/form-data">
-                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
-                            <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo() %>" />
+                        <form action="<%=contextPath%>/insert.review" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required><%= eBoard.getEventTitle() %> 
+		    					제목 : <input type="text" name="title" required> 
 			    			</div>
                             </div>
 	                        <div class="content_sub">
-	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span> 
+	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberId() %></span> 
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
-									<img src="<%=contextPath%>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" id="img_1"/>
-									<input type="hidden" name="photoNo" value="<%= ePhoto.getPhotoNo() %>"/>
-									<input type="hidden" name="photoCname" value="<%= ePhoto.getPhotoCname() %>"/>
-									<input type="hidden" name="fileLevel" value="<%= ePhoto.getFileLevel() %>"/>
+								<img src="" id="img_1">
+								<img src="" id="img_2">
+								<img src="" id="img_3">
+								<img src="" id="img_4">
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment"><%= eBoard.getEventContent() %></textarea>
+	                            <textarea name="content" class="form-control" rows="20" id="comment" required></textarea>
 	                        </div>
 	                        </div>
 	                    
 						    <div class="content_add_img">
-	                            <span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
-	                            대표이미지 - <input type="file" name="rePhoto1" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+	                            <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" >
+	                            <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 2)" >
+	                            <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 3)" >
+	                            <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 4)" >
 						    </div>
                     
 
-	                        <div class="content_btn" align="center" >
+	                        <div class="content_btn" align="center">
 	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
@@ -191,7 +179,14 @@
 	
 	<script>
 		
-
+		$(function(){ // 사진 첨부가 안되었을 때 이미지 들어갈 화면 가리기
+			
+			$('#img_1').hide();
+			$('#img_2').hide();
+			$('#img_3').hide();
+			$('#img_4').hide();
+			
+		})
 		
         function loadImg(inputFile, num){
             //console.log(inputFile.files.length);
@@ -202,30 +197,30 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_1').attr('src', e.target.result); break;  
-                    }
-                    
+                    	case 1 : $('#img_1').attr('src', e.target.result); 
+                    	         $('#img_1').show(); break;               
+                    	case 2 : $('#img_2').attr('src', e.target.result); 
+           	         		  	 $('#img_2').show(); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); 
+           	         			 $('#img_3').show(); break;               
+           				case 4 : $('#img_4').attr('src', e.target.result); 
+  	         		  	 		 $('#img_4').show(); break;
+                    }    
                 }
             }
-             
             else{
             	const str = ''
             	
             	switch(num){
             		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
-            
         }
         
-        
-        
-		
-        
-
-        
-
-
+      
 	</script>
 	
 		

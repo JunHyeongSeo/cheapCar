@@ -34,6 +34,7 @@ public class CsService {
 		return list;
 	}
 	
+	/*
 	public int searchedCsCount(String searchId) {
 		
 		Connection conn = getConnection();
@@ -55,7 +56,18 @@ public class CsService {
 		
 		return list;
 	}
+	*/
 	
+	public Cs csDetail(int csNo) {
+		
+		Connection conn = getConnection();
+		
+		Cs cs = new CsDao().csDetail(conn, csNo);
+		
+		close(conn);
+		
+		return cs;
+	}
 	
 
 }

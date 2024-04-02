@@ -71,10 +71,10 @@ public class EventUpdateController extends HttpServlet {
 			if(multiRequest.getOriginalFileName("rePhoto1") != null) {
 
 				ePhoto = new EventPhoto();
-				ePhoto.setPhotoOname(multiRequest.getOriginalFileName("rePhoto"));
-				ePhoto.setPhotoCname(multiRequest.getFilesystemName("rePhoto"));
+				ePhoto.setPhotoOname(multiRequest.getOriginalFileName("rePhoto1"));
+				ePhoto.setPhotoCname(multiRequest.getFilesystemName("rePhoto1"));
 				ePhoto.setPhotoPath("resources/event_upfiles");
-				System.out.println(ePhoto);
+				
 				
 				if(multiRequest.getParameter("photoNo") != null) {// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => DB에 저장된 원본파일 No가 필요함
 				

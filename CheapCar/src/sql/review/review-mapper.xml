@@ -6,7 +6,34 @@
 		Review Mapper
 	</comment>
 	
+	<entry key="selectReviewList">
+		SELECT  *
+			  FROM	
+			  	   (SELECT EB.*, ROWNUM RNUM
+			  		  FROM
+						(SELECT 
+						       TB_REVIEW_BOARD.REVIEW_NO,
+						       REVIEW_TITLE,
+						       COUNT,
+						       MEMBER_ID
+						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG"
+						  FROM
+						       TB_REVIEW_BOARD
+						  JOIN
+						       TB_REVIEW_PHOTO ON (TB_REVIEW_BOARD.REVIEW_NO = TB_REVIEW_PHOTO.REVIEW_NO)
+						  JOIN
+						       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
+						 WHERE
+						       TB_REVIEW_BOARD.STATUS = 'Y'
+						   AND
+						       TB_REVIEW_PHOTO.FILELEVEL = 1
+						 ORDER
+						    BY
+						       TB_REVIEW_BOARD.REVIEW_NO DESC)EB)
+         WHERE
+               RNUM BETWEEN ? AND ?
 	
+	</entry>
 	
 	
 	

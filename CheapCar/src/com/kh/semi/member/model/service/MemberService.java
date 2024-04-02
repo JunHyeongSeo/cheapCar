@@ -62,6 +62,21 @@ public class MemberService {
 		return list;
 	}
 	
+	public int adminUpdateMem(Member m) {
+		
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().adminUpdateMem(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+	
 	/////////////////// 블랙리스트 시작 ////////////////////////////////
 	
 	public int selectBlackListCount() {
@@ -116,11 +131,11 @@ public class MemberService {
 		return m;
 	}
 	
-	public int updateMember(int memberNo) {
+	public int updateBlack(int memberNo) {
 		
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().updateMember(conn, memberNo);
+		int result = new MemberDao().updateBlack(conn, memberNo);
 		
 		if(result > 0) {
 			commit(conn);
