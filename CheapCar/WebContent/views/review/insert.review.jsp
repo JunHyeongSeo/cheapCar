@@ -133,7 +133,7 @@
 				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;뷰</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
+                        <form action="<%=contextPath%>/insert.review" method="post" id="insert-form" enctype="multipart/form-data">
                             <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
                             <div class="content_header"> 
                             
