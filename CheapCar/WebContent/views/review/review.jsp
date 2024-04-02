@@ -114,6 +114,12 @@
 		font-size: 20px;
 		color: #6caddf;
 		text-align: center;
+	}
+	#titleImg{
+		width: 100%;
+		height: 100%;
+		border-top-left-radius: 18px;
+		border-top-right-radius: 18px;
 	}    
 
 
@@ -143,8 +149,10 @@
 									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
 								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
 								 	</div>
-									<div class="text-area review_1 content"><%= re.getReviewTitle() %>
+									<div class="text-area review_1 content">
 									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
+									 <span> <%= re.getReviewTitle() %> </span><br><br>
+								     <span style="font-size: 15px;">조회수 :  <%= re.getCount() %></span>
 									</div>
 								</a>
 							</li>
