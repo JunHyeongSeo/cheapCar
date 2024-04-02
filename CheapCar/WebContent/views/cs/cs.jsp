@@ -143,8 +143,10 @@
 	</div>
 	
 	<script>
-		
-	
+		$('.cs_list').click(function(){
+			const csNo = $(this).children().eq(0).text();
+			location.href = '<%=contextPath%>/detail.cs?csNo=' + csNo;
+		})
 	</script>
 		
 	
