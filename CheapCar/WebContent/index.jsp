@@ -24,6 +24,7 @@
     .swiper {
         width: 1200px;
         height: 500px;
+        
     }
 
     /* 이미지 사이즈 조절 */
@@ -43,7 +44,11 @@
             background-color: lightslategray;
             cursor: pointer;
         }
-    
+        #content_1{
+	 	 position: relative;
+            z-index: -1;
+            margin:auto;
+        }
     </style>
     
 </head>

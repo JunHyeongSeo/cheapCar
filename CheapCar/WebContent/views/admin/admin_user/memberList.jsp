@@ -40,6 +40,32 @@
 	.mileage{
 	    margin-top: 30px;
 	}
+	
+	.container{
+		   	margin-top: 20px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	.pagin-area>button{
+		margin : auto;
+	}
+
+       .naviA:hover{
+           cursor: context-menu
+       }
+       
+       #paging-area{
+		text-align : center;
+		margin-top : 12px;
+	}
+	
+	.paging-area{
+		text-align : center;
+		margin-top : 12px;
+	} 
 </style>
 <head>
 <meta charset="UTF-8">

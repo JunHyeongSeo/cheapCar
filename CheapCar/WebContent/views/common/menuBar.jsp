@@ -30,19 +30,22 @@
             height: 50px;
             display: table-cell;
         }
-
         
         #wrap{
             padding-top: 50px;
+            position : absoulute;
+           
+        }
+        
+        .nav-area{
+        	z-index : 100;
         }
         
 		#logo{
 			width:200px;
 			height:200px;
 			margin: auto;
-			
         }
-        
         
         .menu>a{
             display: block;
@@ -60,6 +63,44 @@
             background-color: lightslategray;
             cursor: pointer;
         }
+        
+        .cs{
+        	display: none;
+        }
+        
+        .menu5>a:hover+ul{
+        	display: block;
+        }
+        
+        .cs:hover{
+        	display : block;
+        	
+        }
+        
+        .menu55{
+        	list-style: none;
+        	padding : 0px;
+        	margin : 0px;        	
+        }
+        
+        .menu55>a{
+        	text-decoration : none;
+        	color : black;
+        	margin : auto;
+        }
+        
+        /*
+        
+        #content_1{
+		 position : absoulute;
+         z-index : -1;
+	}
+    
+        
+        */
+        
+        
+        
 
 	</style>
 </head>
@@ -114,16 +155,12 @@
 		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.review">후기</a></div>
-		<div class="menu">
+		<div class="menu menu5">
 			<a href="#">고객센터</a>
-			<!-- <div class="menu55" id="faq">
-				<a href="#">FAQ</a>
-			</div>
-			
-			<div class="menu55" id="1to1Cs">
-				<a href="#">1대1 문의</a>
-			</div> -->
-			
+			<ul class="cs">
+				<li class="menu55" id="faq"><a href="#">FAQ</a></li>
+				<li class="menu55" id="1to1Cs"><a href="#">1대1 문의</a></li>
+			</ul>
 		</div>
 	</div>
 	
