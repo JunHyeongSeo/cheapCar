@@ -14,16 +14,16 @@ public class ReviewService {
 	
 	public int selectListCount() {
 		
-		int result = 0;
+		int listCount = 0;
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new ReviewDao().selectListCount();
+		listCount = new ReviewDao().selectListCount(conn);
+		
+		JDBCTemplate.close(conn);
 		
 		
-		
-		
-		return result;
+		return listCount;
 	}//
 	
 	
