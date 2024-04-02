@@ -30,6 +30,21 @@
 				RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="csDetail">
+		SELECT * FROM TB_CS_BOARD WHERE CS_NO = ?
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 
 	<entry key="searchedCsCount">
 		SELECT 
 				COUNT(*) 
@@ -58,7 +73,7 @@
 	 		 	MEMBER_ID LIKE '%' || LOWER(?) || '%')
 	
 	</entry>
-	
+	 -->
 	
 	
 	

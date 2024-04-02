@@ -35,6 +35,59 @@
 	
 	</entry>
 	
+	<entry key="insertReviewBoard">
+		INSERT
+		  INTO
+		       TB_REVIEW_BOARD
+		       (
+		       REVIEW_NO,
+		       REVIEW_TITLE,
+		       REVIEW_CONTENT,
+		       CREATE_DATE,
+		       STATUS,
+		       MEMBER_NO,
+		       )
+		VALUES
+		       (
+		       SEQ_REVIEW_NO.NEXVAL,
+		       ?,
+		       ?,
+		       SYSDATE,
+		       DEFAULT,
+		       ?
+		       )		        
+	</entry>
+	
+	<entry key="insertReviewPhoto">
+		INSERT
+		  INTO
+		       TB_REVIEW_PHOTO
+		       (
+		       REVIEW_PHOTO_NO,
+		       REVIEW_PHOTO_ORIGINNAME,
+		       REVIEW_PHOTO_CHANGENAME,
+		       REVIEW_PHOTO_ADDRESS,
+		       REVIEW_NO,
+		       STATUS,
+		       FILELEVEL
+		       )
+	    VALUES
+	           (
+	           SEQ_REVIEW_PHOTO_NO.NEXTVAL,
+	           ?,
+	           ?,
+	           ?,
+	           SEQ_REVIEW_NO.CURRVAL,
+	           DEFAULT,
+	           ?
+	           )      
+		       
+	</entry>
+	
+	
+	
+	
+	
 	
 	
 	

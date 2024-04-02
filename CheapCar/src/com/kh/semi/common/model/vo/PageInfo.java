@@ -76,7 +76,7 @@ public class PageInfo {
 	public String toString() {
 		return "pageInfo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + "]" + pi;
+				+ endPage + "]";
 	} 
 	
 	
