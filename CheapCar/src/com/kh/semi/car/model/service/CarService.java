@@ -222,8 +222,6 @@ public class CarService {
 		
 		JDBCTemplate.close(conn);
 		
-		System.out.println(carList);
-		
 		return carList;	
 		
 	}

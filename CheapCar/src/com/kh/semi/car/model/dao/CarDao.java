@@ -978,8 +978,6 @@ public class CarDao {
 				
 			}
 			
-			System.out.println(carList);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

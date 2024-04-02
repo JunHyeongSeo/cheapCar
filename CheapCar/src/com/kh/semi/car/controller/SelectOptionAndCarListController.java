@@ -96,8 +96,6 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
 		
-		System.out.println(carList);
-		
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
 	}
