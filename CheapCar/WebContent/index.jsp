@@ -135,9 +135,10 @@
         $(function(){
 
             $('.swiper-slide').click(function(){
-                //alert('111222')
-                const event = $(this).children.eq(0).val();
                 
+            	
+                const eventNo = $(this).children().eq(0).val();
+                console.log(eventNo);
 
                 location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
 
