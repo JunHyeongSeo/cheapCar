@@ -910,7 +910,9 @@ public class CarDao {
 							+ "MODEL_PRICE, "
 							+ "YEAR_PRICE, "
 							+ "CHANGE_NAME, "
-							+ "CAR_PHOTO_ADDRESS";
+							+ "CAR_PHOTO_ADDRESS "
+				+ "ORDER BY "
+							+ "MANAGEMENT_NO";
 		
 		try {
 			
@@ -929,11 +931,11 @@ public class CarDao {
 			pstmt.setString(8, endDate);
 			pstmt.setString(9, startDate);
 			
-			System.out.println(sql);
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
+				
 				Car car = new Car();
 				
 				car.setManagementNo(rset.getInt("MANAGEMENT_NO"));
@@ -953,13 +955,18 @@ public class CarDao {
 				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS"));
 				
 				carList.add(car);
+				
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
+			
 		}
+		
 		return carList;
 	}
 	

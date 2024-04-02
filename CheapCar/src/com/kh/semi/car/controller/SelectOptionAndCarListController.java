@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.car.model.vo.Search;
 import com.kh.semi.common.model.vo.PageInfo;
 
@@ -85,7 +86,15 @@ public class SelectOptionAndCarListController extends HttpServlet {
 
 		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, pi, hours, locations, startDate, endDate);
 		
-		System.out.println(carList);
+		ArrayList<Option> optionList = new CarService().selectOptionList();
+
+		request.setAttribute("carList", carList);
+		request.setAttribute("optionList", optionList);
+		request.setAttribute("pageInfo", pi);
+		request.setAttribute("hours", hours);
+		request.setAttribute("locations", locations);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
 		
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
