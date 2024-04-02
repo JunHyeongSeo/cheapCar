@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
-import com.kh.semi.review.model.vo.Review;
+import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.ReviewBoard;
 import com.kh.semi.review.model.vo.ReviewPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -55,10 +56,10 @@ public class ReviewInsertController extends HttpServlet {
 			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
 			
 			
-			Review re = new Review();
-			re.setReviewTitle(reviewTitle);
-			re.setReviewContent(reviewContent);
-			re.setMemberNo(memberNo);
+			ReviewBoard rBoard = new ReviewBoard();
+			rBoard.setReviewTitle(reviewTitle);
+			rBoard.setReviewContent(reviewContent);
+			rBoard.setMemberNo(memberNo);
 			
 			//------------------
 			
@@ -85,15 +86,10 @@ public class ReviewInsertController extends HttpServlet {
 						rPhoto.setFileLevel(2);
 					}
 					list.add(rPhoto);
-					
-					
 				}
-					
-					
-					
-					
-				}
-				
+			}
+			
+			new ReviewService().insertReview(rBoard, list);
 				
 				
 				

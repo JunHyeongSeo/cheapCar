@@ -11,7 +11,8 @@ import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.review.model.vo.Review;
+import com.kh.semi.review.model.vo.ReviewBoard;
+import com.kh.semi.review.model.vo.ReviewBoard;
 
 public class ReviewDao {
 
@@ -31,9 +32,9 @@ public class ReviewDao {
 		
 	}//
 	
-	public ArrayList<Review> selectReviewList(Connection conn, PageInfo pi){
+	public ArrayList<ReviewBoard> selectReviewList(Connection conn, PageInfo pi){
 		
-		ArrayList<Review> list = new ArrayList();
+		ArrayList<ReviewBoard> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectReviewList");
@@ -52,7 +53,7 @@ public class ReviewDao {
 			
 			while(rset.next()) {
 				
-				Review rv = new Review();
+				ReviewBoard rv = new ReviewBoard();
 				
 				rv.setReviewNo(rset.getInt("REVIEW_NO"));
 				rv.setReviewTitle(rset.getString("REVIEW_TITLE"));
