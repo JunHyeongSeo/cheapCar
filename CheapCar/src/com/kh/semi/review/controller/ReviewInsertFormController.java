@@ -36,7 +36,7 @@ public class ReviewInsertFormController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser != null && loginUser.getMemberStatus().equals("y")) {
+		if(loginUser != null && loginUser.getMemberStatus().equals("C")) {
 			
 			request.getRequestDispatcher("views/review/insert.review.jsp").forward(request, response);
 			

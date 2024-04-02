@@ -142,7 +142,7 @@ public class EventService {
 		
 		ArrayList<EventBoard> list = new EventDao().eventevent(conn); 
 		
-		
+		return list;
 	}
 	
 	

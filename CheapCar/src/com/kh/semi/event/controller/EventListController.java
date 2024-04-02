@@ -68,7 +68,6 @@ public class EventListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
 		
-		System.out.println(list);
 		
 		request.getRequestDispatcher("views/event/event.jsp").forward(request, response);
 		
