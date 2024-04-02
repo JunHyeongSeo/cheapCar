@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.Review, com.kh.semi.common.model.vo.PageInfo" %>    
+<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.common.model.vo.PageInfo" %>    
     
 <%
-	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
+	ArrayList<ReviewBoard> list = (ArrayList<ReviewBoard>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 
 	int currentPage = pi.getCurrentPage();
@@ -130,7 +130,7 @@
 						<% if(list.isEmpty()) { %>
 						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
 						<% } else { %>
-						  <% for(Review re : list){ %>	
+						  <% for(ReviewBoard re : list){ %>	
 							<li>
 								<a href="" alt="">
 									<div class="img-area review_1 content">

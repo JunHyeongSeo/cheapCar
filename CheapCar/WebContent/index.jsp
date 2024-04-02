@@ -137,7 +137,7 @@
             $('.swiper-slide').click(function(){
                 
             	
-                const eventNo = $(this).children().eq(0).val();
+                const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
 
                 location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
