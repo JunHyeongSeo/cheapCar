@@ -740,13 +740,28 @@ public class CarDao {
 		
 		String optionSql = "";
 		
+		int num = search.getOptions().length;
+		
 		if(search != null) {
 			
-			for(int i = 0; i < search.getOptions().length; i++) {
+			for(int i = 0; i < num; i++) {
 						
-			optionSql += "AND"
-			+ " OPTION_NAME = '" + search.getOptions()[i] + "' ";
-					
+			optionSql += 
+					"SELECT "
+							+ "TB_CAR.MANAGEMENT_NO "
+					 +"FROM "
+							+ "TB_CAR "
+					 +"JOIN "
+							+ "TB_OPTION_BRIDGE OB "
+					 +"ON	(TB_CAR.MANAGEMENT_NO = OB.MANAGEMENT_NO) "
+					 +"JOIN "
+					 		+ "TB_OPTION O "
+					 +"ON	(OB.OPTION_NO = O.OPTION_NO) "
+					 +"WHERE "
+					 		+ "OPTION_NAME = '" + search.getOptions()[i] + "' ";
+				if(i != num - 1) {
+					optionSql += "INTERSECT ";
+				}
 			}
 		}
 		
@@ -858,9 +873,15 @@ public class CarDao {
 										
 									    +"WHERE "
 									   			+ "LOCATION_NAME = ? "
-									    
-									    + optionSql
+									    +"AND "
+									   			+ "C.MANAGEMENT_NO "
+									    +"IN "
+									   			+"( "
 									   			
+									   			+ optionSql
+									   			
+									   			+") "
+									    
 									    +"ORDER BY "
 									   			+ "C.MANAGEMENT_NO)) "
 									    
@@ -930,7 +951,6 @@ public class CarDao {
 			pstmt.setString(7, search.getGrade());
 			pstmt.setString(8, endDate);
 			pstmt.setString(9, startDate);
-			
 			
 			rset = pstmt.executeQuery();
 			

@@ -189,7 +189,7 @@
 			    <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 				<button type="submit" value="" id="btn-search" class="btn-info" style="background-color: #6caddf">검색</button>
 				<% if(loginUser != null) {%>
-				<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+					<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
 				<%}%>
 				
 			</form>
