@@ -9,6 +9,7 @@ import com.kh.semi.car.model.vo.Attachment;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
 import com.kh.semi.car.model.vo.Reservation;
+import com.kh.semi.car.model.vo.Search;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
 
@@ -201,17 +202,6 @@ public class CarService {
 		return carList;
 	}
 	
-	public ArrayList<Attachment> selectAttachmentList(){
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		List<Attachment> atList = new CarDao().selectAttachmentList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return atList;
-	}
-	
 	public ArrayList<Car> locationSale(String checkLocations){
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -224,7 +214,15 @@ public class CarService {
 		
 	}
 
-	public ArrayList<Car> selectOptionAndCarList(){
+	public ArrayList<Car> selectOptionAndCarList(Search search, int hours, String location, String startDate, String endDate){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> carList = new CarDao().selectOptionAndCarList(conn, search, hours, location, startDate, endDate);
+		
+		JDBCTemplate.close(conn);
+		
+		return carList;	
 		
 	}
 	
