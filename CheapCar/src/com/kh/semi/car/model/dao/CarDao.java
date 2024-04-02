@@ -738,21 +738,17 @@ public class CarDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
+		String optionSql = "";
+		
 		if(search != null) {
-			
-			String optionSql = "";
 			
 			for(int i = 0; i < search.getOptions().length; i++) {
 						
 			optionSql += "AND"
 			+ " OPTION_NAME = '" + search.getOptions()[i] + "' ";
-			
-			System.out.println(optionSql);
 					
 			}
 		}
-		
-		
 		
 		String sql = 
 		
@@ -843,15 +839,28 @@ public class CarDao {
 										+"ON	(CB.YEAR_NO = Y.YEAR_NO) "
 										
 										+"JOIN "
+												+ "TB_OPTION_BRIDGE OB "
+										+"ON	(C.MANAGEMENT_NO = OB.MANAGEMENT_NO) "
+												
+										+"JOIN "
+												+ "TB_OPTION O "
+										+"ON	(OB.OPTION_NO = O.OPTION_NO) "
+										
+										+"LEFT "
+										+"JOIN "
 												+ "TB_CAR_PHOTO CP "
 										+"ON	(C.MANAGEMENT_NO = CP.MANAGEMENT_NO) "
 												
+										+"LEFT " 
 										+"JOIN "
 												+ "TB_RESERVATION R "
 										+"ON	(C.MANAGEMENT_NO = R.MANAGEMENT_NO) "
 										
 									    +"WHERE "
 									   			+ "LOCATION_NAME = ? "
+									    
+									    + optionSql
+									   			
 									    +"ORDER BY "
 									   			+ "C.MANAGEMENT_NO)) "
 									    
@@ -919,6 +928,8 @@ public class CarDao {
 			pstmt.setString(7, search.getGrade());
 			pstmt.setString(8, endDate);
 			pstmt.setString(9, startDate);
+			
+			System.out.println(sql);
 			
 			rset = pstmt.executeQuery();
 			
