@@ -101,7 +101,7 @@
 				  		</tr>
 					<% } else {%>
 						<% for(Cs c : list) { %>
-							<tr class="notice_list">
+							<tr class="cs_list">
 								<th style="text-align:center"><%= c.getCsNo() %></th>
 								<th><%= c.getCsTitle() %></th>
 								<th style="text-align:center"><%= c.getMemberName() %></th>
@@ -141,6 +141,11 @@
 			</form>
 		</div>
 	</div>
+	
+	<script>
+		
+	
+	</script>
 		
 	
 </body>
