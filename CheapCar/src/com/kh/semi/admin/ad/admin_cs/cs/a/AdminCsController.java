@@ -16,7 +16,7 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class BlackListController
  */
-@WebServlet("/cs")
+@WebServlet("/cs123123123123123")
 public class AdminCsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class AdminCsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_cs/csList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/cs/csList.jsp").forward(request, response);
 	}
 
 	/**

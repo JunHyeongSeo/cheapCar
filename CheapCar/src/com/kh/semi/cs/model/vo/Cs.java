@@ -1,11 +1,13 @@
 package com.kh.semi.cs.model.vo;
 
+import java.sql.Date;
+
 public class Cs {
 	
 	private int csNo;
 	private String csTitle;
 	private String csContent;
-	private String createDate;
+	private Date createDate;
 	private String replyYn;
 	private String status;
 	private int memberNo;
@@ -26,7 +28,7 @@ public class Cs {
 		super();
 	}
 	
-	public Cs(int csNo, String csTitle, String csContent, String createDate, String replyYn, String status,
+	public Cs(int csNo, String csTitle, String csContent, Date createDate, String replyYn, String status,
 			int memberNo, int replyNo) {
 		super();
 		this.csNo = csNo;
@@ -58,10 +60,10 @@ public class Cs {
 	public void setCsContent(String csContent) {
 		this.csContent = csContent;
 	}
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 	public String getReplyYn() {
