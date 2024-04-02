@@ -113,15 +113,6 @@ public class Car {
 		this.createDate = createDate;
 		this.replyYn = replyYn;
 
-	
-		
-	
-		
-	
-		
-	
-		
-
 	}
 
 	public int getCsNo() {
