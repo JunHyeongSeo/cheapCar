@@ -167,6 +167,32 @@ public class MemberDao {
 		return list;
 	}
 	
+	public int adminUpdateMem(Connection conn, Member m) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adminUpdateMem");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMemberName());
+			pstmt.setString(2, m.getPhone());
+			pstmt.setString(3, m.getBirthday());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getMemberStatus());
+			pstmt.setString(6, m.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 /////////////////// 여기까지 순서 완료! ////////////////////////////////
 /////////////////// 일단 회원 현황 상세보기만 하면 됨 ////////////////////////////////
 	
@@ -341,7 +367,26 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return m;
+	}
+	
+	public int updateBlack(Connection conn, int memberNo) {
 		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBlack");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			result = pstmt.executeUpdate();
+						
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 	

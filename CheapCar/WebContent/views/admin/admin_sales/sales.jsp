@@ -15,10 +15,7 @@
 <meta charset="UTF-8">
 <title>매출관리</title>
 <style>
-	#salemonth {
-		margin : auto;
-		width : 100%;
-	}
+	
 	.salesList>a{
 		text-align : center;
 		margin : auto;
@@ -27,6 +24,11 @@
 	#container{
 		margin: auto;
 		width: 100%;
+	}
+
+	#salemonth {
+		margin : auto;
+		width : 100%;
 	}
 	
 	

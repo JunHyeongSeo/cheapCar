@@ -222,10 +222,11 @@ public class CarService {
 		
 		return carLocation;	
 		
-		
-		
 	}
 
+	public ArrayList<Car> selectOptionAndCarList(){
+		
+	}
 	
 	
 	

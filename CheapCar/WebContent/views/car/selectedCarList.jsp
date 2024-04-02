@@ -158,7 +158,13 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="post" action="<%=contextPath%>/selectOptionAndCarList.do?currentPage=1" class="option-form form-inline form-location" >
+                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do" class="option-form form-inline form-location" >
+
+					<input type="hidden" name="currentPage" value="<%= 1 %>" />
+					<input type="hidden" name="hours" value="<%=hours %>" />
+					<input type="hidden" name="locations" value="<%=locations %>" />
+					<input type="hidden" name="startDate" value="<%=startDate %>" />
+					<input type="hidden" name="endDate" value="<%=endDate %>" />
 
                     <div class="detail-option">
                         <label>제조사</label>
@@ -218,30 +224,25 @@
 
 					<div class="detail-option">
 
-                         <input type="checkbox" class="form-check-input" name="BlackBox" value="블랙박스">블랙박스
+                         <input type="checkbox" class="form-check-input" name="option" value="블랙박스">블랙박스
 
-                         <input type="checkbox" class="form-check-input" name="Navigation" value="네비게이션">네비게이션
+                         <input type="checkbox" class="form-check-input" name="option" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" name="ParkingSystem" value="주차보조시스템">주차보조시스템
+                         <input type="checkbox" class="form-check-input" name="option" value="주차보조시스템">주차보조시스템
                          
                     </div>
                     
                     <div class="detail-option">
                         
-                        <input type="checkbox" class="form-check-input" name="" value="선루프">선루프
+                        <input type="checkbox" class="form-check-input" name="option" value="선루프">선루프
                         
-                        <input type="checkbox" class="form-check-input" name="carSeat" value="카시트">카시트
+                        <input type="checkbox" class="form-check-input" name="option" value="카시트">카시트
                         
-                        <input type="checkbox" class="form-check-input" name="backCamera" value="후방카메라">후방카메라
+                        <input type="checkbox" class="form-check-input" name="option" value="후방카메라">후방카메라
 
 					</div>
 
 					<div class="detail-option">
-					
-						<input type="hidden" name="hours" value="<%=hours %>" />
-						<input type="hidden" name="locations" value="<%=locations %>" />
-						<input type="hidden" name="startDate" value="<%=startDate %>" />
-						<input type="hidden" name="endDate" value="<%=endDate %>" />
 						
 	    				<button class="btn btn-primary" type="submit">검색</button>
 	    				<button class="btn btn-secondary" type="reset">리셋</button>

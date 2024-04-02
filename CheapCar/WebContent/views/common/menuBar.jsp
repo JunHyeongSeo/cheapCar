@@ -60,6 +60,12 @@
             background-color: lightslategray;
             cursor: pointer;
         }
+        
+        .login-area a{
+        	text-decoration-line: none;
+        }
+        
+        
 
 	</style>
 </head>

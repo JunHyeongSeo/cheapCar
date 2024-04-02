@@ -14,16 +14,18 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
+    	
         /* adminMain 스타일 */
-        
         .outer{
 	       width: 1200px;
 	       position: absolute;
 	       top: 250px;
 	       z-index: -1;
 	       height: 1000px;
+	       margin: auto;
         }
         
         #wrap{
@@ -168,7 +170,7 @@
 		} 
 	</style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <body>
  
     <div id="wrap">
@@ -212,14 +214,6 @@
                 </ul>
             </li>
         </ul>
-
-        <!-- 메인페이지 상세 나중에 -->
-        <div id="reservation">
-        </div>
-
-        <div id="replyBoard">
-        </div>
-   
     	<br clear="both">
     </div>
     

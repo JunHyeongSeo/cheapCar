@@ -324,9 +324,36 @@
 								   + '<td>제재 일자</td>'
 		 						   + '<td>' + m.blackDate + '</td>'
 		 						   + '</tr>'
+		 						   + '<tr>'
+								   + '<td>블랙리스트해제</td>'
+		 						   + '<td><button class="btn btn-outline-danger" type="button" onclick="deleteBlack(this)" id="' + m.memberNo + '" name="' + m.memberNo + '">해제</td>'
+		 						   + '</tr>'
+		 						   
 					document.getElementById('conBody2').innerHTML = resultStr;
 					}
 				});
+			}
+			
+			function deleteBlack(result){
+				
+				if(confirm('블랙리스트를 해제하시겠습니까?')){
+					$.ajax({
+						url : 'deleteBlack.do',
+						data : {
+							memberNo : result.id
+						},
+						success : function(result){
+							if(result > 0){
+								alert('블랙리스트 정보가 수정되었습니다.');
+							} else{
+								alert('수정에 문제가 발생하였습니다.');
+							}
+						}
+					});
+				}
+				else{
+					alert('수정이 취소되었습니다.')
+				}
 			}
        	</script>
 	</div>
