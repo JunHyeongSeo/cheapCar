@@ -99,8 +99,8 @@
         		let resultStr = '';
 				for(let i = 0; i < result.length; i++){
 					
-					resultStr += '<div class="swiper-slide" onclick="aba();"><img src="' + result[i].titleImg +'"></div>'
-                              
+					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
+					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
 					
 				}
@@ -127,14 +127,29 @@
                     prevEl: '.swiper-button-prev',
                     nextEl: '.swiper-button-next'
                 }
-            }); 
+            });
             
-
+            
         };  
+        
+        $(function(){
+
+            $('.swiper-slide').click(function(){
+                //alert('111222')
+                const event = $(this).children.eq(0).val();
+                
+
+                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+
+            })
+
+
+        });
+        
         
     </script>
     
-    
+ 
     
     <hr>
     <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
