@@ -732,7 +732,7 @@ public class CarDao {
 		return carLocation;
 	}
 	
-	public ArrayList<Car> selectOptionAndCarList(Connection conn, Search search, int hours, String location, String startDate, String endDate){
+	public ArrayList<Car> selectOptionAndCarList(Connection conn, Search search, PageInfo pi, int hours, String locations, String startDate, String endDate){
 		
 		ArrayList<Car> carList = new ArrayList<Car>();
 		PreparedStatement pstmt = null;
@@ -776,48 +776,69 @@ public class CarDao {
 									+ "ROWNUM RNUM "
 									
 							+"FROM "
-									+ "TB_CAR C "
-							
-							+"JOIN "
-									+ "TB_CAR_BRIDGE CB "
-							+"ON	(C.MANAGEMENT_NO = CB.MANAGEMENT_NO) "
-									
-							+"JOIN "
-									+ "TB_LOCATION L "
-							+"ON	(C.LOCATION_NO = L.LOCATION_NO) "
-									
-							+"JOIN "
-									+ "TB_MODEL M "
-							+"ON	(CB.MODEL_NO = M.MODEL_NO) "
-									
-							+"JOIN "
-									+ "TB_FUEL F "
-							+"ON	(CB.FUEL_NO = F.FUEL_NO) "
-							
-							+"JOIN "
-									+ "TB_BRAND B "
-							+"ON	(CB.BRAND_NO = B.BRAND_NO) "
-							
-							+"JOIN "
-									+ "TB_GRADE G "
-							+"ON	(CB.GRADE_NO = G.GRADE_NO) "
-									
-							+"JOIN "	
-									+ "TB_YEAR Y "
-							+"ON	(CB.YEAR_NO = Y.YEAR_NO) "
-							
-							+"JOIN "
-									+ "TB_CAR_PHOTO CP "
-							+"ON	(C.MANAGEMENT_NO = CP.MANAGEMENT_NO) "
-									
-							+"JOIN "
-									+ "TB_RESERVATION R "
-							+"ON	(C.MANAGEMENT_NO = R.MANAGEMENT_NO) "
-							
-						    +"WHERE "
-						   			+ "LOCATION_NAME = ? "
-						    +"ORDER BY "
-						   			+ "C.MANAGEMENT_NO)) "
+									+ "(SELECT "
+												+ "C.MANAGEMENT_NO, "
+												+ "C.STATUS, "
+												+ "CAR_NO, "
+												+ "C.LOCATION_NO, "
+												+ "LOCATION_NAME, "
+												+ "MODEL_NAME, "
+												+ "FUEL_NAME, "
+												+ "BRAND_NAME, "
+												+ "GRADE_NAME, "
+												+ "YEAR, "
+												+ "GRADE_PRICE, "
+												+ "MODEL_PRICE, "
+												+ "YEAR_PRICE, "
+												+ "START_DATE, "
+												+ "END_DATE, "
+												+ "CHANGE_NAME, "
+												+ "CAR_PHOTO_ADDRESS "
+												
+										+"FROM "
+												+ "TB_CAR C "
+										
+										+"JOIN "
+												+ "TB_CAR_BRIDGE CB "
+										+"ON	(C.MANAGEMENT_NO = CB.MANAGEMENT_NO) "
+												
+										+"JOIN "
+												+ "TB_LOCATION L "
+										+"ON	(C.LOCATION_NO = L.LOCATION_NO) "
+												
+										+"JOIN "
+												+ "TB_MODEL M "
+										+"ON	(CB.MODEL_NO = M.MODEL_NO) "
+												
+										+"JOIN "
+												+ "TB_FUEL F "
+										+"ON	(CB.FUEL_NO = F.FUEL_NO) "
+										
+										+"JOIN "
+												+ "TB_BRAND B "
+										+"ON	(CB.BRAND_NO = B.BRAND_NO) "
+										
+										+"JOIN "
+												+ "TB_GRADE G "
+										+"ON	(CB.GRADE_NO = G.GRADE_NO) "
+												
+										+"JOIN "	
+												+ "TB_YEAR Y "
+										+"ON	(CB.YEAR_NO = Y.YEAR_NO) "
+										
+										+"JOIN "
+												+ "TB_CAR_PHOTO CP "
+										+"ON	(C.MANAGEMENT_NO = CP.MANAGEMENT_NO) "
+												
+										+"JOIN "
+												+ "TB_RESERVATION R "
+										+"ON	(C.MANAGEMENT_NO = R.MANAGEMENT_NO) "
+										
+									    +"WHERE "
+									   			+ "LOCATION_NAME = ? "
+									    +"ORDER BY "
+									   			+ "C.MANAGEMENT_NO)) "
+									    
 				+"WHERE "
 						+ "RNUM BETWEEN ? AND ? "
 				  +"AND "
@@ -847,7 +868,7 @@ public class CarDao {
 							+ "WHERE "
 									+ "TO_CHAR(START_DATE, 'YYYY-MM-DD HH24:MI') <= ? "
 							+ "AND "
-									+ "TO_CHAR(END_DATE, 'YYYY-MM-DD HH24:MI') >= ? "
+									+ "TO_CHAR(END_DATE, 'YYYY-MM-DD HH24:MI') >= ? )"
 							
 				+ "GROUP BY "
 							+ "MANAGEMENT_NO, "
@@ -864,13 +885,34 @@ public class CarDao {
 							+ "MODEL_PRICE, "
 							+ "YEAR_PRICE, "
 							+ "CHANGE_NAME, "
-							+ "CAR_PHOTO_ADDRESS ";
+							+ "CAR_PHOTO_ADDRESS";
 		
 		try {
 			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			System.out.println(sql);
+			System.out.println(startRow);
+			System.out.println(endRow);
+			System.out.println(search);
+			System.out.println(pi);
+			System.out.println(hours);
+			System.out.println(locations);
+			System.out.println(startDate);
+			System.out.println(endDate);
+
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(search.get)
+			pstmt.setString(1, locations);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			pstmt.setString(4, search.getModel());
+			pstmt.setString(5, search.getFuel());
+			pstmt.setString(6, search.getBrand());
+			pstmt.setString(7, search.getGrade());
+			pstmt.setString(8, endDate);
+			pstmt.setString(9, startDate);
 			
 			rset = pstmt.executeQuery();
 			

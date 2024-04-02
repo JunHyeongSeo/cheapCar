@@ -224,21 +224,21 @@
 
 					<div class="detail-option">
 
-                         <input type="checkbox" class="form-check-input" name="option" value="블랙박스">블랙박스
+                         <input type="checkbox" class="form-check-input" name="options" value="블랙박스">블랙박스
 
-                         <input type="checkbox" class="form-check-input" name="option" value="네비게이션">네비게이션
+                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" name="option" value="주차보조시스템">주차보조시스템
+                         <input type="checkbox" class="form-check-input" name="options" value="주차보조시스템">주차보조시스템
                          
                     </div>
                     
                     <div class="detail-option">
                         
-                        <input type="checkbox" class="form-check-input" name="option" value="선루프">선루프
+                        <input type="checkbox" class="form-check-input" name="options" value="선루프">선루프
                         
-                        <input type="checkbox" class="form-check-input" name="option" value="카시트">카시트
+                        <input type="checkbox" class="form-check-input" name="options" value="카시트">카시트
                         
-                        <input type="checkbox" class="form-check-input" name="option" value="후방카메라">후방카메라
+                        <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
 
 					</div>
 

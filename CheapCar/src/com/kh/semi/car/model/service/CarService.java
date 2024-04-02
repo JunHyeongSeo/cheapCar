@@ -214,11 +214,11 @@ public class CarService {
 		
 	}
 
-	public ArrayList<Car> selectOptionAndCarList(Search search, int hours, String location, String startDate, String endDate){
+	public ArrayList<Car> selectOptionAndCarList(Search search, PageInfo pi, int hours, String locations, String startDate, String endDate){
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> carList = new CarDao().selectOptionAndCarList(conn, search, hours, location, startDate, endDate);
+		ArrayList<Car> carList = new CarDao().selectOptionAndCarList(conn, search, pi, hours, locations, startDate, endDate);
 		
 		JDBCTemplate.close(conn);
 		

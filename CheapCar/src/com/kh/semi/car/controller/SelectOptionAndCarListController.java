@@ -53,7 +53,7 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		int hours = Integer.parseInt(request.getParameter("hours"));
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		String location = request.getParameter("location");
+		String locations = request.getParameter("locations");
 		
 		
 		Search search = new Search();
@@ -83,7 +83,9 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
-		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, hours, location, startDate, endDate);
+		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, pi, hours, locations, startDate, endDate);
+		
+		System.out.println(carList);
 		
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
