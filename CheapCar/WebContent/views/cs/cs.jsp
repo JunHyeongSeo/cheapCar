@@ -84,7 +84,7 @@
 
 					<% if(loginUser != null && (loginUser.getMemberStatus().equals("A") || loginUser.getMemberStatus().equals("C"))) { %>
 						<div id="write">
-							<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
+							<a href="<%= contextPath %>/insertForm.cs" class="btn btn-info">글쓰기</a>
 						</div> 
 				    <% } %>
 				    
@@ -93,6 +93,7 @@
 				    		<th style="width: 8%; text-align:center">번호</th>
 						 	<th style="width: 45%; text-align:center">제&nbsp;&nbsp;&nbsp;&nbsp;목</th>
 						 	<th style="width: 10%; text-align:center">작성자</th>
+						 	<th style="width: 10%; text-align:center">답변여부</th>
 						 	<th style="width: 15%; text-align:center">작성일</th>
 					  	</tr>
 				  	<% if(list.isEmpty()) { %>
@@ -105,6 +106,7 @@
 								<th style="text-align:center"><%= c.getCsNo() %></th>
 								<th><%= c.getCsTitle() %></th>
 								<th style="text-align:center"><%= c.getMemberName() %></th>
+								<th style="text-align:center"><%= c.getReplyYn() %></th>
 								<th style="text-align:center"><%= c.getCreateDate() %></th>
 							</tr>
 						<% } %>
@@ -117,19 +119,19 @@
 		<div class="paging-area" align="center" style="margin-top:12px">
 			
 			<% if(currentPage > 1) { %>
-				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/cs?currentPage=<%= currentPage - 1 %>'">이전</button>
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/list.cs?currentPage=<%= currentPage - 1 %>'">이전</button>
 			<% } %>
 			
 			<% for(int i = startPage; i <= endPage; i++) { %>
 				<% if(currentPage != i) { %>
-					<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath %>/cs?currentPage=<%= i %>'"><%= i %></button>
+					<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath %>/list.cs?currentPage=<%= i %>'"><%= i %></button>
 				<% } else { %>
 					<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
 				<% } %>
 			<% } %>
 			
 			<% if(currentPage != maxPage) { %>
-				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/cs?currentPage=<%= currentPage + 1 %>'">다음</button>
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/list.cs?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
 		   
 	    </div>	

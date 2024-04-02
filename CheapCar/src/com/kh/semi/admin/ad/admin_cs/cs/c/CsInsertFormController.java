@@ -1,6 +1,7 @@
-package com.kh.semi.admin.ad.admin_cs.cs.b;
-	
+package com.kh.semi.admin.ad.admin_cs.cs.c;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.cs.model.service.CsService;
-import com.kh.semi.cs.model.vo.Cs;
-	
+import com.google.gson.Gson;
+import com.kh.semi.member.model.service.MemberService;
+import com.kh.semi.member.model.vo.Member;
+
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/detail.cs")
-public class CsDetailController extends HttpServlet {
+@WebServlet("/insertForm.cs")
+public class CsInsertFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CsDetailController() {
+    public CsInsertFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +33,7 @@ public class CsDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int csNo = Integer.parseInt(request.getParameter("csNo"));
-		
-		Cs cs = new CsService().csDetail(csNo);
-		
-		request.setAttribute("cs", cs);
-		request.getRequestDispatcher("views/cs/csDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("views/cs/csInsert.jsp").forward(request, response);
 	}
 
 	/**

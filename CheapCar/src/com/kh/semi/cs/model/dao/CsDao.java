@@ -112,15 +112,13 @@ public class CsDao {
 				cs.setCsNo(rset.getInt("CS_NO"));
 				cs.setCsTitle(rset.getString("CS_TITLE"));
 				cs.setCsContent(rset.getString("CS_CONTENT"));
-				cs.setMemberName(rset.getString("MEMBER_NAME"));
-				cs.setReplyYn(rset.getString("REPLY_YN"));
 				cs.setCreateDate(rset.getDate("CREATE_DATE"));
+				cs.setReplyYn(rset.getString("REPLY_YN"));
+				cs.setStatus(rset.getString("STATUS"));
+				cs.setMemberName(rset.getString("MEMBER_NAME"));
+				cs.setReplyNo(rset.getInt("REPLY_NO"));
 				
 			}
-			
-			
-			
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

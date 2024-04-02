@@ -1,4 +1,4 @@
-package com.kh.semi.admin.ad.admin_cs.cs.d;
+package com.kh.semi.admin.ad.admin_cs.cs.c;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import com.kh.semi.member.model.vo.Member;
 /**
  * Servlet implementation class AdminSelectMemberController
  */
-@WebServlet("/adminSassadfasdfdasdasdM")
-public class AjaxSelectCsController extends HttpServlet {
+@WebServlet("/insert.cs")
+public class CsInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxSelectCsController() {
+    public CsInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
