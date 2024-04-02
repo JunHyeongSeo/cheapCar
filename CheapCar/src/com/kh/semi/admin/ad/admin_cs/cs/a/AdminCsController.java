@@ -33,7 +33,7 @@ public class AdminCsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/admin_cs/cs.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/admin_cs/csList.jsp").forward(request, response);
 	}
 
 	/**

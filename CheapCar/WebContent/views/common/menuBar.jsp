@@ -33,12 +33,11 @@
         
         #wrap{
             padding-top: 50px;
-            position : absoulute;
-           
         }
         
         .nav-area{
         	z-index : 100;
+        	position : absoulute;
         }
         
 		#logo{
@@ -88,18 +87,6 @@
         	color : black;
         	margin : auto;
         }
-        
-        /*
-        
-        #content_1{
-		 position : absoulute;
-         z-index : -1;
-	}
-    
-        
-        */
-        
-        
 
         .login-area a{
         	text-decoration-line: none;
@@ -163,7 +150,7 @@
 			<a href="#">고객센터</a>
 			<ul class="cs">
 				<li class="menu55" id="faq"><a href="#">FAQ</a></li>
-				<li class="menu55" id="1to1Cs"><a href="#">1대1 문의</a></li>
+				<li class="menu55" id="1to1Cs"><a href="<%= contextPath %>/cs">1대1 문의</a></li>
 			</ul>
 		</div>
 	</div>
