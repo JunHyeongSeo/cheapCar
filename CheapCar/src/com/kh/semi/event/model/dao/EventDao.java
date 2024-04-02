@@ -22,7 +22,7 @@ public class EventDao {
 		
 		String filePath = EventDao.class.getResource("/sql/event/event-mapper.xml").getPath();
 	
-		//System.out.println(filePath);
+
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));

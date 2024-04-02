@@ -58,7 +58,7 @@
 	.table{
 		font-size: 18px;
 	}
-	#event_list{
+	#review_list{
 		display:flex;
 		gap: 10%;
 		flex-wrap: wrap;
@@ -66,7 +66,7 @@
 		overflow: hidden;
 		list-style-type: none;
 	}
-	#event_list > li{
+	#review_list > li{
 		width: 400px;
 		height: 450px;
 		text-decoration: none;
@@ -88,7 +88,7 @@
 		background-color: #6caddf;
 		font-size: 20px;
 	}
-    .event_1:hover{
+    .review_1:hover{
         cursor: pointer;
         opacity: 0.8;
     }
@@ -108,36 +108,36 @@
 				<div class="panel-body">
 				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;&nbsp;뷰
 				</h2>
-				<div class="event_content">
-					<ul id="event_list">
+				<div class="review_content">
+					<ul id="review_list">
 						<li>
 							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
+								<div class="img-area review_1 content">1</div>
+								<div class="text-area review_1 content">
 									후기 1
 								</div>
 							</a>
 						</li>
 						<li>
 							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
+								<div class="img-area review_1">1</div>
+								<div class="text-area review_1">
 									후기 2
 								</div>
 							</a>
 						</li>
 						<li>
 							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
+								<div class="img-area review_1">1</div>
+								<div class="text-area review_1">
 									후기 3
 								</div>
 							</a>
 						</li>
 						<li>
 							<a href="" alt="">
-								<div class="img-area event_1">1</div>
-								<div class="text-area event_1">
+								<div class="img-area review_1">1</div>
+								<div class="text-area review_1">
 									이벤트 44
 								</div>
 							</a>
@@ -170,6 +170,24 @@
 			<button class="btn btn-outline-info" style="color:#6caddf">다음</button>
 	    </div>			  
 	</div>
+	
+	<script>
+		$(function(){
+
+			$('.content').click(function(){
+
+				const reviewNo = $(this).children().eq(0).val(); 
+
+				location.href = '<%= contextPath %>/detail.review?reviewNo=' + reviewNo
+			})
+
+
+		})
+	</script>	
+	
+	
+	
+	
 	   
 	
 		
