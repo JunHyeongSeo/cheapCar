@@ -372,6 +372,33 @@ public class EventDao {
 		
 		String sql = prop.getProperty("eventevent");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				 
+				EventBoard eBoard = new EventBoard();
+				
+				
+				eBoard.setEventNo(rset.getInt("EVENT_NO"));
+				eBoard.setEventTitle(rset.getString("EVENT_TITLE"));
+				eBoard.setCount(rset.getInt("COUNT"));
+				eBoard.setTitleImg(rset.getString("TITLE_IMG"));
+				
+				
+				
+				list.add(eBoard);
+			}
+			
+			System.out.println(list);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		return list;
 	}

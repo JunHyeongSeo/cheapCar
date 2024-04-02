@@ -28,7 +28,6 @@
     .swiper {
         width: 800px;
         height: 500px;
-        
     }
 
     /* 이미지 사이즈 조절 */
@@ -48,11 +47,7 @@
             background-color: lightslategray;
             cursor: pointer;
         }
-        #content_1{
-	 	 position: relative;
-            z-index: -1;
-            margin:auto;
-        }
+    
     </style>
     
 </head>
@@ -72,11 +67,12 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide" onclick="aba();"><img src="views/common/공지사항 더미1.png"></div>
+                <!-- <div class="swiper-slide" onclick="aba();"><img src="views/common/공지사항 더미1.png"></div>
                 <div class="swiper-slide"><img src="views/common/공지사항 더미2.png"></div>
                 <div class="swiper-slide"><img src="views/common/공지사항 더미3.png"></div>
                 <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275__480.jpg"></div>
                 <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/09/01/09/32/alphabet-916673__480.jpg"></div>
+            	 -->
             </div>
         
             <!-- If we need pagination -->
@@ -92,47 +88,220 @@
     </div>
 
     <script>
-        // 슬라이더 동작 정의
-        const swiper = new Swiper('.swiper', {
-            autoplay : {
-                delay : 5000 // 5초마다 이미지 변경
-            },
-            loop : true, //반복 재생 여부
-            slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
-            pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-            }
-        }); 
 
-        function aba(){
-            alert('12121212');
-        };
-        
-        
         window.onload = function(){
-            
+
             $.ajax({
         	url : 'event.event',
         	success : function(result){
         		console.log(result);
-        	}
-        	
+				
+        		let resultStr = '';
+				for(let i = 0; i < result.length; i++){
+					
+					resultStr += '<div class="swiper-slide" onclick="aba();"><img src="' + result[i].titleImg +'"></div>'
+                              
+				
+					
+				}
+				
+				$('.swiper-wrapper').html(resultStr);
+        		
+        	},
+            async : false
         	
             });
+            
+            // 슬라이더 동작 정의
+            const swiper = new Swiper('.swiper', {
+                autoplay : {
+                    delay : 5000 // 5초마다 이미지 변경
+                },
+                loop : true, //반복 재생 여부
+                slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
+                pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                }
+            }); 
+            
 
         };  
-
-      
         
     </script>
     
     
+    
+    <hr>
     <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
+
+    <style>
+        .container-fostrap {
+            display: table-cell;
+            padding: 1em;
+            text-align: center;
+            vertical-align: middle;
+            }
+            .fostrap-logo {
+            width: 100px;
+            margin-bottom:15px
+            }
+            h1.heading {
+            color: #fff;
+            font-size: 1.15em;
+            font-weight: 900;
+            margin: 0 0 0.5em;
+            color: #505050;
+            }
+            @media (min-width: 450px) {
+            h1.heading {
+                font-size: 3.55em;
+            }
+            }
+            @media (min-width: 760px) {
+            h1.heading {
+                font-size: 3.05em;
+            }
+            }
+            @media (min-width: 900px) {
+            h1.heading {
+                font-size: 3.25em;
+                margin: 0 0 0.3em;
+            }
+            } 
+            .card {
+            display: block; 
+                margin-bottom: 20px;
+                line-height: 1.42857143;
+                background-color: #fff;
+                border-radius: 2px;
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
+                transition: box-shadow .25s; 
+            }
+            .card:hover {
+            box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+            .img-card {
+            width: 100%;
+            height:200px;
+            border-top-left-radius:2px;
+            border-top-right-radius:2px;
+            display:block;
+                overflow: hidden;
+            }
+            .img-card img{
+            width: 100%;
+            height: 200px;
+            object-fit:cover; 
+            transition: all .25s ease;
+            } 
+            .card-content {
+            padding:15px;
+            text-align:left;
+            }
+            .card-title {
+            margin-top:0px;
+            font-weight: 700;
+            font-size: 1.65em;
+            }
+            .card-title a {
+            color: #000;
+            text-decoration: none !important;
+            }
+            .card-read-more {
+            border-top: 1px solid #D4D4D4;
+            }
+            .card-read-more a {
+            text-decoration: none !important;
+            padding:10px;
+            font-weight:600;
+            text-transform: uppercase
+            }
+
+    </style>
+
+    <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
+
+        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">현재 인기있는 차종~</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
+                        <img src="https://www.hyundai.com/contents/repn-car/side-45/sonata-the-edge-45side.png" />
+                      </a>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1"> 소나타를 타야지~~
+                              </a>
+                            </h4>
+                            <p class="">
+                                지금 일주일 빌리면 30%할인~~~~
+                            </p>
+                        </div>
+                        <div class="card-read-more">
+                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
+                                빌리러가기~
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
+                        <img src="https://file.carisyou.com/upload/2018/01/15/EDITOR_201801151245046750.jpg" />
+                      </a>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1"> 더 옛날 소나타~
+                              </a>
+                            </h4>
+                            <p class="">
+                                더 옛날 소나타도 빌려야지~
+                            </p>
+                        </div>
+                        <div class="card-read-more">
+                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
+                                지금 빌리러 가기~
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
+                        <img src="https://4.bp.blogspot.com/-TDIJ17DfCco/Vtneyc-0t4I/AAAAAAAABmk/aa4AjmCvRck/s1600/cover.jpg" />
+                      </a>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">무슨차야 이건~
+                              </a>
+                            </h4>
+                            <p class="">
+                                이건 아직 안넣었따~
+                            </p>
+                        </div>
+                        <div class="card-read-more">
+                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
+                                몰라~
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="margin-top:200px;"></div>
+
+    
 	
 </body>
 </html>
