@@ -345,6 +345,7 @@
 						success : function(result){
 							if(result > 0){
 								alert('블랙리스트 정보가 수정되었습니다.');
+								location.reload();
 							} else{
 								alert('수정에 문제가 발생하였습니다.');
 							}
@@ -352,7 +353,7 @@
 					});
 				}
 				else{
-					alert('수정이 취소되었습니다.')
+					alert('수정이 취소되었습니다.');
 				}
 			}
        	</script>

@@ -187,7 +187,6 @@
 			<li><a href="#" class="naviA">회원관리</a>
 				<ul>
 					<li><a href="<%=contextPath%>/memberList?currentPage=1">회원현황</a></li>
-                    <li><a href="<%=contextPath%>/reportList?currentPage=1">신고내역</a></li>
                     <li><a href="<%=contextPath%>/blackList?currentPage=1">블랙리스트관리</a></li>
                 </ul>
             </li>

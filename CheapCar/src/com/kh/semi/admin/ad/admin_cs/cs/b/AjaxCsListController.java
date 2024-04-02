@@ -53,9 +53,10 @@ public class AjaxCsListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Cs> list = new CsService().selectCsList(pi);
 		
-		response.setContentType("application/json; charset=UTF-8");
-		new Gson().toJson(list, response.getWriter());
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
 		
+		request.getRequestDispatcher("views/cs/csList.jsp").forward(request, response);
 	}
 
 	/**
