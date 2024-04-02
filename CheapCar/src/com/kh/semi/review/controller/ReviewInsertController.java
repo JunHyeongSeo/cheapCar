@@ -1,6 +1,7 @@
 package com.kh.semi.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.semi.common.MyFileRenamePolicy;
 import com.kh.semi.review.model.vo.Review;
+import com.kh.semi.review.model.vo.ReviewPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -62,11 +64,30 @@ public class ReviewInsertController extends HttpServlet {
 			
 			ArrayList<ReviewPhoto> list = new ArrayList();
 			
-			if(multiRequest.getParameter("photo1") != null) {
+			for(int i = 1; i <= 4; i++) {
 				
-				for(int i = 0; i <=4; i++) {
-					String key = "photo" + i;
+				
+				String key = "file" + i;
+				
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
 					
+
+					ReviewPhoto rphoto = new ReviewPhoto();
+					rPhoto.setOriginName(multiRequest.getOriginalFileName(key));
+					rPhoto.setChangeName(multiRequest.getFilesystemName(key));
+					rPhoto.setFilePath("resources/review_upfiles");
+					
+					// 파일레벨
+					if(i == 1) {
+						// 대표이지미
+						at.setFileLevel(1);
+						
+					} else {
+						at.setFileLevel(2);
+					}
+					list.add(at);
+				}
 					
 					
 					
