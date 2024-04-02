@@ -99,7 +99,7 @@
 			<table align="center">
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" maxlength="30" required name="memberId"></td>
+					<td><input type="text" id="memberId" maxlength="15" required name="memberId" placeholder="4~15글자 사이로 입력"></td>
 					<td><button type="button" onclick="idCheck();">중복확인</button></td>
 				</tr>	
 					
@@ -112,7 +112,7 @@
 					url : 'idCheck.do',
 					data : {checkId : $memberId.val()},
 					success : function(result){
-						console.log(result);
+						//console.log(result);
 							
 						if(result == 'NNN'){
 							alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
@@ -139,7 +139,7 @@
 		
 				<tr>
 					<td>* 비밀번호</td>
-					<td><input type="password" maxlength="30" required name="memberPwd"></td>
+					<td><input type="password" id="memberPwd" maxlength="15" required name="memberPwd" placeholder="4~15글자 사이로 입력"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -175,14 +175,60 @@
 
 			<div align="center">
 				<button type="reset">취소</button>
-				<button type="submit" disabled>회원가입</button>
+				<button id="submit" type="submit" disabled>회원가입</button>
 			</div>
 			
 			<script>
+				$(function(){
+					
+					$('#submit').click(function(){
+						
+						const RegExp = /^[a-zA-Z0-9]{4,15}$/;
+
+						
+						const idvalue = $('#memberId').val();
+
+						const pwdvalue = $('#memberPwd').val();
 
 
+
+						if(!RegExp.test(idvalue)){
+							alert('아이디를 제대로 입력해주세요');
+							idvalue = "";
+		                    idvalue.focus();
+							//return false
+						} 
+						else{
+							return true
+						}
+						
+						
+
+						if(!RegExp.test(pwdvalue)){
+							alert('비밀번호를 제대로 입력해주세요')
+							//return false
+						} else(idvalue == pwdvalue){
+							alert('아이디와 비밀번호는 같을 수 없습니다.')
+							return false
+						} return true
+						
+						
+						//console.log(idvalue);
+						
+					
+					
+					});
+				
+				});
+				
+				
+				
+				
+				
+			
 
 			</script>
+			
 			
 
 			<br><br>
