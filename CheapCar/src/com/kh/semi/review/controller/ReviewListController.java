@@ -70,7 +70,6 @@ public class ReviewListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		
 		
-		
 		request.getRequestDispatcher("views/review/review.jsp").forward(request, response);
 		
 		

@@ -257,7 +257,43 @@
                 	
                 <% } else {%>
 					
-					게시글 나올 화면 <br>
+					<% for(Car c : carList) { %>
+		                <div class="car-list">
+		                
+		                    <div class="list-size">
+		                    
+		                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
+		                    
+		                    </div>
+		                    
+	                    	<div class="list-size car-info">	
+	                            
+		                        <label><%= c.getModelName() %></label> <br>
+		                        <span><%= c.getGradeName() %></span>
+		                        <span><%= c.getBrandName() %></span>
+		                        <span><%= c.getFuelName() %></span>
+		                        <span><%= c.getYear() %></span> <br><br>
+	
+		                        	<%carPrice = c.getGradePrice() + c.getModelPrice() + c.getYearPrice(); %>
+	
+		        					<% for(Option o : optionList) { %>
+		        						<% if(c.getManagementNo() == o.getManagementNo()) { %>
+	                               			<span class="option-list"> <%= o.getOptionName() %></span>
+	                               			<% optionPrice += o.getOptionPrice(); %>
+	                               		<% } %>
+		                            <% } %> 
+								<br>
+								
+		                        <label>시간당 가격</label> : 
+		                        <span>
+		                        	<%= totalPrice = carPrice + optionPrice %>
+								</span> <br>
+	                            
+	                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
+	                            <% optionPrice = 0; %>
+		                    </div>
+	                    </div>
+	                <% } %>
 					
                 <% } %>
                     <div>

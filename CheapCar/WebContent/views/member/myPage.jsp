@@ -184,7 +184,7 @@
 				    <tbody>
 				    	<tr>
 					        <td colspan="4">나의 문의내역이 없습니다.</td>
-					        <td></td>
+					        <td>복붙은 아주 선수야 선수</td>
 				        	<td></td>
 				        	<td></td>
 				      	</tr>

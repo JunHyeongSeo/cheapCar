@@ -140,7 +140,7 @@
                 const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
 
-                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo 
 
             })
 

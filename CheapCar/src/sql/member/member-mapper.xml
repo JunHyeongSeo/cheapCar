@@ -297,7 +297,7 @@
 	
 	<entry key="reservation">
 	SELECT
-               MANAGEMENT_NO,
+                C.MANAGEMENT_NO,
                 C.STATUS,
                 CAR_NO,
                 C.LOCATION_NO,
@@ -318,7 +318,8 @@
                 CS_TITLE,
                 CS_CONTENT,
                 CSB.CREATE_DATE,
-                REPLY_YN
+                REPLY_YN,
+                R.MEMBER_NO
           FROM
                 TB_CAR C
           JOIN  
@@ -345,22 +346,24 @@
           JOIN
                 TB_RESERVATION R
             ON (C.MANAGEMENT_NO = R.MANAGEMENT_NO)
+          LEFT
           JOIN
                 TB_MEMBER MM
             ON (R.RESERVATION_NO = MM.MEMBER_NO)
+          LEFT
           JOIN
                 TB_MILEAGE MI
             ON (R.RESERVATION_NO = MI.RESERVATION_NO)
+          LEFT
           JOIN
                 TB_CS_BOARD CSB
             ON (MM.MEMBER_NO = CSB.MEMBER_NO)
+          LEFT
           JOIN
                 TB_REPLY_BOARD REB
             ON (REB.REPLY_NO = CSB.REPLY_NO)
-        WHERE 
-            MM.MEMBER_NO = ?
-		AND
-			MI.STATUS = 'Y'
+         WHERE 
+            R.MEMBER_NO = ?
 	
 	</entry>
 	
