@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.semi.car.model.service.CarService;
 import com.kh.semi.car.model.vo.Car;
 import com.kh.semi.car.model.vo.Option;
+import com.kh.semi.car.model.vo.Search;
 import com.kh.semi.common.model.vo.PageInfo;
 
 /**
@@ -34,8 +35,6 @@ public class SelectOptionAndCarListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setCharacterEncoding("UTF-8");
-		
 		int listCount;
 		int currentPage;
 		int pageLimit; 
@@ -51,6 +50,19 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		String grade = request.getParameter("grade");
 		
 		String[] options = request.getParameterValues("options"); 
+		
+		int hours = Integer.parseInt(request.getParameter("hours"));
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		String locations = request.getParameter("locations");
+		
+		
+		Search search = new Search();
+		search.setModel(model);
+		search.setFuel(fuel);
+		search.setBrand(brand);
+		search.setGrade(grade);
+		search.setOptions(options);
 		
 		listCount = new CarService().selectListCount();
 		
@@ -72,11 +84,18 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 
-		// ArrayList<Car> carList = new CarService().selectOptionAndCarList(pi);
+		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, pi, hours, locations, startDate, endDate);
 		
-		ArrayList<Car> carList = new CarService().selectOptionList();
-		
+		ArrayList<Option> optionList = new CarService().selectOptionList();
 
+		request.setAttribute("carList", carList);
+		request.setAttribute("optionList", optionList);
+		request.setAttribute("pageInfo", pi);
+		request.setAttribute("hours", hours);
+		request.setAttribute("locations", locations);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
+		
 		request.getRequestDispatcher("views/car/selectOptionAndCarList.jsp").forward(request, response);
 		
 	}

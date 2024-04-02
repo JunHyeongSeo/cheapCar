@@ -99,11 +99,36 @@ public class CsDao {
 		ResultSet rset = null;
 		String sql = prop.getProperty("csDetail");
 		
-		pstmt = conn.prepareStatement(sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, csNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				cs = new Cs();
+				
+				cs.setCsNo(rset.getInt("CS_NO"));
+				cs.setCsTitle(rset.getString("CS_TITLE"));
+				cs.setCsContent(rset.getString("CS_CONTENT"));
+				cs.setMemberName(rset.getString("MEMBER_NAME"));
+				cs.setReplyYn(rset.getString("REPLY_YN"));
+				cs.setCreateDate(rset.getDate("CREATE_DATE"));
+				
+			}
+			
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 		
-		
+		return cs;
 	}
 	
 	
