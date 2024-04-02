@@ -738,6 +738,22 @@ public class CarDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
+		if(search != null) {
+			
+			String optionSql = "";
+			
+			for(int i = 0; i < search.getOptions().length; i++) {
+						
+			optionSql += "AND"
+			+ " OPTION_NAME = '" + search.getOptions()[i] + "' ";
+			
+			System.out.println(optionSql);
+					
+			}
+		}
+		
+		
+		
 		String sql = 
 		
 				"SELECT "
@@ -892,16 +908,6 @@ public class CarDao {
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			System.out.println(sql);
-			System.out.println(startRow);
-			System.out.println(endRow);
-			System.out.println(search);
-			System.out.println(pi);
-			System.out.println(hours);
-			System.out.println(locations);
-			System.out.println(startDate);
-			System.out.println(endDate);
-
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, locations);
