@@ -32,6 +32,23 @@ public class ReviewDao {
 		
 	}//
 	
+	
+	public int selectListCount() {
+	
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		
+		
+		
+		
+		
+		return result;
+	}//
+	
+	
 	public ArrayList<ReviewBoard> selectReviewList(Connection conn, PageInfo pi){
 		
 		ArrayList<ReviewBoard> list = new ArrayList();
