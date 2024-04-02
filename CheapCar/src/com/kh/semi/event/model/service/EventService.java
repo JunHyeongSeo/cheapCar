@@ -121,8 +121,7 @@ public class EventService {
 		int ebResult = new EventDao().updateBoard(conn, eBoard);
 		int epResult = new EventDao().updatePhoto(conn, ePhoto);
 		
-		System.out.println(ebResult);
-		System.out.println(epResult);
+		
 		
 		if((ebResult * epResult) > 0){
 			JDBCTemplate.commit(conn);
@@ -137,7 +136,14 @@ public class EventService {
 		
 	}
 	
-	
+	public ArrayList<EventBoard> eventevent(){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EventBoard> list = new EventDao().eventevent(conn); 
+		
+		
+	}
 	
 	
 	

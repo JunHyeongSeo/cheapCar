@@ -61,13 +61,14 @@ public class EventListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		System.out.println(listCount);
+		
 		//값
 		ArrayList<EventBoard> list = new EventService().selectEventList(pi);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
 		
+		System.out.println(list);
 		
 		request.getRequestDispatcher("views/event/event.jsp").forward(request, response);
 		

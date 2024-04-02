@@ -1,4 +1,4 @@
-package com.kh.semi.review.controller;
+package com.kh.semi.common;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import com.kh.semi.event.model.service.EventService;
 import com.kh.semi.event.model.vo.EventBoard;
 
 /**
- * Servlet implementation class ReviewListController
+ * Servlet implementation class Indexevent
  */
-@WebServlet("/list.review")
-public class ReviewListController extends HttpServlet {
+@WebServlet("/event.event")
+public class Indexevent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListController() {
+    public Indexevent() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,41 +33,14 @@ public class ReviewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = 0;
-		int currentPage= 0;
-		int pageLimit= 0;
-		int boardLimit= 0;
-		
-		int maxPage= 0;
-		int startPage= 0;
-		int endPage= 0;
-		
-		listCount = new EventService().selectListCount();
-		
-		currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		
-		pageLimit = 5;
-		boardLimit = 6;
-		
-		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		
-		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
-		
-		endPage = startPage + pageLimit - 1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
 		//값
-		new ReviewService().selectReviewList(pi);
+		ArrayList<EventBoard> list = new EventService().eventevent();
+		
+		request.setAttribute("list", list);
 		
 		
 		
-		request.getRequestDispatcher("views/review/review.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("../index.jsp").forward(request, response);
 		
 		
 	}

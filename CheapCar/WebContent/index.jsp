@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>     
+<%
+	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +26,7 @@
     <style>
     /* 이미지 영역 사이즈 조절 */
     .swiper {
-        width: 1200px;
+        width: 800px;
         height: 500px;
         
     }
@@ -107,8 +111,28 @@
 
         function aba(){
             alert('12121212');
-        }
+        };
+        
+        
+        window.onload = function(){
+            
+            $.ajax({
+        	url : 'event.event',
+        	success : function(result){
+        		console.log(result);
+        	}
+        	
+        	
+            });
+
+        };  
+
+      
+        
     </script>
+    
+    
+    <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
 	
 </body>
 </html>

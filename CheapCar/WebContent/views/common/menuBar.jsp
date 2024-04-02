@@ -63,7 +63,7 @@
             background-color: lightslategray;
             cursor: pointer;
         }
-        
+
         .cs{
         	display: none;
         }
@@ -100,6 +100,10 @@
         */
         
         
+
+        .login-area a{
+        	text-decoration-line: none;
+        }
         
 
 	</style>
