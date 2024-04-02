@@ -77,6 +77,29 @@ public class ReviewDao {
 		return list;
 	}//
 	
+	public int insertReviewBoard(Connection conn, ReviewBoard rBoard) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReviewBoard");
+		
+		
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
