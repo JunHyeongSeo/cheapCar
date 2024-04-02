@@ -265,7 +265,10 @@
 						<ul class="pagination" >
                             <% if(currentPage > 1) { %>
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>"></a>
+                                    <a class="page-link" 
+                                    onclick="location.href='<%=contextPath%>">
+                                    <%="<"%>
+                                    </a>
                                 </li>
                             <% } %>
 
@@ -287,7 +290,10 @@
                             
                              <% if(currentPage != maxPage) {%>
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>"></a>
+	                                <a class="page-link" 
+	                                onclick="location.href='<%=contextPath%>">
+	                                <%=">"%>
+	                                </a>
 	                            </li>
                             <% } %>
                             
