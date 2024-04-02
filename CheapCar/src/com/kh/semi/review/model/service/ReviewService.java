@@ -27,8 +27,6 @@ public class ReviewService {
 	
 	public int insertReview(ReviewBoard rBoard, ArrayList<ReviewPhoto> list) {
 		
-		int result = 0;
-		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		new ReviewDao().insertReviewBoard(conn, rBoard);

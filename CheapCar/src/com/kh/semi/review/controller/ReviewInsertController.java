@@ -20,7 +20,7 @@ import com.oreilly.servlet.MultipartRequest;
 /**
  * Servlet implementation class ReviewInsertController
  */
-@WebServlet("/insert.event")
+@WebServlet("/insert.review")
 public class ReviewInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
