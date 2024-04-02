@@ -28,6 +28,7 @@
     .swiper {
         width: 800px;
         height: 500px;
+        
     }
 
     /* 이미지 사이즈 조절 */
@@ -47,7 +48,11 @@
             background-color: lightslategray;
             cursor: pointer;
         }
-    
+        #content_1{
+	 	 position: relative;
+            z-index: -1;
+            margin:auto;
+        }
     </style>
     
 </head>
@@ -106,11 +111,28 @@
 
         function aba(){
             alert('12121212');
-        }
+        };
+        
+        
+        window.onload = function(){
+            
+            $.ajax({
+        	url : 'event.event',
+        	success : function(result){
+        		console.log(result);
+        	}
+        	
+        	
+            });
+
+        };  
+
+      
+        
     </script>
     
     
-    <button type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></button>
+    <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
 	
 </body>
 </html>
