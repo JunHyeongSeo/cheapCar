@@ -209,8 +209,8 @@
             <li><a href="#" class="naviA">게시판관리</a>
                 <ul>
                     <li><a href="<%=contextPath%>/list.notice?currentPage=1" target="_blank">공지사항게시판</a></li>
-                    <li><a href="<%= contextPath %>/list.review" target="_blank">후기게시판</a></li>
-                    <li><a href="<%= contextPath %>/list.event" target="_blank">이벤트게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.review?currentPage=1" target="_blank">후기게시판</a></li>
+                    <li><a href="<%= contextPath %>/list.event?currentPage=1" target="_blank">이벤트게시판</a></li>
                 </ul>
             </li>
         </ul>
