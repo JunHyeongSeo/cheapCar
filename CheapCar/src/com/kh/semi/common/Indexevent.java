@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.event.model.service.EventService;
 import com.kh.semi.event.model.vo.EventBoard;
@@ -36,15 +37,20 @@ public class Indexevent extends HttpServlet {
 		//값
 		ArrayList<EventBoard> list = new EventService().eventevent();
 		
-		request.setAttribute("list", list);
+//		request.setAttribute("list", list);
+//		
+//		System.out.println(list);
+//		
+//		request.getRequestDispatcher("../index.jsp").forward(request, response);
 		
 		
-		
-		request.getRequestDispatcher("../index.jsp").forward(request, response);
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(list, response.getWriter());
 		
 		
 	}
-
+                             
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
