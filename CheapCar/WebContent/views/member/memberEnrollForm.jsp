@@ -178,6 +178,12 @@
 				<button type="submit" disabled>회원가입</button>
 			</div>
 			
+			<script>
+
+
+
+			</script>
+			
 
 			<br><br>
 		
