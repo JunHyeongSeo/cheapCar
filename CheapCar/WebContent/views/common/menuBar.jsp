@@ -145,7 +145,7 @@
 		<div class="menu"><a href="<%= contextPath %>/dateAndLocation.do">차량렌트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.review">후기</a></div>
+		<div class="menu"><a href="<%= contextPath %>/list.review?currentPage=1">후기</a></div>
 		<div class="menu menu5">
 			<a href="#">고객센터</a>
 			<ul class="cs">
