@@ -136,7 +136,14 @@ public class EventService {
 		
 	}
 	
-	
+	public ArrayList<EventBoard> eventevent(){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<EventBoard> list = new EventDao().eventevent(conn); 
+		
+		
+	}
 	
 	
 	

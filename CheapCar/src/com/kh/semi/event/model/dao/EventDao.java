@@ -364,7 +364,17 @@ public class EventDao {
 	}
 	
 		
+	public ArrayList<EventBoard> eventevent(Connection conn){
 		
+		ArrayList<EventBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("eventevent");
+		
+		
+		return list;
+	}
 		
 		
 	

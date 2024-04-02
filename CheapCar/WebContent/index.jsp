@@ -106,11 +106,28 @@
 
         function aba(){
             alert('12121212');
-        }
+        };
+        
+        
+        window.onload = function(){
+            
+            $.ajax({
+        	url : 'event.event',
+        	success : function(result){
+        		console.log(result);
+        	}
+        	
+        	
+            });
+
+        };  
+
+      
+        
     </script>
     
     
-    <button type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></button>
+    <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
 	
 </body>
 </html>

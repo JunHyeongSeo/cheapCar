@@ -33,40 +33,11 @@ public class Indexevent extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		int listCount = 0;
-		int currentPage= 0;
-		int pageLimit= 0;
-		int boardLimit= 0;
-		
-		int maxPage= 0;
-		int startPage= 0;
-		int endPage= 0;
-		
-		listCount = new EventService().selectListCount();
-		
-		currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		
-		pageLimit = 5;
-		boardLimit = 6;
-		
-		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		
-		startPage = ((currentPage - 1) / pageLimit) * pageLimit + 1;
-		
-		endPage = startPage + pageLimit - 1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		System.out.println(listCount);
 		//값
-		ArrayList<EventBoard> list = new EventService().selectEventList(pi);
+		ArrayList<EventBoard> list = new EventService().eventevent();
 		
 		request.setAttribute("list", list);
-		request.setAttribute("pi", pi);
+		
 		
 		
 		request.getRequestDispatcher("../index.jsp").forward(request, response);
