@@ -50,7 +50,7 @@
 	#write{
 		text-align: right;
 		padding-right: 0%;
-		margin-bottom: 2px;
+		
 	}
 	.search_write{
 		margin-top: 10px;
@@ -68,6 +68,7 @@
 	#searchWord{
 		border: 2px solid #6caddf;
 		border-radius: 5px;
+		
 	}
 	.table{
 		font-size: 18px;
@@ -106,10 +107,8 @@
         cursor: pointer;
         opacity: 0.8;
     }
-    .paging-area{
-    	margin-bottom: 20px;
-    }
-    
+    .paging-area{margin-bottom: 20px;}
+    #btn-search{margin-right: 20px}
 
 
 </style>
@@ -174,9 +173,9 @@
         <div class="search_write">
 			<form>
 			    <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-				<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
+				<button type="submit" value="" id="btn-search" class="btn-info" style="background-color: #6caddf">검색</button>
 				<% if(loginUser != null) {%>
-				<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+				<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
 				<%}%>
 				<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo()%>">
 			</form>
