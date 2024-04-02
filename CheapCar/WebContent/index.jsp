@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>     
+<%
+	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,6 +108,9 @@
             alert('12121212');
         }
     </script>
+    
+    
+    <button type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></button>
 	
 </body>
 </html>
