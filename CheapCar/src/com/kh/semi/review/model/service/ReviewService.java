@@ -29,8 +29,13 @@ public class ReviewService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new ReviewDao().insertReviewBoard(conn, rBoard);
-		new ReviewDao().insertReviewPhoto(conn, list);
+		int boardResult = new ReviewDao().insertReviewBoard(conn, rBoard);
+		
+		int photoResult = 1;
+		
+		if(list.size() > 0) {
+			new ReviewDao().insertReviewPhoto(conn, list);
+		}	
 				
 		
 		

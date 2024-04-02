@@ -12,7 +12,7 @@ import java.util.Properties;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.review.model.vo.ReviewBoard;
-import com.kh.semi.review.model.vo.ReviewBoard;
+import com.kh.semi.review.model.vo.ReviewPhoto;
 
 public class ReviewDao {
 
@@ -83,13 +83,44 @@ public class ReviewDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertReviewBoard");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, rBoard.getReviewTitle());
+			pstmt.setString(2, rBoard.getReviewContent());
+			pstmt.setInt(3, rBoard.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}//
+	
+	
+	public int insertReviewPhoto(Connection conn, ArrayList<ReviewPhoto> list) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReviewPhoto");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		
 		
 		
 		return result;
-	}
+	}//
 	
 	
 	
