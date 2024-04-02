@@ -21,9 +21,6 @@
         /* adminMain 스타일 */
         .outer{
 	       width: 1200px;
-	       position: absolute;
-	       top: 250px;
-	       z-index: -1;
 	       height: 1000px;
 	       margin: auto;
         }
@@ -32,6 +29,7 @@
             padding-top: 50px;
             width : 100%;
             margin: auto;
+            position: relative;
         }
        
         #wrap>h1>a{
@@ -105,6 +103,8 @@
             /* 평소에는 안보이다가 마우스가 올라가는 순간 펼쳐지게 1 */
             display: none;
             z-index: 100;
+            position : absolute;
+            width : 10%;
         }
 
         #navi>li>a:hover+ul{

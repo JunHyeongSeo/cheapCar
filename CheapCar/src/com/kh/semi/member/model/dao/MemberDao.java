@@ -660,7 +660,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 				list.add(car);
 			}
 		
-			System.out.println(list);
+			
 		
 			
 		} catch (SQLException e) {

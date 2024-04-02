@@ -14,7 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
 
 
-
 <style>
 	.outer{
 		width: 1200px;
@@ -144,18 +143,17 @@
                 
                 <div class="content_outer">
                 	<form action="<%=contextPath%>/insert.cs" method="post" id="insert-form" enctype="multipart/form-data">
-                		<input type="hidden" name="memberNo" value="1" />
-	                    <input type="hidden" name="memberName" value="1" />
+                		<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>">
 	                    
 	                    <div class="content_header">
 	                        <div class="content_header2">
 	                            <label class="form-title">제목 : </label>
-	                            <input type="text" name="title" >                            
+	                            <input type="text" name="title">
 	                        </div>
                   		</div>
                   		
                     	<div class="content_sub">
-                        	<span class="content_sub1">작성자 : 1
+                        	<span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
                    		</div>
                    		
 	                    <div class="content_body">
@@ -163,14 +161,18 @@
 	                    </div>
 	                    
 	                    <div class="content_add_img">
-	                    	<span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
-                            <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                    	<span id="addInfo"><br>&lt;파일첨부&gt;</span><br><br>
+                            <input type="file" name="upfile1" id="upfile">
+                            <input type="file" name="upfile2" id="upfile">
+                            <input type="file" name="upfile3" id="upfile">
+                            <input type="file" name="upfile4" id="upfile">
 					    </div>
 	                    
 	                    <div class="content_btn" align="center">
 	                        <div align="center">
 	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
 	                            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
+	                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	                        </div>
 	                    </div>
 					</form>
