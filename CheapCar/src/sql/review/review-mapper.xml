@@ -56,11 +56,11 @@
 		       REVIEW_CONTENT,
 		       CREATE_DATE,
 		       STATUS,
-		       MEMBER_NO,
+		       MEMBER_NO
 		       )
 		VALUES
 		       (
-		       SEQ_REVIEW_NO.NEXVAL,
+		       SEQ_REVIEW_NO.NEXTVAL,
 		       ?,
 		       ?,
 		       SYSDATE,

@@ -109,6 +109,12 @@
     }
     .paging-area{margin-bottom: 20px;}
     #btn-search{margin-right: 20px}
+	#NoMsg{
+		font-family: "Do Hyeon", sans-serif;
+		font-size: 20px;
+		color: #6caddf;
+		text-align: center;
+	}    
 
 
 </style>
@@ -177,7 +183,7 @@
 				<% if(loginUser != null) {%>
 				<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
 				<%}%>
-				<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo()%>">
+				
 			</form>
 
 
