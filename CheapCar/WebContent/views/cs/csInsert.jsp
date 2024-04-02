@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.semi.cs.model.vo.Cs"%>
-<%
-	Cs cs = (Cs)request.getAttribute("cs");
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세보기</title>
+<title>1대1 문의글 쓰기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -31,6 +28,7 @@
         height: 1000px;
         margin-top: 50px;
         float: right;
+        font-family: "Do Hyeon", sans-serif;
     }
     
     .content_outer>div{
@@ -81,11 +79,11 @@
     }
     
     .content_body{
-        height: 700px;
+        height: auto;
         padding-left: 50px;
         padding-top: 50px;
         border-bottom: 2px solid #b1d6f3;
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .page-header{
@@ -111,6 +109,10 @@
 		text-align: center;
 		margin-top: 10px;
 	}
+	
+    #comment{
+        font-size: 25px;
+    }
     
 	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
@@ -125,53 +127,62 @@
 		border-radius: 5px;
 	}
 	
-	.table{
-		font-size: 18px;
-	}
-
 </style>
 </head>
 <body>
 
 	<%@ include file="../common/menuBar.jsp" %>
-
+	
 	<div class="outer" >
 		<div class="row">
 		  <div class="col-lg-1">
 		  </div>
 			 <div class="col-lg-10">
 				<div class="panel-body">
-				<h2 class="page-header do-hyeon-regular" align="left"><%= cs.getCsTitle() %></h2>
+					<h2 class="page-header do-hyeon-regular" align="left">문의글 작성</h2>
 				</div>
                 
                 <div class="content_outer">
-                    <div class="content_header">
-                        <div class="content_header2"><%= cs.getCsTitle() %></div>
-                    </div>
-                    <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= cs.getCreateDate() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= cs.getMemberName() %></span> &nbsp;/&nbsp;
-                    </div>
-                    <div class="content_body"><%= cs.getCsContent() %></div>
-                    <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.cs?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                    
-                    	<% if(loginUser != null && loginUser.getMemberNo() == cs.getMemberNo()) { %>
-                    		<a href="#" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                            <a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                    	<% } %>
-                    	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
-                    		<a href="#" class="btn btn-sm btn-primary">답&nbsp;변</a>
-                    		<a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                    	<% } %>
-                    
-                    
-                    </div>
+                	<form action="<%=contextPath%>/insert.cs" method="post" id="insert-form" enctype="multipart/form-data">
+                		<input type="hidden" name="memberNo" value="1" />
+	                    <input type="hidden" name="memberName" value="1" />
+	                    
+	                    <div class="content_header">
+	                        <div class="content_header2">
+	                            <label class="form-title">제목 : </label>
+	                            <input type="text" name="title" >                            
+	                        </div>
+                  		</div>
+                  		
+                    	<div class="content_sub">
+                        	<span class="content_sub1">작성자 : 1
+                   		</div>
+                   		
+	                    <div class="content_body">
+	                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>
+	                    </div>
+	                    
+	                    <div class="content_add_img">
+	                    	<span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
+                            <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
+					    </div>
+	                    
+	                    <div class="content_btn" align="center">
+	                        <div align="center">
+	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+	                            <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
+	                        </div>
+	                    </div>
+					</form>
+					
                 </div>
 			 </div>
 		  </div>
 	</div>
+	   
+
 	
-</body>
+		
+	
 </body>
 </html>

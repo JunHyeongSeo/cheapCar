@@ -8,14 +8,14 @@
 	
 	<entry key="selectReviewList">
 		SELECT  *
-			  FROM	
-			  	   (SELECT EB.*, ROWNUM RNUM
+		  FROM	
+			  	   (SELECT RB.*, ROWNUM RNUM
 			  		  FROM
 						(SELECT 
 						       TB_REVIEW_BOARD.REVIEW_NO,
 						       REVIEW_TITLE,
 						       COUNT,
-						       MEMBER_ID
+						       MEMBER_ID,
 						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG"
 						  FROM
 						       TB_REVIEW_BOARD
@@ -29,11 +29,75 @@
 						       TB_REVIEW_PHOTO.FILELEVEL = 1
 						 ORDER
 						    BY
-						       TB_REVIEW_BOARD.REVIEW_NO DESC)EB)
+						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)
          WHERE
                RNUM BETWEEN ? AND ?
 	
 	</entry>
+
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*)
+		  FROM
+		       TB_REVIEW_BOARD
+		 WHERE
+		       STATUS = 'Y'            
+	</entry>
+	
+	
+	<entry key="insertReviewBoard">
+		INSERT
+		  INTO
+		       TB_REVIEW_BOARD
+		       (
+		       REVIEW_NO,
+		       REVIEW_TITLE,
+		       REVIEW_CONTENT,
+		       CREATE_DATE,
+		       STATUS,
+		       MEMBER_NO
+		       )
+		VALUES
+		       (
+		       SEQ_REVIEW_NO.NEXTVAL,
+		       ?,
+		       ?,
+		       SYSDATE,
+		       DEFAULT,
+		       ?
+		       )		        
+	</entry>
+	
+	<entry key="insertReviewPhoto">
+		INSERT
+		  INTO
+		       TB_REVIEW_PHOTO
+		       (
+		       REVIEW_PHOTO_NO,
+		       REVIEW_PHOTO_ORIGINNAME,
+		       REVIEW_PHOTO_CHANGENAME,
+		       REVIEW_PHOTO_ADDRESS,
+		       REVIEW_NO,
+		       STATUS,
+		       FILELEVEL
+		       )
+	    VALUES
+	           (
+	           SEQ_REVIEW_PHOTO_NO.NEXTVAL,
+	           ?,
+	           ?,
+	           ?,
+	           SEQ_REVIEW_NO.CURRVAL,
+	           DEFAULT,
+	           ?
+	           )      
+		       
+	</entry>
+	
+	
+	
+	
 	
 	
 	

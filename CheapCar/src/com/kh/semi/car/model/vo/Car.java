@@ -39,6 +39,9 @@ public class Car {
 		super();
 	}
 	
+	
+	
+	
 	public Car(int csNo, int year, int mileage, int yearPrice, int locationNo, int gradePrice, int totalPrice,
 			int modelPrice, int managementNo, int reservationNo, String carNo, String phone, String email,
 			String status, String replyYn, String csTitle, String memberId, String fuelName, String csContent,
@@ -76,6 +79,40 @@ public class Car {
 		this.startDate = startDate;
 		this.createDate = createDate;
 		this.mileageDate = mileageDate;
+	}
+
+
+
+
+	public Car(
+			int managementNo, String status, String carNo, int locationNo, String locationName, String modelName,
+			String fuelName, String brandName, String gradeName, int year, int gradePrice, int modelPrice,  int yearPrice,  Date startDate,
+			Date endDate, int mileage, Date mileageDate, int csNo, String csTitle, String csContent, Date createDate,
+			 String replyYn) {
+		super();
+		this.managementNo = managementNo;
+		this.status = status;
+		this.carNo = carNo;
+		this.locationNo = locationNo;
+		this.locationName = locationName;
+		this.modelName = modelName;
+		this.fuelName = fuelName;
+		this.brandName = brandName;
+		this.gradeName = gradeName;
+		this.year = year;
+		this.gradePrice = gradePrice;
+		this.modelPrice = modelPrice;
+		this.yearPrice = yearPrice;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.mileage = mileage;
+		this.mileageDate = mileageDate;
+		this.csNo = csNo;
+		this.csTitle = csTitle;
+		this.csContent = csContent;
+		this.createDate = createDate;
+		this.replyYn = replyYn;
+
 	}
 
 	public int getCsNo() {

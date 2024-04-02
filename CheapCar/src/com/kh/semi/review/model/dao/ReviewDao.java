@@ -12,7 +12,7 @@ import java.util.Properties;
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.review.model.vo.ReviewBoard;
-import com.kh.semi.review.model.vo.ReviewBoard;
+import com.kh.semi.review.model.vo.ReviewPhoto;
 
 public class ReviewDao {
 
@@ -31,6 +31,36 @@ public class ReviewDao {
 		
 		
 	}//
+	
+	
+	public int selectListCount(Connection conn) {
+	
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			rset.next();
+			
+			listCount = rset.getInt("COUNT(*)"); 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return listCount;
+	}//
+	
+	
+	
+	
 	
 	public ArrayList<ReviewBoard> selectReviewList(Connection conn, PageInfo pi){
 		
@@ -76,6 +106,69 @@ public class ReviewDao {
 		
 		return list;
 	}//
+	
+	public int insertReviewBoard(Connection conn, ReviewBoard rBoard) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReviewBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, rBoard.getReviewTitle());
+			pstmt.setString(2, rBoard.getReviewContent());
+			pstmt.setInt(3, rBoard.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}//
+	
+	
+	public int insertReviewPhoto(Connection conn, ArrayList<ReviewPhoto> list) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReviewPhoto");
+		
+		try {
+			
+			for(ReviewPhoto rp : list) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, rp.getPhotoOname());
+				pstmt.setString(2, rp.getPhotoCname());
+				pstmt.setString(3, rp.getPhotoPath());
+				pstmt.setInt(4, rp.getFileLevel());
+			
+				result += pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result == list.size() ? 1 : 0;
+	}//
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

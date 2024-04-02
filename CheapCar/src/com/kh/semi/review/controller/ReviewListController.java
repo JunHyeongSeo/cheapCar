@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.event.model.service.EventService;
 import com.kh.semi.review.model.service.ReviewService;
-import com.kh.semi.review.model.vo.Review;
+import com.kh.semi.review.model.vo.ReviewBoard;
 
 /**
  * Servlet implementation class ReviewListController
@@ -43,7 +43,7 @@ public class ReviewListController extends HttpServlet {
 		int startPage= 0;
 		int endPage= 0;
 		
-		listCount = new EventService().selectListCount();
+		listCount = new ReviewService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
@@ -63,12 +63,11 @@ public class ReviewListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		//값
-		ArrayList<Review> list = new ReviewService().selectReviewList(pi);
+		ArrayList<ReviewBoard> list = new ReviewService().selectReviewList(pi);
 		
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
-		
 		
 		
 		request.getRequestDispatcher("views/review/review.jsp").forward(request, response);
