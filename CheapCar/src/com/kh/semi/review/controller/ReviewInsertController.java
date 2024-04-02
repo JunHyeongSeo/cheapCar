@@ -67,26 +67,26 @@ public class ReviewInsertController extends HttpServlet {
 			for(int i = 1; i <= 4; i++) {
 				
 				
-				String key = "file" + i;
+				String key = "photo" + i;
 				
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
 					
 
-					ReviewPhoto rphoto = new ReviewPhoto();
-					rPhoto.setOriginName(multiRequest.getOriginalFileName(key));
-					rPhoto.setChangeName(multiRequest.getFilesystemName(key));
-					rPhoto.setFilePath("resources/review_upfiles");
+					ReviewPhoto rPhoto = new ReviewPhoto();
 					
-					// 파일레벨
+					rPhoto.setPhotoOname(multiRequest.getOriginalFileName(key));
+					rPhoto.setPhotoCname(multiRequest.getFilesystemName(key));
+					rPhoto.setPhotoPath("resources/review_upfiles");
+					
 					if(i == 1) {
-						// 대표이지미
-						at.setFileLevel(1);
-						
+						rPhoto.setFileLevel(1);
 					} else {
-						at.setFileLevel(2);
+						rPhoto.setFileLevel(2);
 					}
-					list.add(at);
+					list.add(rPhoto);
+					
+					
 				}
 					
 					
@@ -126,7 +126,7 @@ public class ReviewInsertController extends HttpServlet {
 		
 		
 		
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

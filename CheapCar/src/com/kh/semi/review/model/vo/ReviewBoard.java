@@ -2,7 +2,7 @@ package com.kh.semi.review.model.vo;
 
 import java.sql.Date;
 
-public class Review {
+public class ReviewBoard {
 	
 	private int reviewNo;
 	private String reviewTitle;
@@ -13,10 +13,10 @@ public class Review {
 	private int memberNo;
 	private int count;
 	private String titleImg;
-	public Review() {
+	public ReviewBoard() {
 		super();
 	}
-	public Review(int reviewNo, String reviewTitle, String reviewContent, String reviewWriter, Date createDate,
+	public ReviewBoard(int reviewNo, String reviewTitle, String reviewContent, String reviewWriter, Date createDate,
 			String status, int memberNo, int count, String titleImg) {
 		super();
 		this.reviewNo = reviewNo;
@@ -106,7 +106,7 @@ public class Review {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Review other = (Review) obj;
+		ReviewBoard other = (ReviewBoard) obj;
 		if (count != other.count)
 			return false;
 		if (createDate == null) {
@@ -147,11 +147,10 @@ public class Review {
 	}
 	@Override
 	public String toString() {
-		return "Review [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
+		return "ReviewBoard [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
 				+ ", reviewWriter=" + reviewWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
 				+ memberNo + ", count=" + count + ", titleImg=" + titleImg + "]";
 	}
-	
 	
 	
 	
