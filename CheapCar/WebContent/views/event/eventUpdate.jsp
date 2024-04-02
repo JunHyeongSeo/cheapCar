@@ -165,7 +165,7 @@
 									<input type="hidden" name="photoNo" value="<%= ePhoto.getPhotoNo() %>"/>
 									<input type="hidden" name="photoCname" value="<%= ePhoto.getPhotoCname() %>"/>
 									<input type="hidden" name="fileLevel" value="<%= ePhoto.getFileLevel() %>"/>
-															</div>
+							</div>
 	                        <div class="text-area">
 	                            <textarea name="content" class="form-control" rows="20" id="comment"><%= eBoard.getEventContent() %></textarea>
 	                        </div>
