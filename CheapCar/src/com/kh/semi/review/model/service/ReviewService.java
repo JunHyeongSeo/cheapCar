@@ -34,8 +34,15 @@ public class ReviewService {
 		int photoResult = 1;
 		
 		if(list.size() > 0) {
-			new ReviewDao().insertReviewPhoto(conn, list);
+			photoResult = new ReviewDao().insertReviewPhoto(conn, list);
 		}	
+		
+		
+		if((boardResult * photoResult) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
 				
 		
 		

@@ -109,17 +109,26 @@ public class ReviewDao {
 		String sql = prop.getProperty("insertReviewPhoto");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			
+			for(ReviewPhoto rp : list) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, rp.getPhotoOname());
+				pstmt.setString(2, rp.getPhotoCname());
+				pstmt.setString(3, rp.getPhotoPath());
+				pstmt.setInt(4, rp.getFileLevel());
+			
+				result += pstmt.executeUpdate();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
 		
-		
-		
-		
-		
-		return result;
+		return result == list.size() ? 1 : 0;
 	}//
 	
 	
