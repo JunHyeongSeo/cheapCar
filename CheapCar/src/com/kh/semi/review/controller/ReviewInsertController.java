@@ -1,5 +1,6 @@
 package com.kh.semi.review.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -89,41 +90,30 @@ public class ReviewInsertController extends HttpServlet {
 				}
 			}
 			
-			new ReviewService().insertReview(rBoard, list);
+			int result = new ReviewService().insertReview(rBoard, list);
+			
+			if(result > 0) {
 				
+				request.getSession().setAttribute("alertMsg", "후기게시판 등록에 성공하였습니다.");
+				response.sendRedirect(request.getContextPath() + "/list.review?currentPage=1");
 				
+			} else {
 				
+				if(list.size() > 0) {
+					for(int i = 0; i < list.size(); i++) {
+						new File(savePath, list.get(i).getPhotoCname()).delete();
+					}
+				}
 				
-				
+				request.setAttribute("errorMsg", "게시판 등록에 실패하였습니다.");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+				
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 
+	}//
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

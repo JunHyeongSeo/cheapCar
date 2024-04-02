@@ -43,17 +43,9 @@ public class ReviewService {
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
-				
+		JDBCTemplate.close(conn);
 		
-		
-				
-				
-				
-		
-		
-		
-		
-		return result;
+		return boardResult * photoResult;
 	}
 	
 	
