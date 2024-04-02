@@ -8,8 +8,9 @@
 	}
 	
 	#top11{
-		width: 100%;
-		display: flex;
+		width: 1150px;
+		margin-right : 10px;
+		margin-top : 50px;
 	}
 	
 	#middleTable{
