@@ -28,7 +28,6 @@
     .swiper {
         width: 800px;
         height: 500px;
-        
     }
 
     /* 이미지 사이즈 조절 */
@@ -48,11 +47,7 @@
             background-color: lightslategray;
             cursor: pointer;
         }
-        #content_1{
-	 	 position: relative;
-            z-index: -1;
-            margin:auto;
-        }
+    
     </style>
     
 </head>
@@ -104,8 +99,8 @@
         		let resultStr = '';
 				for(let i = 0; i < result.length; i++){
 					
-					resultStr += '<div class="swiper-slide" onclick="aba();"><img src="' + result[i].titleImg +'"></div>'
-                              
+					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
+					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
 					
 				}
@@ -132,14 +127,30 @@
                     prevEl: '.swiper-button-prev',
                     nextEl: '.swiper-button-next'
                 }
-            }); 
+            });
             
-
+            
         };  
+        
+        $(function(){
+
+            $('.swiper-slide').click(function(){
+                
+            	
+                const eventNo = $(this).children().eq(0).val();
+                console.log(eventNo);
+
+                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+
+            })
+
+
+        });
+        
         
     </script>
     
-    
+ 
     
     <hr>
     <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->

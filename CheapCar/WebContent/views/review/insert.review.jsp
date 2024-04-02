@@ -134,7 +134,7 @@
 				</div> 
                     <div class="content_outer">
                         <form action="<%=contextPath%>/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
-                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
+                            <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
