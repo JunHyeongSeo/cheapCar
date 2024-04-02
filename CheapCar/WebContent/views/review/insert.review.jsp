@@ -147,6 +147,9 @@
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
 								<img src="" id="img_1">
+								<img src="" id="img_2">
+								<img src="" id="img_3">
+								<img src="" id="img_4">
 							</div>
 	                        <div class="text-area">
 	                            <textarea name="content" class="form-control" rows="20" id="comment" required></textarea>
@@ -154,8 +157,11 @@
 	                        </div>
 	                    
 						    <div class="content_add_img">
-	                            <span id="addInfo" > ※ 첨부파일은 최대 1개까지만 가능합니다. </span> <br><br>
-	                            <input type="file" name="photo" id="thumbnail" onchange="loadImg(this, 1)" required>
+	                            <span id="addInfo" > ※ 첨부파일은 최대 4개까지만 가능합니다. </span> <br><br>
+	                            <input type="file" name="photo1" id="thumbnail" onchange="loadImg(this, 1)" >
+	                            <input type="file" name="photo2" id="subImg1" onchange="loadImg(this, 2)" >
+	                            <input type="file" name="photo3" id="subImg2" onchange="loadImg(this, 3)" >
+	                            <input type="file" name="photo4" id="subImg3" onchange="loadImg(this, 4)" >
 						    </div>
                     
 
@@ -176,6 +182,9 @@
 		$(function(){ // 사진 첨부가 안되었을 때 이미지 들어갈 화면 가리기
 			
 			$('#img_1').hide();
+			$('#img_2').hide();
+			$('#img_3').hide();
+			$('#img_4').hide();
 			
 		})
 		
@@ -189,9 +198,14 @@
                 reader.onload = function(e){
                     switch(num){
                     	case 1 : $('#img_1').attr('src', e.target.result); 
-                    	         $('#img_1').show(); break;                   			  
-                    }
-                    
+                    	         $('#img_1').show(); break;               
+                    	case 2 : $('#img_2').attr('src', e.target.result); 
+           	         		  	 $('#img_2').show(); break;
+                    	case 3 : $('#img_3').attr('src', e.target.result); 
+           	         			 $('#img_3').show(); break;               
+           				case 4 : $('#img_4').attr('src', e.target.result); 
+  	         		  	 		 $('#img_4').show(); break;
+                    }    
                 }
             }
             else{
@@ -199,6 +213,9 @@
             	
             	switch(num){
             		case 1 : $('#img_1').attr('src', str); break;
+            		case 2 : $('#img_2').attr('src', str); break;
+            		case 3 : $('#img_3').attr('src', str); break;
+            		case 4 : $('#img_4').attr('src', str); break;
             	};
             }
         }
