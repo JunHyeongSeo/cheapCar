@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.Review, com.kh.semi.common.model.vo.PageInfo" %>    
+    
+<%
+	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+ %>    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,65 +124,60 @@
 				</h2>
 				<div class="review_content">
 					<ul id="review_list">
-						<li>
-							<a href="" alt="">
-								<div class="img-area review_1 content">1</div>
-								<div class="text-area review_1 content">
-									후기 1
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area review_1">1</div>
-								<div class="text-area review_1">
-									후기 2
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area review_1">1</div>
-								<div class="text-area review_1">
-									후기 3
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="" alt="">
-								<div class="img-area review_1">1</div>
-								<div class="text-area review_1">
-									이벤트 44
-								</div>
-							</a>
-						</li>
-
-						
-					</ul>
-				</div>
-
-				
-				
-
+						<% if(list.isEmpty()) { %>
+						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
+						<% } else { %>
+						  <% for(Review re : list){ %>	
+							<li>
+								<a href="" alt="">
+									<div class="img-area review_1 content">
+									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
+								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
+								 	</div>
+									<div class="text-area review_1 content"><%= re.getReviewTitle() %>
+									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
+									</div>
+								</a>
+							</li>
+							<% } %>
+						<% } %>	
 
 				</div>            
 			 </div>
 		  </div>
 
         <div class="search_write">
-            <form>
-                <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-                <button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-                <a href="" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
-            </form>
-        </div>            
+			<form>
+			    <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
+				<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
+				<% if(loginUser != null) {%>
+				<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+				<%}%>
+				<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo()%>">
+				
+			</form>
+		</div>           
+			<div class="paging-area" align="center" style="margin-top:12px">
+			<% if(currentPage > 1) { %>	
+	        <button class="btn btn-outline-info" style="color:#6caddf"
+		     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=currentPage - 1%>'">이전</button>
+            <% } %>
+	     	<% for(int i = startPage; i <= endPage; i++){%>
+	     		<% if(currentPage != i){ %>
+		     		<button class="btn btn-outline-info" style="color:#6caddf"
+		     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=i%>'"><%= i %></button>
+		     	<% } else { %>
+		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
+		     	<% } %>	
+		     	
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>	
+			<button class="btn btn-outline-info" style="color:#6caddf"
+	     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=currentPage + 1%>'">다음</button>
+	     	<%} %>
 
-
-		<div class="paging-area" align="center" style="margin-top:12px">
-			<button class="btn btn-outline-info" style="color:#6caddf">이전</button>
-			<button class="btn btn-outline-info" style="color:#6caddf">1</button>
-			<button class="btn btn-outline-info" style="color:#6caddf">다음</button>
-	    </div>			  
+	    </div>			  					  
 	</div>
 	
 	<script>
