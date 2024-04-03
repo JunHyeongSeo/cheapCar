@@ -106,7 +106,10 @@
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> b15b3453edd584bc007ea7fb57c73bd0aea81678
     <div id="wrap">
     
         <div id="logo">
