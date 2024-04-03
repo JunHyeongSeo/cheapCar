@@ -37,6 +37,7 @@
 <head>
 <meta charset="UTF-8">
 <title>차량 렌트</title>
+
 <style>
     
     div{

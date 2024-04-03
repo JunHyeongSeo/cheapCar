@@ -141,8 +141,6 @@
 </style>
 </head>
 <body>
-    
-    <!-- 나중에 border빼고 수치 1200으로 조정-->
 	
     <div>
         <%@ include file="../common/menuBar.jsp" %>
@@ -228,20 +226,10 @@
 
                          <input type="checkbox" class="form-check-input" name="options" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" name="options" value="주차보조시스템">주차보조시스템
+                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
                          
                     </div>
                     
-                    <div class="detail-option">
-                        
-                        <input type="checkbox" class="form-check-input" name="options" value="선루프">선루프
-                        
-                        <input type="checkbox" class="form-check-input" name="options" value="카시트">카시트
-                        
-                        <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
-
-					</div>
-
 					<div class="detail-option">
 						
 	    				<button class="btn btn-primary" type="submit">검색</button>
