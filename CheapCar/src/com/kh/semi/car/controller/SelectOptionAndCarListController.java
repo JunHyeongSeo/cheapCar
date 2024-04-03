@@ -58,7 +58,7 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		String locations = request.getParameter("locations");
 		
-		
+		 
 		Search search = new Search();
 		search.setModel(model);
 		search.setFuel(fuel);
