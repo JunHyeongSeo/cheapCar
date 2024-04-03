@@ -1,6 +1,7 @@
 package com.kh.semi.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.ReviewBoard;
+import com.kh.semi.review.model.vo.ReviewPhoto;
 
 /**
  * Servlet implementation class ReviewDetailController
@@ -30,6 +33,8 @@ public class ReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF");
+		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
 		ReviewService ReviewService = new ReviewService();
@@ -39,10 +44,24 @@ public class ReviewDetailController extends HttpServlet {
 		if(result > 0) {
 		
 			ReviewBoard rBoard = ReviewService.selectReviewBoard(reviewNo);
-			ReviewService.selectReviewPhoto(reviewNo);
+			
+			ArrayList<ReviewPhoto> list = ReviewService.selectReviewPhoto(reviewNo);
+			
+			if(list.size() > 0) {
+				request.setAttribute("list", list);
+			}
+			request.setAttribute("rBoard", rBoard);
 		
-		
-		
+			System.out.println(list);
+			System.out.println(rBoard);
+			
+			request.getRequestDispatcher("views/review/reviewDetail.jsp").forward(request, response);
+			                                           
+		} else {
+			
+			request.setAttribute("errorMsg", "조회 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
 		
 		
 		
