@@ -109,6 +109,7 @@
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
+	
     <div id="wrap">
     
         <div id="logo">
