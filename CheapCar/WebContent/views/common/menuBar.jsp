@@ -106,7 +106,6 @@
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
-	<!--<jsp:include page="/views/common/dummy.jsp"/>-->
 	
     <div id="wrap">
     
