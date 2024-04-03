@@ -224,7 +224,26 @@ public class ReviewDao {
 		String sql = prop.getProperty("selectReviewPhoto");
 		
 		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			rPhoto = new ReviewPhoto();
+			
+			rPhoto.setPhotoNo(rset.getInt("REVIEW_PHOTO_NO"));
+			rPhoto.setPhotoOname(rset.getString("REVIEW_PHOTO_ORIGINNAME"));
+			rPhoto.setPhotoCname(rset.getString("REVIEW_PHOTO_CHANGENAME"));
+			rPhoto.setPhotoPath(rset.getString("REVIEW_PHOTO_ADDRESS"));
+			rPhoto.setReviewNo(rset.getInt("REVIEW_NO"));
+			
+			System.out.println(rPhoto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
 		
 		return rPhoto;
 	}
