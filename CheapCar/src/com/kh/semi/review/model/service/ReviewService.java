@@ -91,14 +91,16 @@ public class ReviewService {
 	}//
 	
 	
-	public void selectReviewPhoto(int reviewNo) {
+	public ArrayList<ReviewPhoto> selectReviewPhoto(int reviewNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new ReviewDao().selectReviewPhoto(conn, reviewNo);
+		ArrayList<ReviewPhoto> list = new ReviewDao().selectReviewPhoto(conn, reviewNo);
+		
+		JDBCTemplate.close(conn);
 		
 		
-		
+		return list;
 	}
 	
 	

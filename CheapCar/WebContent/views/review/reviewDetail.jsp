@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewPhoto, com.kh.semi.review.model.vo.ReviewBoard" %>    
+
+<%
+    ArrayList<ReviewPhoto> list = (ArrayList<ReviewPhoto>)request.getAttribute("list");
+	ReviewBoard rBoard = (ReviewBoard)request.getAttribute("rBoard");
+
+%>    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,28 +138,30 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2"><%= rBoard.getreviewTitle() %> </div>
-                        <input type="hidden" name="reviewNo" value="<%= rBoard.getreviewNo()%>">
-                        <input type="hidden" name="userNo" value="<%= rBoard.getMemberNo()%>">
+                        <div class="content_header2"><%= rBoard.getReviewTitle() %> </div>
+                        <input type="hidden" name="reviewNo" value="<%= rBoard.getReviewNo()%>">
+                        <input type="hidden" name="memberNo" value="<%= rBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= rBoard.getreviewWriter() %></span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
                         <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
                         <div class="img-area">
-                              	<img width="100%" src="<%= contextPath %>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" />
+                        		<% for(ReviewPhoto rPhoto : list) { %>
+                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
+                              	<% } %>
                         </div>
-                        <div class="text-area"> <%= eBoard.getreviewContent() %></div>
+                        <div class="text-area"> <%= rBoard.getReviewContent() %></div>
                     </div>
 
 
                     <div class="content_btn" align="center">
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <% if(loginUser != null){ %>
-                        	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= eBoard.getreviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        	<a href="<%= contextPath%>/delete.review?reviewNo=<%= eBoard.getreviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         <% } %>
 
                     </div>

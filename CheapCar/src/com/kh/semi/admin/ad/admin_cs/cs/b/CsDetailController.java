@@ -36,7 +36,8 @@ public class CsDetailController extends HttpServlet {
 		int csNo = Integer.parseInt(request.getParameter("csNo"));
 		
 		Cs cs = new CsService().csDetail(csNo);
-		ArrayList<BoardAttachment> baList = new CsService().selectAttachment(csNo)
+		
+		ArrayList<BoardAttachment> baList = new CsService().selectAttachment(csNo);
 		
 		
 		request.setAttribute("cs", cs);
