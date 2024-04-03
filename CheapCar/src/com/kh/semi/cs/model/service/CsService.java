@@ -98,7 +98,16 @@ public class CsService {
 		return result;
 	}
 	
-	
+	public ArrayList<BoardAttachment> selectAttachment(int csNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<BoardAttachment> list = new CsDao().selectAttachment(conn, csNo);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 	
 	

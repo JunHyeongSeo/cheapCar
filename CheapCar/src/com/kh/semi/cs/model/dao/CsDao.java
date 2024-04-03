@@ -178,6 +178,18 @@ public class CsDao {
 		return result;
 	}
 	
+	public ArrayList<BoardAttachment> selectAttachment(Connection conn, int csNo){
+		
+		ArrayList<BoardAttachment> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		
+		
+		
+	}
+	
 	
 	
 	

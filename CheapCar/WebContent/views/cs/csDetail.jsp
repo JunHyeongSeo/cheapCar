@@ -156,7 +156,7 @@
                     
                     <div class="form-group">
                     	<label>첨부파일</label>
-			           <% if(at != null) { %>
+						<% if(at != null) { %>
 			           	<!-- /jsp/resources/board_upfiles/changeName -->
 			           	<a download="<%= at.getOriginName() %>" href="<%= contextPath %>/<%=at.getFilePath() %>/<%= at.getChangeName() %>"><%= at.getOriginName() %></a>
 			           	
