@@ -188,7 +188,7 @@ public class ReviewDao {
 	
 	public ReviewBoard selectReviewBoard(Connection conn, int reviewNo) {
 		
-		ReviewBoard rBoard = new ReviewBoard();
+		ReviewBoard rBoard = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectReviewBoard");
@@ -198,6 +198,7 @@ public class ReviewDao {
 			
 			pstmt.setInt(1, reviewNo);
 			
+			rBoard = new ReviewBoard();
 			rBoard.setReviewNo(rset.getInt("REVEIW_NO"));
 			rBoard.setReviewTitle(rset.getString("REVIEW_TITLE"));
 			rBoard.setReviewContent(rset.getString("REVIEW_CONTENT"));
@@ -215,7 +216,18 @@ public class ReviewDao {
 	}//
 	
 	
-	
+	public ReviewPhoto selectReviewPhoto(Connection conn, int reviewNo) {
+		
+		ReviewPhoto rPhoto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewPhoto");
+		
+		
+		
+		
+		return rPhoto;
+	}
 	
 	
 	
