@@ -140,7 +140,7 @@
                             
                         <div class="content_header2"><%= rBoard.getReviewTitle() %> </div>
                         <input type="hidden" name="reviewNo" value="<%= rBoard.getReviewNo()%>">
-                        <input type="hidden" name="userNo" value="<%= rBoard.getMemberNo()%>">
+                        <input type="hidden" name="memberNo" value="<%= rBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
                         <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;

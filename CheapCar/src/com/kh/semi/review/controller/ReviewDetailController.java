@@ -33,8 +33,10 @@ public class ReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF");
+		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		System.out.println(reviewNo);
+		
 		ReviewService ReviewService = new ReviewService();
 		
 		int result = ReviewService.increaseCount(reviewNo);
@@ -50,9 +52,11 @@ public class ReviewDetailController extends HttpServlet {
 			}
 			request.setAttribute("rBoard", rBoard);
 		
+			System.out.println(list);
+			System.out.println(rBoard);
 			
 			request.getRequestDispatcher("views/review/reviewDetail.jsp").forward(request, response);
-			
+			                                           
 		} else {
 			
 			request.setAttribute("errorMsg", "조회 실패");
