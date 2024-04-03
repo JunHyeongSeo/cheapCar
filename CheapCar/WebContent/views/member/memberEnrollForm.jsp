@@ -164,7 +164,7 @@
 				</tr>
 				<tr>
 					<td>* 이메일</td>
-					<td><input type="email" required name="email"></td>
+					<td><input type="email" id="email" required name="email"></td>
 					<td></td>
 				</tr>
 				
@@ -185,9 +185,9 @@
 					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
 					var memberNameCheck = /^[가-힣]{2,6}$/;
 					var birthdayCheck = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-[1-4]\d{6}$/;
-					var phoneCheck = /^01[0179]-[0-9]d{4}-d{4}/;
-
-
+					var phoneCheck = /^01[0179]-[0-9]{4}-[0-9]{4}$/;
+					//var ddffeeffbb = /^[어쩌라고]$/;
+					var emailCheck = /^[a-zA-Z0-9]{2,20}@[a-z]{2,5}.[a-z]{3}$/;
 
 					$('#memberId').blur(function(){
 						
@@ -243,15 +243,22 @@
 
 						var phonevalue = $('#phone').val();
 
-						if(!phoneCheck.text(phonevalue)){
+						if(!phoneCheck.test(phonevalue)){
 							alert('전화번호를 다시입력해주세요');
 							$('#phone').val('');
 						}
 
-					})
+					});
 
+					$('#email').blur(function(){
 
+						var emailvalue = $('#email').val();
 
+						if(!emailCheck.test(emailvalue)){
+							alert('이메일을 다시입력해주세요.');
+							$('#email').val('');
+						}
+					});
 				});
 
 			</script>

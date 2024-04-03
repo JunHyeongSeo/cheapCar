@@ -153,6 +153,21 @@
                         <span class="content_sub1">작성자 : <%= cs.getMemberName() %></span> &nbsp;/&nbsp;
                     </div>
                     <div class="content_body"><%= cs.getCsContent() %></div>
+                    
+                    <div class="form-group">
+                    	<label>첨부파일</label>
+						<% if(at != null) { %>
+			           	<!-- /jsp/resources/board_upfiles/changeName -->
+			           	<a download="<%= at.getOriginName() %>" href="<%= contextPath %>/<%=at.getFilePath() %>/<%= at.getChangeName() %>"><%= at.getOriginName() %></a>
+			           	
+			           <% } else { %>
+			          	 &nbsp;&nbsp;<span>첨부파일이 존재하지 않습니다.</span>
+			           <% } %>
+                    </div>
+                    
+                    
+                    
+                    
                     <div class="content_btn" align="center">
                         <a href="<%=contextPath%>/list.cs?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                     
@@ -164,8 +179,6 @@
                     		<a href="#" class="btn btn-sm btn-primary">답&nbsp;변</a>
                     		<a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     	<% } %>
-                    
-                    
                     </div>
                 </div>
 			 </div>

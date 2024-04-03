@@ -77,11 +77,11 @@ public class CsService {
 		// 첨부파일은 list가 비어있지 않을때만 할거임 그래서
 		
 		int result = 0;
-
 		
 		int csResult = new CsDao().insertCs(conn, cs);
 		
 		int attachmentResult = 1;
+		
 		if(!list.isEmpty()) {
 			attachmentResult = new CsDao().insertAttachment(conn, list);
 		}
@@ -98,7 +98,16 @@ public class CsService {
 		return result;
 	}
 	
-	
+	public ArrayList<BoardAttachment> selectAttachment(int csNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<BoardAttachment> list = new CsDao().selectAttachment(conn, csNo);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 	
 	

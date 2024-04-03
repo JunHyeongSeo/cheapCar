@@ -117,7 +117,7 @@ public class CsDao {
 				cs.setReplyYn(rset.getString("REPLY_YN"));
 				cs.setStatus(rset.getString("STATUS"));
 				cs.setMemberName(rset.getString("MEMBER_NAME"));
-				
+				cs.setMemberNo(rset.getInt("MEMBER_NO"));
 			}
 			
 		} catch (SQLException e) {
@@ -154,7 +154,7 @@ public class CsDao {
 	
 	public int insertAttachment(Connection conn, ArrayList<BoardAttachment> list) {
 		
-		int result = 0 ;
+		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertAttachment");
 		
@@ -176,6 +176,18 @@ public class CsDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public ArrayList<BoardAttachment> selectAttachment(Connection conn, int csNo){
+		
+		ArrayList<BoardAttachment> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		
+		
+		
 	}
 	
 	
