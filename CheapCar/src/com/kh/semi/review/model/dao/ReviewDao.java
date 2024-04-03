@@ -75,8 +75,8 @@ public class ReviewDao {
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, 20);
 			
 			
 			rset = pstmt.executeQuery();
@@ -90,6 +90,7 @@ public class ReviewDao {
 				rv.setCount(rset.getInt("COUNT"));
 				rv.setReviewWriter(rset.getString("MEMBER_ID"));
 				rv.setTitleImg(rset.getString("TITLE_IMG"));
+				rv.setMemberNo(rset.getInt("MEMBER_NO"));
 				rv.setFileLevel(rset.getString("FILELEVEL"));
 				
 				
@@ -170,11 +171,7 @@ public class ReviewDao {
 	
 	
 	
-	
-	
-	
-	
-	
+		
 	
 	
 	

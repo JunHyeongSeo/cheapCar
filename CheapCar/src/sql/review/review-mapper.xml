@@ -17,6 +17,7 @@
 						       COUNT,
 						       MEMBER_ID,
 						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG",
+						       TB_REVIEW_BOARD.MEMBER_NO,
 						       FILELEVEL
 						  FROM
 						       TB_REVIEW_BOARD
@@ -32,6 +33,8 @@
 						    BY
 						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)
          WHERE
+               FILELEVEL = 1 OR FILELEVEL IS NULL
+           AND    
                RNUM BETWEEN ? AND ?
 	
 	</entry>

@@ -142,14 +142,15 @@
 						<% if(list.isEmpty()) { %>
 						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
 						<% } else { %>
-						  <% for(ReviewBoard re : list){ %>	
+						  <% for(ReviewBoard re : list){ %>
+						  		
 							<li>
 								<a href="" alt="">
 									<div class="img-area review_1 content">
-									<% if(re.getFileLevel().equals("1")){ %>
+									
 									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
 								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
-								 	 <% } %>
+								 	
 								 	</div>
 									<div class="text-area review_1 content">
 									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
@@ -158,6 +159,7 @@
 									</div>
 								</a>
 							</li>
+							
 							<% } %>
 						<% } %>	
 
