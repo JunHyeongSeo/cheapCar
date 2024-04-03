@@ -117,7 +117,7 @@
 						if(result == 'NNN'){
 							alert('이미 존재하거나 탈퇴한 회원의 아이디입니다.');
 							
-							$memberId.val('').focus();
+							$memberId.val('')
 						}
 						else{
 							
@@ -144,7 +144,7 @@
 				</tr>
 				<tr>
 					<td>* 비밀번호확인</td>
-					<td><input type="password" maxlength="30" required></td>
+					<td><input type="password" id="checkPwd" maxlength="30" required></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -180,46 +180,47 @@
 			
 			<script>
 				$(function(){
-					
-					$('#submit').click(function(){
+
+					var memberIdCheck = /^[a-zA-Z0-9]{4,15}$/;
+					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
+
+					$('#memberId').blur(function(){
 						
-						const RegExp = /^[a-zA-Z0-9]{4,15}$/;
+						var idvalue = $('#memberId').val();
 
-						
-						const idvalue = $('#memberId').val();
-
-						const pwdvalue = $('#memberPwd').val();
-
-
-
-						if(!RegExp.test(idvalue)){
+						if(!memberIdCheck.test(idvalue)){
 							alert('아이디를 제대로 입력해주세요');
-							idvalue = "";
-		                    idvalue.focus();
-							//return false
+							$('#memberId').val("");
 						} 
-						else{
-							return true
-						}
-						
-						
-
-						if(!RegExp.test(pwdvalue)){
-							alert('비밀번호를 제대로 입력해주세요')
-							//return false
-						} else(idvalue == pwdvalue){
-							alert('아이디와 비밀번호는 같을 수 없습니다.')
-							return false
-						} return true
-						
-						
-						//console.log(idvalue);
-						
-					
-					
 					});
-				
+
+					$('#memberPwd').blur(function(){
+
+						var pwdvalue = $('#memberPwd').val();
+
+						if(!memberPwdCheck.test(pwdvalue)){
+							alert('비밀번호를 제대로 입력해주세요');
+							$('#memberPwd').val("");
+						}
+
+					});
+
+					$('#checkPwd').blur(function(){
+						if($('#memberPwd').val() != $('#checkPwd').val()){
+
+						alert('입력하신 비밀번호와 다릅니다 다시입력해주세요.');
+						$('#checkPwd').val("");
+						}
+					});
+					
+
+
 				});
+
+				
+
+
+				
 				
 				
 				
