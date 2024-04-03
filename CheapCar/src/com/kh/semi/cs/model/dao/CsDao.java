@@ -117,7 +117,6 @@ public class CsDao {
 				cs.setReplyYn(rset.getString("REPLY_YN"));
 				cs.setStatus(rset.getString("STATUS"));
 				cs.setMemberName(rset.getString("MEMBER_NAME"));
-				cs.setReplyNo(rset.getInt("REPLY_NO"));
 				
 			}
 			

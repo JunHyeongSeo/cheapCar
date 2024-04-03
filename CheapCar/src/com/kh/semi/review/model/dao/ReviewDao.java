@@ -90,6 +90,7 @@ public class ReviewDao {
 				rv.setCount(rset.getInt("COUNT"));
 				rv.setReviewWriter(rset.getString("MEMBER_ID"));
 				rv.setTitleImg(rset.getString("TITLE_IMG"));
+				rv.setMemberNo(rset.getInt("MEMBER_NO"));
 				rv.setFileLevel(rset.getString("FILELEVEL"));
 				
 				
@@ -163,6 +164,47 @@ public class ReviewDao {
 	}//
 	
 	
+	public int increaseCount(Connection conn, int reviewNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+			return result;
+	}//
+	
+	
+	public void selectReviewBoard(Connection conn, int reviewNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
 	
 	
 	
@@ -175,6 +217,7 @@ public class ReviewDao {
 	
 	
 	
+		
 	
 	
 	
