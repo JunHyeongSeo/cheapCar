@@ -34,11 +34,32 @@
 		SELECT * FROM TB_CS_BOARD JOIN TB_MEMBER USING(MEMBER_NO) WHERE CS_NO = ?
 	</entry>
 	
+	<entry key="insertCs">
+		
+		INSERT INTO TB_CS_BOARD VALUES(SEQ_CS_BOARD_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT, DEFAULT, ?)
+		
+		
+	</entry>
 	
+	<entry key="insertAttachment">
 	
+		INSERT 
+		  INTO 
+			  TB_CS_PHOTO(FILE_NO,
+			  			  REF_NO,
+			  			  ORIGIN_NAME, 
+			  			  CHANGE_NAME, 
+			  			  FILE_PATH) 
+				   VALUES(SEQ_CS_PHOTO_NO.NEXTVAL, 
+				  	     SEQ_CS_BOARD_NO.CURRVAL, 
+				  	     ?, 
+				  	     ?, 
+				  	     ?)
+	</entry>
 	
-	
-	
+	<entry key="selectAttachment">
+		SELECT * FROM TB_CS_PHOTO WHERE REF_NO = ?
+	</entry> 
 	
 	
 	

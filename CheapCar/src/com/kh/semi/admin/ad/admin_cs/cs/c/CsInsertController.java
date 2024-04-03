@@ -1,5 +1,6 @@
 package com.kh.semi.admin.ad.admin_cs.cs.c;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -66,7 +67,7 @@ public class CsInsertController extends HttpServlet {
 			
 			for(int i = 1; i <= 4; i++) {
 				
-				String key = "file" + i;
+				String key = "upfile" + i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
 					
@@ -82,16 +83,24 @@ public class CsInsertController extends HttpServlet {
 			
 			int result = new CsService().insert(cs, list);
 			
-			
-			
-			
-			
-			
-			
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "문의글 등록이 완료되었습니다~!");
+				
+				response.sendRedirect(request.getContextPath() + "/list.cs?currentPage=1");
+				
+			} else {
+				
+				if(!list.isEmpty()) {
+					
+					for(BoardAttachment ba : list) {
+						new File(savePath + ba.getChangeName()).delete();
+					}
+				}
+				
+				request.setAttribute("errorMsg", "문의글 등록 실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			}
 		}
-		
-		
-		
 	}
 
 	/**

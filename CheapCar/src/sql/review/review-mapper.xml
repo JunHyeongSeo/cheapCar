@@ -17,6 +17,7 @@
 						       COUNT,
 						       MEMBER_ID,
 						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG",
+						       TB_REVIEW_BOARD.MEMBER_NO,
 						       FILELEVEL
 						  FROM
 						       TB_REVIEW_BOARD
@@ -28,6 +29,8 @@
 						       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
 						 WHERE
 						       TB_REVIEW_BOARD.STATUS = 'Y'
+						   AND
+						       FILELEVEL = 1 OR FILELEVEL IS NULL    
 						 ORDER
 						    BY
 						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)
@@ -93,7 +96,51 @@
 	           DEFAULT,
 	           ?
 	           )      
-		       
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+		       TB_REVIEW_BOARD
+		   SET
+		       COUNT = COUNT + 1
+		 WHERE
+		       REVIEW_NO = ?
+		   AND    
+		       STATUS  = 'Y'           
+	</entry>
+	
+	<entry key="selectReviewBoard">
+		SELECT
+		       REVIEW_NO,
+		       REVIEW_TITLE,
+		       REVIEW_CONTENT,
+		       CREATE_DATE,
+		       MEMBER_ID,
+		       COUNT
+		  FROM     
+		       TB_REVIEW_BOARD
+		  JOIN
+		       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
+		 WHERE
+		       REVIEW_NO = ?       
+	</entry>
+	
+	<entry key="selectReviewPhoto">
+		SELECT
+		       REVIEW_PHOTO_NO,
+		       REVIEW_PHOTO_ORIGINNAME,
+		       REVIEW_PHOTO_CHANGENAME,
+		       REVIEW_PHOTO_ADDRESS,
+		       REVIEW_NO
+		  FROM
+		       TB_REVIEW_PHOTO
+		 WHERE
+		       REVIEW_NO = ?
+		   AND
+		       STATUS = 'Y'
+		 ORDER
+		    BY
+		       FILELEVEL ASC      
 	</entry>
 	
 	

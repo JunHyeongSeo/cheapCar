@@ -102,10 +102,13 @@
 		
 		if(msg != 'null'){
 			alert(msg);
+		
+			
+			
+			
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
-	
 	
     <div id="wrap">
     
@@ -125,7 +128,7 @@
 			</form>
 			<% } else { %>
 			<div id="user-info">
-				<span><%= loginUser.getMemberName() %></span>님 환영합니다~~!! <br><br>
+				<span>${ loginUser.memberName }</span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
 					<!-- <a href="/jsp/logout">로그아웃</a>-->

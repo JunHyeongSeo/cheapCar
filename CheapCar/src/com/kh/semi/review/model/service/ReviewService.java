@@ -62,6 +62,45 @@ public class ReviewService {
 		JDBCTemplate.close(conn);
 		
 		return boardResult * photoResult;
+	}//
+	
+	
+	public int increaseCount(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReviewDao().increaseCount(conn, reviewNo);
+				
+		if(result > 0) JDBCTemplate.commit(conn);
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}//
+	
+	
+	public ReviewBoard selectReviewBoard(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ReviewBoard rBoard = new ReviewDao().selectReviewBoard(conn, reviewNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return rBoard;
+		
+	}//
+	
+	
+	public ArrayList<ReviewPhoto> selectReviewPhoto(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<ReviewPhoto> list = new ReviewDao().selectReviewPhoto(conn, reviewNo);
+		
+		JDBCTemplate.close(conn);
+		
+		
+		return list;
 	}
 	
 	
