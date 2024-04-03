@@ -67,7 +67,7 @@ public class CsInsertController extends HttpServlet {
 			
 			for(int i = 1; i <= 4; i++) {
 				
-				String key = "file" + i;
+				String key = "upfile" + i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
 					
