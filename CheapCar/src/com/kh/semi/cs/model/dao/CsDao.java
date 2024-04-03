@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.semi.common.model.vo.BoardAttachment;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.cs.model.vo.Cs;
 
@@ -116,7 +117,6 @@ public class CsDao {
 				cs.setReplyYn(rset.getString("REPLY_YN"));
 				cs.setStatus(rset.getString("STATUS"));
 				cs.setMemberName(rset.getString("MEMBER_NAME"));
-				cs.setReplyNo(rset.getInt("REPLY_NO"));
 				
 			}
 			
@@ -129,9 +129,54 @@ public class CsDao {
 		return cs;
 	}
 	
+	public int insertCs(Connection conn, Cs cs) {
+		
+		int result = 0 ;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertCs");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cs.getCsTitle());
+			pstmt.setString(2, cs.getCsContent());
+			pstmt.setInt(3, cs.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
-	
-	
+	public int insertAttachment(Connection conn, ArrayList<BoardAttachment> list) {
+		
+		int result = 0 ;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+
+			for(BoardAttachment ba : list) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, ba.getOriginName());
+				pstmt.setString(2, ba.getChangeName());
+				pstmt.setString(3, ba.getFilePath());
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	
