@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.semi.cs.model.vo.Cs"%>
+<%@ page import="java.util.ArrayList, com.kh.semi.common.model.vo.BoardAttachment" %>
 <%
 	Cs cs = (Cs)request.getAttribute("cs");
+	ArrayList<BoardAttachment> list = (ArrayList<BoardAttachment>)request.getAttribute("baList");
 %>
 <!DOCTYPE html>
 <html>
@@ -156,17 +158,14 @@
                     
                     <div class="form-group">
                     	<label>첨부파일</label>
-						<% if(at != null) { %>
-			           	<!-- /jsp/resources/board_upfiles/changeName -->
-			           	<a download="<%= at.getOriginName() %>" href="<%= contextPath %>/<%=at.getFilePath() %>/<%= at.getChangeName() %>"><%= at.getOriginName() %></a>
-			           	
+                    	<% if(!list.isEmpty()) { %>
+	                    	<% for(BoardAttachment ba : list) { %>
+	                    		<a download="<%= ba.getOriginName() %>" href="<%= contextPath %>/<%=ba.getFilePath() %>/<%= ba.getChangeName() %>"><%= ba.getOriginName() %></a>
+	                    	<% } %>
 			           <% } else { %>
 			          	 &nbsp;&nbsp;<span>첨부파일이 존재하지 않습니다.</span>
 			           <% } %>
                     </div>
-                    
-                    
-                    
                     
                     <div class="content_btn" align="center">
                         <a href="<%=contextPath%>/list.cs?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
