@@ -147,13 +147,9 @@
 							<li>
 								<a href="" alt="">
 									<div class="img-area review_1 content">
-									
-									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
 								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
-								 	
 								 	</div>
 									<div class="text-area review_1 content">
-									 <input type="hidden" name="reviewNo" value="<%= re.getReviewNo()%>"/>
 									 <span> <%= re.getReviewTitle() %> </span><br><br>
 								     <span style="font-size: 15px;">조회수 :  <%= re.getCount() %></span>
 									</div>

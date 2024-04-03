@@ -75,8 +75,8 @@ public class ReviewDao {
 			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1, 1);
-			pstmt.setInt(2, 20);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			
 			
 			rset = pstmt.executeQuery();
@@ -162,6 +162,52 @@ public class ReviewDao {
 		
 		return result == list.size() ? 1 : 0;
 	}//
+	
+	
+	public int increaseCount(Connection conn, int reviewNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+			return result;
+	}//
+	
+	
+	public void selectReviewBoard(Connection conn, int reviewNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	

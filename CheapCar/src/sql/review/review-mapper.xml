@@ -29,12 +29,12 @@
 						       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
 						 WHERE
 						       TB_REVIEW_BOARD.STATUS = 'Y'
+						   AND
+						       FILELEVEL = 1 OR FILELEVEL IS NULL    
 						 ORDER
 						    BY
 						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)
          WHERE
-               FILELEVEL = 1 OR FILELEVEL IS NULL
-           AND    
                RNUM BETWEEN ? AND ?
 	
 	</entry>
@@ -96,7 +96,33 @@
 	           DEFAULT,
 	           ?
 	           )      
-		       
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+		       TB_REVIEW_BOARD
+		   SET
+		       COUNT = COUNT + 1
+		 WHERE
+		       REVIEW_NO = ?
+		   AND    
+		       STATUS  = 'Y'           
+	</entry>
+	
+	<entry key="selectReviewBoard">
+		SELECT
+		       REVIEW_NO,
+		       REVIEW_TITLE,
+		       REVIEW_CONTENT,
+		       CREATE_DATE,
+		       MEMBER_ID
+		       COUNT
+		  FROM     
+		       TB_REVIEW_BOARD
+		  JOIN
+		       TB_REVIEW_PHOTO ON (TB_REVIEW_BOARD.MEMBER_NO = TB_REVIEW_PHOTO.MEMBER_NO)     
+		 WHERE
+		       REVIEW_NO = ?       
 	</entry>
 	
 	
