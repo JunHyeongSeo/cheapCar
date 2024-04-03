@@ -170,13 +170,12 @@
                     <div class="content_btn" align="center">
                         <a href="<%=contextPath%>/list.cs?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                     
-                    	<% if(loginUser != null && loginUser.getMemberNo() == cs.getMemberNo()) { %>
+                    	<% if(loginUser != null && (loginUser.getMemberNo() == cs.getMemberNo() || loginUser.getMemberStatus().equals("A"))) { %>
                     		<a href="#" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                             <a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     	<% } %>
                     	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
                     		<a href="#" class="btn btn-sm btn-primary">답&nbsp;변</a>
-                    		<a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     	<% } %>
                     </div>
                 </div>
