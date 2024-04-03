@@ -115,7 +115,7 @@
 		       REVIEW_TITLE,
 		       REVIEW_CONTENT,
 		       CREATE_DATE,
-		       MEMBER_ID
+		       MEMBER_ID,
 		       COUNT
 		  FROM     
 		       TB_REVIEW_BOARD

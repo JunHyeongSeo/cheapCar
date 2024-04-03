@@ -216,9 +216,9 @@ public class ReviewDao {
 	}//
 	
 	
-	public ReviewPhoto selectReviewPhoto(Connection conn, int reviewNo) {
+	public ArrayList<ReviewPhoto> selectReviewPhoto(Connection conn, int reviewNo) {
 		
-		ReviewPhoto rPhoto = null;
+		ArrayList<ReviewPhoto> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectReviewPhoto");
@@ -229,15 +229,20 @@ public class ReviewDao {
 			
 			pstmt.setInt(1, reviewNo);
 			
-			rPhoto = new ReviewPhoto();
+			rset = pstmt.executeQuery();
 			
-			rPhoto.setPhotoNo(rset.getInt("REVIEW_PHOTO_NO"));
-			rPhoto.setPhotoOname(rset.getString("REVIEW_PHOTO_ORIGINNAME"));
-			rPhoto.setPhotoCname(rset.getString("REVIEW_PHOTO_CHANGENAME"));
-			rPhoto.setPhotoPath(rset.getString("REVIEW_PHOTO_ADDRESS"));
-			rPhoto.setReviewNo(rset.getInt("REVIEW_NO"));
-			
-			System.out.println(rPhoto);
+			while(rset.next()) {
+				
+				ReviewPhoto rPhoto = new ReviewPhoto();
+				
+				rPhoto.setPhotoNo(rset.getInt("REVIEW_PHOTO_NO"));
+				rPhoto.setPhotoOname(rset.getString("REVIEW_PHOTO_ORIGINNAME"));
+				rPhoto.setPhotoCname(rset.getString("REVIEW_PHOTO_CHANGENAME"));
+				rPhoto.setPhotoPath(rset.getString("REVIEW_PHOTO_ADDRESS"));
+				rPhoto.setReviewNo(rset.getInt("REVIEW_NO"));
+				
+				list.add(rPhoto);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -245,7 +250,7 @@ public class ReviewDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return rPhoto;
+		return list;
 	}
 	
 	
