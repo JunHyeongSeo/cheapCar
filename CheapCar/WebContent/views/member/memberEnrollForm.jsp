@@ -149,7 +149,7 @@
 				</tr>
 				<tr>
 					<td>* 이름</td>
-					<td><input type="text" maxlength="30" required name="memberName"></td>
+					<td><input type="text" id="memberName" maxlength="30" required name="memberName"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -183,6 +183,7 @@
 
 					var memberIdCheck = /^[a-zA-Z0-9]{4,15}$/;
 					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
+					var memberNameCheck =/^[가-힣]{2,6}$/;
 
 					$('#memberId').blur(function(){
 						
@@ -213,6 +214,16 @@
 						}
 					});
 					
+					$('#memberName').blur(function(){
+
+						var namevalue = $('#memberName').val();
+
+						if(!memberNameCheck.test(namevalue)){
+							alert('이름은 한글 2~6글자입니다. 다시입력해주세요.');
+							$('#memberName').val("");
+						}
+
+					});
 
 
 				});
