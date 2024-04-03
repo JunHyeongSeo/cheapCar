@@ -13,7 +13,6 @@
 <head>
 <meta charset="UTF-8">
 <title>저렴하니CAR</title>
-	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -103,6 +102,10 @@
 		
 		if(msg != 'null'){
 			alert(msg);
+		
+			
+			
+			
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
@@ -125,7 +128,7 @@
 			</form>
 			<% } else { %>
 			<div id="user-info">
-				<span><%= loginUser.getMemberName() %></span>님 환영합니다~~!! <br><br>
+				<span>${ loginUser.memberName }</span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
 					<!-- <a href="/jsp/logout">로그아웃</a>-->
