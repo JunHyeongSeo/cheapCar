@@ -34,7 +34,7 @@ public class ReviewDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		
+		System.out.println(reviewNo);
 		ReviewService ReviewService = new ReviewService();
 		
 		int result = ReviewService.increaseCount(reviewNo);

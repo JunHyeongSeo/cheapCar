@@ -199,7 +199,7 @@ public class ReviewDao {
 			pstmt.setInt(1, reviewNo);
 			
 			rBoard = new ReviewBoard();
-			rBoard.setReviewNo(rset.getInt("REVEIW_NO"));
+			rBoard.setReviewNo(rset.getInt("REVIEW_NO"));
 			rBoard.setReviewTitle(rset.getString("REVIEW_TITLE"));
 			rBoard.setReviewContent(rset.getString("REVIEW_CONTENT"));
 			rBoard.setCreateDate(rset.getDate("CREATE_DATE"));
