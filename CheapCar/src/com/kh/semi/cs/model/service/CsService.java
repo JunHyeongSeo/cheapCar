@@ -1,11 +1,11 @@
 package com.kh.semi.cs.model.service;
 
-import static com.kh.semi.common.JDBCTemplate.close;
-import static com.kh.semi.common.JDBCTemplate.getConnection;
+import static com.kh.semi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.semi.common.model.vo.BoardAttachment;
 import com.kh.semi.common.model.vo.PageInfo;
 import com.kh.semi.cs.model.dao.CsDao;
 import com.kh.semi.cs.model.vo.Cs;
@@ -68,6 +68,59 @@ public class CsService {
 		
 		return cs;
 	}
+	
+	public int insert(Cs cs, ArrayList<BoardAttachment> list) {
+		
+		Connection conn = getConnection();
+		
+		// cs_board 에는 무조건 insert를 할건데,
+		// 첨부파일은 list가 비어있지 않을때만 할거임 그래서
+		
+		int result = 0;
+		
+		int csResult = new CsDao().insertCs(conn, cs);
+		
+		int attachmentResult = 1;
+		if(!list.isEmpty()) {
+			attachmentResult = new CsDao().insertAttachment(conn, list);
+		}
+		
+		result = csResult * attachmentResult;
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
