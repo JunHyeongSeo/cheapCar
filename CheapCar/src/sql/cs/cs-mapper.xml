@@ -58,8 +58,8 @@
 	</entry>
 	
 	<entry key="selectAttachment">
-		
-	</entry>
+		SELECT * FROM TB_CS_PHOTO WHERE REF_NO = ?
+	</entry> 
 	
 	
 	

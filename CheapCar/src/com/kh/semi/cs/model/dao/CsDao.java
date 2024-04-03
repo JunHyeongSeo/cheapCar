@@ -185,9 +185,34 @@ public class CsDao {
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectAttachment");
 		
-		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, csNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				BoardAttachment ba = new BoardAttachment();
+				
+				ba.setFileNo(rset.getInt("FILE_NO"));
+				ba.setOriginName(rset.getString("ORIGIN_NAME"));
+				ba.setChangeName(rset.getString("CHANGE_NAME"));
+				ba.setFilePath(rset.getString("FILE_PATH"));
+				ba.setUploadDate(rset.getDate("UPLOAD_DATE"));
+				ba.setStatus(rset.getString("STATUS"));
+				ba.setRefBno(rset.getInt("REF_NO"));
+				
+				list.add(ba);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 	
 	
