@@ -38,7 +38,7 @@ public class ReviewDetailController extends HttpServlet {
 		
 		if(result > 0) {
 		
-			ReviewService.selectReviewBoard(reviewNo);
+			ReviewBoard rBoard = ReviewService.selectReviewBoard(reviewNo);
 			ReviewService.selectReviewPhoto(reviewNo);
 		
 		

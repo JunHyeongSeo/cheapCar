@@ -186,9 +186,9 @@ public class ReviewDao {
 	}//
 	
 	
-	public void selectReviewBoard(Connection conn, int reviewNo) {
+	public ReviewBoard selectReviewBoard(Connection conn, int reviewNo) {
 		
-		int result = 0;
+		ReviewBoard rBoard = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectReviewBoard");
@@ -196,18 +196,57 @@ public class ReviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, reviewNo);
+			
+			rBoard = new ReviewBoard();
+			rBoard.setReviewNo(rset.getInt("REVEIW_NO"));
+			rBoard.setReviewTitle(rset.getString("REVIEW_TITLE"));
+			rBoard.setReviewContent(rset.getString("REVIEW_CONTENT"));
+			rBoard.setCreateDate(rset.getDate("CREATE_DATE"));
+			rBoard.setReviewWriter(rset.getString("MEMBER_ID"));
+			rBoard.setCount(rset.getInt("COUNT"));
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return rBoard;
+	}//
+	
+	
+	public ReviewPhoto selectReviewPhoto(Connection conn, int reviewNo) {
+		
+		ReviewPhoto rPhoto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewPhoto");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			rPhoto = new ReviewPhoto();
+			
+			rPhoto.setPhotoNo(rset.getInt("REVIEW_PHOTO_NO"));
+			rPhoto.setPhotoOname(rset.getString("REVIEW_PHOTO_ORIGINNAME"));
+			rPhoto.setPhotoCname(rset.getString("REVIEW_PHOTO_CHANGENAME"));
+			rPhoto.setPhotoPath(rset.getString("REVIEW_PHOTO_ADDRESS"));
+			rPhoto.setReviewNo(rset.getInt("REVIEW_NO"));
+			
+			System.out.println(rPhoto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		
-		
-		
+		return rPhoto;
 	}
-	
-	
-	
 	
 	
 	
