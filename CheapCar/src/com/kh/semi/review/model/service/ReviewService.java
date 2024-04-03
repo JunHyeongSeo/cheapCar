@@ -78,11 +78,25 @@ public class ReviewService {
 	}//
 	
 	
-	public void selectReviewBoard(int reviewNo) {
+	public ReviewBoard selectReviewBoard(int reviewNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new ReviewDao().selectReviewBoard(conn, reviewNo);
+		ReviewBoard rBoard = new ReviewDao().selectReviewBoard(conn, reviewNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return rBoard;
+		
+	}//
+	
+	
+	public void selectReviewPhoto(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new ReviewDao().selectReviewPhoto(conn, reviewNo);
+		
 		
 		
 	}
