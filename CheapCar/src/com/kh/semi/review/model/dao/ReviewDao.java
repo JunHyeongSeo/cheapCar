@@ -90,6 +90,7 @@ public class ReviewDao {
 				rv.setCount(rset.getInt("COUNT"));
 				rv.setReviewWriter(rset.getString("MEMBER_ID"));
 				rv.setTitleImg(rset.getString("TITLE_IMG"));
+				rv.setFileLevel(rset.getString("FILELEVEL"));
 				
 				
 				list.add(rv);		

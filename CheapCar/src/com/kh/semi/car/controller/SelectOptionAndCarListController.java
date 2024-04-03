@@ -34,7 +34,8 @@ public class SelectOptionAndCarListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		/*
 		int listCount;
 		int currentPage;
 		int pageLimit; 
@@ -43,6 +44,7 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		int maxPage;
 		int startPage;
 		int endPage; 
+		*/
 		
 		String model = request.getParameter("model");
 		String fuel = request.getParameter("fuel");
@@ -56,7 +58,7 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		String locations = request.getParameter("locations");
 		
-		
+		 
 		Search search = new Search();
 		search.setModel(model);
 		search.setFuel(fuel);
@@ -64,6 +66,7 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		search.setGrade(grade);
 		search.setOptions(options);
 		
+		/*
 		listCount = new CarService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -83,14 +86,15 @@ public class SelectOptionAndCarListController extends HttpServlet {
 		};
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		*/
 
-		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, pi, hours, locations, startDate, endDate);
+		ArrayList<Car> carList = new CarService().selectOptionAndCarList(search, hours, locations, startDate, endDate);
 		
 		ArrayList<Option> optionList = new CarService().selectOptionList();
 
 		request.setAttribute("carList", carList);
 		request.setAttribute("optionList", optionList);
-		request.setAttribute("pageInfo", pi);
+		// request.setAttribute("pageInfo", pi);
 		request.setAttribute("hours", hours);
 		request.setAttribute("locations", locations);
 		request.setAttribute("startDate", startDate);

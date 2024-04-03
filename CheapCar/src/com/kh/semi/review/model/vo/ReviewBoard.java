@@ -13,11 +13,12 @@ public class ReviewBoard {
 	private int memberNo;
 	private int count;
 	private String titleImg;
+	private String fileLevel;
 	public ReviewBoard() {
 		super();
 	}
 	public ReviewBoard(int reviewNo, String reviewTitle, String reviewContent, String reviewWriter, Date createDate,
-			String status, int memberNo, int count, String titleImg) {
+			String status, int memberNo, int count, String titleImg, String fileLevel) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewTitle = reviewTitle;
@@ -28,6 +29,7 @@ public class ReviewBoard {
 		this.memberNo = memberNo;
 		this.count = count;
 		this.titleImg = titleImg;
+		this.fileLevel = fileLevel;
 	}
 	public int getReviewNo() {
 		return reviewNo;
@@ -83,74 +85,19 @@ public class ReviewBoard {
 	public void setTitleImg(String titleImg) {
 		this.titleImg = titleImg;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + count;
-		result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
-		result = prime * result + memberNo;
-		result = prime * result + ((reviewContent == null) ? 0 : reviewContent.hashCode());
-		result = prime * result + reviewNo;
-		result = prime * result + ((reviewTitle == null) ? 0 : reviewTitle.hashCode());
-		result = prime * result + ((reviewWriter == null) ? 0 : reviewWriter.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((titleImg == null) ? 0 : titleImg.hashCode());
-		return result;
+	public String getFileLevel() {
+		return fileLevel;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ReviewBoard other = (ReviewBoard) obj;
-		if (count != other.count)
-			return false;
-		if (createDate == null) {
-			if (other.createDate != null)
-				return false;
-		} else if (!createDate.equals(other.createDate))
-			return false;
-		if (memberNo != other.memberNo)
-			return false;
-		if (reviewContent == null) {
-			if (other.reviewContent != null)
-				return false;
-		} else if (!reviewContent.equals(other.reviewContent))
-			return false;
-		if (reviewNo != other.reviewNo)
-			return false;
-		if (reviewTitle == null) {
-			if (other.reviewTitle != null)
-				return false;
-		} else if (!reviewTitle.equals(other.reviewTitle))
-			return false;
-		if (reviewWriter == null) {
-			if (other.reviewWriter != null)
-				return false;
-		} else if (!reviewWriter.equals(other.reviewWriter))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (titleImg == null) {
-			if (other.titleImg != null)
-				return false;
-		} else if (!titleImg.equals(other.titleImg))
-			return false;
-		return true;
+	public void setFileLevel(String fileLevel) {
+		this.fileLevel = fileLevel;
 	}
 	@Override
 	public String toString() {
 		return "ReviewBoard [reviewNo=" + reviewNo + ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent
 				+ ", reviewWriter=" + reviewWriter + ", createDate=" + createDate + ", status=" + status + ", memberNo="
-				+ memberNo + ", count=" + count + ", titleImg=" + titleImg + "]";
+				+ memberNo + ", count=" + count + ", titleImg=" + titleImg + ", fileLevel=" + fileLevel + "]";
 	}
+	
 	
 	
 	

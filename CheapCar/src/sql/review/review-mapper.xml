@@ -16,17 +16,18 @@
 						       REVIEW_TITLE,
 						       COUNT,
 						       MEMBER_ID,
-						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG"
+						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG",
+						       FILELEVEL
 						  FROM
 						       TB_REVIEW_BOARD
+						  LEFT
 						  JOIN
 						       TB_REVIEW_PHOTO ON (TB_REVIEW_BOARD.REVIEW_NO = TB_REVIEW_PHOTO.REVIEW_NO)
+						  LEFT     
 						  JOIN
 						       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
 						 WHERE
 						       TB_REVIEW_BOARD.STATUS = 'Y'
-						   AND
-						       TB_REVIEW_PHOTO.FILELEVEL = 1
 						 ORDER
 						    BY
 						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)

@@ -45,7 +45,7 @@ public class CarService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int listCount = new CarDao().selectListCount(conn);
+		int listCount = new CarDao().adminCarListCount(conn);
 		
 		JDBCTemplate.close(conn);
 		
@@ -84,6 +84,17 @@ public class CarService {
 		JDBCTemplate.close(conn);
 		
 		return list;
+	}
+	
+	public Car selectCar(int managementNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Car car = new CarDao().selectCar(conn, managementNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return car;
 	}
 	
 	
@@ -214,17 +225,17 @@ public class CarService {
 		
 	}
 
-	public ArrayList<Car> selectOptionAndCarList(Search search, PageInfo pi, int hours, String locations, String startDate, String endDate){
+	public ArrayList<Car> selectOptionAndCarList(Search search, int hours, String locations,String startDate, String endDate){
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Car> carList = new CarDao().selectOptionAndCarList(conn, search, pi, hours, locations, startDate, endDate);
+		ArrayList<Car> carList = new CarDao().selectOptionAndCarList(conn, search, hours, locations, startDate, endDate);
 		
 		JDBCTemplate.close(conn);
 		
 		return carList;	
-		
 	}
+	
 	
 	
 	
