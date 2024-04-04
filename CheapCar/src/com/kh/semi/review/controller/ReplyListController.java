@@ -1,4 +1,4 @@
-package com.kh.semi.common;
+package com.kh.semi.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.semi.car.model.service.CarService;
-import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.Reply;
 
 /**
- * Servlet implementation class MainPopularCar
+ * Servlet implementation class ReplyListController
  */
-@WebServlet("/popular.car")
-public class MainPopularCar extends HttpServlet {
+@WebServlet("/replyList.review")
+public class ReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainPopularCar() {
+    public ReplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +33,13 @@ public class MainPopularCar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Car> list = new CarService().popularCar();
+		int reviewNo = Integer.parseInt(request.getParameter("rNo"));
+		System.out.println(reviewNo);
+		ArrayList<Reply> list = new ReviewService().selectReplyList(reviewNo);
 		
-		System.out.println(list);
 		
 		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(list, response.getWriter());
+		new Gson().toJson(list, response.getWriter());
 		
 		
 	}

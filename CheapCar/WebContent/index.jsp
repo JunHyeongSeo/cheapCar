@@ -94,11 +94,11 @@
             $.ajax({
         	url : 'event.event',
         	success : function(result){
-        		console.log(result);
+        		//console.log(result);
 				
         		let resultStr = '';
 				for(let i = 0; i < result.length; i++){
-					
+					console.log(result);
 					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
 					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
@@ -133,10 +133,38 @@
                 success : function(result){
 
                     console.log(result);
+                    let resultStr = '';
+    				for(let i = 0; i < 3; i++){
+    					
+    					resultStr 
+    					  += '<div class="col-xs-12 col-sm-4">'
+	    					 + '<div class="card">'
+	    					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
+	    					     + '<div class="card-content">'
+	    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
+	    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
+	    					     + '</div>'
+	    					   + '</a>'
+	    					   + '<div class="card-content">'
+	    					     + '<h4 calss=cardtitle>'
+	    					       + '<a href="#">' + result[i].modelName + '</a>'
+	    					     + '</h4>'
+	    					   + '</div>'
+	    					 +'</div>'
+    					+ '</div>'
+    				}
+    				
+    				$('#cacaca').html(resultStr);
 
 
                 }
             });
+            
+            
+      		 
+          
+            
+        	
             
             
         };  
@@ -254,29 +282,16 @@
         <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">현재 인기있는 차종~</h2>
 
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
-                        <img src="https://www.hyundai.com/contents/repn-car/side-45/sonata-the-edge-45side.png" />
-                      </a>
-                        <div class="card-content">
-                            <h4 class="card-title">
-                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1"> 소나타를 타야지~~
-                              </a>
-                            </h4>
-                            <p class="">
-                                지금 일주일 빌리면 30%할인~~~~
-                            </p>
-                        </div>
-                        <div class="card-read-more">
-                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
-                                빌리러가기~
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
+            <div id="cacaca" class="row">
+            
+            
+            
+               
+                
+                
+                
+                <!-- 
+                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
                         <img src="https://file.carisyou.com/upload/2018/01/15/EDITOR_201801151245046750.jpg" />
@@ -297,6 +312,13 @@
                         </div>
                     </div>
                 </div>
+                
+                 -->
+                <!--
+                
+                
+                
+                
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
@@ -317,7 +339,9 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                    
+                    
+                </div> -->
             </div>
         </div>
     </div>

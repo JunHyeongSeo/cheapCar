@@ -329,7 +329,45 @@ public class ReviewDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}//
+	
+	
+	public ArrayList<Reply> selectReplyList(Connection conn, int reviewNo){
+		
+		ArrayList<Reply> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Reply reply = new Reply();
+				reply.setCommentNo(rset.getInt("COMMENT_NO"));
+				reply.setCommentContent(rset.getString("COMMENT_CONTENT"));
+				reply.setCreateDate(rset.getDate("CREATE_DATE"));
+				reply.setReviewNo(rset.getInt("REVIEW_NO"));
+				reply.setCommentWriter(rset.getString("MEMBER_ID"));
+				
+				list.add(reply);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
 	}
+	
 	
 	
 	
@@ -341,4 +379,4 @@ public class ReviewDao {
 	
 	
 	
-}
+}////

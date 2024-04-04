@@ -746,8 +746,10 @@
 	</entry>
 	
 	<entry key="popularCar">
-	  SELECT
-	       	   COUNT(*), MODEL_NAME
+		SELECT
+		       COUNT(*), 
+		       MODEL_NAME,
+		       CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME
 		  FROM
 		       TB_RESERVATION 
 		  JOIN
@@ -756,9 +758,11 @@
 		       TB_CAR_BRIDGE B USING(MANAGEMENT_NO)
 		  JOIN
 		       TB_MODEL A ON(A.MODEL_NO = B.MODEL_NO)
+		 JOIN
+		       TB_CAR_PHOTO TCP USING (MANAGEMENT_NO)
 		  GROUP 
 		     BY
-		       MODEL_NAME
+		       MODEL_NAME, CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME
 		  ORDER 
 		     BY 
 		       COUNT(*) DESC

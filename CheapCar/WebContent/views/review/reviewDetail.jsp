@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewPhoto, com.kh.semi.review.model.vo.ReviewBoard" %>    
+<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewPhoto, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.review.model.vo.Reply" %>    
 
 <%
     ArrayList<ReviewPhoto> list = (ArrayList<ReviewPhoto>)request.getAttribute("list");
@@ -53,7 +53,6 @@
     }
     .content_header1{
         width: 10%;
-        
         float: left;
         text-align: center;
         font-size: 30px;
@@ -135,27 +134,25 @@
 
 	<%@ include file="../common/menuBar.jsp" %>
 	
-	<div class="outer" >
-		<div class="row">
-		  <div class="col-lg-1">
+<div class="outer">
+	<div class="row">
+	<div class="col-lg-1">
 		  </div>
 			 <div class="col-lg-10">
 				<div class="panel-body">
-				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;뷰</h2>
+				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;&nbsp;뷰</h2>
 				</div> 
-                    <div class="content_outer">
+                    <div class="content_outer"> 
                         <div class="content_header"> 
                             
                         <div class="content_header2"><%= rBoard.getReviewTitle() %> </div>
-                        <input type="hidden" name="reviewNo" value="<%= rBoard.getReviewNo()%>">
-                        <input type="hidden" name="memberNo" value="<%= rBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
+	                        <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
                     </div>
-                    <div class="content_body">
+                    <div class="content_body"> 
 	                    <% if(list != null) { %>			
 	                        <div class="img-area">
 	                        		<% for(ReviewPhoto rPhoto : list) { %>
@@ -166,56 +163,44 @@
 	                     <% } %>   
                         <div class="text-area"> <%= rBoard.getReviewContent() %></div>
                     </div>
-                    <div class="reply" id="replyList">
+                    <div class="reply" id="replyList"> 
                         <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 10px;">
-				   
+				   			<thead>
                             <tr style="background-color: #6caddf; margin-top: 0; height: 40px; color: white; opacity: 0.8">
                                <th style="width: 8%; text-align:center">번&nbsp;호</th>
                                <th style="width: 45%; text-align:center">내&nbsp;&nbsp;용</th>
                                <th style="width: 10%; text-align:center">작성자</th>
                                <th style="width: 15%; text-align:center">작성일</th>
-                               
                             </tr>
-                            <tr class="notice_list">
-                                <th style="text-align:center">1</th>
-                                <th>내용내용</th>
-                                <th style="text-align:center">작성자</th>
-                                <th style="text-align:center">작성일</th>
-                                      
-                            </tr>
+                            </thead>
+                            <tbody>
                             
+                            </tbody>
                             
                          </table>    
-                    
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3"> 
                         <% if(loginUser != null){%>
                             <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
                                 <button class="btn btn-info" onclick="insertReply();">등록</button>
-                                
-                             </div>
+                            </div>
                         <% } else {%>
                             <input type="text" readonly class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
                         <% } %>    
-                      </div>
-
-
-                    <div class="content_btn" align="center">
+                    </div>
+                    <div class="content_btn" align="center"> 
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <% if(loginUser != null){ %>
                         	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         <% } %>
-
                     </div>
                 </div>
 				</div>            
-			 </div>
-		  </div>
-					  
-	</div>
-	   
+			 </div> 
+		 </div>
+
 
 <script>
 
@@ -239,15 +224,14 @@
                 
             });
         }
-        
-        
+
         
 	      
 
 
 
 </script>
-	
+
 		
 </body>
 </html>
