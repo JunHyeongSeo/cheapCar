@@ -77,7 +77,6 @@ public class CsInsertController extends HttpServlet {
 					at.setFilePath("resources/board_upfiles");
 					
 					list.add(at);
-					
 				} 
 			}
 			
