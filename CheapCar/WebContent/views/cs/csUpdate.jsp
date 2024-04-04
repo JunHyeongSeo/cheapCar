@@ -16,7 +16,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swapBlack+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
 
 <style>
 	.outer{
@@ -32,11 +32,13 @@
         margin-top: 50px;
         float: right;
         font-family: "Do Hyeon", sans-serif;
+        font-family: "Single Day", cursive;
     }
     
     .content_outer>div{
         width: 100%;
         font-family: "Do Hyeon", sans-serif;
+        font-family: "Single Day", cursive;
     }
     
     .content_header{
@@ -154,16 +156,17 @@
                 
                 <div class="content_outer">
                 	<form action="<%=contextPath%>/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
-	                    
+	                    <input type="hidden" name="csNo" value="<%= cs.getCsNo() %>">
+	                    <input type="hidden" name="memberNo" value="<%= cs.getMemberNo() %>">
 	                    <div class="content_header">
 	                        <div class="content_header2">
-	                            <label class="form-title">제목 : <%= cs.getCsTitle() %></label>
-	                            <input type="text" name="title">
+	                            <label class="form-title">제목 : </label>
+	                            <input type="text" name="title" value="<%= cs.getCsTitle() %>">
 	                        </div>
                   		</div>
                   		
                     	<div class="content_sub">
-                        	<span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
+                        	<span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span>
                    		</div>
                    		
 	                    <div class="content_body">
@@ -172,10 +175,19 @@
 	                    
 	                    <div class="content_add_img">
 	                    	<span id="addInfo"><br>&lt;파일첨부&gt;</span><br><br>
-                            <input type="file" name="upfile1" id="upfile">
-                            <input type="file" name="upfile2" id="upfile">
-                            <input type="file" name="upfile3" id="upfile">
-                            <input type="file" name="upfile4" id="upfile">
+	                    	
+	                    	<% for(int i = 0; i < list.size(); i++) { %>
+	                    		
+	                    		<% if(list.get(i) == null) { %>
+	                    			<p>첨부파일이 존재하지 않습니다.</p>
+	                    			<input type="file" name="upfile" id="upfile<%= i+1 %>">
+	                    		<% } else {%>
+	                    			첨부파일 : <label><%= list.get(i).getOriginName() %></label>
+									<input type="hidden" name="fileNo" value="<%= list.get(i).getFileNo() %>">
+									<input type="hidden" name="changeName" value="<%= list.get(i).getChangeName() %>">
+	                    		<% } %>
+	                    		
+	                    	<% } %>
 					    </div>
 	                    
 	                    <div class="content_btn" align="center">
