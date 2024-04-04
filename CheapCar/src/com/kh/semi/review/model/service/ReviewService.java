@@ -105,13 +105,15 @@ public class ReviewService {
 	}
 	
 	
-	public int deleteReview(int reviewNo) {
+	public int deleteReview(int reviewNo, String photoCname) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int boardResult = new ReviewDao().deleteReviewBoard(conn, reviewNo);
-		int photoResult = new ReviewDao().deleteReviewPhoto(conn, reviewNo);
-		
+		int photoResult = 1;
+		if(photoCname != null) {
+			photoResult = new ReviewDao().deleteReviewPhoto(conn, reviewNo);
+		}
 		if((boardResult * photoResult) > 0) {
 			JDBCTemplate.commit(conn);
 		} else {

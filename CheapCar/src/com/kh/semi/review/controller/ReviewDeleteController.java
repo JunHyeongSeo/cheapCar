@@ -1,13 +1,14 @@
 package com.kh.semi.review.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.semi.event.model.service.EventService;
+import com.kh.semi.review.model.service.ReviewService;
 
 /**
  * Servlet implementation class ReviewDeleteController
@@ -32,14 +33,15 @@ public class ReviewDeleteController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		String photoCname = request.getParameter("titleImg");
 		
-		int result = new ReviewService().deleteReview(reviewNo);
+		int result = new ReviewService().deleteReview(reviewNo, photoCname);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "이벤트게시물 삭제에 성공하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/list.event?currentPage=1");
+			request.getSession().setAttribute("alertMsg", "후기게시물 삭제에 성공하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/list.review?currentPage=1");
 		} else { 
-			request.setAttribute("errorMsg", "이벤트 삭제에 실패하였습니다.");
+			request.setAttribute("errorMsg", "후기게시글 삭제에 실패하였습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
