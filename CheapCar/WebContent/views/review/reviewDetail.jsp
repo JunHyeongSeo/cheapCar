@@ -152,6 +152,7 @@
 	                        <div class="img-area">
 	                        		<% for(ReviewPhoto rPhoto : list) { %>
 	                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
+	                              	<input type="hidden" name="titleImg" value="<%= rPhoto.getPhotoCname()%>"/>
 	                              	<% } %>
 	                        </div>
 	                     <% } %>   
