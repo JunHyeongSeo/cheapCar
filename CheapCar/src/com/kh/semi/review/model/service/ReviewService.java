@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
-import com.kh.semi.event.model.dao.EventDao;
 import com.kh.semi.review.model.dao.ReviewDao;
+import com.kh.semi.review.model.vo.Reply;
 import com.kh.semi.review.model.vo.ReviewBoard;
 import com.kh.semi.review.model.vo.ReviewPhoto;
 
@@ -123,7 +123,37 @@ public class ReviewService {
 		
 		
 		return (boardResult * photoResult);
-	}
+	}//
+	
+	
+	
+	public int insertComment(Reply reply) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReviewDao().insertComment(conn, reply);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		} 
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}//
+	
+	
+	
+	public void selectReplyList(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new ReviewDao().selectReplyList(conn, reviewNo);
+		
+		
+		
+	}//
 	
 	
 	
@@ -131,4 +161,4 @@ public class ReviewService {
 	
 	
 	
-}
+}////

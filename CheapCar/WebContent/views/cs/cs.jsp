@@ -9,6 +9,7 @@
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();	
 	int endPage = pi.getEndPage();
+	int listCount = pi.getListCount();
 %>
 <!DOCTYPE html>
 <html>
@@ -118,7 +119,7 @@
 		
 		<div class="paging-area" align="center" style="margin-top:12px">
 			
-			<% if(currentPage > 1) { %>
+			<% if(currentPage > 1 && listCount != 0) { %>
 				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/list.cs?currentPage=<%= currentPage - 1 %>'">이전</button>
 			<% } %>
 			
@@ -130,10 +131,9 @@
 				<% } %>
 			<% } %>
 			
-			<% if(currentPage != maxPage) { %>
+			<% if(currentPage != maxPage && currentPage < maxPage) { %>
 				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='<%=contextPath%>/list.cs?currentPage=<%= currentPage + 1 %>'">다음</button>
 			<% } %>
-		   
 	    </div>	
 		
 		<div class="search-area">
