@@ -1003,6 +1003,7 @@ public class CarDao {
 				
 				car.setModelName(rset.getString("MODEL_NAME"));
 				car.setCount(rset.getInt("COUNT(*)"));
+				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME"));
 				
 				list.add(car);
 			}
