@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.review.model.vo.Reply;
 import com.kh.semi.review.model.vo.ReviewBoard;
 import com.kh.semi.review.model.vo.ReviewPhoto;
 
@@ -305,6 +306,30 @@ public class ReviewDao {
 		return result;
 	}//
 	
+	
+	public int insertComment(Connection conn, Reply reply) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reply.getCommentContent());
+			pstmt.setInt(2, reply.getReviewNo());
+			pstmt.setInt(3, reply.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	
