@@ -102,7 +102,6 @@
 					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
 					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
-					
 				}
 				
 				$('.swiper-wrapper').html(resultStr);
@@ -135,16 +134,11 @@
         $(function(){
 
             $('.swiper-slide').click(function(){
-                
             	
                 const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
-
                 location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo 
-
             })
-
-
         });
         
         
@@ -237,8 +231,28 @@
             font-weight:600;
             text-transform: uppercase
             }
-
     </style>
+
+    <script>
+        window.onload = function(){
+            
+            $.ajax({
+                url : 'popular.car',
+                success : function(result){
+
+                    console.log(result);
+
+
+                }
+            });
+
+
+        }
+
+
+
+    </script>
+
 
     <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
 
@@ -311,9 +325,18 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
+    <!-- <div>
+        <div>
+
+
+        </div>
+    </div> -->
+
+
+
+
 
     <div style="margin-top:200px;"></div>
 
