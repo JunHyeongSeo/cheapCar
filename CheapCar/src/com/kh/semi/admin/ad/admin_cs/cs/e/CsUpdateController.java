@@ -1,7 +1,6 @@
 package com.kh.semi.admin.ad.admin_cs.cs.e;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.common.model.vo.BoardAttachment;
-import com.kh.semi.cs.model.service.CsService;
 import com.kh.semi.cs.model.vo.Cs;
 
 /**
  * Servlet implementation class CsUpdateFormController
  */
-@WebServlet("/updateForm.cs")
-public class CsUpdateFormController extends HttpServlet {
+@WebServlet("/update.cs")
+public class CsUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CsUpdateFormController() {
+    public CsUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +32,21 @@ public class CsUpdateFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		int csNo = Integer.parseInt(request.getParameter("csNo"));
+		String csTitle = request.getParameter("title");
+		String csContent = request.getParameter("content");
+		String[] upfile = request.getParameterValues("upfile");
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		Cs cs = new CsService().csDetail(csNo);
-		ArrayList<BoardAttachment> list = new CsService().selectAttachment(csNo);
+		Cs cs= new Cs();
+		cs.setCsNo(csNo);
+		cs.setCsTitle(csTitle);
+		cs.setCsContent(csContent);
 		
-		request.setAttribute("cs", cs);
-		request.setAttribute("list", list);
+		BoardAttachment ba = new BoardAttachment();
 		
-		request.getRequestDispatcher("views/cs/csUpdate.jsp").forward(request, response);
+		// ArrayList<>
+		
+		
 	}
 
 	/**
