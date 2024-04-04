@@ -119,6 +119,14 @@
         padding-top: 20px;
     	padding-bottom: 100px;
     }
+    #replyList{
+        width: 100%;
+		font-family: "Do Hyeon", sans-serif;
+		font-weight: 10%;
+		font-style: normal;
+		font-size: 15px;        
+
+    }
     
 
 </style>
@@ -158,6 +166,39 @@
 	                     <% } %>   
                         <div class="text-area"> <%= rBoard.getReviewContent() %></div>
                     </div>
+                    <div class="reply" id="replyList">
+                        <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 10px;">
+				   
+                            <tr style="background-color: #6caddf; margin-top: 0; height: 40px; color: white; opacity: 0.8">
+                               <th style="width: 8%; text-align:center">번&nbsp;호</th>
+                               <th style="width: 45%; text-align:center">내&nbsp;&nbsp;용</th>
+                               <th style="width: 10%; text-align:center">작성자</th>
+                               <th style="width: 15%; text-align:center">작성일</th>
+                               
+                            </tr>
+                            <tr class="notice_list">
+                                <th style="text-align:center">1</th>
+                                <th>내용내용</th>
+                                <th style="text-align:center">작성자</th>
+                                <th style="text-align:center">작성일</th>
+                                      
+                            </tr>
+                            
+                            
+                         </table>    
+                    
+                    </div>
+                    <div class="input-group mb-3">
+                        <% if(loginUser != null){%>
+                            <input type="text" class="form-control" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다.">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="submit">입력</button>
+                                
+                             </div>
+                        <% } else {%>
+                            <input type="text" class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
+                        <% } %>    
+                      </div>
 
 
                     <div class="content_btn" align="center">
