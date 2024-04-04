@@ -118,7 +118,7 @@
 
 	    <div class="area">
 	        <div class="inline" id="introduce">안녕하세요! <span><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
-	        <div class="inline" id="mymodify"><a href="<%=contextPath %>/update" >개인정보수정</a></div>
+	        <div class="inline" id="mymodify"><a type="button" href="<%=contextPath %>/update">개인정보수정</a></div>
 	    </div>
 	    
 		   

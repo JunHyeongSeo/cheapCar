@@ -134,15 +134,24 @@
 
                     console.log(result);
                     let resultStr = '';
-    				for(let i = 0; i < 4; i++){
+    				for(let i = 0; i < 3; i++){
     					
-    					resultStr += '<div class="card">'
-    					 + '<a class="img-card">'
-    					 + '<div class="card-content"><img style="width : 250px; height : 200px " src="' + result[i].carPhotoAddress +'">'
-    					 + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '"></div>'
-    					 + '</a>'
-    					 +'</div>'
-    					
+    					resultStr 
+    					  += '<div class="col-xs-12 col-sm-4">'
+	    					 + '<div class="card">'
+	    					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
+	    					     + '<div class="card-content">'
+	    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
+	    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
+	    					     + '</div>'
+	    					   + '</a>'
+	    					   + '<div class="card-content">'
+	    					     + '<h4 calss=cardtitle>'
+	    					       + '<a href="#">' + result[i].modelName + '</a>'
+	    					     + '</h4>'
+	    					   + '</div>'
+	    					 +'</div>'
+    					+ '</div>'
     				}
     				
     				$('#cacaca').html(resultStr);
@@ -152,6 +161,8 @@
             });
             
             
+      		 
+          
             
         	
             
@@ -271,15 +282,15 @@
         <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">현재 인기있는 차종~</h2>
 
         <div class="container">
-            <div class="row">
+            <div id="cacaca" class="row">
             
             
             
-                <div id="cacaca" class="col-xs-12 col-sm-4">
-               		 
-                </div>
+               
                 
                 
+                
+                <!-- 
                  <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
@@ -302,7 +313,7 @@
                     </div>
                 </div>
                 
-                
+                 -->
                 <!--
                 
                 
