@@ -148,11 +148,14 @@
                         <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-                        <div class="img-area">
-                        		<% for(ReviewPhoto rPhoto : list) { %>
-                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
-                              	<% } %>
-                        </div>
+	                    <% if(list != null) { %>			
+	                        <div class="img-area">
+	                        		<% for(ReviewPhoto rPhoto : list) { %>
+	                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
+	                              	<input type="hidden" name="titleImg" value="<%= rPhoto.getPhotoCname()%>"/>
+	                              	<% } %>
+	                        </div>
+	                     <% } %>   
                         <div class="text-area"> <%= rBoard.getReviewContent() %></div>
                     </div>
 
