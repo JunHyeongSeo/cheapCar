@@ -143,6 +143,21 @@
 		       FILELEVEL ASC      
 	</entry>
 	
+	<entry key="deleteReviewBoard">
+		UPDATE
+		       TB_REVIEW_BOARD
+		   SET
+		       STATUS = 'N',
+		       COUNT = 0
+		 WHERE
+		       REVIEW_NO = ?      
+	</entry>
+	
+	
+	<entry key="deleteReviewPhoto">
+	
+	
+	</entry>
 	
 	
 	
