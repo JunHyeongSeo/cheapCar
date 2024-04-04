@@ -141,7 +141,19 @@ public class ReviewService {
 		JDBCTemplate.close(conn);
 		
 		return result;
-	}
+	}//
+	
+	
+	
+	public void selectReplyList(int reviewNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		new ReviewDao().selectReplyList(conn, reviewNo);
+		
+		
+		
+	}//
 	
 	
 	
@@ -149,4 +161,4 @@ public class ReviewService {
 	
 	
 	
-}
+}////

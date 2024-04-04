@@ -175,7 +175,7 @@
                                <th style="width: 15%; text-align:center">작성일</th>
                                
                             </tr>
-                            <tr class="notice_list">
+                            <tr class="reply_list">
                                 <th style="text-align:center">1</th>
                                 <th>내용내용</th>
                                 <th style="text-align:center">작성자</th>
@@ -229,6 +229,18 @@
             });
         }
         
+       function selectReplyList(){
+    	   $.ajax({
+    		   url : 'replyList.review',
+    		   date : {
+    			   reviewNo : <%= rBoard.getReviewNo() %>
+    		   },
+    		   success : function(result){
+    			   
+    		   }
+    	   })
+       } 
+       
         
         
 	      
