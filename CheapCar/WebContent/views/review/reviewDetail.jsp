@@ -224,7 +224,39 @@
                 
             });
         }
+        
+        $(function(){
 
+            selectReplyList();
+          });
+        
+        
+       function selectReplyList(){
+    	   $.ajax({
+    		   url : 'replyList.review',
+    		   data : {
+    			   rNo : <%= rBoard.getReviewNo() %>
+    		   },
+    		   success : function(result){
+    	            let resultStr = '';
+    	            for(let i in result){
+
+    	                resultStr += '<tr>'
+    	                		   + '<td>' + result[i].reviewNo + '</td>'	
+    	                           + '<td>' + result[i].commentContent + '</td>'
+    	                           + '<td>' + result[i].commentWriter + '</td>'
+    	                           + '<td>' + result[i].createDate + '</td>'
+    	                           + '</tr>'
+    	            };
+    	            $('#replyList tbody').html(resultStr);
+    	          },
+    	          error : function(e){
+    	            console.log(e);
+    	          }
+    	        });
+       } 
+       
+        
         
 	      
 
