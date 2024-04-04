@@ -145,14 +145,15 @@ public class ReviewService {
 	
 	
 	
-	public void selectReplyList(int reviewNo) {
+	public ArrayList<Reply> selectReplyList(int reviewNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		new ReviewDao().selectReplyList(conn, reviewNo);
+		ArrayList<Reply> list = new ReviewDao().selectReplyList(conn, reviewNo);
 		
+		JDBCTemplate.close(conn);
 		
-		
+		return list;
 	}//
 	
 	

@@ -188,6 +188,23 @@
                )		       
 	</entry>
 	
+	<entry key="selectReplyList">
+		SELECT
+		       COMMENT_NO,
+		       COMMENT_CONTENT,
+		       CREATE_DATE,
+		       REVIEW_NO,
+		       MEMBER_ID,
+		  FROM
+		       TB_REVIEW_COMMENT
+		  JOIN
+		       TB_MEMBER ON (TB_REVIEW_COMMENT.MEMBER_NO = TB_MEMBER.MEMBER_NO)
+		 WHERE
+		       REVIEW_NO = ? 
+		   AND
+		       STATUS = 'Y'               
+	</entry>
+	
 	
 	
 	

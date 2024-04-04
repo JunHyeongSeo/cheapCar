@@ -1,11 +1,17 @@
 package com.kh.semi.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.Reply;
 
 /**
  * Servlet implementation class ReplyListController
@@ -29,10 +35,11 @@ public class ReplyListController extends HttpServlet {
 		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
-		new ReviewService().selectReplyList(reviewNo);
+		ArrayList<Reply> list = new ReviewService().selectReplyList(reviewNo);
 		
 		
-		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(list, response.getWriter());
 		
 		
 	}
