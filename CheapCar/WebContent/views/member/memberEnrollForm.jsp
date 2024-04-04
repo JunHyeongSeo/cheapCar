@@ -36,6 +36,12 @@
 							<label class="form-label" for="form3Example1c">이름이 뭐냐고 짜샤~~~</label>
 						  </div>
 						</div>
+
+
+
+
+
+						
 	  
 						<div class="d-flex flex-row align-items-center mb-4">
 						  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -77,7 +83,6 @@
 					<div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 					  <img src="https://skygame24.com/UploadFiles/20200702025400%eb%93%9c%eb%a6%ac%ed%94%84%ed%8a%b8.gif"
 						class="img-fluid" width="100%" alt="칸세이 드리프트~">
-	  
 					</div>
 				  </div>
 				</div>
@@ -86,6 +91,55 @@
 		  </div>
 		</div>
 	  </section>
+
+
+
+	  <!-- <form class="mx-1 mx-md-4">
+	  
+		<div class="d-flex flex-row align-items-center mb-4">
+		  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+		  <div class="form-outline flex-fill mb-0">
+			<input type="text" id="form3Example1c" class="form-control" />
+			<label class="form-label" for="form3Example1c">이름이 뭐냐고 짜샤~~~</label>
+		  </div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center mb-4">
+		  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+		  <div class="form-outline flex-fill mb-0">
+			<input type="email" id="form3Example3c" class="form-control" />
+			<label class="form-label" for="form3Example3c">아이디 짜샤~~</label>
+		  </div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center mb-4">
+		  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+		  <div class="form-outline flex-fill mb-0">
+			<input type="password" id="form3Example4c" class="form-control" />
+			<label class="form-label" for="form3Example4c">비밀번호 짜샤~~~</label>
+		  </div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center mb-4">
+		  <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+		  <div class="form-outline flex-fill mb-0">
+			<input type="password" id="form3Example4cd" class="form-control" />
+			<label class="form-label" for="form3Example4cd">비밀번호 또 써 짜샤~~~</label>
+		  </div>
+		</div>
+
+		<div class="form-check d-flex justify-content-center mb-5">
+		  <label class="form-check-label" for="form2Example3" style="font-size:12px; color : lightcoral;">
+			가입해라 짜샤 ~~~
+		  </label>
+		</div>
+
+		<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+		  <button type="button" class="btn btn-danger btn-lg">가입요청</button>
+		</div>
+
+	  </form> -->
+	  
 
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
