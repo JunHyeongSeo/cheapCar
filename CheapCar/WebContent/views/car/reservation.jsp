@@ -12,6 +12,7 @@
     int totalPrice = (int)request.getAttribute("totalPrice");
 %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -79,7 +80,7 @@
                 <div class="reserve-detail">결제 금액 : <%= totalPrice %> 원</div>
             </div>
 			<div>
-				<a class="btn btn-primary" href="<%=contextPath%>/myPage.jsp">
+				<a class="btn btn-primary" href="<%=contextPath%>/myPage">
 				마이페이지 
 				</a>
 				<a class="btn btn-secondary" href="<%=contextPath%>">
