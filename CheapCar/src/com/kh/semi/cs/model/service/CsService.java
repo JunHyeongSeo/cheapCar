@@ -109,7 +109,32 @@ public class CsService {
 		return list;
 	}
 	
-	
+	public int delete(int csNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = 1;
+		
+		int csResult = new CsDao().deleteCs(conn, csNo);
+		
+		int attachment = new CsDao().selectAttachmentByCsNo(conn, csNo);
+		
+		int attachmentResult = 1;
+		
+		if(attachment > 0) {
+			attachmentResult = new CsDao().deleteAttachment(conn, csNo);
+		} 
+		
+		result = csResult * attachmentResult;
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 	
 	
 	
