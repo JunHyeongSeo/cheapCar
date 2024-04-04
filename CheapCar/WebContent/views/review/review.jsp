@@ -148,10 +148,14 @@
 								<a>
 									<div class="img-area review_1 content">
 									 <input type="hidden" value="<%= re.getReviewNo() %>"/>
+									 <% if(re.getTitleImg().equals("/")){ %>
+									 <img src="views\common\차빌려조로고.gif" id="titleImg"/>
+									 <%} else{ %>
 								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
+								 	 <% } %>
 								 	</div>
 									<div class="text-area review_1 content">
-									
+									<input type="hidden" value="<%= re.getReviewNo() %>"/>
 									 <span> <%= re.getReviewTitle() %> </span><br><br>
 								     <span style="font-size: 15px;">조회수 :  <%= re.getCount() %></span>
 									</div>

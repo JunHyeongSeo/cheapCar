@@ -7,9 +7,9 @@
 	</comment>
 	
 	<entry key="selectReviewList">
-		SELECT  *
+		SELECT RR.*, ROWNUM
 		  FROM	
-			  	   (SELECT RB.*, ROWNUM RNUM
+			  	   (SELECT RB.*
 			  		  FROM
 						(SELECT 
 						       TB_REVIEW_BOARD.REVIEW_NO,
@@ -18,6 +18,7 @@
 						       MEMBER_ID,
 						       REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG",
 						       TB_REVIEW_BOARD.MEMBER_NO,
+						       TB_REVIEW_BOARD.STATUS,
 						       FILELEVEL
 						  FROM
 						       TB_REVIEW_BOARD
@@ -28,14 +29,14 @@
 						  JOIN
 						       TB_MEMBER ON (TB_REVIEW_BOARD.MEMBER_NO = TB_MEMBER.MEMBER_NO)     
 						 WHERE
-						       TB_REVIEW_BOARD.STATUS = 'Y'
-						   AND
 						       FILELEVEL = 1 OR FILELEVEL IS NULL    
 						 ORDER
 						    BY
-						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)
+						       TB_REVIEW_BOARD.REVIEW_NO DESC)RB)RR
          WHERE
-               RNUM BETWEEN ? AND ?
+         	   STATUS = 'Y'
+           AND	   		
+               ROWNUM BETWEEN ? AND ?
 	
 	</entry>
 
@@ -143,6 +144,26 @@
 		       FILELEVEL ASC      
 	</entry>
 	
+	<entry key="deleteReviewBoard">
+		UPDATE
+		       TB_REVIEW_BOARD
+		   SET
+		       STATUS = 'N',
+		       COUNT = 0
+		 WHERE
+		       REVIEW_NO = ?      
+	</entry>
+	
+	
+	<entry key="deleteReviewPhoto">
+		UPDATE
+		       TB_REVIEW_PHOTO
+		   SET
+		       STATUS = 'N'
+		 WHERE
+		       REVIEW_NO = ?          
+	
+	</entry>
 	
 	
 	

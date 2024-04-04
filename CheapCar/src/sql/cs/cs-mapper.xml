@@ -7,7 +7,7 @@
 	</comment>
 	
 	<entry key="selectCsListCount">
-		SELECT COUNT(*) FROM TB_CS_BOARD
+		SELECT COUNT(*) FROM TB_CS_BOARD WHERE STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectCsList"> 
@@ -25,7 +25,9 @@
                         JOIN
                             TB_MEMBER USING(MEMBER_NO)
 				    ORDER BY 
-				            CS_NO DESC) A)
+				            CS_NO DESC) A
+				        WHERE
+				        	  STATUS = 'Y')
     	 WHERE 
 				RNUM BETWEEN ? AND ?
 	</entry>
@@ -61,9 +63,17 @@
 		SELECT * FROM TB_CS_PHOTO WHERE REF_NO = ?
 	</entry> 
 	
+	<entry key="deleteCs">
+		UPDATE TB_CS_BOARD SET STATUS = 'N' WHERE CS_NO = ?
+	</entry>
 	
+	<entry key="selectAttachmentByCsNo">
+		SELECT COUNT(*) FROM TB_CS_PHOTO WHERE REF_NO = ?
+	</entry>
 	
-	
+	<entry key="deleteAttachment">
+		UPDATE TB_CS_PHOTO SET STATUS = 'N' WHERE REF_NO = ?
+	</entry>
 	
 	<!-- 
 	<entry key="searchedCsCount">

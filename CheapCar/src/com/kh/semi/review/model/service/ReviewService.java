@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.event.model.dao.EventDao;
 import com.kh.semi.review.model.dao.ReviewDao;
 import com.kh.semi.review.model.vo.ReviewBoard;
 import com.kh.semi.review.model.vo.ReviewPhoto;
@@ -101,6 +102,27 @@ public class ReviewService {
 		
 		
 		return list;
+	}
+	
+	
+	public int deleteReview(int reviewNo, String photoCname) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int boardResult = new ReviewDao().deleteReviewBoard(conn, reviewNo);
+		int photoResult = 1;
+		if(photoCname != null) {
+			photoResult = new ReviewDao().deleteReviewPhoto(conn, reviewNo);
+		}
+		if((boardResult * photoResult) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		
+		return (boardResult * photoResult);
 	}
 	
 	

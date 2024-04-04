@@ -980,7 +980,40 @@ public class CarDao {
 		return carList;
 	}
 	
+	public ArrayList<Car> popularCar(Connection conn){
+		
+		ArrayList<Car> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("popularCar");
 	
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Car car = new Car();
+				
+				car.setModelName(rset.getString("MODEL_NAME"));
+				car.setCount(rset.getInt("COUNT(*)"));
+				
+				list.add(car);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+		return list;
+	}
 	
 	
 	

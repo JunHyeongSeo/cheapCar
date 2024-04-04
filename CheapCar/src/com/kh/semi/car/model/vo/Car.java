@@ -34,7 +34,22 @@ public class Car {
 	private Date startDate;
 	private Date createDate;
 	private Date mileageDate;
+	private int count;
 	
+	public int getCount() {
+		return count;
+	}
+
+
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+
+
 	public Car() {
 		super();
 	}
