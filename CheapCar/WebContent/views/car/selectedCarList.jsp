@@ -178,20 +178,11 @@
                     <div class="detail-option">
                         <label>차종</label>
                         <select id="modelOption" name="model"class="form-control">
-                          <option value="">차종을 선택해주세요</option>
-                          <!--
-                          <option value="아반때">아반때</option>
-                          <option value="소나타">소나타</option>
-                          <option value="K3">K3</option>
-                          <option value="GV80">GV80</option>
-                          <option value="QM3">QM3</option>
-                          <option value="카니발F">카니발F</option>
-                          <option value="아이오닉5">아이오닉5</option>
-                          <option value="모닝">모닝</option>
-                          <option value="카이엔">카이엔</option>
-                          <option value="스포티지">스포티지</option>
-                          <option value="스타렉스">스타렉스</option>
-                          -->
+	                        <option value=''>차종을 선택해주세요</option>
+							<option value='아반때'>아반때</option>
+							<option value='소나타'>소나타</option>
+							<option value='아이오닉5'>아이오닉5</option>
+							<option value='스타렉스'>스타렉스</option>
                         </select>
                     </div>  
                     
@@ -199,13 +190,9 @@
                         <label>차량 등급 </label>
                         <select id="gradeOption" name="grade" class="form-control">
                         	<option value="">등급을 선택해주세요</option>
-                        	<!--
-                            <option value="경차">경차</option>
                             <option value="준중형">준중형</option>
                             <option value="중형">중형</option>
                             <option value="대형">대형</option>
-                            <option value="SUV">SUV</option>
-                            -->
                         </select>
                     </div>
 
@@ -213,13 +200,9 @@
                         <label>사용 연료 </label>
                         <select id="fuelOption" name="fuel" class="form-control">
                             <option value="">연료를 선택해주세요</option>
-                        	<!--
-                            <option value="전기">전기</option>
-                            <option value="하이브리드">하이브리드</option>
-                            <option value="가솔린">가솔린</option>
-                            <option value="디젤">디젤</option>
                             <option value="LPG">LPG</option>
-                            -->
+                            <option value="디젤">디젤</option>
+                            <option value="가솔린">가솔린</option>
                         </select>
                     </div>
 
@@ -259,9 +242,103 @@
 				
 				modelHyundai.innerHTML = "<option value=''>차종을 선택해주세요</option>";
 				modelHyundai.innerHTML += "<option value='아반때'>아반때</option>";
+				modelHyundai.innerHTML += "<option value='소나타'>소나타</option>";
+				modelHyundai.innerHTML += "<option value='아이오닉5'>아이오닉5</option>";
+				modelHyundai.innerHTML += "<option value='스타렉스'>스타렉스</option>";
 				
+				const gradeHyundai = document.getElementById('gradeOption');
+				
+				gradeHyundai.innerHTML = "<option value=''>등급을 선택해주세요</option>";
+				gradeHyundai.innerHTML += "<option value='준중형'>준중형</option>";
+				gradeHyundai.innerHTML += "<option value='중형'>중형</option>";
+				gradeHyundai.innerHTML += "<option value='대형'>대형</option>";
+				
+				const fuelHyundai = document.getElementById('fuelOption');
+				
+				fuelHyundai.innerHTML = "<option value=''>연료를 선택해주세요</option>";
+				fuelHyundai.innerHTML += "<option value='LPG'>LPG</option>";
+				fuelHyundai.innerHTML += "<option value='디젤'>디젤</option>";
+				fuelHyundai.innerHTML += "<option value='가솔린'>가솔린</option>";
+				
+			} else if(selectBrand == "기아"){
+				
+				const modelKia = document.getElementById('modelOption');
+				
+				modelKia.innerHTML = "<option value=''>차종을 선택해주세요</option>";
+				modelKia.innerHTML += "<option value='K3'>K3</option>";
+				modelKia.innerHTML += "<option value='카니발'>카니발</option>";
+				modelKia.innerHTML += "<option value='모닝'>모닝</option>";
+				modelKia.innerHTML += "<option value='스포티지'>스포티지</option>";
+				
+				const gradeKia = document.getElementById('gradeOption');
+				
+				gradeKia.innerHTML = "<option value=''>등급을 선택해주세요</option>";
+				gradeKia.innerHTML += "<option value='소형'>소형</option>";
+				gradeKia.innerHTML += "<option value='준중형'>준중형</option>";
+				gradeKia.innerHTML += "<option value='중형'>중형</option>";
+				gradeKia.innerHTML += "<option value='대형'>대형</option>";
+				
+				const fuelKia = document.getElementById('fuelOption');
+				
+				fuelKia.innerHTML = "<option value=''>연료를 선택해주세요</option>";
+				fuelKia.innerHTML += "<option value='LPG'>LPG</option>";
+				fuelKia.innerHTML += "<option value='디젤'>디젤</option>";
+				fuelKia.innerHTML += "<option value='가솔린'>가솔린</option>";
+			
+			} else if(selectBrand == "제네시스"){
+				
+				const modelGenesis = document.getElementById('modelOption');
+
+				modelGenesis.innerHTML = "<option value=''>차종을 선택해주세요</option>";
+				modelGenesis.innerHTML += "<option value='GV80'>GV80</option>";
+				
+				const gradeGenesis = document.getElementById('gradeOption');
+				
+				gradeGenesis.innerHTML = "<option value=''>등급을 선택해주세요</option>";
+				gradeGenesis.innerHTML += "<option value='대형'>대형</option>";
+
+				const fuelGenesis = document.getElementById('fuelOption');
+				
+				fuelGenesis.innerHTML = "<option value=''>연료를 선택해주세요</option>";
+				fuelGenesis.innerHTML += "<option value='디젤'>디젤</option>";
+				fuelGenesis.innerHTML += "<option value='가솔린'>가솔린</option>";
+				
+			} else if(selectBrand == "르노삼성"){
+				
+				const modelRnoSamsung = document.getElementById('modelOption');
+				
+				modelRnoSamsung.innerHTML = "<option value=''>차종을 선택해주세요</option>";
+				modelRnoSamsung.innerHTML += "<option value='QM3'>QM3</option>";
+				
+				const gradeRnoSamsung = document.getElementById('gradeOption');
+				
+				gradeRnoSamsung.innerHTML = "<option value=''>등급을 선택해주세요</option>";
+				gradeRnoSamsung.innerHTML += "<option value='소형'>소형</option>";
+
+				const fuelRnoSamsung = document.getElementById('fuelOption');
+				
+				fuelRnoSamsung.innerHTML = "<option value=''>연료를 선택해주세요</option>";
+				fuelRnoSamsung.innerHTML += "<option value='디젤'>디젤</option>";
+				
+			} else {
+				
+				const modelPorsche = document.getElementById('modelOption');
+				
+				modelPorsche.innerHTML = "<option value=''>차종을 선택해주세요</option>";
+				modelPorsche.innerHTML += "<option value='카이엔'>카이엔</option>";
+				
+				const gradePorsche = document.getElementById('gradeOption');
+
+				gradePorsche.innerHTML = "<option value=''>등급을 선택해주세요</option>";
+				gradePorsche.innerHTML += "<option value='대형'>대형</option>";
+				
+				const fuelPorsche = document.getElementById('fuelOption');
+				
+				fuelPorsche.innerHTML = "<option value=''>연료를 선택해주세요</option>";
+				fuelPorsche.innerHTML += "<option value='가솔린'>가솔린</option>";
 				
 			}
+			
 		}
 		
 	</script>
