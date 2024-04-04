@@ -192,11 +192,11 @@
                         <% if(loginUser != null){%>
                             <input type="text" class="form-control" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
-                                <button class="btn btn-info">등록</button>
+                                <button class="btn btn-info" onclick="insertReply();">등록</button>
                                 
                              </div>
                         <% } else {%>
-                            <input type="text" class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
+                            <input type="text" readonly class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
                         <% } %>    
                       </div>
 
