@@ -24,27 +24,27 @@
 			<table align="center">
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" readonly maxlength="12" required name="memberId" value="<%=loginUser.getMemberId()%>"></td>
+					<td><input type="text" readonly maxlength="12" required id="memberId" name="memberId" value="<%=loginUser.getMemberId()%>"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이름</td>
-					<td><input type="text" maxlength="5" required name="memberName" value="<%=loginUser.getMemberName()%>"></td>
+					<td><input type="text" maxlength="5" required id="memberName" name="memberName" value="<%=loginUser.getMemberName()%>"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 생년월일</td>
-					<td><input type="text" placeholder="-포함해서 입력해주세요." name="birthday" value="<%=loginUser.getBirthday()%>"></td>
+					<td><input type="text" placeholder="-포함해서 입력해주세요." id="birthday" name="birthday" value="<%=loginUser.getBirthday()%>"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 휴대번호</td>
-					<td><input type="text" name="phone" value="<%=loginUser.getPhone()%>"></td>
+					<td><input type="text" id="phone" name="phone" value="<%=loginUser.getPhone()%>"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이메일</td>
-					<td><input type="email" name="email" value="<%=loginUser.getEmail()%>"></td>
+					<td><input type="email" id="email" name="email" value="<%=loginUser.getEmail()%>"></td>
 					<td></td>
 				</tr>
 				
@@ -65,6 +65,70 @@
 		
 		</form>
 	</div>
+	
+	<script>
+
+		var memberIdCheck = /^[a-zA-Z0-9]{4,15}$/;
+		var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
+		var memberNameCheck = /^[가-힣]{2,6}$/;
+		var birthdayCheck = /^(19[0-9]{2}|20[0-9]{2})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+		//  regExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-[1-4]\d{6}$/;
+		var phoneCheck = /^01[0179]-[0-9]{4}-[0-9]{4}$/;
+		//var ddffeeffbb = /^[어쩌라고]$/; --;;
+		var emailCheck = /^[a-zA-Z0-9]{2,20}@[a-z]{2,5}.[a-z]{3}$/;
+	
+		$('#memberId').blur(function(){
+						
+			var idvalue = $('#memberId').val();
+
+			if(!memberIdCheck.test(idvalue)){
+				alert('아이디를 제대로 입력해주세요');
+				$('#memberId').val("");
+			} 
+		});
+
+		$('#memberName').blur(function(){
+
+			var namevalue = $('#memberName').val();
+
+			if(!memberNameCheck.test(namevalue)){
+				alert('이름은 한글 2~6글자입니다. 다시입력해주세요.');
+				$('#memberName').val("");
+			}
+		});
+
+		$('#birthday').blur(function(){
+
+			var birthdayvalue = $('#birthday').val();
+
+			if(!birthdayCheck.test(birthdayvalue)){
+				alert('생년월일을 다시입력해주세요.');
+				$('#birthday').val('');
+			}
+		});
+
+		$('#phone').blur(function(){
+
+			var phonevalue = $('#phone').val();
+
+			if(!phoneCheck.test(phonevalue)){
+				alert('전화번호를 다시입력해주세요');
+				$('#phone').val('');
+			}
+		});
+
+		$('#email').blur(function(){
+
+			var emailvalue = $('#email').val();
+
+			if(!emailCheck.test(emailvalue)){
+				alert('이메일을 다시입력해주세요.');
+				$('#email').val('');
+			}
+		});
+	
+	
+	</script>
 	
 	
 	

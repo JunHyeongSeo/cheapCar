@@ -16,7 +16,7 @@
 
 	<%@ include file="../common/menuBar.jsp" %>
 
-	<section class="vh-100" style="background-color: #eee;">
+	<section style="background-color: #eee;  height: 100%;"><!--class="vh-100"-->
 		<div class="container h-100">
 		  <div class="row d-flex justify-content-center align-items-center h-100">
 			<div class="col-lg-12 col-xl-11">
@@ -97,7 +97,7 @@
 							<i class="fas fa-key fa-lg me-3 fa-fw"></i>
 							<div class="form-outline flex-fill mb-0">
 							  <label class="form-label" for="form3Example4cd" style="padding-left:10px;">이메일</label>
-							  <input type="email" id="email" class="form-control" required name="email">
+							  <input type="email" id="email" class="form-control" placeholder="@포함해서 입력해주세요." required name="email">
 							</div>
 						  </div>
 
@@ -233,11 +233,14 @@
 			</div> -->
 			
 
+	
+
 			<script>
+
 				function idCheck(){
-	
+					
 					const $memberId = $('#enroll-form input[name=memberId]');
-	
+
 					$.ajax({
 						url : 'idCheck.do',
 						data : {checkId : $memberId.val()},
@@ -264,10 +267,7 @@
 						}
 					});
 				}
-	
-			</script>
 
-			<script>
 				$(function(){
 
 					var memberIdCheck = /^[a-zA-Z0-9]{4,15}$/;
