@@ -136,7 +136,20 @@ public class CsService {
 		return result;
 	}
 	
-	
+	public int update(int csNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = 1;
+		
+		int csResult = new CsDao().updateCs()
+		
+		
+		
+		
+		
+		return result;
+	}
 	
 	
 	
