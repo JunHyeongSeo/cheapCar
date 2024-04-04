@@ -190,7 +190,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <% if(loginUser != null){%>
-                            <input type="text" class="form-control" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
+                            <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
                                 <button class="btn btn-info" onclick="insertReply();">등록</button>
                                 
@@ -216,6 +216,37 @@
 					  
 	</div>
 	   
+
+    <script>
+
+        function insertReply(){
+
+            $.ajax({
+                url : 'replyInsert.review',
+                type : 'post',
+                data : {
+                    content : $('#replyContent').val(),
+                    reviewNo : <%= rBoard.getReviewNo() %>,
+                    memberNo : <%= loginUser.getMemberNo()%>
+                },
+                success : function(result){
+                	console.log(result);
+                	if(result == '댓글성공'){
+                	  $('#replyContent').val('');
+                	  selectReplyList();
+                	};
+                }
+                
+            });
+        }
+        
+        
+        
+		function selectReplyList()        
+
+
+
+    </script>
 	
 		
 </body>
