@@ -1,11 +1,14 @@
 package com.kh.semi.review.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.semi.review.model.service.ReviewService;
 
 /**
  * Servlet implementation class ReplyListController
@@ -29,7 +32,7 @@ public class ReplyListController extends HttpServlet {
 		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
-		new ReviewService().selectReplyList(reviewNo);
+		ArrayList<Reply> list = new ReviewService().selectReplyList(reviewNo);
 		
 		
 		
