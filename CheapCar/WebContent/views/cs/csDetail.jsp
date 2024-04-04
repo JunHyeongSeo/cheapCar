@@ -145,7 +145,6 @@
 				<div class="panel-body">
 				<h2 class="page-header do-hyeon-regular" align="left"><%= cs.getCsTitle() %></h2>
 				</div>
-                
                 <div class="content_outer">
                     <div class="content_header">
                         <div class="content_header2"><%= cs.getCsTitle() %></div>
@@ -160,7 +159,7 @@
                     	<label>첨부파일</label>
                     	<% if(!list.isEmpty()) { %>
 	                    	<% for(BoardAttachment ba : list) { %>
-	                    		<a download="<%= ba.getOriginName() %>" href="<%= contextPath %>/<%=ba.getFilePath() %>/<%= ba.getChangeName() %>"><%= ba.getOriginName() %></a>
+	                    		<br><a download="<%= ba.getOriginName() %>" href="<%= contextPath %>/<%=ba.getFilePath() %>/<%= ba.getChangeName() %>"><%= ba.getOriginName() %></a> <br>
 	                    	<% } %>
 			           <% } else { %>
 			          	 &nbsp;&nbsp;<span>첨부파일이 존재하지 않습니다.</span>
@@ -172,7 +171,7 @@
                     
                     	<% if(loginUser != null && (loginUser.getMemberNo() == cs.getMemberNo() || loginUser.getMemberStatus().equals("A"))) { %>
                     		<a href="#" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                            <a href="#" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                            <a href="<%=contextPath%>/delete.cs?csNo=<%= cs.getCsNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     	<% } %>
                     	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
                     		<a href="#" class="btn btn-sm btn-primary">답&nbsp;변</a>
