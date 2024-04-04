@@ -165,7 +165,28 @@
 	
 	</entry>
 	
-	
+	<entry key="insertComment">
+		INSERT
+		  INTO
+		       TB_REVIEW_COMMENT
+		       (
+		       COMMENT_NO,
+		       COMMENT_CONTENT,
+		       CREATE_DATE,
+		       REVIEW_NO,
+		       MEMBER_NO,
+		       STATUS
+		       )
+        VALUES
+               (
+               SEQ_REVIEW_COMMENT_NO.NEXTVAL,
+               ?,
+               SYSDATE,
+               ?,
+               ?,
+               DEFAULT
+               )		       
+	</entry>
 	
 	
 	
