@@ -148,7 +148,7 @@
                         <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
-	                    <% if(list.size() > 0) { %>			
+	                    <% if(list != null) { %>			
 	                        <div class="img-area">
 	                        		<% for(ReviewPhoto rPhoto : list) { %>
 	                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
