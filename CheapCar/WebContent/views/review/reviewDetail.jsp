@@ -53,7 +53,6 @@
     }
     .content_header1{
         width: 10%;
-        
         float: left;
         text-align: center;
         font-size: 30px;
@@ -141,19 +140,19 @@
 		  </div>
 			 <div class="col-lg-10">
 				<div class="panel-body">
-				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;뷰</h2>
+				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;&nbsp;뷰</h2>
 				</div> 
                     <div class="content_outer">
                         <div class="content_header"> 
                             
                         <div class="content_header2"><%= rBoard.getReviewTitle() %> </div>
-                        <input type="hidden" name="reviewNo" value="<%= rBoard.getReviewNo()%>">
-                        <input type="hidden" name="memberNo" value="<%= rBoard.getMemberNo()%>">
+	                        <input type="hidden" name="reviewNo" value="<%= rBoard.getReviewNo()%>">
+	                        <input type="hidden" name="memberNo" value="<%= rBoard.getMemberNo()%>">
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
+	                        <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
                     </div>
                     <div class="content_body">
 	                    <% if(list != null) { %>			
@@ -180,27 +179,20 @@
                                 <th style="text-align:center">1</th>
                                 <th>내용내용</th>
                                 <th style="text-align:center">작성자</th>
-                                <th style="text-align:center">작성일</th>
-                                      
+                                <th style="text-align:center">작성일</th>     
                             </tr>
-                            
-                            
                          </table>    
-                    
                     </div>
                     <div class="input-group mb-3">
                         <% if(loginUser != null){%>
                             <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
                                 <button class="btn btn-info" onclick="insertReply();">등록</button>
-                                
-                             </div>
+                            </div>
                         <% } else {%>
                             <input type="text" readonly class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
                         <% } %>    
-                      </div>
-
-
+                    </div>
                     <div class="content_btn" align="center">
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         <% if(loginUser != null){ %>
@@ -212,10 +204,7 @@
                 </div>
 				</div>            
 			 </div>
-		  </div>
-					  
-	</div>
-	   
+		 </div>
 
 <script>
 
