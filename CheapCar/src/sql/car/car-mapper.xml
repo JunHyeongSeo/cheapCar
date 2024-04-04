@@ -743,11 +743,27 @@
         AND
             LOCATION_NAME = ?
 	
-	
-	
 	</entry>
 	
+	<entry key="popularCar">
+	  SELECT
+	       	   COUNT(*), MODEL_NAME
+		  FROM
+		       TB_RESERVATION 
+		  JOIN
+		       TB_CAR USING(MANAGEMENT_NO)
+		  JOIN  
+		       TB_CAR_BRIDGE B USING(MANAGEMENT_NO)
+		  JOIN
+		       TB_MODEL A ON(A.MODEL_NO = B.MODEL_NO)
+		  GROUP 
+		     BY
+		       MODEL_NAME
+		  ORDER 
+		     BY 
+		       COUNT(*) DESC
 	
+	</entry>
 	
 	
 	

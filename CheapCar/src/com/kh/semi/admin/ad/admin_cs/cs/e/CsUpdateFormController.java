@@ -1,4 +1,4 @@
-package com.kh.semi.common;
+package com.kh.semi.admin.ad.admin_cs.cs.e;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.kh.semi.car.model.service.CarService;
-import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.common.model.vo.BoardAttachment;
+import com.kh.semi.cs.model.service.CsService;
+import com.kh.semi.cs.model.vo.Cs;
 
 /**
- * Servlet implementation class MainPopularCar
+ * Servlet implementation class CsUpdateFormController
  */
-@WebServlet("/popular.car")
-public class MainPopularCar extends HttpServlet {
+@WebServlet("/updateForm.cs")
+public class CsUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainPopularCar() {
+    public CsUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +32,15 @@ public class MainPopularCar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		int csNo = Integer.parseInt(request.getParameter("csNo"));
 		
-		ArrayList<Car> list = new CarService().popularCar();
+		Cs cs = new CsService().csDetail(csNo);
+		ArrayList<BoardAttachment> list = new CsService().selectAttachment(csNo);
+		request.setAttribute("cs", cs);
+		request.setAttribute("list", list);
 		
-		
-		
-		response.setContentType("application/json; charset=UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(list, response.getWriter());
-		
-		
+		request.getRequestDispatcher("views/cs/csUpdate.jsp").forward(request, response);
 	}
 
 	/**
