@@ -236,6 +236,16 @@ public class CarService {
 		return carList;	
 	}
 	
+	public ArrayList<Car> popularCar(){
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Car> list = new CarDao().popularCar(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
 	
 	
 	

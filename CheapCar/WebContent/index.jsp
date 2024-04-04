@@ -127,11 +127,21 @@
                     nextEl: '.swiper-button-next'
                 }
             });
+
+            $.ajax({
+                url : 'popular.car',
+                success : function(result){
+
+                    console.log(result);
+
+
+                }
+            });
             
             
         };  
         
-        $(function(){
+        $(function(){ // 메인 화면에 이벤트 게시판 
 
             $('.swiper-slide').click(function(){
             	
@@ -140,6 +150,9 @@
                 location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo 
             })
         });
+
+       
+    
         
         
     </script>
@@ -233,25 +246,7 @@
             }
     </style>
 
-    <script>
-        window.onload = function(){
-            
-            $.ajax({
-                url : 'popular.car',
-                success : function(result){
-
-                    console.log(result);
-
-
-                }
-            });
-
-
-        }
-
-
-
-    </script>
+   
 
 
     <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
