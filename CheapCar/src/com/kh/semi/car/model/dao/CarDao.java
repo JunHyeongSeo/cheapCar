@@ -892,8 +892,6 @@ public class CarDao {
 				  +"AND "
 						+ "FUEL_NAME = ? "
 				  +"AND "
-						+ "BRAND_NAME = ? "
-				  +"AND "
 						+ "GRADE_NAME = ? "
 				  +"AND "
 						+ "MANAGEMENT_NO "
@@ -940,10 +938,9 @@ public class CarDao {
 			pstmt.setString(1, locations);
 			pstmt.setString(2, search.getModel());
 			pstmt.setString(3, search.getFuel());
-			pstmt.setString(4, search.getBrand());
-			pstmt.setString(5, search.getGrade());
-			pstmt.setString(6, endDate);
-			pstmt.setString(7, startDate);
+			pstmt.setString(4, search.getGrade());
+			pstmt.setString(5, endDate);
+			pstmt.setString(6, startDate);
 			
 			rset = pstmt.executeQuery();
 			
