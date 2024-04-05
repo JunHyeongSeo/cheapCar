@@ -76,14 +76,27 @@
 	</entry>
 	
 	<entry key="updateCs">
-		UPDATE TB_CS_BOARD SET CS_TITLE = ?, CS_CONTENT = ?, WHERE CS_NO = ?
+		UPDATE TB_CS_BOARD SET CS_TITLE = ?, CS_CONTENT = ? WHERE CS_NO = ?
 	</entry>
 	
 	<entry key="updateAttachment">
 		UPDATE TB_CS_PHOTO SET ORIGIN_NAME = ?, CHANGE_NAME = ?, FILE_PATH = ? WHERE FILE_NO = ?
 	</entry>
 	
-	
+	<entry key="insertAttachmentAgain">
+		INSERT 
+		  INTO 
+			  TB_CS_PHOTO(FILE_NO,
+			  			  REF_NO,
+			  			  ORIGIN_NAME, 
+			  			  CHANGE_NAME, 
+			  			  FILE_PATH) 
+				   VALUES(SEQ_CS_PHOTO_NO.NEXTVAL, 
+				  	     ?, 
+				  	     ?, 
+				  	     ?, 
+				  	     ?)
+	</entry>
 	
 	
 	

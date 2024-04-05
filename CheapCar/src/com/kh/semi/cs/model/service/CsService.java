@@ -152,7 +152,7 @@ public class CsService {
 		
 		int inResult = 1;
 		if(!insertList.isEmpty()) {
-			inResult = new CsDao().insertAttachment(conn, insertList);
+			inResult = new CsDao().insertAttachmentAgain(conn, insertList, cs.getCsNo());
 		}
 		
 		result = csResult * ulResult * inResult;
