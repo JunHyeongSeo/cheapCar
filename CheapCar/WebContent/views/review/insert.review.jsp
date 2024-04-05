@@ -152,7 +152,7 @@
 								<img src="" id="img_4">
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment" required></textarea>
+	                            <textarea name="content" class="form-control" row="20" id="comment" style="font-size:20px" required></textarea>
 	                        </div>
 	                        </div>
 	                    
