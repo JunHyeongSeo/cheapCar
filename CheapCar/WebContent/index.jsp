@@ -149,7 +149,7 @@
 	    					   + '</a>'
 	    					   + '<div class="card-content">'
 	    					     + '<h4 calss=cardtitle>'
-	    					       + '<a href="#">' + result[i].modelName + '</a>'
+	    					       + '<a>' + result[i].modelName + '</a>'
 	    					     + '</h4>'
 	    					   + '</div>'
 	    					 +'</div>'
@@ -199,13 +199,14 @@
 
                               
                                 resultStr += '<input type="hidden" class="hidden" id="qwer' + (i+1) + '" name="reviewreview" value="' + result[i].reviewNo + '">'
-                                +'<h4>하하하</h4>'
+                                
     					     + '</div>'
     					   + '</a>'
     					   + '<div class="card-content">'
-    					     + '<h4 calss=cardtitle>'
-    					       + '<a href="#"> 제목 : ' + result[i].reviewTitle + '</a>'
+    					     + '<h4 calss="cardtitle">'
+    					       + '<a> 제목 : ' + result[i].reviewTitle + '</a>'
     					     + '</h4>'
+                             + '<input type="hidden" class="hidden" name="reviewreview" value="' + result[i].reviewNo + '">'
     					   + '</div>'
                           + '<div class="card-read-more">'
                             +'<a> 내용 :' + resu + '...</a>'
@@ -235,7 +236,11 @@
             
         });
 
-        
+        $(document).on('click', '.cardtitle', function(){
+            console.log($(this));
+
+
+        })
         
         
         
