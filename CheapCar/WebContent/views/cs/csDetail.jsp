@@ -4,6 +4,8 @@
 <%
 	Cs cs = (Cs)request.getAttribute("cs");
 	ArrayList<BoardAttachment> list = (ArrayList<BoardAttachment>)request.getAttribute("baList");
+	System.out.println(cs);
+	System.out.println(list);
 %>
 <!DOCTYPE html>
 <html>

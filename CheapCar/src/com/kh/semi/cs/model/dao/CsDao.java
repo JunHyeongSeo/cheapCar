@@ -333,6 +333,42 @@ public class CsDao {
 		return result;
 	}
 	
+	public int insertAttachmentAgain(Connection conn, ArrayList<BoardAttachment> list, int csNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachmentAgain");
+		
+		try {
+
+			for(BoardAttachment ba : list) {
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, csNo);
+				pstmt.setString(2, ba.getOriginName());
+				pstmt.setString(3, ba.getChangeName());
+				pstmt.setString(4, ba.getFilePath());
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	public int searchedCsCount(Connection conn, String searchId) {
 		
