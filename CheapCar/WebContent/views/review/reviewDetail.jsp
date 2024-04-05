@@ -202,7 +202,7 @@
                         <% if(loginUser != null && loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")) { %>
                         	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                        <% } %>
+                         <% } %>
                     </div>                       
 
                 </div>
@@ -245,7 +245,7 @@
 		  });
 		
 
-		<%if(loginUser != null) {%>
+		 <%if(loginUser != null) {%>
         	function insertReply(){
             $.ajax({
                 url : 'replyInsert.review',
