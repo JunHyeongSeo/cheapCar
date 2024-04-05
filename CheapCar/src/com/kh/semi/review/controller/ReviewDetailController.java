@@ -51,7 +51,7 @@ public class ReviewDetailController extends HttpServlet {
 				request.setAttribute("list", list);
 			}
 			request.setAttribute("rBoard", rBoard);
-		
+			
 			
 			dispatcherPath = "views/review/reviewDetail.jsp";
 			                                           
