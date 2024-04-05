@@ -165,7 +165,9 @@
 	                              	<% } %>
 	                        </div>
 	                     <% } %>   
-                        <div class="text-area"> <%= rBoard.getReviewContent() %></div>
+                        <div class="text-area">
+                        	<%= rBoard.getReviewContent() %>
+                        </div>
                     </div>
                     <div class="reply" id="replyList"> 
                         <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 10px;">
@@ -183,23 +185,26 @@
                             
                          </table>    
                     </div>
+             
                     <div class="input-group mb-3"> 
-                        <% if(loginUser != null){%>
+                       <% if(loginUser != null){%> 
                             <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
                                 <button class="btn btn-info" onclick="insertReply();">등록</button>
                             </div>
                         <% } else {%>
                             <input type="text" readonly class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
-                        <% } %>    
+                      <% } %> 
+                            
                     </div>
                     <div class="content_btn" align="center"> 
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <% if(loginUser != null && loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")){ %>
+                        <% if(loginUser != null) { %> //&& loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")){ %>
                         	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         <% } %>
-                    </div>
+                    </div>                       
+
                 </div>
 				</div>            
 			 </div> 
@@ -207,6 +212,7 @@
 
 
 <script>
+
 
 		function selectReplyList(){
 			   $.ajax({
@@ -232,11 +238,12 @@
 			          }
 			        });
 		} 
-        
-        $(function(){
-            selectReplyList();
-          });
-        
+
+		
+		$(function(){
+		    selectReplyList();
+		  });
+		
 
 		<%if(loginUser != null) {%>
         function insertReply(){

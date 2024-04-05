@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -64,11 +65,15 @@ public class CsUpdateController extends HttpServlet {
 				String key = "reUpfile" + i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
+					
 					BoardAttachment ba = new BoardAttachment();
 					ba.setOriginName(multiRequest.getOriginalFileName(key));
 					ba.setChangeName(multiRequest.getFilesystemName(key));
 					ba.setFilePath("resources/board_upfiles");
-					ba.setFileNo(Integer.parseInt(multiRequest.getParameter("fileNo" + i)));
+					
+					if(multiRequest.getParameter("fileNo" + i) != null) {
+						ba.setFileNo(Integer.parseInt(multiRequest.getParameter("fileNo" + i)));
+					}
 					
 					updateList.add(ba);
 				}
@@ -93,9 +98,15 @@ public class CsUpdateController extends HttpServlet {
 			int result = new CsService().update(cs, updateList, insertList);
 			
 			if(result > 0) {
-				request.setAttribute("alertMsg", "수정이 완료되었습니다.");
 				
-				response.sendRedirect("views/cs/csDetail.jsp");
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("alertMsg", "수정이 완료되었습니다.");
+				//response.sendRedirect("views/머시기/detail.jsp");
+				
+				response.sendRedirect(request.getContextPath() + "/detail.cs?csNo=" + csNo);
+				
+				
 			} else {
 				request.setAttribute("errorMsg", "수정 실패");
 				
