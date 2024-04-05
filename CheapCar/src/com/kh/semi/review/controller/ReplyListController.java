@@ -33,8 +33,8 @@ public class ReplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		
+		int reviewNo = Integer.parseInt(request.getParameter("rNo"));
+		System.out.println(reviewNo);
 		ArrayList<Reply> list = new ReviewService().selectReplyList(reviewNo);
 		
 		

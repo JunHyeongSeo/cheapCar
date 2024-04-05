@@ -1,6 +1,7 @@
 package com.kh.semi.admin.ad.admin_cs.cs.e;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.kh.semi.common.MyFileRenamePolicy;
 import com.kh.semi.common.model.vo.BoardAttachment;
+import com.kh.semi.cs.model.service.CsService;
 import com.kh.semi.cs.model.vo.Cs;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class CsUpdateFormController
@@ -31,21 +37,71 @@ public class CsUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int csNo = Integer.parseInt(request.getParameter("csNo"));
-		String csTitle = request.getParameter("title");
-		String csContent = request.getParameter("content");
-		String[] upfile = request.getParameterValues("upfile");
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		request.setCharacterEncoding("UTF-8");
 		
-		Cs cs= new Cs();
-		cs.setCsNo(csNo);
-		cs.setCsTitle(csTitle);
-		cs.setCsContent(csContent);
-		
-		BoardAttachment ba = new BoardAttachment();
-		
-		// ArrayList<>
-		
+		if(ServletFileUpload.isMultipartContent(request)) {
+			
+			int maxSize = 1024 * 1024 * 10;
+			
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles");
+			
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			
+			int csNo = Integer.parseInt(request.getParameter("csNo"));
+			String csTitle = request.getParameter("title");
+			String csContent = request.getParameter("content");
+			int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+			
+			Cs cs= new Cs();
+			cs.setCsNo(csNo);
+			cs.setCsTitle(csTitle);
+			cs.setCsContent(csContent);
+			cs.setMemberNo(memberNo);
+			
+			ArrayList<BoardAttachment> updateList = new ArrayList();
+			for(int i = 1; i <= 4; i++) {
+				
+				String key = "reUpfile" + i;
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					BoardAttachment ba = new BoardAttachment();
+					ba.setOriginName(multiRequest.getOriginalFileName(key));
+					ba.setChangeName(multiRequest.getFilesystemName(key));
+					ba.setFilePath("resources/board_upfiles");
+					ba.setFileNo(Integer.parseInt(multiRequest.getParameter("fileNo" + i)));
+					
+					updateList.add(ba);
+				}
+			}
+			
+			ArrayList<BoardAttachment> insertList = new ArrayList();
+			for(int i = 1; i <= 4; i++) {
+				
+				String key = "upfile" + i;
+				
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					BoardAttachment ba = new BoardAttachment();
+					ba.setOriginName(multiRequest.getOriginalFileName(key));
+					ba.setChangeName(multiRequest.getFilesystemName(key));
+					ba.setFilePath("resources/board_upfiles");
+					
+					insertList.add(ba);
+				}
+			}
+			
+			int result = new CsService().update(cs, updateList, insertList);
+			
+			if(result > 0) {
+				request.setAttribute("alertMsg", "수정이 완료되었습니다.");
+				
+				response.sendRedirect("views/cs/csDetail.jsp");
+			} else {
+				request.setAttribute("errorMsg", "수정 실패");
+				
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			}
+		}
 		
 	}
 

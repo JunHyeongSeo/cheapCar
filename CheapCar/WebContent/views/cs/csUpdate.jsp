@@ -155,8 +155,8 @@
 				</div>
                 
                 <div class="content_outer">
-                	<form action="<%=contextPath%>/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
 	                    <input type="hidden" name="csNo" value="<%= cs.getCsNo() %>">
+                	<form action="<%=contextPath%>/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
 	                    <input type="hidden" name="memberNo" value="<%= cs.getMemberNo() %>">
 	                    <div class="content_header">
 	                        <div class="content_header2">
@@ -176,18 +176,20 @@
 	                    <div class="content_add_img">
 	                    	<span id="addInfo"><br>&lt;파일첨부&gt;</span><br><br>
 	                    	
-	                    	<% for(int i = 0; i < list.size(); i++) { %>
-	                    		
-	                    		<% if(list.get(i) == null) { %>
-	                    			<p>첨부파일이 존재하지 않습니다.</p>
-	                    			<input type="file" name="upfile" id="upfile<%= i+1 %>">
-	                    		<% } else {%>
-	                    			첨부파일 : <label><%= list.get(i).getOriginName() %></label>
-									<input type="hidden" name="fileNo" value="<%= list.get(i).getFileNo() %>">
-									<input type="hidden" name="changeName" value="<%= list.get(i).getChangeName() %>">
-	                    		<% } %>
-	                    		
-	                    	<% } %>
+	                    	<% if(!list.isEmpty()) { %>
+		                    	<% for(int i = 0; i < 4; i++) { %>
+									<input type="file" id="reUpfile" name="reUpfile<%= i+1 %>">
+	                    			첨부파일 : <label><%= list.get(i).getOriginName() %></label> <br><br>
+									<input type="hidden" name="fileNo<%= i+1 %>" value="<%= list.get(i).getFileNo() %>">
+									<input type="hidden" name="changeName<%= i+1 %>" value="<%= list.get(i).getChangeName() %>">
+	                    		<% } %>	
+                    		<% } else { %>
+                    			<span id="addInfo"><br>&lt;등록되어있는 첨부파일이 없습니다.&gt;</span><br><br>
+	                            <input type="file" name="upfile1" id="upfile"><br><br>
+	                            <input type="file" name="upfile2" id="upfile"><br><br>
+	                            <input type="file" name="upfile3" id="upfile"><br><br>
+	                            <input type="file" name="upfile4" id="upfile"><br><br>
+                    		<% } %>
 					    </div>
 	                    
 	                    <div class="content_btn" align="center">

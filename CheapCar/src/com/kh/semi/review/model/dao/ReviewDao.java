@@ -334,7 +334,7 @@ public class ReviewDao {
 	
 	public ArrayList<Reply> selectReplyList(Connection conn, int reviewNo){
 		
-		ArrayList<Reply> list = null;
+		ArrayList<Reply> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectReplyList");
