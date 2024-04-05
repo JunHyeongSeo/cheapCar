@@ -165,13 +165,11 @@
             
             
             
-      		$.ajax({
+      		$.ajax({ // 메인화면에 후기 선택해서 화면에 띄우기
                 url : 'review.review',
                 success : function(result){
 
                 console.log(result);
-                
-
 					
                 let resultStr = '';
 				for(let i = 0; i < 3; i++){
@@ -195,8 +193,6 @@
                                   else{
                                     resultStr += '<img style="width : 100%;" src="' + result[i].titleImg +'"/>';
                                 }
-                                
-
                               
                                 resultStr += '<input type="hidden" class="hidden" id="qwer' + (i+1) + '" name="reviewreview" value="' + result[i].reviewNo + '">'
                                 
@@ -228,7 +224,7 @@
         
         
         
-
+        // 메인화면에 띄어진 후기 클릭 시 해당 후기로 이동
         $(document).on('click', '.card-content', function(){
             console.log($(this).children().eq(1).val());
             const reviewNo = $(this).children().eq(1).val();
@@ -236,18 +232,14 @@
             
         });
 
-        $(document).on('click', '.cardtitle', function(){
-            console.log($(this));
-
-
-        })
+       
         
         
         
         
         
         
-        $(function(){ // 메인 화면에 이벤트 게시판 클릭시 이동
+        $(function(){ // 메인 화면에 띄워진 이벤트 게시판 클릭시 해당 이벤트게시판으로 이동
 
             $('.swiper-slide').click(function(){
             	
