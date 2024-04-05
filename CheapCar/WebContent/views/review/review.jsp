@@ -140,7 +140,7 @@
 				<div class="review_content">
 					<ul id="review_list">
 						<% if(list.isEmpty()) { %>
-						<li id="NoMsg"> 리스트가 존재하지 않습니다. </li>
+						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
 						<% } else { %>
 						  <% for(ReviewBoard re : list){ %>
 						  		
@@ -164,7 +164,7 @@
 							
 							<% } %>
 						<% } %>	
-					</ul>
+
 				</div>            
 			 </div>
 		  </div>
