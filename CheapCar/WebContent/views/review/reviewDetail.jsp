@@ -30,10 +30,14 @@
 		height: auto;
 		margin: auto;
 		padding-bottom: 50px;
+		
+		
 	}
+
+	
     .content_outer{
         width: 90%;
-        height: 1000px;
+        height: auto;
         margin-top: 50px;
         float: right;
     }
@@ -191,7 +195,7 @@
                     </div>
                     <div class="content_btn" align="center"> 
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <% if(loginUser != null){ %>
+                        <% if(loginUser != null && loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")){ %>
                         	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         <% } %>
@@ -204,6 +208,37 @@
 
 <script>
 
+		function selectReplyList(){
+			   $.ajax({
+				   url : 'replyList.review',
+				   data : {
+					   rNo : <%= rBoard.getReviewNo() %>
+				   },
+				   success : function(result){
+			            let resultStr = '';
+			            for(let i in result){
+		
+			                resultStr += '<tr>'
+			                		   + '<td align="center">' + result[i].commentNo + '</td>'	
+			                           + '<td>' + result[i].commentContent + '</td>'
+			                           + '<td align="center">' + result[i].commentWriter + '</td>'
+			                           + '<td align="center">' + result[i].createDate + '</td>'
+			                           + '</tr>'
+			            };
+			            $('#replyList tbody').html(resultStr);
+			          },
+			          error : function(e){
+			            console.log(e);
+			          }
+			        });
+		} 
+        
+        $(function(){
+            selectReplyList();
+          });
+        
+
+		<%if(loginUser != null) {%>
         function insertReply(){
 
             $.ajax({
@@ -221,44 +256,11 @@
                 	  selectReplyList();
                 	};
                 }
-                
             });
         }
-        
-        $(function(){
-
-            selectReplyList();
-          });
-        
-        
-       function selectReplyList(){
-    	   $.ajax({
-    		   url : 'replyList.review',
-    		   data : {
-    			   rNo : <%= rBoard.getReviewNo() %>
-    		   },
-    		   success : function(result){
-    	            let resultStr = '';
-    	            for(let i in result){
-
-    	                resultStr += '<tr>'
-    	                		   + '<td>' + result[i].reviewNo + '</td>'	
-    	                           + '<td>' + result[i].commentContent + '</td>'
-    	                           + '<td>' + result[i].commentWriter + '</td>'
-    	                           + '<td>' + result[i].createDate + '</td>'
-    	                           + '</tr>'
-    	            };
-    	            $('#replyList tbody').html(resultStr);
-    	          },
-    	          error : function(e){
-    	            console.log(e);
-    	          }
-    	        });
-       } 
+        <% } %>
+	        
        
-        
-        
-	      
 
 
 

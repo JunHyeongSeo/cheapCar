@@ -349,7 +349,7 @@ public class ReviewDao {
 			while(rset.next()) {
 				
 				Reply reply = new Reply();
-				reply.setCommentNo(rset.getInt("COMMENT_NO"));
+				reply.setCommentNo(rset.getInt("ROWNUM"));
 				reply.setCommentContent(rset.getString("COMMENT_CONTENT"));
 				reply.setCreateDate(rset.getDate("CREATE_DATE"));
 				reply.setReviewNo(rset.getInt("REVIEW_NO"));

@@ -88,7 +88,7 @@
 				</h2>
 
 
-					<% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
+					<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
 					<div id="write">
 						<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
 					</div> 

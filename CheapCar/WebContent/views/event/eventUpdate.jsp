@@ -153,7 +153,7 @@
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required><%= eBoard.getEventTitle() %> 
+		    					제목 : <input type="text" name="title" required value="<%= eBoard.getEventTitle() %> ">
 			    			</div>
                             </div>
 	                        <div class="content_sub">
