@@ -91,6 +91,7 @@
         .login-area a{
         	text-decoration-line: none;
         }
+		
         
 
 	</style>
@@ -102,10 +103,6 @@
 		
 		if(msg != 'null'){
 			alert(msg);
-		
-			
-			
-			
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>

@@ -106,7 +106,7 @@
 	  
 						<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 						  <button type="reset" class="btn btn-danger btn-lg">취소</button>&nbsp;&nbsp;
-						  <button id="submit" class="btn btn-danger btn-lg" type="submit" disabled>회원가입</button>
+						  <button id="submit" class="btn btn-info btn-lg" type="submit" disabled>회원가입</button>
 						</div>
 	  
 					  </form>
