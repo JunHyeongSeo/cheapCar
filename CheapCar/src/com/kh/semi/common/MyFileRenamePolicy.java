@@ -37,6 +37,8 @@ public class MyFileRenamePolicy implements FileRenamePolicy{
 		// 3. 확장자 => String ext
 		String ext = originName.substring(originName.lastIndexOf("."));
 		
+		
+		
 		// 1 + 2 + 3 조합해서 수정파일명을 변수에 대입하기
 		String changeName = "KH_" + currentTime + "_" + randomNo + "_" + ext;
 		
