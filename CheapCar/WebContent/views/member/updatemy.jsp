@@ -214,12 +214,12 @@
 		  	
 			  <div class="form-group">
 			    <label for="memberPwd">현재 비밀번호:</label>
-			    <input type="password" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" required>
+			    <input type="password" id="memberPwd" name="memberPwd" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" required>
 			  </div>
 			  
 			  <div class="form-group">
 			    <label for="changePwd">변경할 비밀번호:</label>
-			    <input type="password" name="changePwd" class="form-control" placeholder="변경할 비밀번호를 입력해수세요." id="changePwd" required>
+			    <input type="password" id="changePwd" name="changePwd" class="form-control" placeholder="변경할 비밀번호를 입력해수세요." id="changePwd" required>
 			  </div>
 			  
 			  <div class="form-group">
@@ -233,8 +233,8 @@
 			  
 			  <script>
 			  	function validatePwd(){
-			  		
-			  		
+
+					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
 			  		
 			  		
 			  		if($('#changePwd').val() != $('#checkPwd').val()){
@@ -242,12 +242,45 @@
 			  			$('#checkPwd').focus().val('');
 			  			return false;
 			  		}
-			  		
 			  		return true;
-			  		
+
 			  	}
-			  
-			  
+
+
+				$(function(){
+
+
+					$('#memberPwd').blur(function(){
+
+						var pwdvalue = $('#memberPwd').val();
+
+						if(!memberPwdCheck.test(pwdvalue)){
+							alert('비밀번호를 제대로 입력해주세요.');
+							$('#memberPwd').focus().val("");
+							return false
+						}
+						return true;
+					});
+
+					$('#memberPwd').blur(function(){
+
+						var chpwdvalue = $('#changePwd').val();
+
+						if(!memberPwdCheck.test(chpwdvalue)){
+							alert('비밀번호를 제대로 입력해주세요.');
+							$('#changePwd').focus().val("");
+							return false
+						}
+						return true;
+					});
+
+					
+				});
+
+
+					
+				
+				
 			  </script>
 	    	 </form>
 	    	</div>
