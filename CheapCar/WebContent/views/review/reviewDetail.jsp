@@ -245,16 +245,8 @@
 		  });
 		
 
-        
-<<<<<<< HEAD
-        
-		<%if(loginUser != null ) {%>
-       	  function insertReply(){
-=======
-
 		<%if(loginUser != null) {%>
         function insertReply(){
->>>>>>> 16a888237785e68954a15e710f2d76369a5577d2
 
             $.ajax({
                 url : 'replyInsert.review',
