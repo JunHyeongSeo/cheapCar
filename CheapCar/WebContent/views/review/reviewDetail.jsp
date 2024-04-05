@@ -214,7 +214,6 @@
 <script>
 
 
-
 		function selectReplyList(){
 			   $.ajax({
 				   url : 'replyList.review',
