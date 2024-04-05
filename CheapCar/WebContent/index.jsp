@@ -234,11 +234,6 @@
 
        
         
-        
-        
-        
-        
-        
         $(function(){ // 메인 화면에 띄워진 이벤트 게시판 클릭시 해당 이벤트게시판으로 이동
 
             $('.swiper-slide').click(function(){
@@ -353,6 +348,29 @@
         <div class="container">
             <div id="cacaca" class="row">
             
+            </div>
+        </div>
+    </div>
+
+	  <div id="bottom-content" style="width : 100%; height : 600px; margin:auto;">
+
+        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
+
+        <div class="container">
+            <div id="rerere" class="row">
+
+                <!-- 값 들어가는 곳-->
+           
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="margin-top:200px;"></div>
+
+
+
                 <!-- 
                  <div class="col-xs-12 col-sm-4">
                     <div class="card">
@@ -402,34 +420,6 @@
                     
                     
                 </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- <div>
-        <div>
-
-
-        </div>
-    </div> -->
-
-
-
-
-	  <div id="bottom-content" style="width : 100%; height : 600px; margin:auto;">
-
-        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
-
-        <div class="container">
-            <div id="rerere" class="row">
-           
-            </div>
-        </div>
-    </div>
-
-
-
-    <div style="margin-top:200px;"></div>
 
     
 	
