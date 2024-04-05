@@ -146,13 +146,7 @@
 		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.review?currentPage=1">후기</a></div>
-		<div class="menu menu5">
-			<a href="<%= contextPath %>/list.cs?currentPage=1">고객센터</a>
-			<ul class="cs">
-				<li class="menu55" id="faq"><a href="#">FAQ</a></li>
-				<li class="menu55" id="1to1Cs"><a href="<%= contextPath %>/list.cs?currentPage=1">1대1 문의</a></li>
-			</ul>
-		</div>
+		<div class="menu"><a href="<%= contextPath %>/list.cs?currentPage=1">고객센터</a></div>
 	</div>
 	
 </body>
