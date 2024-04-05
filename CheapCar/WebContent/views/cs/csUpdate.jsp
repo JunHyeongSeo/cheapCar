@@ -155,8 +155,8 @@
 				</div>
                 
                 <div class="content_outer">
-	                    <input type="hidden" name="csNo" value="<%= cs.getCsNo() %>">
                 	<form action="<%=contextPath%>/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
+	                    <input type="hidden" name="csNo" value="<%= cs.getCsNo() %>">
 	                    <input type="hidden" name="memberNo" value="<%= cs.getMemberNo() %>">
 	                    <div class="content_header">
 	                        <div class="content_header2">
