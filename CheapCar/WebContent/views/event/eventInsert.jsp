@@ -117,6 +117,9 @@
     .form-control{
         height: auto;
     }
+    .content_btn{
+    	padding-bottom: 40px;
+    }
 	
     
 
