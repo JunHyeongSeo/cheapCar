@@ -100,7 +100,7 @@
 				
         		let resultStr = '';
 				for(let i = 0; i < result.length; i++){
-					console.log(result);
+					//console.log(result);
 					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
 					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
@@ -134,7 +134,7 @@
                 url : 'popular.car',
                 success : function(result){
 
-                    console.log(result);
+                    //console.log(result);
                     let resultStr = '';
     				for(let i = 0; i < 3; i++){
     					
@@ -162,14 +162,19 @@
                 }
             });
             
-            
-      		 
-          
-            
-        	
-            
-            
+      		$.ajax({
+                url : 'review.review',
+                success : function(result){
+
+                console.log(result);
+
+
+                }
+      		});
+      		
         };  
+        
+        
         
         $(function(){ // 메인 화면에 이벤트 게시판 
 

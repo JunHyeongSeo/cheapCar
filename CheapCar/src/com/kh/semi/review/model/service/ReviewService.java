@@ -159,6 +159,20 @@ public class ReviewService {
 	
 	
 	
+	public ArrayList<ReviewBoard> mainRiview() {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			ArrayList<ReviewBoard> list = new ReviewDao().mainRiview(conn);
+			
+			JDBCTemplate.close(conn);
+			
+			return list;
+			
+		}//
+	
+	
+	
 	
 	
 	

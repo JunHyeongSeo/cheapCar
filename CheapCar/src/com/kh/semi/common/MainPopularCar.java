@@ -35,7 +35,7 @@ public class MainPopularCar extends HttpServlet {
 		
 		ArrayList<Car> list = new CarService().popularCar();
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();
