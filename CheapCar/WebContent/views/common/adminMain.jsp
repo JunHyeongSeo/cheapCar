@@ -172,7 +172,9 @@
 </head>
 
 <body>
- 
+ 	
+ 	<% if(loginUser.getMemberStatus().equals("A")) { %>
+ 	
     <div id="wrap">
         <h1><a href="<%= contextPath %>/adminMain">관리자 메인페이지</a></h1>
         
@@ -206,6 +208,14 @@
     	<br clear="both">
     	
     </div>
+    
+    <% } else { %>
+ 		<script>
+ 			function(){
+ 				alert('관리자 계정만 이용이 가능합니다.');
+ 			}
+ 		</script>
+ 	<% } %>
     
 </body>
 </html>
