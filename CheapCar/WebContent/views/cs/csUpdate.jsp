@@ -181,8 +181,9 @@
 	                    		
 	                    		for(int i = 0; i < result; i++) { 
 	                    	%>
-									<input type="file" name="reUpfile<%= i+1 %>" id="reUpfile" value="<%= list.get(i).getOriginName() %>">
-									첨부파일 : <label><%= list.get(i).getOriginName() %></label> <br><br>
+									<input type="file" name="reUpfile<%= i+1 %>" id="reUpfile<%= i+1 %>" value="<%= list.get(i).getOriginName() %>">
+									첨부파일 : <label><%= list.get(i).getOriginName() %></label> 
+									<br><br>
 									<input type="hidden" name="fileNo<%= i+1 %>" value="<%= list.get(i).getFileNo() %>">
 									<input type="hidden" name="changeName<%= i+1 %>" value="<%= list.get(i).getChangeName() %>">
 									<br><br>
