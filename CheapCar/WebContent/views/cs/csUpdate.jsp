@@ -176,19 +176,30 @@
 	                    <div class="content_add_img">
 	                    	<span id="addInfo"><br>&lt;파일첨부&gt;</span><br><br>
 	                    	
-	                    	<% if(!list.isEmpty()) { %>
-		                    	<% for(int i = 0; i < 4; i++) { %>
-									<input type="file" id="reUpfile" name="reUpfile<%= i+1 %>">
-	                    			첨부파일 : <label><%= list.get(i).getOriginName() %></label> <br><br>
+	                    	<% if(!list.isEmpty()) { 
+	                    		int result = list.size();
+	                    		
+	                    		for(int i = 0; i < result; i++) { 
+	                    	%>
+									<input type="file" name="reUpfile<%= i+1 %>" id="reUpfile" value="<%= list.get(i).getOriginName() %>">
+									첨부파일 : <label><%= list.get(i).getOriginName() %></label> <br><br>
 									<input type="hidden" name="fileNo<%= i+1 %>" value="<%= list.get(i).getFileNo() %>">
 									<input type="hidden" name="changeName<%= i+1 %>" value="<%= list.get(i).getChangeName() %>">
-	                    		<% } %>	
-                    		<% } else { %>
-                    			<span id="addInfo"><br>&lt;등록되어있는 첨부파일이 없습니다.&gt;</span><br><br>
-	                            <input type="file" name="upfile1" id="upfile"><br><br>
-	                            <input type="file" name="upfile2" id="upfile"><br><br>
-	                            <input type="file" name="upfile3" id="upfile"><br><br>
-	                            <input type="file" name="upfile4" id="upfile"><br><br>
+									<br><br>
+								<% } %>
+								
+								<% for(int i = (result + 1); i <= 4; i++){ %>
+									<input type="file" name="upfile<%= i %>">
+									<input type="hidden" name="fileNo<%= i %>">
+									<input type="hidden" name="changeName<%= i %>">
+									<br><br>
+								<% } %>
+                    		<% }  else { %>
+	                    			<span id="addInfo"><br>&lt;등록되어있는 첨부파일이 없습니다.&gt;</span><br><br>
+		                            <input type="file" name="upfile1"><br><br>
+		                            <input type="file" name="upfile2"><br><br>
+		                            <input type="file" name="upfile3"><br><br>
+		                            <input type="file" name="upfile4"><br><br>
                     		<% } %>
 					    </div>
 	                    

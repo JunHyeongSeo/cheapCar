@@ -133,6 +133,7 @@ public class CsService {
 			rollback(conn);
 		}
 		
+		close(conn);
 		return result;
 	}
 	
@@ -156,6 +157,11 @@ public class CsService {
 		}
 		
 		result = csResult * ulResult * inResult;
+		
+		if(result > 0) { commit(conn);}
+		else rollback(conn);
+		
+		close(conn);
 		
 		return result;
 	}
