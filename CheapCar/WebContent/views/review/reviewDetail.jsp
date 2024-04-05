@@ -237,7 +237,27 @@
             selectReplyList();
           });
         
+		<%if(loginUser != null) {%>
+        function insertReply(){
 
+            $.ajax({
+                url : 'replyInsert.review',
+                type : 'post',
+                data : {
+                    content : $('#replyContent').val(),
+                    reviewNo : <%= rBoard.getReviewNo() %>,
+                    memberNo : <%= loginUser.getMemberNo()%>
+                },
+                success : function(result){
+                	console.log(result);
+                	if(result == '댓글성공'){
+                	  $('#replyContent').val('');
+                	  selectReplyList();
+                	};
+                }
+            });
+        }  
+        <% } %>
 
 	        
        
