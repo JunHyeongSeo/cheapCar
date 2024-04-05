@@ -75,6 +75,31 @@
 		UPDATE TB_CS_PHOTO SET STATUS = 'N' WHERE REF_NO = ?
 	</entry>
 	
+	<entry key="updateCs">
+		UPDATE TB_CS_BOARD SET CS_TITLE = ?, CS_CONTENT = ?, WHERE CS_NO = ?
+	</entry>
+	
+	<entry key="updateAttachment">
+		UPDATE TB_CS_PHOTO SET ORIGIN_NAME = ?, CHANGE_NAME = ?, FILE_PATH = ? WHERE FILE_NO = ?
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 
 	<entry key="searchedCsCount">
 		SELECT 
