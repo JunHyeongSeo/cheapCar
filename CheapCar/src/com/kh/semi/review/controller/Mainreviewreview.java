@@ -16,7 +16,7 @@ import com.kh.semi.review.model.vo.ReviewBoard;
 /**
  * Servlet implementation class Mainreviewreview
  */
-@WebServlet("/reviewreview")
+@WebServlet("/review.review")
 public class Mainreviewreview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
