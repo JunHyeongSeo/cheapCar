@@ -47,10 +47,10 @@ public class CsUpdateController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
-			int csNo = Integer.parseInt(request.getParameter("csNo"));
-			String csTitle = request.getParameter("title");
-			String csContent = request.getParameter("content");
-			int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+			int csNo = Integer.parseInt(multiRequest.getParameter("csNo"));
+			String csTitle = multiRequest.getParameter("title");
+			String csContent = multiRequest.getParameter("content");
+			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
 			
 			Cs cs= new Cs();
 			cs.setCsNo(csNo);
