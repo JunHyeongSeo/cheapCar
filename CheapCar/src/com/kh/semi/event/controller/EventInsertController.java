@@ -69,8 +69,6 @@ public class EventInsertController extends HttpServlet {
 			ePhoto.setPhotoPath("resources/event_upfiles");
 			
 			
-			
-			
 			int result = new EventService().insert(eBoard, ePhoto);
 			
 			

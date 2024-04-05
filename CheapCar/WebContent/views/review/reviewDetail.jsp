@@ -199,10 +199,10 @@
                     </div>
                     <div class="content_btn" align="center"> 
                         <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <% if(loginUser != null) { %> //&& loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")){ %>
+                        <% if(loginUser != null){%> //&& loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")) { %>
                         	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                         	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                        <% } %>
+                         <% } %>
                     </div>                       
 
                 </div>
@@ -245,9 +245,8 @@
 		  });
 		
 
-		<%if(loginUser != null) {%>
-        function insertReply(){
-
+		 <%if(loginUser != null) {%>
+        	function insertReply(){
             $.ajax({
                 url : 'replyInsert.review',
                 type : 'post',

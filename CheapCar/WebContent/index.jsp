@@ -149,7 +149,7 @@
 	    					   + '</a>'
 	    					   + '<div class="card-content">'
 	    					     + '<h4 calss=cardtitle>'
-	    					       + '<a href="#">' + result[i].modelName + '</a>'
+	    					       + '<a>' + result[i].modelName + '</a>'
 	    					     + '</h4>'
 	    					   + '</div>'
 	    					 +'</div>'
@@ -165,28 +165,26 @@
             
             
             
-      		$.ajax({
+      		$.ajax({ // 메인화면에 후기 선택해서 화면에 띄우기
                 url : 'review.review',
                 success : function(result){
 
                 console.log(result);
-                
-
 					
                 let resultStr = '';
 				for(let i = 0; i < 3; i++){
-					console.log(result[i].titleImg);
+					//console.log(result[i].titleImg);
 
                     const ti = result[i].titleImg
-                    console.log(typeof(ti));
+                    //console.log(typeof(ti));
 
                     const crm = result[i].reviewContent
                     var resu = crm.substr(0,10);
 
 					resultStr 
-					  += '<div class="col-xs-12 col-sm-4">'
+					  += '<div class="col-xs-11 col-sm-4">'
     					 + '<div class="card">'
-    					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
+    					   + '<a class="img-card">'
     					     + '<div class="card-content">';
                                 
                                 if(ti == '/'){
@@ -195,16 +193,16 @@
                                   else{
                                     resultStr += '<img style="width : 100%;" src="' + result[i].titleImg +'"/>';
                                 }
+                              
+                                resultStr += '<input type="hidden" class="hidden" id="qwer' + (i+1) + '" name="reviewreview" value="' + result[i].reviewNo + '">'
                                 
-
-                    resultStr             
-					  += '<input type="hidden" name="reviewreview" value="' + result[i].reviewNo + '">'
     					     + '</div>'
     					   + '</a>'
     					   + '<div class="card-content">'
-    					     + '<h4 calss=cardtitle>'
-    					       + '<a href="#"> 제목 : ' + result[i].reviewTitle + '</a>'
+    					     + '<h4 calss="cardtitle">'
+    					       + '<a> 제목 : ' + result[i].reviewTitle + '</a>'
     					     + '</h4>'
+                             + '<input type="hidden" class="hidden" name="reviewreview" value="' + result[i].reviewNo + '">'
     					   + '</div>'
                           + '<div class="card-read-more">'
                             +'<a> 내용 :' + resu + '...</a>'
@@ -226,11 +224,17 @@
         
         
         
+        // 메인화면에 띄어진 후기 클릭 시 해당 후기로 이동
+        $(document).on('click', '.card-content', function(){
+            console.log($(this).children().eq(1).val());
+            const reviewNo = $(this).children().eq(1).val();
+            location.href = '<%= contextPath%>/detail.review?reviewNo=' + reviewNo
+            
+        });
+
+       
         
-        
-        
-        
-        $(function(){ // 메인 화면에 이벤트 게시판 
+        $(function(){ // 메인 화면에 띄워진 이벤트 게시판 클릭시 해당 이벤트게시판으로 이동
 
             $('.swiper-slide').click(function(){
             	
@@ -240,7 +244,6 @@
             })
         });
 
-       
     
         
         
@@ -338,13 +341,36 @@
    
 
 
-    <div id="bottom-content" style="width : 100%; height : 800px; margin:auto;">
+    <div id="bottom-content" style="width : 100%; height : 600px; margin:auto;">
 
         <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">현재 인기있는 차종~</h2>
 
         <div class="container">
             <div id="cacaca" class="row">
             
+            </div>
+        </div>
+    </div>
+
+	  <div id="bottom-content" style="width : 100%; height : 600px; margin:auto;">
+
+        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
+
+        <div class="container">
+            <div id="rerere" class="row">
+
+                <!-- 값 들어가는 곳-->
+           
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="margin-top:200px;"></div>
+
+
+
                 <!-- 
                  <div class="col-xs-12 col-sm-4">
                     <div class="card">
@@ -394,34 +420,6 @@
                     
                     
                 </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- <div>
-        <div>
-
-
-        </div>
-    </div> -->
-
-
-
-
-	  <div id="bottom-content" style="width : 100%; height : 800px; margin:auto;">
-
-        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
-
-        <div class="container">
-            <div id="rerere" class="row">
-           
-            </div>
-        </div>
-    </div>
-
-
-
-    <div style="margin-top:200px;"></div>
 
     
 	
