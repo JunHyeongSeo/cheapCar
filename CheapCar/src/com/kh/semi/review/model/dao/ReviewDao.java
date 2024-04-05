@@ -393,6 +393,7 @@ public class ReviewDao {
 				rv.setTitleImg(rset.getString("TITLE_IMG"));
 				rv.setMemberNo(rset.getInt("MEMBER_NO"));
 				rv.setFileLevel(rset.getString("FILELEVEL"));
+				rv.setReviewContent(rset.getString("REVIEW_CONTENT"));
 				
 				
 				list.add(rv);		

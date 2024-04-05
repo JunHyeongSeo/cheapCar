@@ -170,30 +170,50 @@
                 success : function(result){
 
                 console.log(result);
+                
+
 					
                 let resultStr = '';
 				for(let i = 0; i < 3; i++){
-					
+					console.log(result[i].titleImg);
+
+                    const ti = result[i].titleImg
+                    console.log(typeof(ti));
+
+                    const crm = result[i].reviewContent
+                    var resu = crm.substr(0,10);
+
 					resultStr 
 					  += '<div class="col-xs-12 col-sm-4">'
     					 + '<div class="card">'
     					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
-    					     + '<div class="card-content">'
-    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
-    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
+    					     + '<div class="card-content">';
+                                
+                                if(ti == '/'){
+                                    resultStr += '<img style="width : 100px;  height : 100%;" src="views/common/차빌려조로고.gif"/>';
+                                  } 
+                                  else{
+                                    resultStr += '<img style="width : 100%;" src="' + result[i].titleImg +'"/>';
+                                }
+                                
+
+                    resultStr             
+					  += '<input type="hidden" name="reviewreview" value="' + result[i].reviewNo + '">'
     					     + '</div>'
     					   + '</a>'
     					   + '<div class="card-content">'
     					     + '<h4 calss=cardtitle>'
-    					       + '<a href="#">' + result[i].modelName + '</a>'
+    					       + '<a href="#"> 제목 : ' + result[i].reviewTitle + '</a>'
     					     + '</h4>'
     					   + '</div>'
+                          + '<div class="card-read-more">'
+                            +'<a> 내용 :' + resu + '...</a>'
+                            +'</div>'
     					 +'</div>'
-					+ '</div>'
+					+ '</div>';
 				}
 				
 				$('#rerere').html(resultStr);
-                
                 
                 
                 
@@ -318,7 +338,7 @@
    
 
 
-    <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
+    <div id="bottom-content" style="width : 100%; height : 800px; margin:auto;">
 
         <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">현재 인기있는 차종~</h2>
 
@@ -388,7 +408,7 @@
 
 
 
-	  <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
+	  <div id="bottom-content" style="width : 100%; height : 800px; margin:auto;">
 
         <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
 

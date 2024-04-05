@@ -228,7 +228,8 @@
                            REVIEW_PHOTO_ADDRESS || '/' || REVIEW_PHOTO_CHANGENAME "TITLE_IMG",
                            TB_REVIEW_BOARD.MEMBER_NO,
                            TB_REVIEW_BOARD.STATUS,
-                           FILELEVEL
+                           FILELEVEL,
+                           REVIEW_CONTENT
                       FROM
                            TB_REVIEW_BOARD
                       LEFT
