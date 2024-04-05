@@ -61,10 +61,10 @@
 		        <!-- </form> -->
 		<!-- </div> -->
 	<!-- </div> -->
-	 -->
+
 	
 	
-	
+	 <section style="background-color: #eee;  height: 100%; width: 50%; margin: auto;"><!--class="vh-100"-->
 	 <div class="container" style="width: 600px;">
 	  	<h2>로그인</h2>
 	  	<p>안녕하세요  <code> 저렴하니car </code> 로그인 화면 입니다.</p>
@@ -90,7 +90,7 @@
           </div>
 	  	</form>
 	</div> 
-	
+	</section>
 	
 	
 	
