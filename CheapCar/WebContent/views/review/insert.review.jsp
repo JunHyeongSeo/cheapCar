@@ -166,7 +166,7 @@
                     
 
 	                        <div class="content_btn" align="center">
-	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+	                            <button type="submit" class="btn btn-sm btn-primary" id="insertImg">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
                         </form>
@@ -189,8 +189,8 @@
 		})
 		
         function loadImg(inputFile, num){
-            //console.log(inputFile.files.length);
-            if(inputFile.files.length){
+			const str = inputFile.files[0].name
+            if(str.includes('.')){
             	
                 const reader = new FileReader();
                 //console.log(inputFile.files[0]);
@@ -198,7 +198,7 @@
                 reader.onload = function(e){
                     switch(num){
                     	case 1 : $('#img_1').attr('src', e.target.result); 
-                    	         $('#img_1').show(); break;               
+                    	         $('#img_1').show(); break;                
                     	case 2 : $('#img_2').attr('src', e.target.result); 
            	         		  	 $('#img_2').show(); break;
                     	case 3 : $('#img_3').attr('src', e.target.result); 
@@ -209,6 +209,7 @@
                 }
             }
             else{
+            	alert("확장자를 확인하여 주시기 바랍니다.")
             	const str = ''
             	
             	switch(num){
