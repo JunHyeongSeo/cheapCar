@@ -1,4 +1,4 @@
-package com.kh.semi.admin.admincontroller;
+package com.kh.semi.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.semi.car.model.service.CarService;
-import com.kh.semi.car.model.vo.Car;
+import com.kh.semi.review.model.service.ReviewService;
+import com.kh.semi.review.model.vo.ReviewBoard;
 
 /**
- * Servlet implementation class ModelSaleController
+ * Servlet implementation class Mainreviewreview
  */
-@WebServlet("/modelsale")
-public class ModelSaleController extends HttpServlet {
+@WebServlet("/review.review")
+public class Mainreviewreview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModelSaleController() {
+    public Mainreviewreview() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,20 +33,15 @@ public class ModelSaleController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String checkmodels =  request.getParameter("checkmodels");
 		
-		System.out.println(checkmodels);
+		ArrayList<ReviewBoard> list = new ReviewService().mainRiview();
 	
-			
-		ArrayList<Car> car = new CarService().modelSale(checkmodels);
-		//System.out.println(car);
-
-			response.setContentType("application/json; charset=UTF-8");
-			Gson gson = new Gson();
-			gson.toJson(car, response.getWriter());
 		
+		response.setContentType("application/json; charset=UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(list, response.getWriter());
 		
-		//System.out.println(car);
+	
 	}
 
 	/**

@@ -38,7 +38,7 @@ public class LocationSaleController extends HttpServlet {
 		
 		ArrayList<Car> carLocation = new CarService().locationSale(checkLocations);
 		
-		System.out.println(carLocation);
+		//System.out.println(carLocation);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		Gson gson = new Gson();

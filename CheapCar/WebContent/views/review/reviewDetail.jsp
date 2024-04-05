@@ -237,7 +237,6 @@
             selectReplyList();
           });
         
-
 		<%if(loginUser != null) {%>
         function insertReply(){
 
@@ -257,8 +256,9 @@
                 	};
                 }
             });
-        }
+        }  
         <% } %>
+
 	        
        
 

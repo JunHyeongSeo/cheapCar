@@ -93,14 +93,14 @@
 
         window.onload = function(){
 
-            $.ajax({
+            $.ajax({ // 메인화면에 이벤트 게시판 호출 해서 리스트 보여주기
         	url : 'event.event',
         	success : function(result){
         		//console.log(result);
 				
         		let resultStr = '';
 				for(let i = 0; i < result.length; i++){
-					console.log(result);
+					//console.log(result);
 					resultStr += '<div class="swiper-slide"><img src="' + result[i].titleImg +'">'
 					 +  '<input type="hidden" name="eventNo" value="' + result[i].eventNo +'"></div>'
 				
@@ -130,11 +130,11 @@
                 }
             });
 
-            $.ajax({
+            $.ajax({ // 메인화면에 인기차량 선택해서 화면에 보여주기
                 url : 'popular.car',
                 success : function(result){
 
-                    console.log(result);
+                    //console.log(result);
                     let resultStr = '';
     				for(let i = 0; i < 3; i++){
     					
@@ -158,18 +158,57 @@
     				
     				$('#cacaca').html(resultStr);
 
-
                 }
             });
             
             
-      		 
-          
-            
-        	
             
             
+            
+      		$.ajax({
+                url : 'review.review',
+                success : function(result){
+
+                console.log(result);
+					
+                let resultStr = '';
+				for(let i = 0; i < 3; i++){
+					
+					resultStr 
+					  += '<div class="col-xs-12 col-sm-4">'
+    					 + '<div class="card">'
+    					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
+    					     + '<div class="card-content">'
+    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
+    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
+    					     + '</div>'
+    					   + '</a>'
+    					   + '<div class="card-content">'
+    					     + '<h4 calss=cardtitle>'
+    					       + '<a href="#">' + result[i].modelName + '</a>'
+    					     + '</h4>'
+    					   + '</div>'
+    					 +'</div>'
+					+ '</div>'
+				}
+				
+				$('#rerere').html(resultStr);
+                
+                
+                
+                
+
+                }
+      		});
+      		
         };  
+        
+        
+        
+        
+        
+        
+        
         
         $(function(){ // 메인 화면에 이벤트 게시판 
 
@@ -286,12 +325,6 @@
         <div class="container">
             <div id="cacaca" class="row">
             
-            
-            
-               
-                
-                
-                
                 <!-- 
                  <div class="col-xs-12 col-sm-4">
                     <div class="card">
@@ -317,9 +350,6 @@
                 
                  -->
                 <!--
-                
-                
-                
                 
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
@@ -356,6 +386,18 @@
     </div> -->
 
 
+
+
+	  <div id="bottom-content" style="width : 1000px; height : 800px;margin:auto;">
+
+        <h2 style="font-size:38px; font-weight: 800; margin-top:50px; margin-bottom:60px;" align="center">많이 보신 후기</h2>
+
+        <div class="container">
+            <div id="rerere" class="row">
+           
+            </div>
+        </div>
+    </div>
 
 
 
