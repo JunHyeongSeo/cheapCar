@@ -369,7 +369,47 @@ public class ReviewDao {
 	}
 	
 	
-	
+	public ArrayList<ReviewBoard> mainRiview(Connection conn) {
+		
+		ArrayList<ReviewBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("mainReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				ReviewBoard rv = new ReviewBoard();
+				
+				rv.setReviewNo(rset.getInt("REVIEW_NO"));
+				rv.setReviewTitle(rset.getString("REVIEW_TITLE"));
+				rv.setCount(rset.getInt("COUNT"));
+				rv.setReviewWriter(rset.getString("MEMBER_ID"));
+				rv.setTitleImg(rset.getString("TITLE_IMG"));
+				rv.setMemberNo(rset.getInt("MEMBER_NO"));
+				rv.setFileLevel(rset.getString("FILELEVEL"));
+				
+				
+				list.add(rv);		
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+		
+	}
 	
 	
 	
