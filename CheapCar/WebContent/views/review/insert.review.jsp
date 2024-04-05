@@ -213,10 +213,14 @@
             	const str = ''
             	
             	switch(num){
-            		case 1 : $('#img_1').attr('src', str); break;
-            		case 2 : $('#img_2').attr('src', str); break;
-            		case 3 : $('#img_3').attr('src', str); break;
-            		case 4 : $('#img_4').attr('src', str); break;
+            		case 1 : $('#img_1').attr('src', str);
+            				 $('#insertImg').hide(); break;
+            		case 2 : $('#img_2').attr('src', str);
+            				 $('#insertImg').hide(); break;
+            		case 3 : $('#img_3').attr('src', str); 
+            				 $('#insertImg').hide(); break;	
+            		case 4 : $('#img_4').attr('src', str);
+            				 $('#insertImg').hide(); break;
             	};
             }
         }
