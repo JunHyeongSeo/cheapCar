@@ -64,7 +64,7 @@
 
 	
 	
-	 <section style="background-color: #eee;  height: 100%; width: 50%; margin: auto;"><!--class="vh-100"-->
+	 <section style="background-color: #eee;  height: 380px; width: 700px; margin: auto; padding-top:15px;"><!--class="vh-100"-->
 	 <div class="container" style="width: 600px;">
 	  	<h2>로그인</h2>
 	  	<p>안녕하세요  <code> 저렴하니car </code> 로그인 화면 입니다.</p>
@@ -93,7 +93,19 @@
 	</section>
 	
 	
-	
+	<script>	 	
+	 	$('#uname').blur(function(){
+		$('#uname').keyup(function(){
+			const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+			const uname =  $('#uname').val()
+			const resultData = uname.replace(regExp, "");
+			
+	 		if(uname != resultData){
+	 		 	alert('특수문자는 사용이 불가능합니다.')
+	 		 	$('#uname').val(resultData)
+	 		}
+	 	});
+	</script>
 	
 	
 	

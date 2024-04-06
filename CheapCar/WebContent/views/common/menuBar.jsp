@@ -36,6 +36,8 @@
         }
         
         .nav-area{
+        	padding-top : 20px;
+        	padding-bottom : 5px;
         	z-index : 100;
         	position : absoulute;
         }
