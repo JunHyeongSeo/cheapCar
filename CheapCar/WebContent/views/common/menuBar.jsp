@@ -22,7 +22,7 @@
 	<style>
 		.login-area{
 			float : right;
-			padding-right : 20px;
+			padding-right : 50px;
 		}
 
         .menu{
@@ -119,8 +119,8 @@
        		<% if(loginUser == null) { %>
 	    	<form action="" method="post">
 		    	<div>
-		    		<a href="<%=contextPath%>/loginPage" >로그인</a>
-		            <a href="<%=contextPath%>/enrollPage">회원가입</a>
+		    		<a class="btn btn-outline-info" href="<%=contextPath%>/loginPage" >로그인</a>
+		            <a class="btn btn-outline-warning" href="<%=contextPath%>/enrollPage">회원가입</a>
 		        </div>
 			</form>
 			<% } else { %>
