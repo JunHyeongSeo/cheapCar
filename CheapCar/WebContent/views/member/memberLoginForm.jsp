@@ -94,7 +94,7 @@
 	
 	
 	<script>	 	
-	 	$('#uname').blur(function(){
+	 	//$('#uname').blur(function(){
 		$('#uname').keyup(function(){
 			const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
 			const uname =  $('#uname').val()

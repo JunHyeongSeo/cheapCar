@@ -40,6 +40,7 @@
         	padding-bottom : 5px;
         	z-index : 100;
         	position : absoulute;
+        	
         }
         
 		#logo{
