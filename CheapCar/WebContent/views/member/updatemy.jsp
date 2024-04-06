@@ -227,14 +227,14 @@
 			    <input type="password" class="form-control" placeholder="다시 한 번 입력해주세요" id="checkPwd" required>
 			  </div>
 			  
-			  <button type="submit" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
+			  <button type="submit" id="checkchangPwd" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
 			  
 			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
 			  
 			  <script>
 			  	function validatePwd(){
 
-					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
+					
 			  		
 			  		
 			  		if($('#changePwd').val() != $('#checkPwd').val()){
@@ -248,31 +248,35 @@
 
 
 				$(function(){
-
+					var memberPwdCheck = /^[a-zA-Z0-9]{4,15}$/;
 
 					$('#memberPwd').blur(function(){
+						
+					
 
 						var pwdvalue = $('#memberPwd').val();
 
 						if(!memberPwdCheck.test(pwdvalue)){
 							alert('비밀번호를 제대로 입력해주세요.');
-							$('#memberPwd').focus().val("");
+							$('#memberPwd').val("");
 							return false
 						}
 						return true;
 					});
 
-					$('#memberPwd').blur(function(){
+					$('#changePwd').blur(function(){
 
 						var chpwdvalue = $('#changePwd').val();
 
 						if(!memberPwdCheck.test(chpwdvalue)){
 							alert('비밀번호를 제대로 입력해주세요.');
-							$('#changePwd').focus().val("");
+							$('#changePwd').val("");
 							return false
 						}
 						return true;
 					});
+					
+			
 
 					
 				});
