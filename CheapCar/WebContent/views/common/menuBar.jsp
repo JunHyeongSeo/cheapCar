@@ -111,7 +111,7 @@
     
         <div id="logo">
 	        <a href="<%= contextPath%>">
-				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="300" height="300">
+				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="250" height="250">
 			</a>
 		</div>
 		
