@@ -134,7 +134,7 @@
                 url : 'popular.car',
                 success : function(result){
 
-                    //console.log(result);
+                    console.log(result);
                     let resultStr = '';
     				for(let i = 0; i < 3; i++){
     					
@@ -169,7 +169,7 @@
                 url : 'review.review',
                 success : function(result){
 
-                console.log(result);
+                //console.log(result);
 					
                 let resultStr = '';
 				for(let i = 0; i < 3; i++){
