@@ -37,6 +37,7 @@ public class AjaxUpdateMemberController extends HttpServlet {
 		String email = request.getParameter("email");
 		String memberStatus = request.getParameter("status");
 		String memberId = request.getParameter("checkId");
+		String blackReason = request.getParameter("blackReason");
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
 		
@@ -47,6 +48,7 @@ public class AjaxUpdateMemberController extends HttpServlet {
 		m.setEmail(email);
 		m.setMemberStatus(memberStatus);
 		m.setMemberId(memberId);
+		m.setBlackReason(blackReason);
 		
 		int result = new MemberService().adminUpdateMem(m);
 		

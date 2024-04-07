@@ -180,8 +180,8 @@ public class MemberDao {
 			pstmt.setString(3, m.getBirthday());
 			pstmt.setString(4, m.getEmail());
 			pstmt.setString(5, m.getMemberStatus());
-			pstmt.setString(6, m.getMemberId());
-			pstmt.setString(7, m.getBlackReason());
+			pstmt.setString(6, m.getBlackReason());
+			pstmt.setString(7, m.getMemberId());
 			
 			result = pstmt.executeUpdate();
 			
