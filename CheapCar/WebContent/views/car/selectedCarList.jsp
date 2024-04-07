@@ -277,7 +277,7 @@
 				const fuelAvante = document.getElementById('fuelOption');
 				
 				fuelAvante.innerHTML = "<option value='LPG'>LPG</option>";
-				fuelAvante.innerHTML += "<option value='가솔린'>가솔린</option>";
+				fuelAvante.innerHTML = "<option value='가솔린'>가솔린</option>";
 				
 			} else if(selectModel == "소나타"){
 				
@@ -288,7 +288,7 @@
 				const fuelSonata = document.getElementById('fuelOption');
 				
 				fuelSonata.innerHTML = "<option value='LPG'>LPG</option>";
-				fuelSonata.innerHTML += "<option value='가솔린'>가솔린</option>";
+				fuelSonata.innerHTML = "<option value='가솔린'>가솔린</option>";
 				
 			} else if(selectModel == "카니발"){
 				
@@ -299,7 +299,7 @@
 				const fuelCarnival = document.getElementById('fuelOption');
 				
 				fuelCarnival.innerHTML = "<option value='가솔린'>가솔린</option>";
-				fuelCarnival.innerHTML += "<option value='디젤'>디젤</option>";
+				fuelCarnival.innerHTML = "<option value='디젤'>디젤</option>";
 				
 			} else if(selectModel == "GV80"){
 				
@@ -321,7 +321,7 @@
 				const fuelStarrex = document.getElementById('fuelOption');
 				
 				fuelStarrex.innerHTML = "<option value='디젤'>디젤</option>";
-				fuelStarrex.innerHTML += "<option value='LPG'>LPG</option>";
+				fuelStarrex.innerHTML = "<option value='LPG'>LPG</option>";
 				
 			} else if(selectModel == "스포티지"){
 				
@@ -332,8 +332,8 @@
 				const fuelSportege = document.getElementById('fuelOption');
 				
 				fuelSportege.innerHTML = "<option value='디젤'>디젤</option>";
-				fuelSportege.innerHTML += "<option value='가솔린'>가솔린</option>";
-				fuelSportege.innerHTML += "<option value='LPG'>LPG</option>";
+				fuelSportege.innerHTML = "<option value='가솔린'>가솔린</option>";
+				fuelSportege.innerHTML = "<option value='LPG'>LPG</option>";
 				
 			} else if(selectModel == "아이오닉5"){
 				
