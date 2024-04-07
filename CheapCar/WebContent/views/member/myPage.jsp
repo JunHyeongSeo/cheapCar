@@ -42,6 +42,7 @@
     }
     
     .area{
+    	margin-left : 5%
     	justify-content: space-between;
     	
     }
@@ -69,8 +70,9 @@
     
     .container1{
     	padding-top: 30px;
-    	margin-left : 30px;
+    	margin-left : 5%;
     	width : 96%;
+    	
     }
     
     #aa2{
@@ -78,14 +80,14 @@
     }
  
 	.container2{
-		margin-left : 30px;
+		margin-left : 5%;
 		position: absolute;
 		float : left;
 		width : 48%;
 	}
 	
     .container3{
-    	margin-left : 50%;
+    	margin-left : 52%;
 		position: absolute;
     	float : left;
     	width : 48%;
@@ -102,7 +104,7 @@
 		align : center;
     }
     
-    .inline{
+    .inline, .container2,.container3{
     	font-size : 25px;
     }
     
