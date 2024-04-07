@@ -32,12 +32,12 @@
     	border: 1px;
     }
     
-    div > span{
+    #hello{
     	color : blue;
     	
     }
     
-    div{
+    div form{
     	font-size : 25px;
     }
     
@@ -102,6 +102,10 @@
 		align : center;
     }
     
+    .inline{
+    	font-size : 25px;
+    }
+    
     
 </style>
 
@@ -117,8 +121,8 @@
 		<br clear = "both">
 
 	    <div class="area">
-	        <div class="inline" id="introduce">안녕하세요! <span><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
-	        <div class="inline" id="mymodify"><a type="button" href="<%=contextPath %>/update">개인정보수정</a></div>
+	        <div class="inline" id="introduce">안녕하세요! <span id="hello"><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
+	        <div class="inline" id="mymodify"><a class="btn btn-outline-primary" type="button" href="<%=contextPath %>/update">개인정보수정</a></div>
 	    </div>
 	    
 		   
