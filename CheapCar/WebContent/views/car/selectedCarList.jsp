@@ -174,6 +174,7 @@
 							<option value='카이엔'>카이엔</option>
 							<option value='아반떼'>아반떼</option>
 							<option value='소나타'>소나타</option>
+							<option value='카니발'>카니발</option>
 							<option value='GV80'>GV80</option>
 							<option value='스타렉스'>스타렉스</option>
 							<option value='스포티지'>스포티지</option>
@@ -288,6 +289,17 @@
 				
 				fuelSonata.innerHTML = "<option value='LPG'>LPG</option>";
 				fuelSonata.innerHTML += "<option value='가솔린'>가솔린</option>";
+				
+			} else if(selectModel == "카니발"){
+				
+				const gradeCarnival = document.getElementById('gradeOption');
+
+				gradeCarnival.innerHTML = "<option value='대형'>대형</option>";
+				
+				const fuelCarnival = document.getElementById('fuelOption');
+				
+				fuelCarnival.innerHTML = "<option value='가솔린'>가솔린</option>";
+				fuelCarnival.innerHTML += "<option value='디젤'>디젤</option>";
 				
 			} else if(selectModel == "GV80"){
 				
