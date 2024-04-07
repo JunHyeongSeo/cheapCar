@@ -71,7 +71,7 @@
     .container1{
     	padding-top: 30px;
     	margin-left : 5%;
-    	width : 96%;
+    	width : 89%;
     	
     }
     

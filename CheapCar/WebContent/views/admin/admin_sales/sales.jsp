@@ -215,7 +215,7 @@
 				
 
 				function show2(){
-					$('#detailModelName').hide;
+					$('#detailModelName').hide();
 					$('#detailLocationName').hide();
 					$('#noneDiv2').hide();
 				}
