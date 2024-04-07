@@ -382,6 +382,10 @@
 								   + "</td>"
 								   + "</tr>"
 								   + "<tr>"
+								   + "<td>블랙리스트 사유</td>"
+								   + "<td><input type='text' value='" + m.blackReason + "' name='" + m.blackReason + "'></td>"
+								   + "</tr>"
+								   	+ "<tr>"
 								   + "<td colspan='2'><button type='button' onclick='updateMember(this);' id='" + m.memberNo + "'>회원 정보 수정</td>"
 								   + "</tr>"
 								   
@@ -416,7 +420,8 @@
 							email : document.getElementsByName('changedEmail')[0].value,
 							status : statusValue,
 							checkId : document.getElementsByName('checkId')[0].value,
-							memberNo : document.getElementsByName('changedNo')[0].value
+							memberNo : document.getElementsByName('changedNo')[0].value,
+							blackReason : document.getElementsByName('changedNo')[0].value,
 						},
 						success : function(result){
 							if(result > 0){

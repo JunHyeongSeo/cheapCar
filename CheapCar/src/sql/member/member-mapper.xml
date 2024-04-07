@@ -92,7 +92,8 @@
 				PHONE = ?,
 				BIRTHDAY = ?,
 				EMAIL = ?,
-				MEMBER_STATUS = ?
+				MEMBER_STATUS = ?,
+				BLACK_REASON = ?
 		WHERE 
 				MEMBER_ID = ?
 	</entry>
