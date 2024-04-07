@@ -133,25 +133,38 @@ public class CsService {
 			rollback(conn);
 		}
 		
+		close(conn);
 		return result;
 	}
 	
-	public int update(int csNo) {
+	public int update(Cs cs, ArrayList<BoardAttachment> updateList, ArrayList<BoardAttachment> insertList) {
 		
 		Connection conn = getConnection();
 		
 		int result = 1;
 		
-		int csResult = new CsDao().updateCs()
+		int csResult = 1;
+		csResult = new CsDao().updateCs(conn, cs);
 		
+		int ulResult = 1;
+		if(!updateList.isEmpty()) {
+			ulResult = new CsDao().updateAttachment(conn, updateList);
+		}
 		
+		int inResult = 1;
+		if(!insertList.isEmpty()) {
+			inResult = new CsDao().insertAttachmentAgain(conn, insertList, cs.getCsNo());
+		}
 		
+		result = csResult * ulResult * inResult;
 		
+		if(result > 0) { commit(conn);}
+		else rollback(conn);
+		
+		close(conn);
 		
 		return result;
 	}
-	
-	
 	
 	
 	

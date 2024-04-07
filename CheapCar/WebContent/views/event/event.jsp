@@ -142,7 +142,7 @@
 					<form>
 						<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 						<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-						<% if(loginUser != null) {%>
+						<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) {%>
 						<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
 						<%}%>
 					</form>

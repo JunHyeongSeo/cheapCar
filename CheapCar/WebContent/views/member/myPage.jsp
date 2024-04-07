@@ -32,16 +32,17 @@
     	border: 1px;
     }
     
-    div > span{
+    #hello{
     	color : blue;
     	
     }
     
-    div{
+    div form{
     	font-size : 25px;
     }
     
     .area{
+    	margin-left : 5%
     	justify-content: space-between;
     	
     }
@@ -69,8 +70,9 @@
     
     .container1{
     	padding-top: 30px;
-    	margin-left : 30px;
-    	width : 96%;
+    	margin-left : 5%;
+    	width : 89%;
+    	
     }
     
     #aa2{
@@ -78,14 +80,14 @@
     }
  
 	.container2{
-		margin-left : 30px;
+		margin-left : 5%;
 		position: absolute;
 		float : left;
 		width : 48%;
 	}
 	
     .container3{
-    	margin-left : 50%;
+    	margin-left : 52%;
 		position: absolute;
     	float : left;
     	width : 48%;
@@ -100,6 +102,10 @@
     
     div{
 		align : center;
+    }
+    
+    .inline, .container2,.container3{
+    	font-size : 25px;
     }
     
     
@@ -117,8 +123,8 @@
 		<br clear = "both">
 
 	    <div class="area">
-	        <div class="inline" id="introduce">안녕하세요! <span><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
-	        <div class="inline" id="mymodify"><a href="<%=contextPath %>/update" >개인정보수정</a></div>
+	        <div class="inline" id="introduce">안녕하세요! <span id="hello"><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
+	        <div class="inline" id="mymodify"><a class="btn btn-outline-primary" type="button" href="<%=contextPath %>/update">개인정보수정</a></div>
 	    </div>
 	    
 		   
@@ -135,10 +141,9 @@
 			        		<th>대여장소</th>
 							<th>예약일자</th>
 							<th>반납일자</th>
-			      	</tr>
+			      		</tr>
 				    </thead>
 				    <tbody>
-				    	
 				    	<tr>
 					        <td colspan="4">예약내역이 존재하지 않습니다</td>
 					        <td></td>
@@ -151,7 +156,6 @@
 	  	</div>
 
 	  <div id="con23">
-	  
 		  <div class="container2">
 				<h4>마일리지</h4>
 			  	<table class="table" id="aa">
@@ -169,7 +173,6 @@
 				   </tbody>
 			  </table>
 		  </div>
-		  
 		  <div class="container3">
 				<h4>나의 문의내역</h4>
 			  	<table class="table" id="aa">
@@ -191,14 +194,9 @@
 				   </tbody>
 			  	</table>
 		  	</div>
-	
 	  	</div>
-		
-		
-			
+	  	
 		<% } else { %>
-		
-	
 	
 		<div class="container1" >
 			<form method="get" action="<%=contextPath%>/reservation.my">
@@ -211,7 +209,7 @@
 			        		<th>대여장소</th>
 							<th>예약일자</th>
 							<th>반납일자</th>
-			      	</tr>
+			      		</tr>
 				    </thead>
 				    <tbody>
 				    	<% for(Car car : carlist) { %>
@@ -229,8 +227,10 @@
 	  </div>
 	  
 	
-	  <div id="con23">
+
 	  
+	    <% if(carlist.get(0).getMileage() > 0){ %>	
+	  <div id="con23">
 		  <div class="container2">
 				<h4>마일리지</h4>
 			  	<table class="table" id="aa">
@@ -251,7 +251,59 @@
 			  </table>
 		  </div>
 		  
-		  <div class="container3">
+		  
+		  <% }else{ %>
+		  
+		    <div class="container2">
+				<h4>마일리지</h4>
+			  	<table class="table" id="aa">
+			    	<thead class="thead-dark">
+			      		<tr>
+				        	<th>적립날짜</th>
+				        	<th>마일리지</th>
+			      		</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+					        <td colspan="2">마일리지가 존재하지 않습니다.</td>
+					        <td></td>
+				      	</tr>
+				   </tbody>
+			  </table>
+		  </div>
+		  
+		  
+		  <% } %>
+		  
+			  <% if(carlist.get(0).getCsNo() > 0) { %>
+			  
+			  <div class="container3">
+				  <h4>나의 문의내역</h4>
+				  	<table class="table" id="aa">
+				    	<thead class="thead-dark">
+				      		<tr>
+					        	<th>문의 번호</th>
+					        	<th>제목</th>
+				        		<th>문의 일자</th>
+				        		<th>문의 답변 여부</th>
+				      		</tr>
+					    </thead>
+					    <tbody>
+					    <% for(Car car : carlist) { %>
+					    	<tr>
+						        <td><%= car.getCsNo()%></td>
+						        <td><%= car.getCsTitle()%></td>
+					        	<td><%= car.getCreateDate() %></td>
+					        	<td><%= car.getReplyYn() %></td>
+					      	</tr>
+				      	<% } %>
+				     </tbody>
+			  	  </table>
+		  	  </div>
+			  	
+			<% }else { %>
+			  
+			  <div class="container3">
 				<h4>나의 문의내역</h4>
 			  	<table class="table" id="aa">
 			    	<thead class="thead-dark">
@@ -263,29 +315,25 @@
 			      		</tr>
 				    </thead>
 				    <tbody>
-				    <% for(Car car : carlist) { %>
 				    	<tr>
-					        <td><%= car.getCsNo()%></td>
-					        <td><%= car.getCsTitle()%></td>
-				        	<td><%= car.getCreateDate() %></td>
-				        	<td><%= car.getReplyYn() %></td>
+					        <td colspan="4">나의 문의내역이 없습니다.</td>
+					        <td></td>
+				        	<td></td>
+				        	<td></td>
 				      	</tr>
-				      	<% } %>
 				   </tbody>
 			  	</table>
 		  	</div>
-	
+		
+		
+			<% } %>
 	  	</div>
-	  
-	  
+	  	
+	  	
 		<% } %>
 
 
 	</div>
-
-
-
-
 
 
 </body>

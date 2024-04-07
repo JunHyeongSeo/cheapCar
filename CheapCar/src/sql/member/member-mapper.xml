@@ -92,7 +92,8 @@
 				PHONE = ?,
 				BIRTHDAY = ?,
 				EMAIL = ?,
-				MEMBER_STATUS = ?
+				MEMBER_STATUS = ?,
+				BLACK_REASON = ?
 		WHERE 
 				MEMBER_ID = ?
 	</entry>
@@ -176,7 +177,15 @@
 		UPDATE TB_MEMBER SET MEMBER_STATUS = 'C' WHERE MEMBER_NO = ?
 	</entry>
 	
-	
+	<entry key="selectMember1">
+		SELECT
+				*
+			FROM
+				TB_MEMBER
+			WHERE
+				MEMBER_ID = ?
+				
+	</entry>
 	
 	
 	<!--////////////////////////////////// 근경 끝 //////////////////////////////////-->

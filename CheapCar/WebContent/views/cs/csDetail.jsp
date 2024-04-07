@@ -4,6 +4,8 @@
 <%
 	Cs cs = (Cs)request.getAttribute("cs");
 	ArrayList<BoardAttachment> list = (ArrayList<BoardAttachment>)request.getAttribute("baList");
+	System.out.println(cs);
+	System.out.println(list);
 %>
 <!DOCTYPE html>
 <html>
@@ -170,7 +172,7 @@
                         <a href="<%=contextPath%>/list.cs?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                     
                     	<% if(loginUser != null && (loginUser.getMemberNo() == cs.getMemberNo() || loginUser.getMemberStatus().equals("A"))) { %>
-                    		<a href="<%=contextPath%>/update.cs?csNo=<%= cs.getCsNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                    		<a href="<%=contextPath%>/updateForm.cs?csNo=<%= cs.getCsNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
                             <a href="<%=contextPath%>/delete.cs?csNo=<%= cs.getCsNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                     	<% } %>
                     	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>

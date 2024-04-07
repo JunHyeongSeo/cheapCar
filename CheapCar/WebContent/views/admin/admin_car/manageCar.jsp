@@ -22,7 +22,6 @@
 			<label for="searchCar" style="margin: 0px 15px;">차량 번호 : </label>
 			<input type="text" class="form-control" id="searchCar" placeholder="조회하실 차량 번호를 입력해주세요." name="searchCar" style="width: 300px;">
 			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchCarList();">조회</button>
-			<a class="btn btn-info" href="<%=contextPath %>/insertCar">차량등록</a>
 		</div>
 
         <div class="container1">

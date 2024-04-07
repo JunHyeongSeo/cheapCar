@@ -22,7 +22,7 @@
 	<style>
 		.login-area{
 			float : right;
-			padding-right : 20px;
+			padding-right : 50px;
 		}
 
         .menu{
@@ -36,8 +36,11 @@
         }
         
         .nav-area{
+        	padding-top : 20px;
+        	padding-bottom : 5px;
         	z-index : 100;
         	position : absoulute;
+        	
         }
         
 		#logo{
@@ -91,6 +94,7 @@
         .login-area a{
         	text-decoration-line: none;
         }
+		
         
 
 	</style>
@@ -102,10 +106,6 @@
 		
 		if(msg != 'null'){
 			alert(msg);
-		
-			
-			
-			
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
@@ -114,7 +114,7 @@
     
         <div id="logo">
 	        <a href="<%= contextPath%>">
-				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="200" height="200">
+				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="250" height="250">
 			</a>
 		</div>
 		
@@ -122,8 +122,8 @@
        		<% if(loginUser == null) { %>
 	    	<form action="" method="post">
 		    	<div>
-		    		<a href="<%=contextPath%>/loginPage" >로그인</a>
-		            <a href="<%=contextPath%>/enrollPage">회원가입</a>
+		    		<a class="btn btn-outline-info" href="<%=contextPath%>/loginPage" >로그인</a>
+		            <a class="btn btn-outline-warning" href="<%=contextPath%>/enrollPage">회원가입</a>
 		        </div>
 			</form>
 			<% } else { %>
@@ -149,13 +149,7 @@
 		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
 		<div class="menu"><a href="<%= contextPath %>/list.review?currentPage=1">후기</a></div>
-		<div class="menu menu5">
-			<a href="<%= contextPath %>/list.cs?currentPage=1">고객센터</a>
-			<ul class="cs">
-				<li class="menu55" id="faq"><a href="#">FAQ</a></li>
-				<li class="menu55" id="1to1Cs"><a href="<%= contextPath %>/list.cs?currentPage=1">1대1 문의</a></li>
-			</ul>
-		</div>
+		<div class="menu"><a href="<%= contextPath %>/list.cs?currentPage=1">고객센터</a></div>
 	</div>
 	
 </body>

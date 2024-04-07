@@ -172,7 +172,9 @@
 </head>
 
 <body>
- 
+
+	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
+ 	
     <div id="wrap">
         <h1><a href="<%= contextPath %>/adminMain">관리자 메인페이지</a></h1>
         
@@ -192,19 +194,8 @@
             </li>
             
             <li><a href="<%=contextPath%>/manageCar?currentPage=1">차량관리</a></li>
-            <li><a href="#" class="naviA">고객센터</a>
-                <ul>
-                    <li><a href="<%=contextPath%>/list.cs?currentPage=1">회원문의글조회</a></li>
-                    <li><a href="#">FAQ관리</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="naviA">매출관리</a>
-                <ul>
-                    <li><a href="<%=contextPath%>/sales">매출조회</a></li>
-                    <li><a href="<%=contextPath%>/payList">회원결제조회</a></li>
-                </ul>
-            </li>
-
+            <li><a href="<%=contextPath%>/list.cs?currentPage=1" class="naviA">고객센터</a></li>
+            <li><a href="<%=contextPath%>/sales" class="naviA">매출관리</a></li>
             <li><a href="#" class="naviA">게시판관리</a>
                 <ul>
                     <li><a href="<%=contextPath%>/list.notice?currentPage=1" target="_blank">공지사항게시판</a></li>
@@ -217,6 +208,10 @@
     	<br clear="both">
     	
     </div>
+    
+    <% } else { %>
+    	<h1>로그인 후 이용 가능합니다.</h1>
+    <% } %>
     
 </body>
 </html>

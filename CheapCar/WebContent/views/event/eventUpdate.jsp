@@ -153,7 +153,7 @@
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required><%= eBoard.getEventTitle() %> 
+		    					제목 : <input type="text" name="title" required value="<%= eBoard.getEventTitle() %> ">
 			    			</div>
                             </div>
 	                        <div class="content_sub">
@@ -178,7 +178,7 @@
                     
 
 	                        <div class="content_btn" align="center" >
-	                            <button type="submit" class="btn btn-sm btn-primary">등록하기</button>
+	                            <button type="submit" class="btn btn-sm btn-primary" id="insertImg">등록하기</button>
                             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back()">뒤로가기</button>
 	                        </div>
                         </form>
@@ -193,30 +193,37 @@
 		
 
 		
+        $(function(){ // 사진 첨부가 안되었을 때 이미지 들어갈 화면 가리기
+			
+			$('#img_1').hide();
+			
+		})
+		
         function loadImg(inputFile, num){
-            //console.log(inputFile.files.length);
-            if(inputFile.files.length){
-            	
+			const str = inputFile.files[0].name
+			if(str.includes('.')){
                 const reader = new FileReader();
                 //console.log(inputFile.files[0]);
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function(e){
                     switch(num){
-                    	case 1 : $('#img_1').attr('src', e.target.result); break;  
+                    	case 1 : $('#img_1').attr('src', e.target.result); 
+                    	         $('#img_1').show();
+                    	         $('#insertImg').show(); break;                   			  
                     }
-                    
                 }
             }
-             
             else{
+            	alert("확장자를 확인하여 주시기 바랍니다.")
             	const str = ''
-            	
             	switch(num){
-            		case 1 : $('#img_1').attr('src', str); break;
+            		case 1 : $('#img_1').attr('src', str);
+            				 $('#insertImg').hide(); break;
             	};
             }
-            
         }
+        
+	
         
         
         

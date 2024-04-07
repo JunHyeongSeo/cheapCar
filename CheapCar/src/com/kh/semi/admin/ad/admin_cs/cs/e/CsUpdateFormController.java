@@ -37,6 +37,7 @@ public class CsUpdateFormController extends HttpServlet {
 		
 		Cs cs = new CsService().csDetail(csNo);
 		ArrayList<BoardAttachment> list = new CsService().selectAttachment(csNo);
+		
 		request.setAttribute("cs", cs);
 		request.setAttribute("list", list);
 		

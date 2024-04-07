@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import com.kh.semi.common.JDBCTemplate;
 import com.kh.semi.common.model.vo.PageInfo;
+import com.kh.semi.review.model.vo.Reply;
 import com.kh.semi.review.model.vo.ReviewBoard;
 import com.kh.semi.review.model.vo.ReviewPhoto;
 
@@ -306,7 +307,110 @@ public class ReviewDao {
 	}//
 	
 	
+	public int insertComment(Connection conn, Reply reply) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reply.getCommentContent());
+			pstmt.setInt(2, reply.getReviewNo());
+			pstmt.setInt(3, reply.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}//
 	
+	
+	public ArrayList<Reply> selectReplyList(Connection conn, int reviewNo){
+		
+		ArrayList<Reply> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Reply reply = new Reply();
+				reply.setCommentNo(rset.getInt("ROWNUM"));
+				reply.setCommentContent(rset.getString("COMMENT_CONTENT"));
+				reply.setCreateDate(rset.getDate("CREATE_DATE"));
+				reply.setReviewNo(rset.getInt("REVIEW_NO"));
+				reply.setCommentWriter(rset.getString("MEMBER_ID"));
+				
+				list.add(reply);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	
+	public ArrayList<ReviewBoard> mainRiview(Connection conn) {
+		
+		ArrayList<ReviewBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("mainReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				ReviewBoard rv = new ReviewBoard();
+				
+				rv.setReviewNo(rset.getInt("REVIEW_NO"));
+				rv.setReviewTitle(rset.getString("REVIEW_TITLE"));
+				rv.setCount(rset.getInt("COUNT"));
+				rv.setReviewWriter(rset.getString("MEMBER_ID"));
+				rv.setTitleImg(rset.getString("TITLE_IMG"));
+				rv.setMemberNo(rset.getInt("MEMBER_NO"));
+				rv.setFileLevel(rset.getString("FILELEVEL"));
+				rv.setReviewContent(rset.getString("REVIEW_CONTENT"));
+				
+				
+				list.add(rv);		
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+		
+	}
 	
 	
 	
@@ -316,4 +420,4 @@ public class ReviewDao {
 	
 	
 	
-}
+}////

@@ -283,6 +283,89 @@ public class CsDao {
 		return result;
 	}
 	
+	public int updateCs(Connection conn, Cs cs) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateCs");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cs.getCsTitle());
+			pstmt.setString(2, cs.getCsContent());
+			pstmt.setInt(3, cs.getCsNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateAttachment(Connection conn, ArrayList<BoardAttachment> updateList) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			
+			for(BoardAttachment ba : updateList) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, ba.getOriginName());
+				pstmt.setString(2, ba.getChangeName());
+				pstmt.setString(3, ba.getFilePath());
+				pstmt.setInt(4, ba.getFileNo());
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertAttachmentAgain(Connection conn, ArrayList<BoardAttachment> list, int csNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachmentAgain");
+		
+		try {
+
+			for(BoardAttachment ba : list) {
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, csNo);
+				pstmt.setString(2, ba.getOriginName());
+				pstmt.setString(3, ba.getChangeName());
+				pstmt.setString(4, ba.getFilePath());
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

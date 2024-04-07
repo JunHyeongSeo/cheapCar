@@ -39,7 +39,7 @@ public class ModelSaleController extends HttpServlet {
 	
 			
 		ArrayList<Car> car = new CarService().modelSale(checkmodels);
-		System.out.println(car);
+		//System.out.println(car);
 
 			response.setContentType("application/json; charset=UTF-8");
 			Gson gson = new Gson();
