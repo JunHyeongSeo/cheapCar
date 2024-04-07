@@ -172,6 +172,8 @@
 </head>
 
 <body>
+
+	<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
  	
     <div id="wrap">
         <h1><a href="<%= contextPath %>/adminMain">관리자 메인페이지</a></h1>
@@ -206,6 +208,10 @@
     	<br clear="both">
     	
     </div>
+    
+    <% } else { %>
+    	<h1>로그인 후 이용 가능합니다.</h1>
+    <% } %>
     
 </body>
 </html>

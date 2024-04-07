@@ -558,7 +558,7 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectMember");
+		String sql = prop.getProperty("selectMember1");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -577,6 +577,8 @@ public Member login(Connection conn, String memberId, String memberPwd) {
 									rset.getString("EMAIL"),
 									rset.getDate("ENROLL_DATE"),
 									rset.getString("MEMBER_STATUS"));
+									
+				member.setBlackReason(rset.getString("BLACK_REASON"));
 			}
 			
 		} catch (SQLException e) {
