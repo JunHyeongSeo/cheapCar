@@ -2,16 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>    
 
-<%
-	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-	
-%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
     
     
     
@@ -127,7 +119,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -142,16 +134,18 @@
 					<form>
 						<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 						<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-						<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) {%>
-						<a href="<%=contextPath %>/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
-						<%}%>
+						<c:if test="${loginUser != null and loginUser.memberStatus =='A'}">
+						<a href="${ path }/insertForm.event" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+						</c:if>
 					</form>
 				</div>  
 				<div class="event_content">
 					<ul id="event_list" >
-						<% if(list.isEmpty()) { %>
-						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
-						<% } else { %>
+						<c:choose>
+						<c:if test="${ empty list }">
+							<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
+						</c:if>
+						<c:otherwise>
 							<% for(EventBoard eb: list) { %>
 							<li>
 								<div class="img-area event_1 content">
@@ -165,8 +159,8 @@
 								</div>
 							  </a>
 							</li>
-							<% } %>
-						<% } %>
+							</c:otherwise>
+						</c:choose>
 						
 					</ul>
             
