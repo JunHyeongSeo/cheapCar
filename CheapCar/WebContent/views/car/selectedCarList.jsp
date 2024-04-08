@@ -37,10 +37,6 @@
 <title>차량 렌트</title>
 <style>
     
-    div{
-        border : 1px solid red;
-    }
-
     .area{
         width : 100%;
         height : auto;

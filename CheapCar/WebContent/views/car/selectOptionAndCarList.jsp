@@ -40,10 +40,6 @@
 
 <style>
     
-    div{
-        border : 1px solid red;
-    }
-
     .area{
         width : 100%;
         height : auto;

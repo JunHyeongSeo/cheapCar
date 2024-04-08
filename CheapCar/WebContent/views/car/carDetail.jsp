@@ -28,9 +28,6 @@
 <title>차량 예약 페이지</title>
 
 <style>
-    div{
-        border: 1px solid red;
-    }
 
     .area-board{
         width : 1400px;

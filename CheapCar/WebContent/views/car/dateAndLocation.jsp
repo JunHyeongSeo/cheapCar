@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>날짜 및 위치 지정</title>
 <style>
-    div{
-        border : 1px solid red;
-    }  
 
     .area-board{
         width : 100%;
