@@ -140,11 +140,11 @@
 					
 			   </div>
 			</div>
+			</c:otherwise>
 			
+	    </c:choose>
 		</div>
-		</c:otherwise>
        		
-    </c:choose>
 		
 	</div>
 	
