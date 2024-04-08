@@ -102,8 +102,8 @@
 <body>
 
 	<script>
-
-		location.href = '<%=contextPath%>/menubar';
+	
+		location.href = '<%=contextPath%>/views/common/menuBar.jsp';
 
 		const msg = '<%= alertMsg %>';
 		
