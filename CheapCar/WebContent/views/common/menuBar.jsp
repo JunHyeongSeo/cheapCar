@@ -103,8 +103,6 @@
 
 	<script>
 	
-		location.href = '<%=contextPath%>/views/common/menuBar.jsp';
-
 		const msg = '<%= alertMsg %>';
 		
 		if(msg != 'null'){
