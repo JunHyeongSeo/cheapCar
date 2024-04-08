@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.semi.common.model.vo.PageInfo, java.util.ArrayList, com.kh.semi.car.model.vo.Car" %>
-<%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<Car> carlist = (ArrayList<Car>)request.getAttribute("carlist");
-	// 맴버카
-	
-	
-	//System.out.println(carlist);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +29,9 @@
 </head>
 <body>
 	<%@ include file="../../common/adminMain.jsp" %>
+	
+	
+    	
 	
 	<div class="outer" id="salemonth">
 		<div class="container" id="container">
@@ -238,14 +234,17 @@
 						</tr>
 					</thead>
 					<tbody>
-					<% for(int i = 0; i < carlist.size() ; i++){ %>
+					
+					<c:forEach var="c" items="${ carlist }">
 						<tr>
-							<td id="carreserNo<%=i%>"><%= carlist.get(i).getReservationNo()  %></td>
-							<td><%= carlist.get(i).getMemberId()  %></td>
-						 	<td><%= carlist.get(i).getTotalPrice() %></td> 
-							<td id="car<%=i%>"><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1">상세보기</button></td>
+							<td>${ c.reservationNo }</td>
+							<td>${ c.memberId }</td>
+						 	<td>${ c.totalPrice }</td> 
+							<td><button onclick="btn1(this);" type="button" class="btn btn-secondary btn1">상세보기</button></td>
 						</tr>
-						<% } %>
+					</c:forEach>
+						
+						
 					</tbody>
 				</table>
 				

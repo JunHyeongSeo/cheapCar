@@ -106,6 +106,7 @@
     <div id="wrap">
     
     	<c:set var ="path" value="${pageContext.request.contextPath }" scope="session"/>
+    	
     	<h1><marquee style="color:orangered;">세미프로젝트 하시느라 다들 고생 많으셨습니다. 남은 기간도 화이팅하세요!!!</marquee></h1>
         <div id="logo">
 	        <a href="${ path }">
