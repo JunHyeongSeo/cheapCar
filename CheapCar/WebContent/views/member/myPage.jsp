@@ -123,15 +123,15 @@
 		<br clear = "both">
 
 	    <div class="area">
-	        <div class="inline" id="introduce">안녕하세요! <span id="hello"><%=loginUser.getMemberName()%></span>님 반갑습니다!!</div>
-	        <div class="inline" id="mymodify"><a class="btn btn-outline-primary" type="button" href="<%=contextPath %>/update">개인정보수정</a></div>
+	        <div class="inline" id="introduce">안녕하세요! <span id="hello">${ sessionScope.loginUser.memberName }</span>님 반갑습니다!!</div>
+	        <div class="inline" id="mymodify"><a class="btn btn-outline-primary" type="button" href="${ path }/update">개인정보수정</a></div>
 	    </div>
 	    
 		   
 		<% if(carlist.isEmpty()) { %>
 		
 		<div class="container1" >
-			<form method="get" action="<%=contextPath%>/reservation.my">
+			<form method="get" action="${ path }/reservation.my">
 				<h4>예약내역</h4>
 			  	<table class="table" id="aa">
 			    	<thead class="thead-dark">
@@ -199,7 +199,7 @@
 		<% } else { %>
 	
 		<div class="container1" >
-			<form method="get" action="<%=contextPath%>/reservation.my">
+			<form method="get" action="${ path }/reservation.my">
 				<h4>예약내역</h4>
 			  	<table class="table" id="aa">
 			    	<thead class="thead-dark">

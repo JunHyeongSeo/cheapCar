@@ -106,9 +106,10 @@
     <div id="wrap">
     
     	<c:set var ="path" value="${pageContext.request.contextPath }" scope="session"/>
+    	
     	<h1><marquee style="color:orangered;">세미프로젝트 하시느라 다들 고생 많으셨습니다. 남은 기간도 화이팅하세요!!!</marquee></h1>
         <div id="logo">
-	        <a href="${ sessionScope.contextPath }">
+	        <a href="${ path }">
 				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="250" height="250">
 			</a>
 		</div>
@@ -132,7 +133,6 @@
 			    <div>
 			    	<a href="${ path }/myPage" class="btn btn-sm btn-primary">마이페이지</a>
 					<a href="${ path }/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					
 					<c:if test="${ sessionScope.loginUser.memberStatus eq 'A' }">
 					<a href="${ path }/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
 					</c:if>
@@ -140,11 +140,10 @@
 			   </div>
 			</div>
 			</c:otherwise>
-			
-	    </c:choose>
+
+   		 </c:choose>
 		</div>
-       		
-		
+
 	</div>
 	
 	

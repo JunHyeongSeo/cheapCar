@@ -2,80 +2,13 @@
     pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo"%>
 <!DOCTYPE html>
 <html>
-<style>
-	.container{
-	   margin-top: 20px;
-	}
-	
-	#top11{
-		width: 1150px;
-		margin-right : 10px;
-		margin-top : 50px;
-	}
-	
-	#middleTable{
-	    width : 80%;
-	    margin: auto;
-	}
-	
-	.table{
-	    margin-top: 20px;
-	    text-align: center;
-	}
-	
-	#top2{
-	    float: right;
-	}
-	
-	.form-inline{
-	    display: flex;
-	    align-items: center;
-	    padding: 15px;
-	}
-	
-	.pagination{
-	    width: 100%;
-	    margin: auto;
-	}
-	
-	.mileage{
-	    margin-top: 30px;
-	}
-	
-	.container{
-		   	margin-top: 20px;
-	}
-	
-	.paging-area{
-		text-align : center;
-		margin-top : 12px;
-	}
-	.pagin-area>button{
-		margin : auto;
-	}
-
-       .naviA:hover{
-           cursor: context-menu
-       }
-       
-       #paging-area{
-		text-align : center;
-		margin-top : 12px;
-	}
-	
-	.paging-area{
-		text-align : center;
-		margin-top : 12px;
-	} 
-	
-</style>
 <head>
 <meta charset="UTF-8">
 <title>회원현황</title>
 
 </head>
 <body>
-	<%@ include file="../../common/adminMain.jsp" %>
+	<jsp:include page="../../common/adminMain.jsp"></jsp:include>
 	
     <div class="outer" id="salemonth">
     
@@ -154,7 +87,7 @@
 	    				
 	    				if(pi.currentPage > 1) {
 	    					resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
-	    	       					    + "'<%=contextPath%>/memberList?currentPage="
+	    	       					    + "'${ contextPath }/memberList?currentPage="
 	    	       					    + (pi.currentPage - 1)
 	    	       					    + "'"
 	    	       					    + '"'
@@ -165,7 +98,7 @@
 	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
 	   			        	if(pi.currentPage != i){
 	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	   			        				   + "'<%=contextPath%>/memberList?currentPage="
+	   			        				   + "'${ contextPath }/memberList?currentPage="
 	   			        				   + i
 	   			        				   + "'"
 	     	       					   	   + '"'
@@ -182,7 +115,7 @@
 	   			        
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					   + "'<%=contextPath%>/memberList?currentPage="
+			       					   + "'${ contextPath }/memberList?currentPage="
 			       					   + (pi.currentPage + 1)
 			       					   + "'"
 			       					   + '"'
@@ -432,11 +365,6 @@
 					});
 				}
 			}
-			
-			
-			
-			
-			
         	</script>
 	</div>
 		

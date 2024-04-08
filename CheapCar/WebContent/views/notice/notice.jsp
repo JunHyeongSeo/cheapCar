@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ page import="java.util.ArrayList, com.kh.semi.notice.model.vo.Notice, com.kh.semi.common.model.vo.PageInfo" %>    
-<%
-	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-	
-%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +70,9 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
-	
+
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
+
 	<div class="outer" >
 		<div class="row">
 		  <div class="col-lg-1">
@@ -88,11 +83,12 @@
 				</h2>
 
 
-					<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
+					<c:if test="${ loginUser != null and loginUser.memberStatus == 'A' }">  
 					<div id="write">
-						<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
+						<a href="${ path }/insertForm.notice" class="btn btn-info">글쓰기</a>
+						
 					</div> 
-				    <% } %>
+				    </c:if>
 
 				
 				   <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 5px;">
@@ -104,52 +100,55 @@
 						 <th style="width: 15%; text-align:center">작성일</th>
 						 <th style="width: 8%; text-align:center">조회수</th>
 					  </tr>
-					  <% if(list.isEmpty()){ %>
+					  <c:choose>
+					  <c:when test="${ empty list }">
 					  <tr>
 						<th colspan="5"> 공지사항이 존재하지 않습니다.</th>
 					  </tr>
-					  
-					  <% } else { %>
-
+					  </c:when>
+					  <c:otherwise>
 						
-						<% for(Notice n: list) { %>
+					 	<c:forEach var="n" items="${ list }" >
 							<tr class="notice_list">
-								<th style="text-align:center"><%= n.getNoticeNo() %></th>
-								<th><%= n.getNoticeTitle() %></th>
-								<th style="text-align:center"><%= n.getNoticeWriter() %></th>
-								<th style="text-align:center"><%= n.getCreateDate() %></th>
-								<th style="text-align:center"><%= n.getCount() %></th>
+								<th style="text-align:center">${ n.noticeNo }</th>
+								<th>${ n.noticeTitle }</th>
+								<th style="text-align:center">${ n.noticeWriter }</th>
+								<th style="text-align:center">${ n.createDate }</th>
+								<th style="text-align:center">${ n.count }</th>
 							</tr>
-						<% } %>	
-					 <% } %>
+						</c:forEach>
+					 </c:otherwise>
+					 </c:choose>
 					  
 				   </table>               
 				</div>            
 			 </div>
 		  </div>
-
+		<%--
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<% if(currentPage > 1) { %>	
+			<c:if test="${ pi.currentPage > 1 }">	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage - 1%>'">이전</button>
-            <% } %>
-	     	<% for(int i = startPage; i <= endPage; i++){%>
-	     		<% if(currentPage != i){ %>
+		     		onclick="location.href='${ path }/list.notice?currentPage=${ pi.currentpage - 1 }'">이전</button>
+            </c:if>
+	     	<c:forEach var="i" begin="${ pi.startpage }" end="${ pi.endpage }">
+	     	  <c:choose>
+	     		<c:when test="${ pi.currentpage != i }">
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=i%>'"><%= i %></button>
-		     	<% } else { %>
-		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
-		     	<% } %>	
-		     	
-			<% } %>
+		     		onclick="location.href='${ path }/list.notice?currentPage=${ i }'">${ i }</button>
+		     	</c:when>
+		     	<c:otherwise>
+		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ i }</button>
+		     	</c:otherwise>	
+		     	</c:choose>
+		    </c:forEach> 	
 			
-			<% if(currentPage != maxPage){ %>	
+			<c:if test="${ pi.currentpage != pi.maxpage }">	
 			<button class="btn btn-outline-info" style="color:#6caddf"
-	     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage + 1%>'">다음</button>
-	     	<%} %>
+	     		onclick="location.href='${ path }/list.notice?currentPage=${ pi.currentpage + 1 }'">다음</button>
+	     	</c:if>
 		   
 	    </div>			  
-		
+		 --%>
 		<div class="search-area">
 			<form>
 				<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
@@ -161,7 +160,7 @@
 	<script>
 		$('.notice_list').click(function(){
 			 const noticeNo = $(this).children().eq(0).text();
-			location.href = '<%=contextPath%>/detail.notice?noticeNo=' + noticeNo;
+			location.href = '${path}/detail.notice?noticeNo=' + noticeNo;
 
 		})
 	</script>

@@ -27,7 +27,7 @@
 	  
 					  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="font-weight: 800;">회원가입 </p>
 	  
-					  <form id="enroll-form" method="post" action="<%=contextPath%>/insert">
+					  <form id="enroll-form" method="post" action="${ path }/insert">
 	  
 						<div class="d-flex flex-row align-items-center mb-4">
 						  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -176,63 +176,7 @@
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	
-	<!-- <div class="outer">
-		<br>
-		<h2 align="center">회원가입</h2>
-		
-		<form id="enroll-form12" method="post" action="<%=contextPath%>/insert">
-		
-			<table align="center">
-				<tr>
-					<td>* 아이디</td>
-					<td><input type="text" id="memberId" maxlength="15" required name="memberId" placeholder="4~15글자 사이로 입력"></td>
-					<td><button type="button" onclick="idCheck();">중복확인</button></td>
-				</tr>	
-					
-		
-		
-				<tr>
-					<td>* 비밀번호</td>
-					<td><input type="password" id="memberPwd" maxlength="15" required name="memberPwd" placeholder="4~15글자 사이로 입력"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>* 비밀번호확인</td>
-					<td><input type="password" id="checkPwd" maxlength="30" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>* 이름</td>
-					<td><input type="text" id="memberName" maxlength="30" required name="memberName"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>* 생년월일</td>
-					<td><input type="text" id="birthday" placeholder="-포함해서 입력해주세요." required name="birthday"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>* 전화번호</td>
-					<td><input type="text" id="phone" placeholder="-포함해서 입력해주세요." required name="phone"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>* 이메일</td>
-					<td><input type="email" id="email" required name="email"></td>
-					<td></td>
-				</tr>
-				
-				
-			</table>
-
-			<br><br>
-
-			<div align="center">
-				<button type="reset">취소</button>
-				<button id="submit" type="submit" disabled>회원가입</button>
-			</div> -->
-			
-
+	
 	
 
 			<script>
