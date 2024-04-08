@@ -37,13 +37,11 @@
         <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
                 <%@ include file="../common/dateRangePicker.jsp"%> <br>
-                    시작 날짜 :
+					시작 날짜 :
                 <input id="startRent" name="startDate" type="text" readonly value=""/><br>
-
-		            종료 날짜 : 
+					종료 날짜 : 
                 <input id="endRent" name="endDate" type="text" readonly value=""/><br>
-                
-                    대여 시간 :         
+					대여 시간 :         
                 <input id="totalHour" name="hours" type="text" readonly value=""/>  
                
             </div>
