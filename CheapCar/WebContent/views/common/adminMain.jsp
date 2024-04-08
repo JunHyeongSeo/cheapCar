@@ -18,7 +18,7 @@
 <body>
 	
 	<c:set var="loginUser" value="${ sessionScope.loginUser }" />
-	<c:set var="contextPath" value="${ sessionScope.contextPath }"/>
+	<c:set var ="path" value="${ pageContext.request.contextPath }" scope="session"/>
 	
 	<c:choose>
 	
@@ -26,11 +26,11 @@
 		
 	    <div id="wrap">
 	        
-	        <h1><a href="${ contextPath }/adminMain">관리자 메인페이지</a></h1>
+	        <h1><a href="${ path }/adminMain">관리자 메인페이지</a></h1>
 	        
 	        <div class="login-area">
-				<div id="login-area1"><a href="${ contextPath }/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
-				<div id="login-area2"><a href="${ contextPath }" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
+				<div id="login-area1"><a href="${ path }/logout" class="btn btn-sm btn-primary">로그아웃</a></div>
+				<div id="login-area2"><a href="${ path }" class="btn btn-sm btn-secondary">&nbsp;&nbsp;사용자페이지&nbsp;&nbsp;</a></div>
 	        </div>
 
 	        <br clear="both">
@@ -39,34 +39,34 @@
 				
 				<li><a href="#" class="naviA">회원관리</a>
 					<ul>
-						<li><a href="${ contextPath }/memberList?currentPage=1">회원현황</a></li>
-	                    <li><a href="${ contextPath }/blackList?currentPage=1">블랙리스트관리</a></li>
+						<li><a href="${ path }/memberList?currentPage=1">회원현황</a></li>
+	                    <li><a href="${ path }/blackList?currentPage=1">블랙리스트관리</a></li>
 	                </ul>
 	            </li>
 	            
 	            <li>
-	            	<a href="${ contextPath }/manageCar?currentPage=1">차량관리</a>
+	            	<a href="${ path }/manageCar?currentPage=1">차량관리</a>
             	</li>
             	
 	            <li>
-	            	<a href="${ contextPath }/list.cs?currentPage=1" class="naviA">고객센터</a>
+	            	<a href="${ path }/list.cs?currentPage=1" class="naviA">고객센터</a>
             	</li>
             	
 	            <li>
-	            	<a href="${ contextPath }/sales" class="naviA">매출관리</a>
+	            	<a href="${ path }/sales" class="naviA">매출관리</a>
             	</li>
             	
 	            <li>
 	            	<a href="#" class="naviA">게시판관리</a>
 	                <ul>
 	                    <li>
-	                    	<a href="${ contextPath }/list.notice?currentPage=1" target="_blank">공지사항게시판</a>
+	                    	<a href="${ path }/list.notice?currentPage=1" target="_blank">공지사항게시판</a>
                     	</li>
 	                    <li>
-	                    	<a href="${ contextPath }/list.review?currentPage=1" target="_blank">후기게시판</a>
+	                    	<a href="${ path }/list.review?currentPage=1" target="_blank">후기게시판</a>
                     	</li>
 	                    <li>
-	                    	<a href="${ contextPath }/list.event?currentPage=1" target="_blank">이벤트게시판</a>
+	                    	<a href="${ path }/list.event?currentPage=1" target="_blank">이벤트게시판</a>
                     	</li>
 	                </ul>
 	            </li>

@@ -25,64 +25,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
 
-<style>
-	.outer{
-		width: 1200px;
-		height: auto;
-		margin: auto;
-		padding-bottom: 50px;
-	}
-	.page-header{
-		padding-top: 20px;
-		font-size: 40px;
-		font-weight: bold;
-		border-bottom: 6px solid #6caddf;
-	}
-	
-	#title{
-		background-color: aquamarine;
-		font-size: large;
-		font-weight: bolder;
-	}
-	#write{
-		text-align: right;
-		padding-right: 0%;
-		margin-bottom: 2px;
-	}
-	.search-area{
-		text-align: center;
-		margin-top: 10px;
-	}
-    
-	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
-		font-family: "Do Hyeon", sans-serif;
-		font-weight: 300px;
-		font-style: normal;
-		font-size: 60px;
-		color: #6caddf;
-	}
-	#searchWord{
-		border: 2px solid #6caddf;
-		border-radius: 5px;
-	}
-	.table{
-		font-size: 18px;
-	}
 
-</style>
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/adminMain.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
 			<div class="col-lg-1">
 		 	</div>
+		 	
 			<div class="col-lg-10">
 				<div class="panel-body">
 					<h2 class="page-header do-hyeon-regular" align="left">1대1 문의</h2>
-
+					
 					<% if(loginUser != null && (loginUser.getMemberStatus().equals("A") || loginUser.getMemberStatus().equals("C"))) { %>
 						<div id="write">
 							<a href="<%= contextPath %>/insertForm.cs" class="btn btn-info">글쓰기</a>
