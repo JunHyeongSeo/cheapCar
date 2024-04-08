@@ -55,8 +55,7 @@
 <body>
 	
 	<% com.kh.semi.common.JDBCTemplate.getConnection(); %>
-	<%@ include file="views/common/menuBar.jsp" %>
-	
+	<jsp:include page="views/common/menuBar.jsp" />
 
 	<!-- 
         * 참고 링크
@@ -227,7 +226,7 @@
         $(document).on('click', '.card-content', function(){
             console.log($(this).children().eq(1).val());
             const reviewNo = $(this).children().eq(1).val();
-            location.href = '${ path }/detail.review?reviewNo=' + reviewNo
+            location.href = '${path}/detail.review?reviewNo=' + reviewNo
             
         });
 
@@ -239,7 +238,7 @@
             	
                 const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
-                location.href = '${ path }/detail.event?eventNo=' + eventNo 
+                location.href = '${path}/detail.event?eventNo=' + eventNo 
             })
         });
 
@@ -251,7 +250,6 @@
  
     
     <hr>
-    
 
     <style>
         .container-fostrap {
