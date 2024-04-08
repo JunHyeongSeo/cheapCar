@@ -5,7 +5,6 @@
 	page import="java.util.ArrayList, 
 				 com.kh.semi.car.model.vo.*,
 				 com.kh.semi.common.model.vo.PageInfo" 
-	
 %>
 
 <%
@@ -139,7 +138,7 @@
 <body>
 	
     <div>
-        <%@ include file="../common/menuBar.jsp" %>
+        <jsp:include page="../common/menuBar.jsp"/>
     </div>
 
     <div class="area">
@@ -152,7 +151,7 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do" class="option-form form-inline form-location" >
+                <form method="get" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
 			
 					<input type="hidden" name="currentPage" value="<%= 1 %>" />
 					<input type="hidden" name="hours" value="<%=hours %>" />
@@ -306,7 +305,7 @@
 				const fuelGV80 = document.getElementById('fuelOption');
 				
 				fuelGV80.innerHTML = "<option value='가솔린'>가솔린</option>";
-				fuelGV80.innerHTML += "<option value='디젤'>디젤</option>";
+				fuelGV80.innerHTML = "<option value='디젤'>디젤</option>";
 				
 			} else if(selectModel == "스타렉스"){
 				
@@ -371,7 +370,7 @@
 	                
 	                    <div class="list-size">
 	                    
-	                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
+	                        <img width="100%" class="car-img img-thumbnail" src="${path}/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
 	                    
 	                    </div>
 	                    
@@ -398,7 +397,7 @@
 	                        	<%= totalPrice = carPrice + optionPrice %>
 							</span> <br>
                             
-                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
+                            <a class="btn btn-sm btn-primary"href="${path}/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
                             <% optionPrice = 0; %>
 	                    </div>
                     </div>
@@ -408,34 +407,35 @@
                     <div>
                     
 						<ul class="pagination" >
-                            <% if(currentPage > 1) { %>
+                            <c:if test="${currentPage gt 1} " >
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%="<"%></a>
+                                    <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%="<"%></a>
                                 </li>
-                            <% } %>
+                            </c:if>
 
-							<% for(int i = startPage; i <= endPage; i++) { %>
 							
-								<% if(currentPage != i) { %>
-									<li
-									class="page-link"
-									onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%=i%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">
-									<%=i%>
-									</li>
-								<% } else { %>
-									<li
-									class="page-link"><%=i%>
-									</li>
-								<% } %>
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${currentPage ne i}">
+										<li
+										class="page-link"
+										onclick="location.href='${path}/selectedCarList.do?currentPage=${i}&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">
+										${i}
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li
+										class="page-link">${i}
+										</li>
+									</c:otherwise>
+								</c:choose>
 							
-							<% } %>
-                            
-                             <% if(currentPage != maxPage) {%>
+							</c:forEach>                            
+                            <c:if test="${currentPage ne maxPage}" >
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='<%=contextPath%>/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%=">"%></a>
+	                                <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%=">"%></a>
 	                            </li>
-                            <% } %>
-                            
+                            </c:if>
 					    </ul>
 					    
 				    </div>
