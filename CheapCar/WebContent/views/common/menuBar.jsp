@@ -131,21 +131,16 @@
 				<span>${ sessionScope.loginUser.memberName }</span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="${ path }/myPage" class="btn btn-sm btn-primary">마이페이지</a>
-					<%--<a href="/jsp/logout">로그아웃</a> --%> 
 					<a href="${ path }/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					
 					<c:if test="${ sessionScope.loginUser.memberStatus eq 'A' }">
 					<a href="${ path }/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
 					</c:if>
 					
 			   </div>
 			</div>
-			
+			</c:otherwise>
+   		 </c:choose>
 		</div>
-		</c:otherwise>
-       		
-    </c:choose>
-		
 	</div>
 	
 	
