@@ -146,7 +146,7 @@
             </c:when>
 	     	<% for(int i = startPage; i <= endPage; i++){%>
 	     	<c:forEach var="i" begin="${ startpage }" end="${ endpage }">
-	     		<% if(currentPage != i){ %>
+	     		<% if(currentPage != i){ %><c:
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
 		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=i%>'"><%= i %></button>
 		     	<% } else { %>
