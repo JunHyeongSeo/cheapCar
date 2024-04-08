@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.semi.car.model.vo.Car, com.kh.semi.member.model.vo.Member"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	Member loginUser = (Member)session.getAttribute("loginUser");
-
-	String contextPath = request.getContextPath();
-	String alertMsg = (String)session.getAttribute("alertMsg");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,9 +105,10 @@
 	
     <div id="wrap">
     
+    	<c:set var ="path" value="${pageContext.request.contextPath }" scope="session"/>
     	<h1><marquee style="color:orangered;">세미프로젝트 하시느라 다들 고생 많으셨습니다. 남은 기간도 화이팅하세요!!!</marquee></h1>
         <div id="logo">
-	        <a href="${ path }">
+	        <a href="${ sessionScope.contextPath }">
 				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="250" height="250">
 			</a>
 		</div>
@@ -121,8 +117,6 @@
        	
        	<c:choose>
        		<c:when test="${ empty sessionScope.loginUser }">
-       		
-       		
        		
 	    		<form action="" method="post">
 			    	<div>
@@ -134,14 +128,16 @@
 			
 			<c:otherwise>
 			<div id="user-info">
-				<span>${ loginUser.memberName }</span>님 환영합니다~~!! <br><br>
+				<span>${ sessionScope.loginUser.memberName }</span>님 환영합니다~~!! <br><br>
 			    <div>
 			    	<a href="${ path }/myPage" class="btn btn-sm btn-primary">마이페이지</a>
-					<!-- <a href="/jsp/logout">로그아웃</a>-->
+					<%--<a href="/jsp/logout">로그아웃</a> --%> 
 					<a href="${ path }/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					<% if(loginUser.getMemberStatus().equals("A")) { %>
+					
+					<c:if test="${ sessionScope.loginUser.memberStatus eq 'A' }">
 					<a href="${ path }/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
-					<% } %>
+					</c:if>
+					
 			   </div>
 			</div>
 			
@@ -157,7 +153,7 @@
 	<br clear="both">
 	
 	<div class="nav-area" align="center">
-		<div class="menu"><a href=${ path }/dateAndLocation.do">차량렌트</a></div>
+		<div class="menu"><a href="${ path }/dateAndLocation.do">차량렌트</a></div>
 		<div class="menu"><a href="${ path }/list.event?currentPage=1">이벤트</a></div>
 		<div class="menu"><a href="${ path }/list.notice?currentPage=1">공지사항</a></div>
 		<div class="menu"><a href="${ path }/list.review?currentPage=1">후기</a></div>
