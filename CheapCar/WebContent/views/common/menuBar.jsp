@@ -102,12 +102,16 @@
 <body>
 
 	<script>
+
+		location.href = '<%=contextPath%>/menubar';
+
 		const msg = '<%= alertMsg %>';
 		
 		if(msg != 'null'){
 			alert(msg);
 			<% session.removeAttribute("alertMsg"); %>
 		}
+
 	</script>
 	
     <div id="wrap">

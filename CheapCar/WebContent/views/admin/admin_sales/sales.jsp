@@ -57,7 +57,7 @@
 				<label for="">모델명</label>
 
 				<select id="changeTest" onchange="detailModel()">
-					<option class="ch" id="idid1" value="아반때">아반때</option>
+					<option class="ch" id="idid1" value="아반떼">아반떼</option>
 					<option class="ch" value="소나타">소나타</option>
                     <option class="ch" value="K3">K3</option>
                     <option class="ch" value="GV80">GV80</option>
