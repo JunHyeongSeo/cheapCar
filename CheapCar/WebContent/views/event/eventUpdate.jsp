@@ -223,7 +223,19 @@
             }
         }
         
-	
+        
+       $('#uname').blur(function(){
+       $('#uname').keyup(function(){
+          const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+          const uname =  $('#uname').val()
+          const resultData = uname.replace(regExp, "");
+          
+           if(uname != resultData){
+               alert('특수문자는 사용이 불가능합니다.')
+               $('#uname').val(resultData)
+           }
+        });
+    </script>
         
         
         
