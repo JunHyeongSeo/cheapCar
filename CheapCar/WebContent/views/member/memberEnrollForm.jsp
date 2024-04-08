@@ -27,7 +27,7 @@
 	  
 					  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="font-weight: 800;">회원가입 </p>
 	  
-					  <form id="enroll-form" method="post" action="<%=contextPath%>/insert">
+					  <form id="enroll-form" method="post" action="${ path }/insert">
 	  
 						<div class="d-flex flex-row align-items-center mb-4">
 						  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
