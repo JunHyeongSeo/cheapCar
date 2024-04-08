@@ -174,7 +174,7 @@
               $('#noticeTitle').val(resultData)
           }
        });
-   </script>	   
+</script>	   
 
 	
 		
