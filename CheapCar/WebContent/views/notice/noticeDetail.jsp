@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.semi.notice.model.vo.Notice"%>
 
-<%
-    Notice notice = (Notice)request.getAttribute("notice");
-%>
+
 
 
 <!DOCTYPE html>
@@ -124,7 +122,7 @@
 </style>
 </head>
 <body>
-
+	<jsp include file
 	<%@ include file="../common/menuBar.jsp" %>
 	
 
