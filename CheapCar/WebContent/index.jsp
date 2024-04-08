@@ -229,7 +229,7 @@
         $(document).on('click', '.card-content', function(){
             console.log($(this).children().eq(1).val());
             const reviewNo = $(this).children().eq(1).val();
-            location.href = '<%= contextPath%>/detail.review?reviewNo=' + reviewNo
+            location.href = '${ path }/detail.review?reviewNo=' + reviewNo
             
         });
 
@@ -241,7 +241,7 @@
             	
                 const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
-                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo 
+                location.href = '${ path }/detail.event?eventNo=' + eventNo 
             })
         });
 
@@ -253,7 +253,7 @@
  
     
     <hr>
-    <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
+    
 
     <style>
         .container-fostrap {
