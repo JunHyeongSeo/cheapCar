@@ -36,39 +36,11 @@
 
 	<br clear="both">
 	
-	<!-- <div class="a">
-		<div class="login-area1">
-		
-		 	<form action="<%=contextPath %>/login" method="post">
-		           <table>
-		                <tr>
-		                    <td>아이디</td>
-		                    <td><input type="text" name="memberId" required></td>
-		                </tr>
-		                <tr>
-		                    <td>비밀번호</td>
-		                    <td><input type="password" name="memberPwd" required></td>
-		                </tr>
-		                <tr>
-		                    <th colspan="2">
-		                        <button style="" type="submit" class="btn btn-sm btn-primary">로그인</button>
-		                        <!-- <button type="button" class="btn btn-sm btn-secondary" onclick="enrollPage();">회원가입</button> -->
-		                    	<!-- <a data-toggle="modal" data-target="#findId" href="findId();">아이디 찾기</a> / -->
-		                    	<!-- <a data-toggle="modal" data-target="#findPwd" href="findPwd();">비밀번호 찾기</a> -->
-		                    <!-- </th> -->
-		                <!-- </tr> -->
-		           <!-- </table> -->
-		        <!-- </form> -->
-		<!-- </div> -->
-	<!-- </div> -->
-
-	
-	
 	 <section style="background-color: #eee;  height: 380px; width: 700px; margin: auto; padding-top:15px;"><!--class="vh-100"-->
 	 <div class="container" style="width: 600px;">
 	  	<h2>로그인</h2>
 	  	<p>안녕하세요  <code> 저렴하니car </code> 로그인 화면 입니다.</p>
-	  	<form action="<%=contextPath %>/login" method="post" class="was-validated">
+	  	<form action="${ path }/login" method="post" class="was-validated">
 	  	
 	    	<div class="form-group">
 		     	<label for="uname">아이디 : </label>

@@ -139,19 +139,19 @@
 		  </div>
 
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<c:choose>
-			<c:when test="${ currentpage > 1 }">	
+			<c:if test="${ currentpage > 1 }">	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
 		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage - 1%>'">이전</button>
-            </c:when>
-	     	<% for(int i = startPage; i <= endPage; i++){%>
+            </c:if>
 	     	<c:forEach var="i" begin="${ startpage }" end="${ endpage }">
-	     		<% if(currentPage != i){ %><c:
+	     	  <c:choose>
+	     		<% if(currentPage != i){ %><c:when test="${  }"
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
 		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=i%>'"><%= i %></button>
 		     	<% } else { %>
 		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
 		     	<% } %>	
+		     	</c:choose>
 		    </c:forEach> 	
 			
 			</c:choose>
