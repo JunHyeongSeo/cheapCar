@@ -1,4 +1,6 @@
+
 /* adminMain 스타일 */
+
 	.outer{
 		width: 1200px;
 		height: 1000px;
@@ -151,8 +153,10 @@
 		margin-top : 12px;
 	}
 
-
+/*******************/
 /* meberList 스타일 */
+/*******************/
+
 	.container{
 	   margin-top: 20px;
 	}
@@ -219,8 +223,10 @@
 		margin-top : 12px;
 	} 
 	
-	/* 블랙리스트 스타일 */
-	
+/*******************/	
+/* 블랙리스트 스타일 */
+/*******************/
+
 	.container{
 	   margin-top: 20px;
 	}
@@ -262,6 +268,67 @@
 		align : center;
 		margin-top : 12px;
 	} 
+	
+/*******************/
+/* 차량관리 스타일 */
+/*******************/
+
+	.container{
+		margin-top : 15px;
+	}
+	
+/*******************/
+/* csList 스타일 */
+/*******************/
+
+	.outer{
+		width: 1200px;
+		height: auto;
+		margin: auto;
+		padding-bottom: 50px;
+	}
+	.page-header{
+		padding-top: 20px;
+		font-size: 40px;
+		font-weight: bold;
+		border-bottom: 6px solid #6caddf;
+	}
+	
+	#title{
+		background-color: aquamarine;
+		font-size: large;
+		font-weight: bolder;
+	}
+	#write{
+		text-align: right;
+		padding-right: 0%;
+		margin-bottom: 2px;
+	}
+	.search-area{
+		text-align: center;
+		margin-top: 10px;
+	}
+    
+	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
+		font-family: "Do Hyeon", sans-serif;
+		font-weight: 300px;
+		font-style: normal;
+		font-size: 60px;
+		color: #6caddf;
+	}
+	#searchWord{
+		border: 2px solid #6caddf;
+		border-radius: 5px;
+	}
+	.table{
+		font-size: 18px;
+	}
+	
+/*******************/
+
+/*******************/
+
+
 
 
 

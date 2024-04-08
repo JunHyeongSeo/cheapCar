@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,9 +10,9 @@
 </head>
 <body>
 	<jsp:include page="../../common/adminMain.jsp"></jsp:include> 
-	
 		
     <div class="outer">
+    
     	<div id="top11" style="display: flex;">
 			<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
 			<input type="text" class="form-control" id="searchId" placeholder="조회하실 회원 아이디를 입력해주세요." name="searchId" style="width: 300px;">
@@ -43,12 +42,10 @@
         
         <div class="container2">
         	<table class="table table-bordered">
-            	
 	              <tbody id="conBody2">
 	              	
 	              </tbody>        
 			</table>
-		
 		</div>
 		
 		<script>
@@ -84,7 +81,7 @@
 	    				let resultStr = '';
 	    				if(pi.currentPage > 1) {
 	    	       			resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	    	       					   + "'<%=contextPath%>/blackList?currentPage="
+	    	       					   + "'${ path }/blackList?currentPage="
 	    	       					   + (pi.currentPage - 1)
 	    	       					   + "'"
 	    	       					   + '"'
@@ -95,7 +92,7 @@
 	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
 	   			        	if(pi.currentPage != i){
 	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	   			        		 		   + "'<%=contextPath%>/blackList?currentPage="
+	   			        		 		   + "'${ path }/blackList?currentPage="
 	   			        		 		   + i
 	   			        		 		   + "'"
 	     	       				 	   	   + '"'
@@ -112,7 +109,7 @@
 	   			        
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					   + "'<%=contextPath%>/blackList?currentPage="
+			       					   + "'${ path }/blackList?currentPage="
 			       					   + (pi.currentPage + 1)
 			       					   + "'"
 			       					   + '"'

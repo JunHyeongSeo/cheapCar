@@ -5,16 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>차량관리</title>
-<style>
-	.container{
-		margin-top : 15px;
-	}
-
-</style>
 
 </head>
 <body>
-	<%@ include file="../../common/adminMain.jsp" %>
+	<jsp:include page="../../common/adminMain.jsp"></jsp:include>
 	
 	<div class="outer">
 	
@@ -89,7 +83,7 @@
 	    				
 	    				if(pi.currentPage > 1) {
 	    	       			resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
-	    	       					   + "'<%=contextPath%>/manageCar?currentPage="
+	    	       					   + "'${ path }/manageCar?currentPage="
 	    	       					   + (pi.currentPage - 1)
 	    	       					   + "'"
 	    	       					   + '"'
@@ -100,7 +94,7 @@
 	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
 	   			        	if(pi.currentPage != i){
 	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	   			        				  + "'<%=contextPath%>/manageCar?currentPage="
+	   			        				  + "'${ path }/manageCar?currentPage="
 	   			        				  + i
 	   			        				  + "'"
 	     	       					   	  + '"'
@@ -117,7 +111,7 @@
 	   			        
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					  + "'<%=contextPath%>/manageCar?currentPage="
+			       					  + "'${ path }/manageCar?currentPage="
 			       					  + (pi.currentPage + 1)
 			       					  + "'"
 			       					  + '"'
