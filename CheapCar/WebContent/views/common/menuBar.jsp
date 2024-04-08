@@ -139,8 +139,16 @@
 			   </div>
 			</div>
 			</c:otherwise>
+<<<<<<< HEAD
    		 </c:choose>
 		</div>
+=======
+			
+	    </c:choose>
+		</div>
+       		
+		
+>>>>>>> c16e9ebf1ca145bd3c38b80c4c84f01179e15358
 	</div>
 	
 	
