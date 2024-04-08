@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<jsp:include page 
+	<jsp:include page="../../common/adminMain.jsp"></jsp:include> 
 	
 		
     <div class="outer">
