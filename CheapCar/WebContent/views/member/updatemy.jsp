@@ -19,32 +19,32 @@
 
 	<div class="pp">
 		
-		<form id="mypage-form" method="post" action="<%=contextPath%>/update.me">
+		<form id="mypage-form" method="post" action="${ path }/update.me">
 		
 			<table align="center">
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" readonly maxlength="12" required id="memberId" name="memberId" value="<%=loginUser.getMemberId()%>"></td>
+					<td><input type="text" readonly maxlength="12" required id="memberId" name="memberId" value="${ sessionScope.loginUser.memberId }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이름</td>
-					<td><input type="text" maxlength="5" required id="memberName" name="memberName" value="<%=loginUser.getMemberName()%>"></td>
+					<td><input type="text" maxlength="5" required id="memberName" name="memberName" value="${ sessionScope.loginUser.memberName }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 생년월일</td>
-					<td><input type="text" placeholder="-포함해서 입력해주세요." id="birthday" name="birthday" value="<%=loginUser.getBirthday()%>"></td>
+					<td><input type="text" placeholder="-포함해서 입력해주세요." id="birthday" name="birthday" value="${ sessionScope.loginUser.birthday }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 휴대번호</td>
-					<td><input type="text" id="phone" name="phone" value="<%=loginUser.getPhone()%>"></td>
+					<td><input type="text" id="phone" name="phone" value="${ sessionScope.loginUser.phone }"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>* 이메일</td>
-					<td><input type="email" id="email" name="email" value="<%=loginUser.getEmail()%>"></td>
+					<td><input type="email" id="email" name="email" value="${ sessionScope.loginUser.email }"></td>
 					<td></td>
 				</tr>
 				
@@ -147,7 +147,7 @@
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
 			
-		  	<form action="<%=contextPath%>/delete" method="post">
+		  	<form action="${ path }/delete" method="post">
 		  	
 			  <div class="form-group">
 			    <label for="memberPwd" style="font-siae:12px; color:red">탈퇴를 원하신다면 비밀번호를 입력해주세요:</label>
@@ -157,7 +157,7 @@
 			  
 			  <button type="submit" class="btn btn-danger" onclick="return deleteMember();">회원탈퇴</button>
 			  
-			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
+			  <input type="hidden" value="${ sessionScope.loginUser.memberNo }" name="memberNo">
 			  
 			  <script>
 			  	function deleteMember(){
@@ -210,7 +210,7 @@
 	      <!-- 현재 비밀번호, 변경할 비밀번호, 변경할 비밀번호 재입력 -->
 	      <div class="modal-body">
 			
-		  	<form action="<%=contextPath%>/updatePwd" method="post">
+		  	<form action="${ path }/updatePwd" method="post">
 		  	
 			  <div class="form-group">
 			    <label for="memberPwd">현재 비밀번호:</label>
@@ -229,7 +229,7 @@
 			  
 			  <button type="submit" id="checkchangPwd" class="btn btn-primary" onclick="return validatePwd();">비밀번호 변경</button>
 			  
-			  <input type="hidden" value="<%=loginUser.getMemberNo() %>" name="memberNo">
+			  <input type="hidden" value="${ sessionScope.loginUser.memberNo }" name="memberNo">
 			  
 			  <script>
 			  	function validatePwd(){
