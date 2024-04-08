@@ -11,6 +11,9 @@
 	int maxPage = pi.getMaxPage();
 	
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,6 +79,11 @@
 </head>
 <body>
 
+	<c:set var="currentpage" value="pi.currentpage"/>
+	<c:set var="startpage" value="pi.startpage"/>
+	<c:set var="endpage" value="pi.endpage"/>
+	<c:set var="maxpage" value="pi.maxpage"/>
+
 	<%@ include file="../common/menuBar.jsp" %>
 	
 	<div class="outer" >
@@ -88,11 +96,12 @@
 				</h2>
 
 
-					<% if(loginUser != null && loginUser.getMemberStatus().equals("A")) { %>
+					<c:if test="${ loginUser != null and loginUser.memberStatus == 'A' }">  
 					<div id="write">
-						<a href="<%= contextPath %>/insertForm.notice" class="btn btn-info">글쓰기</a>
+						<a href="${ contextPath }/insertForm.notice" class="btn btn-info">글쓰기</a>
+						
 					</div> 
-				    <% } %>
+				    </c:if>
 
 				
 				   <table class="table table-bordered table-hover" style="margin-top:30px; border-radius: 5px;">
@@ -104,24 +113,25 @@
 						 <th style="width: 15%; text-align:center">작성일</th>
 						 <th style="width: 8%; text-align:center">조회수</th>
 					  </tr>
-					  <% if(list.isEmpty()){ %>
+					  <c:choose>
+					  <c:when test="${ empty list }">
 					  <tr>
 						<th colspan="5"> 공지사항이 존재하지 않습니다.</th>
 					  </tr>
-					  
-					  <% } else { %>
-
+					  </c:when>
+					  <c:otherwise>
 						
-						<% for(Notice n: list) { %>
+					 	<c:forEach var="n" items="${ list }" >
 							<tr class="notice_list">
-								<th style="text-align:center"><%= n.getNoticeNo() %></th>
-								<th><%= n.getNoticeTitle() %></th>
-								<th style="text-align:center"><%= n.getNoticeWriter() %></th>
-								<th style="text-align:center"><%= n.getCreateDate() %></th>
-								<th style="text-align:center"><%= n.getCount() %></th>
+								<th style="text-align:center">${ n.noticeNo }</th>
+								<th>${ n.noticeTitle }</th>
+								<th style="text-align:center">${ n.noticeWriter }</th>
+								<th style="text-align:center">${ n.createDate }</th>
+								<th style="text-align:center">${ n.count }</th>
 							</tr>
-						<% } %>	
-					 <% } %>
+						</c:forEach>
+					 </c:otherwise>
+					 </c:choose>
 					  
 				   </table>               
 				</div>            
@@ -129,24 +139,27 @@
 		  </div>
 
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<% if(currentPage > 1) { %>	
+			<c:choose>
+			<c:when test="${ currentpage > 1 }">	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
 		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage - 1%>'">이전</button>
-            <% } %>
+            </c:when>
 	     	<% for(int i = startPage; i <= endPage; i++){%>
-	     		<% if(currentPage != i){ %>
+	     	<c:forEach var="i" begin="${ startpage }" end="${ endpage }">
+	     		<% if(currentPage != i){ %><c:
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
 		     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=i%>'"><%= i %></button>
 		     	<% } else { %>
 		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
 		     	<% } %>	
-		     	
-			<% } %>
+		    </c:forEach> 	
 			
-			<% if(currentPage != maxPage){ %>	
+			</c:choose>
+			
+			<c:if test="${ currentpage != maxpage }">	
 			<button class="btn btn-outline-info" style="color:#6caddf"
 	     		onclick="location.href='<%=contextPath%>/list.notice?currentPage=<%=currentPage + 1%>'">다음</button>
-	     	<%} %>
+	     	</c:if>
 		   
 	    </div>			  
 		

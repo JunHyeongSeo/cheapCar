@@ -56,6 +56,8 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("alertMsg", "로그인 성공!!");
 			
+			//session.setAttribute("contextPath", request.getContextPath());
+			
 //			System.out.println(loginUser.getMemberStatus());
 //			
 //			System.out.println(loginUser.getMemberStatus().equals("C"));

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>     
+<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventBoard, com.kh.semi.common.model.vo.PageInfo" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <%
 	ArrayList<EventBoard> list = (ArrayList<EventBoard>)request.getAttribute("list");
 %>
@@ -228,7 +229,7 @@
         $(document).on('click', '.card-content', function(){
             console.log($(this).children().eq(1).val());
             const reviewNo = $(this).children().eq(1).val();
-            location.href = '<%= contextPath%>/detail.review?reviewNo=' + reviewNo
+            location.href = '${ path }/detail.review?reviewNo=' + reviewNo
             
         });
 
@@ -240,7 +241,7 @@
             	
                 const eventNo = $(this).children().eq(1).val();
                 console.log(eventNo);
-                location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo 
+                location.href = '${ path }/detail.event?eventNo=' + eventNo 
             })
         });
 
@@ -252,7 +253,7 @@
  
     
     <hr>
-    <!--<input type="hidden" onclick="location.href='<%=contextPath%>'/event.event"></input>-->
+    
 
     <style>
         .container-fostrap {

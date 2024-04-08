@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.semi.car.model.vo.Car, com.kh.semi.member.model.vo.Member"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	Member loginUser = (Member)session.getAttribute("loginUser");
-
-	String contextPath = request.getContextPath();
-	String alertMsg = (String)session.getAttribute("alertMsg");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,58 +96,65 @@
 </head>
 <body>
 
-	<script>
-	
-		const msg = '<%= alertMsg %>';
-		
-		if(msg != 'null'){
-			alert(msg);
-			<% session.removeAttribute("alertMsg"); %>
-		}
-
-	</script>
+	<c:if test="${ not empty alertMsg }">
+		<script>
+			alert('${alertMsg}');
+			<c:remove var="alertMsg" scope="session"/>
+		</script>
+	</c:if>
 	
     <div id="wrap">
     
+    	<c:set var ="path" value="${pageContext.request.contextPath }" scope="session"/>
     	<h1><marquee style="color:orangered;">세미프로젝트 하시느라 다들 고생 많으셨습니다. 남은 기간도 화이팅하세요!!!</marquee></h1>
         <div id="logo">
-	        <a href="<%= contextPath%>">
+	        <a href="${ sessionScope.contextPath }">
 				<img src="views/common/차빌려조로고.gif" alt="차빌려조로고" width="250" height="250">
 			</a>
 		</div>
 		
        	<div class="login-area">
-       		<% if(loginUser == null) { %>
-	    	<form action="" method="post">
-		    	<div>
-		    		<a class="btn btn-outline-info" href="<%=contextPath%>/loginPage" >로그인</a>
-		            <a class="btn btn-outline-warning" href="<%=contextPath%>/enrollPage">회원가입</a>
-		        </div>
-			</form>
-			<% } else { %>
+       	
+       	<c:choose>
+       		<c:when test="${ empty sessionScope.loginUser }">
+       		
+	    		<form action="" method="post">
+			    	<div>
+			    		<a class="btn btn-outline-info" href="${ path }/loginPage" >로그인</a>
+			            <a class="btn btn-outline-warning" href="${ path }/enrollPage">회원가입</a>
+			        </div>
+				</form>
+			</c:when>
+			
+			<c:otherwise>
 			<div id="user-info">
-				<span>${ loginUser.memberName }</span>님 환영합니다~~!! <br><br>
+				<span>${ sessionScope.loginUser.memberName }</span>님 환영합니다~~!! <br><br>
 			    <div>
-			    	<a href="<%= contextPath %>/myPage" class="btn btn-sm btn-primary">마이페이지</a>
-					<!-- <a href="/jsp/logout">로그아웃</a>-->
-					<a href="<%= contextPath %>/logout" class="btn btn-sm btn-secondary">로그아웃</a>
-					<% if(loginUser.getMemberStatus().equals("A")) { %>
-					<a href="<%= contextPath %>/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
-					<% } %>
+			    	<a href="${ path }/myPage" class="btn btn-sm btn-primary">마이페이지</a>
+					<a href="${ path }/logout" class="btn btn-sm btn-secondary">로그아웃</a>
+					<c:if test="${ sessionScope.loginUser.memberStatus eq 'A' }">
+					<a href="${ path }/adminMain" class="btn btn-sm btn-warning">관리자페이지</a>
+					</c:if>
+					
 			   </div>
 			</div>
-			<% } %>
+			</c:otherwise>
+
+   		 </c:choose>
 		</div>
+
 	</div>
+	
+	
 	
 	<br clear="both">
 	
 	<div class="nav-area" align="center">
-		<div class="menu"><a href="<%= contextPath %>/dateAndLocation.do">차량렌트</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.event?currentPage=1">이벤트</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.notice?currentPage=1">공지사항</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.review?currentPage=1">후기</a></div>
-		<div class="menu"><a href="<%= contextPath %>/list.cs?currentPage=1">고객센터</a></div>
+		<div class="menu"><a href="${ path }/dateAndLocation.do">차량렌트</a></div>
+		<div class="menu"><a href="${ path }/list.event?currentPage=1">이벤트</a></div>
+		<div class="menu"><a href="${ path }/list.notice?currentPage=1">공지사항</a></div>
+		<div class="menu"><a href="${ path }/list.review?currentPage=1">후기</a></div>
+		<div class="menu"><a href="${ path }/list.cs?currentPage=1">고객센터</a></div>
 	</div>
 	
 </body>
