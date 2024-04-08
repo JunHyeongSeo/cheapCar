@@ -122,8 +122,8 @@
 </style>
 </head>
 <body>
-	<jsp include file
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
+	
 	
 
 	<div class="outer" >
@@ -137,22 +137,21 @@
                 
                 <div class="content_outer">
                     <div class="content_header">
-                        <!--<div class="content_header1"><%= notice.getNoticeNo()%></div>-->
-                        <div class="content_header2"><%= notice.getNoticeTitle()%></div>
+                        <div class="content_header2">${ notice.noticeTitle }</div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= notice.getCreateDate()%></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= notice.getNoticeWriter()%></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : <%= notice.getCount()%></span>
+                        <span class="content_sub1">작성일 : ${ notice.createDate }</span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : ${ notice.noticeWriter }</span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : ${ notice.count }</span>
                     </div>
-                    <div class="content_body"><%= notice.getNoticeContent()%></div>
+                    <div class="content_body">${ notice.noticeContent }</div>
                     <div class="content_btn" align="center">
-                        <a href="<%=contextPath%>/list.notice?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <a href="${path }/list.notice?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
                         
-                           <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
-                            <a href="<%=contextPath%>/updateForm.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                            <a href="<%=contextPath%>/delete.notice?noticeNo=<%=notice.getNoticeNo()%>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                           <% } %> 
+                           <c:if test="${ loginUser != null and loginUser.memberStatus == 'A'}">                            
+                           <a href="${ path }/updateForm.notice?noticeNo=${notice.noticeNo}" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                            <a href="${ path }/delete.notice?noticeNo=${notice.noticeNo}" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                           </c:if> 
                     </div>
                 </div>
 			 </div>
