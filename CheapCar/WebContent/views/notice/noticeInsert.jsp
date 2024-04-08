@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,7 +122,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
     
 	<div class="outer" >
@@ -131,9 +135,9 @@
 				</div>
                 
                 <div class="content_outer">
-                    <form action="<%=contextPath%>/insert.notice" method="post" id="insert-form">
-                     <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
-                     <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
+                    <form action="${ path }/insert.notice" method="post" id="insert-form">
+                     <input type="hidden" name="memberNo" value="${ loginUser.memberNo }" />
+                     <input type="hidden" name="memberName" value="${ loginUser.memberName }" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
@@ -141,7 +145,7 @@
                         </div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
+                        <span class="content_sub1">작성자 : ${ loginUser.memberName }
                     </div>
                     <div class="content_body">
                         <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"></textarea>

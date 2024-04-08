@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.semi.notice.model.vo.Notice" %>    
-<%
-	Notice notice = (Notice)request.getAttribute("notice");
-%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
     
@@ -126,7 +126,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
     
 	<div class="outer" >
@@ -139,21 +139,21 @@
 				</div>
                 
                 <div class="content_outer">
-                    <form action="<%=contextPath%>/update.notice" method="post" id="insert-form">
-                     <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
-                     <input type="hidden" name="noticeNo" value="<%= notice.getNoticeNo() %>" />
-                     <input type="hidden" name="memberName" value="<%= loginUser.getMemberName() %>" />
+                    <form action="${ path }/update.notice" method="post" id="insert-form">
+                     <input type="hidden" name="memberNo" value="${ loginUser.memberNo }" />
+                     <input type="hidden" name="noticeNo" value="${ notice.noticeNo }" />
+                     <input type="hidden" name="memberName" value="${ loginUser.memberName }" />
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" required value="<%= notice.getNoticeTitle() %>">                            
+                            <input type="text" name="title" required value="${ notice.noticeTitle }">                            
                         </div>
                     </div>
                     <div class="content_sub">
-                        <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %>
+                        <span class="content_sub1">작성자 : ${ loginUser.memberName }
                     </div>
                     <div class="content_body">
-                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"><%= notice.getNoticeContent()%></textarea>
+                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;">${ notice.noticeContent }</textarea>
                     </div>
                     
                     <div class="content_btn" align="center">
