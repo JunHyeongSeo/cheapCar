@@ -3,57 +3,16 @@
 <%@ page import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo" %>
 <!DOCTYPE html>
 <html>
-<style>
-	.container{
-	   margin-top: 20px;
-	}
-	
-	#top11{
-		display: flex;
-	}
-	
-	#middleTable{
-	    width : 80%;
-	    margin: auto;
-	}
-	
-	.table{
-	    margin-top: 20px;
-	    text-align: center;
-	}
-	
-	#top2{
-	    float: right;
-	}
-	
-	.form-inline{
-	    display: flex;
-	    align-items: center;
-	    padding: 15px;
-	}
-	
-	.pagination{
-	    width: 100%;
-	    margin: auto;
-	}
-	
-	.mileage{
-	    margin-top: 30px;
-	}
-	
-	.paging-area{
-		align : center;
-		margin-top : 12px;
-	} 
-</style>
+
 <head>
 <meta charset="UTF-8">
 <title>블랙리스토 관리</title>
 
 </head>
 <body>
-	<%@ include file="../../common/adminMain.jsp" %>
+	<jsp:include page 
 	
+		
     <div class="outer">
     	<div id="top11" style="display: flex;">
 			<label for="searchId" style="margin: 0px 15px;">회원 아이디 : </label>
