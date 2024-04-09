@@ -124,7 +124,7 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="get" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
+                <form method="get" onsubmit="return checkCheckbox()" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
 			
 					<input type="hidden" name="currentPage" value="1" />
 					<input type="hidden" name="hours" value="${hours}" />
@@ -169,13 +169,11 @@
                     </div>
 
 					<div class="detail-option">
-
-                         <input type="checkbox" class="form-check-input" name="options" value="블랙박스" checked>블랙박스
-
-                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션" >네비게이션
-                         
-                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
-                         
+	                        <input type="checkbox" class="form-check-input" name="options" value="블랙박스" checked>블랙박스
+	
+	                        <input type="checkbox" class="form-check-input" name="options" value="네비게이션" >네비게이션
+	                         
+	                        <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
                     </div>
 
 					<div class="detail-option">
@@ -186,14 +184,36 @@
 					</div>
                 </form>
             </div>
-            
+	
+	<script>
+    
+		function checkCheckbox() {
+			
+		    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		    
+		    var checkedCount = 0;
+		    
+		    for(var i = 0; i < checkboxes.length; i++) {
+		    	
+		        if(checkboxes[i].checked) {
+		            checkedCount++;
+		        }
+		        
+		    }
+		
+		    if(checkedCount == 0) {
+		        alert("하나 이상의 옵션을 선택하세요.");
+		        return false;
+		    }
+		}
+	</script> 
+	
+	
 	<script>
 	
 		function chooseModel(model){
 			
 			const selectModel = $(model).val();
-			
-			console.log(selectModel);
 			
 			if(selectModel == "K3"){
 
