@@ -1,27 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ 
-	page import="java.util.ArrayList, 
-	java.util.List,
-	com.kh.semi.car.model.vo.*,
-	com.kh.semi.common.model.vo.PageInfo" 
-%>
 
-<%
-	Car car = (Car)request.getAttribute("car");
-	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	int hours = (int)request.getAttribute("hours");
-	String startDate = (String)request.getAttribute("startDate");
-    String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	int carPrice = 0;
-	int optionPrice = 0;
-	int hourPrice = 0;
-	int totalPrice = 0;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,7 +112,7 @@
 	                <div class="modal-dialog">
 	                    <div class="modal-content">
 	
-	                        <form method="post" action="${path}/reservation.do?managementNo=${car.managementNo}&totalPrice=<%=totalPrice%>&startDate=${startDate}&endDate=${endDate}">
+	                        <form method="post" action="${path}/reservation.do?managementNo=${car.managementNo}&totalPrice=${totalPrice}&startDate=${startDate}&endDate=${endDate}">
 	                            <div class="modal-header">
 	                                <h4 class="modal-title">CheepCar 결제 페이지</h4>
 	                                <button type="button" class="close" data-dismiss="modal">&times;</button>
