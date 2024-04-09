@@ -32,8 +32,6 @@
 		font-size: 40px;
 		font-weight: bold;
 		border-bottom: 6px solid #6caddf;
-		
-
 	}
 	#title{
 		background-color: aquamarine;
@@ -45,21 +43,12 @@
 		padding-right: 0%;
 		margin-bottom: 2px;
 	}
-	.search-area{
-		text-align: center;
-		margin-top: 10px;
-	}
-    
 	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
 		font-weight: 300px;
 		font-style: normal;
 		font-size: 60px;
 		color: #6caddf;
-	}
-	#searchWord{
-		border: 2px solid #6caddf;
-		border-radius: 5px;
 	}
 	.table{
 		font-size: 18px;

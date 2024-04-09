@@ -82,13 +82,11 @@
         border-bottom: 2px solid #b1d6f3;
         font-size: 25px;
     }
-
-
     .page-header{
 		padding-top: 20px;
 		font-size: 40px;
 		font-weight: bold;
-		border-bottom: 8px solid #b1d6f3;
+		border-bottom: 6px solid #6caddf;
 	}
 	#title{
 		background-color: aquamarine;
@@ -106,15 +104,11 @@
 	}
     
 	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
-		font-family: "Black Han Sans", sans-serif;
+		font-family: "Do Hyeon", sans-serif;
 		font-weight: 300px;
 		font-style: normal;
 		font-size: 60px;
 		color: #6caddf;
-	}
-	#searchWord{
-		border: 2px solid #6caddf;
-		border-radius: 5px;
 	}
 	.table{
 		font-size: 18px;
