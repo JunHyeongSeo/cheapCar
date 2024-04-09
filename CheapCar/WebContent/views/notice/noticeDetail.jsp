@@ -36,7 +36,8 @@
     }
     .content_outer>div{
         width: 100%;
-        font-family: "Do Hyeon", sans-serif;
+        /*font-family: "Do Hyeon", sans-serif;*/
+        font-family : "Black Han Sans, sans-serif";
     }
     .content_header{
         width: 100%;
@@ -105,7 +106,7 @@
 	}
     
 	.do-hyeon-regular {  /* 공지사항 글꼴 */ 
-		font-family: "Do Hyeon", sans-serif;
+		font-family: "Black Han Sans", sans-serif;
 		font-weight: 300px;
 		font-style: normal;
 		font-size: 60px;

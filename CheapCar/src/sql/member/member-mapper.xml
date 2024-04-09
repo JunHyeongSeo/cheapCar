@@ -187,6 +187,26 @@
 				
 	</entry>
 	
+	<entry key="login1">
+		SELECT
+				MEMBER_NO,
+				MEMBER_ID,
+				MEMBER_NAME,
+				MEMBER_PWD,
+				BIRTHDAY,
+				PHONE,
+				EMAIL,
+				ENROLL_DATE,
+				MEMBER_STATUS
+			FROM
+				TB_MEMBER
+			WHERE
+				MEMBER_ID = ?
+			AND
+				MEMBER_STATUS IN ('A', 'C')
+				 
+	</entry>
+	
 	
 	<!--////////////////////////////////// 근경 끝 //////////////////////////////////-->
 	
