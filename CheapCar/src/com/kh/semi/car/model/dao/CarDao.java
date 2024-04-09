@@ -1002,6 +1002,8 @@ public class CarDao {
 				car.setCount(rset.getInt("COUNT(*)"));
 				car.setCarPhotoAddress(rset.getString("CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME"));
 				car.setYear(rset.getInt("YEAR"));
+				car.setGradeName(rset.getString("GRADE_NAME"));
+				car.setFuelName(rset.getString("FUEL_NAME"));
 				list.add(car);
 			}
 			

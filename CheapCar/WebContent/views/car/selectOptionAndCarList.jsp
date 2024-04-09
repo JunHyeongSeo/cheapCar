@@ -194,144 +194,137 @@
             
 		<script>
 	
-			function chooseModel(model){
-						
-				const selectModel = $(model).val();
+		function chooseModel(model){
+			
+			const selectModel = $(model).val();
+			
+			console.log(selectModel);
+			
+			if(selectModel == "K3"){
+
+				const gradeK3 = document.getElementById('gradeOption');
 				
-				console.log(selectModel);
+				gradeK3.innerHTML = "<option value='준중형'>준중형</option>";
 				
-				if(selectModel == "K3"){
-	
-					const gradeK3 = document.getElementById('gradeOption');
-					
-					gradeK3.innerHTML = "<option value='준중형'>준중형</option>";
-					
-					const fuelK3 = document.getElementById('fuelOption');
-	
-					fuelK3.innerHTML = "<option value='가솔린'>가솔린</option>";
-					
-				} else if(selectModel == "모닝"){
-					
-					const gradeMorning = document.getElementById('gradeOption');
-					
-					gradeMorning.innerHTML = "<option value='소형'>소형</option>";
-					
-					const fuelMorning = document.getElementById('fuelOption');
-	
-					fuelMorning.innerHTML = "<option value='가솔린'>가솔린</option>";
+				const fuelK3 = document.getElementById('fuelOption');
+
+				fuelK3.innerHTML = "<option value='가솔린'>가솔린</option>";
 				
-				} else if(selectModel == "QM3"){
-					
-					const gradeQM3 = document.getElementById('gradeOption');
-					
-					gradeQM3.innerHTML = "<option value='소형'>소형</option>";
-	
-					const fuelQM3 = document.getElementById('fuelOption');
-					
-					fuelQM3.innerHTML = "<option value='디젤'>디젤</option>";
-					
-				} else if(selectModel == "카이엔"){
-					
-					const gradeCayenne = document.getElementById('gradeOption');
-					
-					gradeCayenne.innerHTML = "<option value='대형'>대형</option>";
-	
-					const fuelCayenne = document.getElementById('fuelOption');
-					
-					fuelCayenne.innerHTML = "<option value='디젤'>가솔린</option>";
-					
-				} else if(selectModel == "아반떼"){
-					
-					const gradeAvante = document.getElementById('gradeOption');
-	
-					gradeAvante.innerHTML = "<option value='준중형'>준중형</option>";
-					
-					const fuelAvante = document.getElementById('fuelOption');
-					
-					fuelAvante.innerHTML = "<option value='LPG'>LPG</option>";
-					fuelAvante.innerHTML += "<option value='가솔린'>가솔린</option>";
-					
-				} else if(selectModel == "소나타"){
-					
-					const gradeSonata = document.getElementById('gradeOption');
-	
-					gradeSonata.innerHTML = "<option value='중형'>중형</option>";
-					
-					const fuelSonata = document.getElementById('fuelOption');
-					
-					fuelSonata.innerHTML = "<option value='LPG'>LPG</option>";
-					fuelSonata.innerHTML += "<option value='가솔린'>가솔린</option>";
-					
-				} else if(selectModel == "카니발"){
-					
-					const gradeCarnival = document.getElementById('gradeOption');
-	
-					gradeCarnival.innerHTML = "<option value='대형'>대형</option>";
-					
-					const fuelCarnival = document.getElementById('fuelOption');
-					
-					fuelCarnival.innerHTML = "<option value='가솔린'>가솔린</option>";
-					fuelCarnival.innerHTML += "<option value='디젤'>디젤</option>";
-					
-				} else if(selectModel == "GV80"){
-					
-					const gradeGV80 = document.getElementById('gradeOption');
-	
-					gradeGV80.innerHTML = "<option value='중형'>중형</option>";
-					
-					const fuelGV80 = document.getElementById('fuelOption');
-					
-					fuelGV80.innerHTML = "<option value='가솔린'>가솔린</option>";
-					fuelGV80.innerHTML += "<option value='디젤'>디젤</option>";
-					
-				} else if(selectModel == "스타렉스"){
-					
-					const gradeStarrex = document.getElementById('gradeOption');
-	
-					gradeStarrex.innerHTML = "<option value='대형'>대형</option>";
-					
-					const fuelStarrex = document.getElementById('fuelOption');
-					
-					fuelStarrex.innerHTML = "<option value='디젤'>디젤</option>";
-					fuelStarrex.innerHTML += "<option value='LPG'>LPG</option>";
-					
-				} else if(selectModel == "스포티지"){
-					
-					const gradeSportege = document.getElementById('gradeOption');
-	
-					gradeSportege.innerHTML = "<option value='준중형'>준중형</option>";
-					
-					const fuelSportege = document.getElementById('fuelOption');
-					
-					fuelSportege.innerHTML = "<option value='디젤'>디젤</option>";
-					fuelSportege.innerHTML += "<option value='가솔린'>가솔린</option>";
-					fuelSportege.innerHTML += "<option value='LPG'>LPG</option>";
-					
-				} else if(selectModel == "아이오닉5"){
-					
-					const gradeIonic5 = document.getElementById('gradeOption');
-	
-					gradeIonic5.innerHTML = "<option value='준중형'>준중형</option>";
-					
-					const fuelIonic5 = document.getElementById('fuelOption');
-					
-					fuelIonic5.innerHTML = "<option value='전기'>전기</option>";
-					
-				} else {
-					
-					const gradeNone = document.getElementById('gradeOption');
-	
-					gradeNone.innerHTML = "<option value='-'>등급을 선택해주세요</option>";
-					
-					const fuelNone = document.getElementById('fuelOption');
-					
-					fuelNone.innerHTML = "<option value='-'>연료를 선택해주세요</option>";
-					
-				}
+			} else if(selectModel == "모닝"){
+				
+				const gradeMorning = document.getElementById('gradeOption');
+				
+				gradeMorning.innerHTML = "<option value='소형'>소형</option>";
+				
+				const fuelMorning = document.getElementById('fuelOption');
+
+				fuelMorning.innerHTML = "<option value='가솔린'>가솔린</option>";
+			
+			} else if(selectModel == "QM3"){
+				
+				const gradeQM3 = document.getElementById('gradeOption');
+				
+				gradeQM3.innerHTML = "<option value='소형'>소형</option>";
+
+				const fuelQM3 = document.getElementById('fuelOption');
+				
+				fuelQM3.innerHTML = "<option value='디젤'>디젤</option>";
+				
+			} else if(selectModel == "카이엔"){
+				
+				const gradeCayenne = document.getElementById('gradeOption');
+				
+				gradeCayenne.innerHTML = "<option value='준중형'>준중형</option>";
+
+				const fuelCayenne = document.getElementById('fuelOption');
+				
+				fuelCayenne.innerHTML = "<option value='LPG'>LPG</option>";
+				
+			} else if(selectModel == "아반떼"){
+				
+				const gradeAvante = document.getElementById('gradeOption');
+
+				gradeAvante.innerHTML = "<option value='준중형'>준중형</option>";
+				
+				const fuelAvante = document.getElementById('fuelOption');
+				
+				fuelAvante.innerHTML = "<option value='LPG'>LPG</option>";
+				
+			} else if(selectModel == "소나타"){
+				
+				const gradeSonata = document.getElementById('gradeOption');
+
+				gradeSonata.innerHTML = "<option value='중형'>중형</option>";
+				
+				const fuelSonata = document.getElementById('fuelOption');
+				
+				fuelSonata.innerHTML = "<option value='LPG'>LPG</option>";
+				
+			} else if(selectModel == "카니발"){
+				
+				const gradeCarnival = document.getElementById('gradeOption');
+
+				gradeCarnival.innerHTML = "<option value='대형'>대형</option>";
+				
+				const fuelCarnival = document.getElementById('fuelOption');
+				
+				fuelCarnival.innerHTML = "<option value='가솔린'>가솔린</option>";
+				
+			} else if(selectModel == "GV80"){
+				
+				const gradeGV80 = document.getElementById('gradeOption');
+
+				gradeGV80.innerHTML = "<option value='대형'>대형</option>";
+				
+				const fuelGV80 = document.getElementById('fuelOption');
+				
+				fuelGV80.innerHTML = "<option value='디젤'>디젤</option>";
+				
+			} else if(selectModel == "스타렉스"){
+				
+				const gradeStarrex = document.getElementById('gradeOption');
+
+				gradeStarrex.innerHTML = "<option value='대형'>대형</option>";
+				
+				const fuelStarrex = document.getElementById('fuelOption');
+				
+				fuelStarrex.innerHTML = "<option value='디젤'>디젤</option>";
+				
+			} else if(selectModel == "스포티지"){
+				
+				const gradeSportege = document.getElementById('gradeOption');
+
+				gradeSportege.innerHTML = "<option value='대형'>대형</option>";
+				
+				const fuelSportege = document.getElementById('fuelOption');
+				
+				fuelSportege.innerHTML = "<option value='가솔린'>가솔린</option>";
+				
+			} else if(selectModel == "아이오닉5"){
+				
+				const gradeIonic5 = document.getElementById('gradeOption');
+
+				gradeIonic5.innerHTML = "<option value='준중형'>준중형</option>";
+				
+				const fuelIonic5 = document.getElementById('fuelOption');
+				
+				fuelIonic5.innerHTML = "<option value='전기'>전기</option>";
+				
+			} else {
+				
+				const gradeNone = document.getElementById('gradeOption');
+
+				gradeNone.innerHTML = "<option value='-'>등급을 선택해주세요</option>";
+				
+				const fuelNone = document.getElementById('fuelOption');
+				
+				fuelNone.innerHTML = "<option value='-'>연료를 선택해주세요</option>";
 				
 			}
 			
-		</script>
+		}
+		
+	</script>
 
             <div id="main-select" class="area-list">
             
