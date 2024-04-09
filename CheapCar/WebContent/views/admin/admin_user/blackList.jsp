@@ -9,6 +9,7 @@
 
 </head>
 <body>
+	
 	<jsp:include page="../../common/adminMain.jsp"></jsp:include> 
 		
     <div class="outer">

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CsReplyFormController
+ * Servlet implementation class DeleteAttachmentController
  */
-@WebServlet("/replyForm.cs")
-public class CsReplyFormController extends HttpServlet {
+@WebServlet("/deleteAt.cs")
+public class DeleteAttachmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CsReplyFormController() {
+    public DeleteAttachmentController() {
         super();
         // TODO Auto-generated constructor stub
     }
