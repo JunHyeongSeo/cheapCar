@@ -138,7 +138,7 @@
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required> 
+		    					제목 : <input type="text" name="title" id="reviewTitle" required> 
 			    			</div>
                             </div>
 	                        <div class="content_sub">
@@ -224,7 +224,19 @@
             	};
             }
         }
-        
+
+	       $('#reviewTitle').blur(function(){
+	           const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	           const uname =  $('#reviewTitle').val()
+	           const resultData = uname.replace(regExp, "");
+	           
+	            if(uname != resultData){
+	                alert('특수문자는 사용이 불가능합니다.')
+	                $('#reviewTitle').val(resultData)
+	            }
+	         });
+
+		
       
 	</script>
 	
