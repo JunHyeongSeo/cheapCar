@@ -146,12 +146,7 @@
 			</c:if>
 			
 	    </div>	
-		<div class="search-area">
-			<form>
-				<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-				<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-			</form>
-		</div>
+
 	</div>
 
 	<script>

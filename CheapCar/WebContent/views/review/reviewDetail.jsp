@@ -126,6 +126,10 @@
 		font-size: 15px;        
 
     }
+    #textcount1{
+    	padding-left: 10px;
+    	padding-top: 10px;
+    }
     
 
 </style>
@@ -185,9 +189,13 @@
                     <div class="input-group mb-3">
                        <c:choose> 
                        	  <c:when test="${ loginUser != null }"> 
+                       	    
                             <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
-                                <button class="btn btn-info" onclick="insertReply();">등록</button>
+                                <button class="btn btn-info" onclick="insertReply();" id="btn-reply">등록</button>
+                            </div>
+                          	<div id="textcount1">
+                            	<span id="textCount"> 0 </span> / 300
                             </div>
                        	  </c:when>
                           <c:otherwise>    
@@ -203,7 +211,6 @@
                         	<a href="${ path }/delete.review?reviewNo=${ rBoard.reviewNo }" class="btn btn-sm btn-danger">삭&nbsp;제</a>
                         </c:if>
                     </div>                       
-
                 </div>
 				</div>            
 			 </div> 
@@ -215,7 +222,7 @@
 			   $.ajax({
 				   url : 'replyList.review',
 				   data : {
-					   rNo : ${ rBoard.reviewNo}
+					   rNo : ${ rBoard.reviewNo }
 				   },
 				   success : function(result){
 			            let resultStr = '';
@@ -264,8 +271,18 @@
         }
 
        
+       $(function(){
+    		$('#replyContent').keyup(function(){
+    			$('#textCount').text($(this).val().length);
+    	});   
+       })
        
-	        
+       $(function(){
+    	   $('#btn-reply').click(function(){
+    		   $('#textCount').text(0);
+    	   });
+       })
+  
        
 
 
