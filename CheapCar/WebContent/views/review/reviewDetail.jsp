@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewPhoto, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.review.model.vo.Reply" %>    
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
@@ -267,7 +266,7 @@
                	  selectReplyList();
                	};
                }
-            });
+            })
         }
 
        
@@ -277,12 +276,24 @@
     	});   
        })
        
-       $(function(){
+		$(function(){
     	   $('#btn-reply').click(function(){
     		   $('#textCount').text(0);
     	   });
        })
-  
+         
+	       $('#replyContent').blur(function(){
+	           const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	           const uname =  $('#replyContent').val()
+	           const resultData = uname.replace(regExp, "");
+	           
+	            if(uname != resultData){
+	                alert('특수문자는 사용이 불가능합니다.')
+	                $('#replyContent').val(resultData)
+	            }
+	         });	
+
+               
        
 
 

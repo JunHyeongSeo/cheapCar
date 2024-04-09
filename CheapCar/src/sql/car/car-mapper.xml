@@ -750,7 +750,9 @@
 		       COUNT(*), 
 		       MODEL_NAME,
 		       CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME,
-               YEAR
+               YEAR,
+               GRADE_NAME,
+               FUEL_NAME
 		  FROM
 		       TB_RESERVATION 
 		  JOIN
@@ -763,9 +765,13 @@
 		       TB_CAR_PHOTO TCP USING (MANAGEMENT_NO)
           JOIN
                 TB_YEAR TBY ON(TBY.YEAR_NO = B.YEAR_NO)
+          JOIN
+                TB_GRADE TBG ON(TBG.GRADE_NO = B.GRADE_NO)
+          JOIN
+                TB_FUEL TBF ON(TBF.FUEL_NO = B.FUEL_NO)
 		  GROUP 
 		     BY
-		       MODEL_NAME, CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME, YEAR
+		       MODEL_NAME, CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME, YEAR, GRADE_NAME, FUEL_NAME
 		  ORDER 
 		     BY 
 		       COUNT(*) DESC

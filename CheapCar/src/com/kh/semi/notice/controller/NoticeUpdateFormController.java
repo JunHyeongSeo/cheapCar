@@ -31,11 +31,10 @@ public class NoticeUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 값 뽑기
+
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		
-		// 값 가공
-		// service
+
 		Notice notice = new NoticeService().selectNotice(noticeNo);
 		
 		request.setAttribute("notice", notice);
