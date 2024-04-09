@@ -166,36 +166,31 @@
             
 			 </div>
 		  </div>
-		
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<c:if test="${ pi.currentPage > 1 }">	
-	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='${ path }/list.event?currentPage=${ pi.currentPage - 1 }'">이전</button>
-            </c:if>
-            <c:forEach var="${ pi.startPage }" begin="${ pi.startPage }" end="${ endPage }">
-	     	<%--<% for(int i = startPage; i <= endPage; i++){--%>
-	     		<c:choose>
-	     		<c:when test="${ pi.currentPage != pi.startPage }">
-	     		<%--<% if(currentPage != i){ --%>
-		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='${ path }/list.event?currentPage=${ pi.startPage }'">${ pi.startPage }</button>
-		     	</c:when>
-		     	<c:otherwise>	
-		     	<%--<% } else { --%>
-		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ pi.startPage }</button>
-		     	<%--<% } --%>	
-		     	</c:otherwise>
-		     	</c:choose>
 			
+			<c:if test="${ pi.currentPage > 1}">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ (pi.currentPage - 1) }'">이전</button>
+			</c:if>
+			
+			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<c:choose>
+					<c:when test="${ pi.currentPage ne i }">
+						<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ i }'">${ i }</button>
+					</c:when>
+					<c:otherwise>
+						<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ i }</button>
+					</c:otherwise>
+				</c:choose>	
 			</c:forEach>
 			
-			<%--			
-			<% if(currentPage != maxPage){ %>	
-			<button class="btn btn-outline-info" style="color:#6caddf"
-	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
-	     	<%} %>
-	     	 --%>
-	     	  
+			<c:if test="${ pi.currentPage ne pi.maxPage and pi.currentPage lt pi.maxPage }">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ pi.currentPage  + 1 }'">다음</button>
+			</c:if>
+			
+	    </div>		     	 
+	     	 
+	     	 
+	     	   
 	     	
 		   
 	    </div>			  			  
