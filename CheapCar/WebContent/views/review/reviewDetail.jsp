@@ -209,6 +209,67 @@
 			 </div> 
 		 </div>
 
+<script>
+
+		function selectReplyList(){
+			   $.ajax({
+				   url : 'replyList.review',
+				   data : {
+					   rNo : ${ rBoard.reviewNo}
+				   },
+				   success : function(result){
+			            let resultStr = '';
+			            for(let i in result){
+		
+			                resultStr += '<tr>'
+			                		   + '<td align="center">' + result[i].commentNo + '</td>'	
+			                           + '<td>' + result[i].commentContent + '</td>'
+			                           + '<td align="center">' + result[i].commentWriter + '</td>'
+			                           + '<td align="center">' + result[i].createDate + '</td>'
+			                           + '</tr>'
+			            };
+			            $('#replyList tbody').html(resultStr);
+			          },
+			          error : function(e){
+			            console.log(e);
+			          }
+			        })
+		} 
+
+		
+		$(function(){
+		    selectReplyList();
+		  });
+		
+
+		 
+       function insertReply(){
+           $.ajax({
+               url : 'replyInsert.review',
+               type : 'post',
+               data : {
+                   content : $('#replyContent').val(),
+                   reviewNo : ${ rBoard.reviewNo },
+                   memberNo : ${ loginUser.memberNo }
+               },
+               success : function(result){
+               	console.log(result);
+               	if(result == '댓글성공'){
+               	  $('#replyContent').val('');
+               	  selectReplyList();
+               	};
+               }
+            });
+        }
+
+       
+       
+	        
+       
+
+
+
+</script>
 
 
 
