@@ -3,12 +3,7 @@
 
 <%@ page import="com.kh.semi.event.model.vo.EventBoard, com.kh.semi.event.model.vo.EventPhoto"%>
 
-<%
-	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
-    EventPhoto ePhoto = (EventPhoto)request.getAttribute("ePhoto");
-
-%>
-    
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,7 +131,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -147,27 +142,27 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/update.event" method="post" id="insert-form" enctype="multipart/form-data">
-                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
-                            <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo() %>" />
+                        <form action="${ path }/update.event" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="userNo" value="${ loginUser.memberNo }" />
+                            <input type="hidden" name="eventNo" value="${ eBoard.eventNo }" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required value="<%= eBoard.getEventTitle() %> ">
+		    					제목 : <input type="text" name="title" required value="${ eBoard.eventTitle }">
 			    			</div>
                             </div>
 	                        <div class="content_sub">
-	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span> 
+	                            <span class="content_sub1">작성자 : ${ loginUser.memberName }</span> 
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
-									<img src="<%=contextPath%>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" id="img_1"/>
-									<input type="hidden" name="photoNo" value="<%= ePhoto.getPhotoNo() %>"/>
-									<input type="hidden" name="photoCname" value="<%= ePhoto.getPhotoCname() %>"/>
-									<input type="hidden" name="fileLevel" value="<%= ePhoto.getFileLevel() %>"/>
+									<img src="${ path }/${ ePhoto.photoPath }/${ ePhoto.photoCname }" id="img_1"/>
+									<input type="hidden" name="photoNo" value="${ ePhoto.photoNo }"/>
+									<input type="hidden" name="photoCname" value="${ ePhoto.photoCname }"/>
+									<input type="hidden" name="fileLevel" value="${ ePhoto.fileLevel }"/>
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment"><%= eBoard.getEventContent() %></textarea>
+	                            <textarea name="content" class="form-control" rows="20" id="comment">${ eBoard.eventContent }</textarea>
 	                        </div>
 	                        </div>
 	                    

@@ -127,7 +127,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -138,8 +138,8 @@
 				<h2 class="page-header do-hyeon-regular" align="left">이&nbsp;벤&nbsp;트</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
-                            <input type="hidden" name="userNo" value="<%= loginUser.getMemberNo() %>" />
+                        <form action="${ path }/insert.event" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="userNo" value="${ loginUser.memberNo }" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
@@ -147,7 +147,7 @@
 			    			</div>
                             </div>
 	                        <div class="content_sub">
-	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span> 
+	                            <span class="content_sub1">작성자 : ${ loginUser.memberName }</span> 
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">

@@ -142,31 +142,31 @@
 				<div class="event_content">
 					<ul id="event_list" >
 						<c:choose>
-						<c:if test="${ empty list }">
+						<c:when test="${ empty list }">
 							<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
-						</c:if>
+						</c:when>
 						<c:otherwise>
-							<% for(EventBoard eb: list) { %>
+							<c:forEach var="e" items="${ list  }">
 							<li>
 								<div class="img-area event_1 content">
-								 <input type="hidden" name="eventNo" value="<%= eb.getEventNo()%>"/>
-								 <img src="<%= eb.getTitleImg() %>" id="titleImg"/>
+								 <input type="hidden" name="eventNo" value="${e.eventNo}"/>
+								 <img src="${e.titleImg}" id="titleImg"/>
 								</div>
 								<div class="text-area event_1 content" >
-								<input type="hidden" name="eventNo" value="<%= eb.getEventNo()%>"/>
-								 <span> <%= eb.getEventTitle() %> </span><br><br>
-								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
+								<input type="hidden" name="eventNo" value="${e.eventNo}"/>
+								 <span> ${ e.eventTitle }  </span><br><br>
+								 <span style="font-size: 15px;">조회수 : ${ e.count }</span>
 								</div>
-							  </a>
 							</li>
-							</c:otherwise>
+							</c:forEach>
+						</c:otherwise>
 						</c:choose>
 						
 					</ul>
             
 			 </div>
 		  </div>
-
+		<%--
 		<div class="paging-area" align="center" style="margin-top:12px">
 			<% if(currentPage > 1) { %>	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
@@ -186,6 +186,7 @@
 			<button class="btn btn-outline-info" style="color:#6caddf"
 	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
 	     	<%} %>
+	     	 --%>
 		   
 	    </div>			  			  
 	</div>
@@ -197,7 +198,7 @@
 
 				const eventNo = $(this).children().eq(0).val(); 
 
-				location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+				location.href = '${path}/detail.event?eventNo=' + eventNo
 			})
 
 
