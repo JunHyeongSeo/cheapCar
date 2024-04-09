@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventPhoto, com.kh.semi.event.model.vo.EventBoard" %>    
+    
 
 <!DOCTYPE html>
 <html>
