@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.semi.member.model.service.MemberService;
 import com.kh.semi.member.model.vo.Member;
@@ -51,6 +52,10 @@ public class AjaxUpdateMemberController extends HttpServlet {
 		m.setBlackReason(blackReason);
 		
 		int result = new MemberService().adminUpdateMem(m);
+		m = new MemberService().login(memberId);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser", m);
 		
 		response.getWriter().print(result);
 	}

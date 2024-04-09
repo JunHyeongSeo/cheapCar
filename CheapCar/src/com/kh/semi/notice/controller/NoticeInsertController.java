@@ -31,22 +31,22 @@ public class NoticeInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// post
+		
 		request.setCharacterEncoding("UTF-8");
 		
-		// 값
+	
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		
-		// 가공
+	
 		Notice notice = new Notice();
 		notice.setNoticeTitle(noticeTitle);
 		notice.setNoticeContent(noticeContent);
 		notice.setMemberNo(memberNo);
 		
 		
-		// service
+		
 		int result = new NoticeService().insert(notice);
 		
 		

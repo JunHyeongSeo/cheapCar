@@ -48,10 +48,7 @@ public class ReviewInsertController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
-			/*
-			 * 작성자, 제목, 내용, 첨부파일, 
-			 */
-			
+
 			String reviewTitle = multiRequest.getParameter("title");
 			String reviewContent = multiRequest.getParameter("content");
 			int memberNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
