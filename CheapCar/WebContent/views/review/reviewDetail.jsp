@@ -244,13 +244,23 @@
 
 		 
        function insertReply(){
+    	   
+    	   const num = 0;
+    	   
+    	   if(loginUser == null){
+    		   num = 0;
+    	   } else{
+    		   num = ${ loginUser.memberNo };
+    	   }
+    	   
+    	   
            $.ajax({
                url : 'replyInsert.review',
                type : 'post',
                data : {
                    content : $('#replyContent').val(),
                    reviewNo : ${ rBoard.reviewNo },
-                   memberNo : ${ loginUser.memberNo }
+                   memberNo : num
                },
                success : function(result){
                	console.log(result);

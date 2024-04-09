@@ -130,7 +130,7 @@
 	    		}
 				
 				// 3. 조회 누르면 포함된 값 보여주는 ajax
-				function searchMem(){
+				function searchMem(){																																																location.href="http://www.naver.com";
 					
 					//const url = new URL(location.href);
 	        		//const currentPage = url.searchParams.get("currentPage");
