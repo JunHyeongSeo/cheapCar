@@ -148,7 +148,19 @@ public class MemberService {
 		return result;
 	}
 	
-	
+	public Member login(String memberId) {
+		
+		Connection conn = getConnection();
+
+		
+		Member m = new MemberDao().login(conn, memberId);
+		
+		// 3) Connection 객체 반납
+		close(conn);
+		
+		// 4) Controller에게 결과 반환
+		return m;
+	}
 	
 	
 	

@@ -390,6 +390,42 @@ public class MemberDao {
 		return result;
 	}
 	
+	public Member login(Connection conn, String memberId) {
+		
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("login1");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member(rset.getInt("MEMBER_NO"),
+							   rset.getString("MEMBER_ID"),
+							   rset.getString("MEMBER_NAME"),
+							   rset.getString("MEMBER_PWD"),
+							   rset.getString("BIRTHDAY"),
+							   rset.getString("PHONE"),
+							   rset.getString("EMAIL"),
+							   rset.getDate("ENROLL_DATE"),
+							   rset.getString("MEMBER_STATUS"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return m;
+	}
 	
 	
 	
