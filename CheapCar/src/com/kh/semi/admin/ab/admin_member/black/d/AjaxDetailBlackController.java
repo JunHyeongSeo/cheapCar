@@ -37,6 +37,7 @@ public class AjaxDetailBlackController extends HttpServlet {
 		
 		Member m = new MemberService().selectBlack(memberId);
 		
+		System.out.println(m.getBlackDate());
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(m, response.getWriter());
 		

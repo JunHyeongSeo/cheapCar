@@ -22,7 +22,7 @@
 	
 	<c:choose>
 	
-		<c:when test="${ loginUser.memberStatus eq 'A' }">
+		<c:when test="${ loginUser ne null and loginUser.memberStatus eq 'A' }">
 		
 	    <div id="wrap">
 	        
