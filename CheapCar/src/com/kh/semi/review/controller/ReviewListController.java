@@ -62,7 +62,7 @@ public class ReviewListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		//값
+
 		ArrayList<ReviewBoard> list = new ReviewService().selectReviewList(pi);
 		
 		

@@ -24,7 +24,6 @@ public class NoticeDao {
 		try {
 			prop.loadFromXML(new FileInputStream(fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -32,51 +31,7 @@ public class NoticeDao {
 	
 	
 	
-	/*
-	public ArrayList<Notice> selectNoticeList(Connection conn) {
-		
-		// 조회된 공지사항 리스트 담을 ArrayList 선언
-		ArrayList<Notice> list = new ArrayList();
-		
-		// preparedStatement, ResultSet, sql
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		
-		String sql = prop.getProperty("selectNoticeList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) { // notice 객체에 값 담기, rset에서 뽑아서
-				
-				Notice notice = new Notice();
-				
-				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
-				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
-				notice.setNoticeWriter(rset.getString("MEMBER_NAME"));
-				notice.setCreateDate(rset.getDate("CREATE_DATE"));
-				notice.setCount(rset.getInt("COUNT"));
-				
-				list.add(notice);				
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-			
-		}
-		
-		
-		return list;
-	}//
 	
-	*/
 	public int increaseCount(Connection conn, int noticeNo) {
 		
 		int result = 0;
@@ -190,10 +145,6 @@ public class NoticeDao {
 		}
 		
 		
-		
-		
-		
-		
 		return result;
 		
 	}//
@@ -248,10 +199,6 @@ public class NoticeDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
-		
-		
-		
 		
 		return listCount;
 	}

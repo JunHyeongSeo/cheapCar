@@ -71,9 +71,7 @@ public class NoticeListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
 		
-		
-		
-		// 최종적으로 얘가 할 일 : 응답화면 띄우기. -> noticeList.jsp에다가
+
 		RequestDispatcher view = request.getRequestDispatcher("views/notice/notice.jsp");
 		view.forward(request, response);
 		

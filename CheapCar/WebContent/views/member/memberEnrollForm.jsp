@@ -221,7 +221,7 @@
 
 						if(!birthdayCheck.test(birthdayvalue)){
 							alert('생년월일을 다시입력해주세요.');
-							$('#birthday').val('');
+							$('#birthday').val("");
 						}
 
 					});

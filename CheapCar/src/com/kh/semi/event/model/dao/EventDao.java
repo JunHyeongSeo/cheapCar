@@ -393,7 +393,7 @@ public class EventDao {
 				list.add(eBoard);
 			}
 			
-			//System.out.println(list);
+	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -34,14 +34,9 @@ public class NoticeDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 1) GET방식 => 인코딩 X
-		
-		// 2) request로부터 값 뽑기
+
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		
-		// 3) VO가공 => 전달값 하나라 가공 필요 없음
-		
-		// 4) Service호출
+
 		int result = new NoticeService().increaseCount(noticeNo);
 		
 		if(result > 0) {

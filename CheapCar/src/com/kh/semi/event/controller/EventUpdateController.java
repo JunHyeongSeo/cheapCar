@@ -76,7 +76,7 @@ public class EventUpdateController extends HttpServlet {
 				ePhoto.setPhotoPath("resources/event_upfiles");
 				
 				
-				if(multiRequest.getParameter("photoNo") != null) {// 첨부파일이 존재 + 원본파일도 존재 => UPDATE ATTACHMENT => DB에 저장된 원본파일 No가 필요함
+				if(multiRequest.getParameter("photoNo") != null) {
 				
 					ePhoto.setPhotoNo(Integer.parseInt(multiRequest.getParameter("photoNo")));
 					new File(savePath + multiRequest.getParameter("photoCname")).delete();
