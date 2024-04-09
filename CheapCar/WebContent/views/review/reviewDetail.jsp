@@ -191,7 +191,7 @@
                                 <button class="btn btn-info" onclick="insertReply();" id="btn-reply">등록</button>
                             </div>
                           	<div id="textcount1">
-                            	<span id="textCount"> 2 </span> / 300
+                            	<span id="textCount"> 0 </span> / 300
                             </div>
                        	  </c:when>
                           <c:otherwise>    
@@ -277,7 +277,7 @@
        $(function(){
     	   $('#btn-reply').click(function(){
     		   $('#textCount').text(0);
-    	   })
+    	   });
        })
   
        
