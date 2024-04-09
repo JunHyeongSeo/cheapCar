@@ -31,15 +31,15 @@ public class NoticeUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		// post
+		
 		request.setCharacterEncoding("UTF-8");
 		
-		// 값 뽑기
+		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 		
-		// 값 가공
+		
 		Notice notice = new Notice();
 		
 		notice.setNoticeNo(noticeNo);
@@ -47,11 +47,11 @@ public class NoticeUpdateController extends HttpServlet {
 		notice.setNoticeContent(noticeContent);
 		
 		
-		// service
+		
 		int result = new NoticeService().updateNotice(notice);
 		
 		
-		// 응답화면
+	
 		if(result > 0) {
 		
 			response.sendRedirect(request.getContextPath() + "/detail.notice?noticeNo=" + noticeNo);
