@@ -142,50 +142,56 @@
 				<div class="event_content">
 					<ul id="event_list" >
 						<c:choose>
-						<c:if test="${ empty list }">
+						<c:when test="${ empty list }">
 							<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
-						</c:if>
+						</c:when>
 						<c:otherwise>
-							<% for(EventBoard eb: list) { %>
+							<c:forEach var="e" items="${ list  }">
 							<li>
 								<div class="img-area event_1 content">
-								 <input type="hidden" name="eventNo" value="<%= eb.getEventNo()%>"/>
-								 <img src="<%= eb.getTitleImg() %>" id="titleImg"/>
+								 <input type="hidden" name="eventNo" value="${e.eventNo}"/>
+								 <img src="${e.titleImg}" id="titleImg"/>
 								</div>
 								<div class="text-area event_1 content" >
-								<input type="hidden" name="eventNo" value="<%= eb.getEventNo()%>"/>
-								 <span> <%= eb.getEventTitle() %> </span><br><br>
-								 <span style="font-size: 15px;">조회수 :  <%= eb.getCount() %></span>
+								<input type="hidden" name="eventNo" value="${e.eventNo}"/>
+								 <span> ${ e.eventTitle }  </span><br><br>
+								 <span style="font-size: 15px;">조회수 : ${ e.count }</span>
 								</div>
-							  </a>
 							</li>
-							</c:otherwise>
+							</c:forEach>
+						</c:otherwise>
 						</c:choose>
 						
 					</ul>
             
 			 </div>
 		  </div>
-
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<% if(currentPage > 1) { %>	
-	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage - 1%>'">이전</button>
-            <% } %>
-	     	<% for(int i = startPage; i <= endPage; i++){%>
-	     		<% if(currentPage != i){ %>
-		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=i%>'"><%= i %></button>
-		     	<% } else { %>
-		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
-		     	<% } %>	
-		     	
-			<% } %>
 			
-			<% if(currentPage != maxPage){ %>	
-			<button class="btn btn-outline-info" style="color:#6caddf"
-	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
-	     	<%} %>
+			<c:if test="${ pi.currentPage > 1}">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ (pi.currentPage - 1) }'">이전</button>
+			</c:if>
+			
+			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<c:choose>
+					<c:when test="${ pi.currentPage ne i }">
+						<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ i }'">${ i }</button>
+					</c:when>
+					<c:otherwise>
+						<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ i }</button>
+					</c:otherwise>
+				</c:choose>	
+			</c:forEach>
+			
+			<c:if test="${ pi.currentPage ne pi.maxPage and pi.currentPage lt pi.maxPage }">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.event?currentPage=${ pi.currentPage  + 1 }'">다음</button>
+			</c:if>
+			
+	    </div>		     	 
+	     	 
+	     	 
+	     	   
+	     	
 		   
 	    </div>			  			  
 	</div>
@@ -197,7 +203,7 @@
 
 				const eventNo = $(this).children().eq(0).val(); 
 
-				location.href = '<%= contextPath %>/detail.event?eventNo=' + eventNo
+				location.href = '${path}/detail.event?eventNo=' + eventNo
 			})
 
 

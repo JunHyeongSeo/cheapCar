@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.common.model.vo.PageInfo" %>    
-    
-<%
-	ArrayList<ReviewBoard> list = (ArrayList<ReviewBoard>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
- %>    
-    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
     
 <!DOCTYPE html>
 <html>
@@ -127,7 +118,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -139,64 +130,69 @@
 				</h2>
 				<div class="review_content">
 					<ul id="review_list">
-						<% if(list.isEmpty()) { %>
+						<c:choose>
+						<c:when test="${ empty list }">
 						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
-						<% } else { %>
-						  <% for(ReviewBoard re : list){ %>
+						</c:when>
+						<c:otherwise>
+						
+						  <c:forEach var="r" items="${ list }">
 						  		
 							<li>
 								<a>
 									<div class="img-area review_1 content">
-									 <input type="hidden" value="<%= re.getReviewNo() %>"/>
-									 <% if(re.getTitleImg().equals("/")){ %>
-									 <img src="views\common\차빌려조로고.gif" id="titleImg"/>
-									 <%} else{ %>
-								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
-								 	 <% } %>
+									 <input type="hidden" value="${ r.reviewNo }"/>
+									 <c:choose>
+										 <c:when test="${ r.titleImg == '/' }">
+										 <img src="views\common\차빌려조로고.gif" id="titleImg"/>
+										 </c:when>
+									 <c:otherwise>
+								 	 	<img src="${ r.titleImg }" id="titleImg"/>
+								 	 </c:otherwise>
+								 	 </c:choose>
 								 	</div>
 									<div class="text-area review_1 content">
-									<input type="hidden" value="<%= re.getReviewNo() %>"/>
-									 <span> <%= re.getReviewTitle() %> </span><br><br>
-								     <span style="font-size: 15px;">조회수 :  <%= re.getCount() %></span>
+									<input type="hidden" value="${ r.reviewNo }"/>
+									 <span> ${ r.reviewTitle } </span><br><br>
+								     <span style="font-size: 15px;">조회수 :  ${ r.count }</span>
 									</div>
 								</a>
 							</li>
-							
-							<% } %>
-						<% } %>	
+							</c:forEach>
+						</c:otherwise>
+						</c:choose>
 
 				</div>            
 			 </div>
 		  </div>
-		</div>           
+		</div>         
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<% if(currentPage > 1) { %>	
-	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=currentPage - 1%>'">이전</button>
-            <% } %>
-	     	<% for(int i = startPage; i <= endPage; i++){%>
-	     		<% if(currentPage != i){ %>
-		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=i%>'"><%= i %></button>
-		     	<% } else { %>
-		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
-		     	<% } %>	
-		     	
-			<% } %>
 			
-			<% if(currentPage != maxPage){ %>	
-			<button class="btn btn-outline-info" style="color:#6caddf"
-	     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=currentPage + 1%>'">다음</button>
-	     	<%} %>
-	    </div> 	
-
+			<c:if test="${ pi.currentPage > 1}">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.review?currentPage=${ (pi.currentPage - 1) }'">이전</button>
+			</c:if>	
+			
+			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<c:choose>
+					<c:when test="${ pi.currentPage ne i }">
+						<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.review?currentPage=${ i }'">${ i }</button>
+					</c:when>
+					<c:otherwise>
+						<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ i }</button>
+					</c:otherwise>
+				</c:choose>	
+			</c:forEach>
+			
+			<c:if test="${ pi.currentPage ne pi.maxPage and pi.currentPage lt pi.maxPage }">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.review?currentPage=${ pi.currentPage  + 1 }'">다음</button>
+			</c:if>
+			
+	    </div>	
         <div class="search_write">
 			<form>
-			    <!-- <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-				<button type="submit" value="" id="btn-search" class="btn-info" style="background-color: #6caddf">검색</button> -->
-				<% if(loginUser != null) {%>
-					<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
-				<%}%>
+				<c:if test="${ loginUser != null }">
+					<a href="${ path }/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+				</c:if>
 				
 			</form>
 
@@ -211,7 +207,7 @@
 
 				const reviewNo = $(this).children().eq(0).val(); 
 
-				location.href = '<%= contextPath %>/detail.review?reviewNo=' + reviewNo
+				location.href = '${path}/detail.review?reviewNo=' + reviewNo
 			})
 
 

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@ page import="java.util.ArrayList, com.kh.semi.cs.model.vo.Cs, com.kh.semi.common.model.vo.PageInfo" %>    
+<%@ page import="java.util.ArrayList, com.kh.semi.cs.model.vo.Cs, com.kh.semi.common.model.vo.PageInfo" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>1대1 문의</title>
 
+<link rel="stylesheet" href="resources/css/adminStyle.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -15,11 +17,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
 
-
 </head>
 <body>
 
-	<jsp:include page="../common/adminMain.jsp"></jsp:include>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -45,24 +46,24 @@
 						 	<th style="width: 15%; text-align:center">작성일</th>
 					  	</tr>
 					  	
-				  	<c:choose>
-				  		<c:when test="${ empty list}">
-				  			<tr>
-					  			<th colspan="5"> 문의글이 존재하지 않습니다.</th>
-				  			</tr>
-				  		</c:when>
-				  		<c:otherwise>
-				  			<c:forEach var="i" items="${ list }">
-				  				<tr class="cs_list">
-									<th style="text-align:center">${ i.csNo }</th>
-									<th>${ i.csTitle }</th>
-									<th style="text-align:center">${ i.memberName }</th>
-									<th style="text-align:center">${ i.replyYn }</th>
-									<th style="text-align:center">${ i.createDate }</th>
-								</tr>
-				  			</c:forEach>
-				  		</c:otherwise>
-				  	</c:choose>
+					  	<c:choose>
+					  		<c:when test="${ empty list }">
+					  			<tr>
+						  			<th colspan="5"> 문의글이 존재하지 않습니다.</th>
+					  			</tr>
+					  		</c:when>
+					  		<c:otherwise>
+					  			<c:forEach var="i" items="${ list }">
+					  				<tr class="cs_list">
+										<th style="text-align:center">${ i.csNo }</th>
+										<th>${ i.csTitle }</th>
+										<th style="text-align:center">${ i.memberName }</th>
+										<th style="text-align:center">${ i.replyYn }</th>
+										<th style="text-align:center">${ i.createDate }</th>
+									</tr>
+					  			</c:forEach>
+					  		</c:otherwise>
+					  	</c:choose>
 					</table>               
 				</div>            
 			</div>
@@ -70,11 +71,11 @@
 		
 		<div class="paging-area" align="center" style="margin-top:12px">
 			
-			<c:if test="${ pi.currentPage > 1 and pi.listCount ne 0 }">
-				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.cs?currentPage=${ path - 1 }'">이전</button>
+			<c:if test="${ pi.currentPage > 1}">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.cs?currentPage=${ (pi.currentPage - 1) }'">이전</button>
 			</c:if>
 			
-			<c:forEach var="i" begin="${ pi.startPage }", end="${ pi.endPage }">
+			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
 				<c:choose>
 					<c:when test="${ pi.currentPage ne i }">
 						<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.cs?currentPage=${ i }'">${ i }</button>
@@ -85,18 +86,12 @@
 				</c:choose>	
 			</c:forEach>
 			
-			<c:if test="${ pi.curentPage ne pi.maxPage and pi.currentPage lt pi.maxPage }">
-				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.cs?currentPage=${ path  + 1 }'">다음</button>
+			<c:if test="${ pi.currentPage ne pi.maxPage and pi.currentPage lt pi.maxPage }">
+				<button class="btn btn-outline-info" style="color:#6caddf" onclick="location.href='${ path }/list.cs?currentPage=${ pi.currentPage  + 1 }'">다음</button>
 			</c:if>
 			
 	    </div>	
 		
-		<div class="search-area">
-			<form>
-				<input type="text" id="searchWord" name="searchWord" placeholder="검색" >
-				<button type="submit" value="" id="" class="btn-info" style="background-color: #6caddf">검색</button>
-			</form>
-		</div>
 	</div>
 	
 	<script>

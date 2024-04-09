@@ -122,7 +122,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -133,16 +133,16 @@
 				<h2 class="page-header do-hyeon-regular" align="left">리&nbsp;뷰</h2>
 				</div> 
                     <div class="content_outer">
-                        <form action="<%=contextPath%>/insert.review" method="post" id="insert-form" enctype="multipart/form-data">
-                            <input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>" />
+                        <form action="${ path }/insert.review" method="post" id="insert-form" enctype="multipart/form-data">
+                            <input type="hidden" name="memberNo" value="${ loginUser.memberNo }" />
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required> 
+		    					제목 : <input type="text" name="title" id="reviewTitle" required> 
 			    			</div>
                             </div>
 	                        <div class="content_sub">
-	                            <span class="content_sub1">작성자 : <%= loginUser.getMemberId() %></span> 
+	                            <span class="content_sub1">작성자 : ${ loginUser.memberId }</span> 
 	                        </div>
 	                        <div class="content_body">
 	                        <div class="img-area" align="center" id="imgArea">
@@ -224,7 +224,19 @@
             	};
             }
         }
-        
+
+	       $('#reviewTitle').blur(function(){
+	           const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	           const uname =  $('#reviewTitle').val()
+	           const resultData = uname.replace(regExp, "");
+	           
+	            if(uname != resultData){
+	                alert('특수문자는 사용이 불가능합니다.')
+	                $('#reviewTitle').val(resultData)
+	            }
+	         });
+
+		
       
 	</script>
 	

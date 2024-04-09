@@ -2,12 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewPhoto, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.review.model.vo.Reply" %>    
 
-<%
-    ArrayList<ReviewPhoto> list = (ArrayList<ReviewPhoto>)request.getAttribute("list");
-	ReviewBoard rBoard = (ReviewBoard)request.getAttribute("rBoard");
-
-%>    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
     
 <!DOCTYPE html>
 <html>
@@ -136,7 +132,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 <div class="outer">
 	<div class="row">
@@ -149,24 +145,24 @@
                     <div class="content_outer"> 
                         <div class="content_header"> 
                             
-                        <div class="content_header2"><%= rBoard.getReviewTitle() %> </div>
+                        <div class="content_header2"> ${ rBoard.reviewTitle } </div>
                         </div>
                         <div class="content_sub">
-	                        <span class="content_sub1">작성일 : <%= rBoard.getCreateDate() %></span> &nbsp;/&nbsp;
-	                        <span class="content_sub1">작성자 : <%= rBoard.getReviewWriter() %></span> &nbsp;/&nbsp;
-	                        <span class="content_sub1">조회수 : <%= rBoard.getCount() %></span>
+	                        <span class="content_sub1">작성일 : ${ rBoard.createDate }</span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">작성자 : ${ rBoard.reviewWriter }</span> &nbsp;/&nbsp;
+	                        <span class="content_sub1">조회수 : ${ rBoard.count }</span>
                     </div>
                     <div class="content_body"> 
-	                    <% if(list != null) { %>			
+	                    <c:if test="${ list != null }">			
 	                        <div class="img-area">
-	                        		<% for(ReviewPhoto rPhoto : list) { %>
-	                              	<img width="100%" src="<%= contextPath %>/<%= rPhoto.getPhotoPath() %>/<%= rPhoto.getPhotoCname() %>" />
-	                              	<input type="hidden" name="titleImg" value="<%= rPhoto.getPhotoCname()%>"/>
-	                              	<% } %>
+	                        	<c:forEach var="r" items="${ list }">
+	                             	<img width="100%" src="${ path }/${ r.photoPath }/${ r.photoCname }" />
+	                             	<input type="hidden" name="titleImg" value="${ r.photoCname }"/>
+	                            </c:forEach>
 	                        </div>
-	                     <% } %>   
+	                     </c:if>
                         <div class="text-area">
-                        	<%= rBoard.getReviewContent() %>
+                        	${rBoard.reviewContent}
                         </div>
                     </div>
                     <div class="reply" id="replyList"> 
@@ -185,24 +181,27 @@
                             
                          </table>    
                     </div>
-             
-                    <div class="input-group mb-3"> 
-                       <% if(loginUser != null){%> 
+             		
+                    <div class="input-group mb-3">
+                       <c:choose> 
+                       	  <c:when test="${ loginUser != null }"> 
                             <input type="text" class="form-control" id="replyContent" maxlength="300" placeholder="댓글 작성 시 상대방에게 불쾌감을 주는 언어사용은 가급적 지양해주시기 바랍니다. / 최대 300자 ">
                             <div class="input-group-append">
                                 <button class="btn btn-info" onclick="insertReply();">등록</button>
                             </div>
-                        <% } else {%>
+                       	  </c:when>
+                          <c:otherwise>    
                             <input type="text" readonly class="form-control" placeholder="로그인 후 댓글작성 가능합니다.">
-                      <% } %> 
+                          </c:otherwise>
+                      </c:choose> 
                             
                     </div>
                     <div class="content_btn" align="center"> 
-                        <a href="<%= contextPath%>/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <% if(loginUser != null && loginUser.getMemberId().equals(rBoard.getReviewWriter()) || loginUser.getMemberStatus().equals("A")) { %>
-                        	<a href="<%= contextPath%>/updateForm.review?reviewNo=<%= rBoard.getReviewNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        	<a href="<%= contextPath%>/delete.review?reviewNo=<%= rBoard.getReviewNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                         <% } %>
+                        <a href="${ path }/list.review?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <c:if test="${ loginUser != null and loginUser.memberId == rBoard.reviewWriter or loginUser.memberStatus == 'A' }">                      
+                        	<a href="${ path }/updateForm.review?reviewNo=${ rBoard.reviewNo }" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        	<a href="${ path }/delete.review?reviewNo=${ rBoard.reviewNo }" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        </c:if>
                     </div>                       
 
                 </div>
@@ -210,15 +209,13 @@
 			 </div> 
 		 </div>
 
-
 <script>
-
 
 		function selectReplyList(){
 			   $.ajax({
 				   url : 'replyList.review',
 				   data : {
-					   rNo : <%= rBoard.getReviewNo() %>
+					   rNo : ${ rBoard.reviewNo}
 				   },
 				   success : function(result){
 			            let resultStr = '';
@@ -236,7 +233,7 @@
 			          error : function(e){
 			            console.log(e);
 			          }
-			        });
+			        })
 		} 
 
 		
@@ -245,32 +242,46 @@
 		  });
 		
 
-		 <%if(loginUser != null) {%>
-        	function insertReply(){
-            $.ajax({
-                url : 'replyInsert.review',
-                type : 'post',
-                data : {
-                    content : $('#replyContent').val(),
-                    reviewNo : <%= rBoard.getReviewNo() %>,
-                    memberNo : <%= loginUser.getMemberNo()%>
-                },
-                success : function(result){
-                	console.log(result);
-                	if(result == '댓글성공'){
-                	  $('#replyContent').val('');
-                	  selectReplyList();
-                	};
-                }
+		 
+       function insertReply(){
+    	   
+    	   const num = 0;
+    	   
+    	   if(loginUser == null){
+    		   num = 0;
+    	   } else{
+    		   num = ${ loginUser.memberNo };
+    	   }
+    	   
+    	   
+           $.ajax({
+               url : 'replyInsert.review',
+               type : 'post',
+               data : {
+                   content : $('#replyContent').val(),
+                   reviewNo : ${ rBoard.reviewNo },
+                   memberNo : num
+               },
+               success : function(result){
+               	console.log(result);
+               	if(result == '댓글성공'){
+               	  $('#replyContent').val('');
+               	  selectReplyList();
+               	};
+               }
             });
         }
-        <% } %>
+
+       
+       
 	        
        
 
 
 
 </script>
+
+
 
 		
 </body>

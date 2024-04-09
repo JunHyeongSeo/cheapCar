@@ -3,13 +3,6 @@
 
 <%@ page import="java.util.ArrayList, com.kh.semi.event.model.vo.EventPhoto, com.kh.semi.event.model.vo.EventBoard" %>    
 
-<%
-	EventPhoto ePhoto = (EventPhoto)request.getAttribute("ePhoto");
-	EventBoard eBoard = (EventBoard)request.getAttribute("eBoard");
-
-%>
-
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,7 +119,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -139,29 +132,29 @@
                     <div class="content_outer">
                         <div class="content_header"> 
                             
-                        <div class="content_header2"><%= eBoard.getEventTitle() %> </div>
-                        <input type="hidden" name="eventNo" value="<%= eBoard.getEventNo()%>">
-                        <input type="hidden" name="userNo" value="<%= eBoard.getMemberNo()%>">
+                        <div class="content_header2">${ eBoard.eventTitle } </div>
+                        <input type="hidden" name="eventNo" value="${ eBoard.eventNo}">
+                        <input type="hidden" name="userNo" value="${ eBoard.memberNo }">
                         </div>
                         <div class="content_sub">
-                        <span class="content_sub1">작성일 : <%= eBoard.getCreateDate() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">작성자 : <%= eBoard.getEventWriter() %></span> &nbsp;/&nbsp;
-                        <span class="content_sub1">조회수 : <%= eBoard.getCount() %></span>
+                        <span class="content_sub1">작성일 : ${ eBoard.createDate }</span> &nbsp;/&nbsp;
+                        <span class="content_sub1">작성자 : ${ eBoard.eventWriter }</span> &nbsp;/&nbsp;
+                        <span class="content_sub1">조회수 : ${ eBoard.count }</span>
                     </div>
                     <div class="content_body">
                         <div class="img-area">
-                              	<img width="100%" src="<%= contextPath %>/<%= ePhoto.getPhotoPath() %>/<%= ePhoto.getPhotoCname() %>" />
+                              	<img width="100%" src="${ path }/${ ePhoto.photoPath }/${ ePhoto.photoCname}" />
                         </div>
-                        <div class="text-area"> <%= eBoard.getEventContent() %></div>
+                        <div class="text-area">${ eBoard.eventContent }</div>
                     </div>
 
 
                     <div class="content_btn" align="center">
-                        <a href="<%= contextPath%>/list.event?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
-                        <% if(loginUser != null && loginUser.getMemberStatus().equals("A")){ %>
-                        	<a href="<%= contextPath%>/updateForm.event?eventNo=<%= eBoard.getEventNo()%>" class="btn btn-sm btn-secondary">수&nbsp;정</a>
-                        	<a href="<%= contextPath%>/delete.event?eventNo=<%= eBoard.getEventNo() %>" class="btn btn-sm btn-danger">삭&nbsp;제</a>
-                        <% } %>
+                        <a href="${path}/list.event?currentPage=1" class="btn btn-sm btn-info">목&nbsp;록</a>
+                        <c:if test="${ loginUser != null and loginUser.memberStatus == 'A' }">
+                        	<a href="${ path }/updateForm.event?eventNo=${ eBoard.eventNo }" class="btn btn-sm btn-secondary">수&nbsp;정</a>
+                        	<a href="${ path }/delete.event?eventNo=${ eBoard.eventNo }" class="btn btn-sm btn-danger">삭&nbsp;제</a>
+                        </c:if>
 
                     </div>
                 </div>
