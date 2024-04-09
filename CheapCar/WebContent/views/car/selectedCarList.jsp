@@ -172,9 +172,9 @@
 
                          <input type="checkbox" class="form-check-input" name="options" value="블랙박스" checked>블랙박스
 
-                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션" checked>네비게이션
+                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라" checked>후방카메라
+                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
                          
                     </div>
 

@@ -1,25 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ 
-	page import="java.util.ArrayList, 
-				 com.kh.semi.car.model.vo.*"
-%>
 
-<%
-	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
-	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	int hours = (int)request.getAttribute("hours");
-	String locations = (String)request.getAttribute("locations");
-	String startDate = (String)request.getAttribute("startDate");
-	String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	int carPrice = 0;
-	int optionPrice = 0;
-	int totalPrice = 0;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -195,9 +177,9 @@
 
                          <input type="checkbox" class="form-check-input" name="options" value="블랙박스" checked>블랙박스
 
-                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션" checked>네비게이션
+                         <input type="checkbox" class="form-check-input" name="options" value="네비게이션">네비게이션
                          
-                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라" checked>후방카메라
+                         <input type="checkbox" class="form-check-input" name="options" value="후방카메라">후방카메라
                          
                     </div>
 
