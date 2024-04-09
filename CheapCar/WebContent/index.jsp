@@ -16,7 +16,7 @@
  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
     
     <!-- swiper.js 라이브러리추가 -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -144,12 +144,15 @@
 	    					     + '<div class="card-content car-car">'
 	    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
 	    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
-	    					       + '<input type="hidden" name="popularcar2" value=" ' + result[i].year + '">'
+	    					       + '<input type="hidden" name="popularcar2" value="' + result[i].gradeName + '">'
+	    					       + '<input type="hidden" name="popularcar3" value="' + result[i].fuelName + '">'
 	    					     + '</div>'
 	    					   + '</a>'
 	    					   + '<div class="card-content car-car">'
 	    					     + '<h4 calss=cardtitle>'
 	    					       + '<a>' + result[i].modelName + '</a>'
+	    					       + '<a>' + result[i].gradeName + '</a>'
+	    					       + '<a>' + result[i].fuelName + '</a>'
 	    					     + '</h4>'
 	    					   + '</div>'
 	    					 +'</div>'
@@ -238,11 +241,13 @@
         	console.log(ppc);
         	const pp2 = $(this).children().eq(2).val();
         	console.log(pp2);
+        	const pp3 = $(this).children().eq(3).val();
+        	console.log(pp3);
         	
         	//location.href = '${path}/selectedCarList.do?currentPage=1&hours=24&locations=강남점&startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc
         	//location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=강남점startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc       	
         		
-        	location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=%EA%B0%95%EB%82%A8%EC%A0%90&startDate=2024-04-18+15%3A00&endDate=2024-04-19+15%3A00&model=' + ppc + '&options=%ED%9B%84%EB%B0%A9%EC%B9%B4%EB%A9%94%EB%9D%BC'
+        	location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=%EA%B0%95%EB%82%A8%EC%A0%90&startDate=2024-04-18+15%3A00&endDate=2024-04-19+15%3A00&model=' + ppc + '&grade=' + pp2 +'&fuel='+ pp3 +'&options=%ED%9B%84%EB%B0%A9%EC%B9%B4%EB%A9%94%EB%9D%BC'
         				
         	
         	
