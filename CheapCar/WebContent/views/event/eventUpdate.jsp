@@ -148,7 +148,7 @@
                             <div class="content_header"> 
                             
                             <div class="content_header2">
-		    					제목 : <input type="text" name="title" required value="${ eBoard.eventTitle }">
+		    					제목 : <input type="text" name="title" id="eventTitle" required value="${ eBoard.eventTitle }">
 			    			</div>
                             </div>
 	                        <div class="content_sub">
@@ -162,7 +162,7 @@
 									<input type="hidden" name="fileLevel" value="${ ePhoto.fileLevel }"/>
 							</div>
 	                        <div class="text-area">
-	                            <textarea name="content" class="form-control" rows="20" id="comment">${ eBoard.eventContent }</textarea>
+	                            <textarea name="content" class="form-control" rows="20" id="eventContent">${ eBoard.eventContent }</textarea>
 	                        </div>
 	                        </div>
 	                    
@@ -219,28 +219,26 @@
         }
         
         
-       $('#uname').blur(function(){
-       $('#uname').keyup(function(){
-          const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
-          const uname =  $('#uname').val()
-          const resultData = uname.replace(regExp, "");
+	      $('#eventTitle').blur(function(){
+	          const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	          const uname =  $('#eventTitle').val()
+	          const resultData = uname.replace(regExp, "");
+	          
+	           if(uname != resultData){
+	               alert('특수문자는 사용이 불가능합니다.')
+	               $('#eventTitle').val(resultData)
+	           }
+	        });	
           
-           if(uname != resultData){
-               alert('특수문자는 사용이 불가능합니다.')
-               $('#uname').val(resultData)
-           }
-        });
+          
+
+          
+          
+          
+          
     </script>
         
-        
-        
-		
-        
-
-        
-
-
-	</script>
+  
 	
 		
 	
