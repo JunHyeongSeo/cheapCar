@@ -277,12 +277,24 @@
     	});   
        })
        
-       $(function(){
+		$(function(){
     	   $('#btn-reply').click(function(){
     		   $('#textCount').text(0);
     	   });
        })
-  
+         
+	       $('#replyContent').blur(function(){
+	           const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	           const uname =  $('#replyContent').val()
+	           const resultData = uname.replace(regExp, "");
+	           
+	            if(uname != resultData){
+	                alert('특수문자는 사용이 불가능합니다.')
+	                $('#replyContent').val(resultData)
+	            }
+	         });	
+
+               
        
 
 
