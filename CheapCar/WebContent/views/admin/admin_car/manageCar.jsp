@@ -10,15 +10,15 @@
 <body>
 	<jsp:include page="../../common/adminMain.jsp"></jsp:include>
 	
-	<div class="outer">
+	<div class="outer" id="salemonth">
 	
-		<div id="top11" style="display: flex;">
+		<div id="top11">
 			<label for="searchCar" style="margin: 0px 15px;">차량 번호 : </label>
 			<input type="text" class="form-control" id="searchCar" placeholder="조회하실 차량 번호를 입력해주세요." name="searchCar" style="width: 300px;">
 			<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="searchCarList();">조회</button>
 		</div>
 
-        <div class="container1">
+        <div class="container">
             <h2>차량현황</h2> 
 			<table class="table table-bordered">
             	<thead>
@@ -40,7 +40,7 @@
         	
         </div>
         
-        <div id="container2">  
+        <div id="container">  
         	<table class="table table-bordered">
 				<tbody id="conBody2">
               
