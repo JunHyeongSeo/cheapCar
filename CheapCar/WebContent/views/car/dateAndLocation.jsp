@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +32,11 @@
 </style>
 </head>
 <body>
-	<%@ include file="../common/menuBar.jsp" %>
-	
+	<jsp:include page="../common/menuBar.jsp" />
     <div class="area-board">
         <form method="post" name="dateAndLocation" action="selectedCarList.do?currentPage=1">
             <div class="calendar">
-                <%@ include file="../common/dateRangePicker.jsp"%> <br>
+                <jsp:include page="../common/dateRangePicker.jsp" /> <br>
 					시작 날짜 :
                 <input id="startRent" name="startDate" type="text" readonly value=""/><br>
 					종료 날짜 : 

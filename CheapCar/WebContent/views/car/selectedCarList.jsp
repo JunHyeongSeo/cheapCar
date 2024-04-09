@@ -1,27 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ 
 	page import="java.util.ArrayList, 
-				 com.kh.semi.car.model.vo.*,
-				 com.kh.semi.common.model.vo.PageInfo" 
+				 com.kh.semi.car.model.vo.*" 
 %>
 
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-    PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
     int hours = (int)request.getAttribute("hours");
     String locations = (String)request.getAttribute("locations");
     String startDate = (String)request.getAttribute("startDate");
     String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
 
 <%
@@ -153,11 +144,11 @@
 
                 <form method="get" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
 			
-					<input type="hidden" name="currentPage" value="<%= 1 %>" />
-					<input type="hidden" name="hours" value="<%=hours %>" />
-					<input type="hidden" name="locations" value="<%=locations %>" />
-					<input type="hidden" name="startDate" value="<%=startDate %>" />
-					<input type="hidden" name="endDate" value="<%=endDate %>" />
+					<input type="hidden" name="currentPage" value="1" />
+					<input type="hidden" name="hours" value="${hours}" />
+					<input type="hidden" name="locations" value="${locations}" />
+					<input type="hidden" name="startDate" value="${startDate}" />
+					<input type="hidden" name="endDate" value="${endDate}" />
 
                     <div class="detail-option">
                         <label>차종</label>
@@ -213,8 +204,7 @@
 					</div>
                 </form>
             </div>
-
-
+            
 	<script>
 	
 		function chooseModel(model){
@@ -357,13 +347,15 @@
 	</script>
 
 
-            <div id="main-select" class="area-list">
+        <div id="main-select" class="area-list">
             
-                <% if(carList.isEmpty()) { %>
-                
+			<c:choose>
+			
+				<c:when test="empty carList">
                 	등록된 게시글이 존재하지 않습니다. <br>
-                	
-                <% } else {%>
+                </c:when>	
+
+				<c:otherwise>
 					
 					<% for(Car c : carList) { %>
 	                <div class="car-list">
@@ -401,39 +393,42 @@
                             <% optionPrice = 0; %>
 	                    </div>
                     </div>
-	                <% } %>
-                <% } %>
+                    <% } %>
+				</c:otherwise>
+				
+			</c:choose>
                 
                     <div>
                     
 						<ul class="pagination" >
-                            <c:if test="${currentPage gt 1} " >
+                            <c:if test="${pageInfo.currentPage gt 1}" >
                                 <li class="page-item">
-                                    <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=<%= currentPage - 1 %>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%="<"%></a>
+                                    <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=${pageInfo.currentPage - 1}&hours=${hours}&locations=${locations}&startDate=${startDate}&endDate=${endDate}'"><%="<"%></a>
                                 </li>
                             </c:if>
 
 							
-							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+							<c:forEach var="i" begin="${pageInfo.startPage}" end="${pageInfo.endPage}">
 								<c:choose>
-									<c:when test="${currentPage ne i}">
+									<c:when test="${pageInfo.currentPage ne i}">
 										<li
 										class="page-link"
-										onclick="location.href='${path}/selectedCarList.do?currentPage=${i}&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'">
+										onclick="location.href='${path}/selectedCarList.do?currentPage=${i}&hours=${hours}&locations=${locations}&startDate=${startDate}&endDate=${endDate}'">
 										${i}
 										</li>
 									</c:when>
 									<c:otherwise>
 										<li
-										class="page-link">${i}
+										class="page-link">
+										${i}
 										</li>
 									</c:otherwise>
 								</c:choose>
 							
 							</c:forEach>                            
-                            <c:if test="${currentPage ne maxPage}" >
+                            <c:if test="${pageInfo.currentPage ne pageInfo.maxPage}" >
 								<li class="page-item">
-	                                <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=<%= currentPage + 1%>&hours=<%=hours%>&locations=<%=locations%>&startDate=<%=startDate%>&endDate=<%=endDate%>'"><%=">"%></a>
+	                                <a class="page-link" onclick="location.href='${path}/selectedCarList.do?currentPage=${pageInfo.currentPage + 1}&hours=${hours}&locations=${locations}&startDate=${startDate}&endDate=${endDate}'"><%=">"%></a>
 	                            </li>
                             </c:if>
 					    </ul>
