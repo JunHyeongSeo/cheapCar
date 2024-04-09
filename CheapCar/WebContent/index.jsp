@@ -132,7 +132,7 @@
                 url : 'popular.car',
                 success : function(result){
 
-                    console.log(result);
+                    //console.log(result);
                     let resultStr = '';
     				for(let i = 0; i < result.length; i++){
     					if(i >= 3) break; // 3개만
@@ -140,13 +140,14 @@
     					resultStr 
     					  += '<div class="col-xs-12 col-sm-4">'
 	    					 + '<div class="card">'
-	    					   + '<a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">'
-	    					     + '<div class="card-content">'
+	    					   + '<a class="img-card">'
+	    					     + '<div class="card-content car-car">'
 	    					       + '<img style="width : 100%; height : 100%" src="' + result[i].carPhotoAddress +'">'
 	    					       + '<input type="hidden" name="popularcar" value="' + result[i].modelName + '">'
+	    					       + '<input type="hidden" name="popularcar2" value=" ' + result[i].year + '">'
 	    					     + '</div>'
 	    					   + '</a>'
-	    					   + '<div class="card-content">'
+	    					   + '<div class="card-content car-car">'
 	    					     + '<h4 calss=cardtitle>'
 	    					       + '<a>' + result[i].modelName + '</a>'
 	    					     + '</h4>'
@@ -230,6 +231,22 @@
             location.href = '${path}/detail.review?reviewNo=' + reviewNo
             
         });
+        
+        $(document).on('click', '.car-car', function(){
+        	
+        	const ppc = $(this).children().eq(1).val();
+        	console.log(ppc);
+        	const pp2 = $(this).children().eq(2).val();
+        	console.log(pp2);
+        	
+        	//location.href = '${path}/selectedCarList.do?currentPage=1&hours=24&locations=강남점&startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc
+        	location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=강남점startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc       	
+        		
+        				
+        	
+        	
+        	
+        })
 
        
         
@@ -243,6 +260,7 @@
             })
         });
 
+        
     
         
         
@@ -366,58 +384,6 @@
 
 
     <div style="margin-top:200px;"></div>
-
-
-
-                <!-- 
-                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
-                        <img src="https://file.carisyou.com/upload/2018/01/15/EDITOR_201801151245046750.jpg" />
-                      </a>
-                        <div class="card-content">
-                            <h4 class="card-title">
-                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1"> 더 옛날 소나타~
-                              </a>
-                            </h4>
-                            <p class="">
-                                더 옛날 소나타도 빌려야지~
-                            </p>
-                        </div>
-                        <div class="card-read-more">
-                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
-                                지금 빌리러 가기~
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                 -->
-                <!--
-                
-                <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">
-                        <img src="https://4.bp.blogspot.com/-TDIJ17DfCco/Vtneyc-0t4I/AAAAAAAABmk/aa4AjmCvRck/s1600/cover.jpg" />
-                      </a>
-                        <div class="card-content">
-                            <h4 class="card-title">
-                                <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1">무슨차야 이건~
-                              </a>
-                            </h4>
-                            <p class="">
-                                이건 아직 안넣었따~
-                            </p>
-                        </div>
-                        <div class="card-read-more">
-                            <a href="http://localhost:7777/CheapCar/selectedCarList.do?currentPage=1" class="btn btn-link btn-block">
-                                몰라~
-                            </a>
-                        </div>
-                    </div>
-                    
-                    
-                </div> -->
 
     
 	
