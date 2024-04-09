@@ -1,37 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ 
-	page import="java.util.ArrayList, 
-				 com.kh.semi.car.model.vo.*,
-				 com.kh.semi.common.model.vo.PageInfo" 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-%>
-
-<%
-	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
-	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	//PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
-	int hours = (int)request.getAttribute("hours");
-	String locations = (String)request.getAttribute("locations");
-	String startDate = (String)request.getAttribute("startDate");
-	String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	/*
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-	*/
-%>
-
-<%
-	int carPrice = 0;
-	int optionPrice = 0;
-	int totalPrice = 0;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,7 +116,7 @@
 <body>
     
     <div>
-        <%@ include file="../common/menuBar.jsp" %>
+        <jsp:include page="../common/menuBar.jsp"/>
     </div>
 
 	<div class="area">
@@ -159,13 +129,13 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do" class="option-form form-inline form-location" >
+                <form method="get" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
 
-					<input type="hidden" name="currentPage" value="<%= 1 %>" />
-					<input type="hidden" name="hours" value="<%=hours %>" />
-					<input type="hidden" name="locations" value="<%=locations %>" />
-					<input type="hidden" name="startDate" value="<%=startDate %>" />
-					<input type="hidden" name="endDate" value="<%=endDate %>" />
+					<input type="hidden" name="currentPage" value="1" />
+					<input type="hidden" name="hours" value="${hours}" />
+					<input type="hidden" name="locations" value="${locations}" />
+					<input type="hidden" name="startDate" value="${startDate}" />
+					<input type="hidden" name="endDate" value="${endDate}" />
                     
                     <div class="detail-option">
                         <label>차종</label>
@@ -205,7 +175,7 @@
 
 					<div class="detail-option">
 
-                         <input type="checkbox" class="form-check-input" name="options" value="블랙박스">블랙박스
+                         <input type="checkbox" class="form-check-input" name="options" value="블랙박스" checked>블랙박스
 
                          <input type="checkbox" class="form-check-input" name="options" value="네비게이션">네비게이션
                          
@@ -365,52 +335,52 @@
 
             <div id="main-select" class="area-list">
             
-               <% if(carList.isEmpty()) { %>
-                
+               <c:choose>
+			
+				<c:when test="empty carList">
                 	등록된 게시글이 존재하지 않습니다. <br>
-                	
-                <% } else {%>
+                </c:when>	
+
+				<c:otherwise>
 					
-					<% for(Car c : carList) { %>
+					<c:forEach var="car" items="${requestScope.carList}">
 		                <div class="car-list">
 		                
 		                    <div class="list-size">
 		                    
-		                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
+		                        <img width="100%" class="car-img img-thumbnail" src="${path}/${car.carPhotoAddress}/${car.changeName}" alt="차량사진">
 		                    
 		                    </div>
 		                    
 	                    	<div class="list-size car-info">	
 	                            
-		                        <label><%= c.getModelName() %></label> <br>
-		                        <span><%= c.getGradeName() %></span>
-		                        <span><%= c.getBrandName() %></span>
-		                        <span><%= c.getFuelName() %></span>
-		                        <span><%= c.getYear() %></span> <br><br>
+		                        <label>${car.modelName}</label> <br>
+		                        <span>${car.gradeName}</span>
+		                        <span>${car.brandName}</span>
+		                        <span>${car.fuelName}</span>
+		                        <span>${car.year}</span> <br><br>
 	
-		                        	<%carPrice = c.getGradePrice() + c.getModelPrice() + c.getYearPrice(); %>
-	
-		        					<% for(Option o : optionList) { %>
-		        						<% if(c.getManagementNo() == o.getManagementNo()) { %>
-	                               			<span class="option-list"> <%= o.getOptionName() %></span>
-	                               			<% optionPrice += o.getOptionPrice(); %>
-	                               		<% } %>
-		                            <% } %> 
+		                        <c:set var="carPrice" value="${car.gradePrice + car.modelPrice + car.yearPrice}"/>
+		        					<c:forEach var="o" items="${requestScope.optionList}">
+		        						<c:if test="${car.managementNo eq o.managementNo}">
+	                               			<span class="option-list"> ${o.optionName}</span>
+	                               			<c:set var="optionPrice" value="${optionPrice += o.optionPrice}"/>
+	                               		</c:if>
+		                            </c:forEach>
 								<br>
 								
 		                        <label>시간당 가격</label> : 
 		                        <span>
-		                        	<%= totalPrice = carPrice + optionPrice %>
+		                        	<c:set var="totalPrice" value="${carPrice + optionPrice}"/>
 								</span> <br>
 	                            
-	                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
-	                            <% optionPrice = 0; %>
+	                            <a class="btn btn-sm btn-primary"href="${path}/listDetail.do?carNo=${car.managementNo}&startDate=${startDate}&endDate=${endDate}&hours=${hours}">예약버튼</a>
+	                            <c:set var="optionPrice" value="0"/>
 		                    </div>
 	                    </div>
-	                <% } %>
-					
-                <% } %>
-              
+	               </c:forEach>
+				</c:otherwise>
+              </c:choose>
             </div>
             
             <br clear="both">

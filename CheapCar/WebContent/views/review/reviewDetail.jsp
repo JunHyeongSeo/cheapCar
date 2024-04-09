@@ -248,6 +248,7 @@
 
 		 
        function insertReply(){
+    	   
            $.ajax({
                url : 'replyInsert.review',
                type : 'post',

@@ -1,26 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ 
-	page import="java.util.ArrayList, 
-	java.util.List,
-	com.kh.semi.car.model.vo.*,
-	com.kh.semi.common.model.vo.PageInfo" 
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	Car car = (Car)request.getAttribute("car");
-	List<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	int hours = (int)request.getAttribute("hours");
-	String startDate = (String)request.getAttribute("startDate");
-    String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	int carPrice = 0;
-	int optionPrice = 0;
-	int hourPrice = 0;
-	int totalPrice = 0;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,92 +58,93 @@
 </head>
 <body>
        
-    <%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp" />
 
     <div class="area-board">
 
-	<% if(loginUser == null) { %>
-		<script>
-			alert('렌트 예약은 회원만 가능합니다.');
-			location.href = '<%=contextPath%>/loginPage';
-		</script>
-		
-	<% } else { %>
-
-
-        <div class="car-image"> 
-            <img class="image" src="<%=contextPath%>/<%=car.getCarPhotoAddress()%>/<%=car.getChangeName()%>" alt="대표이미지">
+	<c:choose>
+		<c:when test="${loginUser eq null}">
+			<script>
+				alert('렌트 예약은 회원만 가능합니다.');
+				location.href = '${path}/loginPage';
+			</script>
+		</c:when>
+		<c:otherwise>
+	
+	
+	        <div class="car-image"> 
+	            <img class="image" src="${path}/${car.carPhotoAddress}/${car.changeName}" alt="대표이미지">
+	        </div>
+	        
+	        <div class="car-info"> 차량 상세 정보
+	        	
+	            <div> ${car.modelName} </div>
+	            <div> ${car.gradeName} </div>
+	            <div> ${car.brandName} </div>
+	            <div> ${car.year}년 식 </div>
+	            <div> ${car.fuelName} </div>
+	            
+	            	<c:set var="carPrice" value="${car.gradePrice + car.modelPrice + car.yearPrice}"/>
+	            	
+	            <div class="car-info-detail"> 옵션 리스트 : 
+		            <c:forEach var="o" items="${requestScope.optionList}">
+		            
+		                <span>${o.optionName}</span>
+		                
+	            		${optionPrice += o.optionPrice}
+	            
+	      			</c:forEach>
+	            </div>
+	            
+	            	<c:set var="hourPrice" value="${carPrice + optionPrice}"/>
+	            	<c:set var="totalPrice" value="${hourPrice + (10000 * hours)}"/>
+	            	
+	            <div>
+	            
+		        		시간당 가격 : ${hourPrice}원 <br>
+	                                	총 가격 : ${totalPrice}원 <br>
+	            </div>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	               	결제하기
+	            </button>
+	
+	            <div class="modal fade" id="myModal">
+	                <div class="modal-dialog">
+	                    <div class="modal-content">
+	
+	                        <form method="post" action="${path}/reservation.do?managementNo=${car.managementNo}&totalPrice=${totalPrice}&startDate=${startDate}&endDate=${endDate}">
+	                            <div class="modal-header">
+	                                <h4 class="modal-title">CheepCar 결제 페이지</h4>
+	                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	                            </div>
+	                            
+	                            <div class="modal-body">
+	                            	<input type="hidden" name="memberNo" value="${loginUser.memberNo}"/>
+						                                사용자 이름 : ${loginUser.memberName} <br>
+						                                대여 모델 : ${car.modelName} <br>
+						                                차량 연식 : ${car.year} <br>
+						                                사용 연료 : ${car.fuelName} <br>
+						                                대여 기간 : ${startDate} ~ ${endDate} <br>
+						                                총 가격 : ${totalPrice}원
+	                            </div>
+	                            
+	                            <div class="modal-footer">
+	                                <button type="submit" class="btn btn-primary">결제</button>
+	                                <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+	                            </div>
+	                        </form>
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	
+	        <br clear="both">
+    	</div>
+	        
+	    </c:otherwise>
+    </c:choose>     
         </div>
-        
-        <div class="car-info"> 차량 상세 정보
-        	
-            <div> <%= car.getModelName()%> </div>
-            <div> <%= car.getGradeName()%> </div>
-            <div> <%= car.getBrandName()%> </div>
-            <div> <%= car.getYear()%>년 식 </div>
-            <div> <%= car.getFuelName()%> </div>
-            
-            	<% carPrice = car.getGradePrice()+ car.getModelPrice() + car.getYearPrice(); %>
-            	
-            <div class="car-info-detail"> 옵션 리스트 : 
-            
-            	<% for(Option o : optionList) { %>
-	                
-	                <span><%= o.getOptionName() %></span>
-            		<% optionPrice += o.getOptionPrice(); %>
-            
-            	<% } %>
-      
-            </div>
-            
-            	<% hourPrice = carPrice + optionPrice; %>
-            	<% totalPrice = hourPrice + (10000 * hours); %>
-            	
-            <div>
-            
-	        		시간당 가격 : <%=hourPrice%>원 <br>
-                                	총 가격 : <%=totalPrice%>원 <br>
-            </div>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-               	결제하기
-            </button>
 
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <form method="post" action="<%=contextPath%>/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startDate=<%=startDate%>&endDate=<%=endDate%>">
-                            <div class="modal-header">
-                                <h4 class="modal-title">CheepCar 결제 페이지</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            
-                            <div class="modal-body">
-                            	<input type="hidden" name="memberNo" value="<%=loginUser.getMemberNo()%>"/>
-					                                사용자 이름 : <%=loginUser.getMemberName()%> <br>
-					                                대여 모델 : <%=car.getModelName()%> <br>
-					                                차량 연식 : <%=car.getYear()%> <br>
-					                                사용 연료 : <%=car.getFuelName()%> <br>
-					                                대여 기간 : <%=startDate%> - <%=endDate%> <br>
-					                                총 가격 : <%= totalPrice%>
-                            </div>
-                            
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">결제</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-                            </div>
-                        </form>
-                        
-                    </div>
-                </div>
-            </div>
-
-        <br clear="both">
-        
-    <% } %>        
-        </div>
-
-    </div>
 
 
 </body>
