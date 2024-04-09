@@ -222,18 +222,7 @@
 	                $('#eventTitle').val(resultData)
 	            }
 	         });	
-      
-	       $('#eventContent').blur(function(){
-	           const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
-	           const uname =  $('#eventContent').val()
-	           const resultData = uname.replace(regExp, "");
-		           
-	            if(uname != resultData){
-	                alert('특수문자는 사용이 불가능합니다.')
-	                $('#eventContent').val(resultData)
-		            }
-     	        });        
-		
+
         
 
         

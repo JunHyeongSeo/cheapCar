@@ -146,7 +146,7 @@
                     <div class="content_header">
                         <div class="content_header2">
                             <label class="form-title">제목 : </label>
-                            <input type="text" name="title" required value="${ notice.noticeTitle }">                            
+                            <input type="text" name="title" id="noticeTitle" required value="${ notice.noticeTitle }">                            
                         </div>
                     </div>
                     <div class="content_sub">
@@ -170,6 +170,20 @@
 		  </div>
 
 	</div>
+	
+<script>
+	$('#noticeTitle').blur(function(){
+	    const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+	    const uname =  $('#noticeTitle').val()
+	    const resultData = uname.replace(regExp, "");
+	    
+	     if(uname != resultData){
+	         alert('특수문자는 사용이 불가능합니다.')
+	         $('#noticeTitle').val(resultData)
+	     }
+	  });
+
+</script>	
 		
 	
 
