@@ -93,37 +93,36 @@
 	
 	
 	        <div class="car-image"> 
-	            <img class="image" src="${path}/<%=car.getCarPhotoAddress()%>/<%=car.getChangeName()%>" alt="대표이미지">
+	            <img class="image" src="${path}/${car.carPhotoAddress}/${car.changeName}" alt="대표이미지">
 	        </div>
 	        
 	        <div class="car-info"> 차량 상세 정보
 	        	
-	            <div> <%= car.getModelName()%> </div>
-	            <div> <%= car.getGradeName()%> </div>
-	            <div> <%= car.getBrandName()%> </div>
-	            <div> <%= car.getYear()%>년 식 </div>
-	            <div> <%= car.getFuelName()%> </div>
+	            <div> ${car.modelName} </div>
+	            <div> ${car.gradeName} </div>
+	            <div> ${car.brandName} </div>
+	            <div> ${car.year}년 식 </div>
+	            <div> ${car.fuelName} </div>
 	            
-	            	<% carPrice = car.getGradePrice()+ car.getModelPrice() + car.getYearPrice(); %>
+	            	<c:set var="carPrice" value="${car.gradePrice + car.modelPrice + car.yearPrice}"/>
 	            	
 	            <div class="car-info-detail"> 옵션 리스트 : 
-	            
-	            	<% for(Option o : optionList) { %>
+		            <c:forEach var="o" items="${requestScope.optionList}">
+		            
+		                <span>${o.optionName}</span>
 		                
-		                <span><%= o.getOptionName() %></span>
-	            		<% optionPrice += o.getOptionPrice(); %>
+	            		${optionPrice += o.optionPrice}
 	            
-	            	<% } %>
-	      
+	      			</c:forEach>
 	            </div>
 	            
-	            	<% hourPrice = carPrice + optionPrice; %>
-	            	<% totalPrice = hourPrice + (10000 * hours); %>
+	            	<c:set var="hourPrice" value="${carPrice + optionPrice}"/>
+	            	<c:set var="totalPrice" value="${hourPrice + (10000 * hours)}"/>
 	            	
 	            <div>
 	            
-		        		시간당 가격 : <%=hourPrice%>원 <br>
-	                                	총 가격 : <%=totalPrice%>원 <br>
+		        		시간당 가격 : ${hourPrice}원 <br>
+	                                	총 가격 : ${totalPrice}원 <br>
 	            </div>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 	               	결제하기
@@ -133,7 +132,7 @@
 	                <div class="modal-dialog">
 	                    <div class="modal-content">
 	
-	                        <form method="post" action="${path}/reservation.do?managementNo=<%=car.getManagementNo()%>&totalPrice=<%=totalPrice%>&startDate=<%=startDate%>&endDate=<%=endDate%>">
+	                        <form method="post" action="${path}/reservation.do?managementNo=${car.managementNo}&totalPrice=<%=totalPrice%>&startDate=${startDate}&endDate=${endDate}">
 	                            <div class="modal-header">
 	                                <h4 class="modal-title">CheepCar 결제 페이지</h4>
 	                                <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -142,11 +141,11 @@
 	                            <div class="modal-body">
 	                            	<input type="hidden" name="memberNo" value="${loginUser.memberNo}"/>
 						                                사용자 이름 : ${loginUser.memberName} <br>
-						                                대여 모델 : <%=car.getModelName()%> <br>
-						                                차량 연식 : <%=car.getYear()%> <br>
-						                                사용 연료 : <%=car.getFuelName()%> <br>
-						                                대여 기간 : <%=startDate%> - <%=endDate%> <br>
-						                                총 가격 : <%= totalPrice%>
+						                                대여 모델 : ${car.modelName} <br>
+						                                차량 연식 : ${car.year} <br>
+						                                사용 연료 : ${car.fuelName} <br>
+						                                대여 기간 : ${startDate} ~ ${endDate} <br>
+						                                총 가격 : ${totalPrice}원
 	                            </div>
 	                            
 	                            <div class="modal-footer">
