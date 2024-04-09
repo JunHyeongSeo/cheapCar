@@ -10,20 +10,6 @@ import com.kh.semi.notice.model.vo.Notice;
 
 public class NoticeService {
 
-	/*
-	public ArrayList<Notice> selectNoticeList() {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		ArrayList<Notice> list = new NoticeDao().selectNoticeList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}//
-	*/
-
-	
 	
 	public int increaseCount(int noticeNo) {
 		
