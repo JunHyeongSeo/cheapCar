@@ -85,7 +85,7 @@
 		padding-top: 20px;
 		font-size: 40px;
 		font-weight: bold;
-		border-bottom: 8px solid #b1d6f3;
+		border-bottom: 6px solid #6caddf;
 	}
 	#title{
 		background-color: aquamarine;
@@ -96,12 +96,7 @@
 		text-align: right;
 		padding-right: 0%;
 		margin-bottom: 2px;
-	}
-	.search-area{
-		text-align: center;
-		margin-top: 10px;
-	}
-    
+	}  
 	.do-hyeon-regular {  /* 이벤트 글꼴 */ 
 		font-family: "Do Hyeon", sans-serif;
 		font-weight: 300px;

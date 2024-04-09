@@ -58,10 +58,6 @@
 		font-size: 60px;
 		color: #6caddf;
 	}
-	#searchWord{
-		border: 2px solid #6caddf;
-		border-radius: 5px;
-	}
 	.table{
 		font-size: 18px;
 	}

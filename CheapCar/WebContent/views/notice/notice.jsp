@@ -31,7 +31,7 @@
 		padding-top: 20px;
 		font-size: 40px;
 		font-weight: bold;
-		border-bottom: 6px solid #b1d6f3;
+		border-bottom: 6px solid #6caddf;
 	}
 	#title{
 		background-color: aquamarine;

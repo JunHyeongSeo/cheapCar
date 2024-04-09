@@ -25,11 +25,7 @@
 		height: auto;
 		margin: auto;
 		padding-bottom: 50px;
-		
-		
 	}
-
-	
     .content_outer{
         width: 90%;
         height: auto;
@@ -70,9 +66,7 @@
     }
     .content_sub{
         text-align: right;
-        padding-right: 30px;
-        
-        
+        padding-right: 30px;  
     }
     .content_sub1{
         opacity: 0.8;
@@ -82,14 +76,13 @@
         padding-left: 50px;
         padding-top: 50px;
         border-bottom: 2px solid #b1d6f3;
-        font-size: 20px;
-        
+        font-size: 20px;    
     }
     .page-header{
 		padding-top: 20px;
 		font-size: 40px;
 		font-weight: bold;
-		border-bottom: 8px solid #b1d6f3;
+		border-bottom: 6px solid #6caddf;
 	}
 	#title{
 		background-color: aquamarine;
