@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.kh.semi.review.model.vo.ReviewBoard, com.kh.semi.common.model.vo.PageInfo" %>    
-    
-<%
-	ArrayList<ReviewBoard> list = (ArrayList<ReviewBoard>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
- %>    
-    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
     
 <!DOCTYPE html>
 <html>
@@ -127,7 +118,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/menuBar.jsp" %>
+	<jsp:include page="../common/menuBar.jsp"></jsp:include>
 	
 	<div class="outer" >
 		<div class="row">
@@ -139,10 +130,13 @@
 				</h2>
 				<div class="review_content">
 					<ul id="review_list">
-						<% if(list.isEmpty()) { %>
+						<c:choose>
+						<c:when test="${ empty list }">
 						<li id="NoMsg"> 리스트가 존재하지 않습니다. <li>
-						<% } else { %>
-						  <% for(ReviewBoard re : list){ %>
+						</c:when>
+						<c:otherwise>
+						
+						  <c:forEach var="r" items="${ list }">
 						  		
 							<li>
 								<a>
@@ -161,9 +155,9 @@
 									</div>
 								</a>
 							</li>
-							
-							<% } %>
-						<% } %>	
+							</c:forEach>
+						</c:otherwise>
+						</c:choose>
 
 				</div>            
 			 </div>
