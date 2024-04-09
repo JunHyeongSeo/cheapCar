@@ -240,8 +240,9 @@
         	console.log(pp2);
         	
         	//location.href = '${path}/selectedCarList.do?currentPage=1&hours=24&locations=강남점&startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc
-        	location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=강남점startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc       	
+        	//location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=강남점startDate=2024-04-09+15%3A00&endDate=2024-04-10+15%3A00&model=' + ppc       	
         		
+        	location.href = '${path}/selectOptionAndCarList.do?currentPage=1&hours=24&locations=%EA%B0%95%EB%82%A8%EC%A0%90&startDate=2024-04-18+15%3A00&endDate=2024-04-19+15%3A00&model=' + ppc + '&options=%ED%9B%84%EB%B0%A9%EC%B9%B4%EB%A9%94%EB%9D%BC'
         				
         	
         	
