@@ -141,17 +141,20 @@
 							<li>
 								<a>
 									<div class="img-area review_1 content">
-									 <input type="hidden" value="<%= re.getReviewNo() %>"/>
-									 <% if(re.getTitleImg().equals("/")){ %>
-									 <img src="views\common\차빌려조로고.gif" id="titleImg"/>
-									 <%} else{ %>
-								 	 <img src="<%= re.getTitleImg() %>" id="titleImg"/>
-								 	 <% } %>
+									 <input type="hidden" value="${ r.reviewNo }"/>
+									 <c:choose>
+										 <c:when test="${ r.titleImg == '/' }">
+										 <img src="views\common\차빌려조로고.gif" id="titleImg"/>
+										 </c:when>
+									 <c:otherwise>
+								 	 	<img src="${ r.titleImg }" id="titleImg"/>
+								 	 </c:otherwise>
+								 	 </c:choose>
 								 	</div>
 									<div class="text-area review_1 content">
-									<input type="hidden" value="<%= re.getReviewNo() %>"/>
-									 <span> <%= re.getReviewTitle() %> </span><br><br>
-								     <span style="font-size: 15px;">조회수 :  <%= re.getCount() %></span>
+									<input type="hidden" value="${ r.reviewNo }"/>
+									 <span> ${ r.reviewTitle } </span><br><br>
+								     <span style="font-size: 15px;">조회수 :  ${ r.count }</span>
 									</div>
 								</a>
 							</li>
@@ -162,7 +165,8 @@
 				</div>            
 			 </div>
 		  </div>
-		</div>           
+		</div>         
+		<%--  
 		<div class="paging-area" align="center" style="margin-top:12px">
 			<% if(currentPage > 1) { %>	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
@@ -183,14 +187,14 @@
 	     		onclick="location.href='<%=contextPath%>/list.review?currentPage=<%=currentPage + 1%>'">다음</button>
 	     	<%} %>
 	    </div> 	
-
+ --%>
         <div class="search_write">
 			<form>
 			    <!-- <input type="text" id="searchWord" name="searchWord" placeholder="검색" >
 				<button type="submit" value="" id="btn-search" class="btn-info" style="background-color: #6caddf">검색</button> -->
-				<% if(loginUser != null) {%>
-					<a href="<%=contextPath %>/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
-				<%}%>
+				<c:if test="${ loginUser != null }">
+					<a href="${ path }/insertForm.review" class="btn btn-info" id="write" style="height: 32px;">글쓰기</a>
+				</c:if>
 				
 			</form>
 
@@ -205,7 +209,7 @@
 
 				const reviewNo = $(this).children().eq(0).val(); 
 
-				location.href = '<%= contextPath %>/detail.review?reviewNo=' + reviewNo
+				location.href = '${path}/detail.review?reviewNo=' + reviewNo
 			})
 
 
