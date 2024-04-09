@@ -1,30 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ 
 	page import="java.util.ArrayList, 
-				 com.kh.semi.car.model.vo.*,
-				 com.kh.semi.common.model.vo.PageInfo" 
-
+				 com.kh.semi.car.model.vo.*"
 %>
 
 <%
 	ArrayList<Car> carList = (ArrayList<Car>)request.getAttribute("carList");
 	ArrayList<Option> optionList = (ArrayList<Option>)request.getAttribute("optionList");
-	//PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 	int hours = (int)request.getAttribute("hours");
 	String locations = (String)request.getAttribute("locations");
 	String startDate = (String)request.getAttribute("startDate");
 	String endDate = (String)request.getAttribute("endDate");
-%>
-
-<%
-	/*
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-	*/
 %>
 
 <%
@@ -146,7 +134,7 @@
 <body>
     
     <div>
-        <%@ include file="../common/menuBar.jsp" %>
+        <jsp:include page="../common/menuBar.jsp"/>
     </div>
 
 	<div class="area">
@@ -159,7 +147,7 @@
                 
                 <h2 align="center">세부 검색</h2>
 
-                <form method="get" action="<%=contextPath%>/selectOptionAndCarList.do" class="option-form form-inline form-location" >
+                <form method="get" action="${path}/selectOptionAndCarList.do" class="option-form form-inline form-location" >
 
 					<input type="hidden" name="currentPage" value="<%= 1 %>" />
 					<input type="hidden" name="hours" value="<%=hours %>" />
@@ -376,7 +364,7 @@
 		                
 		                    <div class="list-size">
 		                    
-		                        <img width="100%" class="car-img img-thumbnail" src="<%=contextPath%>/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
+		                        <img width="100%" class="car-img img-thumbnail" src="${path}/<%=c.getCarPhotoAddress()%>/<%=c.getChangeName()%>" alt="차량사진">
 		                    
 		                    </div>
 		                    
@@ -403,7 +391,7 @@
 		                        	<%= totalPrice = carPrice + optionPrice %>
 								</span> <br>
 	                            
-	                            <a class="btn btn-sm btn-primary"href="<%=contextPath%>/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
+	                            <a class="btn btn-sm btn-primary"href="${path}/listDetail.do?carNo=<%=c.getManagementNo()%>&startDate=<%=startDate%>&endDate=<%=endDate%>&hours=<%=hours%>">예약버튼</a>
 	                            <% optionPrice = 0; %>
 		                    </div>
 	                    </div>
