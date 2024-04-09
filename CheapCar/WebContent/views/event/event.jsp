@@ -166,27 +166,37 @@
             
 			 </div>
 		  </div>
-		<%--
+		
 		<div class="paging-area" align="center" style="margin-top:12px">
-			<% if(currentPage > 1) { %>	
+			<c:if test="${ pi.currentPage > 1 }">	
 	        <button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage - 1%>'">이전</button>
-            <% } %>
-	     	<% for(int i = startPage; i <= endPage; i++){%>
-	     		<% if(currentPage != i){ %>
+		     		onclick="location.href='${ path }/list.event?currentPage=${ pi.currentPage - 1 }'">이전</button>
+            </c:if>
+            <c:forEach var="${ pi.startPage }" begin="${ pi.startPage }" end="${ endPage }">
+	     	<%--<% for(int i = startPage; i <= endPage; i++){--%>
+	     		<c:choose>
+	     		<c:when test="${ pi.currentPage != pi.startPage }">
+	     		<%--<% if(currentPage != i){ --%>
 		     		<button class="btn btn-outline-info" style="color:#6caddf"
-		     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=i%>'"><%= i %></button>
-		     	<% } else { %>
-		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;"><%= i %></button>
-		     	<% } %>	
-		     	
-			<% } %>
+		     		onclick="location.href='${ path }/list.event?currentPage=${ pi.startPage }'">${ pi.startPage }</button>
+		     	</c:when>
+		     	<c:otherwise>	
+		     	<%--<% } else { --%>
+		     		<button disabled class="btn btn-outline-info" style="color:#6caddf;">${ pi.startPage }</button>
+		     	<%--<% } --%>	
+		     	</c:otherwise>
+		     	</c:choose>
 			
+			</c:forEach>
+			
+			<%--			
 			<% if(currentPage != maxPage){ %>	
 			<button class="btn btn-outline-info" style="color:#6caddf"
 	     		onclick="location.href='<%=contextPath%>/list.event?currentPage=<%=currentPage + 1%>'">다음</button>
 	     	<%} %>
 	     	 --%>
+	     	  
+	     	
 		   
 	    </div>			  			  
 	</div>
