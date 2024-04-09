@@ -126,6 +126,10 @@
 		font-size: 15px;        
 
     }
+    #textcount1{
+    	padding-left: 10px;
+    	padding-top: 10px;
+    }
     
 
 </style>
@@ -213,8 +217,7 @@
 		 </div>
 
 <script>
-		console.log($('#textcount1'));
-		console.log($('#textCount'));
+
 		function selectReplyList(){
 			   $.ajax({
 				   url : 'replyList.review',
