@@ -749,7 +749,8 @@
 		SELECT
 		       COUNT(*), 
 		       MODEL_NAME,
-		       CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME
+		       CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME,
+               YEAR
 		  FROM
 		       TB_RESERVATION 
 		  JOIN
@@ -760,9 +761,11 @@
 		       TB_MODEL A ON(A.MODEL_NO = B.MODEL_NO)
 		 JOIN
 		       TB_CAR_PHOTO TCP USING (MANAGEMENT_NO)
+          JOIN
+                TB_YEAR TBY ON(TBY.YEAR_NO = B.YEAR_NO)
 		  GROUP 
 		     BY
-		       MODEL_NAME, CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME
+		       MODEL_NAME, CAR_PHOTO_ADDRESS||'/'||CHANGE_NAME, YEAR
 		  ORDER 
 		     BY 
 		       COUNT(*) DESC

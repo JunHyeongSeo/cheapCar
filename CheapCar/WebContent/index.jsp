@@ -134,7 +134,8 @@
 
                     console.log(result);
                     let resultStr = '';
-    				for(let i = 0; i < 3; i++){
+    				for(let i = 0; i < result.length; i++){
+    					if(i >= 3) break; // 3개만
     					
     					resultStr 
     					  += '<div class="col-xs-12 col-sm-4">'
@@ -224,7 +225,7 @@
         
         // 메인화면에 띄어진 후기 클릭 시 해당 후기로 이동
         $(document).on('click', '.card-content', function(){
-            console.log($(this).children().eq(1).val());
+            //console.log($(this).children().eq(1).val());
             const reviewNo = $(this).children().eq(1).val();
             location.href = '${path}/detail.review?reviewNo=' + reviewNo
             
@@ -237,7 +238,7 @@
             $('.swiper-slide').click(function(){
             	
                 const eventNo = $(this).children().eq(1).val();
-                console.log(eventNo);
+                //console.log(eventNo);
                 location.href = '${path}/detail.event?eventNo=' + eventNo 
             })
         });
