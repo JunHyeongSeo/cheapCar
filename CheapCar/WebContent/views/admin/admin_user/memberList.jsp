@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.semi.member.model.vo.Member, java.util.ArrayList, com.kh.semi.common.model.vo.PageInfo"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 
 </head>
 <body>
+
 	<jsp:include page="../../common/adminMain.jsp"></jsp:include>
 	
     <div class="outer" id="salemonth">
@@ -87,7 +89,7 @@
 	    				
 	    				if(pi.currentPage > 1) {
 	    					resultStr  += '<button class="btn btn-outline-danger" onclick="location.href='
-	    	       					    + "'${ contextPath }/memberList?currentPage="
+	    	       					    + "'${ path }/memberList?currentPage="
 	    	       					    + (pi.currentPage - 1)
 	    	       					    + "'"
 	    	       					    + '"'
@@ -98,7 +100,7 @@
 	   			        for(let i = pi.startPage; i <= pi.endPage; i++) {
 	   			        	if(pi.currentPage != i){
 	   			        		resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-	   			        				   + "'${ contextPath }/memberList?currentPage="
+	   			        				   + "'${ path }/memberList?currentPage="
 	   			        				   + i
 	   			        				   + "'"
 	     	       					   	   + '"'
@@ -115,7 +117,7 @@
 	   			        
 	   			        if(pi.currentPage != pi.maxPage){
 	   			        	resultStr += '<button class="btn btn-outline-danger" onclick="location.href='
-			       					   + "'${ contextPath }/memberList?currentPage="
+			       					   + "'${ path }/memberList?currentPage="
 			       					   + (pi.currentPage + 1)
 			       					   + "'"
 			       					   + '"'

@@ -54,7 +54,7 @@
 </head>
 <body>
 	
-	<% com.kh.semi.common.JDBCTemplate.getConnection(); %>
+	
 	<jsp:include page="views/common/menuBar.jsp" />
 
 	<!-- 

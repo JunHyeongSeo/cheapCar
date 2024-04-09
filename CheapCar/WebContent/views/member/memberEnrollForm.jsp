@@ -125,52 +125,6 @@
 	  </section>
 
 
-
-	  <!-- <form class="mx-1 mx-md-4">
-	  
-		<div class="d-flex flex-row align-items-center mb-4">
-		  <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-		  <div class="form-outline flex-fill mb-0">
-			<input type="text" id="form3Example1c" class="form-control" />
-			<label class="form-label" for="form3Example1c">이름이 뭐냐고 짜샤~~~</label>
-		  </div>
-		</div>
-
-		<div class="d-flex flex-row align-items-center mb-4">
-		  <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-		  <div class="form-outline flex-fill mb-0">
-			<input type="email" id="form3Example3c" class="form-control" />
-			<label class="form-label" for="form3Example3c">아이디 짜샤~~</label>
-		  </div>
-		</div>
-
-		<div class="d-flex flex-row align-items-center mb-4">
-		  <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-		  <div class="form-outline flex-fill mb-0">
-			<input type="password" id="form3Example4c" class="form-control" />
-			<label class="form-label" for="form3Example4c">비밀번호 짜샤~~~</label>
-		  </div>
-		</div>
-
-		<div class="d-flex flex-row align-items-center mb-4">
-		  <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-		  <div class="form-outline flex-fill mb-0">
-			<input type="password" id="form3Example4cd" class="form-control" />
-			<label class="form-label" for="form3Example4cd">비밀번호 또 써 짜샤~~~</label>
-		  </div>
-		</div>
-
-		<div class="form-check d-flex justify-content-center mb-5">
-		  <label class="form-check-label" for="form2Example3" style="font-size:12px; color : lightcoral;">
-			가입해라 짜샤 ~~~
-		  </label>
-		</div>
-
-		<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-		  <button type="button" class="btn btn-danger btn-lg">가입요청</button>
-		</div>
-
-	  </form> -->
 	  
 
 
@@ -220,7 +174,6 @@
 					var birthdayCheck = /^(19[0-9]{2}|20[0-9]{2})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 					//  regExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-[1-4]\d{6}$/;
 					var phoneCheck = /^01[0179]-[0-9]{4}-[0-9]{4}$/;
-					//var ddffeeffbb = /^[어쩌라고]$/; --;;
 					var emailCheck = /^[a-zA-Z0-9]{2,20}@[a-z]{2,5}.[a-z]{3}$/;
 
 					$('#memberId').blur(function(){
@@ -297,15 +250,5 @@
 
 			</script>
 			
-			
-
-			<!-- <br><br>
-		
-		
-		</form>
-		
-		
-	</div> -->
-
 </body>
 </html>
