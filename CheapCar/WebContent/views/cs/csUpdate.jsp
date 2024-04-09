@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.semi.cs.model.vo.Cs, java.util.ArrayList, com.kh.semi.common.model.vo.BoardAttachment"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	Cs cs = (Cs)request.getAttribute("cs");
-	ArrayList<BoardAttachment> list = (ArrayList<BoardAttachment>)request.getAttribute("list");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +26,7 @@
 
 		<script>
 			alert('로그인 후 글 작성을 해주세요')
-			location.href='<%=contextPath%>';
+			location.href='${ path }';
 		</script>
 	</c:if>
 	
@@ -44,53 +40,55 @@
 				</div>
                 
                 <div class="content_outer">
-                	<form action="<%=contextPath%>/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
-	                    <input type="hidden" name="csNo" value="<%= cs.getCsNo() %>">
-	                    <input type="hidden" name="memberNo" value="<%= cs.getMemberNo() %>">
+                	<form action="${ path }/update.cs" method="post" id="insert-form" enctype="multipart/form-data">
+	                    <input type="hidden" name="csNo" value="${ cs.csNo }">
+	                    <input type="hidden" name="memberNo" value="${ cs.memberNo }">
 	                    <div class="content_header">
 	                        <div class="content_header2">
 	                            <label class="form-title">제목 : </label>
-	                            <input type="text" name="title" value="<%= cs.getCsTitle() %>">
+	                            <input type="text" name="title" value="${ cs.csTitle }">
 	                        </div>
                   		</div>
                   		
                     	<div class="content_sub">
-                        	<span class="content_sub1">작성자 : <%= loginUser.getMemberName() %></span>
+                        	<span class="content_sub1">작성자 : ${ loginUser.memberName }</span>
                    		</div>
                    		
 	                    <div class="content_body">
-	                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;"><%= cs.getCsContent() %></textarea>
+	                        <textarea name="content" class="form-control" rows="20" id="comment" style="resize: none;">${ cs.csContent }</textarea>
 	                    </div>
 	                    
 	                    <div class="content_add_img">
 	                    	<span id="addInfo"><br>&lt;파일첨부&gt;</span><br><br>
 	                    	
-	                    	<% if(!list.isEmpty()) { 
-	                    		int result = list.size();
-	                    		
-	                    		for(int i = 0; i < result; i++) { 
-	                    	%>
-									<input type="file" name="reUpfile<%= i+1 %>" id="reUpfile<%= i+1 %>" value="<%= list.get(i).getOriginName() %>">
-									첨부파일 : <label><%= list.get(i).getOriginName() %></label> 
-									<br><br>
-									<input type="hidden" name="fileNo<%= i+1 %>" value="<%= list.get(i).getFileNo() %>">
-									<input type="hidden" name="changeName<%= i+1 %>" value="<%= list.get(i).getChangeName() %>">
-									<br><br>
-								<% } %>
-								
-								<% for(int i = (result + 1); i <= 4; i++){ %>
-									<input type="file" name="upfile<%= i %>">
-									<input type="hidden" name="fileNo<%= i %>">
-									<input type="hidden" name="changeName<%= i %>">
-									<br><br>
-								<% } %>
-                    		<% }  else { %>
+	                    	<c:choose>
+	                    		<c:when test="${ empty list }">
 	                    			<span id="addInfo"><br>&lt;등록되어있는 첨부파일이 없습니다.&gt;</span><br><br>
 		                            <input type="file" name="upfile1"><br><br>
 		                            <input type="file" name="upfile2"><br><br>
 		                            <input type="file" name="upfile3"><br><br>
 		                            <input type="file" name="upfile4"><br><br>
-                    		<% } %>
+	                    		</c:when>
+	                    		
+	                    		<c:otherwise>
+	                    			<c:forEach var="i" begin="0" end="${ list.size() - 1 }">
+		                    			<input type="file" name="reUpfile${ i+1 }" id="reUpfile${ i+1 }" value="${ list[i].originName }">
+										첨부파일 : <label>${ list[i].originName }</label> 
+										<br><br>
+										<input type="hidden" name="fileNo${ i+1 }" value="${ list[i].fileNo }">
+										<input type="hidden" name="changeName${ i+1 }" value="${ list[i].changeName }">
+										<br><br>
+	                    			</c:forEach>
+	                    			
+	                    			<c:forEach var='i' begin="${ list.size() + 1 }" end="4">
+	                    				<input type="file" name="upfile${ i }">
+										<input type="hidden" name="fileNo${ i }">
+										<input type="hidden" name="changeName${ i }">
+										<br><br>
+	                    			</c:forEach>
+	                    		</c:otherwise>
+	                    	</c:choose>
+	                    
 					    </div>
 	                    
 	                    <div class="content_btn" align="center">
